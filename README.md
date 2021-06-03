@@ -1,4 +1,4 @@
-# Nixie Clock Firmware1231
+# Nixie Clock Firmware
 
 使用STM8S003F3P3控制的辉光管时钟，编程、编译、烧录软件均开源。
 
