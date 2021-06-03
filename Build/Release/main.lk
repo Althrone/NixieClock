@@ -1,0 +1,20 @@
+-muwx
+-i Build/Release/main.ihx
+-Y
+-b HOME = 0x8000
+-b DATA = 0x0001
+-b SSEG = 0xffffffff
+-k C:\Program Files\SDCC\bin\..\lib\stm8
+-l stm8
+Build/Release/main.rel
+Build/Release/stm8s_gpio.rel
+Build/Release/stm8s_clk.rel
+Build/Release/stm8s_spi.rel
+Build/Release/stm8s_uart1.rel
+Build/Release/stm8s_beep.rel
+Build/Release/soft_i2c.rel
+Build/Release/nixie.rel
+Build/Release/ds3231.rel
+Build/Release/gps.rel
+
+-e

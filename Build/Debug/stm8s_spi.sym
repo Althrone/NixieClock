@@ -1,0 +1,212 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 1.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000001 L
+  9 A$stm8s_spiug/stm8s_spi$100                                    000020 GR
+  9 A$stm8s_spiug/stm8s_spi$101                                    000022 GR
+  9 A$stm8s_spiug/stm8s_spi$104                                    000025 GR
+  9 A$stm8s_spiug/stm8s_spi$105                                    000027 GR
+  9 A$stm8s_spiug/stm8s_spi$106                                    000029 GR
+  9 A$stm8s_spiug/stm8s_spi$109                                    00002C GR
+  9 A$stm8s_spiug/stm8s_spi$112                                    00002F GR
+  9 A$stm8s_spiug/stm8s_spi$114                                    000030 GR
+  9 A$stm8s_spiug/stm8s_spi$115                                    000032 GR
+  9 A$stm8s_spiug/stm8s_spi$116                                    000034 GR
+  9 A$stm8s_spiug/stm8s_spi$118                                    000035 GR
+  9 A$stm8s_spiug/stm8s_spi$123                                    000037 GR
+  9 A$stm8s_spiug/stm8s_spi$124                                    000039 GR
+  9 A$stm8s_spiug/stm8s_spi$126                                    00003C GR
+  9 A$stm8s_spiug/stm8s_spi$131                                    00003E GR
+  9 A$stm8s_spiug/stm8s_spi$132                                    000040 GR
+  9 A$stm8s_spiug/stm8s_spi$137                                    000043 GR
+  9 A$stm8s_spiug/stm8s_spi$138                                    000046 GR
+  9 A$stm8s_spiug/stm8s_spi$139                                    000048 GR
+  9 A$stm8s_spiug/stm8s_spi$142                                    00004B GR
+  9 A$stm8s_spiug/stm8s_spi$143                                    00004E GR
+  9 A$stm8s_spiug/stm8s_spi$144                                    000050 GR
+  9 A$stm8s_spiug/stm8s_spi$147                                    000051 GR
+  9 A$stm8s_spiug/stm8s_spi$151                                    000052 GR
+  9 A$stm8s_spiug/stm8s_spi$162                                    000053 GR
+  9 A$stm8s_spiug/stm8s_spi$165                                    000056 GR
+  9 A$stm8s_spiug/stm8s_spi$166                                    000058 GR
+  9 A$stm8s_spiug/stm8s_spi$170                                    00005A GR
+  9 A$stm8s_spiug/stm8s_spi$171                                    00005C GR
+  9 A$stm8s_spiug/stm8s_spi$173                                    00005F GR
+  9 A$stm8s_spiug/stm8s_spi$178                                    000061 GR
+  9 A$stm8s_spiug/stm8s_spi$179                                    000063 GR
+  9 A$stm8s_spiug/stm8s_spi$186                                    000066 GR
+  9 A$stm8s_spiug/stm8s_spi$197                                    000067 GR
+  9 A$stm8s_spiug/stm8s_spi$198                                    00006A GR
+  9 A$stm8s_spiug/stm8s_spi$199                                    00006C GR
+  9 A$stm8s_spiug/stm8s_spi$204                                    00006D GR
+  9 A$stm8s_spiug/stm8s_spi$215                                    00006E GR
+  9 A$stm8s_spiug/stm8s_spi$216                                    000071 GR
+  9 A$stm8s_spiug/stm8s_spi$217                                    000073 GR
+  9 A$stm8s_spiug/stm8s_spi$221                                    000075 GR
+  9 A$stm8s_spiug/stm8s_spi$223                                    000077 GR
+  9 A$stm8s_spiug/stm8s_spi$228                                    000079 GR
+  9 A$stm8s_spiug/stm8s_spi$237                                    00007A GR
+  9 A$stm8s_spiug/stm8s_spi$248                                    00007B GR
+  9 A$stm8s_spiug/stm8s_spi$249                                    00007D GR
+  9 A$stm8s_spiug/stm8s_spi$250                                    00007E GR
+  9 A$stm8s_spiug/stm8s_spi$255                                    000081 GR
+  9 A$stm8s_spiug/stm8s_spi$63                                     000000 GR
+  9 A$stm8s_spiug/stm8s_spi$66                                     000004 GR
+  9 A$stm8s_spiug/stm8s_spi$69                                     000008 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 A$stm8s_spiug/stm8s_spi$72                                     00000C GR
+  9 A$stm8s_spiug/stm8s_spi$75                                     000010 GR
+  9 A$stm8s_spiug/stm8s_spi$80                                     000014 GR
+  9 A$stm8s_spiug/stm8s_spi$89                                     000015 GR
+  9 A$stm8s_spiug/stm8s_spi$93                                     000016 GR
+  9 A$stm8s_spiug/stm8s_spi$94                                     000018 GR
+  9 A$stm8s_spiug/stm8s_spi$95                                     00001A GR
+  9 A$stm8s_spiug/stm8s_spi$98                                     00001C GR
+  9 A$stm8s_spiug/stm8s_spi$99                                     00001E GR
+ 10 Ldebug_CIE0_end                                                000012 R
+ 10 Ldebug_CIE0_start                                              000004 R
+ 10 Ldebug_CIE1_end                                                00003B R
+ 10 Ldebug_CIE1_start                                              00002D R
+ 10 Ldebug_CIE2_end                                                000064 R
+ 10 Ldebug_CIE2_start                                              000056 R
+ 10 Ldebug_CIE3_end                                                00008D R
+ 10 Ldebug_CIE3_start                                              00007F R
+ 10 Ldebug_CIE4_end                                                0000B6 R
+ 10 Ldebug_CIE4_start                                              0000A8 R
+ 10 Ldebug_CIE5_end                                                000102 R
+ 10 Ldebug_CIE5_start                                              0000F4 R
+  D Ldebug_abbrev                                                  000000 R
+  E Ldebug_info_end                                                00023F R
+  E Ldebug_info_start                                              000004 R
+  B Ldebug_line_end                                                0001A2 R
+  B Ldebug_line_start                                              000004 R
+  B Ldebug_line_stmt                                               000089 R
+  C Ldebug_loc_start                                               000000 R
+  F Ldebug_pubnames_end                                            000073 R
+  F Ldebug_pubnames_start                                          000004 R
+  9 Sstm8s_spi$SPI_ClearFlag$65                                 =  00007B GR
+  9 Sstm8s_spi$SPI_ClearFlag$66                                 =  00007B GR
+  9 Sstm8s_spi$SPI_ClearFlag$67                                 =  00007B GR
+  9 Sstm8s_spi$SPI_ClearFlag$68                                 =  000081 GR
+  9 Sstm8s_spi$SPI_ClearFlag$69                                 =  000081 GR
+  9 Sstm8s_spi$SPI_ClearFlag$70                                 =  000082 GR
+  9 Sstm8s_spi$SPI_Cmd$33                                       =  000053 GR
+  9 Sstm8s_spi$SPI_Cmd$34                                       =  000053 GR
+  9 Sstm8s_spi$SPI_Cmd$35                                       =  000053 GR
+  9 Sstm8s_spi$SPI_Cmd$36                                       =  000056 GR
+  9 Sstm8s_spi$SPI_Cmd$37                                       =  00005A GR
+  9 Sstm8s_spi$SPI_Cmd$38                                       =  00005A GR
+  9 Sstm8s_spi$SPI_Cmd$39                                       =  00005F GR
+  9 Sstm8s_spi$SPI_Cmd$40                                       =  000061 GR
+  9 Sstm8s_spi$SPI_Cmd$41                                       =  000061 GR
+  9 Sstm8s_spi$SPI_Cmd$42                                       =  000066 GR
+  9 Sstm8s_spi$SPI_Cmd$43                                       =  000066 GR
+  9 Sstm8s_spi$SPI_Cmd$44                                       =  000066 GR
+  9 Sstm8s_spi$SPI_Cmd$45                                       =  000067 GR
+  9 Sstm8s_spi$SPI_DeInit$0                                     =  000000 GR
+  9 Sstm8s_spi$SPI_DeInit$1                                     =  000000 GR
+  9 Sstm8s_spi$SPI_DeInit$2                                     =  000000 GR
+  9 Sstm8s_spi$SPI_DeInit$3                                     =  000004 GR
+  9 Sstm8s_spi$SPI_DeInit$4                                     =  000008 GR
+  9 Sstm8s_spi$SPI_DeInit$5                                     =  00000C GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 3.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 Sstm8s_spi$SPI_DeInit$6                                     =  000010 GR
+  9 Sstm8s_spi$SPI_DeInit$7                                     =  000014 GR
+  9 Sstm8s_spi$SPI_DeInit$8                                     =  000014 GR
+  9 Sstm8s_spi$SPI_DeInit$9                                     =  000015 GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$52                             =  00006E GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$53                             =  00006E GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$54                             =  00006E GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$55                             =  000075 GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$56                             =  000075 GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$57                             =  000077 GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$58                             =  000079 GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$59                             =  000079 GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$60                             =  00007A GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$61                             =  00007A GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$62                             =  00007A GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$63                             =  00007A GR
+  9 Sstm8s_spi$SPI_GetFlagStatus$64                             =  00007B GR
+  9 Sstm8s_spi$SPI_Init$10                                      =  000015 GR
+  9 Sstm8s_spi$SPI_Init$11                                      =  000015 GR
+  9 Sstm8s_spi$SPI_Init$12                                      =  000016 GR
+  9 Sstm8s_spi$SPI_Init$13                                      =  000016 GR
+  9 Sstm8s_spi$SPI_Init$14                                      =  00001C GR
+  9 Sstm8s_spi$SPI_Init$15                                      =  000025 GR
+  9 Sstm8s_spi$SPI_Init$16                                      =  00002C GR
+  9 Sstm8s_spi$SPI_Init$17                                      =  00002F GR
+  9 Sstm8s_spi$SPI_Init$18                                      =  000030 GR
+  9 Sstm8s_spi$SPI_Init$19                                      =  000035 GR
+  9 Sstm8s_spi$SPI_Init$20                                      =  000037 GR
+  9 Sstm8s_spi$SPI_Init$21                                      =  000037 GR
+  9 Sstm8s_spi$SPI_Init$22                                      =  000037 GR
+  9 Sstm8s_spi$SPI_Init$23                                      =  00003C GR
+  9 Sstm8s_spi$SPI_Init$24                                      =  00003E GR
+  9 Sstm8s_spi$SPI_Init$25                                      =  00003E GR
+  9 Sstm8s_spi$SPI_Init$26                                      =  000043 GR
+  9 Sstm8s_spi$SPI_Init$27                                      =  000043 GR
+  9 Sstm8s_spi$SPI_Init$28                                      =  00004B GR
+  9 Sstm8s_spi$SPI_Init$29                                      =  000051 GR
+  9 Sstm8s_spi$SPI_Init$30                                      =  000052 GR
+  9 Sstm8s_spi$SPI_Init$31                                      =  000052 GR
+  9 Sstm8s_spi$SPI_Init$32                                      =  000053 GR
+  9 Sstm8s_spi$SPI_SendData$46                                  =  000067 GR
+  9 Sstm8s_spi$SPI_SendData$47                                  =  000067 GR
+  9 Sstm8s_spi$SPI_SendData$48                                  =  000067 GR
+  9 Sstm8s_spi$SPI_SendData$49                                  =  00006D GR
+  9 Sstm8s_spi$SPI_SendData$50                                  =  00006D GR
+  9 Sstm8s_spi$SPI_SendData$51                                  =  00006E GR
+  9 XG$SPI_ClearFlag$0$0                                        =  000081 GR
+  9 XG$SPI_Cmd$0$0                                              =  000066 GR
+  9 XG$SPI_DeInit$0$0                                           =  000014 GR
+  9 XG$SPI_GetFlagStatus$0$0                                    =  00007A GR
+  9 XG$SPI_Init$0$0                                             =  000052 GR
+  9 XG$SPI_SendData$0$0                                         =  00006D GR
+  9 _SPI_ClearFlag                                                 00007B GR
+  9 _SPI_Cmd                                                       000053 GR
+  9 _SPI_DeInit                                                    000000 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 4.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 _SPI_GetFlagStatus                                             00006E GR
+  9 _SPI_Init                                                      000015 GR
+  9 _SPI_SendData                                                  000067 GR
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 5.
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size      0   flags    0
+   1 DATA                                       size      0   flags    0
+   2 INITIALIZED                                size      0   flags    0
+   3 DABS                                       size      0   flags    8
+   4 HOME                                       size      0   flags    0
+   5 GSINIT                                     size      0   flags    0
+   6 GSFINAL                                    size      0   flags    0
+   7 CONST                                      size      0   flags    0
+   8 INITIALIZER                                size      0   flags    0
+   9 CODE                                       size     82   flags    0
+   A CABS                                       size      0   flags    8
+   B .debug_line                                size    1A2   flags  100
+   C .debug_loc                                 size     B4   flags  100
+   D .debug_abbrev                              size     7A   flags  100
+   E .debug_info                                size    23F   flags  100
+   F .debug_pubnames                            size     73   flags  100
+  10 .debug_frame                               size    119   flags  100
+

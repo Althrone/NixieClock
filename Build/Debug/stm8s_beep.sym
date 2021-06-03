@@ -1,0 +1,120 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 1.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000001 L
+  9 A$stm8s_beepg/stm8s_beep$101                                   000026 GR
+  9 A$stm8s_beepg/stm8s_beep$102                                   000029 GR
+  9 A$stm8s_beepg/stm8s_beep$103                                   00002B GR
+  9 A$stm8s_beepg/stm8s_beep$108                                   00002E GR
+  9 A$stm8s_beepg/stm8s_beep$119                                   00002F GR
+  9 A$stm8s_beepg/stm8s_beep$122                                   000032 GR
+  9 A$stm8s_beepg/stm8s_beep$123                                   000034 GR
+  9 A$stm8s_beepg/stm8s_beep$127                                   000036 GR
+  9 A$stm8s_beepg/stm8s_beep$128                                   000038 GR
+  9 A$stm8s_beepg/stm8s_beep$130                                   00003B GR
+  9 A$stm8s_beepg/stm8s_beep$135                                   00003D GR
+  9 A$stm8s_beepg/stm8s_beep$136                                   00003F GR
+  9 A$stm8s_beepg/stm8s_beep$143                                   000042 GR
+  9 A$stm8s_beepg/stm8s_beep$60                                    000000 GR
+  9 A$stm8s_beepg/stm8s_beep$65                                    000004 GR
+  9 A$stm8s_beepg/stm8s_beep$76                                    000005 GR
+  9 A$stm8s_beepg/stm8s_beep$77                                    000008 GR
+  9 A$stm8s_beepg/stm8s_beep$78                                    00000A GR
+  9 A$stm8s_beepg/stm8s_beep$79                                    00000C GR
+  9 A$stm8s_beepg/stm8s_beep$84                                    00000E GR
+  9 A$stm8s_beepg/stm8s_beep$85                                    000011 GR
+  9 A$stm8s_beepg/stm8s_beep$86                                    000013 GR
+  9 A$stm8s_beepg/stm8s_beep$89                                    000016 GR
+  9 A$stm8s_beepg/stm8s_beep$90                                    000019 GR
+  9 A$stm8s_beepg/stm8s_beep$91                                    00001B GR
+  9 A$stm8s_beepg/stm8s_beep$96                                    00001E GR
+  9 A$stm8s_beepg/stm8s_beep$97                                    000021 GR
+  9 A$stm8s_beepg/stm8s_beep$98                                    000023 GR
+ 10 Ldebug_CIE0_end                                                000012 R
+ 10 Ldebug_CIE0_start                                              000004 R
+ 10 Ldebug_CIE1_end                                                00003B R
+ 10 Ldebug_CIE1_start                                              00002D R
+ 10 Ldebug_CIE2_end                                                00006B R
+ 10 Ldebug_CIE2_start                                              00005D R
+  D Ldebug_abbrev                                                  000000 R
+  E Ldebug_info_end                                                0000F1 R
+  E Ldebug_info_start                                              000004 R
+  B Ldebug_line_end                                                00010A R
+  B Ldebug_line_start                                              000004 R
+  B Ldebug_line_stmt                                               00008A R
+  C Ldebug_loc_start                                               000000 R
+  F Ldebug_pubnames_end                                            00003D R
+  F Ldebug_pubnames_start                                          000004 R
+  9 Sstm8s_beep$BEEP_Cmd$19                                     =  00002F GR
+  9 Sstm8s_beep$BEEP_Cmd$20                                     =  00002F GR
+  9 Sstm8s_beep$BEEP_Cmd$21                                     =  00002F GR
+  9 Sstm8s_beep$BEEP_Cmd$22                                     =  000032 GR
+  9 Sstm8s_beep$BEEP_Cmd$23                                     =  000036 GR
+  9 Sstm8s_beep$BEEP_Cmd$24                                     =  000036 GR
+  9 Sstm8s_beep$BEEP_Cmd$25                                     =  00003B GR
+  9 Sstm8s_beep$BEEP_Cmd$26                                     =  00003D GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 Sstm8s_beep$BEEP_Cmd$27                                     =  00003D GR
+  9 Sstm8s_beep$BEEP_Cmd$28                                     =  000042 GR
+  9 Sstm8s_beep$BEEP_Cmd$29                                     =  000042 GR
+  9 Sstm8s_beep$BEEP_Cmd$30                                     =  000042 GR
+  9 Sstm8s_beep$BEEP_Cmd$31                                     =  000043 GR
+  9 Sstm8s_beep$BEEP_DeInit$0                                   =  000000 GR
+  9 Sstm8s_beep$BEEP_DeInit$1                                   =  000000 GR
+  9 Sstm8s_beep$BEEP_DeInit$2                                   =  000000 GR
+  9 Sstm8s_beep$BEEP_DeInit$3                                   =  000004 GR
+  9 Sstm8s_beep$BEEP_DeInit$4                                   =  000004 GR
+  9 Sstm8s_beep$BEEP_DeInit$5                                   =  000005 GR
+  9 Sstm8s_beep$BEEP_Init$10                                    =  00000E GR
+  9 Sstm8s_beep$BEEP_Init$11                                    =  00000E GR
+  9 Sstm8s_beep$BEEP_Init$12                                    =  000016 GR
+  9 Sstm8s_beep$BEEP_Init$13                                    =  00001E GR
+  9 Sstm8s_beep$BEEP_Init$14                                    =  00001E GR
+  9 Sstm8s_beep$BEEP_Init$15                                    =  000026 GR
+  9 Sstm8s_beep$BEEP_Init$16                                    =  00002E GR
+  9 Sstm8s_beep$BEEP_Init$17                                    =  00002E GR
+  9 Sstm8s_beep$BEEP_Init$18                                    =  00002F GR
+  9 Sstm8s_beep$BEEP_Init$6                                     =  000005 GR
+  9 Sstm8s_beep$BEEP_Init$7                                     =  000005 GR
+  9 Sstm8s_beep$BEEP_Init$8                                     =  000005 GR
+  9 Sstm8s_beep$BEEP_Init$9                                     =  00000E GR
+  9 XG$BEEP_Cmd$0$0                                             =  000042 GR
+  9 XG$BEEP_DeInit$0$0                                          =  000004 GR
+  9 XG$BEEP_Init$0$0                                            =  00002E GR
+  9 _BEEP_Cmd                                                      00002F GR
+  9 _BEEP_DeInit                                                   000000 GR
+  9 _BEEP_Init                                                     000005 GR
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 3.
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size      0   flags    0
+   1 DATA                                       size      0   flags    0
+   2 INITIALIZED                                size      0   flags    0
+   3 DABS                                       size      0   flags    8
+   4 HOME                                       size      0   flags    0
+   5 GSINIT                                     size      0   flags    0
+   6 GSFINAL                                    size      0   flags    0
+   7 CONST                                      size      0   flags    0
+   8 INITIALIZER                                size      0   flags    0
+   9 CODE                                       size     43   flags    0
+   A CABS                                       size      0   flags    8
+   B .debug_line                                size    10A   flags  100
+   C .debug_loc                                 size     48   flags  100
+   D .debug_abbrev                              size     5C   flags  100
+   E .debug_info                                size     F1   flags  100
+   F .debug_pubnames                            size     3D   flags  100
+  10 .debug_frame                               size     82   flags  100
+

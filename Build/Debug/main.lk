@@ -1,0 +1,21 @@
+-muwx
+-E Build/Debug/main.elf
+-Y
+-y
+-b HOME = 0x8000
+-b DATA = 0x0001
+-b SSEG = 0xffffffff
+-k C:\Program Files\SDCC\bin\..\lib\stm8
+-l stm8
+Build/Debug/main.rel
+Build/Debug/stm8s_gpio.rel
+Build/Debug/stm8s_clk.rel
+Build/Debug/stm8s_spi.rel
+Build/Debug/stm8s_uart1.rel
+Build/Debug/stm8s_beep.rel
+Build/Debug/soft_i2c.rel
+Build/Debug/nixie.rel
+Build/Debug/ds3231.rel
+Build/Debug/gps.rel
+
+-e

@@ -1,0 +1,40 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 1.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000001 L
+    _GPIO_Init                                                     ****** GX
+  9 _I2C_Ack                                                       000085 GR
+  9 _I2C_Init                                                      000000 GR
+  9 _I2C_MasterReceiveData                                         000131 GR
+  9 _I2C_MasterSendData                                            0001B2 GR
+  9 _I2C_NAck                                                      00009C GR
+  9 _I2C_Read_Byte                                                 0000F8 GR
+  9 _I2C_Send_Byte                                                 0000B3 GR
+  9 _I2C_Start                                                     000023 GR
+  9 _I2C_Stop                                                      00003A GR
+  9 _I2C_Wait_Ack                                                  000054 GR
+  9 _delay_us                                                      000201 GR
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size      0   flags    0
+   1 DATA                                       size      0   flags    0
+   2 INITIALIZED                                size      0   flags    0
+   3 DABS                                       size      0   flags    8
+   4 HOME                                       size      0   flags    0
+   5 GSINIT                                     size      0   flags    0
+   6 GSFINAL                                    size      0   flags    0
+   7 CONST                                      size      0   flags    0
+   8 INITIALIZER                                size      0   flags    0
+   9 CODE                                       size    206   flags    0
+   A CABS                                       size      0   flags    8
+

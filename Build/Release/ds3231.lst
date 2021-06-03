@@ -1,0 +1,243 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.0.0 #11528 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module ds3231
+                                      6 	.optsdcc -mstm8
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _I2C_MasterReceiveData
+                                     12 	.globl _I2C_Init
+                                     13 	.globl _DS3231_Buf
+                                     14 	.globl _DS3231_TimeSturcture
+                                     15 	.globl _DS3231_Init
+                                     16 	.globl _DS3231_GetTime
+                                     17 ;--------------------------------------------------------
+                                     18 ; ram data
+                                     19 ;--------------------------------------------------------
+                                     20 	.area DATA
+      000000                         21 _DS3231_TimeSturcture::
+      000000                         22 	.ds 8
+                                     23 ;--------------------------------------------------------
+                                     24 ; ram data
+                                     25 ;--------------------------------------------------------
+                                     26 	.area INITIALIZED
+      000000                         27 _DS3231_Buf::
+      000000                         28 	.ds 8
+                                     29 ;--------------------------------------------------------
+                                     30 ; absolute external ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area DABS (ABS)
+                                     33 
+                                     34 ; default segment ordering for linker
+                                     35 	.area HOME
+                                     36 	.area GSINIT
+                                     37 	.area GSFINAL
+                                     38 	.area CONST
+                                     39 	.area INITIALIZER
+                                     40 	.area CODE
+                                     41 
+                                     42 ;--------------------------------------------------------
+                                     43 ; global & static initialisations
+                                     44 ;--------------------------------------------------------
+                                     45 	.area HOME
+                                     46 	.area GSINIT
+                                     47 	.area GSFINAL
+                                     48 	.area GSINIT
+                                     49 ;--------------------------------------------------------
+                                     50 ; Home
+                                     51 ;--------------------------------------------------------
+                                     52 	.area HOME
+                                     53 	.area HOME
+                                     54 ;--------------------------------------------------------
+                                     55 ; code
+                                     56 ;--------------------------------------------------------
+                                     57 	.area CODE
+                                     58 ;	Source/Device/Src/ds3231.c: 29: void DS3231_Init(void)
+                                     59 ;	-----------------------------------------
+                                     60 ;	 function DS3231_Init
+                                     61 ;	-----------------------------------------
+      000000                         62 _DS3231_Init:
+                                     63 ;	Source/Device/Src/ds3231.c: 31: I2C_Init();
+                                     64 ;	Source/Device/Src/ds3231.c: 32: }
+      000000 CCr00r00         [ 2]   65 	jp	_I2C_Init
+                                     66 ;	Source/Device/Src/ds3231.c: 34: void DS3231_GetTime(void)
+                                     67 ;	-----------------------------------------
+                                     68 ;	 function DS3231_GetTime
+                                     69 ;	-----------------------------------------
+      000003                         70 _DS3231_GetTime:
+      000003 52 04            [ 2]   71 	sub	sp, #4
+                                     72 ;	Source/Device/Src/ds3231.c: 36: for(int i=0;i<7;++i)
+      000005 5F               [ 1]   73 	clrw	x
+      000006 1F 03            [ 2]   74 	ldw	(0x03, sp), x
+      000008                         75 00103$:
+      000008 1E 03            [ 2]   76 	ldw	x, (0x03, sp)
+      00000A A3 00 07         [ 2]   77 	cpw	x, #0x0007
+      00000D 2E 19            [ 1]   78 	jrsge	00101$
+                                     79 ;	Source/Device/Src/ds3231.c: 39: &DS3231_Buf[i],1);
+      00000F 1E 03            [ 2]   80 	ldw	x, (0x03, sp)
+      000011 1Cr00r00         [ 2]   81 	addw	x, #(_DS3231_Buf + 0)
+                                     82 ;	Source/Device/Src/ds3231.c: 38: I2C_MasterReceiveData(DS3231_ADDR,DS3231_SECONDS+i,
+      000014 7B 04            [ 1]   83 	ld	a, (0x04, sp)
+      000016 4B 01            [ 1]   84 	push	#0x01
+      000018 89               [ 2]   85 	pushw	x
+      000019 88               [ 1]   86 	push	a
+      00001A 4B 68            [ 1]   87 	push	#0x68
+      00001C CDr00r00         [ 4]   88 	call	_I2C_MasterReceiveData
+      00001F 5B 05            [ 2]   89 	addw	sp, #5
+                                     90 ;	Source/Device/Src/ds3231.c: 36: for(int i=0;i<7;++i)
+      000021 1E 03            [ 2]   91 	ldw	x, (0x03, sp)
+      000023 5C               [ 1]   92 	incw	x
+      000024 1F 03            [ 2]   93 	ldw	(0x03, sp), x
+      000026 20 E0            [ 2]   94 	jra	00103$
+      000028                         95 00101$:
+                                     96 ;	Source/Device/Src/ds3231.c: 42: DS3231_TimeSturcture.seconds=(DS3231_Buf[0]&0x0F)+((DS3231_Buf[0]&0xF0)>>4)*10;
+      000028 C6u00u00         [ 1]   97 	ld	a, _DS3231_Buf+0
+      00002B 97               [ 1]   98 	ld	xl, a
+      00002C A4 0F            [ 1]   99 	and	a, #0x0f
+      00002E 6B 04            [ 1]  100 	ld	(0x04, sp), a
+      000030 9F               [ 1]  101 	ld	a, xl
+      000031 A4 F0            [ 1]  102 	and	a, #0xf0
+      000033 97               [ 1]  103 	ld	xl, a
+      000034 4F               [ 1]  104 	clr	a
+      000035 95               [ 1]  105 	ld	xh, a
+      000036 57               [ 2]  106 	sraw	x
+      000037 57               [ 2]  107 	sraw	x
+      000038 57               [ 2]  108 	sraw	x
+      000039 57               [ 2]  109 	sraw	x
+      00003A A6 0A            [ 1]  110 	ld	a, #0x0a
+      00003C 42               [ 4]  111 	mul	x, a
+      00003D 9F               [ 1]  112 	ld	a, xl
+      00003E 1B 04            [ 1]  113 	add	a, (0x04, sp)
+      000040 C7u00u00         [ 1]  114 	ld	_DS3231_TimeSturcture+0, a
+                                    115 ;	Source/Device/Src/ds3231.c: 43: DS3231_TimeSturcture.minutes=(DS3231_Buf[1]&0x0F)+((DS3231_Buf[1]&0xF0)>>4)*10;
+      000043 90 AEr00r01      [ 2]  116 	ldw	y, #(_DS3231_TimeSturcture + 0)+1
+      000047 C6u00u01         [ 1]  117 	ld	a, _DS3231_Buf+1
+      00004A 97               [ 1]  118 	ld	xl, a
+      00004B A4 0F            [ 1]  119 	and	a, #0x0f
+      00004D 6B 04            [ 1]  120 	ld	(0x04, sp), a
+      00004F 9F               [ 1]  121 	ld	a, xl
+      000050 A4 F0            [ 1]  122 	and	a, #0xf0
+      000052 97               [ 1]  123 	ld	xl, a
+      000053 4F               [ 1]  124 	clr	a
+      000054 95               [ 1]  125 	ld	xh, a
+      000055 57               [ 2]  126 	sraw	x
+      000056 57               [ 2]  127 	sraw	x
+      000057 57               [ 2]  128 	sraw	x
+      000058 57               [ 2]  129 	sraw	x
+      000059 A6 0A            [ 1]  130 	ld	a, #0x0a
+      00005B 42               [ 4]  131 	mul	x, a
+      00005C 9F               [ 1]  132 	ld	a, xl
+      00005D 1B 04            [ 1]  133 	add	a, (0x04, sp)
+      00005F 90 F7            [ 1]  134 	ld	(y), a
+                                    135 ;	Source/Device/Src/ds3231.c: 44: DS3231_TimeSturcture.hours=(DS3231_Buf[2]&0x0F)+((DS3231_Buf[2]&0xF0)>>4)*10;
+      000061 90 AEr00r02      [ 2]  136 	ldw	y, #(_DS3231_TimeSturcture + 0)+2
+      000065 C6u00u02         [ 1]  137 	ld	a, _DS3231_Buf+2
+      000068 97               [ 1]  138 	ld	xl, a
+      000069 A4 0F            [ 1]  139 	and	a, #0x0f
+      00006B 6B 04            [ 1]  140 	ld	(0x04, sp), a
+      00006D 9F               [ 1]  141 	ld	a, xl
+      00006E A4 F0            [ 1]  142 	and	a, #0xf0
+      000070 97               [ 1]  143 	ld	xl, a
+      000071 4F               [ 1]  144 	clr	a
+      000072 95               [ 1]  145 	ld	xh, a
+      000073 57               [ 2]  146 	sraw	x
+      000074 57               [ 2]  147 	sraw	x
+      000075 57               [ 2]  148 	sraw	x
+      000076 57               [ 2]  149 	sraw	x
+      000077 A6 0A            [ 1]  150 	ld	a, #0x0a
+      000079 42               [ 4]  151 	mul	x, a
+      00007A 9F               [ 1]  152 	ld	a, xl
+      00007B 1B 04            [ 1]  153 	add	a, (0x04, sp)
+      00007D 90 F7            [ 1]  154 	ld	(y), a
+                                    155 ;	Source/Device/Src/ds3231.c: 45: DS3231_TimeSturcture.day=(DS3231_Buf[3]&0x0F);
+      00007F AEr00r03         [ 2]  156 	ldw	x, #(_DS3231_TimeSturcture + 0)+3
+      000082 C6u00u03         [ 1]  157 	ld	a, _DS3231_Buf+3
+      000085 A4 0F            [ 1]  158 	and	a, #0x0f
+      000087 F7               [ 1]  159 	ld	(x), a
+                                    160 ;	Source/Device/Src/ds3231.c: 46: DS3231_TimeSturcture.date=(DS3231_Buf[4]&0x0F)+((DS3231_Buf[4]&0xF0)>>4)*10;
+      000088 90 AEr00r04      [ 2]  161 	ldw	y, #(_DS3231_TimeSturcture + 0)+4
+      00008C C6u00u04         [ 1]  162 	ld	a, _DS3231_Buf+4
+      00008F 97               [ 1]  163 	ld	xl, a
+      000090 A4 0F            [ 1]  164 	and	a, #0x0f
+      000092 6B 04            [ 1]  165 	ld	(0x04, sp), a
+      000094 9F               [ 1]  166 	ld	a, xl
+      000095 A4 F0            [ 1]  167 	and	a, #0xf0
+      000097 97               [ 1]  168 	ld	xl, a
+      000098 4F               [ 1]  169 	clr	a
+      000099 95               [ 1]  170 	ld	xh, a
+      00009A 57               [ 2]  171 	sraw	x
+      00009B 57               [ 2]  172 	sraw	x
+      00009C 57               [ 2]  173 	sraw	x
+      00009D 57               [ 2]  174 	sraw	x
+      00009E A6 0A            [ 1]  175 	ld	a, #0x0a
+      0000A0 42               [ 4]  176 	mul	x, a
+      0000A1 9F               [ 1]  177 	ld	a, xl
+      0000A2 1B 04            [ 1]  178 	add	a, (0x04, sp)
+      0000A4 90 F7            [ 1]  179 	ld	(y), a
+                                    180 ;	Source/Device/Src/ds3231.c: 47: DS3231_TimeSturcture.month=(DS3231_Buf[5]&0x0F)+((DS3231_Buf[5]&0xF0)>>4)*10;
+      0000A6 90 AEr00r05      [ 2]  181 	ldw	y, #(_DS3231_TimeSturcture + 0)+5
+      0000AA C6u00u05         [ 1]  182 	ld	a, _DS3231_Buf+5
+      0000AD 97               [ 1]  183 	ld	xl, a
+      0000AE A4 0F            [ 1]  184 	and	a, #0x0f
+      0000B0 6B 04            [ 1]  185 	ld	(0x04, sp), a
+      0000B2 9F               [ 1]  186 	ld	a, xl
+      0000B3 A4 F0            [ 1]  187 	and	a, #0xf0
+      0000B5 97               [ 1]  188 	ld	xl, a
+      0000B6 4F               [ 1]  189 	clr	a
+      0000B7 95               [ 1]  190 	ld	xh, a
+      0000B8 57               [ 2]  191 	sraw	x
+      0000B9 57               [ 2]  192 	sraw	x
+      0000BA 57               [ 2]  193 	sraw	x
+      0000BB 57               [ 2]  194 	sraw	x
+      0000BC A6 0A            [ 1]  195 	ld	a, #0x0a
+      0000BE 42               [ 4]  196 	mul	x, a
+      0000BF 9F               [ 1]  197 	ld	a, xl
+      0000C0 1B 04            [ 1]  198 	add	a, (0x04, sp)
+      0000C2 90 F7            [ 1]  199 	ld	(y), a
+                                    200 ;	Source/Device/Src/ds3231.c: 48: DS3231_TimeSturcture.year=2000+(DS3231_Buf[6]&0x0F)+((DS3231_Buf[6]&0xF0)>>4)*10;
+      0000C4 90 AEr00r06      [ 2]  201 	ldw	y, #(_DS3231_TimeSturcture + 0)+6
+      0000C8 C6u00u06         [ 1]  202 	ld	a, _DS3231_Buf+6
+      0000CB 0F 01            [ 1]  203 	clr	(0x01, sp)
+      0000CD 88               [ 1]  204 	push	a
+      0000CE A4 0F            [ 1]  205 	and	a, #0x0f
+      0000D0 97               [ 1]  206 	ld	xl, a
+      0000D1 4F               [ 1]  207 	clr	a
+      0000D2 95               [ 1]  208 	ld	xh, a
+      0000D3 84               [ 1]  209 	pop	a
+      0000D4 1C 07 D0         [ 2]  210 	addw	x, #0x07d0
+      0000D7 1F 03            [ 2]  211 	ldw	(0x03, sp), x
+      0000D9 A4 F0            [ 1]  212 	and	a, #0xf0
+      0000DB 97               [ 1]  213 	ld	xl, a
+      0000DC 4F               [ 1]  214 	clr	a
+      0000DD 95               [ 1]  215 	ld	xh, a
+      0000DE 57               [ 2]  216 	sraw	x
+      0000DF 57               [ 2]  217 	sraw	x
+      0000E0 57               [ 2]  218 	sraw	x
+      0000E1 57               [ 2]  219 	sraw	x
+      0000E2 89               [ 2]  220 	pushw	x
+      0000E3 58               [ 2]  221 	sllw	x
+      0000E4 58               [ 2]  222 	sllw	x
+      0000E5 72 FB 01         [ 2]  223 	addw	x, (1, sp)
+      0000E8 58               [ 2]  224 	sllw	x
+      0000E9 5B 02            [ 2]  225 	addw	sp, #2
+      0000EB 72 FB 03         [ 2]  226 	addw	x, (0x03, sp)
+      0000EE 90 FF            [ 2]  227 	ldw	(y), x
+                                    228 ;	Source/Device/Src/ds3231.c: 49: }
+      0000F0 5B 04            [ 2]  229 	addw	sp, #4
+      0000F2 81               [ 4]  230 	ret
+                                    231 	.area CODE
+                                    232 	.area CONST
+                                    233 	.area INITIALIZER
+      000000                        234 __xinit__DS3231_Buf:
+      000000 00                     235 	.db #0x00	; 0
+      000001 00                     236 	.db 0x00
+      000002 00                     237 	.db 0x00
+      000003 00                     238 	.db 0x00
+      000004 00                     239 	.db 0x00
+      000005 00                     240 	.db 0x00
+      000006 00                     241 	.db 0x00
+      000007 00                     242 	.db 0x00
+                                    243 	.area CABS (ABS)

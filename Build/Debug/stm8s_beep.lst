@@ -1,0 +1,605 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.0.0 #11528 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module stm8s_beep
+                                      6 	.optsdcc -mstm8
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _BEEP_DeInit
+                                     12 	.globl _BEEP_Init
+                                     13 	.globl _BEEP_Cmd
+                                     14 ;--------------------------------------------------------
+                                     15 ; ram data
+                                     16 ;--------------------------------------------------------
+                                     17 	.area DATA
+                                     18 ;--------------------------------------------------------
+                                     19 ; ram data
+                                     20 ;--------------------------------------------------------
+                                     21 	.area INITIALIZED
+                                     22 ;--------------------------------------------------------
+                                     23 ; absolute external ram data
+                                     24 ;--------------------------------------------------------
+                                     25 	.area DABS (ABS)
+                                     26 
+                                     27 ; default segment ordering for linker
+                                     28 	.area HOME
+                                     29 	.area GSINIT
+                                     30 	.area GSFINAL
+                                     31 	.area CONST
+                                     32 	.area INITIALIZER
+                                     33 	.area CODE
+                                     34 
+                                     35 ;--------------------------------------------------------
+                                     36 ; global & static initialisations
+                                     37 ;--------------------------------------------------------
+                                     38 	.area HOME
+                                     39 	.area GSINIT
+                                     40 	.area GSFINAL
+                                     41 	.area GSINIT
+                                     42 ;--------------------------------------------------------
+                                     43 ; Home
+                                     44 ;--------------------------------------------------------
+                                     45 	.area HOME
+                                     46 	.area HOME
+                                     47 ;--------------------------------------------------------
+                                     48 ; code
+                                     49 ;--------------------------------------------------------
+                                     50 	.area CODE
+                           000000    51 	Sstm8s_beep$BEEP_DeInit$0 ==.
+                                     52 ;	Source/Std_Lib/Src/stm8s_beep.c: 54: void BEEP_DeInit(void)
+                                     53 ;	-----------------------------------------
+                                     54 ;	 function BEEP_DeInit
+                                     55 ;	-----------------------------------------
+      000000                         56 _BEEP_DeInit:
+                           000000    57 	Sstm8s_beep$BEEP_DeInit$1 ==.
+                           000000    58 	Sstm8s_beep$BEEP_DeInit$2 ==.
+                                     59 ;	Source/Std_Lib/Src/stm8s_beep.c: 56: BEEP->CSR = BEEP_CSR_RESET_VALUE;
+      000000 35 1F 50 F3      [ 1]   60 	mov	0x50f3+0, #0x1f
+                           000004    61 	Sstm8s_beep$BEEP_DeInit$3 ==.
+                                     62 ;	Source/Std_Lib/Src/stm8s_beep.c: 57: }
+                           000004    63 	Sstm8s_beep$BEEP_DeInit$4 ==.
+                           000004    64 	XG$BEEP_DeInit$0$0 ==.
+      000004 81               [ 4]   65 	ret
+                           000005    66 	Sstm8s_beep$BEEP_DeInit$5 ==.
+                           000005    67 	Sstm8s_beep$BEEP_Init$6 ==.
+                                     68 ;	Source/Std_Lib/Src/stm8s_beep.c: 67: void BEEP_Init(BEEP_Frequency_TypeDef BEEP_Frequency)
+                                     69 ;	-----------------------------------------
+                                     70 ;	 function BEEP_Init
+                                     71 ;	-----------------------------------------
+      000005                         72 _BEEP_Init:
+                           000005    73 	Sstm8s_beep$BEEP_Init$7 ==.
+                           000005    74 	Sstm8s_beep$BEEP_Init$8 ==.
+                                     75 ;	Source/Std_Lib/Src/stm8s_beep.c: 73: if ((BEEP->CSR & BEEP_CSR_BEEPDIV) == BEEP_CSR_BEEPDIV)
+      000005 C6 50 F3         [ 1]   76 	ld	a, 0x50f3
+      000008 A4 1F            [ 1]   77 	and	a, #0x1f
+      00000A A1 1F            [ 1]   78 	cp	a, #0x1f
+      00000C 26 10            [ 1]   79 	jrne	00102$
+                           00000E    80 	Sstm8s_beep$BEEP_Init$9 ==.
+                           00000E    81 	Sstm8s_beep$BEEP_Init$10 ==.
+                           00000E    82 	Sstm8s_beep$BEEP_Init$11 ==.
+                                     83 ;	Source/Std_Lib/Src/stm8s_beep.c: 75: BEEP->CSR &= (uint8_t)(~BEEP_CSR_BEEPDIV); /* Clear bits */
+      00000E C6 50 F3         [ 1]   84 	ld	a, 0x50f3
+      000011 A4 E0            [ 1]   85 	and	a, #0xe0
+      000013 C7 50 F3         [ 1]   86 	ld	0x50f3, a
+                           000016    87 	Sstm8s_beep$BEEP_Init$12 ==.
+                                     88 ;	Source/Std_Lib/Src/stm8s_beep.c: 76: BEEP->CSR |= BEEP_CALIBRATION_DEFAULT;
+      000016 C6 50 F3         [ 1]   89 	ld	a, 0x50f3
+      000019 AA 0B            [ 1]   90 	or	a, #0x0b
+      00001B C7 50 F3         [ 1]   91 	ld	0x50f3, a
+                           00001E    92 	Sstm8s_beep$BEEP_Init$13 ==.
+      00001E                         93 00102$:
+                           00001E    94 	Sstm8s_beep$BEEP_Init$14 ==.
+                                     95 ;	Source/Std_Lib/Src/stm8s_beep.c: 80: BEEP->CSR &= (uint8_t)(~BEEP_CSR_BEEPSEL);
+      00001E C6 50 F3         [ 1]   96 	ld	a, 0x50f3
+      000021 A4 3F            [ 1]   97 	and	a, #0x3f
+      000023 C7 50 F3         [ 1]   98 	ld	0x50f3, a
+                           000026    99 	Sstm8s_beep$BEEP_Init$15 ==.
+                                    100 ;	Source/Std_Lib/Src/stm8s_beep.c: 81: BEEP->CSR |= (uint8_t)(BEEP_Frequency);
+      000026 C6 50 F3         [ 1]  101 	ld	a, 0x50f3
+      000029 1A 03            [ 1]  102 	or	a, (0x03, sp)
+      00002B C7 50 F3         [ 1]  103 	ld	0x50f3, a
+                           00002E   104 	Sstm8s_beep$BEEP_Init$16 ==.
+                                    105 ;	Source/Std_Lib/Src/stm8s_beep.c: 82: }
+                           00002E   106 	Sstm8s_beep$BEEP_Init$17 ==.
+                           00002E   107 	XG$BEEP_Init$0$0 ==.
+      00002E 81               [ 4]  108 	ret
+                           00002F   109 	Sstm8s_beep$BEEP_Init$18 ==.
+                           00002F   110 	Sstm8s_beep$BEEP_Cmd$19 ==.
+                                    111 ;	Source/Std_Lib/Src/stm8s_beep.c: 91: void BEEP_Cmd(FunctionalState NewState)
+                                    112 ;	-----------------------------------------
+                                    113 ;	 function BEEP_Cmd
+                                    114 ;	-----------------------------------------
+      00002F                        115 _BEEP_Cmd:
+                           00002F   116 	Sstm8s_beep$BEEP_Cmd$20 ==.
+                           00002F   117 	Sstm8s_beep$BEEP_Cmd$21 ==.
+                                    118 ;	Source/Std_Lib/Src/stm8s_beep.c: 96: BEEP->CSR |= BEEP_CSR_BEEPEN;
+      00002F C6 50 F3         [ 1]  119 	ld	a, 0x50f3
+                           000032   120 	Sstm8s_beep$BEEP_Cmd$22 ==.
+                                    121 ;	Source/Std_Lib/Src/stm8s_beep.c: 93: if (NewState != DISABLE)
+      000032 0D 03            [ 1]  122 	tnz	(0x03, sp)
+      000034 27 07            [ 1]  123 	jreq	00102$
+                           000036   124 	Sstm8s_beep$BEEP_Cmd$23 ==.
+                           000036   125 	Sstm8s_beep$BEEP_Cmd$24 ==.
+                                    126 ;	Source/Std_Lib/Src/stm8s_beep.c: 96: BEEP->CSR |= BEEP_CSR_BEEPEN;
+      000036 AA 20            [ 1]  127 	or	a, #0x20
+      000038 C7 50 F3         [ 1]  128 	ld	0x50f3, a
+                           00003B   129 	Sstm8s_beep$BEEP_Cmd$25 ==.
+      00003B 20 05            [ 2]  130 	jra	00104$
+      00003D                        131 00102$:
+                           00003D   132 	Sstm8s_beep$BEEP_Cmd$26 ==.
+                           00003D   133 	Sstm8s_beep$BEEP_Cmd$27 ==.
+                                    134 ;	Source/Std_Lib/Src/stm8s_beep.c: 101: BEEP->CSR &= (uint8_t)(~BEEP_CSR_BEEPEN);
+      00003D A4 DF            [ 1]  135 	and	a, #0xdf
+      00003F C7 50 F3         [ 1]  136 	ld	0x50f3, a
+                           000042   137 	Sstm8s_beep$BEEP_Cmd$28 ==.
+      000042                        138 00104$:
+                           000042   139 	Sstm8s_beep$BEEP_Cmd$29 ==.
+                                    140 ;	Source/Std_Lib/Src/stm8s_beep.c: 103: }
+                           000042   141 	Sstm8s_beep$BEEP_Cmd$30 ==.
+                           000042   142 	XG$BEEP_Cmd$0$0 ==.
+      000042 81               [ 4]  143 	ret
+                           000043   144 	Sstm8s_beep$BEEP_Cmd$31 ==.
+                                    145 	.area CODE
+                                    146 	.area CONST
+                                    147 	.area INITIALIZER
+                                    148 	.area CABS (ABS)
+                                    149 
+                                    150 	.area .debug_line (NOLOAD)
+      000000 00 00 01 06            151 	.dw	0,Ldebug_line_end-Ldebug_line_start
+      000004                        152 Ldebug_line_start:
+      000004 00 02                  153 	.dw	2
+      000006 00 00 00 80            154 	.dw	0,Ldebug_line_stmt-6-Ldebug_line_start
+      00000A 01                     155 	.db	1
+      00000B 01                     156 	.db	1
+      00000C FB                     157 	.db	-5
+      00000D 0F                     158 	.db	15
+      00000E 0A                     159 	.db	10
+      00000F 00                     160 	.db	0
+      000010 01                     161 	.db	1
+      000011 01                     162 	.db	1
+      000012 01                     163 	.db	1
+      000013 01                     164 	.db	1
+      000014 00                     165 	.db	0
+      000015 00                     166 	.db	0
+      000016 00                     167 	.db	0
+      000017 01                     168 	.db	1
+      000018 43 3A 5C 50 72 6F 67   169 	.ascii "C:\Program Files\SDCC\bin\..\include\stm8"
+             72 61 6D 20 46 69 6C
+             65 73 5C 53 44 43 43
+             08 69 6E 5C 2E 2E 5C
+             69 6E 63 6C 75 64 65
+             5C 73 74 6D 38
+      000040 00                     170 	.db	0
+      000041 43 3A 5C 50 72 6F 67   171 	.ascii "C:\Program Files\SDCC\bin\..\include"
+             72 61 6D 20 46 69 6C
+             65 73 5C 53 44 43 43
+             08 69 6E 5C 2E 2E 5C
+             69 6E 63 6C 75 64 65
+      000064 00                     172 	.db	0
+      000065 00                     173 	.db	0
+      000066 53 6F 75 72 63 65 2F   174 	.ascii "Source/Std_Lib/Src/stm8s_beep.c"
+             53 74 64 5F 4C 69 62
+             2F 53 72 63 2F 73 74
+             6D 38 73 5F 62 65 65
+             70 2E 63
+      000085 00                     175 	.db	0
+      000086 00                     176 	.uleb128	0
+      000087 00                     177 	.uleb128	0
+      000088 00                     178 	.uleb128	0
+      000089 00                     179 	.db	0
+      00008A                        180 Ldebug_line_stmt:
+      00008A 00                     181 	.db	0
+      00008B 05                     182 	.uleb128	5
+      00008C 02                     183 	.db	2
+      00008D 00 00r00r00            184 	.dw	0,(Sstm8s_beep$BEEP_DeInit$0)
+      000091 03                     185 	.db	3
+      000092 35                     186 	.sleb128	53
+      000093 01                     187 	.db	1
+      000094 09                     188 	.db	9
+      000095 00 00                  189 	.dw	Sstm8s_beep$BEEP_DeInit$2-Sstm8s_beep$BEEP_DeInit$0
+      000097 03                     190 	.db	3
+      000098 02                     191 	.sleb128	2
+      000099 01                     192 	.db	1
+      00009A 09                     193 	.db	9
+      00009B 00 04                  194 	.dw	Sstm8s_beep$BEEP_DeInit$3-Sstm8s_beep$BEEP_DeInit$2
+      00009D 03                     195 	.db	3
+      00009E 01                     196 	.sleb128	1
+      00009F 01                     197 	.db	1
+      0000A0 09                     198 	.db	9
+      0000A1 00 01                  199 	.dw	1+Sstm8s_beep$BEEP_DeInit$4-Sstm8s_beep$BEEP_DeInit$3
+      0000A3 00                     200 	.db	0
+      0000A4 01                     201 	.uleb128	1
+      0000A5 01                     202 	.db	1
+      0000A6 00                     203 	.db	0
+      0000A7 05                     204 	.uleb128	5
+      0000A8 02                     205 	.db	2
+      0000A9 00 00r00r05            206 	.dw	0,(Sstm8s_beep$BEEP_Init$6)
+      0000AD 03                     207 	.db	3
+      0000AE C2 00                  208 	.sleb128	66
+      0000B0 01                     209 	.db	1
+      0000B1 09                     210 	.db	9
+      0000B2 00 00                  211 	.dw	Sstm8s_beep$BEEP_Init$8-Sstm8s_beep$BEEP_Init$6
+      0000B4 03                     212 	.db	3
+      0000B5 06                     213 	.sleb128	6
+      0000B6 01                     214 	.db	1
+      0000B7 09                     215 	.db	9
+      0000B8 00 09                  216 	.dw	Sstm8s_beep$BEEP_Init$11-Sstm8s_beep$BEEP_Init$8
+      0000BA 03                     217 	.db	3
+      0000BB 02                     218 	.sleb128	2
+      0000BC 01                     219 	.db	1
+      0000BD 09                     220 	.db	9
+      0000BE 00 08                  221 	.dw	Sstm8s_beep$BEEP_Init$12-Sstm8s_beep$BEEP_Init$11
+      0000C0 03                     222 	.db	3
+      0000C1 01                     223 	.sleb128	1
+      0000C2 01                     224 	.db	1
+      0000C3 09                     225 	.db	9
+      0000C4 00 08                  226 	.dw	Sstm8s_beep$BEEP_Init$14-Sstm8s_beep$BEEP_Init$12
+      0000C6 03                     227 	.db	3
+      0000C7 04                     228 	.sleb128	4
+      0000C8 01                     229 	.db	1
+      0000C9 09                     230 	.db	9
+      0000CA 00 08                  231 	.dw	Sstm8s_beep$BEEP_Init$15-Sstm8s_beep$BEEP_Init$14
+      0000CC 03                     232 	.db	3
+      0000CD 01                     233 	.sleb128	1
+      0000CE 01                     234 	.db	1
+      0000CF 09                     235 	.db	9
+      0000D0 00 08                  236 	.dw	Sstm8s_beep$BEEP_Init$16-Sstm8s_beep$BEEP_Init$15
+      0000D2 03                     237 	.db	3
+      0000D3 01                     238 	.sleb128	1
+      0000D4 01                     239 	.db	1
+      0000D5 09                     240 	.db	9
+      0000D6 00 01                  241 	.dw	1+Sstm8s_beep$BEEP_Init$17-Sstm8s_beep$BEEP_Init$16
+      0000D8 00                     242 	.db	0
+      0000D9 01                     243 	.uleb128	1
+      0000DA 01                     244 	.db	1
+      0000DB 00                     245 	.db	0
+      0000DC 05                     246 	.uleb128	5
+      0000DD 02                     247 	.db	2
+      0000DE 00 00r00r2F            248 	.dw	0,(Sstm8s_beep$BEEP_Cmd$19)
+      0000E2 03                     249 	.db	3
+      0000E3 DA 00                  250 	.sleb128	90
+      0000E5 01                     251 	.db	1
+      0000E6 09                     252 	.db	9
+      0000E7 00 00                  253 	.dw	Sstm8s_beep$BEEP_Cmd$21-Sstm8s_beep$BEEP_Cmd$19
+      0000E9 03                     254 	.db	3
+      0000EA 05                     255 	.sleb128	5
+      0000EB 01                     256 	.db	1
+      0000EC 09                     257 	.db	9
+      0000ED 00 03                  258 	.dw	Sstm8s_beep$BEEP_Cmd$22-Sstm8s_beep$BEEP_Cmd$21
+      0000EF 03                     259 	.db	3
+      0000F0 7D                     260 	.sleb128	-3
+      0000F1 01                     261 	.db	1
+      0000F2 09                     262 	.db	9
+      0000F3 00 04                  263 	.dw	Sstm8s_beep$BEEP_Cmd$24-Sstm8s_beep$BEEP_Cmd$22
+      0000F5 03                     264 	.db	3
+      0000F6 03                     265 	.sleb128	3
+      0000F7 01                     266 	.db	1
+      0000F8 09                     267 	.db	9
+      0000F9 00 07                  268 	.dw	Sstm8s_beep$BEEP_Cmd$27-Sstm8s_beep$BEEP_Cmd$24
+      0000FB 03                     269 	.db	3
+      0000FC 05                     270 	.sleb128	5
+      0000FD 01                     271 	.db	1
+      0000FE 09                     272 	.db	9
+      0000FF 00 05                  273 	.dw	Sstm8s_beep$BEEP_Cmd$29-Sstm8s_beep$BEEP_Cmd$27
+      000101 03                     274 	.db	3
+      000102 02                     275 	.sleb128	2
+      000103 01                     276 	.db	1
+      000104 09                     277 	.db	9
+      000105 00 01                  278 	.dw	1+Sstm8s_beep$BEEP_Cmd$30-Sstm8s_beep$BEEP_Cmd$29
+      000107 00                     279 	.db	0
+      000108 01                     280 	.uleb128	1
+      000109 01                     281 	.db	1
+      00010A                        282 Ldebug_line_end:
+                                    283 
+                                    284 	.area .debug_loc (NOLOAD)
+      000000                        285 Ldebug_loc_start:
+      000000 00 00r00r2F            286 	.dw	0,(Sstm8s_beep$BEEP_Cmd$20)
+      000004 00 00r00r43            287 	.dw	0,(Sstm8s_beep$BEEP_Cmd$31)
+      000008 00 02                  288 	.dw	2
+      00000A 78                     289 	.db	120
+      00000B 01                     290 	.sleb128	1
+      00000C 00 00 00 00            291 	.dw	0,0
+      000010 00 00 00 00            292 	.dw	0,0
+      000014 00 00r00r0E            293 	.dw	0,(Sstm8s_beep$BEEP_Init$9)
+      000018 00 00r00r2F            294 	.dw	0,(Sstm8s_beep$BEEP_Init$18)
+      00001C 00 02                  295 	.dw	2
+      00001E 78                     296 	.db	120
+      00001F 01                     297 	.sleb128	1
+      000020 00 00r00r05            298 	.dw	0,(Sstm8s_beep$BEEP_Init$7)
+      000024 00 00r00r0E            299 	.dw	0,(Sstm8s_beep$BEEP_Init$9)
+      000028 00 02                  300 	.dw	2
+      00002A 78                     301 	.db	120
+      00002B 01                     302 	.sleb128	1
+      00002C 00 00 00 00            303 	.dw	0,0
+      000030 00 00 00 00            304 	.dw	0,0
+      000034 00 00r00r00            305 	.dw	0,(Sstm8s_beep$BEEP_DeInit$1)
+      000038 00 00r00r05            306 	.dw	0,(Sstm8s_beep$BEEP_DeInit$5)
+      00003C 00 02                  307 	.dw	2
+      00003E 78                     308 	.db	120
+      00003F 01                     309 	.sleb128	1
+      000040 00 00 00 00            310 	.dw	0,0
+      000044 00 00 00 00            311 	.dw	0,0
+                                    312 
+                                    313 	.area .debug_abbrev (NOLOAD)
+      000000                        314 Ldebug_abbrev:
+      000000 04                     315 	.uleb128	4
+      000001 05                     316 	.uleb128	5
+      000002 00                     317 	.db	0
+      000003 02                     318 	.uleb128	2
+      000004 0A                     319 	.uleb128	10
+      000005 03                     320 	.uleb128	3
+      000006 08                     321 	.uleb128	8
+      000007 49                     322 	.uleb128	73
+      000008 13                     323 	.uleb128	19
+      000009 00                     324 	.uleb128	0
+      00000A 00                     325 	.uleb128	0
+      00000B 03                     326 	.uleb128	3
+      00000C 2E                     327 	.uleb128	46
+      00000D 01                     328 	.db	1
+      00000E 01                     329 	.uleb128	1
+      00000F 13                     330 	.uleb128	19
+      000010 03                     331 	.uleb128	3
+      000011 08                     332 	.uleb128	8
+      000012 11                     333 	.uleb128	17
+      000013 01                     334 	.uleb128	1
+      000014 12                     335 	.uleb128	18
+      000015 01                     336 	.uleb128	1
+      000016 3F                     337 	.uleb128	63
+      000017 0C                     338 	.uleb128	12
+      000018 40                     339 	.uleb128	64
+      000019 06                     340 	.uleb128	6
+      00001A 00                     341 	.uleb128	0
+      00001B 00                     342 	.uleb128	0
+      00001C 01                     343 	.uleb128	1
+      00001D 11                     344 	.uleb128	17
+      00001E 01                     345 	.db	1
+      00001F 03                     346 	.uleb128	3
+      000020 08                     347 	.uleb128	8
+      000021 10                     348 	.uleb128	16
+      000022 06                     349 	.uleb128	6
+      000023 13                     350 	.uleb128	19
+      000024 0B                     351 	.uleb128	11
+      000025 25                     352 	.uleb128	37
+      000026 08                     353 	.uleb128	8
+      000027 00                     354 	.uleb128	0
+      000028 00                     355 	.uleb128	0
+      000029 05                     356 	.uleb128	5
+      00002A 0B                     357 	.uleb128	11
+      00002B 00                     358 	.db	0
+      00002C 11                     359 	.uleb128	17
+      00002D 01                     360 	.uleb128	1
+      00002E 12                     361 	.uleb128	18
+      00002F 01                     362 	.uleb128	1
+      000030 00                     363 	.uleb128	0
+      000031 00                     364 	.uleb128	0
+      000032 02                     365 	.uleb128	2
+      000033 2E                     366 	.uleb128	46
+      000034 00                     367 	.db	0
+      000035 03                     368 	.uleb128	3
+      000036 08                     369 	.uleb128	8
+      000037 11                     370 	.uleb128	17
+      000038 01                     371 	.uleb128	1
+      000039 12                     372 	.uleb128	18
+      00003A 01                     373 	.uleb128	1
+      00003B 3F                     374 	.uleb128	63
+      00003C 0C                     375 	.uleb128	12
+      00003D 40                     376 	.uleb128	64
+      00003E 06                     377 	.uleb128	6
+      00003F 00                     378 	.uleb128	0
+      000040 00                     379 	.uleb128	0
+      000041 07                     380 	.uleb128	7
+      000042 2E                     381 	.uleb128	46
+      000043 01                     382 	.db	1
+      000044 03                     383 	.uleb128	3
+      000045 08                     384 	.uleb128	8
+      000046 11                     385 	.uleb128	17
+      000047 01                     386 	.uleb128	1
+      000048 12                     387 	.uleb128	18
+      000049 01                     388 	.uleb128	1
+      00004A 3F                     389 	.uleb128	63
+      00004B 0C                     390 	.uleb128	12
+      00004C 40                     391 	.uleb128	64
+      00004D 06                     392 	.uleb128	6
+      00004E 00                     393 	.uleb128	0
+      00004F 00                     394 	.uleb128	0
+      000050 06                     395 	.uleb128	6
+      000051 24                     396 	.uleb128	36
+      000052 00                     397 	.db	0
+      000053 03                     398 	.uleb128	3
+      000054 08                     399 	.uleb128	8
+      000055 0B                     400 	.uleb128	11
+      000056 0B                     401 	.uleb128	11
+      000057 3E                     402 	.uleb128	62
+      000058 0B                     403 	.uleb128	11
+      000059 00                     404 	.uleb128	0
+      00005A 00                     405 	.uleb128	0
+      00005B 00                     406 	.uleb128	0
+                                    407 
+                                    408 	.area .debug_info (NOLOAD)
+      000000 00 00 00 ED            409 	.dw	0,Ldebug_info_end-Ldebug_info_start
+      000004                        410 Ldebug_info_start:
+      000004 00 02                  411 	.dw	2
+      000006 00 00r00r00            412 	.dw	0,(Ldebug_abbrev)
+      00000A 04                     413 	.db	4
+      00000B 01                     414 	.uleb128	1
+      00000C 53 6F 75 72 63 65 2F   415 	.ascii "Source/Std_Lib/Src/stm8s_beep.c"
+             53 74 64 5F 4C 69 62
+             2F 53 72 63 2F 73 74
+             6D 38 73 5F 62 65 65
+             70 2E 63
+      00002B 00                     416 	.db	0
+      00002C 00 00r00r00            417 	.dw	0,(Ldebug_line_start+-4)
+      000030 01                     418 	.db	1
+      000031 53 44 43 43 20 76 65   419 	.ascii "SDCC version 4.0.0 #11528"
+             72 73 69 6F 6E 20 34
+             2E 30 2E 30 20 23 31
+             31 35 32 38
+      00004A 00                     420 	.db	0
+      00004B 02                     421 	.uleb128	2
+      00004C 42 45 45 50 5F 44 65   422 	.ascii "BEEP_DeInit"
+             49 6E 69 74
+      000057 00                     423 	.db	0
+      000058 00 00r00r00            424 	.dw	0,(_BEEP_DeInit)
+      00005C 00 00r00r05            425 	.dw	0,(XG$BEEP_DeInit$0$0+1)
+      000060 01                     426 	.db	1
+      000061 00 00r00r34            427 	.dw	0,(Ldebug_loc_start+52)
+      000065 03                     428 	.uleb128	3
+      000066 00 00 00 A2            429 	.dw	0,162
+      00006A 42 45 45 50 5F 49 6E   430 	.ascii "BEEP_Init"
+             69 74
+      000073 00                     431 	.db	0
+      000074 00 00r00r05            432 	.dw	0,(_BEEP_Init)
+      000078 00 00r00r2F            433 	.dw	0,(XG$BEEP_Init$0$0+1)
+      00007C 01                     434 	.db	1
+      00007D 00 00r00r14            435 	.dw	0,(Ldebug_loc_start+20)
+      000081 04                     436 	.uleb128	4
+      000082 02                     437 	.db	2
+      000083 91                     438 	.db	145
+      000084 02                     439 	.sleb128	2
+      000085 42 45 45 50 5F 46 72   440 	.ascii "BEEP_Frequency"
+             65 71 75 65 6E 63 79
+      000093 00                     441 	.db	0
+      000094 00 00 00 A2            442 	.dw	0,162
+      000098 05                     443 	.uleb128	5
+      000099 00 00r00r0E            444 	.dw	0,(Sstm8s_beep$BEEP_Init$10)
+      00009D 00 00r00r1E            445 	.dw	0,(Sstm8s_beep$BEEP_Init$13)
+      0000A1 00                     446 	.uleb128	0
+      0000A2 06                     447 	.uleb128	6
+      0000A3 75 6E 73 69 67 6E 65   448 	.ascii "unsigned char"
+             64 20 63 68 61 72
+      0000B0 00                     449 	.db	0
+      0000B1 01                     450 	.db	1
+      0000B2 08                     451 	.db	8
+      0000B3 07                     452 	.uleb128	7
+      0000B4 42 45 45 50 5F 43 6D   453 	.ascii "BEEP_Cmd"
+             64
+      0000BC 00                     454 	.db	0
+      0000BD 00 00r00r2F            455 	.dw	0,(_BEEP_Cmd)
+      0000C1 00 00r00r43            456 	.dw	0,(XG$BEEP_Cmd$0$0+1)
+      0000C5 01                     457 	.db	1
+      0000C6 00 00r00r00            458 	.dw	0,(Ldebug_loc_start)
+      0000CA 04                     459 	.uleb128	4
+      0000CB 02                     460 	.db	2
+      0000CC 91                     461 	.db	145
+      0000CD 02                     462 	.sleb128	2
+      0000CE 4E 65 77 53 74 61 74   463 	.ascii "NewState"
+             65
+      0000D6 00                     464 	.db	0
+      0000D7 00 00 00 A2            465 	.dw	0,162
+      0000DB 05                     466 	.uleb128	5
+      0000DC 00 00r00r36            467 	.dw	0,(Sstm8s_beep$BEEP_Cmd$23)
+      0000E0 00 00r00r3B            468 	.dw	0,(Sstm8s_beep$BEEP_Cmd$25)
+      0000E4 05                     469 	.uleb128	5
+      0000E5 00 00r00r3D            470 	.dw	0,(Sstm8s_beep$BEEP_Cmd$26)
+      0000E9 00 00r00r42            471 	.dw	0,(Sstm8s_beep$BEEP_Cmd$28)
+      0000ED 00                     472 	.uleb128	0
+      0000EE 00                     473 	.uleb128	0
+      0000EF 00                     474 	.uleb128	0
+      0000F0 00                     475 	.uleb128	0
+      0000F1                        476 Ldebug_info_end:
+                                    477 
+                                    478 	.area .debug_pubnames (NOLOAD)
+      000000 00 00 00 39            479 	.dw	0,Ldebug_pubnames_end-Ldebug_pubnames_start
+      000004                        480 Ldebug_pubnames_start:
+      000004 00 02                  481 	.dw	2
+      000006 00 00r00r00            482 	.dw	0,(Ldebug_info_start-4)
+      00000A 00 00 00 F1            483 	.dw	0,4+Ldebug_info_end-Ldebug_info_start
+      00000E 00 00 00 4B            484 	.dw	0,75
+      000012 42 45 45 50 5F 44 65   485 	.ascii "BEEP_DeInit"
+             49 6E 69 74
+      00001D 00                     486 	.db	0
+      00001E 00 00 00 65            487 	.dw	0,101
+      000022 42 45 45 50 5F 49 6E   488 	.ascii "BEEP_Init"
+             69 74
+      00002B 00                     489 	.db	0
+      00002C 00 00 00 B3            490 	.dw	0,179
+      000030 42 45 45 50 5F 43 6D   491 	.ascii "BEEP_Cmd"
+             64
+      000038 00                     492 	.db	0
+      000039 00 00 00 00            493 	.dw	0,0
+      00003D                        494 Ldebug_pubnames_end:
+                                    495 
+                                    496 	.area .debug_frame (NOLOAD)
+      000000 00 00                  497 	.dw	0
+      000002 00 0E                  498 	.dw	Ldebug_CIE0_end-Ldebug_CIE0_start
+      000004                        499 Ldebug_CIE0_start:
+      000004 FF FF                  500 	.dw	0xffff
+      000006 FF FF                  501 	.dw	0xffff
+      000008 01                     502 	.db	1
+      000009 00                     503 	.db	0
+      00000A 01                     504 	.uleb128	1
+      00000B 7F                     505 	.sleb128	-1
+      00000C 09                     506 	.db	9
+      00000D 0C                     507 	.db	12
+      00000E 08                     508 	.uleb128	8
+      00000F 02                     509 	.uleb128	2
+      000010 89                     510 	.db	137
+      000011 01                     511 	.uleb128	1
+      000012                        512 Ldebug_CIE0_end:
+      000012 00 00 00 13            513 	.dw	0,19
+      000016 00 00r00r00            514 	.dw	0,(Ldebug_CIE0_start-4)
+      00001A 00 00r00r2F            515 	.dw	0,(Sstm8s_beep$BEEP_Cmd$20)	;initial loc
+      00001E 00 00 00 14            516 	.dw	0,Sstm8s_beep$BEEP_Cmd$31-Sstm8s_beep$BEEP_Cmd$20
+      000022 01                     517 	.db	1
+      000023 00 00r00r2F            518 	.dw	0,(Sstm8s_beep$BEEP_Cmd$20)
+      000027 0E                     519 	.db	14
+      000028 02                     520 	.uleb128	2
+                                    521 
+                                    522 	.area .debug_frame (NOLOAD)
+      000029 00 00                  523 	.dw	0
+      00002B 00 0E                  524 	.dw	Ldebug_CIE1_end-Ldebug_CIE1_start
+      00002D                        525 Ldebug_CIE1_start:
+      00002D FF FF                  526 	.dw	0xffff
+      00002F FF FF                  527 	.dw	0xffff
+      000031 01                     528 	.db	1
+      000032 00                     529 	.db	0
+      000033 01                     530 	.uleb128	1
+      000034 7F                     531 	.sleb128	-1
+      000035 09                     532 	.db	9
+      000036 0C                     533 	.db	12
+      000037 08                     534 	.uleb128	8
+      000038 02                     535 	.uleb128	2
+      000039 89                     536 	.db	137
+      00003A 01                     537 	.uleb128	1
+      00003B                        538 Ldebug_CIE1_end:
+      00003B 00 00 00 1A            539 	.dw	0,26
+      00003F 00 00r00r29            540 	.dw	0,(Ldebug_CIE1_start-4)
+      000043 00 00r00r05            541 	.dw	0,(Sstm8s_beep$BEEP_Init$7)	;initial loc
+      000047 00 00 00 2A            542 	.dw	0,Sstm8s_beep$BEEP_Init$18-Sstm8s_beep$BEEP_Init$7
+      00004B 01                     543 	.db	1
+      00004C 00 00r00r05            544 	.dw	0,(Sstm8s_beep$BEEP_Init$7)
+      000050 0E                     545 	.db	14
+      000051 02                     546 	.uleb128	2
+      000052 01                     547 	.db	1
+      000053 00 00r00r0E            548 	.dw	0,(Sstm8s_beep$BEEP_Init$9)
+      000057 0E                     549 	.db	14
+      000058 02                     550 	.uleb128	2
+                                    551 
+                                    552 	.area .debug_frame (NOLOAD)
+      000059 00 00                  553 	.dw	0
+      00005B 00 0E                  554 	.dw	Ldebug_CIE2_end-Ldebug_CIE2_start
+      00005D                        555 Ldebug_CIE2_start:
+      00005D FF FF                  556 	.dw	0xffff
+      00005F FF FF                  557 	.dw	0xffff
+      000061 01                     558 	.db	1
+      000062 00                     559 	.db	0
+      000063 01                     560 	.uleb128	1
+      000064 7F                     561 	.sleb128	-1
+      000065 09                     562 	.db	9
+      000066 0C                     563 	.db	12
+      000067 08                     564 	.uleb128	8
+      000068 02                     565 	.uleb128	2
+      000069 89                     566 	.db	137
+      00006A 01                     567 	.uleb128	1
+      00006B                        568 Ldebug_CIE2_end:
+      00006B 00 00 00 13            569 	.dw	0,19
+      00006F 00 00r00r59            570 	.dw	0,(Ldebug_CIE2_start-4)
+      000073 00 00r00r00            571 	.dw	0,(Sstm8s_beep$BEEP_DeInit$1)	;initial loc
+      000077 00 00 00 05            572 	.dw	0,Sstm8s_beep$BEEP_DeInit$5-Sstm8s_beep$BEEP_DeInit$1
+      00007B 01                     573 	.db	1
+      00007C 00 00r00r00            574 	.dw	0,(Sstm8s_beep$BEEP_DeInit$1)
+      000080 0E                     575 	.db	14
+      000081 02                     576 	.uleb128	2

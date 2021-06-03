@@ -1,0 +1,1141 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.0.0 #11528 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module stm8s_spi
+                                      6 	.optsdcc -mstm8
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _SPI_DeInit
+                                     12 	.globl _SPI_Init
+                                     13 	.globl _SPI_Cmd
+                                     14 	.globl _SPI_SendData
+                                     15 	.globl _SPI_GetFlagStatus
+                                     16 	.globl _SPI_ClearFlag
+                                     17 ;--------------------------------------------------------
+                                     18 ; ram data
+                                     19 ;--------------------------------------------------------
+                                     20 	.area DATA
+                                     21 ;--------------------------------------------------------
+                                     22 ; ram data
+                                     23 ;--------------------------------------------------------
+                                     24 	.area INITIALIZED
+                                     25 ;--------------------------------------------------------
+                                     26 ; absolute external ram data
+                                     27 ;--------------------------------------------------------
+                                     28 	.area DABS (ABS)
+                                     29 
+                                     30 ; default segment ordering for linker
+                                     31 	.area HOME
+                                     32 	.area GSINIT
+                                     33 	.area GSFINAL
+                                     34 	.area CONST
+                                     35 	.area INITIALIZER
+                                     36 	.area CODE
+                                     37 
+                                     38 ;--------------------------------------------------------
+                                     39 ; global & static initialisations
+                                     40 ;--------------------------------------------------------
+                                     41 	.area HOME
+                                     42 	.area GSINIT
+                                     43 	.area GSFINAL
+                                     44 	.area GSINIT
+                                     45 ;--------------------------------------------------------
+                                     46 ; Home
+                                     47 ;--------------------------------------------------------
+                                     48 	.area HOME
+                                     49 	.area HOME
+                                     50 ;--------------------------------------------------------
+                                     51 ; code
+                                     52 ;--------------------------------------------------------
+                                     53 	.area CODE
+                           000000    54 	Sstm8s_spi$SPI_DeInit$0 ==.
+                                     55 ;	Source/Std_Lib/Src/stm8s_spi.c: 50: void SPI_DeInit(void)
+                                     56 ;	-----------------------------------------
+                                     57 ;	 function SPI_DeInit
+                                     58 ;	-----------------------------------------
+      000000                         59 _SPI_DeInit:
+                           000000    60 	Sstm8s_spi$SPI_DeInit$1 ==.
+                           000000    61 	Sstm8s_spi$SPI_DeInit$2 ==.
+                                     62 ;	Source/Std_Lib/Src/stm8s_spi.c: 52: SPI->CR1    = SPI_CR1_RESET_VALUE;
+      000000 35 00 52 00      [ 1]   63 	mov	0x5200+0, #0x00
+                           000004    64 	Sstm8s_spi$SPI_DeInit$3 ==.
+                                     65 ;	Source/Std_Lib/Src/stm8s_spi.c: 53: SPI->CR2    = SPI_CR2_RESET_VALUE;
+      000004 35 00 52 01      [ 1]   66 	mov	0x5201+0, #0x00
+                           000008    67 	Sstm8s_spi$SPI_DeInit$4 ==.
+                                     68 ;	Source/Std_Lib/Src/stm8s_spi.c: 54: SPI->ICR    = SPI_ICR_RESET_VALUE;
+      000008 35 00 52 02      [ 1]   69 	mov	0x5202+0, #0x00
+                           00000C    70 	Sstm8s_spi$SPI_DeInit$5 ==.
+                                     71 ;	Source/Std_Lib/Src/stm8s_spi.c: 55: SPI->SR     = SPI_SR_RESET_VALUE;
+      00000C 35 02 52 03      [ 1]   72 	mov	0x5203+0, #0x02
+                           000010    73 	Sstm8s_spi$SPI_DeInit$6 ==.
+                                     74 ;	Source/Std_Lib/Src/stm8s_spi.c: 56: SPI->CRCPR  = SPI_CRCPR_RESET_VALUE;
+      000010 35 07 52 05      [ 1]   75 	mov	0x5205+0, #0x07
+                           000014    76 	Sstm8s_spi$SPI_DeInit$7 ==.
+                                     77 ;	Source/Std_Lib/Src/stm8s_spi.c: 57: }
+                           000014    78 	Sstm8s_spi$SPI_DeInit$8 ==.
+                           000014    79 	XG$SPI_DeInit$0$0 ==.
+      000014 81               [ 4]   80 	ret
+                           000015    81 	Sstm8s_spi$SPI_DeInit$9 ==.
+                           000015    82 	Sstm8s_spi$SPI_Init$10 ==.
+                                     83 ;	Source/Std_Lib/Src/stm8s_spi.c: 78: void SPI_Init(SPI_FirstBit_TypeDef FirstBit, SPI_BaudRatePrescaler_TypeDef BaudRatePrescaler, SPI_Mode_TypeDef Mode, SPI_ClockPolarity_TypeDef ClockPolarity, SPI_ClockPhase_TypeDef ClockPhase, SPI_DataDirection_TypeDef Data_Direction, SPI_NSS_TypeDef Slave_Management, uint8_t CRCPolynomial)
+                                     84 ;	-----------------------------------------
+                                     85 ;	 function SPI_Init
+                                     86 ;	-----------------------------------------
+      000015                         87 _SPI_Init:
+                           000015    88 	Sstm8s_spi$SPI_Init$11 ==.
+      000015 88               [ 1]   89 	push	a
+                           000016    90 	Sstm8s_spi$SPI_Init$12 ==.
+                           000016    91 	Sstm8s_spi$SPI_Init$13 ==.
+                                     92 ;	Source/Std_Lib/Src/stm8s_spi.c: 91: SPI->CR1 = (uint8_t)((uint8_t)((uint8_t)FirstBit | BaudRatePrescaler) |
+      000016 7B 04            [ 1]   93 	ld	a, (0x04, sp)
+      000018 1A 05            [ 1]   94 	or	a, (0x05, sp)
+      00001A 6B 01            [ 1]   95 	ld	(0x01, sp), a
+                           00001C    96 	Sstm8s_spi$SPI_Init$14 ==.
+                                     97 ;	Source/Std_Lib/Src/stm8s_spi.c: 92: (uint8_t)((uint8_t)ClockPolarity | ClockPhase));
+      00001C 7B 07            [ 1]   98 	ld	a, (0x07, sp)
+      00001E 1A 08            [ 1]   99 	or	a, (0x08, sp)
+      000020 1A 01            [ 1]  100 	or	a, (0x01, sp)
+      000022 C7 52 00         [ 1]  101 	ld	0x5200, a
+                           000025   102 	Sstm8s_spi$SPI_Init$15 ==.
+                                    103 ;	Source/Std_Lib/Src/stm8s_spi.c: 95: SPI->CR2 = (uint8_t)((uint8_t)(Data_Direction) | (uint8_t)(Slave_Management));
+      000025 7B 09            [ 1]  104 	ld	a, (0x09, sp)
+      000027 1A 0A            [ 1]  105 	or	a, (0x0a, sp)
+      000029 C7 52 01         [ 1]  106 	ld	0x5201, a
+                           00002C   107 	Sstm8s_spi$SPI_Init$16 ==.
+                                    108 ;	Source/Std_Lib/Src/stm8s_spi.c: 99: SPI->CR2 |= (uint8_t)SPI_CR2_SSI;
+      00002C C6 52 01         [ 1]  109 	ld	a, 0x5201
+                           00002F   110 	Sstm8s_spi$SPI_Init$17 ==.
+                                    111 ;	Source/Std_Lib/Src/stm8s_spi.c: 97: if (Mode == SPI_MODE_MASTER)
+      00002F 88               [ 1]  112 	push	a
+                           000030   113 	Sstm8s_spi$SPI_Init$18 ==.
+      000030 7B 07            [ 1]  114 	ld	a, (0x07, sp)
+      000032 A1 04            [ 1]  115 	cp	a, #0x04
+      000034 84               [ 1]  116 	pop	a
+                           000035   117 	Sstm8s_spi$SPI_Init$19 ==.
+      000035 26 07            [ 1]  118 	jrne	00102$
+                           000037   119 	Sstm8s_spi$SPI_Init$20 ==.
+                           000037   120 	Sstm8s_spi$SPI_Init$21 ==.
+                           000037   121 	Sstm8s_spi$SPI_Init$22 ==.
+                                    122 ;	Source/Std_Lib/Src/stm8s_spi.c: 99: SPI->CR2 |= (uint8_t)SPI_CR2_SSI;
+      000037 AA 01            [ 1]  123 	or	a, #0x01
+      000039 C7 52 01         [ 1]  124 	ld	0x5201, a
+                           00003C   125 	Sstm8s_spi$SPI_Init$23 ==.
+      00003C 20 05            [ 2]  126 	jra	00103$
+      00003E                        127 00102$:
+                           00003E   128 	Sstm8s_spi$SPI_Init$24 ==.
+                           00003E   129 	Sstm8s_spi$SPI_Init$25 ==.
+                                    130 ;	Source/Std_Lib/Src/stm8s_spi.c: 103: SPI->CR2 &= (uint8_t)~(SPI_CR2_SSI);
+      00003E A4 FE            [ 1]  131 	and	a, #0xfe
+      000040 C7 52 01         [ 1]  132 	ld	0x5201, a
+                           000043   133 	Sstm8s_spi$SPI_Init$26 ==.
+      000043                        134 00103$:
+                           000043   135 	Sstm8s_spi$SPI_Init$27 ==.
+                                    136 ;	Source/Std_Lib/Src/stm8s_spi.c: 107: SPI->CR1 |= (uint8_t)(Mode);
+      000043 C6 52 00         [ 1]  137 	ld	a, 0x5200
+      000046 1A 06            [ 1]  138 	or	a, (0x06, sp)
+      000048 C7 52 00         [ 1]  139 	ld	0x5200, a
+                           00004B   140 	Sstm8s_spi$SPI_Init$28 ==.
+                                    141 ;	Source/Std_Lib/Src/stm8s_spi.c: 110: SPI->CRCPR = (uint8_t)CRCPolynomial;
+      00004B AE 52 05         [ 2]  142 	ldw	x, #0x5205
+      00004E 7B 0B            [ 1]  143 	ld	a, (0x0b, sp)
+      000050 F7               [ 1]  144 	ld	(x), a
+                           000051   145 	Sstm8s_spi$SPI_Init$29 ==.
+                                    146 ;	Source/Std_Lib/Src/stm8s_spi.c: 111: }
+      000051 84               [ 1]  147 	pop	a
+                           000052   148 	Sstm8s_spi$SPI_Init$30 ==.
+                           000052   149 	Sstm8s_spi$SPI_Init$31 ==.
+                           000052   150 	XG$SPI_Init$0$0 ==.
+      000052 81               [ 4]  151 	ret
+                           000053   152 	Sstm8s_spi$SPI_Init$32 ==.
+                           000053   153 	Sstm8s_spi$SPI_Cmd$33 ==.
+                                    154 ;	Source/Std_Lib/Src/stm8s_spi.c: 119: void SPI_Cmd(FunctionalState NewState)
+                                    155 ;	-----------------------------------------
+                                    156 ;	 function SPI_Cmd
+                                    157 ;	-----------------------------------------
+      000053                        158 _SPI_Cmd:
+                           000053   159 	Sstm8s_spi$SPI_Cmd$34 ==.
+                           000053   160 	Sstm8s_spi$SPI_Cmd$35 ==.
+                                    161 ;	Source/Std_Lib/Src/stm8s_spi.c: 126: SPI->CR1 |= SPI_CR1_SPE; /* Enable the SPI peripheral*/
+      000053 C6 52 00         [ 1]  162 	ld	a, 0x5200
+                           000056   163 	Sstm8s_spi$SPI_Cmd$36 ==.
+                                    164 ;	Source/Std_Lib/Src/stm8s_spi.c: 124: if (NewState != DISABLE)
+      000056 0D 03            [ 1]  165 	tnz	(0x03, sp)
+      000058 27 07            [ 1]  166 	jreq	00102$
+                           00005A   167 	Sstm8s_spi$SPI_Cmd$37 ==.
+                           00005A   168 	Sstm8s_spi$SPI_Cmd$38 ==.
+                                    169 ;	Source/Std_Lib/Src/stm8s_spi.c: 126: SPI->CR1 |= SPI_CR1_SPE; /* Enable the SPI peripheral*/
+      00005A AA 40            [ 1]  170 	or	a, #0x40
+      00005C C7 52 00         [ 1]  171 	ld	0x5200, a
+                           00005F   172 	Sstm8s_spi$SPI_Cmd$39 ==.
+      00005F 20 05            [ 2]  173 	jra	00104$
+      000061                        174 00102$:
+                           000061   175 	Sstm8s_spi$SPI_Cmd$40 ==.
+                           000061   176 	Sstm8s_spi$SPI_Cmd$41 ==.
+                                    177 ;	Source/Std_Lib/Src/stm8s_spi.c: 130: SPI->CR1 &= (uint8_t)(~SPI_CR1_SPE); /* Disable the SPI peripheral*/
+      000061 A4 BF            [ 1]  178 	and	a, #0xbf
+      000063 C7 52 00         [ 1]  179 	ld	0x5200, a
+                           000066   180 	Sstm8s_spi$SPI_Cmd$42 ==.
+      000066                        181 00104$:
+                           000066   182 	Sstm8s_spi$SPI_Cmd$43 ==.
+                                    183 ;	Source/Std_Lib/Src/stm8s_spi.c: 132: }
+                           000066   184 	Sstm8s_spi$SPI_Cmd$44 ==.
+                           000066   185 	XG$SPI_Cmd$0$0 ==.
+      000066 81               [ 4]  186 	ret
+                           000067   187 	Sstm8s_spi$SPI_Cmd$45 ==.
+                           000067   188 	Sstm8s_spi$SPI_SendData$46 ==.
+                                    189 ;	Source/Std_Lib/Src/stm8s_spi.c: 166: void SPI_SendData(uint8_t Data)
+                                    190 ;	-----------------------------------------
+                                    191 ;	 function SPI_SendData
+                                    192 ;	-----------------------------------------
+      000067                        193 _SPI_SendData:
+                           000067   194 	Sstm8s_spi$SPI_SendData$47 ==.
+                           000067   195 	Sstm8s_spi$SPI_SendData$48 ==.
+                                    196 ;	Source/Std_Lib/Src/stm8s_spi.c: 168: SPI->DR = Data; /* Write in the DR register the data to be sent*/
+      000067 AE 52 04         [ 2]  197 	ldw	x, #0x5204
+      00006A 7B 03            [ 1]  198 	ld	a, (0x03, sp)
+      00006C F7               [ 1]  199 	ld	(x), a
+                           00006D   200 	Sstm8s_spi$SPI_SendData$49 ==.
+                                    201 ;	Source/Std_Lib/Src/stm8s_spi.c: 169: }
+                           00006D   202 	Sstm8s_spi$SPI_SendData$50 ==.
+                           00006D   203 	XG$SPI_SendData$0$0 ==.
+      00006D 81               [ 4]  204 	ret
+                           00006E   205 	Sstm8s_spi$SPI_SendData$51 ==.
+                           00006E   206 	Sstm8s_spi$SPI_GetFlagStatus$52 ==.
+                                    207 ;	Source/Std_Lib/Src/stm8s_spi.c: 311: FlagStatus SPI_GetFlagStatus(SPI_Flag_TypeDef SPI_FLAG)
+                                    208 ;	-----------------------------------------
+                                    209 ;	 function SPI_GetFlagStatus
+                                    210 ;	-----------------------------------------
+      00006E                        211 _SPI_GetFlagStatus:
+                           00006E   212 	Sstm8s_spi$SPI_GetFlagStatus$53 ==.
+                           00006E   213 	Sstm8s_spi$SPI_GetFlagStatus$54 ==.
+                                    214 ;	Source/Std_Lib/Src/stm8s_spi.c: 318: if ((SPI->SR & (uint8_t)SPI_FLAG) != (uint8_t)RESET)
+      00006E C6 52 03         [ 1]  215 	ld	a, 0x5203
+      000071 14 03            [ 1]  216 	and	a, (0x03, sp)
+      000073 27 04            [ 1]  217 	jreq	00102$
+                           000075   218 	Sstm8s_spi$SPI_GetFlagStatus$55 ==.
+                           000075   219 	Sstm8s_spi$SPI_GetFlagStatus$56 ==.
+                                    220 ;	Source/Std_Lib/Src/stm8s_spi.c: 320: status = SET; /* SPI_FLAG is set */
+      000075 A6 01            [ 1]  221 	ld	a, #0x01
+                           000077   222 	Sstm8s_spi$SPI_GetFlagStatus$57 ==.
+      000077 20 01            [ 2]  223 	jra	00103$
+      000079                        224 00102$:
+                           000079   225 	Sstm8s_spi$SPI_GetFlagStatus$58 ==.
+                           000079   226 	Sstm8s_spi$SPI_GetFlagStatus$59 ==.
+                                    227 ;	Source/Std_Lib/Src/stm8s_spi.c: 324: status = RESET; /* SPI_FLAG is reset*/
+      000079 4F               [ 1]  228 	clr	a
+                           00007A   229 	Sstm8s_spi$SPI_GetFlagStatus$60 ==.
+      00007A                        230 00103$:
+                           00007A   231 	Sstm8s_spi$SPI_GetFlagStatus$61 ==.
+                                    232 ;	Source/Std_Lib/Src/stm8s_spi.c: 328: return status;
+                           00007A   233 	Sstm8s_spi$SPI_GetFlagStatus$62 ==.
+                                    234 ;	Source/Std_Lib/Src/stm8s_spi.c: 329: }
+                           00007A   235 	Sstm8s_spi$SPI_GetFlagStatus$63 ==.
+                           00007A   236 	XG$SPI_GetFlagStatus$0$0 ==.
+      00007A 81               [ 4]  237 	ret
+                           00007B   238 	Sstm8s_spi$SPI_GetFlagStatus$64 ==.
+                           00007B   239 	Sstm8s_spi$SPI_ClearFlag$65 ==.
+                                    240 ;	Source/Std_Lib/Src/stm8s_spi.c: 346: void SPI_ClearFlag(SPI_Flag_TypeDef SPI_FLAG)
+                                    241 ;	-----------------------------------------
+                                    242 ;	 function SPI_ClearFlag
+                                    243 ;	-----------------------------------------
+      00007B                        244 _SPI_ClearFlag:
+                           00007B   245 	Sstm8s_spi$SPI_ClearFlag$66 ==.
+                           00007B   246 	Sstm8s_spi$SPI_ClearFlag$67 ==.
+                                    247 ;	Source/Std_Lib/Src/stm8s_spi.c: 350: SPI->SR = (uint8_t)(~SPI_FLAG);
+      00007B 7B 03            [ 1]  248 	ld	a, (0x03, sp)
+      00007D 43               [ 1]  249 	cpl	a
+      00007E C7 52 03         [ 1]  250 	ld	0x5203, a
+                           000081   251 	Sstm8s_spi$SPI_ClearFlag$68 ==.
+                                    252 ;	Source/Std_Lib/Src/stm8s_spi.c: 351: }
+                           000081   253 	Sstm8s_spi$SPI_ClearFlag$69 ==.
+                           000081   254 	XG$SPI_ClearFlag$0$0 ==.
+      000081 81               [ 4]  255 	ret
+                           000082   256 	Sstm8s_spi$SPI_ClearFlag$70 ==.
+                                    257 	.area CODE
+                                    258 	.area CONST
+                                    259 	.area INITIALIZER
+                                    260 	.area CABS (ABS)
+                                    261 
+                                    262 	.area .debug_line (NOLOAD)
+      000000 00 00 01 9E            263 	.dw	0,Ldebug_line_end-Ldebug_line_start
+      000004                        264 Ldebug_line_start:
+      000004 00 02                  265 	.dw	2
+      000006 00 00 00 7F            266 	.dw	0,Ldebug_line_stmt-6-Ldebug_line_start
+      00000A 01                     267 	.db	1
+      00000B 01                     268 	.db	1
+      00000C FB                     269 	.db	-5
+      00000D 0F                     270 	.db	15
+      00000E 0A                     271 	.db	10
+      00000F 00                     272 	.db	0
+      000010 01                     273 	.db	1
+      000011 01                     274 	.db	1
+      000012 01                     275 	.db	1
+      000013 01                     276 	.db	1
+      000014 00                     277 	.db	0
+      000015 00                     278 	.db	0
+      000016 00                     279 	.db	0
+      000017 01                     280 	.db	1
+      000018 43 3A 5C 50 72 6F 67   281 	.ascii "C:\Program Files\SDCC\bin\..\include\stm8"
+             72 61 6D 20 46 69 6C
+             65 73 5C 53 44 43 43
+             08 69 6E 5C 2E 2E 5C
+             69 6E 63 6C 75 64 65
+             5C 73 74 6D 38
+      000040 00                     282 	.db	0
+      000041 43 3A 5C 50 72 6F 67   283 	.ascii "C:\Program Files\SDCC\bin\..\include"
+             72 61 6D 20 46 69 6C
+             65 73 5C 53 44 43 43
+             08 69 6E 5C 2E 2E 5C
+             69 6E 63 6C 75 64 65
+      000064 00                     284 	.db	0
+      000065 00                     285 	.db	0
+      000066 53 6F 75 72 63 65 2F   286 	.ascii "Source/Std_Lib/Src/stm8s_spi.c"
+             53 74 64 5F 4C 69 62
+             2F 53 72 63 2F 73 74
+             6D 38 73 5F 73 70 69
+             2E 63
+      000084 00                     287 	.db	0
+      000085 00                     288 	.uleb128	0
+      000086 00                     289 	.uleb128	0
+      000087 00                     290 	.uleb128	0
+      000088 00                     291 	.db	0
+      000089                        292 Ldebug_line_stmt:
+      000089 00                     293 	.db	0
+      00008A 05                     294 	.uleb128	5
+      00008B 02                     295 	.db	2
+      00008C 00 00r00r00            296 	.dw	0,(Sstm8s_spi$SPI_DeInit$0)
+      000090 03                     297 	.db	3
+      000091 31                     298 	.sleb128	49
+      000092 01                     299 	.db	1
+      000093 09                     300 	.db	9
+      000094 00 00                  301 	.dw	Sstm8s_spi$SPI_DeInit$2-Sstm8s_spi$SPI_DeInit$0
+      000096 03                     302 	.db	3
+      000097 02                     303 	.sleb128	2
+      000098 01                     304 	.db	1
+      000099 09                     305 	.db	9
+      00009A 00 04                  306 	.dw	Sstm8s_spi$SPI_DeInit$3-Sstm8s_spi$SPI_DeInit$2
+      00009C 03                     307 	.db	3
+      00009D 01                     308 	.sleb128	1
+      00009E 01                     309 	.db	1
+      00009F 09                     310 	.db	9
+      0000A0 00 04                  311 	.dw	Sstm8s_spi$SPI_DeInit$4-Sstm8s_spi$SPI_DeInit$3
+      0000A2 03                     312 	.db	3
+      0000A3 01                     313 	.sleb128	1
+      0000A4 01                     314 	.db	1
+      0000A5 09                     315 	.db	9
+      0000A6 00 04                  316 	.dw	Sstm8s_spi$SPI_DeInit$5-Sstm8s_spi$SPI_DeInit$4
+      0000A8 03                     317 	.db	3
+      0000A9 01                     318 	.sleb128	1
+      0000AA 01                     319 	.db	1
+      0000AB 09                     320 	.db	9
+      0000AC 00 04                  321 	.dw	Sstm8s_spi$SPI_DeInit$6-Sstm8s_spi$SPI_DeInit$5
+      0000AE 03                     322 	.db	3
+      0000AF 01                     323 	.sleb128	1
+      0000B0 01                     324 	.db	1
+      0000B1 09                     325 	.db	9
+      0000B2 00 04                  326 	.dw	Sstm8s_spi$SPI_DeInit$7-Sstm8s_spi$SPI_DeInit$6
+      0000B4 03                     327 	.db	3
+      0000B5 01                     328 	.sleb128	1
+      0000B6 01                     329 	.db	1
+      0000B7 09                     330 	.db	9
+      0000B8 00 01                  331 	.dw	1+Sstm8s_spi$SPI_DeInit$8-Sstm8s_spi$SPI_DeInit$7
+      0000BA 00                     332 	.db	0
+      0000BB 01                     333 	.uleb128	1
+      0000BC 01                     334 	.db	1
+      0000BD 00                     335 	.db	0
+      0000BE 05                     336 	.uleb128	5
+      0000BF 02                     337 	.db	2
+      0000C0 00 00r00r15            338 	.dw	0,(Sstm8s_spi$SPI_Init$10)
+      0000C4 03                     339 	.db	3
+      0000C5 CD 00                  340 	.sleb128	77
+      0000C7 01                     341 	.db	1
+      0000C8 09                     342 	.db	9
+      0000C9 00 01                  343 	.dw	Sstm8s_spi$SPI_Init$13-Sstm8s_spi$SPI_Init$10
+      0000CB 03                     344 	.db	3
+      0000CC 0D                     345 	.sleb128	13
+      0000CD 01                     346 	.db	1
+      0000CE 09                     347 	.db	9
+      0000CF 00 06                  348 	.dw	Sstm8s_spi$SPI_Init$14-Sstm8s_spi$SPI_Init$13
+      0000D1 03                     349 	.db	3
+      0000D2 01                     350 	.sleb128	1
+      0000D3 01                     351 	.db	1
+      0000D4 09                     352 	.db	9
+      0000D5 00 09                  353 	.dw	Sstm8s_spi$SPI_Init$15-Sstm8s_spi$SPI_Init$14
+      0000D7 03                     354 	.db	3
+      0000D8 03                     355 	.sleb128	3
+      0000D9 01                     356 	.db	1
+      0000DA 09                     357 	.db	9
+      0000DB 00 07                  358 	.dw	Sstm8s_spi$SPI_Init$16-Sstm8s_spi$SPI_Init$15
+      0000DD 03                     359 	.db	3
+      0000DE 04                     360 	.sleb128	4
+      0000DF 01                     361 	.db	1
+      0000E0 09                     362 	.db	9
+      0000E1 00 03                  363 	.dw	Sstm8s_spi$SPI_Init$17-Sstm8s_spi$SPI_Init$16
+      0000E3 03                     364 	.db	3
+      0000E4 7E                     365 	.sleb128	-2
+      0000E5 01                     366 	.db	1
+      0000E6 09                     367 	.db	9
+      0000E7 00 08                  368 	.dw	Sstm8s_spi$SPI_Init$22-Sstm8s_spi$SPI_Init$17
+      0000E9 03                     369 	.db	3
+      0000EA 02                     370 	.sleb128	2
+      0000EB 01                     371 	.db	1
+      0000EC 09                     372 	.db	9
+      0000ED 00 07                  373 	.dw	Sstm8s_spi$SPI_Init$25-Sstm8s_spi$SPI_Init$22
+      0000EF 03                     374 	.db	3
+      0000F0 04                     375 	.sleb128	4
+      0000F1 01                     376 	.db	1
+      0000F2 09                     377 	.db	9
+      0000F3 00 05                  378 	.dw	Sstm8s_spi$SPI_Init$27-Sstm8s_spi$SPI_Init$25
+      0000F5 03                     379 	.db	3
+      0000F6 04                     380 	.sleb128	4
+      0000F7 01                     381 	.db	1
+      0000F8 09                     382 	.db	9
+      0000F9 00 08                  383 	.dw	Sstm8s_spi$SPI_Init$28-Sstm8s_spi$SPI_Init$27
+      0000FB 03                     384 	.db	3
+      0000FC 03                     385 	.sleb128	3
+      0000FD 01                     386 	.db	1
+      0000FE 09                     387 	.db	9
+      0000FF 00 06                  388 	.dw	Sstm8s_spi$SPI_Init$29-Sstm8s_spi$SPI_Init$28
+      000101 03                     389 	.db	3
+      000102 01                     390 	.sleb128	1
+      000103 01                     391 	.db	1
+      000104 09                     392 	.db	9
+      000105 00 02                  393 	.dw	1+Sstm8s_spi$SPI_Init$31-Sstm8s_spi$SPI_Init$29
+      000107 00                     394 	.db	0
+      000108 01                     395 	.uleb128	1
+      000109 01                     396 	.db	1
+      00010A 00                     397 	.db	0
+      00010B 05                     398 	.uleb128	5
+      00010C 02                     399 	.db	2
+      00010D 00 00r00r53            400 	.dw	0,(Sstm8s_spi$SPI_Cmd$33)
+      000111 03                     401 	.db	3
+      000112 F6 00                  402 	.sleb128	118
+      000114 01                     403 	.db	1
+      000115 09                     404 	.db	9
+      000116 00 00                  405 	.dw	Sstm8s_spi$SPI_Cmd$35-Sstm8s_spi$SPI_Cmd$33
+      000118 03                     406 	.db	3
+      000119 07                     407 	.sleb128	7
+      00011A 01                     408 	.db	1
+      00011B 09                     409 	.db	9
+      00011C 00 03                  410 	.dw	Sstm8s_spi$SPI_Cmd$36-Sstm8s_spi$SPI_Cmd$35
+      00011E 03                     411 	.db	3
+      00011F 7E                     412 	.sleb128	-2
+      000120 01                     413 	.db	1
+      000121 09                     414 	.db	9
+      000122 00 04                  415 	.dw	Sstm8s_spi$SPI_Cmd$38-Sstm8s_spi$SPI_Cmd$36
+      000124 03                     416 	.db	3
+      000125 02                     417 	.sleb128	2
+      000126 01                     418 	.db	1
+      000127 09                     419 	.db	9
+      000128 00 07                  420 	.dw	Sstm8s_spi$SPI_Cmd$41-Sstm8s_spi$SPI_Cmd$38
+      00012A 03                     421 	.db	3
+      00012B 04                     422 	.sleb128	4
+      00012C 01                     423 	.db	1
+      00012D 09                     424 	.db	9
+      00012E 00 05                  425 	.dw	Sstm8s_spi$SPI_Cmd$43-Sstm8s_spi$SPI_Cmd$41
+      000130 03                     426 	.db	3
+      000131 02                     427 	.sleb128	2
+      000132 01                     428 	.db	1
+      000133 09                     429 	.db	9
+      000134 00 01                  430 	.dw	1+Sstm8s_spi$SPI_Cmd$44-Sstm8s_spi$SPI_Cmd$43
+      000136 00                     431 	.db	0
+      000137 01                     432 	.uleb128	1
+      000138 01                     433 	.db	1
+      000139 00                     434 	.db	0
+      00013A 05                     435 	.uleb128	5
+      00013B 02                     436 	.db	2
+      00013C 00 00r00r67            437 	.dw	0,(Sstm8s_spi$SPI_SendData$46)
+      000140 03                     438 	.db	3
+      000141 A5 01                  439 	.sleb128	165
+      000143 01                     440 	.db	1
+      000144 09                     441 	.db	9
+      000145 00 00                  442 	.dw	Sstm8s_spi$SPI_SendData$48-Sstm8s_spi$SPI_SendData$46
+      000147 03                     443 	.db	3
+      000148 02                     444 	.sleb128	2
+      000149 01                     445 	.db	1
+      00014A 09                     446 	.db	9
+      00014B 00 06                  447 	.dw	Sstm8s_spi$SPI_SendData$49-Sstm8s_spi$SPI_SendData$48
+      00014D 03                     448 	.db	3
+      00014E 01                     449 	.sleb128	1
+      00014F 01                     450 	.db	1
+      000150 09                     451 	.db	9
+      000151 00 01                  452 	.dw	1+Sstm8s_spi$SPI_SendData$50-Sstm8s_spi$SPI_SendData$49
+      000153 00                     453 	.db	0
+      000154 01                     454 	.uleb128	1
+      000155 01                     455 	.db	1
+      000156 00                     456 	.db	0
+      000157 05                     457 	.uleb128	5
+      000158 02                     458 	.db	2
+      000159 00 00r00r6E            459 	.dw	0,(Sstm8s_spi$SPI_GetFlagStatus$52)
+      00015D 03                     460 	.db	3
+      00015E B6 02                  461 	.sleb128	310
+      000160 01                     462 	.db	1
+      000161 09                     463 	.db	9
+      000162 00 00                  464 	.dw	Sstm8s_spi$SPI_GetFlagStatus$54-Sstm8s_spi$SPI_GetFlagStatus$52
+      000164 03                     465 	.db	3
+      000165 07                     466 	.sleb128	7
+      000166 01                     467 	.db	1
+      000167 09                     468 	.db	9
+      000168 00 07                  469 	.dw	Sstm8s_spi$SPI_GetFlagStatus$56-Sstm8s_spi$SPI_GetFlagStatus$54
+      00016A 03                     470 	.db	3
+      00016B 02                     471 	.sleb128	2
+      00016C 01                     472 	.db	1
+      00016D 09                     473 	.db	9
+      00016E 00 04                  474 	.dw	Sstm8s_spi$SPI_GetFlagStatus$59-Sstm8s_spi$SPI_GetFlagStatus$56
+      000170 03                     475 	.db	3
+      000171 04                     476 	.sleb128	4
+      000172 01                     477 	.db	1
+      000173 09                     478 	.db	9
+      000174 00 01                  479 	.dw	Sstm8s_spi$SPI_GetFlagStatus$61-Sstm8s_spi$SPI_GetFlagStatus$59
+      000176 03                     480 	.db	3
+      000177 04                     481 	.sleb128	4
+      000178 01                     482 	.db	1
+      000179 09                     483 	.db	9
+      00017A 00 00                  484 	.dw	Sstm8s_spi$SPI_GetFlagStatus$62-Sstm8s_spi$SPI_GetFlagStatus$61
+      00017C 03                     485 	.db	3
+      00017D 01                     486 	.sleb128	1
+      00017E 01                     487 	.db	1
+      00017F 09                     488 	.db	9
+      000180 00 01                  489 	.dw	1+Sstm8s_spi$SPI_GetFlagStatus$63-Sstm8s_spi$SPI_GetFlagStatus$62
+      000182 00                     490 	.db	0
+      000183 01                     491 	.uleb128	1
+      000184 01                     492 	.db	1
+      000185 00                     493 	.db	0
+      000186 05                     494 	.uleb128	5
+      000187 02                     495 	.db	2
+      000188 00 00r00r7B            496 	.dw	0,(Sstm8s_spi$SPI_ClearFlag$65)
+      00018C 03                     497 	.db	3
+      00018D D9 02                  498 	.sleb128	345
+      00018F 01                     499 	.db	1
+      000190 09                     500 	.db	9
+      000191 00 00                  501 	.dw	Sstm8s_spi$SPI_ClearFlag$67-Sstm8s_spi$SPI_ClearFlag$65
+      000193 03                     502 	.db	3
+      000194 04                     503 	.sleb128	4
+      000195 01                     504 	.db	1
+      000196 09                     505 	.db	9
+      000197 00 06                  506 	.dw	Sstm8s_spi$SPI_ClearFlag$68-Sstm8s_spi$SPI_ClearFlag$67
+      000199 03                     507 	.db	3
+      00019A 01                     508 	.sleb128	1
+      00019B 01                     509 	.db	1
+      00019C 09                     510 	.db	9
+      00019D 00 01                  511 	.dw	1+Sstm8s_spi$SPI_ClearFlag$69-Sstm8s_spi$SPI_ClearFlag$68
+      00019F 00                     512 	.db	0
+      0001A0 01                     513 	.uleb128	1
+      0001A1 01                     514 	.db	1
+      0001A2                        515 Ldebug_line_end:
+                                    516 
+                                    517 	.area .debug_loc (NOLOAD)
+      000000                        518 Ldebug_loc_start:
+      000000 00 00r00r7B            519 	.dw	0,(Sstm8s_spi$SPI_ClearFlag$66)
+      000004 00 00r00r82            520 	.dw	0,(Sstm8s_spi$SPI_ClearFlag$70)
+      000008 00 02                  521 	.dw	2
+      00000A 78                     522 	.db	120
+      00000B 01                     523 	.sleb128	1
+      00000C 00 00 00 00            524 	.dw	0,0
+      000010 00 00 00 00            525 	.dw	0,0
+      000014 00 00r00r6E            526 	.dw	0,(Sstm8s_spi$SPI_GetFlagStatus$53)
+      000018 00 00r00r7B            527 	.dw	0,(Sstm8s_spi$SPI_GetFlagStatus$64)
+      00001C 00 02                  528 	.dw	2
+      00001E 78                     529 	.db	120
+      00001F 01                     530 	.sleb128	1
+      000020 00 00 00 00            531 	.dw	0,0
+      000024 00 00 00 00            532 	.dw	0,0
+      000028 00 00r00r67            533 	.dw	0,(Sstm8s_spi$SPI_SendData$47)
+      00002C 00 00r00r6E            534 	.dw	0,(Sstm8s_spi$SPI_SendData$51)
+      000030 00 02                  535 	.dw	2
+      000032 78                     536 	.db	120
+      000033 01                     537 	.sleb128	1
+      000034 00 00 00 00            538 	.dw	0,0
+      000038 00 00 00 00            539 	.dw	0,0
+      00003C 00 00r00r53            540 	.dw	0,(Sstm8s_spi$SPI_Cmd$34)
+      000040 00 00r00r67            541 	.dw	0,(Sstm8s_spi$SPI_Cmd$45)
+      000044 00 02                  542 	.dw	2
+      000046 78                     543 	.db	120
+      000047 01                     544 	.sleb128	1
+      000048 00 00 00 00            545 	.dw	0,0
+      00004C 00 00 00 00            546 	.dw	0,0
+      000050 00 00r00r52            547 	.dw	0,(Sstm8s_spi$SPI_Init$30)
+      000054 00 00r00r53            548 	.dw	0,(Sstm8s_spi$SPI_Init$32)
+      000058 00 02                  549 	.dw	2
+      00005A 78                     550 	.db	120
+      00005B 01                     551 	.sleb128	1
+      00005C 00 00r00r37            552 	.dw	0,(Sstm8s_spi$SPI_Init$20)
+      000060 00 00r00r52            553 	.dw	0,(Sstm8s_spi$SPI_Init$30)
+      000064 00 02                  554 	.dw	2
+      000066 78                     555 	.db	120
+      000067 02                     556 	.sleb128	2
+      000068 00 00r00r35            557 	.dw	0,(Sstm8s_spi$SPI_Init$19)
+      00006C 00 00r00r37            558 	.dw	0,(Sstm8s_spi$SPI_Init$20)
+      000070 00 02                  559 	.dw	2
+      000072 78                     560 	.db	120
+      000073 02                     561 	.sleb128	2
+      000074 00 00r00r30            562 	.dw	0,(Sstm8s_spi$SPI_Init$18)
+      000078 00 00r00r35            563 	.dw	0,(Sstm8s_spi$SPI_Init$19)
+      00007C 00 02                  564 	.dw	2
+      00007E 78                     565 	.db	120
+      00007F 03                     566 	.sleb128	3
+      000080 00 00r00r16            567 	.dw	0,(Sstm8s_spi$SPI_Init$12)
+      000084 00 00r00r30            568 	.dw	0,(Sstm8s_spi$SPI_Init$18)
+      000088 00 02                  569 	.dw	2
+      00008A 78                     570 	.db	120
+      00008B 02                     571 	.sleb128	2
+      00008C 00 00r00r15            572 	.dw	0,(Sstm8s_spi$SPI_Init$11)
+      000090 00 00r00r16            573 	.dw	0,(Sstm8s_spi$SPI_Init$12)
+      000094 00 02                  574 	.dw	2
+      000096 78                     575 	.db	120
+      000097 01                     576 	.sleb128	1
+      000098 00 00 00 00            577 	.dw	0,0
+      00009C 00 00 00 00            578 	.dw	0,0
+      0000A0 00 00r00r00            579 	.dw	0,(Sstm8s_spi$SPI_DeInit$1)
+      0000A4 00 00r00r15            580 	.dw	0,(Sstm8s_spi$SPI_DeInit$9)
+      0000A8 00 02                  581 	.dw	2
+      0000AA 78                     582 	.db	120
+      0000AB 01                     583 	.sleb128	1
+      0000AC 00 00 00 00            584 	.dw	0,0
+      0000B0 00 00 00 00            585 	.dw	0,0
+                                    586 
+                                    587 	.area .debug_abbrev (NOLOAD)
+      000000                        588 Ldebug_abbrev:
+      000000 04                     589 	.uleb128	4
+      000001 05                     590 	.uleb128	5
+      000002 00                     591 	.db	0
+      000003 02                     592 	.uleb128	2
+      000004 0A                     593 	.uleb128	10
+      000005 03                     594 	.uleb128	3
+      000006 08                     595 	.uleb128	8
+      000007 49                     596 	.uleb128	73
+      000008 13                     597 	.uleb128	19
+      000009 00                     598 	.uleb128	0
+      00000A 00                     599 	.uleb128	0
+      00000B 03                     600 	.uleb128	3
+      00000C 2E                     601 	.uleb128	46
+      00000D 01                     602 	.db	1
+      00000E 01                     603 	.uleb128	1
+      00000F 13                     604 	.uleb128	19
+      000010 03                     605 	.uleb128	3
+      000011 08                     606 	.uleb128	8
+      000012 11                     607 	.uleb128	17
+      000013 01                     608 	.uleb128	1
+      000014 12                     609 	.uleb128	18
+      000015 01                     610 	.uleb128	1
+      000016 3F                     611 	.uleb128	63
+      000017 0C                     612 	.uleb128	12
+      000018 40                     613 	.uleb128	64
+      000019 06                     614 	.uleb128	6
+      00001A 00                     615 	.uleb128	0
+      00001B 00                     616 	.uleb128	0
+      00001C 08                     617 	.uleb128	8
+      00001D 34                     618 	.uleb128	52
+      00001E 00                     619 	.db	0
+      00001F 02                     620 	.uleb128	2
+      000020 0A                     621 	.uleb128	10
+      000021 03                     622 	.uleb128	3
+      000022 08                     623 	.uleb128	8
+      000023 49                     624 	.uleb128	73
+      000024 13                     625 	.uleb128	19
+      000025 00                     626 	.uleb128	0
+      000026 00                     627 	.uleb128	0
+      000027 07                     628 	.uleb128	7
+      000028 2E                     629 	.uleb128	46
+      000029 01                     630 	.db	1
+      00002A 01                     631 	.uleb128	1
+      00002B 13                     632 	.uleb128	19
+      00002C 03                     633 	.uleb128	3
+      00002D 08                     634 	.uleb128	8
+      00002E 11                     635 	.uleb128	17
+      00002F 01                     636 	.uleb128	1
+      000030 12                     637 	.uleb128	18
+      000031 01                     638 	.uleb128	1
+      000032 3F                     639 	.uleb128	63
+      000033 0C                     640 	.uleb128	12
+      000034 40                     641 	.uleb128	64
+      000035 06                     642 	.uleb128	6
+      000036 49                     643 	.uleb128	73
+      000037 13                     644 	.uleb128	19
+      000038 00                     645 	.uleb128	0
+      000039 00                     646 	.uleb128	0
+      00003A 01                     647 	.uleb128	1
+      00003B 11                     648 	.uleb128	17
+      00003C 01                     649 	.db	1
+      00003D 03                     650 	.uleb128	3
+      00003E 08                     651 	.uleb128	8
+      00003F 10                     652 	.uleb128	16
+      000040 06                     653 	.uleb128	6
+      000041 13                     654 	.uleb128	19
+      000042 0B                     655 	.uleb128	11
+      000043 25                     656 	.uleb128	37
+      000044 08                     657 	.uleb128	8
+      000045 00                     658 	.uleb128	0
+      000046 00                     659 	.uleb128	0
+      000047 05                     660 	.uleb128	5
+      000048 0B                     661 	.uleb128	11
+      000049 00                     662 	.db	0
+      00004A 11                     663 	.uleb128	17
+      00004B 01                     664 	.uleb128	1
+      00004C 12                     665 	.uleb128	18
+      00004D 01                     666 	.uleb128	1
+      00004E 00                     667 	.uleb128	0
+      00004F 00                     668 	.uleb128	0
+      000050 02                     669 	.uleb128	2
+      000051 2E                     670 	.uleb128	46
+      000052 00                     671 	.db	0
+      000053 03                     672 	.uleb128	3
+      000054 08                     673 	.uleb128	8
+      000055 11                     674 	.uleb128	17
+      000056 01                     675 	.uleb128	1
+      000057 12                     676 	.uleb128	18
+      000058 01                     677 	.uleb128	1
+      000059 3F                     678 	.uleb128	63
+      00005A 0C                     679 	.uleb128	12
+      00005B 40                     680 	.uleb128	64
+      00005C 06                     681 	.uleb128	6
+      00005D 00                     682 	.uleb128	0
+      00005E 00                     683 	.uleb128	0
+      00005F 09                     684 	.uleb128	9
+      000060 2E                     685 	.uleb128	46
+      000061 01                     686 	.db	1
+      000062 03                     687 	.uleb128	3
+      000063 08                     688 	.uleb128	8
+      000064 11                     689 	.uleb128	17
+      000065 01                     690 	.uleb128	1
+      000066 12                     691 	.uleb128	18
+      000067 01                     692 	.uleb128	1
+      000068 3F                     693 	.uleb128	63
+      000069 0C                     694 	.uleb128	12
+      00006A 40                     695 	.uleb128	64
+      00006B 06                     696 	.uleb128	6
+      00006C 00                     697 	.uleb128	0
+      00006D 00                     698 	.uleb128	0
+      00006E 06                     699 	.uleb128	6
+      00006F 24                     700 	.uleb128	36
+      000070 00                     701 	.db	0
+      000071 03                     702 	.uleb128	3
+      000072 08                     703 	.uleb128	8
+      000073 0B                     704 	.uleb128	11
+      000074 0B                     705 	.uleb128	11
+      000075 3E                     706 	.uleb128	62
+      000076 0B                     707 	.uleb128	11
+      000077 00                     708 	.uleb128	0
+      000078 00                     709 	.uleb128	0
+      000079 00                     710 	.uleb128	0
+                                    711 
+                                    712 	.area .debug_info (NOLOAD)
+      000000 00 00 02 3B            713 	.dw	0,Ldebug_info_end-Ldebug_info_start
+      000004                        714 Ldebug_info_start:
+      000004 00 02                  715 	.dw	2
+      000006 00 00r00r00            716 	.dw	0,(Ldebug_abbrev)
+      00000A 04                     717 	.db	4
+      00000B 01                     718 	.uleb128	1
+      00000C 53 6F 75 72 63 65 2F   719 	.ascii "Source/Std_Lib/Src/stm8s_spi.c"
+             53 74 64 5F 4C 69 62
+             2F 53 72 63 2F 73 74
+             6D 38 73 5F 73 70 69
+             2E 63
+      00002A 00                     720 	.db	0
+      00002B 00 00r00r00            721 	.dw	0,(Ldebug_line_start+-4)
+      00002F 01                     722 	.db	1
+      000030 53 44 43 43 20 76 65   723 	.ascii "SDCC version 4.0.0 #11528"
+             72 73 69 6F 6E 20 34
+             2E 30 2E 30 20 23 31
+             31 35 32 38
+      000049 00                     724 	.db	0
+      00004A 02                     725 	.uleb128	2
+      00004B 53 50 49 5F 44 65 49   726 	.ascii "SPI_DeInit"
+             6E 69 74
+      000055 00                     727 	.db	0
+      000056 00 00r00r00            728 	.dw	0,(_SPI_DeInit)
+      00005A 00 00r00r15            729 	.dw	0,(XG$SPI_DeInit$0$0+1)
+      00005E 01                     730 	.db	1
+      00005F 00 00r00rA0            731 	.dw	0,(Ldebug_loc_start+160)
+      000063 03                     732 	.uleb128	3
+      000064 00 00 01 38            733 	.dw	0,312
+      000068 53 50 49 5F 49 6E 69   734 	.ascii "SPI_Init"
+             74
+      000070 00                     735 	.db	0
+      000071 00 00r00r15            736 	.dw	0,(_SPI_Init)
+      000075 00 00r00r53            737 	.dw	0,(XG$SPI_Init$0$0+1)
+      000079 01                     738 	.db	1
+      00007A 00 00r00r50            739 	.dw	0,(Ldebug_loc_start+80)
+      00007E 04                     740 	.uleb128	4
+      00007F 02                     741 	.db	2
+      000080 91                     742 	.db	145
+      000081 02                     743 	.sleb128	2
+      000082 46 69 72 73 74 42 69   744 	.ascii "FirstBit"
+             74
+      00008A 00                     745 	.db	0
+      00008B 00 00 01 38            746 	.dw	0,312
+      00008F 04                     747 	.uleb128	4
+      000090 02                     748 	.db	2
+      000091 91                     749 	.db	145
+      000092 03                     750 	.sleb128	3
+      000093 42 61 75 64 52 61 74   751 	.ascii "BaudRatePrescaler"
+             65 50 72 65 73 63 61
+             6C 65 72
+      0000A4 00                     752 	.db	0
+      0000A5 00 00 01 38            753 	.dw	0,312
+      0000A9 04                     754 	.uleb128	4
+      0000AA 02                     755 	.db	2
+      0000AB 91                     756 	.db	145
+      0000AC 04                     757 	.sleb128	4
+      0000AD 4D 6F 64 65            758 	.ascii "Mode"
+      0000B1 00                     759 	.db	0
+      0000B2 00 00 01 38            760 	.dw	0,312
+      0000B6 04                     761 	.uleb128	4
+      0000B7 02                     762 	.db	2
+      0000B8 91                     763 	.db	145
+      0000B9 05                     764 	.sleb128	5
+      0000BA 43 6C 6F 63 6B 50 6F   765 	.ascii "ClockPolarity"
+             6C 61 72 69 74 79
+      0000C7 00                     766 	.db	0
+      0000C8 00 00 01 38            767 	.dw	0,312
+      0000CC 04                     768 	.uleb128	4
+      0000CD 02                     769 	.db	2
+      0000CE 91                     770 	.db	145
+      0000CF 06                     771 	.sleb128	6
+      0000D0 43 6C 6F 63 6B 50 68   772 	.ascii "ClockPhase"
+             61 73 65
+      0000DA 00                     773 	.db	0
+      0000DB 00 00 01 38            774 	.dw	0,312
+      0000DF 04                     775 	.uleb128	4
+      0000E0 02                     776 	.db	2
+      0000E1 91                     777 	.db	145
+      0000E2 07                     778 	.sleb128	7
+      0000E3 44 61 74 61 5F 44 69   779 	.ascii "Data_Direction"
+             72 65 63 74 69 6F 6E
+      0000F1 00                     780 	.db	0
+      0000F2 00 00 01 38            781 	.dw	0,312
+      0000F6 04                     782 	.uleb128	4
+      0000F7 02                     783 	.db	2
+      0000F8 91                     784 	.db	145
+      0000F9 08                     785 	.sleb128	8
+      0000FA 53 6C 61 76 65 5F 4D   786 	.ascii "Slave_Management"
+             61 6E 61 67 65 6D 65
+             6E 74
+      00010A 00                     787 	.db	0
+      00010B 00 00 01 38            788 	.dw	0,312
+      00010F 04                     789 	.uleb128	4
+      000110 02                     790 	.db	2
+      000111 91                     791 	.db	145
+      000112 09                     792 	.sleb128	9
+      000113 43 52 43 50 6F 6C 79   793 	.ascii "CRCPolynomial"
+             6E 6F 6D 69 61 6C
+      000120 00                     794 	.db	0
+      000121 00 00 01 38            795 	.dw	0,312
+      000125 05                     796 	.uleb128	5
+      000126 00 00r00r37            797 	.dw	0,(Sstm8s_spi$SPI_Init$21)
+      00012A 00 00r00r3C            798 	.dw	0,(Sstm8s_spi$SPI_Init$23)
+      00012E 05                     799 	.uleb128	5
+      00012F 00 00r00r3E            800 	.dw	0,(Sstm8s_spi$SPI_Init$24)
+      000133 00 00r00r43            801 	.dw	0,(Sstm8s_spi$SPI_Init$26)
+      000137 00                     802 	.uleb128	0
+      000138 06                     803 	.uleb128	6
+      000139 75 6E 73 69 67 6E 65   804 	.ascii "unsigned char"
+             64 20 63 68 61 72
+      000146 00                     805 	.db	0
+      000147 01                     806 	.db	1
+      000148 08                     807 	.db	8
+      000149 03                     808 	.uleb128	3
+      00014A 00 00 01 87            809 	.dw	0,391
+      00014E 53 50 49 5F 43 6D 64   810 	.ascii "SPI_Cmd"
+      000155 00                     811 	.db	0
+      000156 00 00r00r53            812 	.dw	0,(_SPI_Cmd)
+      00015A 00 00r00r67            813 	.dw	0,(XG$SPI_Cmd$0$0+1)
+      00015E 01                     814 	.db	1
+      00015F 00 00r00r3C            815 	.dw	0,(Ldebug_loc_start+60)
+      000163 04                     816 	.uleb128	4
+      000164 02                     817 	.db	2
+      000165 91                     818 	.db	145
+      000166 02                     819 	.sleb128	2
+      000167 4E 65 77 53 74 61 74   820 	.ascii "NewState"
+             65
+      00016F 00                     821 	.db	0
+      000170 00 00 01 38            822 	.dw	0,312
+      000174 05                     823 	.uleb128	5
+      000175 00 00r00r5A            824 	.dw	0,(Sstm8s_spi$SPI_Cmd$37)
+      000179 00 00r00r5F            825 	.dw	0,(Sstm8s_spi$SPI_Cmd$39)
+      00017D 05                     826 	.uleb128	5
+      00017E 00 00r00r61            827 	.dw	0,(Sstm8s_spi$SPI_Cmd$40)
+      000182 00 00r00r66            828 	.dw	0,(Sstm8s_spi$SPI_Cmd$42)
+      000186 00                     829 	.uleb128	0
+      000187 03                     830 	.uleb128	3
+      000188 00 00 01 B4            831 	.dw	0,436
+      00018C 53 50 49 5F 53 65 6E   832 	.ascii "SPI_SendData"
+             64 44 61 74 61
+      000198 00                     833 	.db	0
+      000199 00 00r00r67            834 	.dw	0,(_SPI_SendData)
+      00019D 00 00r00r6E            835 	.dw	0,(XG$SPI_SendData$0$0+1)
+      0001A1 01                     836 	.db	1
+      0001A2 00 00r00r28            837 	.dw	0,(Ldebug_loc_start+40)
+      0001A6 04                     838 	.uleb128	4
+      0001A7 02                     839 	.db	2
+      0001A8 91                     840 	.db	145
+      0001A9 02                     841 	.sleb128	2
+      0001AA 44 61 74 61            842 	.ascii "Data"
+      0001AE 00                     843 	.db	0
+      0001AF 00 00 01 38            844 	.dw	0,312
+      0001B3 00                     845 	.uleb128	0
+      0001B4 07                     846 	.uleb128	7
+      0001B5 00 00 02 0E            847 	.dw	0,526
+      0001B9 53 50 49 5F 47 65 74   848 	.ascii "SPI_GetFlagStatus"
+             46 6C 61 67 53 74 61
+             74 75 73
+      0001CA 00                     849 	.db	0
+      0001CB 00 00r00r6E            850 	.dw	0,(_SPI_GetFlagStatus)
+      0001CF 00 00r00r7B            851 	.dw	0,(XG$SPI_GetFlagStatus$0$0+1)
+      0001D3 01                     852 	.db	1
+      0001D4 00 00r00r14            853 	.dw	0,(Ldebug_loc_start+20)
+      0001D8 00 00 01 38            854 	.dw	0,312
+      0001DC 04                     855 	.uleb128	4
+      0001DD 02                     856 	.db	2
+      0001DE 91                     857 	.db	145
+      0001DF 02                     858 	.sleb128	2
+      0001E0 53 50 49 5F 46 4C 41   859 	.ascii "SPI_FLAG"
+             47
+      0001E8 00                     860 	.db	0
+      0001E9 00 00 01 38            861 	.dw	0,312
+      0001ED 05                     862 	.uleb128	5
+      0001EE 00 00r00r75            863 	.dw	0,(Sstm8s_spi$SPI_GetFlagStatus$55)
+      0001F2 00 00r00r77            864 	.dw	0,(Sstm8s_spi$SPI_GetFlagStatus$57)
+      0001F6 05                     865 	.uleb128	5
+      0001F7 00 00r00r79            866 	.dw	0,(Sstm8s_spi$SPI_GetFlagStatus$58)
+      0001FB 00 00r00r7A            867 	.dw	0,(Sstm8s_spi$SPI_GetFlagStatus$60)
+      0001FF 08                     868 	.uleb128	8
+      000200 01                     869 	.db	1
+      000201 50                     870 	.db	80
+      000202 73 74 61 74 75 73      871 	.ascii "status"
+      000208 00                     872 	.db	0
+      000209 00 00 01 38            873 	.dw	0,312
+      00020D 00                     874 	.uleb128	0
+      00020E 09                     875 	.uleb128	9
+      00020F 53 50 49 5F 43 6C 65   876 	.ascii "SPI_ClearFlag"
+             61 72 46 6C 61 67
+      00021C 00                     877 	.db	0
+      00021D 00 00r00r7B            878 	.dw	0,(_SPI_ClearFlag)
+      000221 00 00r00r82            879 	.dw	0,(XG$SPI_ClearFlag$0$0+1)
+      000225 01                     880 	.db	1
+      000226 00 00r00r00            881 	.dw	0,(Ldebug_loc_start)
+      00022A 04                     882 	.uleb128	4
+      00022B 02                     883 	.db	2
+      00022C 91                     884 	.db	145
+      00022D 02                     885 	.sleb128	2
+      00022E 53 50 49 5F 46 4C 41   886 	.ascii "SPI_FLAG"
+             47
+      000236 00                     887 	.db	0
+      000237 00 00 01 38            888 	.dw	0,312
+      00023B 00                     889 	.uleb128	0
+      00023C 00                     890 	.uleb128	0
+      00023D 00                     891 	.uleb128	0
+      00023E 00                     892 	.uleb128	0
+      00023F                        893 Ldebug_info_end:
+                                    894 
+                                    895 	.area .debug_pubnames (NOLOAD)
+      000000 00 00 00 6F            896 	.dw	0,Ldebug_pubnames_end-Ldebug_pubnames_start
+      000004                        897 Ldebug_pubnames_start:
+      000004 00 02                  898 	.dw	2
+      000006 00 00r00r00            899 	.dw	0,(Ldebug_info_start-4)
+      00000A 00 00 02 3F            900 	.dw	0,4+Ldebug_info_end-Ldebug_info_start
+      00000E 00 00 00 4A            901 	.dw	0,74
+      000012 53 50 49 5F 44 65 49   902 	.ascii "SPI_DeInit"
+             6E 69 74
+      00001C 00                     903 	.db	0
+      00001D 00 00 00 63            904 	.dw	0,99
+      000021 53 50 49 5F 49 6E 69   905 	.ascii "SPI_Init"
+             74
+      000029 00                     906 	.db	0
+      00002A 00 00 01 49            907 	.dw	0,329
+      00002E 53 50 49 5F 43 6D 64   908 	.ascii "SPI_Cmd"
+      000035 00                     909 	.db	0
+      000036 00 00 01 87            910 	.dw	0,391
+      00003A 53 50 49 5F 53 65 6E   911 	.ascii "SPI_SendData"
+             64 44 61 74 61
+      000046 00                     912 	.db	0
+      000047 00 00 01 B4            913 	.dw	0,436
+      00004B 53 50 49 5F 47 65 74   914 	.ascii "SPI_GetFlagStatus"
+             46 6C 61 67 53 74 61
+             74 75 73
+      00005C 00                     915 	.db	0
+      00005D 00 00 02 0E            916 	.dw	0,526
+      000061 53 50 49 5F 43 6C 65   917 	.ascii "SPI_ClearFlag"
+             61 72 46 6C 61 67
+      00006E 00                     918 	.db	0
+      00006F 00 00 00 00            919 	.dw	0,0
+      000073                        920 Ldebug_pubnames_end:
+                                    921 
+                                    922 	.area .debug_frame (NOLOAD)
+      000000 00 00                  923 	.dw	0
+      000002 00 0E                  924 	.dw	Ldebug_CIE0_end-Ldebug_CIE0_start
+      000004                        925 Ldebug_CIE0_start:
+      000004 FF FF                  926 	.dw	0xffff
+      000006 FF FF                  927 	.dw	0xffff
+      000008 01                     928 	.db	1
+      000009 00                     929 	.db	0
+      00000A 01                     930 	.uleb128	1
+      00000B 7F                     931 	.sleb128	-1
+      00000C 09                     932 	.db	9
+      00000D 0C                     933 	.db	12
+      00000E 08                     934 	.uleb128	8
+      00000F 02                     935 	.uleb128	2
+      000010 89                     936 	.db	137
+      000011 01                     937 	.uleb128	1
+      000012                        938 Ldebug_CIE0_end:
+      000012 00 00 00 13            939 	.dw	0,19
+      000016 00 00r00r00            940 	.dw	0,(Ldebug_CIE0_start-4)
+      00001A 00 00r00r7B            941 	.dw	0,(Sstm8s_spi$SPI_ClearFlag$66)	;initial loc
+      00001E 00 00 00 07            942 	.dw	0,Sstm8s_spi$SPI_ClearFlag$70-Sstm8s_spi$SPI_ClearFlag$66
+      000022 01                     943 	.db	1
+      000023 00 00r00r7B            944 	.dw	0,(Sstm8s_spi$SPI_ClearFlag$66)
+      000027 0E                     945 	.db	14
+      000028 02                     946 	.uleb128	2
+                                    947 
+                                    948 	.area .debug_frame (NOLOAD)
+      000029 00 00                  949 	.dw	0
+      00002B 00 0E                  950 	.dw	Ldebug_CIE1_end-Ldebug_CIE1_start
+      00002D                        951 Ldebug_CIE1_start:
+      00002D FF FF                  952 	.dw	0xffff
+      00002F FF FF                  953 	.dw	0xffff
+      000031 01                     954 	.db	1
+      000032 00                     955 	.db	0
+      000033 01                     956 	.uleb128	1
+      000034 7F                     957 	.sleb128	-1
+      000035 09                     958 	.db	9
+      000036 0C                     959 	.db	12
+      000037 08                     960 	.uleb128	8
+      000038 02                     961 	.uleb128	2
+      000039 89                     962 	.db	137
+      00003A 01                     963 	.uleb128	1
+      00003B                        964 Ldebug_CIE1_end:
+      00003B 00 00 00 13            965 	.dw	0,19
+      00003F 00 00r00r29            966 	.dw	0,(Ldebug_CIE1_start-4)
+      000043 00 00r00r6E            967 	.dw	0,(Sstm8s_spi$SPI_GetFlagStatus$53)	;initial loc
+      000047 00 00 00 0D            968 	.dw	0,Sstm8s_spi$SPI_GetFlagStatus$64-Sstm8s_spi$SPI_GetFlagStatus$53
+      00004B 01                     969 	.db	1
+      00004C 00 00r00r6E            970 	.dw	0,(Sstm8s_spi$SPI_GetFlagStatus$53)
+      000050 0E                     971 	.db	14
+      000051 02                     972 	.uleb128	2
+                                    973 
+                                    974 	.area .debug_frame (NOLOAD)
+      000052 00 00                  975 	.dw	0
+      000054 00 0E                  976 	.dw	Ldebug_CIE2_end-Ldebug_CIE2_start
+      000056                        977 Ldebug_CIE2_start:
+      000056 FF FF                  978 	.dw	0xffff
+      000058 FF FF                  979 	.dw	0xffff
+      00005A 01                     980 	.db	1
+      00005B 00                     981 	.db	0
+      00005C 01                     982 	.uleb128	1
+      00005D 7F                     983 	.sleb128	-1
+      00005E 09                     984 	.db	9
+      00005F 0C                     985 	.db	12
+      000060 08                     986 	.uleb128	8
+      000061 02                     987 	.uleb128	2
+      000062 89                     988 	.db	137
+      000063 01                     989 	.uleb128	1
+      000064                        990 Ldebug_CIE2_end:
+      000064 00 00 00 13            991 	.dw	0,19
+      000068 00 00r00r52            992 	.dw	0,(Ldebug_CIE2_start-4)
+      00006C 00 00r00r67            993 	.dw	0,(Sstm8s_spi$SPI_SendData$47)	;initial loc
+      000070 00 00 00 07            994 	.dw	0,Sstm8s_spi$SPI_SendData$51-Sstm8s_spi$SPI_SendData$47
+      000074 01                     995 	.db	1
+      000075 00 00r00r67            996 	.dw	0,(Sstm8s_spi$SPI_SendData$47)
+      000079 0E                     997 	.db	14
+      00007A 02                     998 	.uleb128	2
+                                    999 
+                                   1000 	.area .debug_frame (NOLOAD)
+      00007B 00 00                 1001 	.dw	0
+      00007D 00 0E                 1002 	.dw	Ldebug_CIE3_end-Ldebug_CIE3_start
+      00007F                       1003 Ldebug_CIE3_start:
+      00007F FF FF                 1004 	.dw	0xffff
+      000081 FF FF                 1005 	.dw	0xffff
+      000083 01                    1006 	.db	1
+      000084 00                    1007 	.db	0
+      000085 01                    1008 	.uleb128	1
+      000086 7F                    1009 	.sleb128	-1
+      000087 09                    1010 	.db	9
+      000088 0C                    1011 	.db	12
+      000089 08                    1012 	.uleb128	8
+      00008A 02                    1013 	.uleb128	2
+      00008B 89                    1014 	.db	137
+      00008C 01                    1015 	.uleb128	1
+      00008D                       1016 Ldebug_CIE3_end:
+      00008D 00 00 00 13           1017 	.dw	0,19
+      000091 00 00r00r7B           1018 	.dw	0,(Ldebug_CIE3_start-4)
+      000095 00 00r00r53           1019 	.dw	0,(Sstm8s_spi$SPI_Cmd$34)	;initial loc
+      000099 00 00 00 14           1020 	.dw	0,Sstm8s_spi$SPI_Cmd$45-Sstm8s_spi$SPI_Cmd$34
+      00009D 01                    1021 	.db	1
+      00009E 00 00r00r53           1022 	.dw	0,(Sstm8s_spi$SPI_Cmd$34)
+      0000A2 0E                    1023 	.db	14
+      0000A3 02                    1024 	.uleb128	2
+                                   1025 
+                                   1026 	.area .debug_frame (NOLOAD)
+      0000A4 00 00                 1027 	.dw	0
+      0000A6 00 0E                 1028 	.dw	Ldebug_CIE4_end-Ldebug_CIE4_start
+      0000A8                       1029 Ldebug_CIE4_start:
+      0000A8 FF FF                 1030 	.dw	0xffff
+      0000AA FF FF                 1031 	.dw	0xffff
+      0000AC 01                    1032 	.db	1
+      0000AD 00                    1033 	.db	0
+      0000AE 01                    1034 	.uleb128	1
+      0000AF 7F                    1035 	.sleb128	-1
+      0000B0 09                    1036 	.db	9
+      0000B1 0C                    1037 	.db	12
+      0000B2 08                    1038 	.uleb128	8
+      0000B3 02                    1039 	.uleb128	2
+      0000B4 89                    1040 	.db	137
+      0000B5 01                    1041 	.uleb128	1
+      0000B6                       1042 Ldebug_CIE4_end:
+      0000B6 00 00 00 36           1043 	.dw	0,54
+      0000BA 00 00r00rA4           1044 	.dw	0,(Ldebug_CIE4_start-4)
+      0000BE 00 00r00r15           1045 	.dw	0,(Sstm8s_spi$SPI_Init$11)	;initial loc
+      0000C2 00 00 00 3E           1046 	.dw	0,Sstm8s_spi$SPI_Init$32-Sstm8s_spi$SPI_Init$11
+      0000C6 01                    1047 	.db	1
+      0000C7 00 00r00r15           1048 	.dw	0,(Sstm8s_spi$SPI_Init$11)
+      0000CB 0E                    1049 	.db	14
+      0000CC 02                    1050 	.uleb128	2
+      0000CD 01                    1051 	.db	1
+      0000CE 00 00r00r16           1052 	.dw	0,(Sstm8s_spi$SPI_Init$12)
+      0000D2 0E                    1053 	.db	14
+      0000D3 03                    1054 	.uleb128	3
+      0000D4 01                    1055 	.db	1
+      0000D5 00 00r00r30           1056 	.dw	0,(Sstm8s_spi$SPI_Init$18)
+      0000D9 0E                    1057 	.db	14
+      0000DA 04                    1058 	.uleb128	4
+      0000DB 01                    1059 	.db	1
+      0000DC 00 00r00r35           1060 	.dw	0,(Sstm8s_spi$SPI_Init$19)
+      0000E0 0E                    1061 	.db	14
+      0000E1 03                    1062 	.uleb128	3
+      0000E2 01                    1063 	.db	1
+      0000E3 00 00r00r37           1064 	.dw	0,(Sstm8s_spi$SPI_Init$20)
+      0000E7 0E                    1065 	.db	14
+      0000E8 03                    1066 	.uleb128	3
+      0000E9 01                    1067 	.db	1
+      0000EA 00 00r00r52           1068 	.dw	0,(Sstm8s_spi$SPI_Init$30)
+      0000EE 0E                    1069 	.db	14
+      0000EF 02                    1070 	.uleb128	2
+                                   1071 
+                                   1072 	.area .debug_frame (NOLOAD)
+      0000F0 00 00                 1073 	.dw	0
+      0000F2 00 0E                 1074 	.dw	Ldebug_CIE5_end-Ldebug_CIE5_start
+      0000F4                       1075 Ldebug_CIE5_start:
+      0000F4 FF FF                 1076 	.dw	0xffff
+      0000F6 FF FF                 1077 	.dw	0xffff
+      0000F8 01                    1078 	.db	1
+      0000F9 00                    1079 	.db	0
+      0000FA 01                    1080 	.uleb128	1
+      0000FB 7F                    1081 	.sleb128	-1
+      0000FC 09                    1082 	.db	9
+      0000FD 0C                    1083 	.db	12
+      0000FE 08                    1084 	.uleb128	8
+      0000FF 02                    1085 	.uleb128	2
+      000100 89                    1086 	.db	137
+      000101 01                    1087 	.uleb128	1
+      000102                       1088 Ldebug_CIE5_end:
+      000102 00 00 00 13           1089 	.dw	0,19
+      000106 00 00r00rF0           1090 	.dw	0,(Ldebug_CIE5_start-4)
+      00010A 00 00r00r00           1091 	.dw	0,(Sstm8s_spi$SPI_DeInit$1)	;initial loc
+      00010E 00 00 00 15           1092 	.dw	0,Sstm8s_spi$SPI_DeInit$9-Sstm8s_spi$SPI_DeInit$1
+      000112 01                    1093 	.db	1
+      000113 00 00r00r00           1094 	.dw	0,(Sstm8s_spi$SPI_DeInit$1)
+      000117 0E                    1095 	.db	14
+      000118 02                    1096 	.uleb128	2

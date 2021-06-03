@@ -1,0 +1,173 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 1.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000001 L
+  9 A$stm8s_clkug/stm8s_clk$100                                    000032 GR
+  9 A$stm8s_clkug/stm8s_clk$105                                    000036 GR
+  9 A$stm8s_clkug/stm8s_clk$114                                    000037 GR
+  9 A$stm8s_clkug/stm8s_clk$118                                    000039 GR
+  9 A$stm8s_clkug/stm8s_clk$119                                    00003C GR
+  9 A$stm8s_clkug/stm8s_clk$122                                    00003E GR
+  9 A$stm8s_clkug/stm8s_clk$123                                    000040 GR
+  9 A$stm8s_clkug/stm8s_clk$124                                    000042 GR
+  9 A$stm8s_clkug/stm8s_clk$129                                    000044 GR
+  9 A$stm8s_clkug/stm8s_clk$130                                    000047 GR
+  9 A$stm8s_clkug/stm8s_clk$133                                    000049 GR
+  9 A$stm8s_clkug/stm8s_clk$134                                    00004A GR
+  9 A$stm8s_clkug/stm8s_clk$135                                    00004B GR
+  9 A$stm8s_clkug/stm8s_clk$138                                    00004C GR
+  9 A$stm8s_clkug/stm8s_clk$139                                    00004D GR
+  9 A$stm8s_clkug/stm8s_clk$140                                    00004E GR
+  9 A$stm8s_clkug/stm8s_clk$141                                    000051 GR
+  9 A$stm8s_clkug/stm8s_clk$144                                    000052 GR
+  9 A$stm8s_clkug/stm8s_clk$145                                    000053 GR
+  9 A$stm8s_clkug/stm8s_clk$146                                    000054 GR
+  9 A$stm8s_clkug/stm8s_clk$148                                    000056 GR
+  9 A$stm8s_clkug/stm8s_clk$150                                    000057 GR
+  9 A$stm8s_clkug/stm8s_clk$152                                    000059 GR
+  9 A$stm8s_clkug/stm8s_clk$154                                    00005B GR
+  9 A$stm8s_clkug/stm8s_clk$156                                    00005D GR
+  9 A$stm8s_clkug/stm8s_clk$158                                    00005F GR
+  9 A$stm8s_clkug/stm8s_clk$160                                    000061 GR
+  9 A$stm8s_clkug/stm8s_clk$161                                    000064 GR
+  9 A$stm8s_clkug/stm8s_clk$163                                    000066 GR
+  9 A$stm8s_clkug/stm8s_clk$164                                    000068 GR
+  9 A$stm8s_clkug/stm8s_clk$168                                    00006A GR
+  9 A$stm8s_clkug/stm8s_clk$169                                    00006C GR
+  9 A$stm8s_clkug/stm8s_clk$170                                    00006E GR
+  9 A$stm8s_clkug/stm8s_clk$175                                    000070 GR
+  9 A$stm8s_clkug/stm8s_clk$176                                    000073 GR
+  9 A$stm8s_clkug/stm8s_clk$177                                    000075 GR
+  9 A$stm8s_clkug/stm8s_clk$179                                    000079 GR
+  9 A$stm8s_clkug/stm8s_clk$184                                    00007B GR
+  9 A$stm8s_clkug/stm8s_clk$185                                    00007E GR
+  9 A$stm8s_clkug/stm8s_clk$186                                    000080 GR
+  9 A$stm8s_clkug/stm8s_clk$191                                    000084 GR
+  9 A$stm8s_clkug/stm8s_clk$194                                    000086 GR
+  9 A$stm8s_clkug/stm8s_clk$198                                    000088 GR
+  9 A$stm8s_clkug/stm8s_clk$61                                     000000 GR
+  9 A$stm8s_clkug/stm8s_clk$64                                     000004 GR
+  9 A$stm8s_clkug/stm8s_clk$67                                     000008 GR
+  9 A$stm8s_clkug/stm8s_clk$70                                     00000C GR
+  9 A$stm8s_clkug/stm8s_clk$73                                     000010 GR
+  9 A$stm8s_clkug/stm8s_clk$76                                     000014 GR
+  9 A$stm8s_clkug/stm8s_clk$79                                     000018 GR
+  9 A$stm8s_clkug/stm8s_clk$82                                     00001C GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 A$stm8s_clkug/stm8s_clk$85                                     000020 GR
+  9 A$stm8s_clkug/stm8s_clk$89                                     000024 GR
+  9 A$stm8s_clkug/stm8s_clk$90                                     000027 GR
+  9 A$stm8s_clkug/stm8s_clk$91                                     000028 GR
+  9 A$stm8s_clkug/stm8s_clk$94                                     00002A GR
+  9 A$stm8s_clkug/stm8s_clk$97                                     00002E GR
+  7 G$CLKPrescTable$0_0$0                                       =  000004 GR
+  7 G$HSIDivFactor$0_0$0                                        =  000000 GR
+ 10 Ldebug_CIE0_end                                                000012 R
+ 10 Ldebug_CIE0_start                                              000004 R
+ 10 Ldebug_CIE1_end                                                000088 R
+ 10 Ldebug_CIE1_start                                              00007A R
+  D Ldebug_abbrev                                                  000000 R
+  E Ldebug_info_end                                                00016C R
+  E Ldebug_info_start                                              000004 R
+  B Ldebug_line_end                                                000141 R
+  B Ldebug_line_start                                              000004 R
+  B Ldebug_line_stmt                                               000089 R
+  C Ldebug_loc_start                                               000000 R
+  F Ldebug_pubnames_end                                            000059 R
+  F Ldebug_pubnames_start                                          000004 R
+  9 Sstm8s_clk$CLK_DeInit$0                                     =  000000 GR
+  9 Sstm8s_clk$CLK_DeInit$1                                     =  000000 GR
+  9 Sstm8s_clk$CLK_DeInit$10                                    =  000020 GR
+  9 Sstm8s_clk$CLK_DeInit$11                                    =  000024 GR
+  9 Sstm8s_clk$CLK_DeInit$12                                    =  00002A GR
+  9 Sstm8s_clk$CLK_DeInit$13                                    =  00002E GR
+  9 Sstm8s_clk$CLK_DeInit$14                                    =  000032 GR
+  9 Sstm8s_clk$CLK_DeInit$15                                    =  000036 GR
+  9 Sstm8s_clk$CLK_DeInit$16                                    =  000036 GR
+  9 Sstm8s_clk$CLK_DeInit$17                                    =  000037 GR
+  9 Sstm8s_clk$CLK_DeInit$2                                     =  000000 GR
+  9 Sstm8s_clk$CLK_DeInit$3                                     =  000004 GR
+  9 Sstm8s_clk$CLK_DeInit$4                                     =  000008 GR
+  9 Sstm8s_clk$CLK_DeInit$5                                     =  00000C GR
+  9 Sstm8s_clk$CLK_DeInit$6                                     =  000010 GR
+  9 Sstm8s_clk$CLK_DeInit$7                                     =  000014 GR
+  9 Sstm8s_clk$CLK_DeInit$8                                     =  000018 GR
+  9 Sstm8s_clk$CLK_DeInit$9                                     =  00001C GR
+  9 Sstm8s_clk$CLK_GetClockFreq$18                              =  000037 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$19                              =  000037 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$20                              =  000039 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$21                              =  000039 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$22                              =  00003E GR
+  9 Sstm8s_clk$CLK_GetClockFreq$23                              =  000044 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$24                              =  000044 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$25                              =  000044 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$26                              =  000049 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$27                              =  00004C GR
+  9 Sstm8s_clk$CLK_GetClockFreq$28                              =  000052 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$29                              =  000056 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$30                              =  000057 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$31                              =  000059 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$32                              =  00005B GR
+  9 Sstm8s_clk$CLK_GetClockFreq$33                              =  00005D GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 3.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 Sstm8s_clk$CLK_GetClockFreq$34                              =  00005F GR
+  9 Sstm8s_clk$CLK_GetClockFreq$35                              =  000061 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$36                              =  000066 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$37                              =  00006A GR
+  9 Sstm8s_clk$CLK_GetClockFreq$38                              =  000070 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$39                              =  000070 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$40                              =  000070 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$41                              =  000079 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$42                              =  00007B GR
+  9 Sstm8s_clk$CLK_GetClockFreq$43                              =  00007B GR
+  9 Sstm8s_clk$CLK_GetClockFreq$44                              =  000084 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$45                              =  000084 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$46                              =  000086 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$47                              =  000088 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$48                              =  000088 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$49                              =  000089 GR
+  9 XG$CLK_DeInit$0$0                                           =  000036 GR
+  9 XG$CLK_GetClockFreq$0$0                                     =  000088 GR
+  7 _CLKPrescTable                                                 000004 GR
+  9 _CLK_DeInit                                                    000000 GR
+  9 _CLK_GetClockFreq                                              000037 GR
+  7 _HSIDivFactor                                                  000000 GR
+    __divulong                                                     ****** GX
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 4.
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size      0   flags    0
+   1 DATA                                       size      0   flags    0
+   2 INITIALIZED                                size      0   flags    0
+   3 DABS                                       size      0   flags    8
+   4 HOME                                       size      0   flags    0
+   5 GSINIT                                     size      0   flags    0
+   6 GSFINAL                                    size      0   flags    0
+   7 CONST                                      size      C   flags    0
+   8 INITIALIZER                                size      0   flags    0
+   9 CODE                                       size     89   flags    0
+   A CABS                                       size      0   flags    8
+   B .debug_line                                size    141   flags  100
+   C .debug_loc                                 size     AC   flags  100
+   D .debug_abbrev                              size     75   flags  100
+   E .debug_info                                size    16C   flags  100
+   F .debug_pubnames                            size     59   flags  100
+  10 .debug_frame                               size     9F   flags  100
+

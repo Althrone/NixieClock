@@ -1,0 +1,3022 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.0.0 #11528 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module stm8s_uart1
+                                      6 	.optsdcc -mstm8
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _CLK_GetClockFreq
+                                     12 	.globl _UART1_DeInit
+                                     13 	.globl _UART1_Init
+                                     14 	.globl _UART1_Cmd
+                                     15 	.globl _UART1_ITConfig
+                                     16 	.globl _UART1_ReceiveData8
+                                     17 	.globl _UART1_SendData8
+                                     18 	.globl _UART1_GetFlagStatus
+                                     19 	.globl _UART1_GetITStatus
+                                     20 	.globl _UART1_ClearITPendingBit
+                                     21 ;--------------------------------------------------------
+                                     22 ; ram data
+                                     23 ;--------------------------------------------------------
+                                     24 	.area DATA
+                                     25 ;--------------------------------------------------------
+                                     26 ; ram data
+                                     27 ;--------------------------------------------------------
+                                     28 	.area INITIALIZED
+                                     29 ;--------------------------------------------------------
+                                     30 ; absolute external ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area DABS (ABS)
+                                     33 
+                                     34 ; default segment ordering for linker
+                                     35 	.area HOME
+                                     36 	.area GSINIT
+                                     37 	.area GSFINAL
+                                     38 	.area CONST
+                                     39 	.area INITIALIZER
+                                     40 	.area CODE
+                                     41 
+                                     42 ;--------------------------------------------------------
+                                     43 ; global & static initialisations
+                                     44 ;--------------------------------------------------------
+                                     45 	.area HOME
+                                     46 	.area GSINIT
+                                     47 	.area GSFINAL
+                                     48 	.area GSINIT
+                                     49 ;--------------------------------------------------------
+                                     50 ; Home
+                                     51 ;--------------------------------------------------------
+                                     52 	.area HOME
+                                     53 	.area HOME
+                                     54 ;--------------------------------------------------------
+                                     55 ; code
+                                     56 ;--------------------------------------------------------
+                                     57 	.area CODE
+                           000000    58 	Sstm8s_uart1$UART1_DeInit$0 ==.
+                                     59 ;	Source/Std_Lib/Src/stm8s_uart1.c: 53: void UART1_DeInit(void)
+                                     60 ;	-----------------------------------------
+                                     61 ;	 function UART1_DeInit
+                                     62 ;	-----------------------------------------
+      000000                         63 _UART1_DeInit:
+                           000000    64 	Sstm8s_uart1$UART1_DeInit$1 ==.
+                           000000    65 	Sstm8s_uart1$UART1_DeInit$2 ==.
+                                     66 ;	Source/Std_Lib/Src/stm8s_uart1.c: 57: (void)UART1->SR;
+      000000 C6 52 30         [ 1]   67 	ld	a, 0x5230
+                           000003    68 	Sstm8s_uart1$UART1_DeInit$3 ==.
+                                     69 ;	Source/Std_Lib/Src/stm8s_uart1.c: 58: (void)UART1->DR;
+      000003 C6 52 31         [ 1]   70 	ld	a, 0x5231
+                           000006    71 	Sstm8s_uart1$UART1_DeInit$4 ==.
+                                     72 ;	Source/Std_Lib/Src/stm8s_uart1.c: 60: UART1->BRR2 = UART1_BRR2_RESET_VALUE;  /* Set UART1_BRR2 to reset value 0x00 */
+      000006 35 00 52 33      [ 1]   73 	mov	0x5233+0, #0x00
+                           00000A    74 	Sstm8s_uart1$UART1_DeInit$5 ==.
+                                     75 ;	Source/Std_Lib/Src/stm8s_uart1.c: 61: UART1->BRR1 = UART1_BRR1_RESET_VALUE;  /* Set UART1_BRR1 to reset value 0x00 */
+      00000A 35 00 52 32      [ 1]   76 	mov	0x5232+0, #0x00
+                           00000E    77 	Sstm8s_uart1$UART1_DeInit$6 ==.
+                                     78 ;	Source/Std_Lib/Src/stm8s_uart1.c: 63: UART1->CR1 = UART1_CR1_RESET_VALUE;  /* Set UART1_CR1 to reset value 0x00 */
+      00000E 35 00 52 34      [ 1]   79 	mov	0x5234+0, #0x00
+                           000012    80 	Sstm8s_uart1$UART1_DeInit$7 ==.
+                                     81 ;	Source/Std_Lib/Src/stm8s_uart1.c: 64: UART1->CR2 = UART1_CR2_RESET_VALUE;  /* Set UART1_CR2 to reset value 0x00 */
+      000012 35 00 52 35      [ 1]   82 	mov	0x5235+0, #0x00
+                           000016    83 	Sstm8s_uart1$UART1_DeInit$8 ==.
+                                     84 ;	Source/Std_Lib/Src/stm8s_uart1.c: 65: UART1->CR3 = UART1_CR3_RESET_VALUE;  /* Set UART1_CR3 to reset value 0x00 */
+      000016 35 00 52 36      [ 1]   85 	mov	0x5236+0, #0x00
+                           00001A    86 	Sstm8s_uart1$UART1_DeInit$9 ==.
+                                     87 ;	Source/Std_Lib/Src/stm8s_uart1.c: 66: UART1->CR4 = UART1_CR4_RESET_VALUE;  /* Set UART1_CR4 to reset value 0x00 */
+      00001A 35 00 52 37      [ 1]   88 	mov	0x5237+0, #0x00
+                           00001E    89 	Sstm8s_uart1$UART1_DeInit$10 ==.
+                                     90 ;	Source/Std_Lib/Src/stm8s_uart1.c: 67: UART1->CR5 = UART1_CR5_RESET_VALUE;  /* Set UART1_CR5 to reset value 0x00 */
+      00001E 35 00 52 38      [ 1]   91 	mov	0x5238+0, #0x00
+                           000022    92 	Sstm8s_uart1$UART1_DeInit$11 ==.
+                                     93 ;	Source/Std_Lib/Src/stm8s_uart1.c: 69: UART1->GTR = UART1_GTR_RESET_VALUE;
+      000022 35 00 52 39      [ 1]   94 	mov	0x5239+0, #0x00
+                           000026    95 	Sstm8s_uart1$UART1_DeInit$12 ==.
+                                     96 ;	Source/Std_Lib/Src/stm8s_uart1.c: 70: UART1->PSCR = UART1_PSCR_RESET_VALUE;
+      000026 35 00 52 3A      [ 1]   97 	mov	0x523a+0, #0x00
+                           00002A    98 	Sstm8s_uart1$UART1_DeInit$13 ==.
+                                     99 ;	Source/Std_Lib/Src/stm8s_uart1.c: 71: }
+                           00002A   100 	Sstm8s_uart1$UART1_DeInit$14 ==.
+                           00002A   101 	XG$UART1_DeInit$0$0 ==.
+      00002A 81               [ 4]  102 	ret
+                           00002B   103 	Sstm8s_uart1$UART1_DeInit$15 ==.
+                           00002B   104 	Sstm8s_uart1$UART1_Init$16 ==.
+                                    105 ;	Source/Std_Lib/Src/stm8s_uart1.c: 90: void UART1_Init(uint32_t BaudRate, UART1_WordLength_TypeDef WordLength, 
+                                    106 ;	-----------------------------------------
+                                    107 ;	 function UART1_Init
+                                    108 ;	-----------------------------------------
+      00002B                        109 _UART1_Init:
+                           00002B   110 	Sstm8s_uart1$UART1_Init$17 ==.
+      00002B 52 11            [ 2]  111 	sub	sp, #17
+                           00002D   112 	Sstm8s_uart1$UART1_Init$18 ==.
+                           00002D   113 	Sstm8s_uart1$UART1_Init$19 ==.
+                                    114 ;	Source/Std_Lib/Src/stm8s_uart1.c: 105: UART1->CR1 &= (uint8_t)(~UART1_CR1_M);  
+      00002D 72 19 52 34      [ 1]  115 	bres	21044, #4
+                           000031   116 	Sstm8s_uart1$UART1_Init$20 ==.
+                                    117 ;	Source/Std_Lib/Src/stm8s_uart1.c: 108: UART1->CR1 |= (uint8_t)WordLength;
+      000031 C6 52 34         [ 1]  118 	ld	a, 0x5234
+      000034 1A 18            [ 1]  119 	or	a, (0x18, sp)
+      000036 C7 52 34         [ 1]  120 	ld	0x5234, a
+                           000039   121 	Sstm8s_uart1$UART1_Init$21 ==.
+                                    122 ;	Source/Std_Lib/Src/stm8s_uart1.c: 111: UART1->CR3 &= (uint8_t)(~UART1_CR3_STOP);  
+      000039 C6 52 36         [ 1]  123 	ld	a, 0x5236
+      00003C A4 CF            [ 1]  124 	and	a, #0xcf
+      00003E C7 52 36         [ 1]  125 	ld	0x5236, a
+                           000041   126 	Sstm8s_uart1$UART1_Init$22 ==.
+                                    127 ;	Source/Std_Lib/Src/stm8s_uart1.c: 113: UART1->CR3 |= (uint8_t)StopBits;  
+      000041 C6 52 36         [ 1]  128 	ld	a, 0x5236
+      000044 1A 19            [ 1]  129 	or	a, (0x19, sp)
+      000046 C7 52 36         [ 1]  130 	ld	0x5236, a
+                           000049   131 	Sstm8s_uart1$UART1_Init$23 ==.
+                                    132 ;	Source/Std_Lib/Src/stm8s_uart1.c: 116: UART1->CR1 &= (uint8_t)(~(UART1_CR1_PCEN | UART1_CR1_PS  ));  
+      000049 C6 52 34         [ 1]  133 	ld	a, 0x5234
+      00004C A4 F9            [ 1]  134 	and	a, #0xf9
+      00004E C7 52 34         [ 1]  135 	ld	0x5234, a
+                           000051   136 	Sstm8s_uart1$UART1_Init$24 ==.
+                                    137 ;	Source/Std_Lib/Src/stm8s_uart1.c: 118: UART1->CR1 |= (uint8_t)Parity;  
+      000051 C6 52 34         [ 1]  138 	ld	a, 0x5234
+      000054 1A 1A            [ 1]  139 	or	a, (0x1a, sp)
+      000056 C7 52 34         [ 1]  140 	ld	0x5234, a
+                           000059   141 	Sstm8s_uart1$UART1_Init$25 ==.
+                                    142 ;	Source/Std_Lib/Src/stm8s_uart1.c: 121: UART1->BRR1 &= (uint8_t)(~UART1_BRR1_DIVM);  
+      000059 C6 52 32         [ 1]  143 	ld	a, 0x5232
+      00005C 35 00 52 32      [ 1]  144 	mov	0x5232+0, #0x00
+                           000060   145 	Sstm8s_uart1$UART1_Init$26 ==.
+                                    146 ;	Source/Std_Lib/Src/stm8s_uart1.c: 123: UART1->BRR2 &= (uint8_t)(~UART1_BRR2_DIVM);  
+      000060 C6 52 33         [ 1]  147 	ld	a, 0x5233
+      000063 A4 0F            [ 1]  148 	and	a, #0x0f
+      000065 C7 52 33         [ 1]  149 	ld	0x5233, a
+                           000068   150 	Sstm8s_uart1$UART1_Init$27 ==.
+                                    151 ;	Source/Std_Lib/Src/stm8s_uart1.c: 125: UART1->BRR2 &= (uint8_t)(~UART1_BRR2_DIVF);  
+      000068 C6 52 33         [ 1]  152 	ld	a, 0x5233
+      00006B A4 F0            [ 1]  153 	and	a, #0xf0
+      00006D C7 52 33         [ 1]  154 	ld	0x5233, a
+                           000070   155 	Sstm8s_uart1$UART1_Init$28 ==.
+                                    156 ;	Source/Std_Lib/Src/stm8s_uart1.c: 128: BaudRate_Mantissa    = ((uint32_t)CLK_GetClockFreq() / (BaudRate << 4));
+      000070 CDr00r00         [ 4]  157 	call	_CLK_GetClockFreq
+      000073 1F 10            [ 2]  158 	ldw	(0x10, sp), x
+      000075 1E 14            [ 2]  159 	ldw	x, (0x14, sp)
+      000077 1F 0A            [ 2]  160 	ldw	(0x0a, sp), x
+      000079 1E 16            [ 2]  161 	ldw	x, (0x16, sp)
+      00007B A6 04            [ 1]  162 	ld	a, #0x04
+      00007D                        163 00127$:
+      00007D 58               [ 2]  164 	sllw	x
+      00007E 09 0B            [ 1]  165 	rlc	(0x0b, sp)
+      000080 09 0A            [ 1]  166 	rlc	(0x0a, sp)
+      000082 4A               [ 1]  167 	dec	a
+      000083 26 F8            [ 1]  168 	jrne	00127$
+      000085 1F 0C            [ 2]  169 	ldw	(0x0c, sp), x
+      000087 89               [ 2]  170 	pushw	x
+                           000088   171 	Sstm8s_uart1$UART1_Init$29 ==.
+      000088 1E 0C            [ 2]  172 	ldw	x, (0x0c, sp)
+      00008A 89               [ 2]  173 	pushw	x
+                           00008B   174 	Sstm8s_uart1$UART1_Init$30 ==.
+      00008B 1E 14            [ 2]  175 	ldw	x, (0x14, sp)
+      00008D 89               [ 2]  176 	pushw	x
+                           00008E   177 	Sstm8s_uart1$UART1_Init$31 ==.
+      00008E 90 89            [ 2]  178 	pushw	y
+                           000090   179 	Sstm8s_uart1$UART1_Init$32 ==.
+      000090 CDr00r00         [ 4]  180 	call	__divulong
+      000093 5B 08            [ 2]  181 	addw	sp, #8
+                           000095   182 	Sstm8s_uart1$UART1_Init$33 ==.
+      000095 1F 10            [ 2]  183 	ldw	(0x10, sp), x
+      000097 17 0E            [ 2]  184 	ldw	(0x0e, sp), y
+      000099 16 10            [ 2]  185 	ldw	y, (0x10, sp)
+      00009B 17 03            [ 2]  186 	ldw	(0x03, sp), y
+      00009D 16 0E            [ 2]  187 	ldw	y, (0x0e, sp)
+      00009F 17 01            [ 2]  188 	ldw	(0x01, sp), y
+                           0000A1   189 	Sstm8s_uart1$UART1_Init$34 ==.
+                                    190 ;	Source/Std_Lib/Src/stm8s_uart1.c: 129: BaudRate_Mantissa100 = (((uint32_t)CLK_GetClockFreq() * 100) / (BaudRate << 4));
+      0000A1 CDr00r00         [ 4]  191 	call	_CLK_GetClockFreq
+      0000A4 1F 10            [ 2]  192 	ldw	(0x10, sp), x
+      0000A6 17 0E            [ 2]  193 	ldw	(0x0e, sp), y
+      0000A8 1E 10            [ 2]  194 	ldw	x, (0x10, sp)
+      0000AA 89               [ 2]  195 	pushw	x
+                           0000AB   196 	Sstm8s_uart1$UART1_Init$35 ==.
+      0000AB 1E 10            [ 2]  197 	ldw	x, (0x10, sp)
+      0000AD 89               [ 2]  198 	pushw	x
+                           0000AE   199 	Sstm8s_uart1$UART1_Init$36 ==.
+      0000AE 4B 64            [ 1]  200 	push	#0x64
+                           0000B0   201 	Sstm8s_uart1$UART1_Init$37 ==.
+      0000B0 5F               [ 1]  202 	clrw	x
+      0000B1 89               [ 2]  203 	pushw	x
+                           0000B2   204 	Sstm8s_uart1$UART1_Init$38 ==.
+      0000B2 4B 00            [ 1]  205 	push	#0x00
+                           0000B4   206 	Sstm8s_uart1$UART1_Init$39 ==.
+      0000B4 CDr00r00         [ 4]  207 	call	__mullong
+      0000B7 5B 08            [ 2]  208 	addw	sp, #8
+                           0000B9   209 	Sstm8s_uart1$UART1_Init$40 ==.
+      0000B9 1F 10            [ 2]  210 	ldw	(0x10, sp), x
+      0000BB 1E 0C            [ 2]  211 	ldw	x, (0x0c, sp)
+      0000BD 89               [ 2]  212 	pushw	x
+                           0000BE   213 	Sstm8s_uart1$UART1_Init$41 ==.
+      0000BE 1E 0C            [ 2]  214 	ldw	x, (0x0c, sp)
+      0000C0 89               [ 2]  215 	pushw	x
+                           0000C1   216 	Sstm8s_uart1$UART1_Init$42 ==.
+      0000C1 1E 14            [ 2]  217 	ldw	x, (0x14, sp)
+      0000C3 89               [ 2]  218 	pushw	x
+                           0000C4   219 	Sstm8s_uart1$UART1_Init$43 ==.
+      0000C4 90 89            [ 2]  220 	pushw	y
+                           0000C6   221 	Sstm8s_uart1$UART1_Init$44 ==.
+      0000C6 CDr00r00         [ 4]  222 	call	__divulong
+      0000C9 5B 08            [ 2]  223 	addw	sp, #8
+                           0000CB   224 	Sstm8s_uart1$UART1_Init$45 ==.
+      0000CB 1F 07            [ 2]  225 	ldw	(0x07, sp), x
+      0000CD 17 05            [ 2]  226 	ldw	(0x05, sp), y
+                           0000CF   227 	Sstm8s_uart1$UART1_Init$46 ==.
+                                    228 ;	Source/Std_Lib/Src/stm8s_uart1.c: 131: UART1->BRR2 |= (uint8_t)((uint8_t)(((BaudRate_Mantissa100 - (BaudRate_Mantissa * 100)) << 4) / 100) & (uint8_t)0x0F); 
+      0000CF C6 52 33         [ 1]  229 	ld	a, 0x5233
+      0000D2 6B 09            [ 1]  230 	ld	(0x09, sp), a
+      0000D4 1E 03            [ 2]  231 	ldw	x, (0x03, sp)
+      0000D6 89               [ 2]  232 	pushw	x
+                           0000D7   233 	Sstm8s_uart1$UART1_Init$47 ==.
+      0000D7 1E 03            [ 2]  234 	ldw	x, (0x03, sp)
+      0000D9 89               [ 2]  235 	pushw	x
+                           0000DA   236 	Sstm8s_uart1$UART1_Init$48 ==.
+      0000DA 4B 64            [ 1]  237 	push	#0x64
+                           0000DC   238 	Sstm8s_uart1$UART1_Init$49 ==.
+      0000DC 5F               [ 1]  239 	clrw	x
+      0000DD 89               [ 2]  240 	pushw	x
+                           0000DE   241 	Sstm8s_uart1$UART1_Init$50 ==.
+      0000DE 4B 00            [ 1]  242 	push	#0x00
+                           0000E0   243 	Sstm8s_uart1$UART1_Init$51 ==.
+      0000E0 CDr00r00         [ 4]  244 	call	__mullong
+      0000E3 5B 08            [ 2]  245 	addw	sp, #8
+                           0000E5   246 	Sstm8s_uart1$UART1_Init$52 ==.
+      0000E5 1F 0C            [ 2]  247 	ldw	(0x0c, sp), x
+      0000E7 17 0A            [ 2]  248 	ldw	(0x0a, sp), y
+      0000E9 1E 07            [ 2]  249 	ldw	x, (0x07, sp)
+      0000EB 72 F0 0C         [ 2]  250 	subw	x, (0x0c, sp)
+      0000EE 1F 10            [ 2]  251 	ldw	(0x10, sp), x
+      0000F0 7B 06            [ 1]  252 	ld	a, (0x06, sp)
+      0000F2 12 0B            [ 1]  253 	sbc	a, (0x0b, sp)
+      0000F4 6B 0F            [ 1]  254 	ld	(0x0f, sp), a
+      0000F6 7B 05            [ 1]  255 	ld	a, (0x05, sp)
+      0000F8 12 0A            [ 1]  256 	sbc	a, (0x0a, sp)
+      0000FA 6B 0E            [ 1]  257 	ld	(0x0e, sp), a
+      0000FC 1E 10            [ 2]  258 	ldw	x, (0x10, sp)
+      0000FE 16 0E            [ 2]  259 	ldw	y, (0x0e, sp)
+      000100 A6 04            [ 1]  260 	ld	a, #0x04
+      000102                        261 00129$:
+      000102 58               [ 2]  262 	sllw	x
+      000103 90 59            [ 2]  263 	rlcw	y
+      000105 4A               [ 1]  264 	dec	a
+      000106 26 FA            [ 1]  265 	jrne	00129$
+      000108 4B 64            [ 1]  266 	push	#0x64
+                           00010A   267 	Sstm8s_uart1$UART1_Init$53 ==.
+      00010A 4B 00            [ 1]  268 	push	#0x00
+                           00010C   269 	Sstm8s_uart1$UART1_Init$54 ==.
+      00010C 4B 00            [ 1]  270 	push	#0x00
+                           00010E   271 	Sstm8s_uart1$UART1_Init$55 ==.
+      00010E 4B 00            [ 1]  272 	push	#0x00
+                           000110   273 	Sstm8s_uart1$UART1_Init$56 ==.
+      000110 89               [ 2]  274 	pushw	x
+                           000111   275 	Sstm8s_uart1$UART1_Init$57 ==.
+      000111 90 89            [ 2]  276 	pushw	y
+                           000113   277 	Sstm8s_uart1$UART1_Init$58 ==.
+      000113 CDr00r00         [ 4]  278 	call	__divulong
+      000116 5B 08            [ 2]  279 	addw	sp, #8
+                           000118   280 	Sstm8s_uart1$UART1_Init$59 ==.
+      000118 9F               [ 1]  281 	ld	a, xl
+      000119 A4 0F            [ 1]  282 	and	a, #0x0f
+      00011B 1A 09            [ 1]  283 	or	a, (0x09, sp)
+      00011D C7 52 33         [ 1]  284 	ld	0x5233, a
+                           000120   285 	Sstm8s_uart1$UART1_Init$60 ==.
+                                    286 ;	Source/Std_Lib/Src/stm8s_uart1.c: 133: UART1->BRR2 |= (uint8_t)((BaudRate_Mantissa >> 4) & (uint8_t)0xF0); 
+      000120 C6 52 33         [ 1]  287 	ld	a, 0x5233
+      000123 6B 11            [ 1]  288 	ld	(0x11, sp), a
+      000125 1E 03            [ 2]  289 	ldw	x, (0x03, sp)
+      000127 A6 10            [ 1]  290 	ld	a, #0x10
+      000129 62               [ 2]  291 	div	x, a
+      00012A 9F               [ 1]  292 	ld	a, xl
+      00012B A4 F0            [ 1]  293 	and	a, #0xf0
+      00012D 1A 11            [ 1]  294 	or	a, (0x11, sp)
+      00012F C7 52 33         [ 1]  295 	ld	0x5233, a
+                           000132   296 	Sstm8s_uart1$UART1_Init$61 ==.
+                                    297 ;	Source/Std_Lib/Src/stm8s_uart1.c: 135: UART1->BRR1 |= (uint8_t)BaudRate_Mantissa;           
+      000132 C6 52 32         [ 1]  298 	ld	a, 0x5232
+      000135 6B 11            [ 1]  299 	ld	(0x11, sp), a
+      000137 7B 04            [ 1]  300 	ld	a, (0x04, sp)
+      000139 1A 11            [ 1]  301 	or	a, (0x11, sp)
+      00013B C7 52 32         [ 1]  302 	ld	0x5232, a
+                           00013E   303 	Sstm8s_uart1$UART1_Init$62 ==.
+                                    304 ;	Source/Std_Lib/Src/stm8s_uart1.c: 138: UART1->CR2 &= (uint8_t)~(UART1_CR2_TEN | UART1_CR2_REN); 
+      00013E C6 52 35         [ 1]  305 	ld	a, 0x5235
+      000141 A4 F3            [ 1]  306 	and	a, #0xf3
+      000143 C7 52 35         [ 1]  307 	ld	0x5235, a
+                           000146   308 	Sstm8s_uart1$UART1_Init$63 ==.
+                                    309 ;	Source/Std_Lib/Src/stm8s_uart1.c: 140: UART1->CR3 &= (uint8_t)~(UART1_CR3_CPOL | UART1_CR3_CPHA | UART1_CR3_LBCL); 
+      000146 C6 52 36         [ 1]  310 	ld	a, 0x5236
+      000149 A4 F8            [ 1]  311 	and	a, #0xf8
+      00014B C7 52 36         [ 1]  312 	ld	0x5236, a
+                           00014E   313 	Sstm8s_uart1$UART1_Init$64 ==.
+                                    314 ;	Source/Std_Lib/Src/stm8s_uart1.c: 142: UART1->CR3 |= (uint8_t)((uint8_t)SyncMode & (uint8_t)(UART1_CR3_CPOL | 
+      00014E C6 52 36         [ 1]  315 	ld	a, 0x5236
+      000151 6B 11            [ 1]  316 	ld	(0x11, sp), a
+      000153 7B 1B            [ 1]  317 	ld	a, (0x1b, sp)
+      000155 A4 07            [ 1]  318 	and	a, #0x07
+      000157 1A 11            [ 1]  319 	or	a, (0x11, sp)
+      000159 C7 52 36         [ 1]  320 	ld	0x5236, a
+                           00015C   321 	Sstm8s_uart1$UART1_Init$65 ==.
+                                    322 ;	Source/Std_Lib/Src/stm8s_uart1.c: 138: UART1->CR2 &= (uint8_t)~(UART1_CR2_TEN | UART1_CR2_REN); 
+      00015C C6 52 35         [ 1]  323 	ld	a, 0x5235
+                           00015F   324 	Sstm8s_uart1$UART1_Init$66 ==.
+                                    325 ;	Source/Std_Lib/Src/stm8s_uart1.c: 145: if ((uint8_t)(Mode & UART1_MODE_TX_ENABLE))
+      00015F 88               [ 1]  326 	push	a
+                           000160   327 	Sstm8s_uart1$UART1_Init$67 ==.
+      000160 7B 1D            [ 1]  328 	ld	a, (0x1d, sp)
+      000162 A5 04            [ 1]  329 	bcp	a, #0x04
+      000164 84               [ 1]  330 	pop	a
+                           000165   331 	Sstm8s_uart1$UART1_Init$68 ==.
+      000165 27 07            [ 1]  332 	jreq	00102$
+                           000167   333 	Sstm8s_uart1$UART1_Init$69 ==.
+                           000167   334 	Sstm8s_uart1$UART1_Init$70 ==.
+                                    335 ;	Source/Std_Lib/Src/stm8s_uart1.c: 148: UART1->CR2 |= (uint8_t)UART1_CR2_TEN;  
+      000167 AA 08            [ 1]  336 	or	a, #0x08
+      000169 C7 52 35         [ 1]  337 	ld	0x5235, a
+                           00016C   338 	Sstm8s_uart1$UART1_Init$71 ==.
+      00016C 20 05            [ 2]  339 	jra	00103$
+      00016E                        340 00102$:
+                           00016E   341 	Sstm8s_uart1$UART1_Init$72 ==.
+                           00016E   342 	Sstm8s_uart1$UART1_Init$73 ==.
+                                    343 ;	Source/Std_Lib/Src/stm8s_uart1.c: 153: UART1->CR2 &= (uint8_t)(~UART1_CR2_TEN);  
+      00016E A4 F7            [ 1]  344 	and	a, #0xf7
+      000170 C7 52 35         [ 1]  345 	ld	0x5235, a
+                           000173   346 	Sstm8s_uart1$UART1_Init$74 ==.
+      000173                        347 00103$:
+                           000173   348 	Sstm8s_uart1$UART1_Init$75 ==.
+                                    349 ;	Source/Std_Lib/Src/stm8s_uart1.c: 138: UART1->CR2 &= (uint8_t)~(UART1_CR2_TEN | UART1_CR2_REN); 
+      000173 C6 52 35         [ 1]  350 	ld	a, 0x5235
+                           000176   351 	Sstm8s_uart1$UART1_Init$76 ==.
+                                    352 ;	Source/Std_Lib/Src/stm8s_uart1.c: 155: if ((uint8_t)(Mode & UART1_MODE_RX_ENABLE))
+      000176 88               [ 1]  353 	push	a
+                           000177   354 	Sstm8s_uart1$UART1_Init$77 ==.
+      000177 7B 1D            [ 1]  355 	ld	a, (0x1d, sp)
+      000179 A5 08            [ 1]  356 	bcp	a, #0x08
+      00017B 84               [ 1]  357 	pop	a
+                           00017C   358 	Sstm8s_uart1$UART1_Init$78 ==.
+      00017C 27 07            [ 1]  359 	jreq	00105$
+                           00017E   360 	Sstm8s_uart1$UART1_Init$79 ==.
+                           00017E   361 	Sstm8s_uart1$UART1_Init$80 ==.
+                                    362 ;	Source/Std_Lib/Src/stm8s_uart1.c: 158: UART1->CR2 |= (uint8_t)UART1_CR2_REN;  
+      00017E AA 04            [ 1]  363 	or	a, #0x04
+      000180 C7 52 35         [ 1]  364 	ld	0x5235, a
+                           000183   365 	Sstm8s_uart1$UART1_Init$81 ==.
+      000183 20 05            [ 2]  366 	jra	00106$
+      000185                        367 00105$:
+                           000185   368 	Sstm8s_uart1$UART1_Init$82 ==.
+                           000185   369 	Sstm8s_uart1$UART1_Init$83 ==.
+                                    370 ;	Source/Std_Lib/Src/stm8s_uart1.c: 163: UART1->CR2 &= (uint8_t)(~UART1_CR2_REN);  
+      000185 A4 FB            [ 1]  371 	and	a, #0xfb
+      000187 C7 52 35         [ 1]  372 	ld	0x5235, a
+                           00018A   373 	Sstm8s_uart1$UART1_Init$84 ==.
+      00018A                        374 00106$:
+                           00018A   375 	Sstm8s_uart1$UART1_Init$85 ==.
+                                    376 ;	Source/Std_Lib/Src/stm8s_uart1.c: 111: UART1->CR3 &= (uint8_t)(~UART1_CR3_STOP);  
+      00018A C6 52 36         [ 1]  377 	ld	a, 0x5236
+                           00018D   378 	Sstm8s_uart1$UART1_Init$86 ==.
+                                    379 ;	Source/Std_Lib/Src/stm8s_uart1.c: 167: if ((uint8_t)(SyncMode & UART1_SYNCMODE_CLOCK_DISABLE))
+      00018D 0D 1B            [ 1]  380 	tnz	(0x1b, sp)
+      00018F 2A 07            [ 1]  381 	jrpl	00108$
+                           000191   382 	Sstm8s_uart1$UART1_Init$87 ==.
+                           000191   383 	Sstm8s_uart1$UART1_Init$88 ==.
+                                    384 ;	Source/Std_Lib/Src/stm8s_uart1.c: 170: UART1->CR3 &= (uint8_t)(~UART1_CR3_CKEN); 
+      000191 A4 F7            [ 1]  385 	and	a, #0xf7
+      000193 C7 52 36         [ 1]  386 	ld	0x5236, a
+                           000196   387 	Sstm8s_uart1$UART1_Init$89 ==.
+      000196 20 0D            [ 2]  388 	jra	00110$
+      000198                        389 00108$:
+                           000198   390 	Sstm8s_uart1$UART1_Init$90 ==.
+                           000198   391 	Sstm8s_uart1$UART1_Init$91 ==.
+                                    392 ;	Source/Std_Lib/Src/stm8s_uart1.c: 174: UART1->CR3 |= (uint8_t)((uint8_t)SyncMode & UART1_CR3_CKEN);
+      000198 88               [ 1]  393 	push	a
+                           000199   394 	Sstm8s_uart1$UART1_Init$92 ==.
+      000199 7B 1C            [ 1]  395 	ld	a, (0x1c, sp)
+      00019B A4 08            [ 1]  396 	and	a, #0x08
+      00019D 6B 12            [ 1]  397 	ld	(0x12, sp), a
+      00019F 84               [ 1]  398 	pop	a
+                           0001A0   399 	Sstm8s_uart1$UART1_Init$93 ==.
+      0001A0 1A 11            [ 1]  400 	or	a, (0x11, sp)
+      0001A2 C7 52 36         [ 1]  401 	ld	0x5236, a
+                           0001A5   402 	Sstm8s_uart1$UART1_Init$94 ==.
+      0001A5                        403 00110$:
+                           0001A5   404 	Sstm8s_uart1$UART1_Init$95 ==.
+                                    405 ;	Source/Std_Lib/Src/stm8s_uart1.c: 176: }
+      0001A5 5B 11            [ 2]  406 	addw	sp, #17
+                           0001A7   407 	Sstm8s_uart1$UART1_Init$96 ==.
+                           0001A7   408 	Sstm8s_uart1$UART1_Init$97 ==.
+                           0001A7   409 	XG$UART1_Init$0$0 ==.
+      0001A7 81               [ 4]  410 	ret
+                           0001A8   411 	Sstm8s_uart1$UART1_Init$98 ==.
+                           0001A8   412 	Sstm8s_uart1$UART1_Cmd$99 ==.
+                                    413 ;	Source/Std_Lib/Src/stm8s_uart1.c: 184: void UART1_Cmd(FunctionalState NewState)
+                                    414 ;	-----------------------------------------
+                                    415 ;	 function UART1_Cmd
+                                    416 ;	-----------------------------------------
+      0001A8                        417 _UART1_Cmd:
+                           0001A8   418 	Sstm8s_uart1$UART1_Cmd$100 ==.
+                           0001A8   419 	Sstm8s_uart1$UART1_Cmd$101 ==.
+                                    420 ;	Source/Std_Lib/Src/stm8s_uart1.c: 189: UART1->CR1 &= (uint8_t)(~UART1_CR1_UARTD); 
+      0001A8 C6 52 34         [ 1]  421 	ld	a, 0x5234
+                           0001AB   422 	Sstm8s_uart1$UART1_Cmd$102 ==.
+                                    423 ;	Source/Std_Lib/Src/stm8s_uart1.c: 186: if (NewState != DISABLE)
+      0001AB 0D 03            [ 1]  424 	tnz	(0x03, sp)
+      0001AD 27 07            [ 1]  425 	jreq	00102$
+                           0001AF   426 	Sstm8s_uart1$UART1_Cmd$103 ==.
+                           0001AF   427 	Sstm8s_uart1$UART1_Cmd$104 ==.
+                                    428 ;	Source/Std_Lib/Src/stm8s_uart1.c: 189: UART1->CR1 &= (uint8_t)(~UART1_CR1_UARTD); 
+      0001AF A4 DF            [ 1]  429 	and	a, #0xdf
+      0001B1 C7 52 34         [ 1]  430 	ld	0x5234, a
+                           0001B4   431 	Sstm8s_uart1$UART1_Cmd$105 ==.
+      0001B4 20 05            [ 2]  432 	jra	00104$
+      0001B6                        433 00102$:
+                           0001B6   434 	Sstm8s_uart1$UART1_Cmd$106 ==.
+                           0001B6   435 	Sstm8s_uart1$UART1_Cmd$107 ==.
+                                    436 ;	Source/Std_Lib/Src/stm8s_uart1.c: 194: UART1->CR1 |= UART1_CR1_UARTD;  
+      0001B6 AA 20            [ 1]  437 	or	a, #0x20
+      0001B8 C7 52 34         [ 1]  438 	ld	0x5234, a
+                           0001BB   439 	Sstm8s_uart1$UART1_Cmd$108 ==.
+      0001BB                        440 00104$:
+                           0001BB   441 	Sstm8s_uart1$UART1_Cmd$109 ==.
+                                    442 ;	Source/Std_Lib/Src/stm8s_uart1.c: 196: }
+                           0001BB   443 	Sstm8s_uart1$UART1_Cmd$110 ==.
+                           0001BB   444 	XG$UART1_Cmd$0$0 ==.
+      0001BB 81               [ 4]  445 	ret
+                           0001BC   446 	Sstm8s_uart1$UART1_Cmd$111 ==.
+                           0001BC   447 	Sstm8s_uart1$UART1_ITConfig$112 ==.
+                                    448 ;	Source/Std_Lib/Src/stm8s_uart1.c: 211: void UART1_ITConfig(UART1_IT_TypeDef UART1_IT, FunctionalState NewState)
+                                    449 ;	-----------------------------------------
+                                    450 ;	 function UART1_ITConfig
+                                    451 ;	-----------------------------------------
+      0001BC                        452 _UART1_ITConfig:
+                           0001BC   453 	Sstm8s_uart1$UART1_ITConfig$113 ==.
+      0001BC 89               [ 2]  454 	pushw	x
+                           0001BD   455 	Sstm8s_uart1$UART1_ITConfig$114 ==.
+                           0001BD   456 	Sstm8s_uart1$UART1_ITConfig$115 ==.
+                                    457 ;	Source/Std_Lib/Src/stm8s_uart1.c: 220: uartreg = (uint8_t)((uint16_t)UART1_IT >> 0x08);
+      0001BD 1E 05            [ 2]  458 	ldw	x, (0x05, sp)
+                           0001BF   459 	Sstm8s_uart1$UART1_ITConfig$116 ==.
+                                    460 ;	Source/Std_Lib/Src/stm8s_uart1.c: 222: itpos = (uint8_t)((uint8_t)1 << (uint8_t)((uint8_t)UART1_IT & (uint8_t)0x0F));
+      0001BF 7B 06            [ 1]  461 	ld	a, (0x06, sp)
+      0001C1 A4 0F            [ 1]  462 	and	a, #0x0f
+      0001C3 88               [ 1]  463 	push	a
+                           0001C4   464 	Sstm8s_uart1$UART1_ITConfig$117 ==.
+      0001C4 A6 01            [ 1]  465 	ld	a, #0x01
+      0001C6 6B 03            [ 1]  466 	ld	(0x03, sp), a
+      0001C8 84               [ 1]  467 	pop	a
+                           0001C9   468 	Sstm8s_uart1$UART1_ITConfig$118 ==.
+      0001C9 4D               [ 1]  469 	tnz	a
+      0001CA 27 05            [ 1]  470 	jreq	00144$
+      0001CC                        471 00143$:
+      0001CC 08 02            [ 1]  472 	sll	(0x02, sp)
+      0001CE 4A               [ 1]  473 	dec	a
+      0001CF 26 FB            [ 1]  474 	jrne	00143$
+      0001D1                        475 00144$:
+                           0001D1   476 	Sstm8s_uart1$UART1_ITConfig$119 ==.
+                                    477 ;	Source/Std_Lib/Src/stm8s_uart1.c: 227: if (uartreg == 0x01)
+      0001D1 9E               [ 1]  478 	ld	a, xh
+      0001D2 4A               [ 1]  479 	dec	a
+      0001D3 26 05            [ 1]  480 	jrne	00146$
+      0001D5 A6 01            [ 1]  481 	ld	a, #0x01
+      0001D7 6B 01            [ 1]  482 	ld	(0x01, sp), a
+      0001D9 C5                     483 	.byte 0xc5
+      0001DA                        484 00146$:
+      0001DA 0F 01            [ 1]  485 	clr	(0x01, sp)
+      0001DC                        486 00147$:
+                           0001DC   487 	Sstm8s_uart1$UART1_ITConfig$120 ==.
+                           0001DC   488 	Sstm8s_uart1$UART1_ITConfig$121 ==.
+                                    489 ;	Source/Std_Lib/Src/stm8s_uart1.c: 231: else if (uartreg == 0x02)
+      0001DC 9E               [ 1]  490 	ld	a, xh
+      0001DD A0 02            [ 1]  491 	sub	a, #0x02
+      0001DF 26 02            [ 1]  492 	jrne	00149$
+      0001E1 4C               [ 1]  493 	inc	a
+      0001E2 21                     494 	.byte 0x21
+      0001E3                        495 00149$:
+      0001E3 4F               [ 1]  496 	clr	a
+      0001E4                        497 00150$:
+                           0001E4   498 	Sstm8s_uart1$UART1_ITConfig$122 ==.
+                           0001E4   499 	Sstm8s_uart1$UART1_ITConfig$123 ==.
+                                    500 ;	Source/Std_Lib/Src/stm8s_uart1.c: 224: if (NewState != DISABLE)
+      0001E4 0D 07            [ 1]  501 	tnz	(0x07, sp)
+      0001E6 27 27            [ 1]  502 	jreq	00114$
+                           0001E8   503 	Sstm8s_uart1$UART1_ITConfig$124 ==.
+                           0001E8   504 	Sstm8s_uart1$UART1_ITConfig$125 ==.
+                                    505 ;	Source/Std_Lib/Src/stm8s_uart1.c: 227: if (uartreg == 0x01)
+      0001E8 0D 01            [ 1]  506 	tnz	(0x01, sp)
+      0001EA 27 0B            [ 1]  507 	jreq	00105$
+                           0001EC   508 	Sstm8s_uart1$UART1_ITConfig$126 ==.
+                           0001EC   509 	Sstm8s_uart1$UART1_ITConfig$127 ==.
+                                    510 ;	Source/Std_Lib/Src/stm8s_uart1.c: 229: UART1->CR1 |= itpos;
+      0001EC C6 52 34         [ 1]  511 	ld	a, 0x5234
+      0001EF 1A 02            [ 1]  512 	or	a, (0x02, sp)
+      0001F1 C7 52 34         [ 1]  513 	ld	0x5234, a
+                           0001F4   514 	Sstm8s_uart1$UART1_ITConfig$128 ==.
+      0001F4 CCr02r34         [ 2]  515 	jp	00116$
+      0001F7                        516 00105$:
+                           0001F7   517 	Sstm8s_uart1$UART1_ITConfig$129 ==.
+                                    518 ;	Source/Std_Lib/Src/stm8s_uart1.c: 231: else if (uartreg == 0x02)
+      0001F7 4D               [ 1]  519 	tnz	a
+      0001F8 27 0B            [ 1]  520 	jreq	00102$
+                           0001FA   521 	Sstm8s_uart1$UART1_ITConfig$130 ==.
+                           0001FA   522 	Sstm8s_uart1$UART1_ITConfig$131 ==.
+                                    523 ;	Source/Std_Lib/Src/stm8s_uart1.c: 233: UART1->CR2 |= itpos;
+      0001FA C6 52 35         [ 1]  524 	ld	a, 0x5235
+      0001FD 1A 02            [ 1]  525 	or	a, (0x02, sp)
+      0001FF C7 52 35         [ 1]  526 	ld	0x5235, a
+                           000202   527 	Sstm8s_uart1$UART1_ITConfig$132 ==.
+      000202 CCr02r34         [ 2]  528 	jp	00116$
+      000205                        529 00102$:
+                           000205   530 	Sstm8s_uart1$UART1_ITConfig$133 ==.
+                           000205   531 	Sstm8s_uart1$UART1_ITConfig$134 ==.
+                                    532 ;	Source/Std_Lib/Src/stm8s_uart1.c: 237: UART1->CR4 |= itpos;
+      000205 C6 52 37         [ 1]  533 	ld	a, 0x5237
+      000208 1A 02            [ 1]  534 	or	a, (0x02, sp)
+      00020A C7 52 37         [ 1]  535 	ld	0x5237, a
+                           00020D   536 	Sstm8s_uart1$UART1_ITConfig$135 ==.
+      00020D 20 25            [ 2]  537 	jra	00116$
+      00020F                        538 00114$:
+                           00020F   539 	Sstm8s_uart1$UART1_ITConfig$136 ==.
+                                    540 ;	Source/Std_Lib/Src/stm8s_uart1.c: 245: UART1->CR1 &= (uint8_t)(~itpos);
+      00020F 03 02            [ 1]  541 	cpl	(0x02, sp)
+                           000211   542 	Sstm8s_uart1$UART1_ITConfig$137 ==.
+                           000211   543 	Sstm8s_uart1$UART1_ITConfig$138 ==.
+                                    544 ;	Source/Std_Lib/Src/stm8s_uart1.c: 243: if (uartreg == 0x01)
+      000211 0D 01            [ 1]  545 	tnz	(0x01, sp)
+      000213 27 0A            [ 1]  546 	jreq	00111$
+                           000215   547 	Sstm8s_uart1$UART1_ITConfig$139 ==.
+                           000215   548 	Sstm8s_uart1$UART1_ITConfig$140 ==.
+                                    549 ;	Source/Std_Lib/Src/stm8s_uart1.c: 245: UART1->CR1 &= (uint8_t)(~itpos);
+      000215 C6 52 34         [ 1]  550 	ld	a, 0x5234
+      000218 14 02            [ 1]  551 	and	a, (0x02, sp)
+      00021A C7 52 34         [ 1]  552 	ld	0x5234, a
+                           00021D   553 	Sstm8s_uart1$UART1_ITConfig$141 ==.
+      00021D 20 15            [ 2]  554 	jra	00116$
+      00021F                        555 00111$:
+                           00021F   556 	Sstm8s_uart1$UART1_ITConfig$142 ==.
+                                    557 ;	Source/Std_Lib/Src/stm8s_uart1.c: 247: else if (uartreg == 0x02)
+      00021F 4D               [ 1]  558 	tnz	a
+      000220 27 0A            [ 1]  559 	jreq	00108$
+                           000222   560 	Sstm8s_uart1$UART1_ITConfig$143 ==.
+                           000222   561 	Sstm8s_uart1$UART1_ITConfig$144 ==.
+                                    562 ;	Source/Std_Lib/Src/stm8s_uart1.c: 249: UART1->CR2 &= (uint8_t)(~itpos);
+      000222 C6 52 35         [ 1]  563 	ld	a, 0x5235
+      000225 14 02            [ 1]  564 	and	a, (0x02, sp)
+      000227 C7 52 35         [ 1]  565 	ld	0x5235, a
+                           00022A   566 	Sstm8s_uart1$UART1_ITConfig$145 ==.
+      00022A 20 08            [ 2]  567 	jra	00116$
+      00022C                        568 00108$:
+                           00022C   569 	Sstm8s_uart1$UART1_ITConfig$146 ==.
+                           00022C   570 	Sstm8s_uart1$UART1_ITConfig$147 ==.
+                                    571 ;	Source/Std_Lib/Src/stm8s_uart1.c: 253: UART1->CR4 &= (uint8_t)(~itpos);
+      00022C C6 52 37         [ 1]  572 	ld	a, 0x5237
+      00022F 14 02            [ 1]  573 	and	a, (0x02, sp)
+      000231 C7 52 37         [ 1]  574 	ld	0x5237, a
+                           000234   575 	Sstm8s_uart1$UART1_ITConfig$148 ==.
+      000234                        576 00116$:
+                           000234   577 	Sstm8s_uart1$UART1_ITConfig$149 ==.
+                                    578 ;	Source/Std_Lib/Src/stm8s_uart1.c: 257: }
+      000234 85               [ 2]  579 	popw	x
+                           000235   580 	Sstm8s_uart1$UART1_ITConfig$150 ==.
+                           000235   581 	Sstm8s_uart1$UART1_ITConfig$151 ==.
+                           000235   582 	XG$UART1_ITConfig$0$0 ==.
+      000235 81               [ 4]  583 	ret
+                           000236   584 	Sstm8s_uart1$UART1_ITConfig$152 ==.
+                           000236   585 	Sstm8s_uart1$UART1_ReceiveData8$153 ==.
+                                    586 ;	Source/Std_Lib/Src/stm8s_uart1.c: 451: uint8_t UART1_ReceiveData8(void)
+                                    587 ;	-----------------------------------------
+                                    588 ;	 function UART1_ReceiveData8
+                                    589 ;	-----------------------------------------
+      000236                        590 _UART1_ReceiveData8:
+                           000236   591 	Sstm8s_uart1$UART1_ReceiveData8$154 ==.
+                           000236   592 	Sstm8s_uart1$UART1_ReceiveData8$155 ==.
+                                    593 ;	Source/Std_Lib/Src/stm8s_uart1.c: 453: return ((uint8_t)UART1->DR);
+      000236 C6 52 31         [ 1]  594 	ld	a, 0x5231
+                           000239   595 	Sstm8s_uart1$UART1_ReceiveData8$156 ==.
+                                    596 ;	Source/Std_Lib/Src/stm8s_uart1.c: 454: }
+                           000239   597 	Sstm8s_uart1$UART1_ReceiveData8$157 ==.
+                           000239   598 	XG$UART1_ReceiveData8$0$0 ==.
+      000239 81               [ 4]  599 	ret
+                           00023A   600 	Sstm8s_uart1$UART1_ReceiveData8$158 ==.
+                           00023A   601 	Sstm8s_uart1$UART1_SendData8$159 ==.
+                                    602 ;	Source/Std_Lib/Src/stm8s_uart1.c: 474: void UART1_SendData8(uint8_t Data)
+                                    603 ;	-----------------------------------------
+                                    604 ;	 function UART1_SendData8
+                                    605 ;	-----------------------------------------
+      00023A                        606 _UART1_SendData8:
+                           00023A   607 	Sstm8s_uart1$UART1_SendData8$160 ==.
+                           00023A   608 	Sstm8s_uart1$UART1_SendData8$161 ==.
+                                    609 ;	Source/Std_Lib/Src/stm8s_uart1.c: 477: UART1->DR = Data;
+      00023A AE 52 31         [ 2]  610 	ldw	x, #0x5231
+      00023D 7B 03            [ 1]  611 	ld	a, (0x03, sp)
+      00023F F7               [ 1]  612 	ld	(x), a
+                           000240   613 	Sstm8s_uart1$UART1_SendData8$162 ==.
+                                    614 ;	Source/Std_Lib/Src/stm8s_uart1.c: 478: }
+                           000240   615 	Sstm8s_uart1$UART1_SendData8$163 ==.
+                           000240   616 	XG$UART1_SendData8$0$0 ==.
+      000240 81               [ 4]  617 	ret
+                           000241   618 	Sstm8s_uart1$UART1_SendData8$164 ==.
+                           000241   619 	Sstm8s_uart1$UART1_GetFlagStatus$165 ==.
+                                    620 ;	Source/Std_Lib/Src/stm8s_uart1.c: 568: FlagStatus UART1_GetFlagStatus(UART1_Flag_TypeDef UART1_FLAG)
+                                    621 ;	-----------------------------------------
+                                    622 ;	 function UART1_GetFlagStatus
+                                    623 ;	-----------------------------------------
+      000241                        624 _UART1_GetFlagStatus:
+                           000241   625 	Sstm8s_uart1$UART1_GetFlagStatus$166 ==.
+      000241 52 03            [ 2]  626 	sub	sp, #3
+                           000243   627 	Sstm8s_uart1$UART1_GetFlagStatus$167 ==.
+                           000243   628 	Sstm8s_uart1$UART1_GetFlagStatus$168 ==.
+                                    629 ;	Source/Std_Lib/Src/stm8s_uart1.c: 577: if (UART1_FLAG == UART1_FLAG_LBDF)
+      000243 16 06            [ 2]  630 	ldw	y, (0x06, sp)
+      000245 17 01            [ 2]  631 	ldw	(0x01, sp), y
+                           000247   632 	Sstm8s_uart1$UART1_GetFlagStatus$169 ==.
+                                    633 ;	Source/Std_Lib/Src/stm8s_uart1.c: 579: if ((UART1->CR4 & (uint8_t)UART1_FLAG) != (uint8_t)0x00)
+      000247 7B 07            [ 1]  634 	ld	a, (0x07, sp)
+      000249 6B 03            [ 1]  635 	ld	(0x03, sp), a
+                           00024B   636 	Sstm8s_uart1$UART1_GetFlagStatus$170 ==.
+                                    637 ;	Source/Std_Lib/Src/stm8s_uart1.c: 577: if (UART1_FLAG == UART1_FLAG_LBDF)
+      00024B 1E 01            [ 2]  638 	ldw	x, (0x01, sp)
+      00024D A3 02 10         [ 2]  639 	cpw	x, #0x0210
+      000250 26 0F            [ 1]  640 	jrne	00114$
+                           000252   641 	Sstm8s_uart1$UART1_GetFlagStatus$171 ==.
+                           000252   642 	Sstm8s_uart1$UART1_GetFlagStatus$172 ==.
+                           000252   643 	Sstm8s_uart1$UART1_GetFlagStatus$173 ==.
+                                    644 ;	Source/Std_Lib/Src/stm8s_uart1.c: 579: if ((UART1->CR4 & (uint8_t)UART1_FLAG) != (uint8_t)0x00)
+      000252 C6 52 37         [ 1]  645 	ld	a, 0x5237
+      000255 14 03            [ 1]  646 	and	a, (0x03, sp)
+      000257 27 05            [ 1]  647 	jreq	00102$
+                           000259   648 	Sstm8s_uart1$UART1_GetFlagStatus$174 ==.
+                           000259   649 	Sstm8s_uart1$UART1_GetFlagStatus$175 ==.
+                                    650 ;	Source/Std_Lib/Src/stm8s_uart1.c: 582: status = SET;
+      000259 A6 01            [ 1]  651 	ld	a, #0x01
+                           00025B   652 	Sstm8s_uart1$UART1_GetFlagStatus$176 ==.
+      00025B CCr02r82         [ 2]  653 	jp	00115$
+      00025E                        654 00102$:
+                           00025E   655 	Sstm8s_uart1$UART1_GetFlagStatus$177 ==.
+                           00025E   656 	Sstm8s_uart1$UART1_GetFlagStatus$178 ==.
+                                    657 ;	Source/Std_Lib/Src/stm8s_uart1.c: 587: status = RESET;
+      00025E 4F               [ 1]  658 	clr	a
+                           00025F   659 	Sstm8s_uart1$UART1_GetFlagStatus$179 ==.
+      00025F 20 21            [ 2]  660 	jra	00115$
+      000261                        661 00114$:
+                           000261   662 	Sstm8s_uart1$UART1_GetFlagStatus$180 ==.
+                                    663 ;	Source/Std_Lib/Src/stm8s_uart1.c: 590: else if (UART1_FLAG == UART1_FLAG_SBK)
+      000261 1E 01            [ 2]  664 	ldw	x, (0x01, sp)
+      000263 A3 01 01         [ 2]  665 	cpw	x, #0x0101
+      000266 26 0E            [ 1]  666 	jrne	00111$
+                           000268   667 	Sstm8s_uart1$UART1_GetFlagStatus$181 ==.
+                           000268   668 	Sstm8s_uart1$UART1_GetFlagStatus$182 ==.
+                           000268   669 	Sstm8s_uart1$UART1_GetFlagStatus$183 ==.
+                                    670 ;	Source/Std_Lib/Src/stm8s_uart1.c: 592: if ((UART1->CR2 & (uint8_t)UART1_FLAG) != (uint8_t)0x00)
+      000268 C6 52 35         [ 1]  671 	ld	a, 0x5235
+      00026B 14 03            [ 1]  672 	and	a, (0x03, sp)
+      00026D 27 04            [ 1]  673 	jreq	00105$
+                           00026F   674 	Sstm8s_uart1$UART1_GetFlagStatus$184 ==.
+                           00026F   675 	Sstm8s_uart1$UART1_GetFlagStatus$185 ==.
+                                    676 ;	Source/Std_Lib/Src/stm8s_uart1.c: 595: status = SET;
+      00026F A6 01            [ 1]  677 	ld	a, #0x01
+                           000271   678 	Sstm8s_uart1$UART1_GetFlagStatus$186 ==.
+      000271 20 0F            [ 2]  679 	jra	00115$
+      000273                        680 00105$:
+                           000273   681 	Sstm8s_uart1$UART1_GetFlagStatus$187 ==.
+                           000273   682 	Sstm8s_uart1$UART1_GetFlagStatus$188 ==.
+                                    683 ;	Source/Std_Lib/Src/stm8s_uart1.c: 600: status = RESET;
+      000273 4F               [ 1]  684 	clr	a
+                           000274   685 	Sstm8s_uart1$UART1_GetFlagStatus$189 ==.
+      000274 20 0C            [ 2]  686 	jra	00115$
+      000276                        687 00111$:
+                           000276   688 	Sstm8s_uart1$UART1_GetFlagStatus$190 ==.
+                           000276   689 	Sstm8s_uart1$UART1_GetFlagStatus$191 ==.
+                                    690 ;	Source/Std_Lib/Src/stm8s_uart1.c: 605: if ((UART1->SR & (uint8_t)UART1_FLAG) != (uint8_t)0x00)
+      000276 C6 52 30         [ 1]  691 	ld	a, 0x5230
+      000279 14 03            [ 1]  692 	and	a, (0x03, sp)
+      00027B 27 04            [ 1]  693 	jreq	00108$
+                           00027D   694 	Sstm8s_uart1$UART1_GetFlagStatus$192 ==.
+                           00027D   695 	Sstm8s_uart1$UART1_GetFlagStatus$193 ==.
+                                    696 ;	Source/Std_Lib/Src/stm8s_uart1.c: 608: status = SET;
+      00027D A6 01            [ 1]  697 	ld	a, #0x01
+                           00027F   698 	Sstm8s_uart1$UART1_GetFlagStatus$194 ==.
+      00027F 20 01            [ 2]  699 	jra	00115$
+      000281                        700 00108$:
+                           000281   701 	Sstm8s_uart1$UART1_GetFlagStatus$195 ==.
+                           000281   702 	Sstm8s_uart1$UART1_GetFlagStatus$196 ==.
+                                    703 ;	Source/Std_Lib/Src/stm8s_uart1.c: 613: status = RESET;
+      000281 4F               [ 1]  704 	clr	a
+                           000282   705 	Sstm8s_uart1$UART1_GetFlagStatus$197 ==.
+      000282                        706 00115$:
+                           000282   707 	Sstm8s_uart1$UART1_GetFlagStatus$198 ==.
+                                    708 ;	Source/Std_Lib/Src/stm8s_uart1.c: 617: return status;
+                           000282   709 	Sstm8s_uart1$UART1_GetFlagStatus$199 ==.
+                                    710 ;	Source/Std_Lib/Src/stm8s_uart1.c: 618: }
+      000282 5B 03            [ 2]  711 	addw	sp, #3
+                           000284   712 	Sstm8s_uart1$UART1_GetFlagStatus$200 ==.
+                           000284   713 	Sstm8s_uart1$UART1_GetFlagStatus$201 ==.
+                           000284   714 	XG$UART1_GetFlagStatus$0$0 ==.
+      000284 81               [ 4]  715 	ret
+                           000285   716 	Sstm8s_uart1$UART1_GetFlagStatus$202 ==.
+                           000285   717 	Sstm8s_uart1$UART1_GetITStatus$203 ==.
+                                    718 ;	Source/Std_Lib/Src/stm8s_uart1.c: 675: ITStatus UART1_GetITStatus(UART1_IT_TypeDef UART1_IT)
+                                    719 ;	-----------------------------------------
+                                    720 ;	 function UART1_GetITStatus
+                                    721 ;	-----------------------------------------
+      000285                        722 _UART1_GetITStatus:
+                           000285   723 	Sstm8s_uart1$UART1_GetITStatus$204 ==.
+      000285 52 04            [ 2]  724 	sub	sp, #4
+                           000287   725 	Sstm8s_uart1$UART1_GetITStatus$205 ==.
+                           000287   726 	Sstm8s_uart1$UART1_GetITStatus$206 ==.
+                                    727 ;	Source/Std_Lib/Src/stm8s_uart1.c: 687: itpos = (uint8_t)((uint8_t)1 << (uint8_t)((uint8_t)UART1_IT & (uint8_t)0x0F));
+      000287 7B 08            [ 1]  728 	ld	a, (0x08, sp)
+      000289 97               [ 1]  729 	ld	xl, a
+      00028A A4 0F            [ 1]  730 	and	a, #0x0f
+      00028C 88               [ 1]  731 	push	a
+                           00028D   732 	Sstm8s_uart1$UART1_GetITStatus$207 ==.
+      00028D A6 01            [ 1]  733 	ld	a, #0x01
+      00028F 6B 02            [ 1]  734 	ld	(0x02, sp), a
+      000291 84               [ 1]  735 	pop	a
+                           000292   736 	Sstm8s_uart1$UART1_GetITStatus$208 ==.
+      000292 4D               [ 1]  737 	tnz	a
+      000293 27 05            [ 1]  738 	jreq	00162$
+      000295                        739 00161$:
+      000295 08 01            [ 1]  740 	sll	(0x01, sp)
+      000297 4A               [ 1]  741 	dec	a
+      000298 26 FB            [ 1]  742 	jrne	00161$
+      00029A                        743 00162$:
+                           00029A   744 	Sstm8s_uart1$UART1_GetITStatus$209 ==.
+                                    745 ;	Source/Std_Lib/Src/stm8s_uart1.c: 689: itmask1 = (uint8_t)((uint8_t)UART1_IT >> (uint8_t)4);
+      00029A 9F               [ 1]  746 	ld	a, xl
+      00029B 4E               [ 1]  747 	swap	a
+      00029C A4 0F            [ 1]  748 	and	a, #0x0f
+                           00029E   749 	Sstm8s_uart1$UART1_GetITStatus$210 ==.
+                                    750 ;	Source/Std_Lib/Src/stm8s_uart1.c: 691: itmask2 = (uint8_t)((uint8_t)1 << itmask1);
+      00029E 88               [ 1]  751 	push	a
+                           00029F   752 	Sstm8s_uart1$UART1_GetITStatus$211 ==.
+      00029F A6 01            [ 1]  753 	ld	a, #0x01
+      0002A1 6B 03            [ 1]  754 	ld	(0x03, sp), a
+      0002A3 84               [ 1]  755 	pop	a
+                           0002A4   756 	Sstm8s_uart1$UART1_GetITStatus$212 ==.
+      0002A4 4D               [ 1]  757 	tnz	a
+      0002A5 27 05            [ 1]  758 	jreq	00164$
+      0002A7                        759 00163$:
+      0002A7 08 02            [ 1]  760 	sll	(0x02, sp)
+      0002A9 4A               [ 1]  761 	dec	a
+      0002AA 26 FB            [ 1]  762 	jrne	00163$
+      0002AC                        763 00164$:
+                           0002AC   764 	Sstm8s_uart1$UART1_GetITStatus$213 ==.
+                                    765 ;	Source/Std_Lib/Src/stm8s_uart1.c: 695: if (UART1_IT == UART1_IT_PE)
+      0002AC 16 07            [ 2]  766 	ldw	y, (0x07, sp)
+      0002AE 17 03            [ 2]  767 	ldw	(0x03, sp), y
+      0002B0 93               [ 1]  768 	ldw	x, y
+      0002B1 A3 01 00         [ 2]  769 	cpw	x, #0x0100
+      0002B4 26 1A            [ 1]  770 	jrne	00117$
+                           0002B6   771 	Sstm8s_uart1$UART1_GetITStatus$214 ==.
+                           0002B6   772 	Sstm8s_uart1$UART1_GetITStatus$215 ==.
+                           0002B6   773 	Sstm8s_uart1$UART1_GetITStatus$216 ==.
+                                    774 ;	Source/Std_Lib/Src/stm8s_uart1.c: 698: enablestatus = (uint8_t)((uint8_t)UART1->CR1 & itmask2);
+      0002B6 C6 52 34         [ 1]  775 	ld	a, 0x5234
+      0002B9 14 02            [ 1]  776 	and	a, (0x02, sp)
+      0002BB 97               [ 1]  777 	ld	xl, a
+                           0002BC   778 	Sstm8s_uart1$UART1_GetITStatus$217 ==.
+                                    779 ;	Source/Std_Lib/Src/stm8s_uart1.c: 701: if (((UART1->SR & itpos) != (uint8_t)0x00) && enablestatus)
+      0002BC C6 52 30         [ 1]  780 	ld	a, 0x5230
+      0002BF 14 01            [ 1]  781 	and	a, (0x01, sp)
+      0002C1 27 09            [ 1]  782 	jreq	00102$
+      0002C3 9F               [ 1]  783 	ld	a, xl
+      0002C4 4D               [ 1]  784 	tnz	a
+      0002C5 27 05            [ 1]  785 	jreq	00102$
+                           0002C7   786 	Sstm8s_uart1$UART1_GetITStatus$218 ==.
+                           0002C7   787 	Sstm8s_uart1$UART1_GetITStatus$219 ==.
+                                    788 ;	Source/Std_Lib/Src/stm8s_uart1.c: 704: pendingbitstatus = SET;
+      0002C7 A6 01            [ 1]  789 	ld	a, #0x01
+                           0002C9   790 	Sstm8s_uart1$UART1_GetITStatus$220 ==.
+      0002C9 CCr03r05         [ 2]  791 	jp	00118$
+      0002CC                        792 00102$:
+                           0002CC   793 	Sstm8s_uart1$UART1_GetITStatus$221 ==.
+                           0002CC   794 	Sstm8s_uart1$UART1_GetITStatus$222 ==.
+                                    795 ;	Source/Std_Lib/Src/stm8s_uart1.c: 709: pendingbitstatus = RESET;
+      0002CC 4F               [ 1]  796 	clr	a
+                           0002CD   797 	Sstm8s_uart1$UART1_GetITStatus$223 ==.
+      0002CD CCr03r05         [ 2]  798 	jp	00118$
+      0002D0                        799 00117$:
+                           0002D0   800 	Sstm8s_uart1$UART1_GetITStatus$224 ==.
+                                    801 ;	Source/Std_Lib/Src/stm8s_uart1.c: 713: else if (UART1_IT == UART1_IT_LBDF)
+      0002D0 1E 03            [ 2]  802 	ldw	x, (0x03, sp)
+      0002D2 A3 03 46         [ 2]  803 	cpw	x, #0x0346
+      0002D5 26 18            [ 1]  804 	jrne	00114$
+                           0002D7   805 	Sstm8s_uart1$UART1_GetITStatus$225 ==.
+                           0002D7   806 	Sstm8s_uart1$UART1_GetITStatus$226 ==.
+                           0002D7   807 	Sstm8s_uart1$UART1_GetITStatus$227 ==.
+                                    808 ;	Source/Std_Lib/Src/stm8s_uart1.c: 716: enablestatus = (uint8_t)((uint8_t)UART1->CR4 & itmask2);
+      0002D7 C6 52 37         [ 1]  809 	ld	a, 0x5237
+      0002DA 14 02            [ 1]  810 	and	a, (0x02, sp)
+      0002DC 97               [ 1]  811 	ld	xl, a
+                           0002DD   812 	Sstm8s_uart1$UART1_GetITStatus$228 ==.
+                                    813 ;	Source/Std_Lib/Src/stm8s_uart1.c: 718: if (((UART1->CR4 & itpos) != (uint8_t)0x00) && enablestatus)
+      0002DD C6 52 37         [ 1]  814 	ld	a, 0x5237
+      0002E0 14 01            [ 1]  815 	and	a, (0x01, sp)
+      0002E2 27 08            [ 1]  816 	jreq	00106$
+      0002E4 9F               [ 1]  817 	ld	a, xl
+      0002E5 4D               [ 1]  818 	tnz	a
+      0002E6 27 04            [ 1]  819 	jreq	00106$
+                           0002E8   820 	Sstm8s_uart1$UART1_GetITStatus$229 ==.
+                           0002E8   821 	Sstm8s_uart1$UART1_GetITStatus$230 ==.
+                                    822 ;	Source/Std_Lib/Src/stm8s_uart1.c: 721: pendingbitstatus = SET;
+      0002E8 A6 01            [ 1]  823 	ld	a, #0x01
+                           0002EA   824 	Sstm8s_uart1$UART1_GetITStatus$231 ==.
+      0002EA 20 19            [ 2]  825 	jra	00118$
+      0002EC                        826 00106$:
+                           0002EC   827 	Sstm8s_uart1$UART1_GetITStatus$232 ==.
+                           0002EC   828 	Sstm8s_uart1$UART1_GetITStatus$233 ==.
+                                    829 ;	Source/Std_Lib/Src/stm8s_uart1.c: 726: pendingbitstatus = RESET;
+      0002EC 4F               [ 1]  830 	clr	a
+                           0002ED   831 	Sstm8s_uart1$UART1_GetITStatus$234 ==.
+      0002ED 20 16            [ 2]  832 	jra	00118$
+      0002EF                        833 00114$:
+                           0002EF   834 	Sstm8s_uart1$UART1_GetITStatus$235 ==.
+                           0002EF   835 	Sstm8s_uart1$UART1_GetITStatus$236 ==.
+                                    836 ;	Source/Std_Lib/Src/stm8s_uart1.c: 732: enablestatus = (uint8_t)((uint8_t)UART1->CR2 & itmask2);
+      0002EF C6 52 35         [ 1]  837 	ld	a, 0x5235
+      0002F2 14 02            [ 1]  838 	and	a, (0x02, sp)
+      0002F4 97               [ 1]  839 	ld	xl, a
+                           0002F5   840 	Sstm8s_uart1$UART1_GetITStatus$237 ==.
+                                    841 ;	Source/Std_Lib/Src/stm8s_uart1.c: 734: if (((UART1->SR & itpos) != (uint8_t)0x00) && enablestatus)
+      0002F5 C6 52 30         [ 1]  842 	ld	a, 0x5230
+      0002F8 14 01            [ 1]  843 	and	a, (0x01, sp)
+      0002FA 27 08            [ 1]  844 	jreq	00110$
+      0002FC 9F               [ 1]  845 	ld	a, xl
+      0002FD 4D               [ 1]  846 	tnz	a
+      0002FE 27 04            [ 1]  847 	jreq	00110$
+                           000300   848 	Sstm8s_uart1$UART1_GetITStatus$238 ==.
+                           000300   849 	Sstm8s_uart1$UART1_GetITStatus$239 ==.
+                                    850 ;	Source/Std_Lib/Src/stm8s_uart1.c: 737: pendingbitstatus = SET;
+      000300 A6 01            [ 1]  851 	ld	a, #0x01
+                           000302   852 	Sstm8s_uart1$UART1_GetITStatus$240 ==.
+      000302 20 01            [ 2]  853 	jra	00118$
+      000304                        854 00110$:
+                           000304   855 	Sstm8s_uart1$UART1_GetITStatus$241 ==.
+                           000304   856 	Sstm8s_uart1$UART1_GetITStatus$242 ==.
+                                    857 ;	Source/Std_Lib/Src/stm8s_uart1.c: 742: pendingbitstatus = RESET;
+      000304 4F               [ 1]  858 	clr	a
+                           000305   859 	Sstm8s_uart1$UART1_GetITStatus$243 ==.
+      000305                        860 00118$:
+                           000305   861 	Sstm8s_uart1$UART1_GetITStatus$244 ==.
+                                    862 ;	Source/Std_Lib/Src/stm8s_uart1.c: 747: return  pendingbitstatus;
+                           000305   863 	Sstm8s_uart1$UART1_GetITStatus$245 ==.
+                                    864 ;	Source/Std_Lib/Src/stm8s_uart1.c: 748: }
+      000305 5B 04            [ 2]  865 	addw	sp, #4
+                           000307   866 	Sstm8s_uart1$UART1_GetITStatus$246 ==.
+                           000307   867 	Sstm8s_uart1$UART1_GetITStatus$247 ==.
+                           000307   868 	XG$UART1_GetITStatus$0$0 ==.
+      000307 81               [ 4]  869 	ret
+                           000308   870 	Sstm8s_uart1$UART1_GetITStatus$248 ==.
+                           000308   871 	Sstm8s_uart1$UART1_ClearITPendingBit$249 ==.
+                                    872 ;	Source/Std_Lib/Src/stm8s_uart1.c: 775: void UART1_ClearITPendingBit(UART1_IT_TypeDef UART1_IT)
+                                    873 ;	-----------------------------------------
+                                    874 ;	 function UART1_ClearITPendingBit
+                                    875 ;	-----------------------------------------
+      000308                        876 _UART1_ClearITPendingBit:
+                           000308   877 	Sstm8s_uart1$UART1_ClearITPendingBit$250 ==.
+                           000308   878 	Sstm8s_uart1$UART1_ClearITPendingBit$251 ==.
+                                    879 ;	Source/Std_Lib/Src/stm8s_uart1.c: 780: if (UART1_IT == UART1_IT_RXNE)
+      000308 1E 03            [ 2]  880 	ldw	x, (0x03, sp)
+      00030A A3 02 55         [ 2]  881 	cpw	x, #0x0255
+      00030D 26 06            [ 1]  882 	jrne	00102$
+                           00030F   883 	Sstm8s_uart1$UART1_ClearITPendingBit$252 ==.
+                           00030F   884 	Sstm8s_uart1$UART1_ClearITPendingBit$253 ==.
+                           00030F   885 	Sstm8s_uart1$UART1_ClearITPendingBit$254 ==.
+                                    886 ;	Source/Std_Lib/Src/stm8s_uart1.c: 782: UART1->SR = (uint8_t)~(UART1_SR_RXNE);
+      00030F 35 DF 52 30      [ 1]  887 	mov	0x5230+0, #0xdf
+                           000313   888 	Sstm8s_uart1$UART1_ClearITPendingBit$255 ==.
+      000313 20 04            [ 2]  889 	jra	00104$
+      000315                        890 00102$:
+                           000315   891 	Sstm8s_uart1$UART1_ClearITPendingBit$256 ==.
+                           000315   892 	Sstm8s_uart1$UART1_ClearITPendingBit$257 ==.
+                                    893 ;	Source/Std_Lib/Src/stm8s_uart1.c: 787: UART1->CR4 &= (uint8_t)~(UART1_CR4_LBDF);
+      000315 72 19 52 37      [ 1]  894 	bres	21047, #4
+                           000319   895 	Sstm8s_uart1$UART1_ClearITPendingBit$258 ==.
+      000319                        896 00104$:
+                           000319   897 	Sstm8s_uart1$UART1_ClearITPendingBit$259 ==.
+                                    898 ;	Source/Std_Lib/Src/stm8s_uart1.c: 789: }
+                           000319   899 	Sstm8s_uart1$UART1_ClearITPendingBit$260 ==.
+                           000319   900 	XG$UART1_ClearITPendingBit$0$0 ==.
+      000319 81               [ 4]  901 	ret
+                           00031A   902 	Sstm8s_uart1$UART1_ClearITPendingBit$261 ==.
+                                    903 	.area CODE
+                                    904 	.area CONST
+                                    905 	.area INITIALIZER
+                                    906 	.area CABS (ABS)
+                                    907 
+                                    908 	.area .debug_line (NOLOAD)
+      000000 00 00 03 9B            909 	.dw	0,Ldebug_line_end-Ldebug_line_start
+      000004                        910 Ldebug_line_start:
+      000004 00 02                  911 	.dw	2
+      000006 00 00 00 81            912 	.dw	0,Ldebug_line_stmt-6-Ldebug_line_start
+      00000A 01                     913 	.db	1
+      00000B 01                     914 	.db	1
+      00000C FB                     915 	.db	-5
+      00000D 0F                     916 	.db	15
+      00000E 0A                     917 	.db	10
+      00000F 00                     918 	.db	0
+      000010 01                     919 	.db	1
+      000011 01                     920 	.db	1
+      000012 01                     921 	.db	1
+      000013 01                     922 	.db	1
+      000014 00                     923 	.db	0
+      000015 00                     924 	.db	0
+      000016 00                     925 	.db	0
+      000017 01                     926 	.db	1
+      000018 43 3A 5C 50 72 6F 67   927 	.ascii "C:\Program Files\SDCC\bin\..\include\stm8"
+             72 61 6D 20 46 69 6C
+             65 73 5C 53 44 43 43
+             08 69 6E 5C 2E 2E 5C
+             69 6E 63 6C 75 64 65
+             5C 73 74 6D 38
+      000040 00                     928 	.db	0
+      000041 43 3A 5C 50 72 6F 67   929 	.ascii "C:\Program Files\SDCC\bin\..\include"
+             72 61 6D 20 46 69 6C
+             65 73 5C 53 44 43 43
+             08 69 6E 5C 2E 2E 5C
+             69 6E 63 6C 75 64 65
+      000064 00                     930 	.db	0
+      000065 00                     931 	.db	0
+      000066 53 6F 75 72 63 65 2F   932 	.ascii "Source/Std_Lib/Src/stm8s_uart1.c"
+             53 74 64 5F 4C 69 62
+             2F 53 72 63 2F 73 74
+             6D 38 73 5F 75 61 72
+             74 31 2E 63
+      000086 00                     933 	.db	0
+      000087 00                     934 	.uleb128	0
+      000088 00                     935 	.uleb128	0
+      000089 00                     936 	.uleb128	0
+      00008A 00                     937 	.db	0
+      00008B                        938 Ldebug_line_stmt:
+      00008B 00                     939 	.db	0
+      00008C 05                     940 	.uleb128	5
+      00008D 02                     941 	.db	2
+      00008E 00 00r00r00            942 	.dw	0,(Sstm8s_uart1$UART1_DeInit$0)
+      000092 03                     943 	.db	3
+      000093 34                     944 	.sleb128	52
+      000094 01                     945 	.db	1
+      000095 09                     946 	.db	9
+      000096 00 00                  947 	.dw	Sstm8s_uart1$UART1_DeInit$2-Sstm8s_uart1$UART1_DeInit$0
+      000098 03                     948 	.db	3
+      000099 04                     949 	.sleb128	4
+      00009A 01                     950 	.db	1
+      00009B 09                     951 	.db	9
+      00009C 00 03                  952 	.dw	Sstm8s_uart1$UART1_DeInit$3-Sstm8s_uart1$UART1_DeInit$2
+      00009E 03                     953 	.db	3
+      00009F 01                     954 	.sleb128	1
+      0000A0 01                     955 	.db	1
+      0000A1 09                     956 	.db	9
+      0000A2 00 03                  957 	.dw	Sstm8s_uart1$UART1_DeInit$4-Sstm8s_uart1$UART1_DeInit$3
+      0000A4 03                     958 	.db	3
+      0000A5 02                     959 	.sleb128	2
+      0000A6 01                     960 	.db	1
+      0000A7 09                     961 	.db	9
+      0000A8 00 04                  962 	.dw	Sstm8s_uart1$UART1_DeInit$5-Sstm8s_uart1$UART1_DeInit$4
+      0000AA 03                     963 	.db	3
+      0000AB 01                     964 	.sleb128	1
+      0000AC 01                     965 	.db	1
+      0000AD 09                     966 	.db	9
+      0000AE 00 04                  967 	.dw	Sstm8s_uart1$UART1_DeInit$6-Sstm8s_uart1$UART1_DeInit$5
+      0000B0 03                     968 	.db	3
+      0000B1 02                     969 	.sleb128	2
+      0000B2 01                     970 	.db	1
+      0000B3 09                     971 	.db	9
+      0000B4 00 04                  972 	.dw	Sstm8s_uart1$UART1_DeInit$7-Sstm8s_uart1$UART1_DeInit$6
+      0000B6 03                     973 	.db	3
+      0000B7 01                     974 	.sleb128	1
+      0000B8 01                     975 	.db	1
+      0000B9 09                     976 	.db	9
+      0000BA 00 04                  977 	.dw	Sstm8s_uart1$UART1_DeInit$8-Sstm8s_uart1$UART1_DeInit$7
+      0000BC 03                     978 	.db	3
+      0000BD 01                     979 	.sleb128	1
+      0000BE 01                     980 	.db	1
+      0000BF 09                     981 	.db	9
+      0000C0 00 04                  982 	.dw	Sstm8s_uart1$UART1_DeInit$9-Sstm8s_uart1$UART1_DeInit$8
+      0000C2 03                     983 	.db	3
+      0000C3 01                     984 	.sleb128	1
+      0000C4 01                     985 	.db	1
+      0000C5 09                     986 	.db	9
+      0000C6 00 04                  987 	.dw	Sstm8s_uart1$UART1_DeInit$10-Sstm8s_uart1$UART1_DeInit$9
+      0000C8 03                     988 	.db	3
+      0000C9 01                     989 	.sleb128	1
+      0000CA 01                     990 	.db	1
+      0000CB 09                     991 	.db	9
+      0000CC 00 04                  992 	.dw	Sstm8s_uart1$UART1_DeInit$11-Sstm8s_uart1$UART1_DeInit$10
+      0000CE 03                     993 	.db	3
+      0000CF 02                     994 	.sleb128	2
+      0000D0 01                     995 	.db	1
+      0000D1 09                     996 	.db	9
+      0000D2 00 04                  997 	.dw	Sstm8s_uart1$UART1_DeInit$12-Sstm8s_uart1$UART1_DeInit$11
+      0000D4 03                     998 	.db	3
+      0000D5 01                     999 	.sleb128	1
+      0000D6 01                    1000 	.db	1
+      0000D7 09                    1001 	.db	9
+      0000D8 00 04                 1002 	.dw	Sstm8s_uart1$UART1_DeInit$13-Sstm8s_uart1$UART1_DeInit$12
+      0000DA 03                    1003 	.db	3
+      0000DB 01                    1004 	.sleb128	1
+      0000DC 01                    1005 	.db	1
+      0000DD 09                    1006 	.db	9
+      0000DE 00 01                 1007 	.dw	1+Sstm8s_uart1$UART1_DeInit$14-Sstm8s_uart1$UART1_DeInit$13
+      0000E0 00                    1008 	.db	0
+      0000E1 01                    1009 	.uleb128	1
+      0000E2 01                    1010 	.db	1
+      0000E3 00                    1011 	.db	0
+      0000E4 05                    1012 	.uleb128	5
+      0000E5 02                    1013 	.db	2
+      0000E6 00 00r00r2B           1014 	.dw	0,(Sstm8s_uart1$UART1_Init$16)
+      0000EA 03                    1015 	.db	3
+      0000EB D9 00                 1016 	.sleb128	89
+      0000ED 01                    1017 	.db	1
+      0000EE 09                    1018 	.db	9
+      0000EF 00 02                 1019 	.dw	Sstm8s_uart1$UART1_Init$19-Sstm8s_uart1$UART1_Init$16
+      0000F1 03                    1020 	.db	3
+      0000F2 0F                    1021 	.sleb128	15
+      0000F3 01                    1022 	.db	1
+      0000F4 09                    1023 	.db	9
+      0000F5 00 04                 1024 	.dw	Sstm8s_uart1$UART1_Init$20-Sstm8s_uart1$UART1_Init$19
+      0000F7 03                    1025 	.db	3
+      0000F8 03                    1026 	.sleb128	3
+      0000F9 01                    1027 	.db	1
+      0000FA 09                    1028 	.db	9
+      0000FB 00 08                 1029 	.dw	Sstm8s_uart1$UART1_Init$21-Sstm8s_uart1$UART1_Init$20
+      0000FD 03                    1030 	.db	3
+      0000FE 03                    1031 	.sleb128	3
+      0000FF 01                    1032 	.db	1
+      000100 09                    1033 	.db	9
+      000101 00 08                 1034 	.dw	Sstm8s_uart1$UART1_Init$22-Sstm8s_uart1$UART1_Init$21
+      000103 03                    1035 	.db	3
+      000104 02                    1036 	.sleb128	2
+      000105 01                    1037 	.db	1
+      000106 09                    1038 	.db	9
+      000107 00 08                 1039 	.dw	Sstm8s_uart1$UART1_Init$23-Sstm8s_uart1$UART1_Init$22
+      000109 03                    1040 	.db	3
+      00010A 03                    1041 	.sleb128	3
+      00010B 01                    1042 	.db	1
+      00010C 09                    1043 	.db	9
+      00010D 00 08                 1044 	.dw	Sstm8s_uart1$UART1_Init$24-Sstm8s_uart1$UART1_Init$23
+      00010F 03                    1045 	.db	3
+      000110 02                    1046 	.sleb128	2
+      000111 01                    1047 	.db	1
+      000112 09                    1048 	.db	9
+      000113 00 08                 1049 	.dw	Sstm8s_uart1$UART1_Init$25-Sstm8s_uart1$UART1_Init$24
+      000115 03                    1050 	.db	3
+      000116 03                    1051 	.sleb128	3
+      000117 01                    1052 	.db	1
+      000118 09                    1053 	.db	9
+      000119 00 07                 1054 	.dw	Sstm8s_uart1$UART1_Init$26-Sstm8s_uart1$UART1_Init$25
+      00011B 03                    1055 	.db	3
+      00011C 02                    1056 	.sleb128	2
+      00011D 01                    1057 	.db	1
+      00011E 09                    1058 	.db	9
+      00011F 00 08                 1059 	.dw	Sstm8s_uart1$UART1_Init$27-Sstm8s_uart1$UART1_Init$26
+      000121 03                    1060 	.db	3
+      000122 02                    1061 	.sleb128	2
+      000123 01                    1062 	.db	1
+      000124 09                    1063 	.db	9
+      000125 00 08                 1064 	.dw	Sstm8s_uart1$UART1_Init$28-Sstm8s_uart1$UART1_Init$27
+      000127 03                    1065 	.db	3
+      000128 03                    1066 	.sleb128	3
+      000129 01                    1067 	.db	1
+      00012A 09                    1068 	.db	9
+      00012B 00 31                 1069 	.dw	Sstm8s_uart1$UART1_Init$34-Sstm8s_uart1$UART1_Init$28
+      00012D 03                    1070 	.db	3
+      00012E 01                    1071 	.sleb128	1
+      00012F 01                    1072 	.db	1
+      000130 09                    1073 	.db	9
+      000131 00 2E                 1074 	.dw	Sstm8s_uart1$UART1_Init$46-Sstm8s_uart1$UART1_Init$34
+      000133 03                    1075 	.db	3
+      000134 02                    1076 	.sleb128	2
+      000135 01                    1077 	.db	1
+      000136 09                    1078 	.db	9
+      000137 00 51                 1079 	.dw	Sstm8s_uart1$UART1_Init$60-Sstm8s_uart1$UART1_Init$46
+      000139 03                    1080 	.db	3
+      00013A 02                    1081 	.sleb128	2
+      00013B 01                    1082 	.db	1
+      00013C 09                    1083 	.db	9
+      00013D 00 12                 1084 	.dw	Sstm8s_uart1$UART1_Init$61-Sstm8s_uart1$UART1_Init$60
+      00013F 03                    1085 	.db	3
+      000140 02                    1086 	.sleb128	2
+      000141 01                    1087 	.db	1
+      000142 09                    1088 	.db	9
+      000143 00 0C                 1089 	.dw	Sstm8s_uart1$UART1_Init$62-Sstm8s_uart1$UART1_Init$61
+      000145 03                    1090 	.db	3
+      000146 03                    1091 	.sleb128	3
+      000147 01                    1092 	.db	1
+      000148 09                    1093 	.db	9
+      000149 00 08                 1094 	.dw	Sstm8s_uart1$UART1_Init$63-Sstm8s_uart1$UART1_Init$62
+      00014B 03                    1095 	.db	3
+      00014C 02                    1096 	.sleb128	2
+      00014D 01                    1097 	.db	1
+      00014E 09                    1098 	.db	9
+      00014F 00 08                 1099 	.dw	Sstm8s_uart1$UART1_Init$64-Sstm8s_uart1$UART1_Init$63
+      000151 03                    1100 	.db	3
+      000152 02                    1101 	.sleb128	2
+      000153 01                    1102 	.db	1
+      000154 09                    1103 	.db	9
+      000155 00 0E                 1104 	.dw	Sstm8s_uart1$UART1_Init$65-Sstm8s_uart1$UART1_Init$64
+      000157 03                    1105 	.db	3
+      000158 7C                    1106 	.sleb128	-4
+      000159 01                    1107 	.db	1
+      00015A 09                    1108 	.db	9
+      00015B 00 03                 1109 	.dw	Sstm8s_uart1$UART1_Init$66-Sstm8s_uart1$UART1_Init$65
+      00015D 03                    1110 	.db	3
+      00015E 07                    1111 	.sleb128	7
+      00015F 01                    1112 	.db	1
+      000160 09                    1113 	.db	9
+      000161 00 08                 1114 	.dw	Sstm8s_uart1$UART1_Init$70-Sstm8s_uart1$UART1_Init$66
+      000163 03                    1115 	.db	3
+      000164 03                    1116 	.sleb128	3
+      000165 01                    1117 	.db	1
+      000166 09                    1118 	.db	9
+      000167 00 07                 1119 	.dw	Sstm8s_uart1$UART1_Init$73-Sstm8s_uart1$UART1_Init$70
+      000169 03                    1120 	.db	3
+      00016A 05                    1121 	.sleb128	5
+      00016B 01                    1122 	.db	1
+      00016C 09                    1123 	.db	9
+      00016D 00 05                 1124 	.dw	Sstm8s_uart1$UART1_Init$75-Sstm8s_uart1$UART1_Init$73
+      00016F 03                    1125 	.db	3
+      000170 71                    1126 	.sleb128	-15
+      000171 01                    1127 	.db	1
+      000172 09                    1128 	.db	9
+      000173 00 03                 1129 	.dw	Sstm8s_uart1$UART1_Init$76-Sstm8s_uart1$UART1_Init$75
+      000175 03                    1130 	.db	3
+      000176 11                    1131 	.sleb128	17
+      000177 01                    1132 	.db	1
+      000178 09                    1133 	.db	9
+      000179 00 08                 1134 	.dw	Sstm8s_uart1$UART1_Init$80-Sstm8s_uart1$UART1_Init$76
+      00017B 03                    1135 	.db	3
+      00017C 03                    1136 	.sleb128	3
+      00017D 01                    1137 	.db	1
+      00017E 09                    1138 	.db	9
+      00017F 00 07                 1139 	.dw	Sstm8s_uart1$UART1_Init$83-Sstm8s_uart1$UART1_Init$80
+      000181 03                    1140 	.db	3
+      000182 05                    1141 	.sleb128	5
+      000183 01                    1142 	.db	1
+      000184 09                    1143 	.db	9
+      000185 00 05                 1144 	.dw	Sstm8s_uart1$UART1_Init$85-Sstm8s_uart1$UART1_Init$83
+      000187 03                    1145 	.db	3
+      000188 4C                    1146 	.sleb128	-52
+      000189 01                    1147 	.db	1
+      00018A 09                    1148 	.db	9
+      00018B 00 03                 1149 	.dw	Sstm8s_uart1$UART1_Init$86-Sstm8s_uart1$UART1_Init$85
+      00018D 03                    1150 	.db	3
+      00018E 38                    1151 	.sleb128	56
+      00018F 01                    1152 	.db	1
+      000190 09                    1153 	.db	9
+      000191 00 04                 1154 	.dw	Sstm8s_uart1$UART1_Init$88-Sstm8s_uart1$UART1_Init$86
+      000193 03                    1155 	.db	3
+      000194 03                    1156 	.sleb128	3
+      000195 01                    1157 	.db	1
+      000196 09                    1158 	.db	9
+      000197 00 07                 1159 	.dw	Sstm8s_uart1$UART1_Init$91-Sstm8s_uart1$UART1_Init$88
+      000199 03                    1160 	.db	3
+      00019A 04                    1161 	.sleb128	4
+      00019B 01                    1162 	.db	1
+      00019C 09                    1163 	.db	9
+      00019D 00 0D                 1164 	.dw	Sstm8s_uart1$UART1_Init$95-Sstm8s_uart1$UART1_Init$91
+      00019F 03                    1165 	.db	3
+      0001A0 02                    1166 	.sleb128	2
+      0001A1 01                    1167 	.db	1
+      0001A2 09                    1168 	.db	9
+      0001A3 00 03                 1169 	.dw	1+Sstm8s_uart1$UART1_Init$97-Sstm8s_uart1$UART1_Init$95
+      0001A5 00                    1170 	.db	0
+      0001A6 01                    1171 	.uleb128	1
+      0001A7 01                    1172 	.db	1
+      0001A8 00                    1173 	.db	0
+      0001A9 05                    1174 	.uleb128	5
+      0001AA 02                    1175 	.db	2
+      0001AB 00 00r01rA8           1176 	.dw	0,(Sstm8s_uart1$UART1_Cmd$99)
+      0001AF 03                    1177 	.db	3
+      0001B0 B7 01                 1178 	.sleb128	183
+      0001B2 01                    1179 	.db	1
+      0001B3 09                    1180 	.db	9
+      0001B4 00 00                 1181 	.dw	Sstm8s_uart1$UART1_Cmd$101-Sstm8s_uart1$UART1_Cmd$99
+      0001B6 03                    1182 	.db	3
+      0001B7 05                    1183 	.sleb128	5
+      0001B8 01                    1184 	.db	1
+      0001B9 09                    1185 	.db	9
+      0001BA 00 03                 1186 	.dw	Sstm8s_uart1$UART1_Cmd$102-Sstm8s_uart1$UART1_Cmd$101
+      0001BC 03                    1187 	.db	3
+      0001BD 7D                    1188 	.sleb128	-3
+      0001BE 01                    1189 	.db	1
+      0001BF 09                    1190 	.db	9
+      0001C0 00 04                 1191 	.dw	Sstm8s_uart1$UART1_Cmd$104-Sstm8s_uart1$UART1_Cmd$102
+      0001C2 03                    1192 	.db	3
+      0001C3 03                    1193 	.sleb128	3
+      0001C4 01                    1194 	.db	1
+      0001C5 09                    1195 	.db	9
+      0001C6 00 07                 1196 	.dw	Sstm8s_uart1$UART1_Cmd$107-Sstm8s_uart1$UART1_Cmd$104
+      0001C8 03                    1197 	.db	3
+      0001C9 05                    1198 	.sleb128	5
+      0001CA 01                    1199 	.db	1
+      0001CB 09                    1200 	.db	9
+      0001CC 00 05                 1201 	.dw	Sstm8s_uart1$UART1_Cmd$109-Sstm8s_uart1$UART1_Cmd$107
+      0001CE 03                    1202 	.db	3
+      0001CF 02                    1203 	.sleb128	2
+      0001D0 01                    1204 	.db	1
+      0001D1 09                    1205 	.db	9
+      0001D2 00 01                 1206 	.dw	1+Sstm8s_uart1$UART1_Cmd$110-Sstm8s_uart1$UART1_Cmd$109
+      0001D4 00                    1207 	.db	0
+      0001D5 01                    1208 	.uleb128	1
+      0001D6 01                    1209 	.db	1
+      0001D7 00                    1210 	.db	0
+      0001D8 05                    1211 	.uleb128	5
+      0001D9 02                    1212 	.db	2
+      0001DA 00 00r01rBC           1213 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$112)
+      0001DE 03                    1214 	.db	3
+      0001DF D2 01                 1215 	.sleb128	210
+      0001E1 01                    1216 	.db	1
+      0001E2 09                    1217 	.db	9
+      0001E3 00 01                 1218 	.dw	Sstm8s_uart1$UART1_ITConfig$115-Sstm8s_uart1$UART1_ITConfig$112
+      0001E5 03                    1219 	.db	3
+      0001E6 09                    1220 	.sleb128	9
+      0001E7 01                    1221 	.db	1
+      0001E8 09                    1222 	.db	9
+      0001E9 00 02                 1223 	.dw	Sstm8s_uart1$UART1_ITConfig$116-Sstm8s_uart1$UART1_ITConfig$115
+      0001EB 03                    1224 	.db	3
+      0001EC 02                    1225 	.sleb128	2
+      0001ED 01                    1226 	.db	1
+      0001EE 09                    1227 	.db	9
+      0001EF 00 12                 1228 	.dw	Sstm8s_uart1$UART1_ITConfig$119-Sstm8s_uart1$UART1_ITConfig$116
+      0001F1 03                    1229 	.db	3
+      0001F2 05                    1230 	.sleb128	5
+      0001F3 01                    1231 	.db	1
+      0001F4 09                    1232 	.db	9
+      0001F5 00 0B                 1233 	.dw	Sstm8s_uart1$UART1_ITConfig$121-Sstm8s_uart1$UART1_ITConfig$119
+      0001F7 03                    1234 	.db	3
+      0001F8 04                    1235 	.sleb128	4
+      0001F9 01                    1236 	.db	1
+      0001FA 09                    1237 	.db	9
+      0001FB 00 08                 1238 	.dw	Sstm8s_uart1$UART1_ITConfig$123-Sstm8s_uart1$UART1_ITConfig$121
+      0001FD 03                    1239 	.db	3
+      0001FE 79                    1240 	.sleb128	-7
+      0001FF 01                    1241 	.db	1
+      000200 09                    1242 	.db	9
+      000201 00 04                 1243 	.dw	Sstm8s_uart1$UART1_ITConfig$125-Sstm8s_uart1$UART1_ITConfig$123
+      000203 03                    1244 	.db	3
+      000204 03                    1245 	.sleb128	3
+      000205 01                    1246 	.db	1
+      000206 09                    1247 	.db	9
+      000207 00 04                 1248 	.dw	Sstm8s_uart1$UART1_ITConfig$127-Sstm8s_uart1$UART1_ITConfig$125
+      000209 03                    1249 	.db	3
+      00020A 02                    1250 	.sleb128	2
+      00020B 01                    1251 	.db	1
+      00020C 09                    1252 	.db	9
+      00020D 00 0B                 1253 	.dw	Sstm8s_uart1$UART1_ITConfig$129-Sstm8s_uart1$UART1_ITConfig$127
+      00020F 03                    1254 	.db	3
+      000210 02                    1255 	.sleb128	2
+      000211 01                    1256 	.db	1
+      000212 09                    1257 	.db	9
+      000213 00 03                 1258 	.dw	Sstm8s_uart1$UART1_ITConfig$131-Sstm8s_uart1$UART1_ITConfig$129
+      000215 03                    1259 	.db	3
+      000216 02                    1260 	.sleb128	2
+      000217 01                    1261 	.db	1
+      000218 09                    1262 	.db	9
+      000219 00 0B                 1263 	.dw	Sstm8s_uart1$UART1_ITConfig$134-Sstm8s_uart1$UART1_ITConfig$131
+      00021B 03                    1264 	.db	3
+      00021C 04                    1265 	.sleb128	4
+      00021D 01                    1266 	.db	1
+      00021E 09                    1267 	.db	9
+      00021F 00 0A                 1268 	.dw	Sstm8s_uart1$UART1_ITConfig$136-Sstm8s_uart1$UART1_ITConfig$134
+      000221 03                    1269 	.db	3
+      000222 08                    1270 	.sleb128	8
+      000223 01                    1271 	.db	1
+      000224 09                    1272 	.db	9
+      000225 00 02                 1273 	.dw	Sstm8s_uart1$UART1_ITConfig$138-Sstm8s_uart1$UART1_ITConfig$136
+      000227 03                    1274 	.db	3
+      000228 7E                    1275 	.sleb128	-2
+      000229 01                    1276 	.db	1
+      00022A 09                    1277 	.db	9
+      00022B 00 04                 1278 	.dw	Sstm8s_uart1$UART1_ITConfig$140-Sstm8s_uart1$UART1_ITConfig$138
+      00022D 03                    1279 	.db	3
+      00022E 02                    1280 	.sleb128	2
+      00022F 01                    1281 	.db	1
+      000230 09                    1282 	.db	9
+      000231 00 0A                 1283 	.dw	Sstm8s_uart1$UART1_ITConfig$142-Sstm8s_uart1$UART1_ITConfig$140
+      000233 03                    1284 	.db	3
+      000234 02                    1285 	.sleb128	2
+      000235 01                    1286 	.db	1
+      000236 09                    1287 	.db	9
+      000237 00 03                 1288 	.dw	Sstm8s_uart1$UART1_ITConfig$144-Sstm8s_uart1$UART1_ITConfig$142
+      000239 03                    1289 	.db	3
+      00023A 02                    1290 	.sleb128	2
+      00023B 01                    1291 	.db	1
+      00023C 09                    1292 	.db	9
+      00023D 00 0A                 1293 	.dw	Sstm8s_uart1$UART1_ITConfig$147-Sstm8s_uart1$UART1_ITConfig$144
+      00023F 03                    1294 	.db	3
+      000240 04                    1295 	.sleb128	4
+      000241 01                    1296 	.db	1
+      000242 09                    1297 	.db	9
+      000243 00 08                 1298 	.dw	Sstm8s_uart1$UART1_ITConfig$149-Sstm8s_uart1$UART1_ITConfig$147
+      000245 03                    1299 	.db	3
+      000246 04                    1300 	.sleb128	4
+      000247 01                    1301 	.db	1
+      000248 09                    1302 	.db	9
+      000249 00 02                 1303 	.dw	1+Sstm8s_uart1$UART1_ITConfig$151-Sstm8s_uart1$UART1_ITConfig$149
+      00024B 00                    1304 	.db	0
+      00024C 01                    1305 	.uleb128	1
+      00024D 01                    1306 	.db	1
+      00024E 00                    1307 	.db	0
+      00024F 05                    1308 	.uleb128	5
+      000250 02                    1309 	.db	2
+      000251 00 00r02r36           1310 	.dw	0,(Sstm8s_uart1$UART1_ReceiveData8$153)
+      000255 03                    1311 	.db	3
+      000256 C2 03                 1312 	.sleb128	450
+      000258 01                    1313 	.db	1
+      000259 09                    1314 	.db	9
+      00025A 00 00                 1315 	.dw	Sstm8s_uart1$UART1_ReceiveData8$155-Sstm8s_uart1$UART1_ReceiveData8$153
+      00025C 03                    1316 	.db	3
+      00025D 02                    1317 	.sleb128	2
+      00025E 01                    1318 	.db	1
+      00025F 09                    1319 	.db	9
+      000260 00 03                 1320 	.dw	Sstm8s_uart1$UART1_ReceiveData8$156-Sstm8s_uart1$UART1_ReceiveData8$155
+      000262 03                    1321 	.db	3
+      000263 01                    1322 	.sleb128	1
+      000264 01                    1323 	.db	1
+      000265 09                    1324 	.db	9
+      000266 00 01                 1325 	.dw	1+Sstm8s_uart1$UART1_ReceiveData8$157-Sstm8s_uart1$UART1_ReceiveData8$156
+      000268 00                    1326 	.db	0
+      000269 01                    1327 	.uleb128	1
+      00026A 01                    1328 	.db	1
+      00026B 00                    1329 	.db	0
+      00026C 05                    1330 	.uleb128	5
+      00026D 02                    1331 	.db	2
+      00026E 00 00r02r3A           1332 	.dw	0,(Sstm8s_uart1$UART1_SendData8$159)
+      000272 03                    1333 	.db	3
+      000273 D9 03                 1334 	.sleb128	473
+      000275 01                    1335 	.db	1
+      000276 09                    1336 	.db	9
+      000277 00 00                 1337 	.dw	Sstm8s_uart1$UART1_SendData8$161-Sstm8s_uart1$UART1_SendData8$159
+      000279 03                    1338 	.db	3
+      00027A 03                    1339 	.sleb128	3
+      00027B 01                    1340 	.db	1
+      00027C 09                    1341 	.db	9
+      00027D 00 06                 1342 	.dw	Sstm8s_uart1$UART1_SendData8$162-Sstm8s_uart1$UART1_SendData8$161
+      00027F 03                    1343 	.db	3
+      000280 01                    1344 	.sleb128	1
+      000281 01                    1345 	.db	1
+      000282 09                    1346 	.db	9
+      000283 00 01                 1347 	.dw	1+Sstm8s_uart1$UART1_SendData8$163-Sstm8s_uart1$UART1_SendData8$162
+      000285 00                    1348 	.db	0
+      000286 01                    1349 	.uleb128	1
+      000287 01                    1350 	.db	1
+      000288 00                    1351 	.db	0
+      000289 05                    1352 	.uleb128	5
+      00028A 02                    1353 	.db	2
+      00028B 00 00r02r41           1354 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$165)
+      00028F 03                    1355 	.db	3
+      000290 B7 04                 1356 	.sleb128	567
+      000292 01                    1357 	.db	1
+      000293 09                    1358 	.db	9
+      000294 00 02                 1359 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$168-Sstm8s_uart1$UART1_GetFlagStatus$165
+      000296 03                    1360 	.db	3
+      000297 09                    1361 	.sleb128	9
+      000298 01                    1362 	.db	1
+      000299 09                    1363 	.db	9
+      00029A 00 04                 1364 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$169-Sstm8s_uart1$UART1_GetFlagStatus$168
+      00029C 03                    1365 	.db	3
+      00029D 02                    1366 	.sleb128	2
+      00029E 01                    1367 	.db	1
+      00029F 09                    1368 	.db	9
+      0002A0 00 04                 1369 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$170-Sstm8s_uart1$UART1_GetFlagStatus$169
+      0002A2 03                    1370 	.db	3
+      0002A3 7E                    1371 	.sleb128	-2
+      0002A4 01                    1372 	.db	1
+      0002A5 09                    1373 	.db	9
+      0002A6 00 07                 1374 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$173-Sstm8s_uart1$UART1_GetFlagStatus$170
+      0002A8 03                    1375 	.db	3
+      0002A9 02                    1376 	.sleb128	2
+      0002AA 01                    1377 	.db	1
+      0002AB 09                    1378 	.db	9
+      0002AC 00 07                 1379 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$175-Sstm8s_uart1$UART1_GetFlagStatus$173
+      0002AE 03                    1380 	.db	3
+      0002AF 03                    1381 	.sleb128	3
+      0002B0 01                    1382 	.db	1
+      0002B1 09                    1383 	.db	9
+      0002B2 00 05                 1384 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$178-Sstm8s_uart1$UART1_GetFlagStatus$175
+      0002B4 03                    1385 	.db	3
+      0002B5 05                    1386 	.sleb128	5
+      0002B6 01                    1387 	.db	1
+      0002B7 09                    1388 	.db	9
+      0002B8 00 03                 1389 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$180-Sstm8s_uart1$UART1_GetFlagStatus$178
+      0002BA 03                    1390 	.db	3
+      0002BB 03                    1391 	.sleb128	3
+      0002BC 01                    1392 	.db	1
+      0002BD 09                    1393 	.db	9
+      0002BE 00 07                 1394 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$183-Sstm8s_uart1$UART1_GetFlagStatus$180
+      0002C0 03                    1395 	.db	3
+      0002C1 02                    1396 	.sleb128	2
+      0002C2 01                    1397 	.db	1
+      0002C3 09                    1398 	.db	9
+      0002C4 00 07                 1399 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$185-Sstm8s_uart1$UART1_GetFlagStatus$183
+      0002C6 03                    1400 	.db	3
+      0002C7 03                    1401 	.sleb128	3
+      0002C8 01                    1402 	.db	1
+      0002C9 09                    1403 	.db	9
+      0002CA 00 04                 1404 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$188-Sstm8s_uart1$UART1_GetFlagStatus$185
+      0002CC 03                    1405 	.db	3
+      0002CD 05                    1406 	.sleb128	5
+      0002CE 01                    1407 	.db	1
+      0002CF 09                    1408 	.db	9
+      0002D0 00 03                 1409 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$191-Sstm8s_uart1$UART1_GetFlagStatus$188
+      0002D2 03                    1410 	.db	3
+      0002D3 05                    1411 	.sleb128	5
+      0002D4 01                    1412 	.db	1
+      0002D5 09                    1413 	.db	9
+      0002D6 00 07                 1414 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$193-Sstm8s_uart1$UART1_GetFlagStatus$191
+      0002D8 03                    1415 	.db	3
+      0002D9 03                    1416 	.sleb128	3
+      0002DA 01                    1417 	.db	1
+      0002DB 09                    1418 	.db	9
+      0002DC 00 04                 1419 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$196-Sstm8s_uart1$UART1_GetFlagStatus$193
+      0002DE 03                    1420 	.db	3
+      0002DF 05                    1421 	.sleb128	5
+      0002E0 01                    1422 	.db	1
+      0002E1 09                    1423 	.db	9
+      0002E2 00 01                 1424 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$198-Sstm8s_uart1$UART1_GetFlagStatus$196
+      0002E4 03                    1425 	.db	3
+      0002E5 04                    1426 	.sleb128	4
+      0002E6 01                    1427 	.db	1
+      0002E7 09                    1428 	.db	9
+      0002E8 00 00                 1429 	.dw	Sstm8s_uart1$UART1_GetFlagStatus$199-Sstm8s_uart1$UART1_GetFlagStatus$198
+      0002EA 03                    1430 	.db	3
+      0002EB 01                    1431 	.sleb128	1
+      0002EC 01                    1432 	.db	1
+      0002ED 09                    1433 	.db	9
+      0002EE 00 03                 1434 	.dw	1+Sstm8s_uart1$UART1_GetFlagStatus$201-Sstm8s_uart1$UART1_GetFlagStatus$199
+      0002F0 00                    1435 	.db	0
+      0002F1 01                    1436 	.uleb128	1
+      0002F2 01                    1437 	.db	1
+      0002F3 00                    1438 	.db	0
+      0002F4 05                    1439 	.uleb128	5
+      0002F5 02                    1440 	.db	2
+      0002F6 00 00r02r85           1441 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$203)
+      0002FA 03                    1442 	.db	3
+      0002FB A2 05                 1443 	.sleb128	674
+      0002FD 01                    1444 	.db	1
+      0002FE 09                    1445 	.db	9
+      0002FF 00 02                 1446 	.dw	Sstm8s_uart1$UART1_GetITStatus$206-Sstm8s_uart1$UART1_GetITStatus$203
+      000301 03                    1447 	.db	3
+      000302 0C                    1448 	.sleb128	12
+      000303 01                    1449 	.db	1
+      000304 09                    1450 	.db	9
+      000305 00 13                 1451 	.dw	Sstm8s_uart1$UART1_GetITStatus$209-Sstm8s_uart1$UART1_GetITStatus$206
+      000307 03                    1452 	.db	3
+      000308 02                    1453 	.sleb128	2
+      000309 01                    1454 	.db	1
+      00030A 09                    1455 	.db	9
+      00030B 00 04                 1456 	.dw	Sstm8s_uart1$UART1_GetITStatus$210-Sstm8s_uart1$UART1_GetITStatus$209
+      00030D 03                    1457 	.db	3
+      00030E 02                    1458 	.sleb128	2
+      00030F 01                    1459 	.db	1
+      000310 09                    1460 	.db	9
+      000311 00 0E                 1461 	.dw	Sstm8s_uart1$UART1_GetITStatus$213-Sstm8s_uart1$UART1_GetITStatus$210
+      000313 03                    1462 	.db	3
+      000314 04                    1463 	.sleb128	4
+      000315 01                    1464 	.db	1
+      000316 09                    1465 	.db	9
+      000317 00 0A                 1466 	.dw	Sstm8s_uart1$UART1_GetITStatus$216-Sstm8s_uart1$UART1_GetITStatus$213
+      000319 03                    1467 	.db	3
+      00031A 03                    1468 	.sleb128	3
+      00031B 01                    1469 	.db	1
+      00031C 09                    1470 	.db	9
+      00031D 00 06                 1471 	.dw	Sstm8s_uart1$UART1_GetITStatus$217-Sstm8s_uart1$UART1_GetITStatus$216
+      00031F 03                    1472 	.db	3
+      000320 03                    1473 	.sleb128	3
+      000321 01                    1474 	.db	1
+      000322 09                    1475 	.db	9
+      000323 00 0B                 1476 	.dw	Sstm8s_uart1$UART1_GetITStatus$219-Sstm8s_uart1$UART1_GetITStatus$217
+      000325 03                    1477 	.db	3
+      000326 03                    1478 	.sleb128	3
+      000327 01                    1479 	.db	1
+      000328 09                    1480 	.db	9
+      000329 00 05                 1481 	.dw	Sstm8s_uart1$UART1_GetITStatus$222-Sstm8s_uart1$UART1_GetITStatus$219
+      00032B 03                    1482 	.db	3
+      00032C 05                    1483 	.sleb128	5
+      00032D 01                    1484 	.db	1
+      00032E 09                    1485 	.db	9
+      00032F 00 04                 1486 	.dw	Sstm8s_uart1$UART1_GetITStatus$224-Sstm8s_uart1$UART1_GetITStatus$222
+      000331 03                    1487 	.db	3
+      000332 04                    1488 	.sleb128	4
+      000333 01                    1489 	.db	1
+      000334 09                    1490 	.db	9
+      000335 00 07                 1491 	.dw	Sstm8s_uart1$UART1_GetITStatus$227-Sstm8s_uart1$UART1_GetITStatus$224
+      000337 03                    1492 	.db	3
+      000338 03                    1493 	.sleb128	3
+      000339 01                    1494 	.db	1
+      00033A 09                    1495 	.db	9
+      00033B 00 06                 1496 	.dw	Sstm8s_uart1$UART1_GetITStatus$228-Sstm8s_uart1$UART1_GetITStatus$227
+      00033D 03                    1497 	.db	3
+      00033E 02                    1498 	.sleb128	2
+      00033F 01                    1499 	.db	1
+      000340 09                    1500 	.db	9
+      000341 00 0B                 1501 	.dw	Sstm8s_uart1$UART1_GetITStatus$230-Sstm8s_uart1$UART1_GetITStatus$228
+      000343 03                    1502 	.db	3
+      000344 03                    1503 	.sleb128	3
+      000345 01                    1504 	.db	1
+      000346 09                    1505 	.db	9
+      000347 00 04                 1506 	.dw	Sstm8s_uart1$UART1_GetITStatus$233-Sstm8s_uart1$UART1_GetITStatus$230
+      000349 03                    1507 	.db	3
+      00034A 05                    1508 	.sleb128	5
+      00034B 01                    1509 	.db	1
+      00034C 09                    1510 	.db	9
+      00034D 00 03                 1511 	.dw	Sstm8s_uart1$UART1_GetITStatus$236-Sstm8s_uart1$UART1_GetITStatus$233
+      00034F 03                    1512 	.db	3
+      000350 06                    1513 	.sleb128	6
+      000351 01                    1514 	.db	1
+      000352 09                    1515 	.db	9
+      000353 00 06                 1516 	.dw	Sstm8s_uart1$UART1_GetITStatus$237-Sstm8s_uart1$UART1_GetITStatus$236
+      000355 03                    1517 	.db	3
+      000356 02                    1518 	.sleb128	2
+      000357 01                    1519 	.db	1
+      000358 09                    1520 	.db	9
+      000359 00 0B                 1521 	.dw	Sstm8s_uart1$UART1_GetITStatus$239-Sstm8s_uart1$UART1_GetITStatus$237
+      00035B 03                    1522 	.db	3
+      00035C 03                    1523 	.sleb128	3
+      00035D 01                    1524 	.db	1
+      00035E 09                    1525 	.db	9
+      00035F 00 04                 1526 	.dw	Sstm8s_uart1$UART1_GetITStatus$242-Sstm8s_uart1$UART1_GetITStatus$239
+      000361 03                    1527 	.db	3
+      000362 05                    1528 	.sleb128	5
+      000363 01                    1529 	.db	1
+      000364 09                    1530 	.db	9
+      000365 00 01                 1531 	.dw	Sstm8s_uart1$UART1_GetITStatus$244-Sstm8s_uart1$UART1_GetITStatus$242
+      000367 03                    1532 	.db	3
+      000368 05                    1533 	.sleb128	5
+      000369 01                    1534 	.db	1
+      00036A 09                    1535 	.db	9
+      00036B 00 00                 1536 	.dw	Sstm8s_uart1$UART1_GetITStatus$245-Sstm8s_uart1$UART1_GetITStatus$244
+      00036D 03                    1537 	.db	3
+      00036E 01                    1538 	.sleb128	1
+      00036F 01                    1539 	.db	1
+      000370 09                    1540 	.db	9
+      000371 00 03                 1541 	.dw	1+Sstm8s_uart1$UART1_GetITStatus$247-Sstm8s_uart1$UART1_GetITStatus$245
+      000373 00                    1542 	.db	0
+      000374 01                    1543 	.uleb128	1
+      000375 01                    1544 	.db	1
+      000376 00                    1545 	.db	0
+      000377 05                    1546 	.uleb128	5
+      000378 02                    1547 	.db	2
+      000379 00 00r03r08           1548 	.dw	0,(Sstm8s_uart1$UART1_ClearITPendingBit$249)
+      00037D 03                    1549 	.db	3
+      00037E 86 06                 1550 	.sleb128	774
+      000380 01                    1551 	.db	1
+      000381 09                    1552 	.db	9
+      000382 00 00                 1553 	.dw	Sstm8s_uart1$UART1_ClearITPendingBit$251-Sstm8s_uart1$UART1_ClearITPendingBit$249
+      000384 03                    1554 	.db	3
+      000385 05                    1555 	.sleb128	5
+      000386 01                    1556 	.db	1
+      000387 09                    1557 	.db	9
+      000388 00 07                 1558 	.dw	Sstm8s_uart1$UART1_ClearITPendingBit$254-Sstm8s_uart1$UART1_ClearITPendingBit$251
+      00038A 03                    1559 	.db	3
+      00038B 02                    1560 	.sleb128	2
+      00038C 01                    1561 	.db	1
+      00038D 09                    1562 	.db	9
+      00038E 00 06                 1563 	.dw	Sstm8s_uart1$UART1_ClearITPendingBit$257-Sstm8s_uart1$UART1_ClearITPendingBit$254
+      000390 03                    1564 	.db	3
+      000391 05                    1565 	.sleb128	5
+      000392 01                    1566 	.db	1
+      000393 09                    1567 	.db	9
+      000394 00 04                 1568 	.dw	Sstm8s_uart1$UART1_ClearITPendingBit$259-Sstm8s_uart1$UART1_ClearITPendingBit$257
+      000396 03                    1569 	.db	3
+      000397 02                    1570 	.sleb128	2
+      000398 01                    1571 	.db	1
+      000399 09                    1572 	.db	9
+      00039A 00 01                 1573 	.dw	1+Sstm8s_uart1$UART1_ClearITPendingBit$260-Sstm8s_uart1$UART1_ClearITPendingBit$259
+      00039C 00                    1574 	.db	0
+      00039D 01                    1575 	.uleb128	1
+      00039E 01                    1576 	.db	1
+      00039F                       1577 Ldebug_line_end:
+                                   1578 
+                                   1579 	.area .debug_loc (NOLOAD)
+      000000                       1580 Ldebug_loc_start:
+      000000 00 00r03r0F           1581 	.dw	0,(Sstm8s_uart1$UART1_ClearITPendingBit$252)
+      000004 00 00r03r1A           1582 	.dw	0,(Sstm8s_uart1$UART1_ClearITPendingBit$261)
+      000008 00 02                 1583 	.dw	2
+      00000A 78                    1584 	.db	120
+      00000B 01                    1585 	.sleb128	1
+      00000C 00 00r03r08           1586 	.dw	0,(Sstm8s_uart1$UART1_ClearITPendingBit$250)
+      000010 00 00r03r0F           1587 	.dw	0,(Sstm8s_uart1$UART1_ClearITPendingBit$252)
+      000014 00 02                 1588 	.dw	2
+      000016 78                    1589 	.db	120
+      000017 01                    1590 	.sleb128	1
+      000018 00 00 00 00           1591 	.dw	0,0
+      00001C 00 00 00 00           1592 	.dw	0,0
+      000020 00 00r03r07           1593 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$246)
+      000024 00 00r03r08           1594 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$248)
+      000028 00 02                 1595 	.dw	2
+      00002A 78                    1596 	.db	120
+      00002B 01                    1597 	.sleb128	1
+      00002C 00 00r02rD7           1598 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$225)
+      000030 00 00r03r07           1599 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$246)
+      000034 00 02                 1600 	.dw	2
+      000036 78                    1601 	.db	120
+      000037 05                    1602 	.sleb128	5
+      000038 00 00r02rB6           1603 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$214)
+      00003C 00 00r02rD7           1604 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$225)
+      000040 00 02                 1605 	.dw	2
+      000042 78                    1606 	.db	120
+      000043 05                    1607 	.sleb128	5
+      000044 00 00r02rA4           1608 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$212)
+      000048 00 00r02rB6           1609 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$214)
+      00004C 00 02                 1610 	.dw	2
+      00004E 78                    1611 	.db	120
+      00004F 05                    1612 	.sleb128	5
+      000050 00 00r02r9F           1613 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$211)
+      000054 00 00r02rA4           1614 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$212)
+      000058 00 02                 1615 	.dw	2
+      00005A 78                    1616 	.db	120
+      00005B 06                    1617 	.sleb128	6
+      00005C 00 00r02r92           1618 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$208)
+      000060 00 00r02r9F           1619 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$211)
+      000064 00 02                 1620 	.dw	2
+      000066 78                    1621 	.db	120
+      000067 05                    1622 	.sleb128	5
+      000068 00 00r02r8D           1623 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$207)
+      00006C 00 00r02r92           1624 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$208)
+      000070 00 02                 1625 	.dw	2
+      000072 78                    1626 	.db	120
+      000073 06                    1627 	.sleb128	6
+      000074 00 00r02r87           1628 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$205)
+      000078 00 00r02r8D           1629 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$207)
+      00007C 00 02                 1630 	.dw	2
+      00007E 78                    1631 	.db	120
+      00007F 05                    1632 	.sleb128	5
+      000080 00 00r02r85           1633 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$204)
+      000084 00 00r02r87           1634 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$205)
+      000088 00 02                 1635 	.dw	2
+      00008A 78                    1636 	.db	120
+      00008B 01                    1637 	.sleb128	1
+      00008C 00 00 00 00           1638 	.dw	0,0
+      000090 00 00 00 00           1639 	.dw	0,0
+      000094 00 00r02r84           1640 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$200)
+      000098 00 00r02r85           1641 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$202)
+      00009C 00 02                 1642 	.dw	2
+      00009E 78                    1643 	.db	120
+      00009F 01                    1644 	.sleb128	1
+      0000A0 00 00r02r68           1645 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$181)
+      0000A4 00 00r02r84           1646 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$200)
+      0000A8 00 02                 1647 	.dw	2
+      0000AA 78                    1648 	.db	120
+      0000AB 04                    1649 	.sleb128	4
+      0000AC 00 00r02r52           1650 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$171)
+      0000B0 00 00r02r68           1651 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$181)
+      0000B4 00 02                 1652 	.dw	2
+      0000B6 78                    1653 	.db	120
+      0000B7 04                    1654 	.sleb128	4
+      0000B8 00 00r02r43           1655 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$167)
+      0000BC 00 00r02r52           1656 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$171)
+      0000C0 00 02                 1657 	.dw	2
+      0000C2 78                    1658 	.db	120
+      0000C3 04                    1659 	.sleb128	4
+      0000C4 00 00r02r41           1660 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$166)
+      0000C8 00 00r02r43           1661 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$167)
+      0000CC 00 02                 1662 	.dw	2
+      0000CE 78                    1663 	.db	120
+      0000CF 01                    1664 	.sleb128	1
+      0000D0 00 00 00 00           1665 	.dw	0,0
+      0000D4 00 00 00 00           1666 	.dw	0,0
+      0000D8 00 00r02r3A           1667 	.dw	0,(Sstm8s_uart1$UART1_SendData8$160)
+      0000DC 00 00r02r41           1668 	.dw	0,(Sstm8s_uart1$UART1_SendData8$164)
+      0000E0 00 02                 1669 	.dw	2
+      0000E2 78                    1670 	.db	120
+      0000E3 01                    1671 	.sleb128	1
+      0000E4 00 00 00 00           1672 	.dw	0,0
+      0000E8 00 00 00 00           1673 	.dw	0,0
+      0000EC 00 00r02r36           1674 	.dw	0,(Sstm8s_uart1$UART1_ReceiveData8$154)
+      0000F0 00 00r02r3A           1675 	.dw	0,(Sstm8s_uart1$UART1_ReceiveData8$158)
+      0000F4 00 02                 1676 	.dw	2
+      0000F6 78                    1677 	.db	120
+      0000F7 01                    1678 	.sleb128	1
+      0000F8 00 00 00 00           1679 	.dw	0,0
+      0000FC 00 00 00 00           1680 	.dw	0,0
+      000100 00 00r02r35           1681 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$150)
+      000104 00 00r02r36           1682 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$152)
+      000108 00 02                 1683 	.dw	2
+      00010A 78                    1684 	.db	120
+      00010B 01                    1685 	.sleb128	1
+      00010C 00 00r01rE4           1686 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$122)
+      000110 00 00r02r35           1687 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$150)
+      000114 00 02                 1688 	.dw	2
+      000116 78                    1689 	.db	120
+      000117 03                    1690 	.sleb128	3
+      000118 00 00r01rDC           1691 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$120)
+      00011C 00 00r01rE4           1692 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$122)
+      000120 00 02                 1693 	.dw	2
+      000122 78                    1694 	.db	120
+      000123 03                    1695 	.sleb128	3
+      000124 00 00r01rC9           1696 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$118)
+      000128 00 00r01rDC           1697 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$120)
+      00012C 00 02                 1698 	.dw	2
+      00012E 78                    1699 	.db	120
+      00012F 03                    1700 	.sleb128	3
+      000130 00 00r01rC4           1701 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$117)
+      000134 00 00r01rC9           1702 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$118)
+      000138 00 02                 1703 	.dw	2
+      00013A 78                    1704 	.db	120
+      00013B 04                    1705 	.sleb128	4
+      00013C 00 00r01rBD           1706 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$114)
+      000140 00 00r01rC4           1707 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$117)
+      000144 00 02                 1708 	.dw	2
+      000146 78                    1709 	.db	120
+      000147 03                    1710 	.sleb128	3
+      000148 00 00r01rBC           1711 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$113)
+      00014C 00 00r01rBD           1712 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$114)
+      000150 00 02                 1713 	.dw	2
+      000152 78                    1714 	.db	120
+      000153 01                    1715 	.sleb128	1
+      000154 00 00 00 00           1716 	.dw	0,0
+      000158 00 00 00 00           1717 	.dw	0,0
+      00015C 00 00r01rA8           1718 	.dw	0,(Sstm8s_uart1$UART1_Cmd$100)
+      000160 00 00r01rBC           1719 	.dw	0,(Sstm8s_uart1$UART1_Cmd$111)
+      000164 00 02                 1720 	.dw	2
+      000166 78                    1721 	.db	120
+      000167 01                    1722 	.sleb128	1
+      000168 00 00 00 00           1723 	.dw	0,0
+      00016C 00 00 00 00           1724 	.dw	0,0
+      000170 00 00r01rA7           1725 	.dw	0,(Sstm8s_uart1$UART1_Init$96)
+      000174 00 00r01rA8           1726 	.dw	0,(Sstm8s_uart1$UART1_Init$98)
+      000178 00 02                 1727 	.dw	2
+      00017A 78                    1728 	.db	120
+      00017B 01                    1729 	.sleb128	1
+      00017C 00 00r01rA0           1730 	.dw	0,(Sstm8s_uart1$UART1_Init$93)
+      000180 00 00r01rA7           1731 	.dw	0,(Sstm8s_uart1$UART1_Init$96)
+      000184 00 02                 1732 	.dw	2
+      000186 78                    1733 	.db	120
+      000187 12                    1734 	.sleb128	18
+      000188 00 00r01r99           1735 	.dw	0,(Sstm8s_uart1$UART1_Init$92)
+      00018C 00 00r01rA0           1736 	.dw	0,(Sstm8s_uart1$UART1_Init$93)
+      000190 00 02                 1737 	.dw	2
+      000192 78                    1738 	.db	120
+      000193 13                    1739 	.sleb128	19
+      000194 00 00r01r7C           1740 	.dw	0,(Sstm8s_uart1$UART1_Init$78)
+      000198 00 00r01r99           1741 	.dw	0,(Sstm8s_uart1$UART1_Init$92)
+      00019C 00 02                 1742 	.dw	2
+      00019E 78                    1743 	.db	120
+      00019F 12                    1744 	.sleb128	18
+      0001A0 00 00r01r77           1745 	.dw	0,(Sstm8s_uart1$UART1_Init$77)
+      0001A4 00 00r01r7C           1746 	.dw	0,(Sstm8s_uart1$UART1_Init$78)
+      0001A8 00 02                 1747 	.dw	2
+      0001AA 78                    1748 	.db	120
+      0001AB 13                    1749 	.sleb128	19
+      0001AC 00 00r01r65           1750 	.dw	0,(Sstm8s_uart1$UART1_Init$68)
+      0001B0 00 00r01r77           1751 	.dw	0,(Sstm8s_uart1$UART1_Init$77)
+      0001B4 00 02                 1752 	.dw	2
+      0001B6 78                    1753 	.db	120
+      0001B7 12                    1754 	.sleb128	18
+      0001B8 00 00r01r60           1755 	.dw	0,(Sstm8s_uart1$UART1_Init$67)
+      0001BC 00 00r01r65           1756 	.dw	0,(Sstm8s_uart1$UART1_Init$68)
+      0001C0 00 02                 1757 	.dw	2
+      0001C2 78                    1758 	.db	120
+      0001C3 13                    1759 	.sleb128	19
+      0001C4 00 00r01r18           1760 	.dw	0,(Sstm8s_uart1$UART1_Init$59)
+      0001C8 00 00r01r60           1761 	.dw	0,(Sstm8s_uart1$UART1_Init$67)
+      0001CC 00 02                 1762 	.dw	2
+      0001CE 78                    1763 	.db	120
+      0001CF 12                    1764 	.sleb128	18
+      0001D0 00 00r01r13           1765 	.dw	0,(Sstm8s_uart1$UART1_Init$58)
+      0001D4 00 00r01r18           1766 	.dw	0,(Sstm8s_uart1$UART1_Init$59)
+      0001D8 00 02                 1767 	.dw	2
+      0001DA 78                    1768 	.db	120
+      0001DB 1A                    1769 	.sleb128	26
+      0001DC 00 00r01r11           1770 	.dw	0,(Sstm8s_uart1$UART1_Init$57)
+      0001E0 00 00r01r13           1771 	.dw	0,(Sstm8s_uart1$UART1_Init$58)
+      0001E4 00 02                 1772 	.dw	2
+      0001E6 78                    1773 	.db	120
+      0001E7 18                    1774 	.sleb128	24
+      0001E8 00 00r01r10           1775 	.dw	0,(Sstm8s_uart1$UART1_Init$56)
+      0001EC 00 00r01r11           1776 	.dw	0,(Sstm8s_uart1$UART1_Init$57)
+      0001F0 00 02                 1777 	.dw	2
+      0001F2 78                    1778 	.db	120
+      0001F3 16                    1779 	.sleb128	22
+      0001F4 00 00r01r0E           1780 	.dw	0,(Sstm8s_uart1$UART1_Init$55)
+      0001F8 00 00r01r10           1781 	.dw	0,(Sstm8s_uart1$UART1_Init$56)
+      0001FC 00 02                 1782 	.dw	2
+      0001FE 78                    1783 	.db	120
+      0001FF 15                    1784 	.sleb128	21
+      000200 00 00r01r0C           1785 	.dw	0,(Sstm8s_uart1$UART1_Init$54)
+      000204 00 00r01r0E           1786 	.dw	0,(Sstm8s_uart1$UART1_Init$55)
+      000208 00 02                 1787 	.dw	2
+      00020A 78                    1788 	.db	120
+      00020B 14                    1789 	.sleb128	20
+      00020C 00 00r01r0A           1790 	.dw	0,(Sstm8s_uart1$UART1_Init$53)
+      000210 00 00r01r0C           1791 	.dw	0,(Sstm8s_uart1$UART1_Init$54)
+      000214 00 02                 1792 	.dw	2
+      000216 78                    1793 	.db	120
+      000217 13                    1794 	.sleb128	19
+      000218 00 00r00rE5           1795 	.dw	0,(Sstm8s_uart1$UART1_Init$52)
+      00021C 00 00r01r0A           1796 	.dw	0,(Sstm8s_uart1$UART1_Init$53)
+      000220 00 02                 1797 	.dw	2
+      000222 78                    1798 	.db	120
+      000223 12                    1799 	.sleb128	18
+      000224 00 00r00rE0           1800 	.dw	0,(Sstm8s_uart1$UART1_Init$51)
+      000228 00 00r00rE5           1801 	.dw	0,(Sstm8s_uart1$UART1_Init$52)
+      00022C 00 02                 1802 	.dw	2
+      00022E 78                    1803 	.db	120
+      00022F 1A                    1804 	.sleb128	26
+      000230 00 00r00rDE           1805 	.dw	0,(Sstm8s_uart1$UART1_Init$50)
+      000234 00 00r00rE0           1806 	.dw	0,(Sstm8s_uart1$UART1_Init$51)
+      000238 00 02                 1807 	.dw	2
+      00023A 78                    1808 	.db	120
+      00023B 19                    1809 	.sleb128	25
+      00023C 00 00r00rDC           1810 	.dw	0,(Sstm8s_uart1$UART1_Init$49)
+      000240 00 00r00rDE           1811 	.dw	0,(Sstm8s_uart1$UART1_Init$50)
+      000244 00 02                 1812 	.dw	2
+      000246 78                    1813 	.db	120
+      000247 17                    1814 	.sleb128	23
+      000248 00 00r00rDA           1815 	.dw	0,(Sstm8s_uart1$UART1_Init$48)
+      00024C 00 00r00rDC           1816 	.dw	0,(Sstm8s_uart1$UART1_Init$49)
+      000250 00 02                 1817 	.dw	2
+      000252 78                    1818 	.db	120
+      000253 16                    1819 	.sleb128	22
+      000254 00 00r00rD7           1820 	.dw	0,(Sstm8s_uart1$UART1_Init$47)
+      000258 00 00r00rDA           1821 	.dw	0,(Sstm8s_uart1$UART1_Init$48)
+      00025C 00 02                 1822 	.dw	2
+      00025E 78                    1823 	.db	120
+      00025F 14                    1824 	.sleb128	20
+      000260 00 00r00rCB           1825 	.dw	0,(Sstm8s_uart1$UART1_Init$45)
+      000264 00 00r00rD7           1826 	.dw	0,(Sstm8s_uart1$UART1_Init$47)
+      000268 00 02                 1827 	.dw	2
+      00026A 78                    1828 	.db	120
+      00026B 12                    1829 	.sleb128	18
+      00026C 00 00r00rC6           1830 	.dw	0,(Sstm8s_uart1$UART1_Init$44)
+      000270 00 00r00rCB           1831 	.dw	0,(Sstm8s_uart1$UART1_Init$45)
+      000274 00 02                 1832 	.dw	2
+      000276 78                    1833 	.db	120
+      000277 1A                    1834 	.sleb128	26
+      000278 00 00r00rC4           1835 	.dw	0,(Sstm8s_uart1$UART1_Init$43)
+      00027C 00 00r00rC6           1836 	.dw	0,(Sstm8s_uart1$UART1_Init$44)
+      000280 00 02                 1837 	.dw	2
+      000282 78                    1838 	.db	120
+      000283 18                    1839 	.sleb128	24
+      000284 00 00r00rC1           1840 	.dw	0,(Sstm8s_uart1$UART1_Init$42)
+      000288 00 00r00rC4           1841 	.dw	0,(Sstm8s_uart1$UART1_Init$43)
+      00028C 00 02                 1842 	.dw	2
+      00028E 78                    1843 	.db	120
+      00028F 16                    1844 	.sleb128	22
+      000290 00 00r00rBE           1845 	.dw	0,(Sstm8s_uart1$UART1_Init$41)
+      000294 00 00r00rC1           1846 	.dw	0,(Sstm8s_uart1$UART1_Init$42)
+      000298 00 02                 1847 	.dw	2
+      00029A 78                    1848 	.db	120
+      00029B 14                    1849 	.sleb128	20
+      00029C 00 00r00rB9           1850 	.dw	0,(Sstm8s_uart1$UART1_Init$40)
+      0002A0 00 00r00rBE           1851 	.dw	0,(Sstm8s_uart1$UART1_Init$41)
+      0002A4 00 02                 1852 	.dw	2
+      0002A6 78                    1853 	.db	120
+      0002A7 12                    1854 	.sleb128	18
+      0002A8 00 00r00rB4           1855 	.dw	0,(Sstm8s_uart1$UART1_Init$39)
+      0002AC 00 00r00rB9           1856 	.dw	0,(Sstm8s_uart1$UART1_Init$40)
+      0002B0 00 02                 1857 	.dw	2
+      0002B2 78                    1858 	.db	120
+      0002B3 1A                    1859 	.sleb128	26
+      0002B4 00 00r00rB2           1860 	.dw	0,(Sstm8s_uart1$UART1_Init$38)
+      0002B8 00 00r00rB4           1861 	.dw	0,(Sstm8s_uart1$UART1_Init$39)
+      0002BC 00 02                 1862 	.dw	2
+      0002BE 78                    1863 	.db	120
+      0002BF 19                    1864 	.sleb128	25
+      0002C0 00 00r00rB0           1865 	.dw	0,(Sstm8s_uart1$UART1_Init$37)
+      0002C4 00 00r00rB2           1866 	.dw	0,(Sstm8s_uart1$UART1_Init$38)
+      0002C8 00 02                 1867 	.dw	2
+      0002CA 78                    1868 	.db	120
+      0002CB 17                    1869 	.sleb128	23
+      0002CC 00 00r00rAE           1870 	.dw	0,(Sstm8s_uart1$UART1_Init$36)
+      0002D0 00 00r00rB0           1871 	.dw	0,(Sstm8s_uart1$UART1_Init$37)
+      0002D4 00 02                 1872 	.dw	2
+      0002D6 78                    1873 	.db	120
+      0002D7 16                    1874 	.sleb128	22
+      0002D8 00 00r00rAB           1875 	.dw	0,(Sstm8s_uart1$UART1_Init$35)
+      0002DC 00 00r00rAE           1876 	.dw	0,(Sstm8s_uart1$UART1_Init$36)
+      0002E0 00 02                 1877 	.dw	2
+      0002E2 78                    1878 	.db	120
+      0002E3 14                    1879 	.sleb128	20
+      0002E4 00 00r00r95           1880 	.dw	0,(Sstm8s_uart1$UART1_Init$33)
+      0002E8 00 00r00rAB           1881 	.dw	0,(Sstm8s_uart1$UART1_Init$35)
+      0002EC 00 02                 1882 	.dw	2
+      0002EE 78                    1883 	.db	120
+      0002EF 12                    1884 	.sleb128	18
+      0002F0 00 00r00r90           1885 	.dw	0,(Sstm8s_uart1$UART1_Init$32)
+      0002F4 00 00r00r95           1886 	.dw	0,(Sstm8s_uart1$UART1_Init$33)
+      0002F8 00 02                 1887 	.dw	2
+      0002FA 78                    1888 	.db	120
+      0002FB 1A                    1889 	.sleb128	26
+      0002FC 00 00r00r8E           1890 	.dw	0,(Sstm8s_uart1$UART1_Init$31)
+      000300 00 00r00r90           1891 	.dw	0,(Sstm8s_uart1$UART1_Init$32)
+      000304 00 02                 1892 	.dw	2
+      000306 78                    1893 	.db	120
+      000307 18                    1894 	.sleb128	24
+      000308 00 00r00r8B           1895 	.dw	0,(Sstm8s_uart1$UART1_Init$30)
+      00030C 00 00r00r8E           1896 	.dw	0,(Sstm8s_uart1$UART1_Init$31)
+      000310 00 02                 1897 	.dw	2
+      000312 78                    1898 	.db	120
+      000313 16                    1899 	.sleb128	22
+      000314 00 00r00r88           1900 	.dw	0,(Sstm8s_uart1$UART1_Init$29)
+      000318 00 00r00r8B           1901 	.dw	0,(Sstm8s_uart1$UART1_Init$30)
+      00031C 00 02                 1902 	.dw	2
+      00031E 78                    1903 	.db	120
+      00031F 14                    1904 	.sleb128	20
+      000320 00 00r00r2D           1905 	.dw	0,(Sstm8s_uart1$UART1_Init$18)
+      000324 00 00r00r88           1906 	.dw	0,(Sstm8s_uart1$UART1_Init$29)
+      000328 00 02                 1907 	.dw	2
+      00032A 78                    1908 	.db	120
+      00032B 12                    1909 	.sleb128	18
+      00032C 00 00r00r2B           1910 	.dw	0,(Sstm8s_uart1$UART1_Init$17)
+      000330 00 00r00r2D           1911 	.dw	0,(Sstm8s_uart1$UART1_Init$18)
+      000334 00 02                 1912 	.dw	2
+      000336 78                    1913 	.db	120
+      000337 01                    1914 	.sleb128	1
+      000338 00 00 00 00           1915 	.dw	0,0
+      00033C 00 00 00 00           1916 	.dw	0,0
+      000340 00 00r00r00           1917 	.dw	0,(Sstm8s_uart1$UART1_DeInit$1)
+      000344 00 00r00r2B           1918 	.dw	0,(Sstm8s_uart1$UART1_DeInit$15)
+      000348 00 02                 1919 	.dw	2
+      00034A 78                    1920 	.db	120
+      00034B 01                    1921 	.sleb128	1
+      00034C 00 00 00 00           1922 	.dw	0,0
+      000350 00 00 00 00           1923 	.dw	0,0
+                                   1924 
+                                   1925 	.area .debug_abbrev (NOLOAD)
+      000000                       1926 Ldebug_abbrev:
+      000000 09                    1927 	.uleb128	9
+      000001 2E                    1928 	.uleb128	46
+      000002 00                    1929 	.db	0
+      000003 03                    1930 	.uleb128	3
+      000004 08                    1931 	.uleb128	8
+      000005 11                    1932 	.uleb128	17
+      000006 01                    1933 	.uleb128	1
+      000007 12                    1934 	.uleb128	18
+      000008 01                    1935 	.uleb128	1
+      000009 3F                    1936 	.uleb128	63
+      00000A 0C                    1937 	.uleb128	12
+      00000B 40                    1938 	.uleb128	64
+      00000C 06                    1939 	.uleb128	6
+      00000D 49                    1940 	.uleb128	73
+      00000E 13                    1941 	.uleb128	19
+      00000F 00                    1942 	.uleb128	0
+      000010 00                    1943 	.uleb128	0
+      000011 04                    1944 	.uleb128	4
+      000012 05                    1945 	.uleb128	5
+      000013 00                    1946 	.db	0
+      000014 02                    1947 	.uleb128	2
+      000015 0A                    1948 	.uleb128	10
+      000016 03                    1949 	.uleb128	3
+      000017 08                    1950 	.uleb128	8
+      000018 49                    1951 	.uleb128	73
+      000019 13                    1952 	.uleb128	19
+      00001A 00                    1953 	.uleb128	0
+      00001B 00                    1954 	.uleb128	0
+      00001C 03                    1955 	.uleb128	3
+      00001D 2E                    1956 	.uleb128	46
+      00001E 01                    1957 	.db	1
+      00001F 01                    1958 	.uleb128	1
+      000020 13                    1959 	.uleb128	19
+      000021 03                    1960 	.uleb128	3
+      000022 08                    1961 	.uleb128	8
+      000023 11                    1962 	.uleb128	17
+      000024 01                    1963 	.uleb128	1
+      000025 12                    1964 	.uleb128	18
+      000026 01                    1965 	.uleb128	1
+      000027 3F                    1966 	.uleb128	63
+      000028 0C                    1967 	.uleb128	12
+      000029 40                    1968 	.uleb128	64
+      00002A 06                    1969 	.uleb128	6
+      00002B 00                    1970 	.uleb128	0
+      00002C 00                    1971 	.uleb128	0
+      00002D 06                    1972 	.uleb128	6
+      00002E 34                    1973 	.uleb128	52
+      00002F 00                    1974 	.db	0
+      000030 02                    1975 	.uleb128	2
+      000031 0A                    1976 	.uleb128	10
+      000032 03                    1977 	.uleb128	3
+      000033 08                    1978 	.uleb128	8
+      000034 49                    1979 	.uleb128	73
+      000035 13                    1980 	.uleb128	19
+      000036 00                    1981 	.uleb128	0
+      000037 00                    1982 	.uleb128	0
+      000038 0A                    1983 	.uleb128	10
+      000039 2E                    1984 	.uleb128	46
+      00003A 01                    1985 	.db	1
+      00003B 01                    1986 	.uleb128	1
+      00003C 13                    1987 	.uleb128	19
+      00003D 03                    1988 	.uleb128	3
+      00003E 08                    1989 	.uleb128	8
+      00003F 11                    1990 	.uleb128	17
+      000040 01                    1991 	.uleb128	1
+      000041 12                    1992 	.uleb128	18
+      000042 01                    1993 	.uleb128	1
+      000043 3F                    1994 	.uleb128	63
+      000044 0C                    1995 	.uleb128	12
+      000045 40                    1996 	.uleb128	64
+      000046 06                    1997 	.uleb128	6
+      000047 49                    1998 	.uleb128	73
+      000048 13                    1999 	.uleb128	19
+      000049 00                    2000 	.uleb128	0
+      00004A 00                    2001 	.uleb128	0
+      00004B 01                    2002 	.uleb128	1
+      00004C 11                    2003 	.uleb128	17
+      00004D 01                    2004 	.db	1
+      00004E 03                    2005 	.uleb128	3
+      00004F 08                    2006 	.uleb128	8
+      000050 10                    2007 	.uleb128	16
+      000051 06                    2008 	.uleb128	6
+      000052 13                    2009 	.uleb128	19
+      000053 0B                    2010 	.uleb128	11
+      000054 25                    2011 	.uleb128	37
+      000055 08                    2012 	.uleb128	8
+      000056 00                    2013 	.uleb128	0
+      000057 00                    2014 	.uleb128	0
+      000058 05                    2015 	.uleb128	5
+      000059 0B                    2016 	.uleb128	11
+      00005A 00                    2017 	.db	0
+      00005B 11                    2018 	.uleb128	17
+      00005C 01                    2019 	.uleb128	1
+      00005D 12                    2020 	.uleb128	18
+      00005E 01                    2021 	.uleb128	1
+      00005F 00                    2022 	.uleb128	0
+      000060 00                    2023 	.uleb128	0
+      000061 08                    2024 	.uleb128	8
+      000062 0B                    2025 	.uleb128	11
+      000063 01                    2026 	.db	1
+      000064 01                    2027 	.uleb128	1
+      000065 13                    2028 	.uleb128	19
+      000066 11                    2029 	.uleb128	17
+      000067 01                    2030 	.uleb128	1
+      000068 00                    2031 	.uleb128	0
+      000069 00                    2032 	.uleb128	0
+      00006A 02                    2033 	.uleb128	2
+      00006B 2E                    2034 	.uleb128	46
+      00006C 00                    2035 	.db	0
+      00006D 03                    2036 	.uleb128	3
+      00006E 08                    2037 	.uleb128	8
+      00006F 11                    2038 	.uleb128	17
+      000070 01                    2039 	.uleb128	1
+      000071 12                    2040 	.uleb128	18
+      000072 01                    2041 	.uleb128	1
+      000073 3F                    2042 	.uleb128	63
+      000074 0C                    2043 	.uleb128	12
+      000075 40                    2044 	.uleb128	64
+      000076 06                    2045 	.uleb128	6
+      000077 00                    2046 	.uleb128	0
+      000078 00                    2047 	.uleb128	0
+      000079 0B                    2048 	.uleb128	11
+      00007A 2E                    2049 	.uleb128	46
+      00007B 01                    2050 	.db	1
+      00007C 03                    2051 	.uleb128	3
+      00007D 08                    2052 	.uleb128	8
+      00007E 11                    2053 	.uleb128	17
+      00007F 01                    2054 	.uleb128	1
+      000080 12                    2055 	.uleb128	18
+      000081 01                    2056 	.uleb128	1
+      000082 3F                    2057 	.uleb128	63
+      000083 0C                    2058 	.uleb128	12
+      000084 40                    2059 	.uleb128	64
+      000085 06                    2060 	.uleb128	6
+      000086 00                    2061 	.uleb128	0
+      000087 00                    2062 	.uleb128	0
+      000088 07                    2063 	.uleb128	7
+      000089 24                    2064 	.uleb128	36
+      00008A 00                    2065 	.db	0
+      00008B 03                    2066 	.uleb128	3
+      00008C 08                    2067 	.uleb128	8
+      00008D 0B                    2068 	.uleb128	11
+      00008E 0B                    2069 	.uleb128	11
+      00008F 3E                    2070 	.uleb128	62
+      000090 0B                    2071 	.uleb128	11
+      000091 00                    2072 	.uleb128	0
+      000092 00                    2073 	.uleb128	0
+      000093 00                    2074 	.uleb128	0
+                                   2075 
+                                   2076 	.area .debug_info (NOLOAD)
+      000000 00 00 04 96           2077 	.dw	0,Ldebug_info_end-Ldebug_info_start
+      000004                       2078 Ldebug_info_start:
+      000004 00 02                 2079 	.dw	2
+      000006 00 00r00r00           2080 	.dw	0,(Ldebug_abbrev)
+      00000A 04                    2081 	.db	4
+      00000B 01                    2082 	.uleb128	1
+      00000C 53 6F 75 72 63 65 2F  2083 	.ascii "Source/Std_Lib/Src/stm8s_uart1.c"
+             53 74 64 5F 4C 69 62
+             2F 53 72 63 2F 73 74
+             6D 38 73 5F 75 61 72
+             74 31 2E 63
+      00002C 00                    2084 	.db	0
+      00002D 00 00r00r00           2085 	.dw	0,(Ldebug_line_start+-4)
+      000031 01                    2086 	.db	1
+      000032 53 44 43 43 20 76 65  2087 	.ascii "SDCC version 4.0.0 #11528"
+             72 73 69 6F 6E 20 34
+             2E 30 2E 30 20 23 31
+             31 35 32 38
+      00004B 00                    2088 	.db	0
+      00004C 02                    2089 	.uleb128	2
+      00004D 55 41 52 54 31 5F 44  2090 	.ascii "UART1_DeInit"
+             65 49 6E 69 74
+      000059 00                    2091 	.db	0
+      00005A 00 00r00r00           2092 	.dw	0,(_UART1_DeInit)
+      00005E 00 00r00r2B           2093 	.dw	0,(XG$UART1_DeInit$0$0+1)
+      000062 01                    2094 	.db	1
+      000063 00 00r03r40           2095 	.dw	0,(Ldebug_loc_start+832)
+      000067 03                    2096 	.uleb128	3
+      000068 00 00 01 54           2097 	.dw	0,340
+      00006C 55 41 52 54 31 5F 49  2098 	.ascii "UART1_Init"
+             6E 69 74
+      000076 00                    2099 	.db	0
+      000077 00 00r00r2B           2100 	.dw	0,(_UART1_Init)
+      00007B 00 00r01rA8           2101 	.dw	0,(XG$UART1_Init$0$0+1)
+      00007F 01                    2102 	.db	1
+      000080 00 00r01r70           2103 	.dw	0,(Ldebug_loc_start+368)
+      000084 04                    2104 	.uleb128	4
+      000085 02                    2105 	.db	2
+      000086 91                    2106 	.db	145
+      000087 02                    2107 	.sleb128	2
+      000088 42 61 75 64 52 61 74  2108 	.ascii "BaudRate"
+             65
+      000090 00                    2109 	.db	0
+      000091 00 00 01 54           2110 	.dw	0,340
+      000095 04                    2111 	.uleb128	4
+      000096 02                    2112 	.db	2
+      000097 91                    2113 	.db	145
+      000098 06                    2114 	.sleb128	6
+      000099 57 6F 72 64 4C 65 6E  2115 	.ascii "WordLength"
+             67 74 68
+      0000A3 00                    2116 	.db	0
+      0000A4 00 00 01 65           2117 	.dw	0,357
+      0000A8 04                    2118 	.uleb128	4
+      0000A9 02                    2119 	.db	2
+      0000AA 91                    2120 	.db	145
+      0000AB 07                    2121 	.sleb128	7
+      0000AC 53 74 6F 70 42 69 74  2122 	.ascii "StopBits"
+             73
+      0000B4 00                    2123 	.db	0
+      0000B5 00 00 01 65           2124 	.dw	0,357
+      0000B9 04                    2125 	.uleb128	4
+      0000BA 02                    2126 	.db	2
+      0000BB 91                    2127 	.db	145
+      0000BC 08                    2128 	.sleb128	8
+      0000BD 50 61 72 69 74 79     2129 	.ascii "Parity"
+      0000C3 00                    2130 	.db	0
+      0000C4 00 00 01 65           2131 	.dw	0,357
+      0000C8 04                    2132 	.uleb128	4
+      0000C9 02                    2133 	.db	2
+      0000CA 91                    2134 	.db	145
+      0000CB 09                    2135 	.sleb128	9
+      0000CC 53 79 6E 63 4D 6F 64  2136 	.ascii "SyncMode"
+             65
+      0000D4 00                    2137 	.db	0
+      0000D5 00 00 01 65           2138 	.dw	0,357
+      0000D9 04                    2139 	.uleb128	4
+      0000DA 02                    2140 	.db	2
+      0000DB 91                    2141 	.db	145
+      0000DC 0A                    2142 	.sleb128	10
+      0000DD 4D 6F 64 65           2143 	.ascii "Mode"
+      0000E1 00                    2144 	.db	0
+      0000E2 00 00 01 65           2145 	.dw	0,357
+      0000E6 05                    2146 	.uleb128	5
+      0000E7 00 00r01r67           2147 	.dw	0,(Sstm8s_uart1$UART1_Init$69)
+      0000EB 00 00r01r6C           2148 	.dw	0,(Sstm8s_uart1$UART1_Init$71)
+      0000EF 05                    2149 	.uleb128	5
+      0000F0 00 00r01r6E           2150 	.dw	0,(Sstm8s_uart1$UART1_Init$72)
+      0000F4 00 00r01r73           2151 	.dw	0,(Sstm8s_uart1$UART1_Init$74)
+      0000F8 05                    2152 	.uleb128	5
+      0000F9 00 00r01r7E           2153 	.dw	0,(Sstm8s_uart1$UART1_Init$79)
+      0000FD 00 00r01r83           2154 	.dw	0,(Sstm8s_uart1$UART1_Init$81)
+      000101 05                    2155 	.uleb128	5
+      000102 00 00r01r85           2156 	.dw	0,(Sstm8s_uart1$UART1_Init$82)
+      000106 00 00r01r8A           2157 	.dw	0,(Sstm8s_uart1$UART1_Init$84)
+      00010A 05                    2158 	.uleb128	5
+      00010B 00 00r01r91           2159 	.dw	0,(Sstm8s_uart1$UART1_Init$87)
+      00010F 00 00r01r96           2160 	.dw	0,(Sstm8s_uart1$UART1_Init$89)
+      000113 05                    2161 	.uleb128	5
+      000114 00 00r01r98           2162 	.dw	0,(Sstm8s_uart1$UART1_Init$90)
+      000118 00 00r01rA5           2163 	.dw	0,(Sstm8s_uart1$UART1_Init$94)
+      00011C 06                    2164 	.uleb128	6
+      00011D 02                    2165 	.db	2
+      00011E 91                    2166 	.db	145
+      00011F 6F                    2167 	.sleb128	-17
+      000120 42 61 75 64 52 61 74  2168 	.ascii "BaudRate_Mantissa"
+             65 5F 4D 61 6E 74 69
+             73 73 61
+      000131 00                    2169 	.db	0
+      000132 00 00 01 54           2170 	.dw	0,340
+      000136 06                    2171 	.uleb128	6
+      000137 02                    2172 	.db	2
+      000138 91                    2173 	.db	145
+      000139 73                    2174 	.sleb128	-13
+      00013A 42 61 75 64 52 61 74  2175 	.ascii "BaudRate_Mantissa100"
+             65 5F 4D 61 6E 74 69
+             73 73 61 31 30 30
+      00014E 00                    2176 	.db	0
+      00014F 00 00 01 54           2177 	.dw	0,340
+      000153 00                    2178 	.uleb128	0
+      000154 07                    2179 	.uleb128	7
+      000155 75 6E 73 69 67 6E 65  2180 	.ascii "unsigned long"
+             64 20 6C 6F 6E 67
+      000162 00                    2181 	.db	0
+      000163 04                    2182 	.db	4
+      000164 07                    2183 	.db	7
+      000165 07                    2184 	.uleb128	7
+      000166 75 6E 73 69 67 6E 65  2185 	.ascii "unsigned char"
+             64 20 63 68 61 72
+      000173 00                    2186 	.db	0
+      000174 01                    2187 	.db	1
+      000175 08                    2188 	.db	8
+      000176 03                    2189 	.uleb128	3
+      000177 00 00 01 B6           2190 	.dw	0,438
+      00017B 55 41 52 54 31 5F 43  2191 	.ascii "UART1_Cmd"
+             6D 64
+      000184 00                    2192 	.db	0
+      000185 00 00r01rA8           2193 	.dw	0,(_UART1_Cmd)
+      000189 00 00r01rBC           2194 	.dw	0,(XG$UART1_Cmd$0$0+1)
+      00018D 01                    2195 	.db	1
+      00018E 00 00r01r5C           2196 	.dw	0,(Ldebug_loc_start+348)
+      000192 04                    2197 	.uleb128	4
+      000193 02                    2198 	.db	2
+      000194 91                    2199 	.db	145
+      000195 02                    2200 	.sleb128	2
+      000196 4E 65 77 53 74 61 74  2201 	.ascii "NewState"
+             65
+      00019E 00                    2202 	.db	0
+      00019F 00 00 01 65           2203 	.dw	0,357
+      0001A3 05                    2204 	.uleb128	5
+      0001A4 00 00r01rAF           2205 	.dw	0,(Sstm8s_uart1$UART1_Cmd$103)
+      0001A8 00 00r01rB4           2206 	.dw	0,(Sstm8s_uart1$UART1_Cmd$105)
+      0001AC 05                    2207 	.uleb128	5
+      0001AD 00 00r01rB6           2208 	.dw	0,(Sstm8s_uart1$UART1_Cmd$106)
+      0001B1 00 00r01rBB           2209 	.dw	0,(Sstm8s_uart1$UART1_Cmd$108)
+      0001B5 00                    2210 	.uleb128	0
+      0001B6 03                    2211 	.uleb128	3
+      0001B7 00 00 02 61           2212 	.dw	0,609
+      0001BB 55 41 52 54 31 5F 49  2213 	.ascii "UART1_ITConfig"
+             54 43 6F 6E 66 69 67
+      0001C9 00                    2214 	.db	0
+      0001CA 00 00r01rBC           2215 	.dw	0,(_UART1_ITConfig)
+      0001CE 00 00r02r36           2216 	.dw	0,(XG$UART1_ITConfig$0$0+1)
+      0001D2 01                    2217 	.db	1
+      0001D3 00 00r01r00           2218 	.dw	0,(Ldebug_loc_start+256)
+      0001D7 04                    2219 	.uleb128	4
+      0001D8 02                    2220 	.db	2
+      0001D9 91                    2221 	.db	145
+      0001DA 02                    2222 	.sleb128	2
+      0001DB 55 41 52 54 31 5F 49  2223 	.ascii "UART1_IT"
+             54
+      0001E3 00                    2224 	.db	0
+      0001E4 00 00 02 61           2225 	.dw	0,609
+      0001E8 04                    2226 	.uleb128	4
+      0001E9 02                    2227 	.db	2
+      0001EA 91                    2228 	.db	145
+      0001EB 04                    2229 	.sleb128	4
+      0001EC 4E 65 77 53 74 61 74  2230 	.ascii "NewState"
+             65
+      0001F4 00                    2231 	.db	0
+      0001F5 00 00 01 65           2232 	.dw	0,357
+      0001F9 08                    2233 	.uleb128	8
+      0001FA 00 00 02 1E           2234 	.dw	0,542
+      0001FE 00 00r01rE8           2235 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$124)
+      000202 05                    2236 	.uleb128	5
+      000203 00 00r01rEC           2237 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$126)
+      000207 00 00r01rF4           2238 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$128)
+      00020B 05                    2239 	.uleb128	5
+      00020C 00 00r01rFA           2240 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$130)
+      000210 00 00r02r02           2241 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$132)
+      000214 05                    2242 	.uleb128	5
+      000215 00 00r02r05           2243 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$133)
+      000219 00 00r02r0D           2244 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$135)
+      00021D 00                    2245 	.uleb128	0
+      00021E 08                    2246 	.uleb128	8
+      00021F 00 00 02 43           2247 	.dw	0,579
+      000223 00 00r02r11           2248 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$137)
+      000227 05                    2249 	.uleb128	5
+      000228 00 00r02r15           2250 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$139)
+      00022C 00 00r02r1D           2251 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$141)
+      000230 05                    2252 	.uleb128	5
+      000231 00 00r02r22           2253 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$143)
+      000235 00 00r02r2A           2254 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$145)
+      000239 05                    2255 	.uleb128	5
+      00023A 00 00r02r2C           2256 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$146)
+      00023E 00 00r02r34           2257 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$148)
+      000242 00                    2258 	.uleb128	0
+      000243 06                    2259 	.uleb128	6
+      000244 01                    2260 	.db	1
+      000245 52                    2261 	.db	82
+      000246 75 61 72 74 72 65 67  2262 	.ascii "uartreg"
+      00024D 00                    2263 	.db	0
+      00024E 00 00 01 65           2264 	.dw	0,357
+      000252 06                    2265 	.uleb128	6
+      000253 02                    2266 	.db	2
+      000254 91                    2267 	.db	145
+      000255 7F                    2268 	.sleb128	-1
+      000256 69 74 70 6F 73        2269 	.ascii "itpos"
+      00025B 00                    2270 	.db	0
+      00025C 00 00 01 65           2271 	.dw	0,357
+      000260 00                    2272 	.uleb128	0
+      000261 07                    2273 	.uleb128	7
+      000262 75 6E 73 69 67 6E 65  2274 	.ascii "unsigned int"
+             64 20 69 6E 74
+      00026E 00                    2275 	.db	0
+      00026F 02                    2276 	.db	2
+      000270 07                    2277 	.db	7
+      000271 09                    2278 	.uleb128	9
+      000272 55 41 52 54 31 5F 52  2279 	.ascii "UART1_ReceiveData8"
+             65 63 65 69 76 65 44
+             61 74 61 38
+      000284 00                    2280 	.db	0
+      000285 00 00r02r36           2281 	.dw	0,(_UART1_ReceiveData8)
+      000289 00 00r02r3A           2282 	.dw	0,(XG$UART1_ReceiveData8$0$0+1)
+      00028D 01                    2283 	.db	1
+      00028E 00 00r00rEC           2284 	.dw	0,(Ldebug_loc_start+236)
+      000292 00 00 01 65           2285 	.dw	0,357
+      000296 03                    2286 	.uleb128	3
+      000297 00 00 02 C6           2287 	.dw	0,710
+      00029B 55 41 52 54 31 5F 53  2288 	.ascii "UART1_SendData8"
+             65 6E 64 44 61 74 61
+             38
+      0002AA 00                    2289 	.db	0
+      0002AB 00 00r02r3A           2290 	.dw	0,(_UART1_SendData8)
+      0002AF 00 00r02r41           2291 	.dw	0,(XG$UART1_SendData8$0$0+1)
+      0002B3 01                    2292 	.db	1
+      0002B4 00 00r00rD8           2293 	.dw	0,(Ldebug_loc_start+216)
+      0002B8 04                    2294 	.uleb128	4
+      0002B9 02                    2295 	.db	2
+      0002BA 91                    2296 	.db	145
+      0002BB 02                    2297 	.sleb128	2
+      0002BC 44 61 74 61           2298 	.ascii "Data"
+      0002C0 00                    2299 	.db	0
+      0002C1 00 00 01 65           2300 	.dw	0,357
+      0002C5 00                    2301 	.uleb128	0
+      0002C6 0A                    2302 	.uleb128	10
+      0002C7 00 00 03 66           2303 	.dw	0,870
+      0002CB 55 41 52 54 31 5F 47  2304 	.ascii "UART1_GetFlagStatus"
+             65 74 46 6C 61 67 53
+             74 61 74 75 73
+      0002DE 00                    2305 	.db	0
+      0002DF 00 00r02r41           2306 	.dw	0,(_UART1_GetFlagStatus)
+      0002E3 00 00r02r85           2307 	.dw	0,(XG$UART1_GetFlagStatus$0$0+1)
+      0002E7 01                    2308 	.db	1
+      0002E8 00 00r00r94           2309 	.dw	0,(Ldebug_loc_start+148)
+      0002EC 00 00 01 65           2310 	.dw	0,357
+      0002F0 04                    2311 	.uleb128	4
+      0002F1 02                    2312 	.db	2
+      0002F2 91                    2313 	.db	145
+      0002F3 02                    2314 	.sleb128	2
+      0002F4 55 41 52 54 31 5F 46  2315 	.ascii "UART1_FLAG"
+             4C 41 47
+      0002FE 00                    2316 	.db	0
+      0002FF 00 00 02 61           2317 	.dw	0,609
+      000303 08                    2318 	.uleb128	8
+      000304 00 00 03 1F           2319 	.dw	0,799
+      000308 00 00r02r52           2320 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$172)
+      00030C 05                    2321 	.uleb128	5
+      00030D 00 00r02r59           2322 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$174)
+      000311 00 00r02r5B           2323 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$176)
+      000315 05                    2324 	.uleb128	5
+      000316 00 00r02r5E           2325 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$177)
+      00031A 00 00r02r5F           2326 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$179)
+      00031E 00                    2327 	.uleb128	0
+      00031F 08                    2328 	.uleb128	8
+      000320 00 00 03 3B           2329 	.dw	0,827
+      000324 00 00r02r68           2330 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$182)
+      000328 05                    2331 	.uleb128	5
+      000329 00 00r02r6F           2332 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$184)
+      00032D 00 00r02r71           2333 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$186)
+      000331 05                    2334 	.uleb128	5
+      000332 00 00r02r73           2335 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$187)
+      000336 00 00r02r74           2336 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$189)
+      00033A 00                    2337 	.uleb128	0
+      00033B 08                    2338 	.uleb128	8
+      00033C 00 00 03 57           2339 	.dw	0,855
+      000340 00 00r02r76           2340 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$190)
+      000344 05                    2341 	.uleb128	5
+      000345 00 00r02r7D           2342 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$192)
+      000349 00 00r02r7F           2343 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$194)
+      00034D 05                    2344 	.uleb128	5
+      00034E 00 00r02r81           2345 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$195)
+      000352 00 00r02r82           2346 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$197)
+      000356 00                    2347 	.uleb128	0
+      000357 06                    2348 	.uleb128	6
+      000358 01                    2349 	.db	1
+      000359 50                    2350 	.db	80
+      00035A 73 74 61 74 75 73     2351 	.ascii "status"
+      000360 00                    2352 	.db	0
+      000361 00 00 01 65           2353 	.dw	0,357
+      000365 00                    2354 	.uleb128	0
+      000366 0A                    2355 	.uleb128	10
+      000367 00 00 04 4D           2356 	.dw	0,1101
+      00036B 55 41 52 54 31 5F 47  2357 	.ascii "UART1_GetITStatus"
+             65 74 49 54 53 74 61
+             74 75 73
+      00037C 00                    2358 	.db	0
+      00037D 00 00r02r85           2359 	.dw	0,(_UART1_GetITStatus)
+      000381 00 00r03r08           2360 	.dw	0,(XG$UART1_GetITStatus$0$0+1)
+      000385 01                    2361 	.db	1
+      000386 00 00r00r20           2362 	.dw	0,(Ldebug_loc_start+32)
+      00038A 00 00 01 65           2363 	.dw	0,357
+      00038E 04                    2364 	.uleb128	4
+      00038F 02                    2365 	.db	2
+      000390 91                    2366 	.db	145
+      000391 02                    2367 	.sleb128	2
+      000392 55 41 52 54 31 5F 49  2368 	.ascii "UART1_IT"
+             54
+      00039A 00                    2369 	.db	0
+      00039B 00 00 02 61           2370 	.dw	0,609
+      00039F 08                    2371 	.uleb128	8
+      0003A0 00 00 03 BB           2372 	.dw	0,955
+      0003A4 00 00r02rB6           2373 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$215)
+      0003A8 05                    2374 	.uleb128	5
+      0003A9 00 00r02rC7           2375 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$218)
+      0003AD 00 00r02rC9           2376 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$220)
+      0003B1 05                    2377 	.uleb128	5
+      0003B2 00 00r02rCC           2378 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$221)
+      0003B6 00 00r02rCD           2379 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$223)
+      0003BA 00                    2380 	.uleb128	0
+      0003BB 08                    2381 	.uleb128	8
+      0003BC 00 00 03 D7           2382 	.dw	0,983
+      0003C0 00 00r02rD7           2383 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$226)
+      0003C4 05                    2384 	.uleb128	5
+      0003C5 00 00r02rE8           2385 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$229)
+      0003C9 00 00r02rEA           2386 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$231)
+      0003CD 05                    2387 	.uleb128	5
+      0003CE 00 00r02rEC           2388 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$232)
+      0003D2 00 00r02rED           2389 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$234)
+      0003D6 00                    2390 	.uleb128	0
+      0003D7 08                    2391 	.uleb128	8
+      0003D8 00 00 03 F3           2392 	.dw	0,1011
+      0003DC 00 00r02rEF           2393 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$235)
+      0003E0 05                    2394 	.uleb128	5
+      0003E1 00 00r03r00           2395 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$238)
+      0003E5 00 00r03r02           2396 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$240)
+      0003E9 05                    2397 	.uleb128	5
+      0003EA 00 00r03r04           2398 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$241)
+      0003EE 00 00r03r05           2399 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$243)
+      0003F2 00                    2400 	.uleb128	0
+      0003F3 06                    2401 	.uleb128	6
+      0003F4 01                    2402 	.db	1
+      0003F5 50                    2403 	.db	80
+      0003F6 70 65 6E 64 69 6E 67  2404 	.ascii "pendingbitstatus"
+             62 69 74 73 74 61 74
+             75 73
+      000406 00                    2405 	.db	0
+      000407 00 00 01 65           2406 	.dw	0,357
+      00040B 06                    2407 	.uleb128	6
+      00040C 02                    2408 	.db	2
+      00040D 91                    2409 	.db	145
+      00040E 7C                    2410 	.sleb128	-4
+      00040F 69 74 70 6F 73        2411 	.ascii "itpos"
+      000414 00                    2412 	.db	0
+      000415 00 00 01 65           2413 	.dw	0,357
+      000419 06                    2414 	.uleb128	6
+      00041A 01                    2415 	.db	1
+      00041B 50                    2416 	.db	80
+      00041C 69 74 6D 61 73 6B 31  2417 	.ascii "itmask1"
+      000423 00                    2418 	.db	0
+      000424 00 00 01 65           2419 	.dw	0,357
+      000428 06                    2420 	.uleb128	6
+      000429 02                    2421 	.db	2
+      00042A 91                    2422 	.db	145
+      00042B 7D                    2423 	.sleb128	-3
+      00042C 69 74 6D 61 73 6B 32  2424 	.ascii "itmask2"
+      000433 00                    2425 	.db	0
+      000434 00 00 01 65           2426 	.dw	0,357
+      000438 06                    2427 	.uleb128	6
+      000439 01                    2428 	.db	1
+      00043A 51                    2429 	.db	81
+      00043B 65 6E 61 62 6C 65 73  2430 	.ascii "enablestatus"
+             74 61 74 75 73
+      000447 00                    2431 	.db	0
+      000448 00 00 01 65           2432 	.dw	0,357
+      00044C 00                    2433 	.uleb128	0
+      00044D 0B                    2434 	.uleb128	11
+      00044E 55 41 52 54 31 5F 43  2435 	.ascii "UART1_ClearITPendingBit"
+             6C 65 61 72 49 54 50
+             65 6E 64 69 6E 67 42
+             69 74
+      000465 00                    2436 	.db	0
+      000466 00 00r03r08           2437 	.dw	0,(_UART1_ClearITPendingBit)
+      00046A 00 00r03r1A           2438 	.dw	0,(XG$UART1_ClearITPendingBit$0$0+1)
+      00046E 01                    2439 	.db	1
+      00046F 00 00r00r00           2440 	.dw	0,(Ldebug_loc_start)
+      000473 04                    2441 	.uleb128	4
+      000474 02                    2442 	.db	2
+      000475 91                    2443 	.db	145
+      000476 02                    2444 	.sleb128	2
+      000477 55 41 52 54 31 5F 49  2445 	.ascii "UART1_IT"
+             54
+      00047F 00                    2446 	.db	0
+      000480 00 00 02 61           2447 	.dw	0,609
+      000484 05                    2448 	.uleb128	5
+      000485 00 00r03r0F           2449 	.dw	0,(Sstm8s_uart1$UART1_ClearITPendingBit$253)
+      000489 00 00r03r13           2450 	.dw	0,(Sstm8s_uart1$UART1_ClearITPendingBit$255)
+      00048D 05                    2451 	.uleb128	5
+      00048E 00 00r03r15           2452 	.dw	0,(Sstm8s_uart1$UART1_ClearITPendingBit$256)
+      000492 00 00r03r19           2453 	.dw	0,(Sstm8s_uart1$UART1_ClearITPendingBit$258)
+      000496 00                    2454 	.uleb128	0
+      000497 00                    2455 	.uleb128	0
+      000498 00                    2456 	.uleb128	0
+      000499 00                    2457 	.uleb128	0
+      00049A                       2458 Ldebug_info_end:
+                                   2459 
+                                   2460 	.area .debug_pubnames (NOLOAD)
+      000000 00 00 00 C4           2461 	.dw	0,Ldebug_pubnames_end-Ldebug_pubnames_start
+      000004                       2462 Ldebug_pubnames_start:
+      000004 00 02                 2463 	.dw	2
+      000006 00 00r00r00           2464 	.dw	0,(Ldebug_info_start-4)
+      00000A 00 00 04 9A           2465 	.dw	0,4+Ldebug_info_end-Ldebug_info_start
+      00000E 00 00 00 4C           2466 	.dw	0,76
+      000012 55 41 52 54 31 5F 44  2467 	.ascii "UART1_DeInit"
+             65 49 6E 69 74
+      00001E 00                    2468 	.db	0
+      00001F 00 00 00 67           2469 	.dw	0,103
+      000023 55 41 52 54 31 5F 49  2470 	.ascii "UART1_Init"
+             6E 69 74
+      00002D 00                    2471 	.db	0
+      00002E 00 00 01 76           2472 	.dw	0,374
+      000032 55 41 52 54 31 5F 43  2473 	.ascii "UART1_Cmd"
+             6D 64
+      00003B 00                    2474 	.db	0
+      00003C 00 00 01 B6           2475 	.dw	0,438
+      000040 55 41 52 54 31 5F 49  2476 	.ascii "UART1_ITConfig"
+             54 43 6F 6E 66 69 67
+      00004E 00                    2477 	.db	0
+      00004F 00 00 02 71           2478 	.dw	0,625
+      000053 55 41 52 54 31 5F 52  2479 	.ascii "UART1_ReceiveData8"
+             65 63 65 69 76 65 44
+             61 74 61 38
+      000065 00                    2480 	.db	0
+      000066 00 00 02 96           2481 	.dw	0,662
+      00006A 55 41 52 54 31 5F 53  2482 	.ascii "UART1_SendData8"
+             65 6E 64 44 61 74 61
+             38
+      000079 00                    2483 	.db	0
+      00007A 00 00 02 C6           2484 	.dw	0,710
+      00007E 55 41 52 54 31 5F 47  2485 	.ascii "UART1_GetFlagStatus"
+             65 74 46 6C 61 67 53
+             74 61 74 75 73
+      000091 00                    2486 	.db	0
+      000092 00 00 03 66           2487 	.dw	0,870
+      000096 55 41 52 54 31 5F 47  2488 	.ascii "UART1_GetITStatus"
+             65 74 49 54 53 74 61
+             74 75 73
+      0000A7 00                    2489 	.db	0
+      0000A8 00 00 04 4D           2490 	.dw	0,1101
+      0000AC 55 41 52 54 31 5F 43  2491 	.ascii "UART1_ClearITPendingBit"
+             6C 65 61 72 49 54 50
+             65 6E 64 69 6E 67 42
+             69 74
+      0000C3 00                    2492 	.db	0
+      0000C4 00 00 00 00           2493 	.dw	0,0
+      0000C8                       2494 Ldebug_pubnames_end:
+                                   2495 
+                                   2496 	.area .debug_frame (NOLOAD)
+      000000 00 00                 2497 	.dw	0
+      000002 00 0E                 2498 	.dw	Ldebug_CIE0_end-Ldebug_CIE0_start
+      000004                       2499 Ldebug_CIE0_start:
+      000004 FF FF                 2500 	.dw	0xffff
+      000006 FF FF                 2501 	.dw	0xffff
+      000008 01                    2502 	.db	1
+      000009 00                    2503 	.db	0
+      00000A 01                    2504 	.uleb128	1
+      00000B 7F                    2505 	.sleb128	-1
+      00000C 09                    2506 	.db	9
+      00000D 0C                    2507 	.db	12
+      00000E 08                    2508 	.uleb128	8
+      00000F 02                    2509 	.uleb128	2
+      000010 89                    2510 	.db	137
+      000011 01                    2511 	.uleb128	1
+      000012                       2512 Ldebug_CIE0_end:
+      000012 00 00 00 1A           2513 	.dw	0,26
+      000016 00 00r00r00           2514 	.dw	0,(Ldebug_CIE0_start-4)
+      00001A 00 00r03r08           2515 	.dw	0,(Sstm8s_uart1$UART1_ClearITPendingBit$250)	;initial loc
+      00001E 00 00 00 12           2516 	.dw	0,Sstm8s_uart1$UART1_ClearITPendingBit$261-Sstm8s_uart1$UART1_ClearITPendingBit$250
+      000022 01                    2517 	.db	1
+      000023 00 00r03r08           2518 	.dw	0,(Sstm8s_uart1$UART1_ClearITPendingBit$250)
+      000027 0E                    2519 	.db	14
+      000028 02                    2520 	.uleb128	2
+      000029 01                    2521 	.db	1
+      00002A 00 00r03r0F           2522 	.dw	0,(Sstm8s_uart1$UART1_ClearITPendingBit$252)
+      00002E 0E                    2523 	.db	14
+      00002F 02                    2524 	.uleb128	2
+                                   2525 
+                                   2526 	.area .debug_frame (NOLOAD)
+      000030 00 00                 2527 	.dw	0
+      000032 00 0E                 2528 	.dw	Ldebug_CIE1_end-Ldebug_CIE1_start
+      000034                       2529 Ldebug_CIE1_start:
+      000034 FF FF                 2530 	.dw	0xffff
+      000036 FF FF                 2531 	.dw	0xffff
+      000038 01                    2532 	.db	1
+      000039 00                    2533 	.db	0
+      00003A 01                    2534 	.uleb128	1
+      00003B 7F                    2535 	.sleb128	-1
+      00003C 09                    2536 	.db	9
+      00003D 0C                    2537 	.db	12
+      00003E 08                    2538 	.uleb128	8
+      00003F 02                    2539 	.uleb128	2
+      000040 89                    2540 	.db	137
+      000041 01                    2541 	.uleb128	1
+      000042                       2542 Ldebug_CIE1_end:
+      000042 00 00 00 4B           2543 	.dw	0,75
+      000046 00 00r00r30           2544 	.dw	0,(Ldebug_CIE1_start-4)
+      00004A 00 00r02r85           2545 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$204)	;initial loc
+      00004E 00 00 00 83           2546 	.dw	0,Sstm8s_uart1$UART1_GetITStatus$248-Sstm8s_uart1$UART1_GetITStatus$204
+      000052 01                    2547 	.db	1
+      000053 00 00r02r85           2548 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$204)
+      000057 0E                    2549 	.db	14
+      000058 02                    2550 	.uleb128	2
+      000059 01                    2551 	.db	1
+      00005A 00 00r02r87           2552 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$205)
+      00005E 0E                    2553 	.db	14
+      00005F 06                    2554 	.uleb128	6
+      000060 01                    2555 	.db	1
+      000061 00 00r02r8D           2556 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$207)
+      000065 0E                    2557 	.db	14
+      000066 07                    2558 	.uleb128	7
+      000067 01                    2559 	.db	1
+      000068 00 00r02r92           2560 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$208)
+      00006C 0E                    2561 	.db	14
+      00006D 06                    2562 	.uleb128	6
+      00006E 01                    2563 	.db	1
+      00006F 00 00r02r9F           2564 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$211)
+      000073 0E                    2565 	.db	14
+      000074 07                    2566 	.uleb128	7
+      000075 01                    2567 	.db	1
+      000076 00 00r02rA4           2568 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$212)
+      00007A 0E                    2569 	.db	14
+      00007B 06                    2570 	.uleb128	6
+      00007C 01                    2571 	.db	1
+      00007D 00 00r02rB6           2572 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$214)
+      000081 0E                    2573 	.db	14
+      000082 06                    2574 	.uleb128	6
+      000083 01                    2575 	.db	1
+      000084 00 00r02rD7           2576 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$225)
+      000088 0E                    2577 	.db	14
+      000089 06                    2578 	.uleb128	6
+      00008A 01                    2579 	.db	1
+      00008B 00 00r03r07           2580 	.dw	0,(Sstm8s_uart1$UART1_GetITStatus$246)
+      00008F 0E                    2581 	.db	14
+      000090 02                    2582 	.uleb128	2
+                                   2583 
+                                   2584 	.area .debug_frame (NOLOAD)
+      000091 00 00                 2585 	.dw	0
+      000093 00 0E                 2586 	.dw	Ldebug_CIE2_end-Ldebug_CIE2_start
+      000095                       2587 Ldebug_CIE2_start:
+      000095 FF FF                 2588 	.dw	0xffff
+      000097 FF FF                 2589 	.dw	0xffff
+      000099 01                    2590 	.db	1
+      00009A 00                    2591 	.db	0
+      00009B 01                    2592 	.uleb128	1
+      00009C 7F                    2593 	.sleb128	-1
+      00009D 09                    2594 	.db	9
+      00009E 0C                    2595 	.db	12
+      00009F 08                    2596 	.uleb128	8
+      0000A0 02                    2597 	.uleb128	2
+      0000A1 89                    2598 	.db	137
+      0000A2 01                    2599 	.uleb128	1
+      0000A3                       2600 Ldebug_CIE2_end:
+      0000A3 00 00 00 2F           2601 	.dw	0,47
+      0000A7 00 00r00r91           2602 	.dw	0,(Ldebug_CIE2_start-4)
+      0000AB 00 00r02r41           2603 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$166)	;initial loc
+      0000AF 00 00 00 44           2604 	.dw	0,Sstm8s_uart1$UART1_GetFlagStatus$202-Sstm8s_uart1$UART1_GetFlagStatus$166
+      0000B3 01                    2605 	.db	1
+      0000B4 00 00r02r41           2606 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$166)
+      0000B8 0E                    2607 	.db	14
+      0000B9 02                    2608 	.uleb128	2
+      0000BA 01                    2609 	.db	1
+      0000BB 00 00r02r43           2610 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$167)
+      0000BF 0E                    2611 	.db	14
+      0000C0 05                    2612 	.uleb128	5
+      0000C1 01                    2613 	.db	1
+      0000C2 00 00r02r52           2614 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$171)
+      0000C6 0E                    2615 	.db	14
+      0000C7 05                    2616 	.uleb128	5
+      0000C8 01                    2617 	.db	1
+      0000C9 00 00r02r68           2618 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$181)
+      0000CD 0E                    2619 	.db	14
+      0000CE 05                    2620 	.uleb128	5
+      0000CF 01                    2621 	.db	1
+      0000D0 00 00r02r84           2622 	.dw	0,(Sstm8s_uart1$UART1_GetFlagStatus$200)
+      0000D4 0E                    2623 	.db	14
+      0000D5 02                    2624 	.uleb128	2
+                                   2625 
+                                   2626 	.area .debug_frame (NOLOAD)
+      0000D6 00 00                 2627 	.dw	0
+      0000D8 00 0E                 2628 	.dw	Ldebug_CIE3_end-Ldebug_CIE3_start
+      0000DA                       2629 Ldebug_CIE3_start:
+      0000DA FF FF                 2630 	.dw	0xffff
+      0000DC FF FF                 2631 	.dw	0xffff
+      0000DE 01                    2632 	.db	1
+      0000DF 00                    2633 	.db	0
+      0000E0 01                    2634 	.uleb128	1
+      0000E1 7F                    2635 	.sleb128	-1
+      0000E2 09                    2636 	.db	9
+      0000E3 0C                    2637 	.db	12
+      0000E4 08                    2638 	.uleb128	8
+      0000E5 02                    2639 	.uleb128	2
+      0000E6 89                    2640 	.db	137
+      0000E7 01                    2641 	.uleb128	1
+      0000E8                       2642 Ldebug_CIE3_end:
+      0000E8 00 00 00 13           2643 	.dw	0,19
+      0000EC 00 00r00rD6           2644 	.dw	0,(Ldebug_CIE3_start-4)
+      0000F0 00 00r02r3A           2645 	.dw	0,(Sstm8s_uart1$UART1_SendData8$160)	;initial loc
+      0000F4 00 00 00 07           2646 	.dw	0,Sstm8s_uart1$UART1_SendData8$164-Sstm8s_uart1$UART1_SendData8$160
+      0000F8 01                    2647 	.db	1
+      0000F9 00 00r02r3A           2648 	.dw	0,(Sstm8s_uart1$UART1_SendData8$160)
+      0000FD 0E                    2649 	.db	14
+      0000FE 02                    2650 	.uleb128	2
+                                   2651 
+                                   2652 	.area .debug_frame (NOLOAD)
+      0000FF 00 00                 2653 	.dw	0
+      000101 00 0E                 2654 	.dw	Ldebug_CIE4_end-Ldebug_CIE4_start
+      000103                       2655 Ldebug_CIE4_start:
+      000103 FF FF                 2656 	.dw	0xffff
+      000105 FF FF                 2657 	.dw	0xffff
+      000107 01                    2658 	.db	1
+      000108 00                    2659 	.db	0
+      000109 01                    2660 	.uleb128	1
+      00010A 7F                    2661 	.sleb128	-1
+      00010B 09                    2662 	.db	9
+      00010C 0C                    2663 	.db	12
+      00010D 08                    2664 	.uleb128	8
+      00010E 02                    2665 	.uleb128	2
+      00010F 89                    2666 	.db	137
+      000110 01                    2667 	.uleb128	1
+      000111                       2668 Ldebug_CIE4_end:
+      000111 00 00 00 13           2669 	.dw	0,19
+      000115 00 00r00rFF           2670 	.dw	0,(Ldebug_CIE4_start-4)
+      000119 00 00r02r36           2671 	.dw	0,(Sstm8s_uart1$UART1_ReceiveData8$154)	;initial loc
+      00011D 00 00 00 04           2672 	.dw	0,Sstm8s_uart1$UART1_ReceiveData8$158-Sstm8s_uart1$UART1_ReceiveData8$154
+      000121 01                    2673 	.db	1
+      000122 00 00r02r36           2674 	.dw	0,(Sstm8s_uart1$UART1_ReceiveData8$154)
+      000126 0E                    2675 	.db	14
+      000127 02                    2676 	.uleb128	2
+                                   2677 
+                                   2678 	.area .debug_frame (NOLOAD)
+      000128 00 00                 2679 	.dw	0
+      00012A 00 0E                 2680 	.dw	Ldebug_CIE5_end-Ldebug_CIE5_start
+      00012C                       2681 Ldebug_CIE5_start:
+      00012C FF FF                 2682 	.dw	0xffff
+      00012E FF FF                 2683 	.dw	0xffff
+      000130 01                    2684 	.db	1
+      000131 00                    2685 	.db	0
+      000132 01                    2686 	.uleb128	1
+      000133 7F                    2687 	.sleb128	-1
+      000134 09                    2688 	.db	9
+      000135 0C                    2689 	.db	12
+      000136 08                    2690 	.uleb128	8
+      000137 02                    2691 	.uleb128	2
+      000138 89                    2692 	.db	137
+      000139 01                    2693 	.uleb128	1
+      00013A                       2694 Ldebug_CIE5_end:
+      00013A 00 00 00 3D           2695 	.dw	0,61
+      00013E 00 00r01r28           2696 	.dw	0,(Ldebug_CIE5_start-4)
+      000142 00 00r01rBC           2697 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$113)	;initial loc
+      000146 00 00 00 7A           2698 	.dw	0,Sstm8s_uart1$UART1_ITConfig$152-Sstm8s_uart1$UART1_ITConfig$113
+      00014A 01                    2699 	.db	1
+      00014B 00 00r01rBC           2700 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$113)
+      00014F 0E                    2701 	.db	14
+      000150 02                    2702 	.uleb128	2
+      000151 01                    2703 	.db	1
+      000152 00 00r01rBD           2704 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$114)
+      000156 0E                    2705 	.db	14
+      000157 04                    2706 	.uleb128	4
+      000158 01                    2707 	.db	1
+      000159 00 00r01rC4           2708 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$117)
+      00015D 0E                    2709 	.db	14
+      00015E 05                    2710 	.uleb128	5
+      00015F 01                    2711 	.db	1
+      000160 00 00r01rC9           2712 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$118)
+      000164 0E                    2713 	.db	14
+      000165 04                    2714 	.uleb128	4
+      000166 01                    2715 	.db	1
+      000167 00 00r01rDC           2716 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$120)
+      00016B 0E                    2717 	.db	14
+      00016C 04                    2718 	.uleb128	4
+      00016D 01                    2719 	.db	1
+      00016E 00 00r01rE4           2720 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$122)
+      000172 0E                    2721 	.db	14
+      000173 04                    2722 	.uleb128	4
+      000174 01                    2723 	.db	1
+      000175 00 00r02r35           2724 	.dw	0,(Sstm8s_uart1$UART1_ITConfig$150)
+      000179 0E                    2725 	.db	14
+      00017A 02                    2726 	.uleb128	2
+                                   2727 
+                                   2728 	.area .debug_frame (NOLOAD)
+      00017B 00 00                 2729 	.dw	0
+      00017D 00 0E                 2730 	.dw	Ldebug_CIE6_end-Ldebug_CIE6_start
+      00017F                       2731 Ldebug_CIE6_start:
+      00017F FF FF                 2732 	.dw	0xffff
+      000181 FF FF                 2733 	.dw	0xffff
+      000183 01                    2734 	.db	1
+      000184 00                    2735 	.db	0
+      000185 01                    2736 	.uleb128	1
+      000186 7F                    2737 	.sleb128	-1
+      000187 09                    2738 	.db	9
+      000188 0C                    2739 	.db	12
+      000189 08                    2740 	.uleb128	8
+      00018A 02                    2741 	.uleb128	2
+      00018B 89                    2742 	.db	137
+      00018C 01                    2743 	.uleb128	1
+      00018D                       2744 Ldebug_CIE6_end:
+      00018D 00 00 00 13           2745 	.dw	0,19
+      000191 00 00r01r7B           2746 	.dw	0,(Ldebug_CIE6_start-4)
+      000195 00 00r01rA8           2747 	.dw	0,(Sstm8s_uart1$UART1_Cmd$100)	;initial loc
+      000199 00 00 00 14           2748 	.dw	0,Sstm8s_uart1$UART1_Cmd$111-Sstm8s_uart1$UART1_Cmd$100
+      00019D 01                    2749 	.db	1
+      00019E 00 00r01rA8           2750 	.dw	0,(Sstm8s_uart1$UART1_Cmd$100)
+      0001A2 0E                    2751 	.db	14
+      0001A3 02                    2752 	.uleb128	2
+                                   2753 
+                                   2754 	.area .debug_frame (NOLOAD)
+      0001A4 00 00                 2755 	.dw	0
+      0001A6 00 0E                 2756 	.dw	Ldebug_CIE7_end-Ldebug_CIE7_start
+      0001A8                       2757 Ldebug_CIE7_start:
+      0001A8 FF FF                 2758 	.dw	0xffff
+      0001AA FF FF                 2759 	.dw	0xffff
+      0001AC 01                    2760 	.db	1
+      0001AD 00                    2761 	.db	0
+      0001AE 01                    2762 	.uleb128	1
+      0001AF 7F                    2763 	.sleb128	-1
+      0001B0 09                    2764 	.db	9
+      0001B1 0C                    2765 	.db	12
+      0001B2 08                    2766 	.uleb128	8
+      0001B3 02                    2767 	.uleb128	2
+      0001B4 89                    2768 	.db	137
+      0001B5 01                    2769 	.uleb128	1
+      0001B6                       2770 Ldebug_CIE7_end:
+      0001B6 00 00 01 16           2771 	.dw	0,278
+      0001BA 00 00r01rA4           2772 	.dw	0,(Ldebug_CIE7_start-4)
+      0001BE 00 00r00r2B           2773 	.dw	0,(Sstm8s_uart1$UART1_Init$17)	;initial loc
+      0001C2 00 00 01 7D           2774 	.dw	0,Sstm8s_uart1$UART1_Init$98-Sstm8s_uart1$UART1_Init$17
+      0001C6 01                    2775 	.db	1
+      0001C7 00 00r00r2B           2776 	.dw	0,(Sstm8s_uart1$UART1_Init$17)
+      0001CB 0E                    2777 	.db	14
+      0001CC 02                    2778 	.uleb128	2
+      0001CD 01                    2779 	.db	1
+      0001CE 00 00r00r2D           2780 	.dw	0,(Sstm8s_uart1$UART1_Init$18)
+      0001D2 0E                    2781 	.db	14
+      0001D3 13                    2782 	.uleb128	19
+      0001D4 01                    2783 	.db	1
+      0001D5 00 00r00r88           2784 	.dw	0,(Sstm8s_uart1$UART1_Init$29)
+      0001D9 0E                    2785 	.db	14
+      0001DA 15                    2786 	.uleb128	21
+      0001DB 01                    2787 	.db	1
+      0001DC 00 00r00r8B           2788 	.dw	0,(Sstm8s_uart1$UART1_Init$30)
+      0001E0 0E                    2789 	.db	14
+      0001E1 17                    2790 	.uleb128	23
+      0001E2 01                    2791 	.db	1
+      0001E3 00 00r00r8E           2792 	.dw	0,(Sstm8s_uart1$UART1_Init$31)
+      0001E7 0E                    2793 	.db	14
+      0001E8 19                    2794 	.uleb128	25
+      0001E9 01                    2795 	.db	1
+      0001EA 00 00r00r90           2796 	.dw	0,(Sstm8s_uart1$UART1_Init$32)
+      0001EE 0E                    2797 	.db	14
+      0001EF 1B                    2798 	.uleb128	27
+      0001F0 01                    2799 	.db	1
+      0001F1 00 00r00r95           2800 	.dw	0,(Sstm8s_uart1$UART1_Init$33)
+      0001F5 0E                    2801 	.db	14
+      0001F6 13                    2802 	.uleb128	19
+      0001F7 01                    2803 	.db	1
+      0001F8 00 00r00rAB           2804 	.dw	0,(Sstm8s_uart1$UART1_Init$35)
+      0001FC 0E                    2805 	.db	14
+      0001FD 15                    2806 	.uleb128	21
+      0001FE 01                    2807 	.db	1
+      0001FF 00 00r00rAE           2808 	.dw	0,(Sstm8s_uart1$UART1_Init$36)
+      000203 0E                    2809 	.db	14
+      000204 17                    2810 	.uleb128	23
+      000205 01                    2811 	.db	1
+      000206 00 00r00rB0           2812 	.dw	0,(Sstm8s_uart1$UART1_Init$37)
+      00020A 0E                    2813 	.db	14
+      00020B 18                    2814 	.uleb128	24
+      00020C 01                    2815 	.db	1
+      00020D 00 00r00rB2           2816 	.dw	0,(Sstm8s_uart1$UART1_Init$38)
+      000211 0E                    2817 	.db	14
+      000212 1A                    2818 	.uleb128	26
+      000213 01                    2819 	.db	1
+      000214 00 00r00rB4           2820 	.dw	0,(Sstm8s_uart1$UART1_Init$39)
+      000218 0E                    2821 	.db	14
+      000219 1B                    2822 	.uleb128	27
+      00021A 01                    2823 	.db	1
+      00021B 00 00r00rB9           2824 	.dw	0,(Sstm8s_uart1$UART1_Init$40)
+      00021F 0E                    2825 	.db	14
+      000220 13                    2826 	.uleb128	19
+      000221 01                    2827 	.db	1
+      000222 00 00r00rBE           2828 	.dw	0,(Sstm8s_uart1$UART1_Init$41)
+      000226 0E                    2829 	.db	14
+      000227 15                    2830 	.uleb128	21
+      000228 01                    2831 	.db	1
+      000229 00 00r00rC1           2832 	.dw	0,(Sstm8s_uart1$UART1_Init$42)
+      00022D 0E                    2833 	.db	14
+      00022E 17                    2834 	.uleb128	23
+      00022F 01                    2835 	.db	1
+      000230 00 00r00rC4           2836 	.dw	0,(Sstm8s_uart1$UART1_Init$43)
+      000234 0E                    2837 	.db	14
+      000235 19                    2838 	.uleb128	25
+      000236 01                    2839 	.db	1
+      000237 00 00r00rC6           2840 	.dw	0,(Sstm8s_uart1$UART1_Init$44)
+      00023B 0E                    2841 	.db	14
+      00023C 1B                    2842 	.uleb128	27
+      00023D 01                    2843 	.db	1
+      00023E 00 00r00rCB           2844 	.dw	0,(Sstm8s_uart1$UART1_Init$45)
+      000242 0E                    2845 	.db	14
+      000243 13                    2846 	.uleb128	19
+      000244 01                    2847 	.db	1
+      000245 00 00r00rD7           2848 	.dw	0,(Sstm8s_uart1$UART1_Init$47)
+      000249 0E                    2849 	.db	14
+      00024A 15                    2850 	.uleb128	21
+      00024B 01                    2851 	.db	1
+      00024C 00 00r00rDA           2852 	.dw	0,(Sstm8s_uart1$UART1_Init$48)
+      000250 0E                    2853 	.db	14
+      000251 17                    2854 	.uleb128	23
+      000252 01                    2855 	.db	1
+      000253 00 00r00rDC           2856 	.dw	0,(Sstm8s_uart1$UART1_Init$49)
+      000257 0E                    2857 	.db	14
+      000258 18                    2858 	.uleb128	24
+      000259 01                    2859 	.db	1
+      00025A 00 00r00rDE           2860 	.dw	0,(Sstm8s_uart1$UART1_Init$50)
+      00025E 0E                    2861 	.db	14
+      00025F 1A                    2862 	.uleb128	26
+      000260 01                    2863 	.db	1
+      000261 00 00r00rE0           2864 	.dw	0,(Sstm8s_uart1$UART1_Init$51)
+      000265 0E                    2865 	.db	14
+      000266 1B                    2866 	.uleb128	27
+      000267 01                    2867 	.db	1
+      000268 00 00r00rE5           2868 	.dw	0,(Sstm8s_uart1$UART1_Init$52)
+      00026C 0E                    2869 	.db	14
+      00026D 13                    2870 	.uleb128	19
+      00026E 01                    2871 	.db	1
+      00026F 00 00r01r0A           2872 	.dw	0,(Sstm8s_uart1$UART1_Init$53)
+      000273 0E                    2873 	.db	14
+      000274 14                    2874 	.uleb128	20
+      000275 01                    2875 	.db	1
+      000276 00 00r01r0C           2876 	.dw	0,(Sstm8s_uart1$UART1_Init$54)
+      00027A 0E                    2877 	.db	14
+      00027B 15                    2878 	.uleb128	21
+      00027C 01                    2879 	.db	1
+      00027D 00 00r01r0E           2880 	.dw	0,(Sstm8s_uart1$UART1_Init$55)
+      000281 0E                    2881 	.db	14
+      000282 16                    2882 	.uleb128	22
+      000283 01                    2883 	.db	1
+      000284 00 00r01r10           2884 	.dw	0,(Sstm8s_uart1$UART1_Init$56)
+      000288 0E                    2885 	.db	14
+      000289 17                    2886 	.uleb128	23
+      00028A 01                    2887 	.db	1
+      00028B 00 00r01r11           2888 	.dw	0,(Sstm8s_uart1$UART1_Init$57)
+      00028F 0E                    2889 	.db	14
+      000290 19                    2890 	.uleb128	25
+      000291 01                    2891 	.db	1
+      000292 00 00r01r13           2892 	.dw	0,(Sstm8s_uart1$UART1_Init$58)
+      000296 0E                    2893 	.db	14
+      000297 1B                    2894 	.uleb128	27
+      000298 01                    2895 	.db	1
+      000299 00 00r01r18           2896 	.dw	0,(Sstm8s_uart1$UART1_Init$59)
+      00029D 0E                    2897 	.db	14
+      00029E 13                    2898 	.uleb128	19
+      00029F 01                    2899 	.db	1
+      0002A0 00 00r01r60           2900 	.dw	0,(Sstm8s_uart1$UART1_Init$67)
+      0002A4 0E                    2901 	.db	14
+      0002A5 14                    2902 	.uleb128	20
+      0002A6 01                    2903 	.db	1
+      0002A7 00 00r01r65           2904 	.dw	0,(Sstm8s_uart1$UART1_Init$68)
+      0002AB 0E                    2905 	.db	14
+      0002AC 13                    2906 	.uleb128	19
+      0002AD 01                    2907 	.db	1
+      0002AE 00 00r01r77           2908 	.dw	0,(Sstm8s_uart1$UART1_Init$77)
+      0002B2 0E                    2909 	.db	14
+      0002B3 14                    2910 	.uleb128	20
+      0002B4 01                    2911 	.db	1
+      0002B5 00 00r01r7C           2912 	.dw	0,(Sstm8s_uart1$UART1_Init$78)
+      0002B9 0E                    2913 	.db	14
+      0002BA 13                    2914 	.uleb128	19
+      0002BB 01                    2915 	.db	1
+      0002BC 00 00r01r99           2916 	.dw	0,(Sstm8s_uart1$UART1_Init$92)
+      0002C0 0E                    2917 	.db	14
+      0002C1 14                    2918 	.uleb128	20
+      0002C2 01                    2919 	.db	1
+      0002C3 00 00r01rA0           2920 	.dw	0,(Sstm8s_uart1$UART1_Init$93)
+      0002C7 0E                    2921 	.db	14
+      0002C8 13                    2922 	.uleb128	19
+      0002C9 01                    2923 	.db	1
+      0002CA 00 00r01rA7           2924 	.dw	0,(Sstm8s_uart1$UART1_Init$96)
+      0002CE 0E                    2925 	.db	14
+      0002CF 02                    2926 	.uleb128	2
+                                   2927 
+                                   2928 	.area .debug_frame (NOLOAD)
+      0002D0 00 00                 2929 	.dw	0
+      0002D2 00 0E                 2930 	.dw	Ldebug_CIE8_end-Ldebug_CIE8_start
+      0002D4                       2931 Ldebug_CIE8_start:
+      0002D4 FF FF                 2932 	.dw	0xffff
+      0002D6 FF FF                 2933 	.dw	0xffff
+      0002D8 01                    2934 	.db	1
+      0002D9 00                    2935 	.db	0
+      0002DA 01                    2936 	.uleb128	1
+      0002DB 7F                    2937 	.sleb128	-1
+      0002DC 09                    2938 	.db	9
+      0002DD 0C                    2939 	.db	12
+      0002DE 08                    2940 	.uleb128	8
+      0002DF 02                    2941 	.uleb128	2
+      0002E0 89                    2942 	.db	137
+      0002E1 01                    2943 	.uleb128	1
+      0002E2                       2944 Ldebug_CIE8_end:
+      0002E2 00 00 00 13           2945 	.dw	0,19
+      0002E6 00 00r02rD0           2946 	.dw	0,(Ldebug_CIE8_start-4)
+      0002EA 00 00r00r00           2947 	.dw	0,(Sstm8s_uart1$UART1_DeInit$1)	;initial loc
+      0002EE 00 00 00 2B           2948 	.dw	0,Sstm8s_uart1$UART1_DeInit$15-Sstm8s_uart1$UART1_DeInit$1
+      0002F2 01                    2949 	.db	1
+      0002F3 00 00r00r00           2950 	.dw	0,(Sstm8s_uart1$UART1_DeInit$1)
+      0002F7 0E                    2951 	.db	14
+      0002F8 02                    2952 	.uleb128	2

@@ -1,0 +1,596 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 1.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000001 L
+  9 A$soft_i2cbug/soft_i2c$103                                     000022 GR
+  9 A$soft_i2cbug/soft_i2c$114                                     000023 GR
+  9 A$soft_i2cbug/soft_i2c$117                                     000027 GR
+  9 A$soft_i2cbug/soft_i2c$120                                     00002B GR
+  9 A$soft_i2cbug/soft_i2c$123                                     00002E GR
+  9 A$soft_i2cbug/soft_i2c$126                                     000032 GR
+  9 A$soft_i2cbug/soft_i2c$129                                     000035 GR
+  9 A$soft_i2cbug/soft_i2c$134                                     000039 GR
+  9 A$soft_i2cbug/soft_i2c$145                                     00003A GR
+  9 A$soft_i2cbug/soft_i2c$148                                     00003E GR
+  9 A$soft_i2cbug/soft_i2c$151                                     000042 GR
+  9 A$soft_i2cbug/soft_i2c$154                                     000045 GR
+  9 A$soft_i2cbug/soft_i2c$157                                     000049 GR
+  9 A$soft_i2cbug/soft_i2c$158                                     00004C GR
+  9 A$soft_i2cbug/soft_i2c$159                                     00004E GR
+  9 A$soft_i2cbug/soft_i2c$162                                     000051 GR
+  9 A$soft_i2cbug/soft_i2c$167                                     000054 GR
+  9 A$soft_i2cbug/soft_i2c$178                                     000055 GR
+  9 A$soft_i2cbug/soft_i2c$179                                     000058 GR
+  9 A$soft_i2cbug/soft_i2c$180                                     00005A GR
+  9 A$soft_i2cbug/soft_i2c$181                                     00005D GR
+  9 A$soft_i2cbug/soft_i2c$184                                     00005E GR
+  9 A$soft_i2cbug/soft_i2c$185                                     000061 GR
+  9 A$soft_i2cbug/soft_i2c$186                                     000063 GR
+  9 A$soft_i2cbug/soft_i2c$187                                     000066 GR
+  9 A$soft_i2cbug/soft_i2c$190                                     000067 GR
+  9 A$soft_i2cbug/soft_i2c$192                                     000068 GR
+  9 A$soft_i2cbug/soft_i2c$193                                     00006B GR
+  9 A$soft_i2cbug/soft_i2c$194                                     00006D GR
+  9 A$soft_i2cbug/soft_i2c$195                                     00006E GR
+  9 A$soft_i2cbug/soft_i2c$196                                     000070 GR
+  9 A$soft_i2cbug/soft_i2c$197                                     000071 GR
+  9 A$soft_i2cbug/soft_i2c$198                                     000072 GR
+  9 A$soft_i2cbug/soft_i2c$202                                     000074 GR
+  9 A$soft_i2cbug/soft_i2c$205                                     000075 GR
+  9 A$soft_i2cbug/soft_i2c$206                                     000076 GR
+  9 A$soft_i2cbug/soft_i2c$207                                     000078 GR
+  9 A$soft_i2cbug/soft_i2c$211                                     00007A GR
+  9 A$soft_i2cbug/soft_i2c$214                                     00007D GR
+  9 A$soft_i2cbug/soft_i2c$215                                     00007F GR
+  9 A$soft_i2cbug/soft_i2c$220                                     000081 GR
+  9 A$soft_i2cbug/soft_i2c$223                                     000085 GR
+  9 A$soft_i2cbug/soft_i2c$229                                     000086 GR
+  9 A$soft_i2cbug/soft_i2c$240                                     000087 GR
+  9 A$soft_i2cbug/soft_i2c$243                                     00008B GR
+  9 A$soft_i2cbug/soft_i2c$246                                     00008F GR
+  9 A$soft_i2cbug/soft_i2c$249                                     000092 GR
+  9 A$soft_i2cbug/soft_i2c$252                                     000096 GR
+  9 A$soft_i2cbug/soft_i2c$255                                     000099 GR
+  9 A$soft_i2cbug/soft_i2c$260                                     00009D GR
+  9 A$soft_i2cbug/soft_i2c$271                                     00009E GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 A$soft_i2cbug/soft_i2c$274                                     0000A2 GR
+  9 A$soft_i2cbug/soft_i2c$277                                     0000A6 GR
+  9 A$soft_i2cbug/soft_i2c$280                                     0000A9 GR
+  9 A$soft_i2cbug/soft_i2c$283                                     0000AD GR
+  9 A$soft_i2cbug/soft_i2c$286                                     0000B0 GR
+  9 A$soft_i2cbug/soft_i2c$291                                     0000B4 GR
+  9 A$soft_i2cbug/soft_i2c$300                                     0000B5 GR
+  9 A$soft_i2cbug/soft_i2c$304                                     0000B6 GR
+  9 A$soft_i2cbug/soft_i2c$307                                     0000BA GR
+  9 A$soft_i2cbug/soft_i2c$312                                     0000BC GR
+  9 A$soft_i2cbug/soft_i2c$313                                     0000BE GR
+  9 A$soft_i2cbug/soft_i2c$314                                     0000C0 GR
+  9 A$soft_i2cbug/soft_i2c$315                                     0000C1 GR
+  9 A$soft_i2cbug/soft_i2c$316                                     0000C2 GR
+  9 A$soft_i2cbug/soft_i2c$317                                     0000C3 GR
+  9 A$soft_i2cbug/soft_i2c$318                                     0000C4 GR
+  9 A$soft_i2cbug/soft_i2c$319                                     0000C5 GR
+  9 A$soft_i2cbug/soft_i2c$320                                     0000C7 GR
+  9 A$soft_i2cbug/soft_i2c$322                                     0000C8 GR
+  9 A$soft_i2cbug/soft_i2c$323                                     0000C9 GR
+  9 A$soft_i2cbug/soft_i2c$324                                     0000CA GR
+  9 A$soft_i2cbug/soft_i2c$328                                     0000CB GR
+  9 A$soft_i2cbug/soft_i2c$331                                     0000CE GR
+  9 A$soft_i2cbug/soft_i2c$332                                     0000CF GR
+  9 A$soft_i2cbug/soft_i2c$335                                     0000D1 GR
+  9 A$soft_i2cbug/soft_i2c$336                                     0000D3 GR
+  9 A$soft_i2cbug/soft_i2c$337                                     0000D6 GR
+  9 A$soft_i2cbug/soft_i2c$341                                     0000D8 GR
+  9 A$soft_i2cbug/soft_i2c$342                                     0000DA GR
+  9 A$soft_i2cbug/soft_i2c$346                                     0000DD GR
+  9 A$soft_i2cbug/soft_i2c$349                                     0000DF GR
+  9 A$soft_i2cbug/soft_i2c$352                                     0000E2 GR
+  9 A$soft_i2cbug/soft_i2c$355                                     0000E6 GR
+  9 A$soft_i2cbug/soft_i2c$358                                     0000E9 GR
+  9 A$soft_i2cbug/soft_i2c$361                                     0000ED GR
+  9 A$soft_i2cbug/soft_i2c$364                                     0000F0 GR
+  9 A$soft_i2cbug/soft_i2c$365                                     0000F2 GR
+  9 A$soft_i2cbug/soft_i2c$366                                     0000F4 GR
+  9 A$soft_i2cbug/soft_i2c$367                                     0000F6 GR
+  9 A$soft_i2cbug/soft_i2c$368                                     0000F8 GR
+  9 A$soft_i2cbug/soft_i2c$372                                     0000FB GR
+  9 A$soft_i2cbug/soft_i2c$376                                     0000FC GR
+  9 A$soft_i2cbug/soft_i2c$385                                     0000FD GR
+  9 A$soft_i2cbug/soft_i2c$389                                     0000FE GR
+  9 A$soft_i2cbug/soft_i2c$392                                     000100 GR
+  9 A$soft_i2cbug/soft_i2c$397                                     000102 GR
+  9 A$soft_i2cbug/soft_i2c$400                                     000106 GR
+  9 A$soft_i2cbug/soft_i2c$403                                     000109 GR
+  9 A$soft_i2cbug/soft_i2c$406                                     00010D GR
+  9 A$soft_i2cbug/soft_i2c$409                                     00010F GR
+  9 A$soft_i2cbug/soft_i2c$410                                     000112 GR
+  9 A$soft_i2cbug/soft_i2c$411                                     000114 GR
+  9 A$soft_i2cbug/soft_i2c$412                                     000115 GR
+  9 A$soft_i2cbug/soft_i2c$413                                     000117 GR
+  9 A$soft_i2cbug/soft_i2c$414                                     000118 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 3.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 A$soft_i2cbug/soft_i2c$415                                     000119 GR
+  9 A$soft_i2cbug/soft_i2c$416                                     00011B GR
+  9 A$soft_i2cbug/soft_i2c$420                                     00011D GR
+  9 A$soft_i2cbug/soft_i2c$424                                     00011E GR
+  9 A$soft_i2cbug/soft_i2c$425                                     000120 GR
+  9 A$soft_i2cbug/soft_i2c$426                                     000122 GR
+  9 A$soft_i2cbug/soft_i2c$427                                     000124 GR
+  9 A$soft_i2cbug/soft_i2c$430                                     000126 GR
+  9 A$soft_i2cbug/soft_i2c$431                                     000128 GR
+  9 A$soft_i2cbug/soft_i2c$434                                     00012A GR
+  9 A$soft_i2cbug/soft_i2c$435                                     00012D GR
+  9 A$soft_i2cbug/soft_i2c$439                                     00012F GR
+  9 A$soft_i2cbug/soft_i2c$443                                     000132 GR
+  9 A$soft_i2cbug/soft_i2c$446                                     000134 GR
+  9 A$soft_i2cbug/soft_i2c$450                                     000135 GR
+  9 A$soft_i2cbug/soft_i2c$459                                     000136 GR
+  9 A$soft_i2cbug/soft_i2c$463                                     000138 GR
+  9 A$soft_i2cbug/soft_i2c$466                                     00013B GR
+  9 A$soft_i2cbug/soft_i2c$467                                     00013D GR
+  9 A$soft_i2cbug/soft_i2c$468                                     00013E GR
+  9 A$soft_i2cbug/soft_i2c$469                                     000140 GR
+  9 A$soft_i2cbug/soft_i2c$471                                     000141 GR
+  9 A$soft_i2cbug/soft_i2c$472                                     000144 GR
+  9 A$soft_i2cbug/soft_i2c$476                                     000145 GR
+  9 A$soft_i2cbug/soft_i2c$477                                     000148 GR
+  9 A$soft_i2cbug/soft_i2c$478                                     000149 GR
+  9 A$soft_i2cbug/soft_i2c$481                                     00014B GR
+  9 A$soft_i2cbug/soft_i2c$482                                     00014C GR
+  9 A$soft_i2cbug/soft_i2c$486                                     00014F GR
+  9 A$soft_i2cbug/soft_i2c$487                                     000151 GR
+  9 A$soft_i2cbug/soft_i2c$489                                     000152 GR
+  9 A$soft_i2cbug/soft_i2c$490                                     000155 GR
+  9 A$soft_i2cbug/soft_i2c$494                                     000156 GR
+  9 A$soft_i2cbug/soft_i2c$495                                     000159 GR
+  9 A$soft_i2cbug/soft_i2c$496                                     00015A GR
+  9 A$soft_i2cbug/soft_i2c$499                                     00015C GR
+  9 A$soft_i2cbug/soft_i2c$500                                     00015D GR
+  9 A$soft_i2cbug/soft_i2c$504                                     000160 GR
+  9 A$soft_i2cbug/soft_i2c$507                                     000163 GR
+  9 A$soft_i2cbug/soft_i2c$508                                     000165 GR
+  9 A$soft_i2cbug/soft_i2c$509                                     000167 GR
+  9 A$soft_i2cbug/soft_i2c$511                                     000168 GR
+  9 A$soft_i2cbug/soft_i2c$512                                     00016B GR
+  9 A$soft_i2cbug/soft_i2c$516                                     00016C GR
+  9 A$soft_i2cbug/soft_i2c$517                                     00016F GR
+  9 A$soft_i2cbug/soft_i2c$518                                     000170 GR
+  9 A$soft_i2cbug/soft_i2c$521                                     000172 GR
+  9 A$soft_i2cbug/soft_i2c$522                                     000173 GR
+  9 A$soft_i2cbug/soft_i2c$526                                     000176 GR
+  9 A$soft_i2cbug/soft_i2c$529                                     000178 GR
+  9 A$soft_i2cbug/soft_i2c$530                                     00017A GR
+  9 A$soft_i2cbug/soft_i2c$531                                     00017C GR
+  9 A$soft_i2cbug/soft_i2c$532                                     00017E GR
+  9 A$soft_i2cbug/soft_i2c$537                                     000181 GR
+  9 A$soft_i2cbug/soft_i2c$538                                     000182 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 4.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 A$soft_i2cbug/soft_i2c$539                                     000184 GR
+  9 A$soft_i2cbug/soft_i2c$540                                     000185 GR
+  9 A$soft_i2cbug/soft_i2c$541                                     000186 GR
+  9 A$soft_i2cbug/soft_i2c$542                                     000188 GR
+  9 A$soft_i2cbug/soft_i2c$543                                     00018A GR
+  9 A$soft_i2cbug/soft_i2c$544                                     00018C GR
+  9 A$soft_i2cbug/soft_i2c$548                                     00018E GR
+  9 A$soft_i2cbug/soft_i2c$549                                     00018F GR
+  9 A$soft_i2cbug/soft_i2c$550                                     000191 GR
+  9 A$soft_i2cbug/soft_i2c$551                                     000192 GR
+  9 A$soft_i2cbug/soft_i2c$554                                     000195 GR
+  9 A$soft_i2cbug/soft_i2c$555                                     000196 GR
+  9 A$soft_i2cbug/soft_i2c$556                                     000198 GR
+  9 A$soft_i2cbug/soft_i2c$557                                     000199 GR
+  9 A$soft_i2cbug/soft_i2c$561                                     00019B GR
+  9 A$soft_i2cbug/soft_i2c$563                                     00019C GR
+  9 A$soft_i2cbug/soft_i2c$565                                     00019E GR
+  9 A$soft_i2cbug/soft_i2c$566                                     0001A1 GR
+  9 A$soft_i2cbug/soft_i2c$568                                     0001A3 GR
+  9 A$soft_i2cbug/soft_i2c$570                                     0001A4 GR
+  9 A$soft_i2cbug/soft_i2c$571                                     0001A5 GR
+  9 A$soft_i2cbug/soft_i2c$575                                     0001A7 GR
+  9 A$soft_i2cbug/soft_i2c$577                                     0001A8 GR
+  9 A$soft_i2cbug/soft_i2c$579                                     0001AA GR
+  9 A$soft_i2cbug/soft_i2c$580                                     0001AD GR
+  9 A$soft_i2cbug/soft_i2c$582                                     0001AF GR
+  9 A$soft_i2cbug/soft_i2c$584                                     0001B0 GR
+  9 A$soft_i2cbug/soft_i2c$588                                     0001B1 GR
+  9 A$soft_i2cbug/soft_i2c$589                                     0001B3 GR
+  9 A$soft_i2cbug/soft_i2c$593                                     0001B6 GR
+  9 A$soft_i2cbug/soft_i2c$596                                     0001B9 GR
+  9 A$soft_i2cbug/soft_i2c$600                                     0001BB GR
+  9 A$soft_i2cbug/soft_i2c$604                                     0001BD GR
+  9 A$soft_i2cbug/soft_i2c$613                                     0001BE GR
+  9 A$soft_i2cbug/soft_i2c$617                                     0001BF GR
+  9 A$soft_i2cbug/soft_i2c$620                                     0001C2 GR
+  9 A$soft_i2cbug/soft_i2c$621                                     0001C4 GR
+  9 A$soft_i2cbug/soft_i2c$622                                     0001C5 GR
+  9 A$soft_i2cbug/soft_i2c$624                                     0001C6 GR
+  9 A$soft_i2cbug/soft_i2c$625                                     0001C9 GR
+  9 A$soft_i2cbug/soft_i2c$629                                     0001CA GR
+  9 A$soft_i2cbug/soft_i2c$630                                     0001CD GR
+  9 A$soft_i2cbug/soft_i2c$631                                     0001CE GR
+  9 A$soft_i2cbug/soft_i2c$634                                     0001D0 GR
+  9 A$soft_i2cbug/soft_i2c$635                                     0001D1 GR
+  9 A$soft_i2cbug/soft_i2c$639                                     0001D4 GR
+  9 A$soft_i2cbug/soft_i2c$640                                     0001D6 GR
+  9 A$soft_i2cbug/soft_i2c$642                                     0001D7 GR
+  9 A$soft_i2cbug/soft_i2c$643                                     0001DA GR
+  9 A$soft_i2cbug/soft_i2c$647                                     0001DB GR
+  9 A$soft_i2cbug/soft_i2c$648                                     0001DE GR
+  9 A$soft_i2cbug/soft_i2c$649                                     0001DF GR
+  9 A$soft_i2cbug/soft_i2c$652                                     0001E1 GR
+  9 A$soft_i2cbug/soft_i2c$653                                     0001E2 GR
+  9 A$soft_i2cbug/soft_i2c$657                                     0001E4 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 5.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 A$soft_i2cbug/soft_i2c$660                                     0001E6 GR
+  9 A$soft_i2cbug/soft_i2c$661                                     0001E8 GR
+  9 A$soft_i2cbug/soft_i2c$662                                     0001EA GR
+  9 A$soft_i2cbug/soft_i2c$666                                     0001EC GR
+  9 A$soft_i2cbug/soft_i2c$667                                     0001ED GR
+  9 A$soft_i2cbug/soft_i2c$668                                     0001EF GR
+  9 A$soft_i2cbug/soft_i2c$669                                     0001F0 GR
+  9 A$soft_i2cbug/soft_i2c$670                                     0001F3 GR
+  9 A$soft_i2cbug/soft_i2c$671                                     0001F4 GR
+  9 A$soft_i2cbug/soft_i2c$673                                     0001F5 GR
+  9 A$soft_i2cbug/soft_i2c$674                                     0001F8 GR
+  9 A$soft_i2cbug/soft_i2c$678                                     0001F9 GR
+  9 A$soft_i2cbug/soft_i2c$679                                     0001FC GR
+  9 A$soft_i2cbug/soft_i2c$680                                     0001FD GR
+  9 A$soft_i2cbug/soft_i2c$683                                     0001FF GR
+  9 A$soft_i2cbug/soft_i2c$684                                     000200 GR
+  9 A$soft_i2cbug/soft_i2c$689                                     000202 GR
+  9 A$soft_i2cbug/soft_i2c$69                                      000000 GR
+  9 A$soft_i2cbug/soft_i2c$690                                     000204 GR
+  9 A$soft_i2cbug/soft_i2c$695                                     000206 GR
+  9 A$soft_i2cbug/soft_i2c$698                                     000209 GR
+  9 A$soft_i2cbug/soft_i2c$702                                     00020B GR
+  9 A$soft_i2cbug/soft_i2c$706                                     00020D GR
+  9 A$soft_i2cbug/soft_i2c$71                                      000002 GR
+  9 A$soft_i2cbug/soft_i2c$717                                     00020E GR
+  9 A$soft_i2cbug/soft_i2c$718                                     00020F GR
+  9 A$soft_i2cbug/soft_i2c$719                                     000210 GR
+  9 A$soft_i2cbug/soft_i2c$720                                     000211 GR
+  9 A$soft_i2cbug/soft_i2c$725                                     000212 GR
+  9 A$soft_i2cbug/soft_i2c$73                                      000004 GR
+  9 A$soft_i2cbug/soft_i2c$75                                      000006 GR
+  9 A$soft_i2cbug/soft_i2c$77                                      000008 GR
+  9 A$soft_i2cbug/soft_i2c$78                                      00000B GR
+  9 A$soft_i2cbug/soft_i2c$82                                      00000D GR
+  9 A$soft_i2cbug/soft_i2c$84                                      00000F GR
+  9 A$soft_i2cbug/soft_i2c$86                                      000011 GR
+  9 A$soft_i2cbug/soft_i2c$88                                      000013 GR
+  9 A$soft_i2cbug/soft_i2c$90                                      000015 GR
+  9 A$soft_i2cbug/soft_i2c$91                                      000018 GR
+  9 A$soft_i2cbug/soft_i2c$95                                      00001A GR
+  9 A$soft_i2cbug/soft_i2c$98                                      00001E GR
+ 10 Ldebug_CIE0_end                                                000012 R
+ 10 Ldebug_CIE0_start                                              000004 R
+ 10 Ldebug_CIE10_end                                               000277 R
+ 10 Ldebug_CIE10_start                                             000269 R
+ 10 Ldebug_CIE1_end                                                00003B R
+ 10 Ldebug_CIE1_start                                              00002D R
+ 10 Ldebug_CIE2_end                                                00009C R
+ 10 Ldebug_CIE2_start                                              00008E R
+ 10 Ldebug_CIE3_end                                                00013C R
+ 10 Ldebug_CIE3_start                                              00012E R
+ 10 Ldebug_CIE4_end                                                000173 R
+ 10 Ldebug_CIE4_start                                              000165 R
+ 10 Ldebug_CIE5_end                                                0001AA R
+ 10 Ldebug_CIE5_start                                              00019C R
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 6.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+ 10 Ldebug_CIE6_end                                                0001D3 R
+ 10 Ldebug_CIE6_start                                              0001C5 R
+ 10 Ldebug_CIE7_end                                                0001FC R
+ 10 Ldebug_CIE7_start                                              0001EE R
+ 10 Ldebug_CIE8_end                                                000225 R
+ 10 Ldebug_CIE8_start                                              000217 R
+ 10 Ldebug_CIE9_end                                                00024E R
+ 10 Ldebug_CIE9_start                                              000240 R
+  D Ldebug_abbrev                                                  000000 R
+  E Ldebug_info_end                                                0002D5 R
+  E Ldebug_info_start                                              000004 R
+  B Ldebug_line_end                                                0003D2 R
+  B Ldebug_line_start                                              000004 R
+  B Ldebug_line_stmt                                               000087 R
+  C Ldebug_loc_start                                               000000 R
+  F Ldebug_pubnames_end                                            0000C6 R
+  F Ldebug_pubnames_start                                          000004 R
+  9 Ssoft_i2c$I2C_Ack$58                                        =  000087 GR
+  9 Ssoft_i2c$I2C_Ack$59                                        =  000087 GR
+  9 Ssoft_i2c$I2C_Ack$60                                        =  000087 GR
+  9 Ssoft_i2c$I2C_Ack$61                                        =  00008B GR
+  9 Ssoft_i2c$I2C_Ack$62                                        =  00008F GR
+  9 Ssoft_i2c$I2C_Ack$63                                        =  000092 GR
+  9 Ssoft_i2c$I2C_Ack$64                                        =  000096 GR
+  9 Ssoft_i2c$I2C_Ack$65                                        =  000099 GR
+  9 Ssoft_i2c$I2C_Ack$66                                        =  00009D GR
+  9 Ssoft_i2c$I2C_Ack$67                                        =  00009D GR
+  9 Ssoft_i2c$I2C_Ack$68                                        =  00009E GR
+  9 Ssoft_i2c$I2C_Init$0                                        =  000000 GR
+  9 Ssoft_i2c$I2C_Init$1                                        =  000000 GR
+  9 Ssoft_i2c$I2C_Init$10                                       =  000011 GR
+  9 Ssoft_i2c$I2C_Init$11                                       =  000013 GR
+  9 Ssoft_i2c$I2C_Init$12                                       =  000015 GR
+  9 Ssoft_i2c$I2C_Init$13                                       =  00001A GR
+  9 Ssoft_i2c$I2C_Init$14                                       =  00001A GR
+  9 Ssoft_i2c$I2C_Init$15                                       =  00001E GR
+  9 Ssoft_i2c$I2C_Init$16                                       =  000022 GR
+  9 Ssoft_i2c$I2C_Init$17                                       =  000022 GR
+  9 Ssoft_i2c$I2C_Init$18                                       =  000023 GR
+  9 Ssoft_i2c$I2C_Init$2                                        =  000000 GR
+  9 Ssoft_i2c$I2C_Init$3                                        =  000002 GR
+  9 Ssoft_i2c$I2C_Init$4                                        =  000004 GR
+  9 Ssoft_i2c$I2C_Init$5                                        =  000006 GR
+  9 Ssoft_i2c$I2C_Init$6                                        =  000008 GR
+  9 Ssoft_i2c$I2C_Init$7                                        =  00000D GR
+  9 Ssoft_i2c$I2C_Init$8                                        =  00000D GR
+  9 Ssoft_i2c$I2C_Init$9                                        =  00000F GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$125                         =  000136 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$126                         =  000136 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$127                         =  000138 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$128                         =  000138 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$129                         =  00013B GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$130                         =  000141 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$131                         =  000145 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$132                         =  000145 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 7.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 Ssoft_i2c$I2C_MasterReceiveData$133                         =  00014B GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$134                         =  00014F GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$135                         =  000152 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$136                         =  000156 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$137                         =  000156 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$138                         =  00015C GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$139                         =  000160 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$140                         =  000163 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$141                         =  000168 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$142                         =  00016C GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$143                         =  00016C GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$144                         =  000172 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$145                         =  000176 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$146                         =  000178 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$147                         =  000181 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$148                         =  000181 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$149                         =  00018E GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$150                         =  00018E GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$151                         =  000195 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$152                         =  00019B GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$153                         =  00019B GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$154                         =  00019C GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$155                         =  00019E GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$156                         =  0001A3 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$157                         =  0001A4 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$158                         =  0001A7 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$159                         =  0001A8 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$160                         =  0001AA GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$161                         =  0001AF GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$162                         =  0001B0 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$163                         =  0001B1 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$164                         =  0001B6 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$165                         =  0001B9 GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$166                         =  0001BB GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$167                         =  0001BD GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$168                         =  0001BD GR
+  9 Ssoft_i2c$I2C_MasterReceiveData$169                         =  0001BE GR
+  9 Ssoft_i2c$I2C_MasterSendData$170                            =  0001BE GR
+  9 Ssoft_i2c$I2C_MasterSendData$171                            =  0001BE GR
+  9 Ssoft_i2c$I2C_MasterSendData$172                            =  0001BF GR
+  9 Ssoft_i2c$I2C_MasterSendData$173                            =  0001BF GR
+  9 Ssoft_i2c$I2C_MasterSendData$174                            =  0001C2 GR
+  9 Ssoft_i2c$I2C_MasterSendData$175                            =  0001C6 GR
+  9 Ssoft_i2c$I2C_MasterSendData$176                            =  0001CA GR
+  9 Ssoft_i2c$I2C_MasterSendData$177                            =  0001CA GR
+  9 Ssoft_i2c$I2C_MasterSendData$178                            =  0001D0 GR
+  9 Ssoft_i2c$I2C_MasterSendData$179                            =  0001D4 GR
+  9 Ssoft_i2c$I2C_MasterSendData$180                            =  0001D7 GR
+  9 Ssoft_i2c$I2C_MasterSendData$181                            =  0001DB GR
+  9 Ssoft_i2c$I2C_MasterSendData$182                            =  0001DB GR
+  9 Ssoft_i2c$I2C_MasterSendData$183                            =  0001E1 GR
+  9 Ssoft_i2c$I2C_MasterSendData$184                            =  0001E4 GR
+  9 Ssoft_i2c$I2C_MasterSendData$185                            =  0001E6 GR
+  9 Ssoft_i2c$I2C_MasterSendData$186                            =  0001EC GR
+  9 Ssoft_i2c$I2C_MasterSendData$187                            =  0001EC GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 8.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 Ssoft_i2c$I2C_MasterSendData$188                            =  0001F5 GR
+  9 Ssoft_i2c$I2C_MasterSendData$189                            =  0001F9 GR
+  9 Ssoft_i2c$I2C_MasterSendData$190                            =  0001F9 GR
+  9 Ssoft_i2c$I2C_MasterSendData$191                            =  0001FF GR
+  9 Ssoft_i2c$I2C_MasterSendData$192                            =  000202 GR
+  9 Ssoft_i2c$I2C_MasterSendData$193                            =  000202 GR
+  9 Ssoft_i2c$I2C_MasterSendData$194                            =  000206 GR
+  9 Ssoft_i2c$I2C_MasterSendData$195                            =  000206 GR
+  9 Ssoft_i2c$I2C_MasterSendData$196                            =  000209 GR
+  9 Ssoft_i2c$I2C_MasterSendData$197                            =  00020B GR
+  9 Ssoft_i2c$I2C_MasterSendData$198                            =  00020D GR
+  9 Ssoft_i2c$I2C_MasterSendData$199                            =  00020D GR
+  9 Ssoft_i2c$I2C_MasterSendData$200                            =  00020E GR
+  9 Ssoft_i2c$I2C_NAck$69                                       =  00009E GR
+  9 Ssoft_i2c$I2C_NAck$70                                       =  00009E GR
+  9 Ssoft_i2c$I2C_NAck$71                                       =  00009E GR
+  9 Ssoft_i2c$I2C_NAck$72                                       =  0000A2 GR
+  9 Ssoft_i2c$I2C_NAck$73                                       =  0000A6 GR
+  9 Ssoft_i2c$I2C_NAck$74                                       =  0000A9 GR
+  9 Ssoft_i2c$I2C_NAck$75                                       =  0000AD GR
+  9 Ssoft_i2c$I2C_NAck$76                                       =  0000B0 GR
+  9 Ssoft_i2c$I2C_NAck$77                                       =  0000B4 GR
+  9 Ssoft_i2c$I2C_NAck$78                                       =  0000B4 GR
+  9 Ssoft_i2c$I2C_NAck$79                                       =  0000B5 GR
+  9 Ssoft_i2c$I2C_Read_Byte$103                                 =  0000FD GR
+  9 Ssoft_i2c$I2C_Read_Byte$104                                 =  0000FD GR
+  9 Ssoft_i2c$I2C_Read_Byte$105                                 =  0000FE GR
+  9 Ssoft_i2c$I2C_Read_Byte$106                                 =  0000FE GR
+  9 Ssoft_i2c$I2C_Read_Byte$107                                 =  000100 GR
+  9 Ssoft_i2c$I2C_Read_Byte$108                                 =  000102 GR
+  9 Ssoft_i2c$I2C_Read_Byte$109                                 =  000102 GR
+  9 Ssoft_i2c$I2C_Read_Byte$110                                 =  000106 GR
+  9 Ssoft_i2c$I2C_Read_Byte$111                                 =  000109 GR
+  9 Ssoft_i2c$I2C_Read_Byte$112                                 =  00010D GR
+  9 Ssoft_i2c$I2C_Read_Byte$113                                 =  00010F GR
+  9 Ssoft_i2c$I2C_Read_Byte$114                                 =  00011D GR
+  9 Ssoft_i2c$I2C_Read_Byte$115                                 =  00011E GR
+  9 Ssoft_i2c$I2C_Read_Byte$116                                 =  00011E GR
+  9 Ssoft_i2c$I2C_Read_Byte$117                                 =  000126 GR
+  9 Ssoft_i2c$I2C_Read_Byte$118                                 =  00012A GR
+  9 Ssoft_i2c$I2C_Read_Byte$119                                 =  00012F GR
+  9 Ssoft_i2c$I2C_Read_Byte$120                                 =  000132 GR
+  9 Ssoft_i2c$I2C_Read_Byte$121                                 =  000134 GR
+  9 Ssoft_i2c$I2C_Read_Byte$122                                 =  000135 GR
+  9 Ssoft_i2c$I2C_Read_Byte$123                                 =  000135 GR
+  9 Ssoft_i2c$I2C_Read_Byte$124                                 =  000136 GR
+  9 Ssoft_i2c$I2C_Send_Byte$100                                 =  0000FC GR
+  9 Ssoft_i2c$I2C_Send_Byte$101                                 =  0000FC GR
+  9 Ssoft_i2c$I2C_Send_Byte$102                                 =  0000FD GR
+  9 Ssoft_i2c$I2C_Send_Byte$80                                  =  0000B5 GR
+  9 Ssoft_i2c$I2C_Send_Byte$81                                  =  0000B5 GR
+  9 Ssoft_i2c$I2C_Send_Byte$82                                  =  0000B6 GR
+  9 Ssoft_i2c$I2C_Send_Byte$83                                  =  0000B6 GR
+  9 Ssoft_i2c$I2C_Send_Byte$84                                  =  0000BA GR
+  9 Ssoft_i2c$I2C_Send_Byte$85                                  =  0000BC GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 9.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 Ssoft_i2c$I2C_Send_Byte$86                                  =  0000BC GR
+  9 Ssoft_i2c$I2C_Send_Byte$87                                  =  0000CB GR
+  9 Ssoft_i2c$I2C_Send_Byte$88                                  =  0000CB GR
+  9 Ssoft_i2c$I2C_Send_Byte$89                                  =  0000CE GR
+  9 Ssoft_i2c$I2C_Send_Byte$90                                  =  0000D1 GR
+  9 Ssoft_i2c$I2C_Send_Byte$91                                  =  0000D8 GR
+  9 Ssoft_i2c$I2C_Send_Byte$92                                  =  0000DD GR
+  9 Ssoft_i2c$I2C_Send_Byte$93                                  =  0000DF GR
+  9 Ssoft_i2c$I2C_Send_Byte$94                                  =  0000E2 GR
+  9 Ssoft_i2c$I2C_Send_Byte$95                                  =  0000E6 GR
+  9 Ssoft_i2c$I2C_Send_Byte$96                                  =  0000E9 GR
+  9 Ssoft_i2c$I2C_Send_Byte$97                                  =  0000ED GR
+  9 Ssoft_i2c$I2C_Send_Byte$98                                  =  0000F0 GR
+  9 Ssoft_i2c$I2C_Send_Byte$99                                  =  0000FB GR
+  9 Ssoft_i2c$I2C_Start$19                                      =  000023 GR
+  9 Ssoft_i2c$I2C_Start$20                                      =  000023 GR
+  9 Ssoft_i2c$I2C_Start$21                                      =  000023 GR
+  9 Ssoft_i2c$I2C_Start$22                                      =  000027 GR
+  9 Ssoft_i2c$I2C_Start$23                                      =  00002B GR
+  9 Ssoft_i2c$I2C_Start$24                                      =  00002E GR
+  9 Ssoft_i2c$I2C_Start$25                                      =  000032 GR
+  9 Ssoft_i2c$I2C_Start$26                                      =  000035 GR
+  9 Ssoft_i2c$I2C_Start$27                                      =  000039 GR
+  9 Ssoft_i2c$I2C_Start$28                                      =  000039 GR
+  9 Ssoft_i2c$I2C_Start$29                                      =  00003A GR
+  9 Ssoft_i2c$I2C_Stop$30                                       =  00003A GR
+  9 Ssoft_i2c$I2C_Stop$31                                       =  00003A GR
+  9 Ssoft_i2c$I2C_Stop$32                                       =  00003A GR
+  9 Ssoft_i2c$I2C_Stop$33                                       =  00003E GR
+  9 Ssoft_i2c$I2C_Stop$34                                       =  000042 GR
+  9 Ssoft_i2c$I2C_Stop$35                                       =  000045 GR
+  9 Ssoft_i2c$I2C_Stop$36                                       =  000049 GR
+  9 Ssoft_i2c$I2C_Stop$37                                       =  000051 GR
+  9 Ssoft_i2c$I2C_Stop$38                                       =  000054 GR
+  9 Ssoft_i2c$I2C_Stop$39                                       =  000054 GR
+  9 Ssoft_i2c$I2C_Stop$40                                       =  000055 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$41                                   =  000055 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$42                                   =  000055 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$43                                   =  000055 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$44                                   =  00005E GR
+  9 Ssoft_i2c$I2C_Wait_Ack$45                                   =  000067 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$46                                   =  000074 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$47                                   =  000074 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$48                                   =  000075 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$49                                   =  00007A GR
+  9 Ssoft_i2c$I2C_Wait_Ack$50                                   =  00007A GR
+  9 Ssoft_i2c$I2C_Wait_Ack$51                                   =  00007D GR
+  9 Ssoft_i2c$I2C_Wait_Ack$52                                   =  000081 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$53                                   =  000081 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$54                                   =  000085 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$55                                   =  000086 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$56                                   =  000086 GR
+  9 Ssoft_i2c$I2C_Wait_Ack$57                                   =  000087 GR
+  9 Ssoft_i2c$delay_us$201                                      =  00020E GR
+  9 Ssoft_i2c$delay_us$202                                      =  00020E GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 10.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 Ssoft_i2c$delay_us$203                                      =  00020E GR
+  9 Ssoft_i2c$delay_us$204                                      =  000212 GR
+  9 Ssoft_i2c$delay_us$205                                      =  000212 GR
+  9 Ssoft_i2c$delay_us$206                                      =  000213 GR
+  9 XG$I2C_Ack$0$0                                              =  00009D GR
+  9 XG$I2C_Init$0$0                                             =  000022 GR
+  9 XG$I2C_MasterReceiveData$0$0                                =  0001BD GR
+  9 XG$I2C_MasterSendData$0$0                                   =  00020D GR
+  9 XG$I2C_NAck$0$0                                             =  0000B4 GR
+  9 XG$I2C_Read_Byte$0$0                                        =  000135 GR
+  9 XG$I2C_Send_Byte$0$0                                        =  0000FC GR
+  9 XG$I2C_Start$0$0                                            =  000039 GR
+  9 XG$I2C_Stop$0$0                                             =  000054 GR
+  9 XG$I2C_Wait_Ack$0$0                                         =  000086 GR
+  9 XG$delay_us$0$0                                             =  000212 GR
+    _GPIO_Init                                                     ****** GX
+  9 _I2C_Ack                                                       000087 GR
+  9 _I2C_Init                                                      000000 GR
+  9 _I2C_MasterReceiveData                                         000136 GR
+  9 _I2C_MasterSendData                                            0001BE GR
+  9 _I2C_NAck                                                      00009E GR
+  9 _I2C_Read_Byte                                                 0000FD GR
+  9 _I2C_Send_Byte                                                 0000B5 GR
+  9 _I2C_Start                                                     000023 GR
+  9 _I2C_Stop                                                      00003A GR
+  9 _I2C_Wait_Ack                                                  000055 GR
+  9 _delay_us                                                      00020E GR
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 11.
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size      0   flags    0
+   1 DATA                                       size      0   flags    0
+   2 INITIALIZED                                size      0   flags    0
+   3 DABS                                       size      0   flags    8
+   4 HOME                                       size      0   flags    0
+   5 GSINIT                                     size      0   flags    0
+   6 GSFINAL                                    size      0   flags    0
+   7 CONST                                      size      0   flags    0
+   8 INITIALIZER                                size      0   flags    0
+   9 CODE                                       size    213   flags    0
+   A CABS                                       size      0   flags    8
+   B .debug_line                                size    3D2   flags  100
+   C .debug_loc                                 size    2B0   flags  100
+   D .debug_abbrev                              size     8D   flags  100
+   E .debug_info                                size    2D5   flags  100
+   F .debug_pubnames                            size     C6   flags  100
+  10 .debug_frame                               size    2D4   flags  100
+

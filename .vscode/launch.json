@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "stm8-debug",
+            "request": "launch",
+            "name": "Launch Program",
+            "serverType": "stm8-sdcc",
+            "executable": "${workspaceRoot}/Build/Debug/main.elf",
+            "cpu": "STM8S003F3",
+            "openOcdConfigs": [
+                "interface/stlink.cfg",
+                "target/stm8s003.cfg"
+            ]
+        }
+    ]
+}

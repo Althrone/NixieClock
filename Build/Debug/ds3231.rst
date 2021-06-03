@@ -1,0 +1,917 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.0.0 #11528 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module ds3231
+                                      6 	.optsdcc -mstm8
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _I2C_MasterReceiveData
+                                     12 	.globl _I2C_Init
+                                     13 	.globl _DS3231_Buf
+                                     14 	.globl _DS3231_TimeSturcture
+                                     15 	.globl _DS3231_Init
+                                     16 	.globl _DS3231_GetTime
+                                     17 ;--------------------------------------------------------
+                                     18 ; ram data
+                                     19 ;--------------------------------------------------------
+                                     20 	.area DATA
+                           000000    21 G$DS3231_TimeSturcture$0_0$0==.
+      000001                         22 _DS3231_TimeSturcture::
+      000001                         23 	.ds 8
+                                     24 ;--------------------------------------------------------
+                                     25 ; ram data
+                                     26 ;--------------------------------------------------------
+                                     27 	.area INITIALIZED
+                           000000    28 G$DS3231_Buf$0_0$0==.
+      000023                         29 _DS3231_Buf::
+      000023                         30 	.ds 8
+                                     31 ;--------------------------------------------------------
+                                     32 ; absolute external ram data
+                                     33 ;--------------------------------------------------------
+                                     34 	.area DABS (ABS)
+                                     35 
+                                     36 ; default segment ordering for linker
+                                     37 	.area HOME
+                                     38 	.area GSINIT
+                                     39 	.area GSFINAL
+                                     40 	.area CONST
+                                     41 	.area INITIALIZER
+                                     42 	.area CODE
+                                     43 
+                                     44 ;--------------------------------------------------------
+                                     45 ; global & static initialisations
+                                     46 ;--------------------------------------------------------
+                                     47 	.area HOME
+                                     48 	.area GSINIT
+                                     49 	.area GSFINAL
+                                     50 	.area GSINIT
+                                     51 ;--------------------------------------------------------
+                                     52 ; Home
+                                     53 ;--------------------------------------------------------
+                                     54 	.area HOME
+                                     55 	.area HOME
+                                     56 ;--------------------------------------------------------
+                                     57 ; code
+                                     58 ;--------------------------------------------------------
+                                     59 	.area CODE
+                           000000    60 	Sds3231$DS3231_Init$0 ==.
+                                     61 ;	Source/Device/Src/ds3231.c: 29: void DS3231_Init(void)
+                                     62 ;	-----------------------------------------
+                                     63 ;	 function DS3231_Init
+                                     64 ;	-----------------------------------------
+      008A9E                         65 _DS3231_Init:
+                           000000    66 	Sds3231$DS3231_Init$1 ==.
+                           000000    67 	Sds3231$DS3231_Init$2 ==.
+                                     68 ;	Source/Device/Src/ds3231.c: 31: I2C_Init();
+      008A9E CC 85 BA         [ 2]   69 	jp	_I2C_Init
+                           000003    70 	Sds3231$DS3231_Init$3 ==.
+                                     71 ;	Source/Device/Src/ds3231.c: 32: }
+                           000003    72 	Sds3231$DS3231_Init$4 ==.
+                           000003    73 	XG$DS3231_Init$0$0 ==.
+      008AA1 81               [ 4]   74 	ret
+                           000004    75 	Sds3231$DS3231_Init$5 ==.
+                           000004    76 	Sds3231$DS3231_GetTime$6 ==.
+                                     77 ;	Source/Device/Src/ds3231.c: 34: void DS3231_GetTime(void)
+                                     78 ;	-----------------------------------------
+                                     79 ;	 function DS3231_GetTime
+                                     80 ;	-----------------------------------------
+      008AA2                         81 _DS3231_GetTime:
+                           000004    82 	Sds3231$DS3231_GetTime$7 ==.
+      008AA2 52 04            [ 2]   83 	sub	sp, #4
+                           000006    84 	Sds3231$DS3231_GetTime$8 ==.
+                           000006    85 	Sds3231$DS3231_GetTime$9 ==.
+                           000006    86 	Sds3231$DS3231_GetTime$10 ==.
+                                     87 ;	Source/Device/Src/ds3231.c: 36: for(int i=0;i<7;++i)
+                           000006    88 	Sds3231$DS3231_GetTime$11 ==.
+      008AA4 5F               [ 1]   89 	clrw	x
+      008AA5 1F 03            [ 2]   90 	ldw	(0x03, sp), x
+                           000009    91 	Sds3231$DS3231_GetTime$12 ==.
+      008AA7                         92 00103$:
+      008AA7 1E 03            [ 2]   93 	ldw	x, (0x03, sp)
+      008AA9 A3 00 07         [ 2]   94 	cpw	x, #0x0007
+      008AAC 2E 19            [ 1]   95 	jrsge	00101$
+                           000010    96 	Sds3231$DS3231_GetTime$13 ==.
+                                     97 ;	Source/Device/Src/ds3231.c: 39: &DS3231_Buf[i],1);
+      008AAE 1E 03            [ 2]   98 	ldw	x, (0x03, sp)
+      008AB0 1C 00 23         [ 2]   99 	addw	x, #(_DS3231_Buf + 0)
+                           000015   100 	Sds3231$DS3231_GetTime$14 ==.
+                                    101 ;	Source/Device/Src/ds3231.c: 38: I2C_MasterReceiveData(DS3231_ADDR,DS3231_SECONDS+i,
+      008AB3 7B 04            [ 1]  102 	ld	a, (0x04, sp)
+      008AB5 4B 01            [ 1]  103 	push	#0x01
+                           000019   104 	Sds3231$DS3231_GetTime$15 ==.
+      008AB7 89               [ 2]  105 	pushw	x
+                           00001A   106 	Sds3231$DS3231_GetTime$16 ==.
+      008AB8 88               [ 1]  107 	push	a
+                           00001B   108 	Sds3231$DS3231_GetTime$17 ==.
+      008AB9 4B 68            [ 1]  109 	push	#0x68
+                           00001D   110 	Sds3231$DS3231_GetTime$18 ==.
+      008ABB CD 86 F0         [ 4]  111 	call	_I2C_MasterReceiveData
+      008ABE 5B 05            [ 2]  112 	addw	sp, #5
+                           000022   113 	Sds3231$DS3231_GetTime$19 ==.
+                           000022   114 	Sds3231$DS3231_GetTime$20 ==.
+                           000022   115 	Sds3231$DS3231_GetTime$21 ==.
+                                    116 ;	Source/Device/Src/ds3231.c: 36: for(int i=0;i<7;++i)
+      008AC0 1E 03            [ 2]  117 	ldw	x, (0x03, sp)
+      008AC2 5C               [ 1]  118 	incw	x
+      008AC3 1F 03            [ 2]  119 	ldw	(0x03, sp), x
+      008AC5 20 E0            [ 2]  120 	jra	00103$
+      008AC7                        121 00101$:
+                           000029   122 	Sds3231$DS3231_GetTime$22 ==.
+                           000029   123 	Sds3231$DS3231_GetTime$23 ==.
+                                    124 ;	Source/Device/Src/ds3231.c: 42: DS3231_TimeSturcture.seconds=(DS3231_Buf[0]&0x0F)+((DS3231_Buf[0]&0xF0)>>4)*10;
+      008AC7 C6 00 23         [ 1]  125 	ld	a, _DS3231_Buf+0
+      008ACA 97               [ 1]  126 	ld	xl, a
+      008ACB A4 0F            [ 1]  127 	and	a, #0x0f
+      008ACD 6B 04            [ 1]  128 	ld	(0x04, sp), a
+      008ACF 9F               [ 1]  129 	ld	a, xl
+      008AD0 A4 F0            [ 1]  130 	and	a, #0xf0
+      008AD2 97               [ 1]  131 	ld	xl, a
+      008AD3 4F               [ 1]  132 	clr	a
+      008AD4 95               [ 1]  133 	ld	xh, a
+      008AD5 57               [ 2]  134 	sraw	x
+      008AD6 57               [ 2]  135 	sraw	x
+      008AD7 57               [ 2]  136 	sraw	x
+      008AD8 57               [ 2]  137 	sraw	x
+      008AD9 A6 0A            [ 1]  138 	ld	a, #0x0a
+      008ADB 42               [ 4]  139 	mul	x, a
+      008ADC 9F               [ 1]  140 	ld	a, xl
+      008ADD 1B 04            [ 1]  141 	add	a, (0x04, sp)
+      008ADF C7 00 01         [ 1]  142 	ld	_DS3231_TimeSturcture+0, a
+                           000044   143 	Sds3231$DS3231_GetTime$24 ==.
+                                    144 ;	Source/Device/Src/ds3231.c: 43: DS3231_TimeSturcture.minutes=(DS3231_Buf[1]&0x0F)+((DS3231_Buf[1]&0xF0)>>4)*10;
+      008AE2 90 AE 00 02      [ 2]  145 	ldw	y, #(_DS3231_TimeSturcture + 0)+1
+      008AE6 C6 00 24         [ 1]  146 	ld	a, _DS3231_Buf+1
+      008AE9 97               [ 1]  147 	ld	xl, a
+      008AEA A4 0F            [ 1]  148 	and	a, #0x0f
+      008AEC 6B 04            [ 1]  149 	ld	(0x04, sp), a
+      008AEE 9F               [ 1]  150 	ld	a, xl
+      008AEF A4 F0            [ 1]  151 	and	a, #0xf0
+      008AF1 97               [ 1]  152 	ld	xl, a
+      008AF2 4F               [ 1]  153 	clr	a
+      008AF3 95               [ 1]  154 	ld	xh, a
+      008AF4 57               [ 2]  155 	sraw	x
+      008AF5 57               [ 2]  156 	sraw	x
+      008AF6 57               [ 2]  157 	sraw	x
+      008AF7 57               [ 2]  158 	sraw	x
+      008AF8 A6 0A            [ 1]  159 	ld	a, #0x0a
+      008AFA 42               [ 4]  160 	mul	x, a
+      008AFB 9F               [ 1]  161 	ld	a, xl
+      008AFC 1B 04            [ 1]  162 	add	a, (0x04, sp)
+      008AFE 90 F7            [ 1]  163 	ld	(y), a
+                           000062   164 	Sds3231$DS3231_GetTime$25 ==.
+                                    165 ;	Source/Device/Src/ds3231.c: 44: DS3231_TimeSturcture.hours=(DS3231_Buf[2]&0x0F)+((DS3231_Buf[2]&0xF0)>>4)*10;
+      008B00 90 AE 00 03      [ 2]  166 	ldw	y, #(_DS3231_TimeSturcture + 0)+2
+      008B04 C6 00 25         [ 1]  167 	ld	a, _DS3231_Buf+2
+      008B07 97               [ 1]  168 	ld	xl, a
+      008B08 A4 0F            [ 1]  169 	and	a, #0x0f
+      008B0A 6B 04            [ 1]  170 	ld	(0x04, sp), a
+      008B0C 9F               [ 1]  171 	ld	a, xl
+      008B0D A4 F0            [ 1]  172 	and	a, #0xf0
+      008B0F 97               [ 1]  173 	ld	xl, a
+      008B10 4F               [ 1]  174 	clr	a
+      008B11 95               [ 1]  175 	ld	xh, a
+      008B12 57               [ 2]  176 	sraw	x
+      008B13 57               [ 2]  177 	sraw	x
+      008B14 57               [ 2]  178 	sraw	x
+      008B15 57               [ 2]  179 	sraw	x
+      008B16 A6 0A            [ 1]  180 	ld	a, #0x0a
+      008B18 42               [ 4]  181 	mul	x, a
+      008B19 9F               [ 1]  182 	ld	a, xl
+      008B1A 1B 04            [ 1]  183 	add	a, (0x04, sp)
+      008B1C 90 F7            [ 1]  184 	ld	(y), a
+                           000080   185 	Sds3231$DS3231_GetTime$26 ==.
+                                    186 ;	Source/Device/Src/ds3231.c: 45: DS3231_TimeSturcture.day=(DS3231_Buf[3]&0x0F);
+      008B1E AE 00 04         [ 2]  187 	ldw	x, #(_DS3231_TimeSturcture + 0)+3
+      008B21 C6 00 26         [ 1]  188 	ld	a, _DS3231_Buf+3
+      008B24 A4 0F            [ 1]  189 	and	a, #0x0f
+      008B26 F7               [ 1]  190 	ld	(x), a
+                           000089   191 	Sds3231$DS3231_GetTime$27 ==.
+                                    192 ;	Source/Device/Src/ds3231.c: 46: DS3231_TimeSturcture.date=(DS3231_Buf[4]&0x0F)+((DS3231_Buf[4]&0xF0)>>4)*10;
+      008B27 90 AE 00 05      [ 2]  193 	ldw	y, #(_DS3231_TimeSturcture + 0)+4
+      008B2B C6 00 27         [ 1]  194 	ld	a, _DS3231_Buf+4
+      008B2E 97               [ 1]  195 	ld	xl, a
+      008B2F A4 0F            [ 1]  196 	and	a, #0x0f
+      008B31 6B 04            [ 1]  197 	ld	(0x04, sp), a
+      008B33 9F               [ 1]  198 	ld	a, xl
+      008B34 A4 F0            [ 1]  199 	and	a, #0xf0
+      008B36 97               [ 1]  200 	ld	xl, a
+      008B37 4F               [ 1]  201 	clr	a
+      008B38 95               [ 1]  202 	ld	xh, a
+      008B39 57               [ 2]  203 	sraw	x
+      008B3A 57               [ 2]  204 	sraw	x
+      008B3B 57               [ 2]  205 	sraw	x
+      008B3C 57               [ 2]  206 	sraw	x
+      008B3D A6 0A            [ 1]  207 	ld	a, #0x0a
+      008B3F 42               [ 4]  208 	mul	x, a
+      008B40 9F               [ 1]  209 	ld	a, xl
+      008B41 1B 04            [ 1]  210 	add	a, (0x04, sp)
+      008B43 90 F7            [ 1]  211 	ld	(y), a
+                           0000A7   212 	Sds3231$DS3231_GetTime$28 ==.
+                                    213 ;	Source/Device/Src/ds3231.c: 47: DS3231_TimeSturcture.month=(DS3231_Buf[5]&0x0F)+((DS3231_Buf[5]&0xF0)>>4)*10;
+      008B45 90 AE 00 06      [ 2]  214 	ldw	y, #(_DS3231_TimeSturcture + 0)+5
+      008B49 C6 00 28         [ 1]  215 	ld	a, _DS3231_Buf+5
+      008B4C 97               [ 1]  216 	ld	xl, a
+      008B4D A4 0F            [ 1]  217 	and	a, #0x0f
+      008B4F 6B 04            [ 1]  218 	ld	(0x04, sp), a
+      008B51 9F               [ 1]  219 	ld	a, xl
+      008B52 A4 F0            [ 1]  220 	and	a, #0xf0
+      008B54 97               [ 1]  221 	ld	xl, a
+      008B55 4F               [ 1]  222 	clr	a
+      008B56 95               [ 1]  223 	ld	xh, a
+      008B57 57               [ 2]  224 	sraw	x
+      008B58 57               [ 2]  225 	sraw	x
+      008B59 57               [ 2]  226 	sraw	x
+      008B5A 57               [ 2]  227 	sraw	x
+      008B5B A6 0A            [ 1]  228 	ld	a, #0x0a
+      008B5D 42               [ 4]  229 	mul	x, a
+      008B5E 9F               [ 1]  230 	ld	a, xl
+      008B5F 1B 04            [ 1]  231 	add	a, (0x04, sp)
+      008B61 90 F7            [ 1]  232 	ld	(y), a
+                           0000C5   233 	Sds3231$DS3231_GetTime$29 ==.
+                                    234 ;	Source/Device/Src/ds3231.c: 48: DS3231_TimeSturcture.year=2000+(DS3231_Buf[6]&0x0F)+((DS3231_Buf[6]&0xF0)>>4)*10;
+      008B63 90 AE 00 07      [ 2]  235 	ldw	y, #(_DS3231_TimeSturcture + 0)+6
+      008B67 C6 00 29         [ 1]  236 	ld	a, _DS3231_Buf+6
+      008B6A 0F 01            [ 1]  237 	clr	(0x01, sp)
+      008B6C 88               [ 1]  238 	push	a
+                           0000CF   239 	Sds3231$DS3231_GetTime$30 ==.
+      008B6D A4 0F            [ 1]  240 	and	a, #0x0f
+      008B6F 97               [ 1]  241 	ld	xl, a
+      008B70 4F               [ 1]  242 	clr	a
+      008B71 95               [ 1]  243 	ld	xh, a
+      008B72 84               [ 1]  244 	pop	a
+                           0000D5   245 	Sds3231$DS3231_GetTime$31 ==.
+      008B73 1C 07 D0         [ 2]  246 	addw	x, #0x07d0
+      008B76 1F 03            [ 2]  247 	ldw	(0x03, sp), x
+      008B78 A4 F0            [ 1]  248 	and	a, #0xf0
+      008B7A 97               [ 1]  249 	ld	xl, a
+      008B7B 4F               [ 1]  250 	clr	a
+      008B7C 95               [ 1]  251 	ld	xh, a
+      008B7D 57               [ 2]  252 	sraw	x
+      008B7E 57               [ 2]  253 	sraw	x
+      008B7F 57               [ 2]  254 	sraw	x
+      008B80 57               [ 2]  255 	sraw	x
+      008B81 89               [ 2]  256 	pushw	x
+                           0000E4   257 	Sds3231$DS3231_GetTime$32 ==.
+      008B82 58               [ 2]  258 	sllw	x
+      008B83 58               [ 2]  259 	sllw	x
+      008B84 72 FB 01         [ 2]  260 	addw	x, (1, sp)
+      008B87 58               [ 2]  261 	sllw	x
+      008B88 5B 02            [ 2]  262 	addw	sp, #2
+                           0000EC   263 	Sds3231$DS3231_GetTime$33 ==.
+      008B8A 72 FB 03         [ 2]  264 	addw	x, (0x03, sp)
+      008B8D 90 FF            [ 2]  265 	ldw	(y), x
+                           0000F1   266 	Sds3231$DS3231_GetTime$34 ==.
+                                    267 ;	Source/Device/Src/ds3231.c: 49: }
+      008B8F 5B 04            [ 2]  268 	addw	sp, #4
+                           0000F3   269 	Sds3231$DS3231_GetTime$35 ==.
+                           0000F3   270 	Sds3231$DS3231_GetTime$36 ==.
+                           0000F3   271 	XG$DS3231_GetTime$0$0 ==.
+      008B91 81               [ 4]  272 	ret
+                           0000F4   273 	Sds3231$DS3231_GetTime$37 ==.
+                                    274 	.area CODE
+                                    275 	.area CONST
+                                    276 	.area INITIALIZER
+                           000000   277 Fds3231$__xinit_DS3231_Buf$0_0$0 == .
+      008082                        278 __xinit__DS3231_Buf:
+      008082 00                     279 	.db #0x00	; 0
+      008083 00                     280 	.db 0x00
+      008084 00                     281 	.db 0x00
+      008085 00                     282 	.db 0x00
+      008086 00                     283 	.db 0x00
+      008087 00                     284 	.db 0x00
+      008088 00                     285 	.db 0x00
+      008089 00                     286 	.db 0x00
+                                    287 	.area CABS (ABS)
+                                    288 
+                                    289 	.area .debug_line (NOLOAD)
+      000FF6 00 00 00 F5            290 	.dw	0,Ldebug_line_end-Ldebug_line_start
+      000FFA                        291 Ldebug_line_start:
+      000FFA 00 02                  292 	.dw	2
+      000FFC 00 00 00 7B            293 	.dw	0,Ldebug_line_stmt-6-Ldebug_line_start
+      001000 01                     294 	.db	1
+      001001 01                     295 	.db	1
+      001002 FB                     296 	.db	-5
+      001003 0F                     297 	.db	15
+      001004 0A                     298 	.db	10
+      001005 00                     299 	.db	0
+      001006 01                     300 	.db	1
+      001007 01                     301 	.db	1
+      001008 01                     302 	.db	1
+      001009 01                     303 	.db	1
+      00100A 00                     304 	.db	0
+      00100B 00                     305 	.db	0
+      00100C 00                     306 	.db	0
+      00100D 01                     307 	.db	1
+      00100E 43 3A 5C 50 72 6F 67   308 	.ascii "C:\Program Files\SDCC\bin\..\include\stm8"
+             72 61 6D 20 46 69 6C
+             65 73 5C 53 44 43 43
+             08 69 6E 5C 2E 2E 5C
+             69 6E 63 6C 75 64 65
+             5C 73 74 6D 38
+      001036 00                     309 	.db	0
+      001037 43 3A 5C 50 72 6F 67   310 	.ascii "C:\Program Files\SDCC\bin\..\include"
+             72 61 6D 20 46 69 6C
+             65 73 5C 53 44 43 43
+             08 69 6E 5C 2E 2E 5C
+             69 6E 63 6C 75 64 65
+      00105A 00                     311 	.db	0
+      00105B 00                     312 	.db	0
+      00105C 53 6F 75 72 63 65 2F   313 	.ascii "Source/Device/Src/ds3231.c"
+             44 65 76 69 63 65 2F
+             53 72 63 2F 64 73 33
+             32 33 31 2E 63
+      001076 00                     314 	.db	0
+      001077 00                     315 	.uleb128	0
+      001078 00                     316 	.uleb128	0
+      001079 00                     317 	.uleb128	0
+      00107A 00                     318 	.db	0
+      00107B                        319 Ldebug_line_stmt:
+      00107B 00                     320 	.db	0
+      00107C 05                     321 	.uleb128	5
+      00107D 02                     322 	.db	2
+      00107E 00 00 8A 9E            323 	.dw	0,(Sds3231$DS3231_Init$0)
+      001082 03                     324 	.db	3
+      001083 1C                     325 	.sleb128	28
+      001084 01                     326 	.db	1
+      001085 09                     327 	.db	9
+      001086 00 00                  328 	.dw	Sds3231$DS3231_Init$2-Sds3231$DS3231_Init$0
+      001088 03                     329 	.db	3
+      001089 02                     330 	.sleb128	2
+      00108A 01                     331 	.db	1
+      00108B 09                     332 	.db	9
+      00108C 00 03                  333 	.dw	Sds3231$DS3231_Init$3-Sds3231$DS3231_Init$2
+      00108E 03                     334 	.db	3
+      00108F 01                     335 	.sleb128	1
+      001090 01                     336 	.db	1
+      001091 09                     337 	.db	9
+      001092 00 01                  338 	.dw	1+Sds3231$DS3231_Init$4-Sds3231$DS3231_Init$3
+      001094 00                     339 	.db	0
+      001095 01                     340 	.uleb128	1
+      001096 01                     341 	.db	1
+      001097 00                     342 	.db	0
+      001098 05                     343 	.uleb128	5
+      001099 02                     344 	.db	2
+      00109A 00 00 8A A2            345 	.dw	0,(Sds3231$DS3231_GetTime$6)
+      00109E 03                     346 	.db	3
+      00109F 21                     347 	.sleb128	33
+      0010A0 01                     348 	.db	1
+      0010A1 09                     349 	.db	9
+      0010A2 00 02                  350 	.dw	Sds3231$DS3231_GetTime$10-Sds3231$DS3231_GetTime$6
+      0010A4 03                     351 	.db	3
+      0010A5 02                     352 	.sleb128	2
+      0010A6 01                     353 	.db	1
+      0010A7 09                     354 	.db	9
+      0010A8 00 0A                  355 	.dw	Sds3231$DS3231_GetTime$13-Sds3231$DS3231_GetTime$10
+      0010AA 03                     356 	.db	3
+      0010AB 03                     357 	.sleb128	3
+      0010AC 01                     358 	.db	1
+      0010AD 09                     359 	.db	9
+      0010AE 00 05                  360 	.dw	Sds3231$DS3231_GetTime$14-Sds3231$DS3231_GetTime$13
+      0010B0 03                     361 	.db	3
+      0010B1 7F                     362 	.sleb128	-1
+      0010B2 01                     363 	.db	1
+      0010B3 09                     364 	.db	9
+      0010B4 00 0D                  365 	.dw	Sds3231$DS3231_GetTime$21-Sds3231$DS3231_GetTime$14
+      0010B6 03                     366 	.db	3
+      0010B7 7E                     367 	.sleb128	-2
+      0010B8 01                     368 	.db	1
+      0010B9 09                     369 	.db	9
+      0010BA 00 07                  370 	.dw	Sds3231$DS3231_GetTime$23-Sds3231$DS3231_GetTime$21
+      0010BC 03                     371 	.db	3
+      0010BD 06                     372 	.sleb128	6
+      0010BE 01                     373 	.db	1
+      0010BF 09                     374 	.db	9
+      0010C0 00 1B                  375 	.dw	Sds3231$DS3231_GetTime$24-Sds3231$DS3231_GetTime$23
+      0010C2 03                     376 	.db	3
+      0010C3 01                     377 	.sleb128	1
+      0010C4 01                     378 	.db	1
+      0010C5 09                     379 	.db	9
+      0010C6 00 1E                  380 	.dw	Sds3231$DS3231_GetTime$25-Sds3231$DS3231_GetTime$24
+      0010C8 03                     381 	.db	3
+      0010C9 01                     382 	.sleb128	1
+      0010CA 01                     383 	.db	1
+      0010CB 09                     384 	.db	9
+      0010CC 00 1E                  385 	.dw	Sds3231$DS3231_GetTime$26-Sds3231$DS3231_GetTime$25
+      0010CE 03                     386 	.db	3
+      0010CF 01                     387 	.sleb128	1
+      0010D0 01                     388 	.db	1
+      0010D1 09                     389 	.db	9
+      0010D2 00 09                  390 	.dw	Sds3231$DS3231_GetTime$27-Sds3231$DS3231_GetTime$26
+      0010D4 03                     391 	.db	3
+      0010D5 01                     392 	.sleb128	1
+      0010D6 01                     393 	.db	1
+      0010D7 09                     394 	.db	9
+      0010D8 00 1E                  395 	.dw	Sds3231$DS3231_GetTime$28-Sds3231$DS3231_GetTime$27
+      0010DA 03                     396 	.db	3
+      0010DB 01                     397 	.sleb128	1
+      0010DC 01                     398 	.db	1
+      0010DD 09                     399 	.db	9
+      0010DE 00 1E                  400 	.dw	Sds3231$DS3231_GetTime$29-Sds3231$DS3231_GetTime$28
+      0010E0 03                     401 	.db	3
+      0010E1 01                     402 	.sleb128	1
+      0010E2 01                     403 	.db	1
+      0010E3 09                     404 	.db	9
+      0010E4 00 2C                  405 	.dw	Sds3231$DS3231_GetTime$34-Sds3231$DS3231_GetTime$29
+      0010E6 03                     406 	.db	3
+      0010E7 01                     407 	.sleb128	1
+      0010E8 01                     408 	.db	1
+      0010E9 09                     409 	.db	9
+      0010EA 00 03                  410 	.dw	1+Sds3231$DS3231_GetTime$36-Sds3231$DS3231_GetTime$34
+      0010EC 00                     411 	.db	0
+      0010ED 01                     412 	.uleb128	1
+      0010EE 01                     413 	.db	1
+      0010EF                        414 Ldebug_line_end:
+                                    415 
+                                    416 	.area .debug_loc (NOLOAD)
+      000EF4                        417 Ldebug_loc_start:
+      000EF4 00 00 8B 91            418 	.dw	0,(Sds3231$DS3231_GetTime$35)
+      000EF8 00 00 8B 92            419 	.dw	0,(Sds3231$DS3231_GetTime$37)
+      000EFC 00 02                  420 	.dw	2
+      000EFE 78                     421 	.db	120
+      000EFF 01                     422 	.sleb128	1
+      000F00 00 00 8B 8A            423 	.dw	0,(Sds3231$DS3231_GetTime$33)
+      000F04 00 00 8B 91            424 	.dw	0,(Sds3231$DS3231_GetTime$35)
+      000F08 00 02                  425 	.dw	2
+      000F0A 78                     426 	.db	120
+      000F0B 05                     427 	.sleb128	5
+      000F0C 00 00 8B 82            428 	.dw	0,(Sds3231$DS3231_GetTime$32)
+      000F10 00 00 8B 8A            429 	.dw	0,(Sds3231$DS3231_GetTime$33)
+      000F14 00 02                  430 	.dw	2
+      000F16 78                     431 	.db	120
+      000F17 07                     432 	.sleb128	7
+      000F18 00 00 8B 73            433 	.dw	0,(Sds3231$DS3231_GetTime$31)
+      000F1C 00 00 8B 82            434 	.dw	0,(Sds3231$DS3231_GetTime$32)
+      000F20 00 02                  435 	.dw	2
+      000F22 78                     436 	.db	120
+      000F23 05                     437 	.sleb128	5
+      000F24 00 00 8B 6D            438 	.dw	0,(Sds3231$DS3231_GetTime$30)
+      000F28 00 00 8B 73            439 	.dw	0,(Sds3231$DS3231_GetTime$31)
+      000F2C 00 02                  440 	.dw	2
+      000F2E 78                     441 	.db	120
+      000F2F 06                     442 	.sleb128	6
+      000F30 00 00 8A C0            443 	.dw	0,(Sds3231$DS3231_GetTime$19)
+      000F34 00 00 8B 6D            444 	.dw	0,(Sds3231$DS3231_GetTime$30)
+      000F38 00 02                  445 	.dw	2
+      000F3A 78                     446 	.db	120
+      000F3B 05                     447 	.sleb128	5
+      000F3C 00 00 8A BB            448 	.dw	0,(Sds3231$DS3231_GetTime$18)
+      000F40 00 00 8A C0            449 	.dw	0,(Sds3231$DS3231_GetTime$19)
+      000F44 00 02                  450 	.dw	2
+      000F46 78                     451 	.db	120
+      000F47 0A                     452 	.sleb128	10
+      000F48 00 00 8A B9            453 	.dw	0,(Sds3231$DS3231_GetTime$17)
+      000F4C 00 00 8A BB            454 	.dw	0,(Sds3231$DS3231_GetTime$18)
+      000F50 00 02                  455 	.dw	2
+      000F52 78                     456 	.db	120
+      000F53 09                     457 	.sleb128	9
+      000F54 00 00 8A B8            458 	.dw	0,(Sds3231$DS3231_GetTime$16)
+      000F58 00 00 8A B9            459 	.dw	0,(Sds3231$DS3231_GetTime$17)
+      000F5C 00 02                  460 	.dw	2
+      000F5E 78                     461 	.db	120
+      000F5F 08                     462 	.sleb128	8
+      000F60 00 00 8A B7            463 	.dw	0,(Sds3231$DS3231_GetTime$15)
+      000F64 00 00 8A B8            464 	.dw	0,(Sds3231$DS3231_GetTime$16)
+      000F68 00 02                  465 	.dw	2
+      000F6A 78                     466 	.db	120
+      000F6B 06                     467 	.sleb128	6
+      000F6C 00 00 8A A4            468 	.dw	0,(Sds3231$DS3231_GetTime$8)
+      000F70 00 00 8A B7            469 	.dw	0,(Sds3231$DS3231_GetTime$15)
+      000F74 00 02                  470 	.dw	2
+      000F76 78                     471 	.db	120
+      000F77 05                     472 	.sleb128	5
+      000F78 00 00 8A A2            473 	.dw	0,(Sds3231$DS3231_GetTime$7)
+      000F7C 00 00 8A A4            474 	.dw	0,(Sds3231$DS3231_GetTime$8)
+      000F80 00 02                  475 	.dw	2
+      000F82 78                     476 	.db	120
+      000F83 01                     477 	.sleb128	1
+      000F84 00 00 00 00            478 	.dw	0,0
+      000F88 00 00 00 00            479 	.dw	0,0
+      000F8C 00 00 8A 9E            480 	.dw	0,(Sds3231$DS3231_Init$1)
+      000F90 00 00 8A A2            481 	.dw	0,(Sds3231$DS3231_Init$5)
+      000F94 00 02                  482 	.dw	2
+      000F96 78                     483 	.db	120
+      000F97 01                     484 	.sleb128	1
+      000F98 00 00 00 00            485 	.dw	0,0
+      000F9C 00 00 00 00            486 	.dw	0,0
+                                    487 
+                                    488 	.area .debug_abbrev (NOLOAD)
+      0003C2                        489 Ldebug_abbrev:
+      0003C2 0A                     490 	.uleb128	10
+      0003C3 34                     491 	.uleb128	52
+      0003C4 00                     492 	.db	0
+      0003C5 02                     493 	.uleb128	2
+      0003C6 0A                     494 	.uleb128	10
+      0003C7 03                     495 	.uleb128	3
+      0003C8 08                     496 	.uleb128	8
+      0003C9 3F                     497 	.uleb128	63
+      0003CA 0C                     498 	.uleb128	12
+      0003CB 49                     499 	.uleb128	73
+      0003CC 13                     500 	.uleb128	19
+      0003CD 00                     501 	.uleb128	0
+      0003CE 00                     502 	.uleb128	0
+      0003CF 08                     503 	.uleb128	8
+      0003D0 01                     504 	.uleb128	1
+      0003D1 01                     505 	.db	1
+      0003D2 01                     506 	.uleb128	1
+      0003D3 13                     507 	.uleb128	19
+      0003D4 0B                     508 	.uleb128	11
+      0003D5 0B                     509 	.uleb128	11
+      0003D6 49                     510 	.uleb128	73
+      0003D7 13                     511 	.uleb128	19
+      0003D8 00                     512 	.uleb128	0
+      0003D9 00                     513 	.uleb128	0
+      0003DA 03                     514 	.uleb128	3
+      0003DB 2E                     515 	.uleb128	46
+      0003DC 01                     516 	.db	1
+      0003DD 01                     517 	.uleb128	1
+      0003DE 13                     518 	.uleb128	19
+      0003DF 03                     519 	.uleb128	3
+      0003E0 08                     520 	.uleb128	8
+      0003E1 11                     521 	.uleb128	17
+      0003E2 01                     522 	.uleb128	1
+      0003E3 12                     523 	.uleb128	18
+      0003E4 01                     524 	.uleb128	1
+      0003E5 3F                     525 	.uleb128	63
+      0003E6 0C                     526 	.uleb128	12
+      0003E7 40                     527 	.uleb128	64
+      0003E8 06                     528 	.uleb128	6
+      0003E9 00                     529 	.uleb128	0
+      0003EA 00                     530 	.uleb128	0
+      0003EB 06                     531 	.uleb128	6
+      0003EC 34                     532 	.uleb128	52
+      0003ED 00                     533 	.db	0
+      0003EE 02                     534 	.uleb128	2
+      0003EF 0A                     535 	.uleb128	10
+      0003F0 03                     536 	.uleb128	3
+      0003F1 08                     537 	.uleb128	8
+      0003F2 49                     538 	.uleb128	73
+      0003F3 13                     539 	.uleb128	19
+      0003F4 00                     540 	.uleb128	0
+      0003F5 00                     541 	.uleb128	0
+      0003F6 01                     542 	.uleb128	1
+      0003F7 11                     543 	.uleb128	17
+      0003F8 01                     544 	.db	1
+      0003F9 03                     545 	.uleb128	3
+      0003FA 08                     546 	.uleb128	8
+      0003FB 10                     547 	.uleb128	16
+      0003FC 06                     548 	.uleb128	6
+      0003FD 13                     549 	.uleb128	19
+      0003FE 0B                     550 	.uleb128	11
+      0003FF 25                     551 	.uleb128	37
+      000400 08                     552 	.uleb128	8
+      000401 00                     553 	.uleb128	0
+      000402 00                     554 	.uleb128	0
+      000403 04                     555 	.uleb128	4
+      000404 0B                     556 	.uleb128	11
+      000405 01                     557 	.db	1
+      000406 11                     558 	.uleb128	17
+      000407 01                     559 	.uleb128	1
+      000408 12                     560 	.uleb128	18
+      000409 01                     561 	.uleb128	1
+      00040A 00                     562 	.uleb128	0
+      00040B 00                     563 	.uleb128	0
+      00040C 05                     564 	.uleb128	5
+      00040D 0B                     565 	.uleb128	11
+      00040E 00                     566 	.db	0
+      00040F 11                     567 	.uleb128	17
+      000410 01                     568 	.uleb128	1
+      000411 12                     569 	.uleb128	18
+      000412 01                     570 	.uleb128	1
+      000413 00                     571 	.uleb128	0
+      000414 00                     572 	.uleb128	0
+      000415 0C                     573 	.uleb128	12
+      000416 0D                     574 	.uleb128	13
+      000417 00                     575 	.db	0
+      000418 03                     576 	.uleb128	3
+      000419 08                     577 	.uleb128	8
+      00041A 38                     578 	.uleb128	56
+      00041B 0A                     579 	.uleb128	10
+      00041C 49                     580 	.uleb128	73
+      00041D 13                     581 	.uleb128	19
+      00041E 00                     582 	.uleb128	0
+      00041F 00                     583 	.uleb128	0
+      000420 02                     584 	.uleb128	2
+      000421 2E                     585 	.uleb128	46
+      000422 00                     586 	.db	0
+      000423 03                     587 	.uleb128	3
+      000424 08                     588 	.uleb128	8
+      000425 11                     589 	.uleb128	17
+      000426 01                     590 	.uleb128	1
+      000427 12                     591 	.uleb128	18
+      000428 01                     592 	.uleb128	1
+      000429 3F                     593 	.uleb128	63
+      00042A 0C                     594 	.uleb128	12
+      00042B 40                     595 	.uleb128	64
+      00042C 06                     596 	.uleb128	6
+      00042D 00                     597 	.uleb128	0
+      00042E 00                     598 	.uleb128	0
+      00042F 09                     599 	.uleb128	9
+      000430 21                     600 	.uleb128	33
+      000431 00                     601 	.db	0
+      000432 2F                     602 	.uleb128	47
+      000433 0B                     603 	.uleb128	11
+      000434 00                     604 	.uleb128	0
+      000435 00                     605 	.uleb128	0
+      000436 0B                     606 	.uleb128	11
+      000437 13                     607 	.uleb128	19
+      000438 01                     608 	.db	1
+      000439 01                     609 	.uleb128	1
+      00043A 13                     610 	.uleb128	19
+      00043B 03                     611 	.uleb128	3
+      00043C 08                     612 	.uleb128	8
+      00043D 0B                     613 	.uleb128	11
+      00043E 0B                     614 	.uleb128	11
+      00043F 00                     615 	.uleb128	0
+      000440 00                     616 	.uleb128	0
+      000441 07                     617 	.uleb128	7
+      000442 24                     618 	.uleb128	36
+      000443 00                     619 	.db	0
+      000444 03                     620 	.uleb128	3
+      000445 08                     621 	.uleb128	8
+      000446 0B                     622 	.uleb128	11
+      000447 0B                     623 	.uleb128	11
+      000448 3E                     624 	.uleb128	62
+      000449 0B                     625 	.uleb128	11
+      00044A 00                     626 	.uleb128	0
+      00044B 00                     627 	.uleb128	0
+      00044C 00                     628 	.uleb128	0
+                                    629 
+                                    630 	.area .debug_info (NOLOAD)
+      0010B0 00 00 01 7F            631 	.dw	0,Ldebug_info_end-Ldebug_info_start
+      0010B4                        632 Ldebug_info_start:
+      0010B4 00 02                  633 	.dw	2
+      0010B6 00 00 03 C2            634 	.dw	0,(Ldebug_abbrev)
+      0010BA 04                     635 	.db	4
+      0010BB 01                     636 	.uleb128	1
+      0010BC 53 6F 75 72 63 65 2F   637 	.ascii "Source/Device/Src/ds3231.c"
+             44 65 76 69 63 65 2F
+             53 72 63 2F 64 73 33
+             32 33 31 2E 63
+      0010D6 00                     638 	.db	0
+      0010D7 00 00 0F F6            639 	.dw	0,(Ldebug_line_start+-4)
+      0010DB 01                     640 	.db	1
+      0010DC 53 44 43 43 20 76 65   641 	.ascii "SDCC version 4.0.0 #11528"
+             72 73 69 6F 6E 20 34
+             2E 30 2E 30 20 23 31
+             31 35 32 38
+      0010F5 00                     642 	.db	0
+      0010F6 02                     643 	.uleb128	2
+      0010F7 44 53 33 32 33 31 5F   644 	.ascii "DS3231_Init"
+             49 6E 69 74
+      001102 00                     645 	.db	0
+      001103 00 00 8A 9E            646 	.dw	0,(_DS3231_Init)
+      001107 00 00 8A A2            647 	.dw	0,(XG$DS3231_Init$0$0+1)
+      00110B 01                     648 	.db	1
+      00110C 00 00 0F 8C            649 	.dw	0,(Ldebug_loc_start+152)
+      001110 03                     650 	.uleb128	3
+      001111 00 00 00 9F            651 	.dw	0,159
+      001115 44 53 33 32 33 31 5F   652 	.ascii "DS3231_GetTime"
+             47 65 74 54 69 6D 65
+      001123 00                     653 	.db	0
+      001124 00 00 8A A2            654 	.dw	0,(_DS3231_GetTime)
+      001128 00 00 8B 92            655 	.dw	0,(XG$DS3231_GetTime$0$0+1)
+      00112C 01                     656 	.db	1
+      00112D 00 00 0E F4            657 	.dw	0,(Ldebug_loc_start)
+      001131 04                     658 	.uleb128	4
+      001132 00 00 8A A7            659 	.dw	0,(Sds3231$DS3231_GetTime$12)
+      001136 00 00 8A C7            660 	.dw	0,(Sds3231$DS3231_GetTime$22)
+      00113A 05                     661 	.uleb128	5
+      00113B 00 00 8A A4            662 	.dw	0,(Sds3231$DS3231_GetTime$9)
+      00113F 00 00 8A A4            663 	.dw	0,(Sds3231$DS3231_GetTime$11)
+      001143 06                     664 	.uleb128	6
+      001144 02                     665 	.db	2
+      001145 91                     666 	.db	145
+      001146 7E                     667 	.sleb128	-2
+      001147 69                     668 	.ascii "i"
+      001148 00                     669 	.db	0
+      001149 00 00 00 9F            670 	.dw	0,159
+      00114D 00                     671 	.uleb128	0
+      00114E 00                     672 	.uleb128	0
+      00114F 07                     673 	.uleb128	7
+      001150 69 6E 74               674 	.ascii "int"
+      001153 00                     675 	.db	0
+      001154 02                     676 	.db	2
+      001155 05                     677 	.db	5
+      001156 07                     678 	.uleb128	7
+      001157 75 6E 73 69 67 6E 65   679 	.ascii "unsigned char"
+             64 20 63 68 61 72
+      001164 00                     680 	.db	0
+      001165 01                     681 	.db	1
+      001166 08                     682 	.db	8
+      001167 08                     683 	.uleb128	8
+      001168 00 00 00 C4            684 	.dw	0,196
+      00116C 08                     685 	.db	8
+      00116D 00 00 00 A6            686 	.dw	0,166
+      001171 09                     687 	.uleb128	9
+      001172 07                     688 	.db	7
+      001173 00                     689 	.uleb128	0
+      001174 0A                     690 	.uleb128	10
+      001175 05                     691 	.db	5
+      001176 03                     692 	.db	3
+      001177 00 00 00 23            693 	.dw	0,(_DS3231_Buf)
+      00117B 44 53 33 32 33 31 5F   694 	.ascii "DS3231_Buf"
+             42 75 66
+      001185 00                     695 	.db	0
+      001186 01                     696 	.db	1
+      001187 00 00 00 B7            697 	.dw	0,183
+      00118B 07                     698 	.uleb128	7
+      00118C 75 6E 73 69 67 6E 65   699 	.ascii "unsigned int"
+             64 20 69 6E 74
+      001198 00                     700 	.db	0
+      001199 02                     701 	.db	2
+      00119A 07                     702 	.db	7
+      00119B 0B                     703 	.uleb128	11
+      00119C 00 00 01 5F            704 	.dw	0,351
+      0011A0 5F 5F 30 30 30 30 30   705 	.ascii "__00000009"
+             30 30 39
+      0011AA 00                     706 	.db	0
+      0011AB 08                     707 	.db	8
+      0011AC 0C                     708 	.uleb128	12
+      0011AD 73 65 63 6F 6E 64 73   709 	.ascii "seconds"
+      0011B4 00                     710 	.db	0
+      0011B5 02                     711 	.db	2
+      0011B6 23                     712 	.db	35
+      0011B7 00                     713 	.uleb128	0
+      0011B8 00 00 00 A6            714 	.dw	0,166
+      0011BC 0C                     715 	.uleb128	12
+      0011BD 6D 69 6E 75 74 65 73   716 	.ascii "minutes"
+      0011C4 00                     717 	.db	0
+      0011C5 02                     718 	.db	2
+      0011C6 23                     719 	.db	35
+      0011C7 01                     720 	.uleb128	1
+      0011C8 00 00 00 A6            721 	.dw	0,166
+      0011CC 0C                     722 	.uleb128	12
+      0011CD 68 6F 75 72 73         723 	.ascii "hours"
+      0011D2 00                     724 	.db	0
+      0011D3 02                     725 	.db	2
+      0011D4 23                     726 	.db	35
+      0011D5 02                     727 	.uleb128	2
+      0011D6 00 00 00 A6            728 	.dw	0,166
+      0011DA 0C                     729 	.uleb128	12
+      0011DB 64 61 79               730 	.ascii "day"
+      0011DE 00                     731 	.db	0
+      0011DF 02                     732 	.db	2
+      0011E0 23                     733 	.db	35
+      0011E1 03                     734 	.uleb128	3
+      0011E2 00 00 00 A6            735 	.dw	0,166
+      0011E6 0C                     736 	.uleb128	12
+      0011E7 64 61 74 65            737 	.ascii "date"
+      0011EB 00                     738 	.db	0
+      0011EC 02                     739 	.db	2
+      0011ED 23                     740 	.db	35
+      0011EE 04                     741 	.uleb128	4
+      0011EF 00 00 00 A6            742 	.dw	0,166
+      0011F3 0C                     743 	.uleb128	12
+      0011F4 6D 6F 6E 74 68         744 	.ascii "month"
+      0011F9 00                     745 	.db	0
+      0011FA 02                     746 	.db	2
+      0011FB 23                     747 	.db	35
+      0011FC 05                     748 	.uleb128	5
+      0011FD 00 00 00 A6            749 	.dw	0,166
+      001201 0C                     750 	.uleb128	12
+      001202 79 65 61 72            751 	.ascii "year"
+      001206 00                     752 	.db	0
+      001207 02                     753 	.db	2
+      001208 23                     754 	.db	35
+      001209 06                     755 	.uleb128	6
+      00120A 00 00 00 DB            756 	.dw	0,219
+      00120E 00                     757 	.uleb128	0
+      00120F 0A                     758 	.uleb128	10
+      001210 05                     759 	.db	5
+      001211 03                     760 	.db	3
+      001212 00 00 00 01            761 	.dw	0,(_DS3231_TimeSturcture)
+      001216 44 53 33 32 33 31 5F   762 	.ascii "DS3231_TimeSturcture"
+             54 69 6D 65 53 74 75
+             72 63 74 75 72 65
+      00122A 00                     763 	.db	0
+      00122B 01                     764 	.db	1
+      00122C 00 00 00 EB            765 	.dw	0,235
+      001230 00                     766 	.uleb128	0
+      001231 00                     767 	.uleb128	0
+      001232 00                     768 	.uleb128	0
+      001233                        769 Ldebug_info_end:
+                                    770 
+                                    771 	.area .debug_pubnames (NOLOAD)
+      000357 00 00 00 59            772 	.dw	0,Ldebug_pubnames_end-Ldebug_pubnames_start
+      00035B                        773 Ldebug_pubnames_start:
+      00035B 00 02                  774 	.dw	2
+      00035D 00 00 10 B0            775 	.dw	0,(Ldebug_info_start-4)
+      000361 00 00 01 83            776 	.dw	0,4+Ldebug_info_end-Ldebug_info_start
+      000365 00 00 00 46            777 	.dw	0,70
+      000369 44 53 33 32 33 31 5F   778 	.ascii "DS3231_Init"
+             49 6E 69 74
+      000374 00                     779 	.db	0
+      000375 00 00 00 60            780 	.dw	0,96
+      000379 44 53 33 32 33 31 5F   781 	.ascii "DS3231_GetTime"
+             47 65 74 54 69 6D 65
+      000387 00                     782 	.db	0
+      000388 00 00 00 C4            783 	.dw	0,196
+      00038C 44 53 33 32 33 31 5F   784 	.ascii "DS3231_Buf"
+             42 75 66
+      000396 00                     785 	.db	0
+      000397 00 00 01 5F            786 	.dw	0,351
+      00039B 44 53 33 32 33 31 5F   787 	.ascii "DS3231_TimeSturcture"
+             54 69 6D 65 53 74 75
+             72 63 74 75 72 65
+      0003AF 00                     788 	.db	0
+      0003B0 00 00 00 00            789 	.dw	0,0
+      0003B4                        790 Ldebug_pubnames_end:
+                                    791 
+                                    792 	.area .debug_frame (NOLOAD)
+      000D31 00 00                  793 	.dw	0
+      000D33 00 0E                  794 	.dw	Ldebug_CIE0_end-Ldebug_CIE0_start
+      000D35                        795 Ldebug_CIE0_start:
+      000D35 FF FF                  796 	.dw	0xffff
+      000D37 FF FF                  797 	.dw	0xffff
+      000D39 01                     798 	.db	1
+      000D3A 00                     799 	.db	0
+      000D3B 01                     800 	.uleb128	1
+      000D3C 7F                     801 	.sleb128	-1
+      000D3D 09                     802 	.db	9
+      000D3E 0C                     803 	.db	12
+      000D3F 08                     804 	.uleb128	8
+      000D40 02                     805 	.uleb128	2
+      000D41 89                     806 	.db	137
+      000D42 01                     807 	.uleb128	1
+      000D43                        808 Ldebug_CIE0_end:
+      000D43 00 00 00 60            809 	.dw	0,96
+      000D47 00 00 0D 31            810 	.dw	0,(Ldebug_CIE0_start-4)
+      000D4B 00 00 8A A2            811 	.dw	0,(Sds3231$DS3231_GetTime$7)	;initial loc
+      000D4F 00 00 00 F0            812 	.dw	0,Sds3231$DS3231_GetTime$37-Sds3231$DS3231_GetTime$7
+      000D53 01                     813 	.db	1
+      000D54 00 00 8A A2            814 	.dw	0,(Sds3231$DS3231_GetTime$7)
+      000D58 0E                     815 	.db	14
+      000D59 02                     816 	.uleb128	2
+      000D5A 01                     817 	.db	1
+      000D5B 00 00 8A A4            818 	.dw	0,(Sds3231$DS3231_GetTime$8)
+      000D5F 0E                     819 	.db	14
+      000D60 06                     820 	.uleb128	6
+      000D61 01                     821 	.db	1
+      000D62 00 00 8A B7            822 	.dw	0,(Sds3231$DS3231_GetTime$15)
+      000D66 0E                     823 	.db	14
+      000D67 07                     824 	.uleb128	7
+      000D68 01                     825 	.db	1
+      000D69 00 00 8A B8            826 	.dw	0,(Sds3231$DS3231_GetTime$16)
+      000D6D 0E                     827 	.db	14
+      000D6E 09                     828 	.uleb128	9
+      000D6F 01                     829 	.db	1
+      000D70 00 00 8A B9            830 	.dw	0,(Sds3231$DS3231_GetTime$17)
+      000D74 0E                     831 	.db	14
+      000D75 0A                     832 	.uleb128	10
+      000D76 01                     833 	.db	1
+      000D77 00 00 8A BB            834 	.dw	0,(Sds3231$DS3231_GetTime$18)
+      000D7B 0E                     835 	.db	14
+      000D7C 0B                     836 	.uleb128	11
+      000D7D 01                     837 	.db	1
+      000D7E 00 00 8A C0            838 	.dw	0,(Sds3231$DS3231_GetTime$19)
+      000D82 0E                     839 	.db	14
+      000D83 06                     840 	.uleb128	6
+      000D84 01                     841 	.db	1
+      000D85 00 00 8B 6D            842 	.dw	0,(Sds3231$DS3231_GetTime$30)
+      000D89 0E                     843 	.db	14
+      000D8A 07                     844 	.uleb128	7
+      000D8B 01                     845 	.db	1
+      000D8C 00 00 8B 73            846 	.dw	0,(Sds3231$DS3231_GetTime$31)
+      000D90 0E                     847 	.db	14
+      000D91 06                     848 	.uleb128	6
+      000D92 01                     849 	.db	1
+      000D93 00 00 8B 82            850 	.dw	0,(Sds3231$DS3231_GetTime$32)
+      000D97 0E                     851 	.db	14
+      000D98 08                     852 	.uleb128	8
+      000D99 01                     853 	.db	1
+      000D9A 00 00 8B 8A            854 	.dw	0,(Sds3231$DS3231_GetTime$33)
+      000D9E 0E                     855 	.db	14
+      000D9F 06                     856 	.uleb128	6
+      000DA0 01                     857 	.db	1
+      000DA1 00 00 8B 91            858 	.dw	0,(Sds3231$DS3231_GetTime$35)
+      000DA5 0E                     859 	.db	14
+      000DA6 02                     860 	.uleb128	2
+                                    861 
+                                    862 	.area .debug_frame (NOLOAD)
+      000DA7 00 00                  863 	.dw	0
+      000DA9 00 0E                  864 	.dw	Ldebug_CIE1_end-Ldebug_CIE1_start
+      000DAB                        865 Ldebug_CIE1_start:
+      000DAB FF FF                  866 	.dw	0xffff
+      000DAD FF FF                  867 	.dw	0xffff
+      000DAF 01                     868 	.db	1
+      000DB0 00                     869 	.db	0
+      000DB1 01                     870 	.uleb128	1
+      000DB2 7F                     871 	.sleb128	-1
+      000DB3 09                     872 	.db	9
+      000DB4 0C                     873 	.db	12
+      000DB5 08                     874 	.uleb128	8
+      000DB6 02                     875 	.uleb128	2
+      000DB7 89                     876 	.db	137
+      000DB8 01                     877 	.uleb128	1
+      000DB9                        878 Ldebug_CIE1_end:
+      000DB9 00 00 00 13            879 	.dw	0,19
+      000DBD 00 00 0D A7            880 	.dw	0,(Ldebug_CIE1_start-4)
+      000DC1 00 00 8A 9E            881 	.dw	0,(Sds3231$DS3231_Init$1)	;initial loc
+      000DC5 00 00 00 04            882 	.dw	0,Sds3231$DS3231_Init$5-Sds3231$DS3231_Init$1
+      000DC9 01                     883 	.db	1
+      000DCA 00 00 8A 9E            884 	.dw	0,(Sds3231$DS3231_Init$1)
+      000DCE 0E                     885 	.db	14
+      000DCF 02                     886 	.uleb128	2

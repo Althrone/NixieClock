@@ -1,0 +1,508 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.0.0 #11528 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module gps
+                                      6 	.optsdcc -mstm8
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _UART1_GetITStatus
+                                     12 	.globl _UART1_ReceiveData8
+                                     13 	.globl _UART1_ITConfig
+                                     14 	.globl _UART1_Cmd
+                                     15 	.globl _UART1_Init
+                                     16 	.globl _UART1_DeInit
+                                     17 	.globl _GPS_RxBuf
+                                     18 	.globl _GPS_TimeDataSturcture
+                                     19 	.globl _GPS_Init
+                                     20 	.globl _GPS_GetTime
+                                     21 	.globl _UART1_RX_IRQHandler
+                                     22 ;--------------------------------------------------------
+                                     23 ; ram data
+                                     24 ;--------------------------------------------------------
+                                     25 	.area DATA
+      000000                         26 _GPS_TimeDataSturcture::
+      000000                         27 	.ds 24
+                                     28 ;--------------------------------------------------------
+                                     29 ; ram data
+                                     30 ;--------------------------------------------------------
+                                     31 	.area INITIALIZED
+      000000                         32 _GPS_RxBuf::
+      000000                         33 	.ds 34
+      000022                         34 _num:
+      000022                         35 	.ds 1
+                                     36 ;--------------------------------------------------------
+                                     37 ; absolute external ram data
+                                     38 ;--------------------------------------------------------
+                                     39 	.area DABS (ABS)
+                                     40 
+                                     41 ; default segment ordering for linker
+                                     42 	.area HOME
+                                     43 	.area GSINIT
+                                     44 	.area GSFINAL
+                                     45 	.area CONST
+                                     46 	.area INITIALIZER
+                                     47 	.area CODE
+                                     48 
+                                     49 ;--------------------------------------------------------
+                                     50 ; global & static initialisations
+                                     51 ;--------------------------------------------------------
+                                     52 	.area HOME
+                                     53 	.area GSINIT
+                                     54 	.area GSFINAL
+                                     55 	.area GSINIT
+                                     56 ;--------------------------------------------------------
+                                     57 ; Home
+                                     58 ;--------------------------------------------------------
+                                     59 	.area HOME
+                                     60 	.area HOME
+                                     61 ;--------------------------------------------------------
+                                     62 ; code
+                                     63 ;--------------------------------------------------------
+                                     64 	.area CODE
+                                     65 ;	Source/Device/Src/gps.c: 32: void GPS_Init(void)
+                                     66 ;	-----------------------------------------
+                                     67 ;	 function GPS_Init
+                                     68 ;	-----------------------------------------
+      000000                         69 _GPS_Init:
+                                     70 ;	Source/Device/Src/gps.c: 36: UART1_DeInit();
+      000000 CDr00r00         [ 4]   71 	call	_UART1_DeInit
+                                     72 ;	Source/Device/Src/gps.c: 37: UART1_Init((uint32_t)115200,
+      000003 4B 0C            [ 1]   73 	push	#0x0c
+      000005 4B 80            [ 1]   74 	push	#0x80
+      000007 4B 00            [ 1]   75 	push	#0x00
+      000009 4B 00            [ 1]   76 	push	#0x00
+      00000B 4B 00            [ 1]   77 	push	#0x00
+      00000D 4B 00            [ 1]   78 	push	#0x00
+      00000F 4B C2            [ 1]   79 	push	#0xc2
+      000011 4B 01            [ 1]   80 	push	#0x01
+      000013 4B 00            [ 1]   81 	push	#0x00
+      000015 CDr00r00         [ 4]   82 	call	_UART1_Init
+      000018 5B 09            [ 2]   83 	addw	sp, #9
+                                     84 ;	Source/Device/Src/gps.c: 43: UART1_ITConfig(UART1_IT_RXNE_OR,ENABLE);
+      00001A 4B 01            [ 1]   85 	push	#0x01
+      00001C 4B 05            [ 1]   86 	push	#0x05
+      00001E 4B 02            [ 1]   87 	push	#0x02
+      000020 CDr00r00         [ 4]   88 	call	_UART1_ITConfig
+      000023 5B 03            [ 2]   89 	addw	sp, #3
+                                     90 ;	Source/Device/Src/gps.c: 44: UART1_ITConfig(UART1_IT_IDLE,ENABLE);
+      000025 4B 01            [ 1]   91 	push	#0x01
+      000027 4B 44            [ 1]   92 	push	#0x44
+      000029 4B 02            [ 1]   93 	push	#0x02
+      00002B CDr00r00         [ 4]   94 	call	_UART1_ITConfig
+      00002E 5B 03            [ 2]   95 	addw	sp, #3
+                                     96 ;	Source/Device/Src/gps.c: 45: UART1_Cmd(ENABLE);
+      000030 4B 01            [ 1]   97 	push	#0x01
+      000032 CDr00r00         [ 4]   98 	call	_UART1_Cmd
+      000035 84               [ 1]   99 	pop	a
+                                    100 ;	Source/Device/Src/gps.c: 47: }
+      000036 81               [ 4]  101 	ret
+                                    102 ;	Source/Device/Src/gps.c: 52: void GPS_GetTime(void)
+                                    103 ;	-----------------------------------------
+                                    104 ;	 function GPS_GetTime
+                                    105 ;	-----------------------------------------
+      000037                        106 _GPS_GetTime:
+      000037 52 04            [ 2]  107 	sub	sp, #4
+                                    108 ;	Source/Device/Src/gps.c: 56: for(int i=0;i<8;++i)
+      000039 90 5F            [ 1]  109 	clrw	y
+      00003B                        110 00103$:
+      00003B 90 A3 00 08      [ 2]  111 	cpw	y, #0x0008
+      00003F 2E 23            [ 1]  112 	jrsge	00101$
+                                    113 ;	Source/Device/Src/gps.c: 57: ((uint8_t*)(&GPS_TimeDataSturcture))[i+16]=GPS_RxBuf[22+i];
+      000041 AEr00r00         [ 2]  114 	ldw	x, #(_GPS_TimeDataSturcture + 0)
+      000044 1F 01            [ 2]  115 	ldw	(0x01, sp), x
+      000046 93               [ 1]  116 	ldw	x, y
+      000047 1C 00 10         [ 2]  117 	addw	x, #0x0010
+      00004A 72 FB 01         [ 2]  118 	addw	x, (0x01, sp)
+      00004D 1F 03            [ 2]  119 	ldw	(0x03, sp), x
+      00004F 93               [ 1]  120 	ldw	x, y
+      000050 1C 00 16         [ 2]  121 	addw	x, #22
+      000053 9F               [ 1]  122 	ld	a, xl
+      000054 49               [ 1]  123 	rlc	a
+      000055 4F               [ 1]  124 	clr	a
+      000056 A2 00            [ 1]  125 	sbc	a, #0x00
+      000058 95               [ 1]  126 	ld	xh, a
+      000059 1Cr00r00         [ 2]  127 	addw	x, #(_GPS_RxBuf + 0)
+      00005C F6               [ 1]  128 	ld	a, (x)
+      00005D 1E 03            [ 2]  129 	ldw	x, (0x03, sp)
+      00005F F7               [ 1]  130 	ld	(x), a
+                                    131 ;	Source/Device/Src/gps.c: 56: for(int i=0;i<8;++i)
+      000060 90 5C            [ 1]  132 	incw	y
+      000062 20 D7            [ 2]  133 	jra	00103$
+      000064                        134 00101$:
+                                    135 ;	Source/Device/Src/gps.c: 58: GPS_TimeDataSturcture.hour+=8;
+      000064 AEr00r12         [ 2]  136 	ldw	x, #(_GPS_TimeDataSturcture + 0)+18
+      000067 F6               [ 1]  137 	ld	a, (x)
+      000068 AB 08            [ 1]  138 	add	a, #0x08
+      00006A F7               [ 1]  139 	ld	(x), a
+                                    140 ;	Source/Device/Src/gps.c: 59: GPS_TimeDataSturcture.year=((uint16_t)GPS_RxBuf[21]<<8)|GPS_RxBuf[20];
+      00006B 90 AEr00r0E      [ 2]  141 	ldw	y, #(_GPS_TimeDataSturcture + 0)+14
+      00006F C6u00u15         [ 1]  142 	ld	a, _GPS_RxBuf+21
+      000072 5F               [ 1]  143 	clrw	x
+      000073 6B 03            [ 1]  144 	ld	(0x03, sp), a
+      000075 0F 04            [ 1]  145 	clr	(0x04, sp)
+      000077 C6u00u14         [ 1]  146 	ld	a, _GPS_RxBuf+20
+      00007A 5F               [ 1]  147 	clrw	x
+      00007B 1A 04            [ 1]  148 	or	a, (0x04, sp)
+      00007D 02               [ 1]  149 	rlwa	x
+      00007E 1A 03            [ 1]  150 	or	a, (0x03, sp)
+      000080 95               [ 1]  151 	ld	xh, a
+      000081 90 FF            [ 2]  152 	ldw	(y), x
+                                    153 ;	Source/Device/Src/gps.c: 60: }
+      000083 5B 04            [ 2]  154 	addw	sp, #4
+      000085 81               [ 4]  155 	ret
+                                    156 ;	Source/Device/Src/gps.c: 68: INTERRUPT_HANDLER(UART1_RX_IRQHandler, 18)
+                                    157 ;	-----------------------------------------
+                                    158 ;	 function UART1_RX_IRQHandler
+                                    159 ;	-----------------------------------------
+      000086                        160 _UART1_RX_IRQHandler:
+      000086 62               [ 2]  161 	div	x, a
+                                    162 ;	Source/Device/Src/gps.c: 70: if(UART1_GetITStatus(UART1_IT_RXNE)==SET)
+      000087 4B 55            [ 1]  163 	push	#0x55
+      000089 4B 02            [ 1]  164 	push	#0x02
+      00008B CDr00r00         [ 4]  165 	call	_UART1_GetITStatus
+      00008E 85               [ 2]  166 	popw	x
+      00008F 4A               [ 1]  167 	dec	a
+      000090 26 21            [ 1]  168 	jrne	00109$
+                                    169 ;	Source/Device/Src/gps.c: 72: if(num<34)
+      000092 C6u00u22         [ 1]  170 	ld	a, _num+0
+      000095 A1 22            [ 1]  171 	cp	a, #0x22
+      000097 24 14            [ 1]  172 	jrnc	00102$
+                                    173 ;	Source/Device/Src/gps.c: 74: GPS_RxBuf[num]=UART1_ReceiveData8();
+      000099 5F               [ 1]  174 	clrw	x
+      00009A C6u00u22         [ 1]  175 	ld	a, _num+0
+      00009D 97               [ 1]  176 	ld	xl, a
+      00009E 1Cr00r00         [ 2]  177 	addw	x, #(_GPS_RxBuf + 0)
+      0000A1 89               [ 2]  178 	pushw	x
+      0000A2 CDr00r00         [ 4]  179 	call	_UART1_ReceiveData8
+      0000A5 85               [ 2]  180 	popw	x
+      0000A6 F7               [ 1]  181 	ld	(x), a
+                                    182 ;	Source/Device/Src/gps.c: 75: ++num;
+      0000A7 72 5Cu00u22      [ 1]  183 	inc	_num+0
+      0000AB 20 21            [ 2]  184 	jra	00111$
+      0000AD                        185 00102$:
+                                    186 ;	Source/Device/Src/gps.c: 78: num=0;
+      0000AD 72 5Fu00u22      [ 1]  187 	clr	_num+0
+      0000B1 20 1B            [ 2]  188 	jra	00111$
+      0000B3                        189 00109$:
+                                    190 ;	Source/Device/Src/gps.c: 80: else if(UART1_GetITStatus(UART1_IT_IDLE)==SET)
+      0000B3 4B 44            [ 1]  191 	push	#0x44
+      0000B5 4B 02            [ 1]  192 	push	#0x02
+      0000B7 CDr00r00         [ 4]  193 	call	_UART1_GetITStatus
+      0000BA 85               [ 2]  194 	popw	x
+      0000BB 4A               [ 1]  195 	dec	a
+      0000BC 26 10            [ 1]  196 	jrne	00111$
+                                    197 ;	Source/Device/Src/gps.c: 82: UART1_ReceiveData8();
+      0000BE CDr00r00         [ 4]  198 	call	_UART1_ReceiveData8
+                                    199 ;	Source/Device/Src/gps.c: 83: num=0;
+      0000C1 72 5Fu00u22      [ 1]  200 	clr	_num+0
+                                    201 ;	Source/Device/Src/gps.c: 84: if(checksum()==SUCCESS)
+      0000C5 CDr00rCF         [ 4]  202 	call	_checksum
+      0000C8 4A               [ 1]  203 	dec	a
+      0000C9 26 03            [ 1]  204 	jrne	00111$
+                                    205 ;	Source/Device/Src/gps.c: 86: GPS_GetTime();
+      0000CB CDr00r37         [ 4]  206 	call	_GPS_GetTime
+      0000CE                        207 00111$:
+                                    208 ;	Source/Device/Src/gps.c: 89: }
+      0000CE 80               [11]  209 	iret
+                                    210 ;	Source/Device/Src/gps.c: 97: static ErrorStatus checksum(void)
+                                    211 ;	-----------------------------------------
+                                    212 ;	 function checksum
+                                    213 ;	-----------------------------------------
+      0000CF                        214 _checksum:
+      0000CF 52 0E            [ 2]  215 	sub	sp, #14
+                                    216 ;	Source/Device/Src/gps.c: 100: uint32_t ckSum = ((uint32_t)GPS_RxBuf[5]<<24) || ((uint32_t)GPS_RxBuf[4]<<16) ||
+      0000D1 C6u00u05         [ 1]  217 	ld	a, _GPS_RxBuf+5
+      0000D4 0F 05            [ 1]  218 	clr	(0x05, sp)
+      0000D6 6B 0A            [ 1]  219 	ld	(0x0a, sp), a
+      0000D8 5F               [ 1]  220 	clrw	x
+      0000D9 0F 0B            [ 1]  221 	clr	(0x0b, sp)
+      0000DB 90 AEr00r02      [ 2]  222 	ldw	y, #(_GPS_RxBuf + 0)+2
+      0000DF C6u00u03         [ 1]  223 	ld	a, _GPS_RxBuf+3
+      0000E2 6B 0E            [ 1]  224 	ld	(0x0e, sp), a
+      0000E4 5D               [ 2]  225 	tnzw	x
+      0000E5 26 3D            [ 1]  226 	jrne	00111$
+      0000E7 1E 0A            [ 2]  227 	ldw	x, (0x0a, sp)
+      0000E9 26 39            [ 1]  228 	jrne	00111$
+      0000EB C6u00u04         [ 1]  229 	ld	a, _GPS_RxBuf+4
+      0000EE 5F               [ 1]  230 	clrw	x
+      0000EF 0F 0A            [ 1]  231 	clr	(0x0a, sp)
+      0000F1 6B 0B            [ 1]  232 	ld	(0x0b, sp), a
+      0000F3 9F               [ 1]  233 	ld	a, xl
+      0000F4 5F               [ 1]  234 	clrw	x
+      0000F5 5D               [ 2]  235 	tnzw	x
+      0000F6 26 2C            [ 1]  236 	jrne	00111$
+      0000F8 0D 0B            [ 1]  237 	tnz	(0x0b, sp)
+      0000FA 26 28            [ 1]  238 	jrne	00111$
+      0000FC 4D               [ 1]  239 	tnz	a
+      0000FD 26 25            [ 1]  240 	jrne	00111$
+      0000FF 90 F6            [ 1]  241 	ld	a, (y)
+      000101 5F               [ 1]  242 	clrw	x
+      000102 0F 0A            [ 1]  243 	clr	(0x0a, sp)
+      000104 0F 0D            [ 1]  244 	clr	(0x0d, sp)
+      000106 0D 0D            [ 1]  245 	tnz	(0x0d, sp)
+      000108 26 1A            [ 1]  246 	jrne	00111$
+      00010A 4D               [ 1]  247 	tnz	a
+      00010B 26 17            [ 1]  248 	jrne	00111$
+      00010D 5D               [ 2]  249 	tnzw	x
+      00010E 26 14            [ 1]  250 	jrne	00111$
+      000110 7B 0E            [ 1]  251 	ld	a, (0x0e, sp)
+      000112 0F 0C            [ 1]  252 	clr	(0x0c, sp)
+      000114 5F               [ 1]  253 	clrw	x
+      000115 1F 0A            [ 2]  254 	ldw	(0x0a, sp), x
+      000117 97               [ 1]  255 	ld	xl, a
+      000118 7B 0C            [ 1]  256 	ld	a, (0x0c, sp)
+      00011A 95               [ 1]  257 	ld	xh, a
+      00011B 5D               [ 2]  258 	tnzw	x
+      00011C 26 06            [ 1]  259 	jrne	00111$
+      00011E 1E 0A            [ 2]  260 	ldw	x, (0x0a, sp)
+      000120 26 02            [ 1]  261 	jrne	00111$
+      000122 4F               [ 1]  262 	clr	a
+      000123 C5                     263 	.byte 0xc5
+      000124                        264 00111$:
+      000124 A6 01            [ 1]  265 	ld	a, #0x01
+      000126                        266 00112$:
+      000126 5F               [ 1]  267 	clrw	x
+      000127 0F 0A            [ 1]  268 	clr	(0x0a, sp)
+      000129 6B 04            [ 1]  269 	ld	(0x04, sp), a
+      00012B 1F 02            [ 2]  270 	ldw	(0x02, sp), x
+      00012D 7B 0A            [ 1]  271 	ld	a, (0x0a, sp)
+      00012F 6B 01            [ 1]  272 	ld	(0x01, sp), a
+                                    273 ;	Source/Device/Src/gps.c: 103: for (uint16_t i = 0; i < (( ((uint16_t)GPS_RxBuf[2]<< 8) || ((uint16_t)GPS_RxBuf[3]<< 0) )/4); i++)
+      000131 7B 0E            [ 1]  274 	ld	a, (0x0e, sp)
+      000133 6B 05            [ 1]  275 	ld	(0x05, sp), a
+      000135 17 06            [ 2]  276 	ldw	(0x06, sp), y
+      000137 5F               [ 1]  277 	clrw	x
+      000138 1F 0D            [ 2]  278 	ldw	(0x0d, sp), x
+      00013A                        279 00106$:
+      00013A 1E 06            [ 2]  280 	ldw	x, (0x06, sp)
+      00013C F6               [ 1]  281 	ld	a, (x)
+      00013D 95               [ 1]  282 	ld	xh, a
+      00013E 4F               [ 1]  283 	clr	a
+      00013F 97               [ 1]  284 	ld	xl, a
+      000140 5D               [ 2]  285 	tnzw	x
+      000141 26 09            [ 1]  286 	jrne	00120$
+      000143 7B 05            [ 1]  287 	ld	a, (0x05, sp)
+      000145 5F               [ 1]  288 	clrw	x
+      000146 97               [ 1]  289 	ld	xl, a
+      000147 5D               [ 2]  290 	tnzw	x
+      000148 26 02            [ 1]  291 	jrne	00120$
+      00014A 4F               [ 1]  292 	clr	a
+      00014B C5                     293 	.byte 0xc5
+      00014C                        294 00120$:
+      00014C A6 01            [ 1]  295 	ld	a, #0x01
+      00014E                        296 00121$:
+      00014E 5F               [ 1]  297 	clrw	x
+      00014F 97               [ 1]  298 	ld	xl, a
+      000150 4B 04            [ 1]  299 	push	#0x04
+      000152 4B 00            [ 1]  300 	push	#0x00
+      000154 89               [ 2]  301 	pushw	x
+      000155 CDr00r00         [ 4]  302 	call	__divsint
+      000158 5B 04            [ 2]  303 	addw	sp, #4
+      00015A 16 0D            [ 2]  304 	ldw	y, (0x0d, sp)
+      00015C 1F 0B            [ 2]  305 	ldw	(0x0b, sp), x
+      00015E 93               [ 1]  306 	ldw	x, y
+      00015F 13 0B            [ 2]  307 	cpw	x, (0x0b, sp)
+      000161 25 03            [ 1]  308 	jrc	00236$
+      000163 CCr01rF7         [ 2]  309 	jp	00101$
+      000166                        310 00236$:
+                                    311 ;	Source/Device/Src/gps.c: 104: ckSum += ((uint32_t)GPS_RxBuf[6+i*4]<<24) || ((uint32_t)GPS_RxBuf[7+i*4]<<16) ||
+      000166 7B 0E            [ 1]  312 	ld	a, (0x0e, sp)
+      000168 48               [ 1]  313 	sll	a
+      000169 48               [ 1]  314 	sll	a
+      00016A 6B 08            [ 1]  315 	ld	(0x08, sp), a
+      00016C AB 06            [ 1]  316 	add	a, #0x06
+      00016E 97               [ 1]  317 	ld	xl, a
+      00016F 49               [ 1]  318 	rlc	a
+      000170 4F               [ 1]  319 	clr	a
+      000171 A2 00            [ 1]  320 	sbc	a, #0x00
+      000173 95               [ 1]  321 	ld	xh, a
+      000174 1Cr00r00         [ 2]  322 	addw	x, #(_GPS_RxBuf + 0)
+      000177 F6               [ 1]  323 	ld	a, (x)
+      000178 0F 09            [ 1]  324 	clr	(0x09, sp)
+      00017A 6B 09            [ 1]  325 	ld	(0x09, sp), a
+      00017C 5F               [ 1]  326 	clrw	x
+      00017D 1F 0B            [ 2]  327 	ldw	(0x0b, sp), x
+      00017F 0F 0A            [ 1]  328 	clr	(0x0a, sp)
+      000181 1E 0B            [ 2]  329 	ldw	x, (0x0b, sp)
+      000183 26 50            [ 1]  330 	jrne	00123$
+      000185 1E 09            [ 2]  331 	ldw	x, (0x09, sp)
+      000187 26 4C            [ 1]  332 	jrne	00123$
+      000189 7B 08            [ 1]  333 	ld	a, (0x08, sp)
+      00018B AB 07            [ 1]  334 	add	a, #0x07
+      00018D 97               [ 1]  335 	ld	xl, a
+      00018E 49               [ 1]  336 	rlc	a
+      00018F 4F               [ 1]  337 	clr	a
+      000190 A2 00            [ 1]  338 	sbc	a, #0x00
+      000192 95               [ 1]  339 	ld	xh, a
+      000193 1Cr00r00         [ 2]  340 	addw	x, #(_GPS_RxBuf + 0)
+      000196 F6               [ 1]  341 	ld	a, (x)
+      000197 5F               [ 1]  342 	clrw	x
+      000198 97               [ 1]  343 	ld	xl, a
+      000199 90 5F            [ 1]  344 	clrw	y
+      00019B 90 5D            [ 2]  345 	tnzw	y
+      00019D 26 36            [ 1]  346 	jrne	00123$
+      00019F 5D               [ 2]  347 	tnzw	x
+      0001A0 26 33            [ 1]  348 	jrne	00123$
+                                    349 ;	Source/Device/Src/gps.c: 105: ((uint32_t)GPS_RxBuf[8+i*4]<< 8) || ((uint32_t)GPS_RxBuf[9+i*4]<< 0);
+      0001A2 7B 08            [ 1]  350 	ld	a, (0x08, sp)
+      0001A4 AB 08            [ 1]  351 	add	a, #0x08
+      0001A6 97               [ 1]  352 	ld	xl, a
+      0001A7 49               [ 1]  353 	rlc	a
+      0001A8 4F               [ 1]  354 	clr	a
+      0001A9 A2 00            [ 1]  355 	sbc	a, #0x00
+      0001AB 95               [ 1]  356 	ld	xh, a
+      0001AC 1Cr00r00         [ 2]  357 	addw	x, #(_GPS_RxBuf + 0)
+      0001AF F6               [ 1]  358 	ld	a, (x)
+      0001B0 90 5F            [ 1]  359 	clrw	y
+      0001B2 95               [ 1]  360 	ld	xh, a
+      0001B3 4F               [ 1]  361 	clr	a
+      0001B4 97               [ 1]  362 	ld	xl, a
+      0001B5 5D               [ 2]  363 	tnzw	x
+      0001B6 26 1D            [ 1]  364 	jrne	00123$
+      0001B8 90 5D            [ 2]  365 	tnzw	y
+      0001BA 26 19            [ 1]  366 	jrne	00123$
+      0001BC 7B 08            [ 1]  367 	ld	a, (0x08, sp)
+      0001BE AB 09            [ 1]  368 	add	a, #0x09
+      0001C0 97               [ 1]  369 	ld	xl, a
+      0001C1 49               [ 1]  370 	rlc	a
+      0001C2 4F               [ 1]  371 	clr	a
+      0001C3 A2 00            [ 1]  372 	sbc	a, #0x00
+      0001C5 95               [ 1]  373 	ld	xh, a
+      0001C6 1Cr00r00         [ 2]  374 	addw	x, #(_GPS_RxBuf + 0)
+      0001C9 F6               [ 1]  375 	ld	a, (x)
+      0001CA 5F               [ 1]  376 	clrw	x
+      0001CB 97               [ 1]  377 	ld	xl, a
+      0001CC 90 5F            [ 1]  378 	clrw	y
+      0001CE 5D               [ 2]  379 	tnzw	x
+      0001CF 26 04            [ 1]  380 	jrne	00123$
+      0001D1 90 5D            [ 2]  381 	tnzw	y
+      0001D3 27 04            [ 1]  382 	jreq	00124$
+      0001D5                        383 00123$:
+      0001D5 A6 01            [ 1]  384 	ld	a, #0x01
+      0001D7 90 97            [ 1]  385 	ld	yl, a
+      0001D9                        386 00124$:
+      0001D9 4F               [ 1]  387 	clr	a
+      0001DA 5F               [ 1]  388 	clrw	x
+      0001DB 4D               [ 1]  389 	tnz	a
+      0001DC 2A 01            [ 1]  390 	jrpl	00245$
+      0001DE 5A               [ 2]  391 	decw	x
+      0001DF                        392 00245$:
+      0001DF 90 95            [ 1]  393 	ld	yh, a
+      0001E1 72 F9 03         [ 2]  394 	addw	y, (0x03, sp)
+      0001E4 9F               [ 1]  395 	ld	a, xl
+      0001E5 19 02            [ 1]  396 	adc	a, (0x02, sp)
+      0001E7 02               [ 1]  397 	rlwa	x
+      0001E8 19 01            [ 1]  398 	adc	a, (0x01, sp)
+      0001EA 95               [ 1]  399 	ld	xh, a
+      0001EB 17 03            [ 2]  400 	ldw	(0x03, sp), y
+      0001ED 1F 01            [ 2]  401 	ldw	(0x01, sp), x
+                                    402 ;	Source/Device/Src/gps.c: 103: for (uint16_t i = 0; i < (( ((uint16_t)GPS_RxBuf[2]<< 8) || ((uint16_t)GPS_RxBuf[3]<< 0) )/4); i++)
+      0001EF 1E 0D            [ 2]  403 	ldw	x, (0x0d, sp)
+      0001F1 5C               [ 1]  404 	incw	x
+      0001F2 1F 0D            [ 2]  405 	ldw	(0x0d, sp), x
+      0001F4 CCr01r3A         [ 2]  406 	jp	00106$
+      0001F7                        407 00101$:
+                                    408 ;	Source/Device/Src/gps.c: 107: if(ckSum == ( ((uint32_t)GPS_RxBuf[30]<<24) || ((uint32_t)GPS_RxBuf[31]<<16) ||
+      0001F7 C6u00u1E         [ 1]  409 	ld	a, _GPS_RxBuf+30
+      0001FA 0F 0B            [ 1]  410 	clr	(0x0b, sp)
+      0001FC 6B 0B            [ 1]  411 	ld	(0x0b, sp), a
+      0001FE 5F               [ 1]  412 	clrw	x
+      0001FF 0F 0C            [ 1]  413 	clr	(0x0c, sp)
+      000201 5D               [ 2]  414 	tnzw	x
+      000202 26 34            [ 1]  415 	jrne	00132$
+      000204 1E 0B            [ 2]  416 	ldw	x, (0x0b, sp)
+      000206 26 30            [ 1]  417 	jrne	00132$
+      000208 C6u00u1F         [ 1]  418 	ld	a, _GPS_RxBuf+31
+      00020B 5F               [ 1]  419 	clrw	x
+      00020C 97               [ 1]  420 	ld	xl, a
+      00020D 90 5F            [ 1]  421 	clrw	y
+      00020F 90 5D            [ 2]  422 	tnzw	y
+      000211 26 25            [ 1]  423 	jrne	00132$
+      000213 5D               [ 2]  424 	tnzw	x
+      000214 26 22            [ 1]  425 	jrne	00132$
+                                    426 ;	Source/Device/Src/gps.c: 108: ((uint32_t)GPS_RxBuf[32]<< 8) || ((uint32_t)GPS_RxBuf[33]<< 0) ))
+      000216 C6u00u20         [ 1]  427 	ld	a, _GPS_RxBuf+32
+      000219 5F               [ 1]  428 	clrw	x
+      00021A 0F 0B            [ 1]  429 	clr	(0x0b, sp)
+      00021C 6B 0D            [ 1]  430 	ld	(0x0d, sp), a
+      00021E 5E               [ 1]  431 	swapw	x
+      00021F 0F 0E            [ 1]  432 	clr	(0x0e, sp)
+      000221 16 0D            [ 2]  433 	ldw	y, (0x0d, sp)
+      000223 26 13            [ 1]  434 	jrne	00132$
+      000225 5D               [ 2]  435 	tnzw	x
+      000226 26 10            [ 1]  436 	jrne	00132$
+      000228 C6u00u21         [ 1]  437 	ld	a, _GPS_RxBuf+33
+      00022B 5F               [ 1]  438 	clrw	x
+      00022C 90 5F            [ 1]  439 	clrw	y
+      00022E 97               [ 1]  440 	ld	xl, a
+      00022F 5D               [ 2]  441 	tnzw	x
+      000230 26 06            [ 1]  442 	jrne	00132$
+      000232 90 5D            [ 2]  443 	tnzw	y
+      000234 26 02            [ 1]  444 	jrne	00132$
+      000236 4F               [ 1]  445 	clr	a
+      000237 C5                     446 	.byte 0xc5
+      000238                        447 00132$:
+      000238 A6 01            [ 1]  448 	ld	a, #0x01
+      00023A                        449 00133$:
+      00023A 5F               [ 1]  450 	clrw	x
+      00023B 90 5F            [ 1]  451 	clrw	y
+      00023D 97               [ 1]  452 	ld	xl, a
+      00023E 13 03            [ 2]  453 	cpw	x, (0x03, sp)
+      000240 26 08            [ 1]  454 	jrne	00103$
+      000242 93               [ 1]  455 	ldw	x, y
+      000243 13 01            [ 2]  456 	cpw	x, (0x01, sp)
+      000245 26 03            [ 1]  457 	jrne	00103$
+                                    458 ;	Source/Device/Src/gps.c: 109: return SUCCESS;
+      000247 A6 01            [ 1]  459 	ld	a, #0x01
+                                    460 ;	Source/Device/Src/gps.c: 111: return ERROR;
+      000249 21                     461 	.byte 0x21
+      00024A                        462 00103$:
+      00024A 4F               [ 1]  463 	clr	a
+      00024B                        464 00108$:
+                                    465 ;	Source/Device/Src/gps.c: 112: }
+      00024B 5B 0E            [ 2]  466 	addw	sp, #14
+      00024D 81               [ 4]  467 	ret
+                                    468 	.area CODE
+                                    469 	.area CONST
+                                    470 	.area INITIALIZER
+      000000                        471 __xinit__GPS_RxBuf:
+      000000 00                     472 	.db #0x00	; 0
+      000001 00                     473 	.db 0x00
+      000002 00                     474 	.db 0x00
+      000003 00                     475 	.db 0x00
+      000004 00                     476 	.db 0x00
+      000005 00                     477 	.db 0x00
+      000006 00                     478 	.db 0x00
+      000007 00                     479 	.db 0x00
+      000008 00                     480 	.db 0x00
+      000009 00                     481 	.db 0x00
+      00000A 00                     482 	.db 0x00
+      00000B 00                     483 	.db 0x00
+      00000C 00                     484 	.db 0x00
+      00000D 00                     485 	.db 0x00
+      00000E 00                     486 	.db 0x00
+      00000F 00                     487 	.db 0x00
+      000010 00                     488 	.db 0x00
+      000011 00                     489 	.db 0x00
+      000012 00                     490 	.db 0x00
+      000013 00                     491 	.db 0x00
+      000014 00                     492 	.db 0x00
+      000015 00                     493 	.db 0x00
+      000016 00                     494 	.db 0x00
+      000017 00                     495 	.db 0x00
+      000018 00                     496 	.db 0x00
+      000019 00                     497 	.db 0x00
+      00001A 00                     498 	.db 0x00
+      00001B 00                     499 	.db 0x00
+      00001C 00                     500 	.db 0x00
+      00001D 00                     501 	.db 0x00
+      00001E 00                     502 	.db 0x00
+      00001F 00                     503 	.db 0x00
+      000020 00                     504 	.db 0x00
+      000021 00                     505 	.db 0x00
+      000022                        506 __xinit__num:
+      000022 00                     507 	.db #0x00	; 0
+                                    508 	.area CABS (ABS)
