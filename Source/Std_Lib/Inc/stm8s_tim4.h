@@ -135,22 +135,22 @@ typedef enum
 /** @addtogroup TIM4_Exported_Functions
   * @{
   */
-void TIM4_DeInit(void);
+// void TIM4_DeInit(void);
 void TIM4_TimeBaseInit(TIM4_Prescaler_TypeDef TIM4_Prescaler, uint8_t TIM4_Period);
 void TIM4_Cmd(FunctionalState NewState);
 void TIM4_ITConfig(TIM4_IT_TypeDef TIM4_IT, FunctionalState NewState);
-void TIM4_UpdateDisableConfig(FunctionalState NewState);
-void TIM4_UpdateRequestConfig(TIM4_UpdateSource_TypeDef TIM4_UpdateSource);
-void TIM4_SelectOnePulseMode(TIM4_OPMode_TypeDef TIM4_OPMode);
-void TIM4_PrescalerConfig(TIM4_Prescaler_TypeDef Prescaler, TIM4_PSCReloadMode_TypeDef TIM4_PSCReloadMode);
+// void TIM4_UpdateDisableConfig(FunctionalState NewState);
+// void TIM4_UpdateRequestConfig(TIM4_UpdateSource_TypeDef TIM4_UpdateSource);
+// void TIM4_SelectOnePulseMode(TIM4_OPMode_TypeDef TIM4_OPMode);
+// void TIM4_PrescalerConfig(TIM4_Prescaler_TypeDef Prescaler, TIM4_PSCReloadMode_TypeDef TIM4_PSCReloadMode);
 void TIM4_ARRPreloadConfig(FunctionalState NewState);
-void TIM4_GenerateEvent(TIM4_EventSource_TypeDef TIM4_EventSource);
-void TIM4_SetCounter(uint8_t Counter);
-void TIM4_SetAutoreload(uint8_t Autoreload);
-uint8_t TIM4_GetCounter(void);
-TIM4_Prescaler_TypeDef TIM4_GetPrescaler(void);
-FlagStatus TIM4_GetFlagStatus(TIM4_FLAG_TypeDef TIM4_FLAG);
-void TIM4_ClearFlag(TIM4_FLAG_TypeDef TIM4_FLAG);
+// void TIM4_GenerateEvent(TIM4_EventSource_TypeDef TIM4_EventSource);
+// void TIM4_SetCounter(uint8_t Counter);
+// void TIM4_SetAutoreload(uint8_t Autoreload);
+// uint8_t TIM4_GetCounter(void);
+// TIM4_Prescaler_TypeDef TIM4_GetPrescaler(void);
+// FlagStatus TIM4_GetFlagStatus(TIM4_FLAG_TypeDef TIM4_FLAG);
+// void TIM4_ClearFlag(TIM4_FLAG_TypeDef TIM4_FLAG);
 ITStatus TIM4_GetITStatus(TIM4_IT_TypeDef TIM4_IT);
 void TIM4_ClearITPendingBit(TIM4_IT_TypeDef TIM4_IT);
 

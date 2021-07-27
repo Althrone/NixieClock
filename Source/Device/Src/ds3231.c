@@ -38,6 +38,8 @@ void DS3231_GetTime(void)
         I2C_MasterReceiveData(DS3231_ADDR,DS3231_SECONDS+i,
                               &DS3231_Buf[i],1);
     }
+
+    // I2C_MasterReceiveData(DS3231_ADDR,DS3231_SECONDS,DS3231_Buf,7);
     
     DS3231_TimeSturcture.seconds=(DS3231_Buf[0]&0x0F)+((DS3231_Buf[0]&0xF0)>>4)*10;
     DS3231_TimeSturcture.minutes=(DS3231_Buf[1]&0x0F)+((DS3231_Buf[1]&0xF0)>>4)*10;

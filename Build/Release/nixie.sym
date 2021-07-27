@@ -20,10 +20,10 @@ Symbol Table
     _SPI_SendData                                                  ****** GX
     __divsint                                                      ****** GX
     __modsint                                                      ****** GX
-  8 __xinit__aaaa                                                  000000 R
-  2 _aaaa                                                          000000 GR
+  8 __xinit__tube_state                                            000000 R
   9 _delay                                                         000000 GR
     _strchr                                                        ****** GX
+  2 _tube_state                                                    000000 GR
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
 Hexadecimal [24-Bits]
@@ -32,13 +32,13 @@ Area Table
 
    0 _CODE                                      size      0   flags    0
    1 DATA                                       size      0   flags    0
-   2 INITIALIZED                                size      2   flags    0
+   2 INITIALIZED                                size      1   flags    0
    3 DABS                                       size      0   flags    8
    4 HOME                                       size      0   flags    0
    5 GSINIT                                     size      0   flags    0
    6 GSFINAL                                    size      0   flags    0
    7 CONST                                      size      0   flags    0
-   8 INITIALIZER                                size      2   flags    0
-   9 CODE                                       size    2CB   flags    0
+   8 INITIALIZER                                size      1   flags    0
+   9 CODE                                       size    2B8   flags    0
    A CABS                                       size      0   flags    8
 

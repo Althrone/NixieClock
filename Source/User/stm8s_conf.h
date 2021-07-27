@@ -64,7 +64,7 @@
  #include "stm8s_tim3.h"
 #endif /* (STM8S208) ||defined(STM8S207) || defined(STM8S007) ||defined(STM8S105) */ 
 #ifndef STM8S903
-//  #include "stm8s_tim4.h"
+ #include "stm8s_tim4.h"
 #endif /* STM8S903 */
 #ifdef STM8S903
  #include "stm8s_tim5.h"

@@ -20,43 +20,49 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000003  l_GSFINAL                       
      0000000C  l_CONST                         
      0000001A  l_GSINIT                        
-     00000020  l_DATA                          
-     00000021  s_INITIALIZED                   
-     0000002D  l_INITIALIZED                   
-     0000002D  l_INITIALIZER                   
-     00000057  l_HOME                          
-     00000E37  l_CODE                          
+     00000025  l_DATA                          
+     00000026  s_INITIALIZED                   
+     0000002E  l_INITIALIZED                   
+     0000002E  l_INITIALIZER                   
+     0000006B  l_HOME                          
+     000013DC  l_CODE                          
      00008000  s_HOME                          
-     00008057  s_GSINIT                        
-     00008071  s_GSFINAL                       
-     00008074  s_CONST                         
-     00008080  s_INITIALIZER                   
-     000080AD  s_CODE                          
+     0000806B  s_GSINIT                        
+     00008085  s_GSFINAL                       
+     00008088  s_CONST                         
+     00008094  s_INITIALIZER                   
+     000080C2  s_CODE                          
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-DATA                                00000001    00000020 =          32. bytes (REL,CON)
+DATA                                00000001    00000025 =          37. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00000001  _DS3231_TimeSturcture              ds3231
-     00000009  _GPS_TimeDataSturcture             gps
+     00000001  _ir_delay                          main
+     00000003  _ir_double_click_delay             main
+     00000004  _key_delay_2s                      main
+     00000006  _DS3231_TimeSturcture              ds3231
+     0000000E  _GPS_TimeDataSturcture             gps
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-INITIALIZED                         00000021    0000002D =          45. bytes (REL,CON)
+INITIALIZED                         00000026    0000002E =          46. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00000021  _aaaa                              nixie
-     00000023  _DS3231_Buf                        ds3231
-     0000002B  _GPS_RxBuf                         gps
+     00000026  _ir_always_on                      main
+     00000027  _KEY_StateMachine_Enumeration      main
+     00000028  _tube_state                        nixie
+     00000029  _DS3231_Buf                        ds3231
+     00000031  _GPS_RxBuf                         gps
+
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 Hexadecimal  [32-Bits]
 
@@ -71,7 +77,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-HOME                                00008000    00000057 =          87. bytes (REL,CON)
+HOME                                00008000    0000006B =         107. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -80,7 +86,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-GSINIT                              00008057    0000001A =          26. bytes (REL,CON)
+GSINIT                              0000806B    0000001A =          26. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -89,7 +95,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-GSFINAL                             00008071    00000003 =           3. bytes (REL,CON)
+GSFINAL                             00008085    00000003 =           3. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -98,19 +104,19 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CONST                               00008074    0000000C =          12. bytes (REL,CON)
+CONST                               00008088    0000000C =          12. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00008074  _HSIDivFactor                      stm8s_clk
-     00008078  _CLKPrescTable                     stm8s_clk
+     00008088  _HSIDivFactor                      stm8s_clk
+     0000808C  _CLKPrescTable                     stm8s_clk
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-INITIALIZER                         00008080    0000002D =          45. bytes (REL,CON)
+INITIALIZER                         00008094    0000002E =          46. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -119,61 +125,89 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CODE                                000080AD    00000E37 =        3639. bytes (REL,CON)
+CODE                                000080C2    000013DC =        5084. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     000080AD  _main                              main
-     000080C8  _GPIO_Init                         stm8s_gpio
-     0000813D  _GPIO_WriteHigh                    stm8s_gpio
-     00008144  _GPIO_WriteLow                     stm8s_gpio
-     00008152  _CLK_DeInit                        stm8s_clk
-     00008189  _CLK_GetClockFreq                  stm8s_clk
-     000081D9  _SPI_DeInit                        stm8s_spi
-     000081EE  _SPI_Init                          stm8s_spi
-     0000822C  _SPI_Cmd                           stm8s_spi
-     0000823F  _SPI_SendData                      stm8s_spi
-     00008246  _SPI_GetFlagStatus                 stm8s_spi
-     00008252  _SPI_ClearFlag                     stm8s_spi
-     00008259  _UART1_DeInit                      stm8s_uart1
-     00008284  _UART1_Init                        stm8s_uart1
-     00008401  _UART1_Cmd                         stm8s_uart1
-     00008414  _UART1_ITConfig                    stm8s_uart1
-     0000848C  _UART1_ReceiveData8                stm8s_uart1
-     00008490  _UART1_SendData8                   stm8s_uart1
-     00008497  _UART1_GetFlagStatus               stm8s_uart1
-     000084D9  _UART1_GetITStatus                 stm8s_uart1
-     00008559  _UART1_ClearITPendingBit           stm8s_uart1
-     0000856A  _BEEP_DeInit                       stm8s_beep
-     0000856F  _BEEP_Init                         stm8s_beep
-     00008599  _BEEP_Cmd                          stm8s_beep
-     000085AC  _I2C_Init                          soft_i2c
-     000085CF  _I2C_Start                         soft_i2c
-     000085E6  _I2C_Stop                          soft_i2c
-     00008600  _I2C_Wait_Ack                      soft_i2c
-     00008631  _I2C_Ack                           soft_i2c
-     00008648  _I2C_NAck                          soft_i2c
-     0000865F  _I2C_Send_Byte                     soft_i2c
-     000086A4  _I2C_Read_Byte                     soft_i2c
-     000086DD  _I2C_MasterReceiveData             soft_i2c
-     0000875E  _I2C_MasterSendData                soft_i2c
-     000087AD  _delay_us                          soft_i2c
-     000087B2  _delay                             nixie
-     000087BD  _NIXIE_Init                        nixie
-     00008803  _NIXIE_DisplayChar                 nixie
-     00008899  _NIXIE_DisplayTime                 nixie
-     00008A7D  _DS3231_Init                       ds3231
-     00008A80  _DS3231_GetTime                    ds3231
-     00008B70  _GPS_Init                          gps
-     00008BA7  _GPS_GetTime                       gps
-     00008BF6  _UART1_RX_IRQHandler               gps
-     00008DBE  __divulong                         
-     00008E18  _strchr                            _strchr
-     00008E3E  __modsint                          
-     00008E54  __mullong                          
-     00008ED0  __divsint                          
-
+     000080C2  _main                              main
+     00008193  _TIM4_UPD_OVF_IRQHandler           main
+     000081C7  _EXTI_PORTA_IRQHandler             main
+     000081C8  _EXTI_PORTC_IRQHandler             main
+     000081F4  _EXTI_PORTD_IRQHandler             main
+     0000822F  _GPIO_Init                         stm8s_gpio
+     000082A4  _GPIO_WriteHigh                    stm8s_gpio
+     000082AB  _GPIO_WriteLow                     stm8s_gpio
+     000082B9  _GPIO_ReadInputPin                 stm8s_gpio
+     000082C0  _CLK_HSECmd                        stm8s_clk
+     000082D3  _CLK_ClockSwitchConfig             stm8s_clk
+     0000837E  _CLK_GetClockFreq                  stm8s_clk
+     000083CE  _SPI_DeInit                        stm8s_spi
+     000083E3  _SPI_Init                          stm8s_spi
+     00008421  _SPI_Cmd                           stm8s_spi
+     00008434  _SPI_SendData                      stm8s_spi
+     0000843B  _SPI_GetFlagStatus                 stm8s_spi
+     00008447  _SPI_ClearFlag                     stm8s_spi
+     0000844E  _UART1_DeInit                      stm8s_uart1
+     00008479  _UART1_Init                        stm8s_uart1
+     000085F6  _UART1_Cmd                         stm8s_uart1
+     00008609  _UART1_ITConfig                    stm8s_uart1
+     00008681  _UART1_ReceiveData8                stm8s_uart1
+     00008685  _UART1_SendData8                   stm8s_uart1
+     0000868C  _UART1_GetFlagStatus               stm8s_uart1
+     000086CE  _UART1_GetITStatus                 stm8s_uart1
+     0000874E  _UART1_ClearITPendingBit           stm8s_uart1
+     0000875F  _BEEP_DeInit                       stm8s_beep
+     00008764  _BEEP_Init                         stm8s_beep
+     0000878E  _BEEP_Cmd                          stm8s_beep
+     000087A1  _EXTI_SetExtIntSensitivity         stm8s_exti
+     00008831  _EXTI_SetTLISensitivity            stm8s_exti
+     00008842  _ITC_GetCPUCC                      stm8s_itc
+     00008845  _ITC_DeInit                        stm8s_itc
+     00008866  _ITC_GetSoftIntStatus              stm8s_itc
+     0000886C  _ITC_GetSoftwarePriority           stm8s_itc
+     0000890F  _ITC_SetSoftwarePriority           stm8s_itc
+     000089F8  _TIM4_TimeBaseInit                 stm8s_tim4
+     00008A05  _TIM4_Cmd                          stm8s_tim4
+     00008A18  _TIM4_ITConfig                     stm8s_tim4
+     00008A35  _TIM4_ARRPreloadConfig             stm8s_tim4
+     00008A48  _TIM4_GetITStatus                  stm8s_tim4
+     00008A63  _TIM4_ClearITPendingBit            stm8s_tim4
+     00008A6A  _I2C_Init                          soft_i2c
+     00008A8D  _I2C_Start                         soft_i2c
+     00008AA4  _I2C_Stop                          soft_i2c
+     00008ABE  _I2C_Wait_Ack                      soft_i2c
+     00008AEF  _I2C_Ack                           soft_i2c
+     00008B06  _I2C_NAck                          soft_i2c
+     00008B1D  _I2C_Send_Byte                     soft_i2c
 ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CODE                                000080C2    000013DC =        5084. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00008B62  _I2C_Read_Byte                     soft_i2c
+     00008B9B  _I2C_MasterReceiveData             soft_i2c
+     00008C1C  _I2C_MasterSendData                soft_i2c
+     00008C6B  _delay_us                          soft_i2c
+     00008C70  _delay                             nixie
+     00008C7B  _NIXIE_Init                        nixie
+     00008CC1  _NIXIE_DisplayChar                 nixie
+     00008D57  _NIXIE_DisplayTime                 nixie
+     00008F28  _DS3231_Init                       ds3231
+     00008F2B  _DS3231_GetTime                    ds3231
+     0000901B  _GPS_Init                          gps
+     0000914F  _GPS_GetTime                       gps
+     000091B0  _UART1_RX_IRQHandler               gps
+     00009378  __divulong                         
+     000093D2  _strchr                            _strchr
+     000093F8  __modsint                          
+     0000940E  __mullong                          
+     0000948A  __divsint                          
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
 
 Files Linked                              [ module(s) ]
 
@@ -183,6 +217,9 @@ Build/Release/stm8s_clk.rel               [ stm8s_clk ]
 Build/Release/stm8s_spi.rel               [ stm8s_spi ]
 Build/Release/stm8s_uart1.rel             [ stm8s_uart1 ]
 Build/Release/stm8s_beep.rel              [ stm8s_beep ]
+Build/Release/stm8s_exti.rel              [ stm8s_exti ]
+Build/Release/stm8s_itc.rel               [ stm8s_itc ]
+Build/Release/stm8s_tim4.rel              [ stm8s_tim4 ]
 Build/Release/soft_i2c.rel                [ soft_i2c ]
 Build/Release/nixie.rel                   [ nixie ]
 Build/Release/ds3231.rel                  [ ds3231 ]
@@ -202,7 +239,7 @@ C:\Program Files\SDCC\bin\..\lib\stm8/stm8.lib
 C:\Program Files\SDCC\bin\..\lib\stm8/stm8.lib
                                           [ _divsint.rel ]
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
 
 User Base Address Definitions
 

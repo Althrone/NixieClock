@@ -12,6 +12,9 @@ Build/Release/stm8s_clk.rel
 Build/Release/stm8s_spi.rel
 Build/Release/stm8s_uart1.rel
 Build/Release/stm8s_beep.rel
+Build/Release/stm8s_exti.rel
+Build/Release/stm8s_itc.rel
+Build/Release/stm8s_tim4.rel
 Build/Release/soft_i2c.rel
 Build/Release/nixie.rel
 Build/Release/ds3231.rel

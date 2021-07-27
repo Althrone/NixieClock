@@ -120,7 +120,7 @@ typedef enum {
 
 // void EXTI_DeInit(void);
 void EXTI_SetExtIntSensitivity(EXTI_Port_TypeDef Port, EXTI_Sensitivity_TypeDef SensitivityValue);
-// void EXTI_SetTLISensitivity(EXTI_TLISensitivity_TypeDef SensitivityValue);
+void EXTI_SetTLISensitivity(EXTI_TLISensitivity_TypeDef SensitivityValue);
 // EXTI_Sensitivity_TypeDef EXTI_GetExtIntSensitivity(EXTI_Port_TypeDef Port);
 // EXTI_TLISensitivity_TypeDef EXTI_GetTLISensitivity(void);
 

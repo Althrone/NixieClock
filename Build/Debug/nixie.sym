@@ -152,337 +152,323 @@ Symbol Table
   9 A$nixie/Debug/nixie$348                                        0000FB GR
   9 A$nixie/Debug/nixie$349                                        0000FD GR
   9 A$nixie/Debug/nixie$350                                        0000FF GR
-  9 A$nixie/Debug/nixie$351                                        000101 GR
+  9 A$nixie/Debug/nixie$351                                        000100 GR
   9 A$nixie/Debug/nixie$352                                        000102 GR
-  9 A$nixie/Debug/nixie$355                                        000104 GR
-  9 A$nixie/Debug/nixie$357                                        000106 GR
-  9 A$nixie/Debug/nixie$359                                        000108 GR
-  9 A$nixie/Debug/nixie$360                                        00010B GR
-  9 A$nixie/Debug/nixie$362                                        00010C GR
-  9 A$nixie/Debug/nixie$363                                        00010F GR
-  9 A$nixie/Debug/nixie$367                                        000111 GR
-  9 A$nixie/Debug/nixie$368                                        000113 GR
-  9 A$nixie/Debug/nixie$370                                        000114 GR
-  9 A$nixie/Debug/nixie$371                                        000116 GR
-  9 A$nixie/Debug/nixie$373                                        000117 GR
-  9 A$nixie/Debug/nixie$376                                        000119 GR
-  9 A$nixie/Debug/nixie$378                                        00011B GR
-  9 A$nixie/Debug/nixie$380                                        00011D GR
-  9 A$nixie/Debug/nixie$381                                        000120 GR
-  9 A$nixie/Debug/nixie$383                                        000121 GR
-  9 A$nixie/Debug/nixie$384                                        000124 GR
-  9 A$nixie/Debug/nixie$386                                        000126 GR
-  9 A$nixie/Debug/nixie$388                                        000128 GR
-  9 A$nixie/Debug/nixie$390                                        00012A GR
-  9 A$nixie/Debug/nixie$392                                        00012B GR
-  9 A$nixie/Debug/nixie$393                                        00012E GR
-  9 A$nixie/Debug/nixie$397                                        000130 GR
-  9 A$nixie/Debug/nixie$398                                        000132 GR
+  9 A$nixie/Debug/nixie$353                                        000104 GR
+  9 A$nixie/Debug/nixie$354                                        000106 GR
+  9 A$nixie/Debug/nixie$355                                        000107 GR
+  9 A$nixie/Debug/nixie$358                                        000109 GR
+  9 A$nixie/Debug/nixie$359                                        00010B GR
+  9 A$nixie/Debug/nixie$360                                        00010D GR
+  9 A$nixie/Debug/nixie$361                                        00010F GR
+  9 A$nixie/Debug/nixie$363                                        000111 GR
+  9 A$nixie/Debug/nixie$365                                        000113 GR
+  9 A$nixie/Debug/nixie$366                                        000115 GR
+  9 A$nixie/Debug/nixie$368                                        000116 GR
+  9 A$nixie/Debug/nixie$369                                        000119 GR
+  9 A$nixie/Debug/nixie$373                                        00011B GR
+  9 A$nixie/Debug/nixie$374                                        00011D GR
+  9 A$nixie/Debug/nixie$376                                        00011E GR
+  9 A$nixie/Debug/nixie$377                                        000120 GR
+  9 A$nixie/Debug/nixie$379                                        000121 GR
+  9 A$nixie/Debug/nixie$382                                        000123 GR
+  9 A$nixie/Debug/nixie$384                                        000125 GR
+  9 A$nixie/Debug/nixie$386                                        000127 GR
+  9 A$nixie/Debug/nixie$387                                        000129 GR
+  9 A$nixie/Debug/nixie$389                                        00012A GR
+  9 A$nixie/Debug/nixie$390                                        00012D GR
+  9 A$nixie/Debug/nixie$394                                        00012F GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 4.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$nixie/Debug/nixie$400                                        000133 GR
-  9 A$nixie/Debug/nixie$401                                        000135 GR
-  9 A$nixie/Debug/nixie$403                                        000136 GR
-  9 A$nixie/Debug/nixie$406                                        000138 GR
-  9 A$nixie/Debug/nixie$408                                        00013A GR
-  9 A$nixie/Debug/nixie$410                                        00013C GR
-  9 A$nixie/Debug/nixie$411                                        00013F GR
-  9 A$nixie/Debug/nixie$413                                        000140 GR
-  9 A$nixie/Debug/nixie$414                                        000143 GR
-  9 A$nixie/Debug/nixie$416                                        000145 GR
-  9 A$nixie/Debug/nixie$418                                        000147 GR
-  9 A$nixie/Debug/nixie$420                                        000149 GR
-  9 A$nixie/Debug/nixie$422                                        00014A GR
-  9 A$nixie/Debug/nixie$423                                        00014D GR
-  9 A$nixie/Debug/nixie$427                                        00014F GR
-  9 A$nixie/Debug/nixie$428                                        000151 GR
-  9 A$nixie/Debug/nixie$430                                        000152 GR
-  9 A$nixie/Debug/nixie$431                                        000154 GR
-  9 A$nixie/Debug/nixie$433                                        000155 GR
-  9 A$nixie/Debug/nixie$436                                        000157 GR
-  9 A$nixie/Debug/nixie$438                                        000159 GR
-  9 A$nixie/Debug/nixie$440                                        00015B GR
-  9 A$nixie/Debug/nixie$441                                        00015E GR
-  9 A$nixie/Debug/nixie$443                                        00015F GR
-  9 A$nixie/Debug/nixie$444                                        000162 GR
-  9 A$nixie/Debug/nixie$448                                        000164 GR
-  9 A$nixie/Debug/nixie$449                                        000166 GR
-  9 A$nixie/Debug/nixie$451                                        000167 GR
-  9 A$nixie/Debug/nixie$452                                        000169 GR
-  9 A$nixie/Debug/nixie$454                                        00016A GR
-  9 A$nixie/Debug/nixie$457                                        00016C GR
-  9 A$nixie/Debug/nixie$459                                        00016E GR
-  9 A$nixie/Debug/nixie$460                                        00016F GR
-  9 A$nixie/Debug/nixie$461                                        000170 GR
-  9 A$nixie/Debug/nixie$462                                        000171 GR
-  9 A$nixie/Debug/nixie$464                                        000172 GR
-  9 A$nixie/Debug/nixie$466                                        000174 GR
-  9 A$nixie/Debug/nixie$467                                        000177 GR
-  9 A$nixie/Debug/nixie$469                                        000179 GR
-  9 A$nixie/Debug/nixie$472                                        00017B GR
-  9 A$nixie/Debug/nixie$474                                        00017D GR
-  9 A$nixie/Debug/nixie$475                                        00017E GR
-  9 A$nixie/Debug/nixie$476                                        000181 GR
-  9 A$nixie/Debug/nixie$478                                        000182 GR
-  9 A$nixie/Debug/nixie$480                                        000184 GR
-  9 A$nixie/Debug/nixie$481                                        000187 GR
-  9 A$nixie/Debug/nixie$483                                        000189 GR
-  9 A$nixie/Debug/nixie$486                                        00018B GR
-  9 A$nixie/Debug/nixie$488                                        00018D GR
-  9 A$nixie/Debug/nixie$489                                        00018E GR
-  9 A$nixie/Debug/nixie$490                                        000191 GR
-  9 A$nixie/Debug/nixie$492                                        000192 GR
-  9 A$nixie/Debug/nixie$494                                        000194 GR
-  9 A$nixie/Debug/nixie$495                                        000197 GR
-  9 A$nixie/Debug/nixie$497                                        000199 GR
+  9 A$nixie/Debug/nixie$395                                        000131 GR
+  9 A$nixie/Debug/nixie$397                                        000132 GR
+  9 A$nixie/Debug/nixie$398                                        000134 GR
+  9 A$nixie/Debug/nixie$400                                        000135 GR
+  9 A$nixie/Debug/nixie$403                                        000137 GR
+  9 A$nixie/Debug/nixie$404                                        000139 GR
+  9 A$nixie/Debug/nixie$405                                        00013B GR
+  9 A$nixie/Debug/nixie$406                                        00013D GR
+  9 A$nixie/Debug/nixie$408                                        00013F GR
+  9 A$nixie/Debug/nixie$410                                        000141 GR
+  9 A$nixie/Debug/nixie$411                                        000143 GR
+  9 A$nixie/Debug/nixie$413                                        000144 GR
+  9 A$nixie/Debug/nixie$414                                        000147 GR
+  9 A$nixie/Debug/nixie$418                                        000149 GR
+  9 A$nixie/Debug/nixie$419                                        00014B GR
+  9 A$nixie/Debug/nixie$421                                        00014C GR
+  9 A$nixie/Debug/nixie$422                                        00014E GR
+  9 A$nixie/Debug/nixie$424                                        00014F GR
+  9 A$nixie/Debug/nixie$427                                        000151 GR
+  9 A$nixie/Debug/nixie$429                                        000153 GR
+  9 A$nixie/Debug/nixie$431                                        000155 GR
+  9 A$nixie/Debug/nixie$432                                        000157 GR
+  9 A$nixie/Debug/nixie$434                                        000158 GR
+  9 A$nixie/Debug/nixie$435                                        00015B GR
+  9 A$nixie/Debug/nixie$439                                        00015D GR
+  9 A$nixie/Debug/nixie$440                                        00015F GR
+  9 A$nixie/Debug/nixie$442                                        000160 GR
+  9 A$nixie/Debug/nixie$443                                        000162 GR
+  9 A$nixie/Debug/nixie$445                                        000163 GR
+  9 A$nixie/Debug/nixie$448                                        000165 GR
+  9 A$nixie/Debug/nixie$450                                        000168 GR
+  9 A$nixie/Debug/nixie$451                                        000169 GR
+  9 A$nixie/Debug/nixie$452                                        00016A GR
+  9 A$nixie/Debug/nixie$453                                        00016B GR
+  9 A$nixie/Debug/nixie$455                                        00016C GR
+  9 A$nixie/Debug/nixie$457                                        00016E GR
+  9 A$nixie/Debug/nixie$458                                        000171 GR
+  9 A$nixie/Debug/nixie$460                                        000173 GR
+  9 A$nixie/Debug/nixie$463                                        000175 GR
+  9 A$nixie/Debug/nixie$465                                        000178 GR
+  9 A$nixie/Debug/nixie$466                                        000179 GR
+  9 A$nixie/Debug/nixie$467                                        00017C GR
+  9 A$nixie/Debug/nixie$469                                        00017D GR
+  9 A$nixie/Debug/nixie$471                                        00017F GR
+  9 A$nixie/Debug/nixie$472                                        000182 GR
+  9 A$nixie/Debug/nixie$474                                        000184 GR
+  9 A$nixie/Debug/nixie$477                                        000186 GR
+  9 A$nixie/Debug/nixie$479                                        000189 GR
+  9 A$nixie/Debug/nixie$480                                        00018A GR
+  9 A$nixie/Debug/nixie$481                                        00018D GR
+  9 A$nixie/Debug/nixie$483                                        00018E GR
+  9 A$nixie/Debug/nixie$485                                        000190 GR
+  9 A$nixie/Debug/nixie$486                                        000193 GR
+  9 A$nixie/Debug/nixie$488                                        000195 GR
+  9 A$nixie/Debug/nixie$491                                        000197 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 5.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$nixie/Debug/nixie$500                                        00019B GR
-  9 A$nixie/Debug/nixie$502                                        00019D GR
-  9 A$nixie/Debug/nixie$503                                        00019E GR
-  9 A$nixie/Debug/nixie$504                                        0001A1 GR
-  9 A$nixie/Debug/nixie$506                                        0001A2 GR
-  9 A$nixie/Debug/nixie$508                                        0001A4 GR
-  9 A$nixie/Debug/nixie$509                                        0001A7 GR
-  9 A$nixie/Debug/nixie$511                                        0001A9 GR
-  9 A$nixie/Debug/nixie$514                                        0001AB GR
-  9 A$nixie/Debug/nixie$515                                        0001AE GR
-  9 A$nixie/Debug/nixie$516                                        0001AF GR
-  9 A$nixie/Debug/nixie$519                                        0001B2 GR
-  9 A$nixie/Debug/nixie$520                                        0001B5 GR
+  9 A$nixie/Debug/nixie$493                                        00019A GR
+  9 A$nixie/Debug/nixie$494                                        00019B GR
+  9 A$nixie/Debug/nixie$495                                        00019E GR
+  9 A$nixie/Debug/nixie$497                                        00019F GR
+  9 A$nixie/Debug/nixie$499                                        0001A1 GR
+  9 A$nixie/Debug/nixie$500                                        0001A4 GR
+  9 A$nixie/Debug/nixie$502                                        0001A6 GR
+  9 A$nixie/Debug/nixie$505                                        0001A8 GR
+  9 A$nixie/Debug/nixie$507                                        0001AA GR
+  9 A$nixie/Debug/nixie$509                                        0001AC GR
+  9 A$nixie/Debug/nixie$511                                        0001AE GR
+  9 A$nixie/Debug/nixie$512                                        0001B1 GR
+  9 A$nixie/Debug/nixie$517                                        0001B3 GR
+  9 A$nixie/Debug/nixie$518                                        0001B5 GR
+  9 A$nixie/Debug/nixie$519                                        0001B6 GR
+  9 A$nixie/Debug/nixie$520                                        0001B7 GR
   9 A$nixie/Debug/nixie$521                                        0001B8 GR
+  9 A$nixie/Debug/nixie$522                                        0001B9 GR
   9 A$nixie/Debug/nixie$525                                        0001BA GR
-  9 A$nixie/Debug/nixie$526                                        0001BB GR
-  9 A$nixie/Debug/nixie$530                                        0001BE GR
-  9 A$nixie/Debug/nixie$532                                        0001C0 GR
-  9 A$nixie/Debug/nixie$534                                        0001C2 GR
-  9 A$nixie/Debug/nixie$536                                        0001C4 GR
+  9 A$nixie/Debug/nixie$526                                        0001BC GR
+  9 A$nixie/Debug/nixie$527                                        0001BE GR
+  9 A$nixie/Debug/nixie$528                                        0001BF GR
+  9 A$nixie/Debug/nixie$529                                        0001C1 GR
+  9 A$nixie/Debug/nixie$530                                        0001C2 GR
+  9 A$nixie/Debug/nixie$531                                        0001C3 GR
+  9 A$nixie/Debug/nixie$534                                        0001C4 GR
+  9 A$nixie/Debug/nixie$536                                        0001C5 GR
   9 A$nixie/Debug/nixie$537                                        0001C7 GR
-  9 A$nixie/Debug/nixie$542                                        0001C9 GR
-  9 A$nixie/Debug/nixie$543                                        0001CB GR
+  9 A$nixie/Debug/nixie$541                                        0001C8 GR
+  9 A$nixie/Debug/nixie$543                                        0001C9 GR
   9 A$nixie/Debug/nixie$544                                        0001CC GR
-  9 A$nixie/Debug/nixie$545                                        0001CD GR
-  9 A$nixie/Debug/nixie$546                                        0001CE GR
-  9 A$nixie/Debug/nixie$547                                        0001CF GR
-  9 A$nixie/Debug/nixie$550                                        0001D0 GR
-  9 A$nixie/Debug/nixie$551                                        0001D2 GR
-  9 A$nixie/Debug/nixie$552                                        0001D4 GR
-  9 A$nixie/Debug/nixie$553                                        0001D5 GR
-  9 A$nixie/Debug/nixie$554                                        0001D7 GR
-  9 A$nixie/Debug/nixie$555                                        0001D8 GR
-  9 A$nixie/Debug/nixie$556                                        0001D9 GR
-  9 A$nixie/Debug/nixie$559                                        0001DA GR
-  9 A$nixie/Debug/nixie$561                                        0001DB GR
-  9 A$nixie/Debug/nixie$562                                        0001DD GR
-  9 A$nixie/Debug/nixie$566                                        0001DE GR
-  9 A$nixie/Debug/nixie$568                                        0001DF GR
-  9 A$nixie/Debug/nixie$569                                        0001E2 GR
-  9 A$nixie/Debug/nixie$574                                        0001E3 GR
-  9 A$nixie/Debug/nixie$576                                        0001E5 GR
-  9 A$nixie/Debug/nixie$577                                        0001E8 GR
-  9 A$nixie/Debug/nixie$579                                        0001EA GR
-  9 A$nixie/Debug/nixie$580                                        0001EB GR
-  9 A$nixie/Debug/nixie$583                                        0001ED GR
-  9 A$nixie/Debug/nixie$584                                        0001EF GR
-  9 A$nixie/Debug/nixie$585                                        0001F1 GR
-  9 A$nixie/Debug/nixie$586                                        0001F2 GR
-  9 A$nixie/Debug/nixie$587                                        0001F4 GR
-  9 A$nixie/Debug/nixie$590                                        0001F6 GR
-  9 A$nixie/Debug/nixie$591                                        0001F8 GR
-  9 A$nixie/Debug/nixie$594                                        0001F9 GR
-  9 A$nixie/Debug/nixie$595                                        0001FB GR
-  9 A$nixie/Debug/nixie$598                                        0001FC GR
+  9 A$nixie/Debug/nixie$549                                        0001CD GR
+  9 A$nixie/Debug/nixie$551                                        0001CF GR
+  9 A$nixie/Debug/nixie$552                                        0001D2 GR
+  9 A$nixie/Debug/nixie$554                                        0001D4 GR
+  9 A$nixie/Debug/nixie$555                                        0001D5 GR
+  9 A$nixie/Debug/nixie$558                                        0001D7 GR
+  9 A$nixie/Debug/nixie$559                                        0001D9 GR
+  9 A$nixie/Debug/nixie$560                                        0001DB GR
+  9 A$nixie/Debug/nixie$561                                        0001DC GR
+  9 A$nixie/Debug/nixie$562                                        0001DE GR
+  9 A$nixie/Debug/nixie$565                                        0001E0 GR
+  9 A$nixie/Debug/nixie$566                                        0001E2 GR
+  9 A$nixie/Debug/nixie$569                                        0001E3 GR
+  9 A$nixie/Debug/nixie$570                                        0001E5 GR
+  9 A$nixie/Debug/nixie$573                                        0001E6 GR
+  9 A$nixie/Debug/nixie$574                                        0001E7 GR
+  9 A$nixie/Debug/nixie$575                                        0001E9 GR
+  9 A$nixie/Debug/nixie$576                                        0001EA GR
+  9 A$nixie/Debug/nixie$577                                        0001EC GR
+  9 A$nixie/Debug/nixie$578                                        0001ED GR
+  9 A$nixie/Debug/nixie$579                                        0001EE GR
+  9 A$nixie/Debug/nixie$580                                        0001EF GR
+  9 A$nixie/Debug/nixie$583                                        0001F1 GR
+  9 A$nixie/Debug/nixie$584                                        0001F2 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 6.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$nixie/Debug/nixie$599                                        0001FD GR
-  9 A$nixie/Debug/nixie$600                                        0001FF GR
-  9 A$nixie/Debug/nixie$601                                        000200 GR
+  9 A$nixie/Debug/nixie$585                                        0001F3 GR
+  9 A$nixie/Debug/nixie$588                                        0001F5 GR
+  9 A$nixie/Debug/nixie$590                                        0001F6 GR
+  9 A$nixie/Debug/nixie$591                                        0001F9 GR
+  9 A$nixie/Debug/nixie$596                                        0001FA GR
+  9 A$nixie/Debug/nixie$598                                        0001FC GR
+  9 A$nixie/Debug/nixie$599                                        0001FF GR
+  9 A$nixie/Debug/nixie$601                                        000201 GR
   9 A$nixie/Debug/nixie$602                                        000202 GR
-  9 A$nixie/Debug/nixie$603                                        000203 GR
-  9 A$nixie/Debug/nixie$604                                        000204 GR
-  9 A$nixie/Debug/nixie$605                                        000205 GR
-  9 A$nixie/Debug/nixie$608                                        000207 GR
-  9 A$nixie/Debug/nixie$609                                        000208 GR
-  9 A$nixie/Debug/nixie$610                                        000209 GR
-  9 A$nixie/Debug/nixie$613                                        00020B GR
-  9 A$nixie/Debug/nixie$615                                        00020C GR
-  9 A$nixie/Debug/nixie$616                                        00020F GR
-  9 A$nixie/Debug/nixie$621                                        000210 GR
-  9 A$nixie/Debug/nixie$623                                        000212 GR
-  9 A$nixie/Debug/nixie$624                                        000215 GR
-  9 A$nixie/Debug/nixie$626                                        000217 GR
-  9 A$nixie/Debug/nixie$627                                        000218 GR
-  9 A$nixie/Debug/nixie$630                                        00021A GR
-  9 A$nixie/Debug/nixie$631                                        00021C GR
-  9 A$nixie/Debug/nixie$632                                        00021E GR
-  9 A$nixie/Debug/nixie$633                                        00021F GR
-  9 A$nixie/Debug/nixie$634                                        000220 GR
-  9 A$nixie/Debug/nixie$635                                        000222 GR
-  9 A$nixie/Debug/nixie$638                                        000223 GR
-  9 A$nixie/Debug/nixie$639                                        000225 GR
-  9 A$nixie/Debug/nixie$640                                        000226 GR
+  9 A$nixie/Debug/nixie$605                                        000204 GR
+  9 A$nixie/Debug/nixie$606                                        000206 GR
+  9 A$nixie/Debug/nixie$607                                        000208 GR
+  9 A$nixie/Debug/nixie$608                                        000209 GR
+  9 A$nixie/Debug/nixie$609                                        00020A GR
+  9 A$nixie/Debug/nixie$610                                        00020C GR
+  9 A$nixie/Debug/nixie$613                                        00020D GR
+  9 A$nixie/Debug/nixie$614                                        00020F GR
+  9 A$nixie/Debug/nixie$615                                        000210 GR
+  9 A$nixie/Debug/nixie$616                                        000212 GR
+  9 A$nixie/Debug/nixie$617                                        000214 GR
+  9 A$nixie/Debug/nixie$618                                        000215 GR
+  9 A$nixie/Debug/nixie$619                                        000217 GR
+  9 A$nixie/Debug/nixie$620                                        000218 GR
+  9 A$nixie/Debug/nixie$621                                        000219 GR
+  9 A$nixie/Debug/nixie$622                                        00021A GR
+  9 A$nixie/Debug/nixie$623                                        00021C GR
+  9 A$nixie/Debug/nixie$624                                        00021D GR
+  9 A$nixie/Debug/nixie$625                                        00021E GR
+  9 A$nixie/Debug/nixie$628                                        00021F GR
+  9 A$nixie/Debug/nixie$631                                        000221 GR
+  9 A$nixie/Debug/nixie$633                                        000222 GR
+  9 A$nixie/Debug/nixie$634                                        000225 GR
+  9 A$nixie/Debug/nixie$639                                        000226 GR
   9 A$nixie/Debug/nixie$641                                        000228 GR
-  9 A$nixie/Debug/nixie$642                                        00022A GR
-  9 A$nixie/Debug/nixie$643                                        00022B GR
+  9 A$nixie/Debug/nixie$642                                        00022B GR
   9 A$nixie/Debug/nixie$644                                        00022D GR
   9 A$nixie/Debug/nixie$645                                        00022E GR
-  9 A$nixie/Debug/nixie$646                                        00022F GR
-  9 A$nixie/Debug/nixie$647                                        000230 GR
-  9 A$nixie/Debug/nixie$648                                        000232 GR
-  9 A$nixie/Debug/nixie$649                                        000233 GR
-  9 A$nixie/Debug/nixie$650                                        000234 GR
-  9 A$nixie/Debug/nixie$653                                        000235 GR
+  9 A$nixie/Debug/nixie$648                                        000230 GR
+  9 A$nixie/Debug/nixie$649                                        000232 GR
+  9 A$nixie/Debug/nixie$650                                        000233 GR
+  9 A$nixie/Debug/nixie$651                                        000234 GR
+  9 A$nixie/Debug/nixie$652                                        000235 GR
+  9 A$nixie/Debug/nixie$653                                        000236 GR
   9 A$nixie/Debug/nixie$656                                        000237 GR
-  9 A$nixie/Debug/nixie$658                                        000238 GR
-  9 A$nixie/Debug/nixie$659                                        00023B GR
-  9 A$nixie/Debug/nixie$664                                        00023C GR
-  9 A$nixie/Debug/nixie$666                                        00023E GR
-  9 A$nixie/Debug/nixie$667                                        000241 GR
-  9 A$nixie/Debug/nixie$669                                        000243 GR
-  9 A$nixie/Debug/nixie$670                                        000244 GR
-  9 A$nixie/Debug/nixie$673                                        000246 GR
-  9 A$nixie/Debug/nixie$674                                        000248 GR
-  9 A$nixie/Debug/nixie$675                                        000249 GR
-  9 A$nixie/Debug/nixie$676                                        00024A GR
-  9 A$nixie/Debug/nixie$677                                        00024B GR
-  9 A$nixie/Debug/nixie$678                                        00024C GR
-  9 A$nixie/Debug/nixie$681                                        00024D GR
-  9 A$nixie/Debug/nixie$682                                        00024F GR
-  9 A$nixie/Debug/nixie$683                                        000251 GR
+  9 A$nixie/Debug/nixie$657                                        000239 GR
+  9 A$nixie/Debug/nixie$658                                        00023B GR
+  9 A$nixie/Debug/nixie$659                                        00023C GR
+  9 A$nixie/Debug/nixie$660                                        00023E GR
+  9 A$nixie/Debug/nixie$661                                        00023F GR
+  9 A$nixie/Debug/nixie$662                                        000240 GR
+  9 A$nixie/Debug/nixie$665                                        000241 GR
+  9 A$nixie/Debug/nixie$667                                        000242 GR
+  9 A$nixie/Debug/nixie$668                                        000244 GR
+  9 A$nixie/Debug/nixie$672                                        000245 GR
+  9 A$nixie/Debug/nixie$674                                        000246 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 7.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$nixie/Debug/nixie$684                                        000252 GR
-  9 A$nixie/Debug/nixie$685                                        000254 GR
-  9 A$nixie/Debug/nixie$686                                        000255 GR
-  9 A$nixie/Debug/nixie$687                                        000256 GR
-  9 A$nixie/Debug/nixie$690                                        000257 GR
-  9 A$nixie/Debug/nixie$692                                        000258 GR
-  9 A$nixie/Debug/nixie$693                                        00025A GR
-  9 A$nixie/Debug/nixie$697                                        00025B GR
-  9 A$nixie/Debug/nixie$699                                        00025C GR
-  9 A$nixie/Debug/nixie$700                                        00025F GR
-  9 A$nixie/Debug/nixie$705                                        000260 GR
-  9 A$nixie/Debug/nixie$707                                        000262 GR
-  9 A$nixie/Debug/nixie$708                                        000265 GR
-  9 A$nixie/Debug/nixie$710                                        000267 GR
-  9 A$nixie/Debug/nixie$711                                        000268 GR
-  9 A$nixie/Debug/nixie$714                                        00026A GR
-  9 A$nixie/Debug/nixie$715                                        00026C GR
-  9 A$nixie/Debug/nixie$716                                        00026E GR
-  9 A$nixie/Debug/nixie$717                                        00026F GR
-  9 A$nixie/Debug/nixie$718                                        000271 GR
+  9 A$nixie/Debug/nixie$675                                        000249 GR
+  9 A$nixie/Debug/nixie$680                                        00024A GR
+  9 A$nixie/Debug/nixie$682                                        00024C GR
+  9 A$nixie/Debug/nixie$683                                        00024F GR
+  9 A$nixie/Debug/nixie$685                                        000251 GR
+  9 A$nixie/Debug/nixie$686                                        000252 GR
+  9 A$nixie/Debug/nixie$689                                        000254 GR
+  9 A$nixie/Debug/nixie$690                                        000256 GR
+  9 A$nixie/Debug/nixie$691                                        000258 GR
+  9 A$nixie/Debug/nixie$692                                        000259 GR
+  9 A$nixie/Debug/nixie$693                                        00025B GR
+  9 A$nixie/Debug/nixie$696                                        00025D GR
+  9 A$nixie/Debug/nixie$697                                        00025F GR
+  9 A$nixie/Debug/nixie$700                                        000260 GR
+  9 A$nixie/Debug/nixie$701                                        000262 GR
+  9 A$nixie/Debug/nixie$704                                        000263 GR
+  9 A$nixie/Debug/nixie$705                                        000264 GR
+  9 A$nixie/Debug/nixie$706                                        000266 GR
+  9 A$nixie/Debug/nixie$707                                        000267 GR
+  9 A$nixie/Debug/nixie$708                                        000269 GR
+  9 A$nixie/Debug/nixie$709                                        00026A GR
+  9 A$nixie/Debug/nixie$710                                        00026B GR
+  9 A$nixie/Debug/nixie$711                                        00026C GR
+  9 A$nixie/Debug/nixie$714                                        00026E GR
+  9 A$nixie/Debug/nixie$715                                        00026F GR
+  9 A$nixie/Debug/nixie$716                                        000270 GR
+  9 A$nixie/Debug/nixie$719                                        000272 GR
   9 A$nixie/Debug/nixie$721                                        000273 GR
-  9 A$nixie/Debug/nixie$722                                        000275 GR
-  9 A$nixie/Debug/nixie$725                                        000276 GR
-  9 A$nixie/Debug/nixie$726                                        000278 GR
+  9 A$nixie/Debug/nixie$722                                        000276 GR
+  9 A$nixie/Debug/nixie$727                                        000277 GR
   9 A$nixie/Debug/nixie$729                                        000279 GR
-  9 A$nixie/Debug/nixie$730                                        00027A GR
-  9 A$nixie/Debug/nixie$731                                        00027C GR
-  9 A$nixie/Debug/nixie$732                                        00027D GR
+  9 A$nixie/Debug/nixie$730                                        00027C GR
+  9 A$nixie/Debug/nixie$732                                        00027E GR
   9 A$nixie/Debug/nixie$733                                        00027F GR
-  9 A$nixie/Debug/nixie$734                                        000280 GR
-  9 A$nixie/Debug/nixie$735                                        000281 GR
-  9 A$nixie/Debug/nixie$736                                        000282 GR
-  9 A$nixie/Debug/nixie$739                                        000284 GR
-  9 A$nixie/Debug/nixie$740                                        000285 GR
-  9 A$nixie/Debug/nixie$741                                        000286 GR
-  9 A$nixie/Debug/nixie$744                                        000288 GR
-  9 A$nixie/Debug/nixie$746                                        000289 GR
-  9 A$nixie/Debug/nixie$747                                        00028C GR
+  9 A$nixie/Debug/nixie$736                                        000281 GR
+  9 A$nixie/Debug/nixie$737                                        000283 GR
+  9 A$nixie/Debug/nixie$738                                        000285 GR
+  9 A$nixie/Debug/nixie$739                                        000286 GR
+  9 A$nixie/Debug/nixie$740                                        000287 GR
+  9 A$nixie/Debug/nixie$741                                        000289 GR
+  9 A$nixie/Debug/nixie$744                                        00028A GR
+  9 A$nixie/Debug/nixie$745                                        00028C GR
+  9 A$nixie/Debug/nixie$746                                        00028D GR
+  9 A$nixie/Debug/nixie$747                                        00028F GR
+  9 A$nixie/Debug/nixie$748                                        000291 GR
+  9 A$nixie/Debug/nixie$749                                        000292 GR
   9 A$nixie/Debug/nixie$75                                         000000 GR
-  9 A$nixie/Debug/nixie$752                                        00028D GR
-  9 A$nixie/Debug/nixie$754                                        00028F GR
-  9 A$nixie/Debug/nixie$755                                        000292 GR
-  9 A$nixie/Debug/nixie$757                                        000294 GR
-  9 A$nixie/Debug/nixie$758                                        000295 GR
-  9 A$nixie/Debug/nixie$761                                        000297 GR
-  9 A$nixie/Debug/nixie$762                                        000299 GR
-  9 A$nixie/Debug/nixie$763                                        00029B GR
-  9 A$nixie/Debug/nixie$764                                        00029C GR
-  9 A$nixie/Debug/nixie$765                                        00029D GR
-  9 A$nixie/Debug/nixie$766                                        00029F GR
-  9 A$nixie/Debug/nixie$769                                        0002A0 GR
-  9 A$nixie/Debug/nixie$77                                         000001 GR
-  9 A$nixie/Debug/nixie$770                                        0002A2 GR
-  9 A$nixie/Debug/nixie$771                                        0002A3 GR
-  9 A$nixie/Debug/nixie$772                                        0002A5 GR
+  9 A$nixie/Debug/nixie$750                                        000294 GR
+  9 A$nixie/Debug/nixie$751                                        000295 GR
+  9 A$nixie/Debug/nixie$752                                        000296 GR
+  9 A$nixie/Debug/nixie$753                                        000297 GR
+  9 A$nixie/Debug/nixie$754                                        000299 GR
+  9 A$nixie/Debug/nixie$755                                        00029A GR
+  9 A$nixie/Debug/nixie$756                                        00029B GR
+  9 A$nixie/Debug/nixie$759                                        00029C GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 8.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$nixie/Debug/nixie$773                                        0002A7 GR
-  9 A$nixie/Debug/nixie$774                                        0002A8 GR
+  9 A$nixie/Debug/nixie$762                                        00029E GR
+  9 A$nixie/Debug/nixie$764                                        00029F GR
+  9 A$nixie/Debug/nixie$765                                        0002A2 GR
+  9 A$nixie/Debug/nixie$77                                         000001 GR
+  9 A$nixie/Debug/nixie$770                                        0002A3 GR
+  9 A$nixie/Debug/nixie$772                                        0002A5 GR
+  9 A$nixie/Debug/nixie$773                                        0002A8 GR
   9 A$nixie/Debug/nixie$775                                        0002AA GR
   9 A$nixie/Debug/nixie$776                                        0002AB GR
-  9 A$nixie/Debug/nixie$777                                        0002AC GR
-  9 A$nixie/Debug/nixie$778                                        0002AD GR
-  9 A$nixie/Debug/nixie$779                                        0002AF GR
+  9 A$nixie/Debug/nixie$779                                        0002AD GR
   9 A$nixie/Debug/nixie$78                                         000004 GR
-  9 A$nixie/Debug/nixie$780                                        0002B0 GR
-  9 A$nixie/Debug/nixie$781                                        0002B1 GR
-  9 A$nixie/Debug/nixie$784                                        0002B2 GR
-  9 A$nixie/Debug/nixie$787                                        0002B4 GR
-  9 A$nixie/Debug/nixie$789                                        0002B5 GR
+  9 A$nixie/Debug/nixie$781                                        0002AF GR
+  9 A$nixie/Debug/nixie$783                                        0002B1 GR
+  9 A$nixie/Debug/nixie$785                                        0002B3 GR
+  9 A$nixie/Debug/nixie$786                                        0002B6 GR
   9 A$nixie/Debug/nixie$79                                         000006 GR
-  9 A$nixie/Debug/nixie$790                                        0002B8 GR
-  9 A$nixie/Debug/nixie$795                                        0002B9 GR
-  9 A$nixie/Debug/nixie$797                                        0002BB GR
-  9 A$nixie/Debug/nixie$798                                        0002BE GR
+  9 A$nixie/Debug/nixie$791                                        0002B8 GR
+  9 A$nixie/Debug/nixie$795                                        0002BA GR
   9 A$nixie/Debug/nixie$80                                         000007 GR
-  9 A$nixie/Debug/nixie$800                                        0002C0 GR
-  9 A$nixie/Debug/nixie$801                                        0002C1 GR
-  9 A$nixie/Debug/nixie$804                                        0002C3 GR
-  9 A$nixie/Debug/nixie$806                                        0002C5 GR
-  9 A$nixie/Debug/nixie$808                                        0002C7 GR
-  9 A$nixie/Debug/nixie$810                                        0002C9 GR
-  9 A$nixie/Debug/nixie$811                                        0002CC GR
-  9 A$nixie/Debug/nixie$816                                        0002CE GR
-  9 A$nixie/Debug/nixie$820                                        0002D0 GR
   9 A$nixie/Debug/nixie$86                                         000009 GR
   9 A$nixie/Debug/nixie$97                                         00000A GR
   9 A$nixie/Debug/nixie$99                                         00000C GR
-  8 Fnixie$__xinit_aaaa$0_0$0                                   =  000000 GR
-  2 G$aaaa$0_0$0                                                =  000000 GR
+  8 Fnixie$__xinit_tube_state$0_0$0                             =  000000 GR
+  2 G$tube_state$0_0$0                                          =  000000 GR
  10 Ldebug_CIE0_end                                                000012 R
  10 Ldebug_CIE0_start                                              000004 R
- 10 Ldebug_CIE1_end                                                00029C R
- 10 Ldebug_CIE1_start                                              00028E R
- 10 Ldebug_CIE2_end                                                000327 R
- 10 Ldebug_CIE2_start                                              000319 R
- 10 Ldebug_CIE3_end                                                000406 R
- 10 Ldebug_CIE3_start                                              0003F8 R
+ 10 Ldebug_CIE1_end                                                00025D R
+ 10 Ldebug_CIE1_start                                              00024F R
+ 10 Ldebug_CIE2_end                                                0002E8 R
+ 10 Ldebug_CIE2_start                                              0002DA R
+ 10 Ldebug_CIE3_end                                                0003C7 R
+ 10 Ldebug_CIE3_start                                              0003B9 R
   D Ldebug_abbrev                                                  000000 R
-  E Ldebug_info_end                                                00025A R
+  E Ldebug_info_end                                                00026D R
   E Ldebug_info_start                                              000004 R
-  B Ldebug_line_end                                                000294 R
+  B Ldebug_line_end                                                000283 R
   B Ldebug_line_start                                              000004 R
   B Ldebug_line_stmt                                               000084 R
   C Ldebug_loc_start                                               000000 R
-  F Ldebug_pubnames_end                                            000060 R
+  F Ldebug_pubnames_end                                            000066 R
   F Ldebug_pubnames_start                                          000004 R
   9 Snixie$NIXIE_DisplayChar$44                                 =  000050 GR
   9 Snixie$NIXIE_DisplayChar$45                                 =  000050 GR
   9 Snixie$NIXIE_DisplayChar$46                                 =  000052 GR
   9 Snixie$NIXIE_DisplayChar$47                                 =  000052 GR
   9 Snixie$NIXIE_DisplayChar$48                                 =  000055 GR
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 9.
-Hexadecimal [24-Bits]
-
-Symbol Table
-
   9 Snixie$NIXIE_DisplayChar$49                                 =  000057 GR
   9 Snixie$NIXIE_DisplayChar$50                                 =  000059 GR
   9 Snixie$NIXIE_DisplayChar$51                                 =  00005C GR
@@ -492,6 +478,11 @@ Symbol Table
   9 Snixie$NIXIE_DisplayChar$55                                 =  00006B GR
   9 Snixie$NIXIE_DisplayChar$56                                 =  000071 GR
   9 Snixie$NIXIE_DisplayChar$57                                 =  000071 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 9.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
   9 Snixie$NIXIE_DisplayChar$58                                 =  000079 GR
   9 Snixie$NIXIE_DisplayChar$59                                 =  00007C GR
   9 Snixie$NIXIE_DisplayChar$60                                 =  000081 GR
@@ -515,167 +506,150 @@ Symbol Table
   9 Snixie$NIXIE_DisplayChar$78                                 =  0000E5 GR
   9 Snixie$NIXIE_DisplayChar$79                                 =  0000E5 GR
   9 Snixie$NIXIE_DisplayChar$80                                 =  0000E6 GR
-  9 Snixie$NIXIE_DisplayTime$100                                =  00012B GR
-  9 Snixie$NIXIE_DisplayTime$101                                =  000130 GR
-  9 Snixie$NIXIE_DisplayTime$102                                =  000130 GR
-  9 Snixie$NIXIE_DisplayTime$103                                =  000133 GR
-  9 Snixie$NIXIE_DisplayTime$104                                =  000136 GR
-  9 Snixie$NIXIE_DisplayTime$105                                =  000138 GR
-  9 Snixie$NIXIE_DisplayTime$106                                =  00013A GR
-  9 Snixie$NIXIE_DisplayTime$107                                =  00013C GR
-  9 Snixie$NIXIE_DisplayTime$108                                =  000140 GR
-  9 Snixie$NIXIE_DisplayTime$109                                =  000145 GR
-  9 Snixie$NIXIE_DisplayTime$110                                =  000147 GR
-  9 Snixie$NIXIE_DisplayTime$111                                =  000149 GR
-  9 Snixie$NIXIE_DisplayTime$112                                =  00014A GR
-  9 Snixie$NIXIE_DisplayTime$113                                =  00014F GR
-  9 Snixie$NIXIE_DisplayTime$114                                =  00014F GR
-  9 Snixie$NIXIE_DisplayTime$115                                =  000152 GR
-  9 Snixie$NIXIE_DisplayTime$116                                =  000155 GR
-  9 Snixie$NIXIE_DisplayTime$117                                =  000157 GR
-  9 Snixie$NIXIE_DisplayTime$118                                =  000159 GR
-  9 Snixie$NIXIE_DisplayTime$119                                =  00015B GR
-  9 Snixie$NIXIE_DisplayTime$120                                =  00015F GR
-  9 Snixie$NIXIE_DisplayTime$121                                =  000164 GR
-  9 Snixie$NIXIE_DisplayTime$122                                =  000164 GR
+  9 Snixie$NIXIE_DisplayTime$100                                =  000135 GR
+  9 Snixie$NIXIE_DisplayTime$101                                =  000137 GR
+  9 Snixie$NIXIE_DisplayTime$102                                =  00013F GR
+  9 Snixie$NIXIE_DisplayTime$103                                =  000141 GR
+  9 Snixie$NIXIE_DisplayTime$104                                =  000144 GR
+  9 Snixie$NIXIE_DisplayTime$105                                =  000149 GR
+  9 Snixie$NIXIE_DisplayTime$106                                =  000149 GR
+  9 Snixie$NIXIE_DisplayTime$107                                =  00014C GR
+  9 Snixie$NIXIE_DisplayTime$108                                =  00014F GR
+  9 Snixie$NIXIE_DisplayTime$109                                =  000151 GR
+  9 Snixie$NIXIE_DisplayTime$110                                =  000153 GR
+  9 Snixie$NIXIE_DisplayTime$111                                =  000155 GR
+  9 Snixie$NIXIE_DisplayTime$112                                =  000158 GR
+  9 Snixie$NIXIE_DisplayTime$113                                =  00015D GR
+  9 Snixie$NIXIE_DisplayTime$114                                =  00015D GR
+  9 Snixie$NIXIE_DisplayTime$115                                =  000160 GR
+  9 Snixie$NIXIE_DisplayTime$116                                =  000163 GR
+  9 Snixie$NIXIE_DisplayTime$117                                =  000165 GR
+  9 Snixie$NIXIE_DisplayTime$118                                =  000168 GR
+  9 Snixie$NIXIE_DisplayTime$119                                =  00016C GR
+  9 Snixie$NIXIE_DisplayTime$120                                =  00016E GR
+  9 Snixie$NIXIE_DisplayTime$121                                =  000173 GR
+  9 Snixie$NIXIE_DisplayTime$122                                =  000175 GR
+  9 Snixie$NIXIE_DisplayTime$123                                =  000178 GR
+  9 Snixie$NIXIE_DisplayTime$124                                =  00017D GR
+  9 Snixie$NIXIE_DisplayTime$125                                =  00017F GR
+  9 Snixie$NIXIE_DisplayTime$126                                =  000184 GR
+  9 Snixie$NIXIE_DisplayTime$127                                =  000186 GR
+  9 Snixie$NIXIE_DisplayTime$128                                =  000189 GR
+  9 Snixie$NIXIE_DisplayTime$129                                =  00018E GR
+  9 Snixie$NIXIE_DisplayTime$130                                =  000190 GR
+  9 Snixie$NIXIE_DisplayTime$131                                =  000195 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 10.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 Snixie$NIXIE_DisplayTime$123                                =  000167 GR
-  9 Snixie$NIXIE_DisplayTime$124                                =  00016A GR
-  9 Snixie$NIXIE_DisplayTime$125                                =  00016C GR
-  9 Snixie$NIXIE_DisplayTime$126                                =  00016E GR
-  9 Snixie$NIXIE_DisplayTime$127                                =  000172 GR
-  9 Snixie$NIXIE_DisplayTime$128                                =  000174 GR
-  9 Snixie$NIXIE_DisplayTime$129                                =  000179 GR
-  9 Snixie$NIXIE_DisplayTime$130                                =  00017B GR
-  9 Snixie$NIXIE_DisplayTime$131                                =  00017D GR
-  9 Snixie$NIXIE_DisplayTime$132                                =  000182 GR
-  9 Snixie$NIXIE_DisplayTime$133                                =  000184 GR
-  9 Snixie$NIXIE_DisplayTime$134                                =  000189 GR
-  9 Snixie$NIXIE_DisplayTime$135                                =  00018B GR
-  9 Snixie$NIXIE_DisplayTime$136                                =  00018D GR
-  9 Snixie$NIXIE_DisplayTime$137                                =  000192 GR
-  9 Snixie$NIXIE_DisplayTime$138                                =  000194 GR
-  9 Snixie$NIXIE_DisplayTime$139                                =  000199 GR
-  9 Snixie$NIXIE_DisplayTime$140                                =  00019B GR
-  9 Snixie$NIXIE_DisplayTime$141                                =  00019D GR
-  9 Snixie$NIXIE_DisplayTime$142                                =  0001A2 GR
-  9 Snixie$NIXIE_DisplayTime$143                                =  0001A4 GR
-  9 Snixie$NIXIE_DisplayTime$144                                =  0001A9 GR
-  9 Snixie$NIXIE_DisplayTime$145                                =  0001AB GR
-  9 Snixie$NIXIE_DisplayTime$146                                =  0001B2 GR
-  9 Snixie$NIXIE_DisplayTime$147                                =  0001BA GR
-  9 Snixie$NIXIE_DisplayTime$148                                =  0001BA GR
-  9 Snixie$NIXIE_DisplayTime$149                                =  0001BE GR
-  9 Snixie$NIXIE_DisplayTime$150                                =  0001C0 GR
-  9 Snixie$NIXIE_DisplayTime$151                                =  0001C2 GR
-  9 Snixie$NIXIE_DisplayTime$152                                =  0001C4 GR
-  9 Snixie$NIXIE_DisplayTime$153                                =  0001C9 GR
-  9 Snixie$NIXIE_DisplayTime$154                                =  0001C9 GR
-  9 Snixie$NIXIE_DisplayTime$155                                =  0001C9 GR
-  9 Snixie$NIXIE_DisplayTime$156                                =  0001D0 GR
-  9 Snixie$NIXIE_DisplayTime$157                                =  0001DA GR
-  9 Snixie$NIXIE_DisplayTime$158                                =  0001DB GR
-  9 Snixie$NIXIE_DisplayTime$159                                =  0001DE GR
-  9 Snixie$NIXIE_DisplayTime$160                                =  0001DE GR
-  9 Snixie$NIXIE_DisplayTime$161                                =  0001DF GR
-  9 Snixie$NIXIE_DisplayTime$162                                =  0001E3 GR
-  9 Snixie$NIXIE_DisplayTime$163                                =  0001E3 GR
-  9 Snixie$NIXIE_DisplayTime$164                                =  0001E5 GR
-  9 Snixie$NIXIE_DisplayTime$165                                =  0001EA GR
-  9 Snixie$NIXIE_DisplayTime$166                                =  0001ED GR
-  9 Snixie$NIXIE_DisplayTime$167                                =  0001F6 GR
-  9 Snixie$NIXIE_DisplayTime$168                                =  0001F9 GR
-  9 Snixie$NIXIE_DisplayTime$169                                =  0001FC GR
-  9 Snixie$NIXIE_DisplayTime$170                                =  000207 GR
-  9 Snixie$NIXIE_DisplayTime$171                                =  00020B GR
-  9 Snixie$NIXIE_DisplayTime$172                                =  00020C GR
-  9 Snixie$NIXIE_DisplayTime$173                                =  000210 GR
-  9 Snixie$NIXIE_DisplayTime$174                                =  000210 GR
-  9 Snixie$NIXIE_DisplayTime$175                                =  000212 GR
-  9 Snixie$NIXIE_DisplayTime$176                                =  000217 GR
-  9 Snixie$NIXIE_DisplayTime$177                                =  00021A GR
+  9 Snixie$NIXIE_DisplayTime$132                                =  000197 GR
+  9 Snixie$NIXIE_DisplayTime$133                                =  00019A GR
+  9 Snixie$NIXIE_DisplayTime$134                                =  00019F GR
+  9 Snixie$NIXIE_DisplayTime$135                                =  0001A1 GR
+  9 Snixie$NIXIE_DisplayTime$136                                =  0001A6 GR
+  9 Snixie$NIXIE_DisplayTime$137                                =  0001A8 GR
+  9 Snixie$NIXIE_DisplayTime$138                                =  0001AA GR
+  9 Snixie$NIXIE_DisplayTime$139                                =  0001AC GR
+  9 Snixie$NIXIE_DisplayTime$140                                =  0001AE GR
+  9 Snixie$NIXIE_DisplayTime$141                                =  0001B3 GR
+  9 Snixie$NIXIE_DisplayTime$142                                =  0001B3 GR
+  9 Snixie$NIXIE_DisplayTime$143                                =  0001B3 GR
+  9 Snixie$NIXIE_DisplayTime$144                                =  0001BA GR
+  9 Snixie$NIXIE_DisplayTime$145                                =  0001C4 GR
+  9 Snixie$NIXIE_DisplayTime$146                                =  0001C5 GR
+  9 Snixie$NIXIE_DisplayTime$147                                =  0001C8 GR
+  9 Snixie$NIXIE_DisplayTime$148                                =  0001C8 GR
+  9 Snixie$NIXIE_DisplayTime$149                                =  0001C9 GR
+  9 Snixie$NIXIE_DisplayTime$150                                =  0001CD GR
+  9 Snixie$NIXIE_DisplayTime$151                                =  0001CD GR
+  9 Snixie$NIXIE_DisplayTime$152                                =  0001CF GR
+  9 Snixie$NIXIE_DisplayTime$153                                =  0001D4 GR
+  9 Snixie$NIXIE_DisplayTime$154                                =  0001D7 GR
+  9 Snixie$NIXIE_DisplayTime$155                                =  0001E0 GR
+  9 Snixie$NIXIE_DisplayTime$156                                =  0001E3 GR
+  9 Snixie$NIXIE_DisplayTime$157                                =  0001E6 GR
+  9 Snixie$NIXIE_DisplayTime$158                                =  0001F1 GR
+  9 Snixie$NIXIE_DisplayTime$159                                =  0001F5 GR
+  9 Snixie$NIXIE_DisplayTime$160                                =  0001F6 GR
+  9 Snixie$NIXIE_DisplayTime$161                                =  0001FA GR
+  9 Snixie$NIXIE_DisplayTime$162                                =  0001FA GR
+  9 Snixie$NIXIE_DisplayTime$163                                =  0001FC GR
+  9 Snixie$NIXIE_DisplayTime$164                                =  000201 GR
+  9 Snixie$NIXIE_DisplayTime$165                                =  000204 GR
+  9 Snixie$NIXIE_DisplayTime$166                                =  00020D GR
+  9 Snixie$NIXIE_DisplayTime$167                                =  00021F GR
+  9 Snixie$NIXIE_DisplayTime$168                                =  000221 GR
+  9 Snixie$NIXIE_DisplayTime$169                                =  000222 GR
+  9 Snixie$NIXIE_DisplayTime$170                                =  000226 GR
+  9 Snixie$NIXIE_DisplayTime$171                                =  000226 GR
+  9 Snixie$NIXIE_DisplayTime$172                                =  000228 GR
+  9 Snixie$NIXIE_DisplayTime$173                                =  00022D GR
+  9 Snixie$NIXIE_DisplayTime$174                                =  000230 GR
+  9 Snixie$NIXIE_DisplayTime$175                                =  000237 GR
+  9 Snixie$NIXIE_DisplayTime$176                                =  000241 GR
+  9 Snixie$NIXIE_DisplayTime$177                                =  000242 GR
+  9 Snixie$NIXIE_DisplayTime$178                                =  000245 GR
+  9 Snixie$NIXIE_DisplayTime$179                                =  000245 GR
+  9 Snixie$NIXIE_DisplayTime$180                                =  000246 GR
+  9 Snixie$NIXIE_DisplayTime$181                                =  00024A GR
+  9 Snixie$NIXIE_DisplayTime$182                                =  00024A GR
+  9 Snixie$NIXIE_DisplayTime$183                                =  00024C GR
+  9 Snixie$NIXIE_DisplayTime$184                                =  000251 GR
+  9 Snixie$NIXIE_DisplayTime$185                                =  000254 GR
+  9 Snixie$NIXIE_DisplayTime$186                                =  00025D GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 11.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 Snixie$NIXIE_DisplayTime$178                                =  000223 GR
-  9 Snixie$NIXIE_DisplayTime$179                                =  000235 GR
-  9 Snixie$NIXIE_DisplayTime$180                                =  000237 GR
-  9 Snixie$NIXIE_DisplayTime$181                                =  000238 GR
-  9 Snixie$NIXIE_DisplayTime$182                                =  00023C GR
-  9 Snixie$NIXIE_DisplayTime$183                                =  00023C GR
-  9 Snixie$NIXIE_DisplayTime$184                                =  00023E GR
-  9 Snixie$NIXIE_DisplayTime$185                                =  000243 GR
-  9 Snixie$NIXIE_DisplayTime$186                                =  000246 GR
-  9 Snixie$NIXIE_DisplayTime$187                                =  00024D GR
-  9 Snixie$NIXIE_DisplayTime$188                                =  000257 GR
-  9 Snixie$NIXIE_DisplayTime$189                                =  000258 GR
-  9 Snixie$NIXIE_DisplayTime$190                                =  00025B GR
-  9 Snixie$NIXIE_DisplayTime$191                                =  00025B GR
-  9 Snixie$NIXIE_DisplayTime$192                                =  00025C GR
-  9 Snixie$NIXIE_DisplayTime$193                                =  000260 GR
-  9 Snixie$NIXIE_DisplayTime$194                                =  000260 GR
-  9 Snixie$NIXIE_DisplayTime$195                                =  000262 GR
-  9 Snixie$NIXIE_DisplayTime$196                                =  000267 GR
-  9 Snixie$NIXIE_DisplayTime$197                                =  00026A GR
-  9 Snixie$NIXIE_DisplayTime$198                                =  000273 GR
-  9 Snixie$NIXIE_DisplayTime$199                                =  000276 GR
-  9 Snixie$NIXIE_DisplayTime$200                                =  000279 GR
-  9 Snixie$NIXIE_DisplayTime$201                                =  000284 GR
-  9 Snixie$NIXIE_DisplayTime$202                                =  000288 GR
-  9 Snixie$NIXIE_DisplayTime$203                                =  000289 GR
-  9 Snixie$NIXIE_DisplayTime$204                                =  00028D GR
-  9 Snixie$NIXIE_DisplayTime$205                                =  00028D GR
-  9 Snixie$NIXIE_DisplayTime$206                                =  00028F GR
-  9 Snixie$NIXIE_DisplayTime$207                                =  000294 GR
-  9 Snixie$NIXIE_DisplayTime$208                                =  000297 GR
-  9 Snixie$NIXIE_DisplayTime$209                                =  0002A0 GR
-  9 Snixie$NIXIE_DisplayTime$210                                =  0002B2 GR
-  9 Snixie$NIXIE_DisplayTime$211                                =  0002B4 GR
-  9 Snixie$NIXIE_DisplayTime$212                                =  0002B5 GR
-  9 Snixie$NIXIE_DisplayTime$213                                =  0002B9 GR
-  9 Snixie$NIXIE_DisplayTime$214                                =  0002B9 GR
-  9 Snixie$NIXIE_DisplayTime$215                                =  0002BB GR
-  9 Snixie$NIXIE_DisplayTime$216                                =  0002C0 GR
-  9 Snixie$NIXIE_DisplayTime$217                                =  0002C3 GR
-  9 Snixie$NIXIE_DisplayTime$218                                =  0002C5 GR
-  9 Snixie$NIXIE_DisplayTime$219                                =  0002C7 GR
-  9 Snixie$NIXIE_DisplayTime$220                                =  0002C9 GR
-  9 Snixie$NIXIE_DisplayTime$221                                =  0002CE GR
-  9 Snixie$NIXIE_DisplayTime$222                                =  0002CE GR
-  9 Snixie$NIXIE_DisplayTime$223                                =  0002CE GR
-  9 Snixie$NIXIE_DisplayTime$224                                =  0002D0 GR
-  9 Snixie$NIXIE_DisplayTime$225                                =  0002D0 GR
-  9 Snixie$NIXIE_DisplayTime$226                                =  0002D1 GR
+  9 Snixie$NIXIE_DisplayTime$187                                =  000260 GR
+  9 Snixie$NIXIE_DisplayTime$188                                =  000263 GR
+  9 Snixie$NIXIE_DisplayTime$189                                =  00026E GR
+  9 Snixie$NIXIE_DisplayTime$190                                =  000272 GR
+  9 Snixie$NIXIE_DisplayTime$191                                =  000273 GR
+  9 Snixie$NIXIE_DisplayTime$192                                =  000277 GR
+  9 Snixie$NIXIE_DisplayTime$193                                =  000277 GR
+  9 Snixie$NIXIE_DisplayTime$194                                =  000279 GR
+  9 Snixie$NIXIE_DisplayTime$195                                =  00027E GR
+  9 Snixie$NIXIE_DisplayTime$196                                =  000281 GR
+  9 Snixie$NIXIE_DisplayTime$197                                =  00028A GR
+  9 Snixie$NIXIE_DisplayTime$198                                =  00029C GR
+  9 Snixie$NIXIE_DisplayTime$199                                =  00029E GR
+  9 Snixie$NIXIE_DisplayTime$200                                =  00029F GR
+  9 Snixie$NIXIE_DisplayTime$201                                =  0002A3 GR
+  9 Snixie$NIXIE_DisplayTime$202                                =  0002A3 GR
+  9 Snixie$NIXIE_DisplayTime$203                                =  0002A5 GR
+  9 Snixie$NIXIE_DisplayTime$204                                =  0002AA GR
+  9 Snixie$NIXIE_DisplayTime$205                                =  0002AD GR
+  9 Snixie$NIXIE_DisplayTime$206                                =  0002AF GR
+  9 Snixie$NIXIE_DisplayTime$207                                =  0002B1 GR
+  9 Snixie$NIXIE_DisplayTime$208                                =  0002B3 GR
+  9 Snixie$NIXIE_DisplayTime$209                                =  0002B8 GR
+  9 Snixie$NIXIE_DisplayTime$210                                =  0002B8 GR
+  9 Snixie$NIXIE_DisplayTime$211                                =  0002B8 GR
+  9 Snixie$NIXIE_DisplayTime$212                                =  0002BA GR
+  9 Snixie$NIXIE_DisplayTime$213                                =  0002BA GR
+  9 Snixie$NIXIE_DisplayTime$214                                =  0002BB GR
   9 Snixie$NIXIE_DisplayTime$81                                 =  0000E6 GR
   9 Snixie$NIXIE_DisplayTime$82                                 =  0000E6 GR
   9 Snixie$NIXIE_DisplayTime$83                                 =  0000E8 GR
   9 Snixie$NIXIE_DisplayTime$84                                 =  0000E8 GR
-  9 Snixie$NIXIE_DisplayTime$85                                 =  000104 GR
-  9 Snixie$NIXIE_DisplayTime$86                                 =  000106 GR
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 12.
-Hexadecimal [24-Bits]
-
-Symbol Table
-
-  9 Snixie$NIXIE_DisplayTime$87                                 =  000108 GR
-  9 Snixie$NIXIE_DisplayTime$88                                 =  00010C GR
-  9 Snixie$NIXIE_DisplayTime$89                                 =  000111 GR
-  9 Snixie$NIXIE_DisplayTime$90                                 =  000111 GR
-  9 Snixie$NIXIE_DisplayTime$91                                 =  000114 GR
-  9 Snixie$NIXIE_DisplayTime$92                                 =  000117 GR
-  9 Snixie$NIXIE_DisplayTime$93                                 =  000119 GR
-  9 Snixie$NIXIE_DisplayTime$94                                 =  00011B GR
-  9 Snixie$NIXIE_DisplayTime$95                                 =  00011D GR
-  9 Snixie$NIXIE_DisplayTime$96                                 =  000121 GR
-  9 Snixie$NIXIE_DisplayTime$97                                 =  000126 GR
-  9 Snixie$NIXIE_DisplayTime$98                                 =  000128 GR
-  9 Snixie$NIXIE_DisplayTime$99                                 =  00012A GR
+  9 Snixie$NIXIE_DisplayTime$85                                 =  000109 GR
+  9 Snixie$NIXIE_DisplayTime$86                                 =  000111 GR
+  9 Snixie$NIXIE_DisplayTime$87                                 =  000113 GR
+  9 Snixie$NIXIE_DisplayTime$88                                 =  000116 GR
+  9 Snixie$NIXIE_DisplayTime$89                                 =  00011B GR
+  9 Snixie$NIXIE_DisplayTime$90                                 =  00011B GR
+  9 Snixie$NIXIE_DisplayTime$91                                 =  00011E GR
+  9 Snixie$NIXIE_DisplayTime$92                                 =  000121 GR
+  9 Snixie$NIXIE_DisplayTime$93                                 =  000123 GR
+  9 Snixie$NIXIE_DisplayTime$94                                 =  000125 GR
+  9 Snixie$NIXIE_DisplayTime$95                                 =  000127 GR
+  9 Snixie$NIXIE_DisplayTime$96                                 =  00012A GR
+  9 Snixie$NIXIE_DisplayTime$97                                 =  00012F GR
+  9 Snixie$NIXIE_DisplayTime$98                                 =  00012F GR
+  9 Snixie$NIXIE_DisplayTime$99                                 =  000132 GR
   9 Snixie$NIXIE_Init$10                                        =  00000C GR
   9 Snixie$NIXIE_Init$11                                        =  00000E GR
   9 Snixie$NIXIE_Init$12                                        =  000010 GR
@@ -684,6 +658,11 @@ Symbol Table
   9 Snixie$NIXIE_Init$15                                        =  000017 GR
   9 Snixie$NIXIE_Init$16                                        =  000019 GR
   9 Snixie$NIXIE_Init$17                                        =  00001B GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 12.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
   9 Snixie$NIXIE_Init$18                                        =  00001D GR
   9 Snixie$NIXIE_Init$19                                        =  00001F GR
   9 Snixie$NIXIE_Init$20                                        =  000024 GR
@@ -718,15 +697,10 @@ Symbol Table
   9 Snixie$delay$2                                              =  000000 GR
   9 Snixie$delay$3                                              =  000000 GR
   9 Snixie$delay$4                                              =  000009 GR
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 13.
-Hexadecimal [24-Bits]
-
-Symbol Table
-
   9 Snixie$delay$5                                              =  000009 GR
   9 Snixie$delay$6                                              =  00000A GR
   9 XG$NIXIE_DisplayChar$0$0                                    =  0000E5 GR
-  9 XG$NIXIE_DisplayTime$0$0                                    =  0002D0 GR
+  9 XG$NIXIE_DisplayTime$0$0                                    =  0002BA GR
   9 XG$NIXIE_Init$0$0                                           =  00004F GR
   9 XG$delay$0$0                                                =  000009 GR
     _GPIO_Init                                                     ****** GX
@@ -742,10 +716,15 @@ Symbol Table
     _SPI_SendData                                                  ****** GX
     __divsint                                                      ****** GX
     __modsint                                                      ****** GX
-  8 __xinit__aaaa                                                  000000 R
-  2 _aaaa                                                          000000 GR
+  8 __xinit__tube_state                                            000000 R
   9 _delay                                                         000000 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 13.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
     _strchr                                                        ****** GX
+  2 _tube_state                                                    000000 GR
 
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 14.
@@ -755,19 +734,19 @@ Area Table
 
    0 _CODE                                      size      0   flags    0
    1 DATA                                       size      0   flags    0
-   2 INITIALIZED                                size      2   flags    0
+   2 INITIALIZED                                size      1   flags    0
    3 DABS                                       size      0   flags    8
    4 HOME                                       size      0   flags    0
    5 GSINIT                                     size      0   flags    0
    6 GSFINAL                                    size      0   flags    0
    7 CONST                                      size      0   flags    0
-   8 INITIALIZER                                size      2   flags    0
-   9 CODE                                       size    2D1   flags    0
+   8 INITIALIZER                                size      1   flags    0
+   9 CODE                                       size    2BB   flags    0
    A CABS                                       size      0   flags    8
-   B .debug_line                                size    294   flags  100
-   C .debug_loc                                 size    644   flags  100
+   B .debug_line                                size    283   flags  100
+   C .debug_loc                                 size    5D8   flags  100
    D .debug_abbrev                              size     A5   flags  100
-   E .debug_info                                size    25A   flags  100
-   F .debug_pubnames                            size     60   flags  100
-  10 .debug_frame                               size    41D   flags  100
+   E .debug_info                                size    26D   flags  100
+   F .debug_pubnames                            size     66   flags  100
+  10 .debug_frame                               size    3DE   flags  100
 

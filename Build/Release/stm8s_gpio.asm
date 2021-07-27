@@ -11,6 +11,7 @@
 	.globl _GPIO_Init
 	.globl _GPIO_WriteHigh
 	.globl _GPIO_WriteLow
+	.globl _GPIO_ReadInputPin
 ;--------------------------------------------------------
 ; ram data
 ;--------------------------------------------------------
@@ -178,6 +179,17 @@ _GPIO_WriteLow:
 	ld	(x), a
 ;	Source/Std_Lib/Src/stm8s_gpio.c: 170: }
 	pop	a
+	ret
+;	Source/Std_Lib/Src/stm8s_gpio.c: 213: BitStatus GPIO_ReadInputPin(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef GPIO_Pin)
+;	-----------------------------------------
+;	 function GPIO_ReadInputPin
+;	-----------------------------------------
+_GPIO_ReadInputPin:
+;	Source/Std_Lib/Src/stm8s_gpio.c: 215: return ((BitStatus)(GPIOx->IDR & (uint8_t)GPIO_Pin));
+	ldw	x, (0x03, sp)
+	ld	a, (0x1, x)
+	and	a, (0x05, sp)
+;	Source/Std_Lib/Src/stm8s_gpio.c: 216: }
 	ret
 	.area CODE
 	.area CONST

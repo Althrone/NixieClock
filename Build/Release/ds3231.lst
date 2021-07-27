@@ -93,7 +93,7 @@
       000024 1F 03            [ 2]   93 	ldw	(0x03, sp), x
       000026 20 E0            [ 2]   94 	jra	00103$
       000028                         95 00101$:
-                                     96 ;	Source/Device/Src/ds3231.c: 42: DS3231_TimeSturcture.seconds=(DS3231_Buf[0]&0x0F)+((DS3231_Buf[0]&0xF0)>>4)*10;
+                                     96 ;	Source/Device/Src/ds3231.c: 44: DS3231_TimeSturcture.seconds=(DS3231_Buf[0]&0x0F)+((DS3231_Buf[0]&0xF0)>>4)*10;
       000028 C6u00u00         [ 1]   97 	ld	a, _DS3231_Buf+0
       00002B 97               [ 1]   98 	ld	xl, a
       00002C A4 0F            [ 1]   99 	and	a, #0x0f
@@ -112,7 +112,7 @@
       00003D 9F               [ 1]  112 	ld	a, xl
       00003E 1B 04            [ 1]  113 	add	a, (0x04, sp)
       000040 C7u00u00         [ 1]  114 	ld	_DS3231_TimeSturcture+0, a
-                                    115 ;	Source/Device/Src/ds3231.c: 43: DS3231_TimeSturcture.minutes=(DS3231_Buf[1]&0x0F)+((DS3231_Buf[1]&0xF0)>>4)*10;
+                                    115 ;	Source/Device/Src/ds3231.c: 45: DS3231_TimeSturcture.minutes=(DS3231_Buf[1]&0x0F)+((DS3231_Buf[1]&0xF0)>>4)*10;
       000043 90 AEr00r01      [ 2]  116 	ldw	y, #(_DS3231_TimeSturcture + 0)+1
       000047 C6u00u01         [ 1]  117 	ld	a, _DS3231_Buf+1
       00004A 97               [ 1]  118 	ld	xl, a
@@ -132,7 +132,7 @@
       00005C 9F               [ 1]  132 	ld	a, xl
       00005D 1B 04            [ 1]  133 	add	a, (0x04, sp)
       00005F 90 F7            [ 1]  134 	ld	(y), a
-                                    135 ;	Source/Device/Src/ds3231.c: 44: DS3231_TimeSturcture.hours=(DS3231_Buf[2]&0x0F)+((DS3231_Buf[2]&0xF0)>>4)*10;
+                                    135 ;	Source/Device/Src/ds3231.c: 46: DS3231_TimeSturcture.hours=(DS3231_Buf[2]&0x0F)+((DS3231_Buf[2]&0xF0)>>4)*10;
       000061 90 AEr00r02      [ 2]  136 	ldw	y, #(_DS3231_TimeSturcture + 0)+2
       000065 C6u00u02         [ 1]  137 	ld	a, _DS3231_Buf+2
       000068 97               [ 1]  138 	ld	xl, a
@@ -152,12 +152,12 @@
       00007A 9F               [ 1]  152 	ld	a, xl
       00007B 1B 04            [ 1]  153 	add	a, (0x04, sp)
       00007D 90 F7            [ 1]  154 	ld	(y), a
-                                    155 ;	Source/Device/Src/ds3231.c: 45: DS3231_TimeSturcture.day=(DS3231_Buf[3]&0x0F);
+                                    155 ;	Source/Device/Src/ds3231.c: 47: DS3231_TimeSturcture.day=(DS3231_Buf[3]&0x0F);
       00007F AEr00r03         [ 2]  156 	ldw	x, #(_DS3231_TimeSturcture + 0)+3
       000082 C6u00u03         [ 1]  157 	ld	a, _DS3231_Buf+3
       000085 A4 0F            [ 1]  158 	and	a, #0x0f
       000087 F7               [ 1]  159 	ld	(x), a
-                                    160 ;	Source/Device/Src/ds3231.c: 46: DS3231_TimeSturcture.date=(DS3231_Buf[4]&0x0F)+((DS3231_Buf[4]&0xF0)>>4)*10;
+                                    160 ;	Source/Device/Src/ds3231.c: 48: DS3231_TimeSturcture.date=(DS3231_Buf[4]&0x0F)+((DS3231_Buf[4]&0xF0)>>4)*10;
       000088 90 AEr00r04      [ 2]  161 	ldw	y, #(_DS3231_TimeSturcture + 0)+4
       00008C C6u00u04         [ 1]  162 	ld	a, _DS3231_Buf+4
       00008F 97               [ 1]  163 	ld	xl, a
@@ -177,7 +177,7 @@
       0000A1 9F               [ 1]  177 	ld	a, xl
       0000A2 1B 04            [ 1]  178 	add	a, (0x04, sp)
       0000A4 90 F7            [ 1]  179 	ld	(y), a
-                                    180 ;	Source/Device/Src/ds3231.c: 47: DS3231_TimeSturcture.month=(DS3231_Buf[5]&0x0F)+((DS3231_Buf[5]&0xF0)>>4)*10;
+                                    180 ;	Source/Device/Src/ds3231.c: 49: DS3231_TimeSturcture.month=(DS3231_Buf[5]&0x0F)+((DS3231_Buf[5]&0xF0)>>4)*10;
       0000A6 90 AEr00r05      [ 2]  181 	ldw	y, #(_DS3231_TimeSturcture + 0)+5
       0000AA C6u00u05         [ 1]  182 	ld	a, _DS3231_Buf+5
       0000AD 97               [ 1]  183 	ld	xl, a
@@ -197,7 +197,7 @@
       0000BF 9F               [ 1]  197 	ld	a, xl
       0000C0 1B 04            [ 1]  198 	add	a, (0x04, sp)
       0000C2 90 F7            [ 1]  199 	ld	(y), a
-                                    200 ;	Source/Device/Src/ds3231.c: 48: DS3231_TimeSturcture.year=2000+(DS3231_Buf[6]&0x0F)+((DS3231_Buf[6]&0xF0)>>4)*10;
+                                    200 ;	Source/Device/Src/ds3231.c: 50: DS3231_TimeSturcture.year=2000+(DS3231_Buf[6]&0x0F)+((DS3231_Buf[6]&0xF0)>>4)*10;
       0000C4 90 AEr00r06      [ 2]  201 	ldw	y, #(_DS3231_TimeSturcture + 0)+6
       0000C8 C6u00u06         [ 1]  202 	ld	a, _DS3231_Buf+6
       0000CB 0F 01            [ 1]  203 	clr	(0x01, sp)
@@ -225,7 +225,7 @@
       0000E9 5B 02            [ 2]  225 	addw	sp, #2
       0000EB 72 FB 03         [ 2]  226 	addw	x, (0x03, sp)
       0000EE 90 FF            [ 2]  227 	ldw	(y), x
-                                    228 ;	Source/Device/Src/ds3231.c: 49: }
+                                    228 ;	Source/Device/Src/ds3231.c: 51: }
       0000F0 5B 04            [ 2]  229 	addw	sp, #4
       0000F2 81               [ 4]  230 	ret
                                     231 	.area CODE

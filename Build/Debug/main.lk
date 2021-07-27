@@ -13,6 +13,9 @@ Build/Debug/stm8s_clk.rel
 Build/Debug/stm8s_spi.rel
 Build/Debug/stm8s_uart1.rel
 Build/Debug/stm8s_beep.rel
+Build/Debug/stm8s_exti.rel
+Build/Debug/stm8s_itc.rel
+Build/Debug/stm8s_tim4.rel
 Build/Debug/soft_i2c.rel
 Build/Debug/nixie.rel
 Build/Debug/ds3231.rel

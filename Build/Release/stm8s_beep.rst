@@ -52,60 +52,60 @@
                                      52 ;	-----------------------------------------
                                      53 ;	 function BEEP_DeInit
                                      54 ;	-----------------------------------------
-      00856A                         55 _BEEP_DeInit:
+      00875F                         55 _BEEP_DeInit:
                                      56 ;	Source/Std_Lib/Src/stm8s_beep.c: 56: BEEP->CSR = BEEP_CSR_RESET_VALUE;
-      00856A 35 1F 50 F3      [ 1]   57 	mov	0x50f3+0, #0x1f
+      00875F 35 1F 50 F3      [ 1]   57 	mov	0x50f3+0, #0x1f
                                      58 ;	Source/Std_Lib/Src/stm8s_beep.c: 57: }
-      00856E 81               [ 4]   59 	ret
+      008763 81               [ 4]   59 	ret
                                      60 ;	Source/Std_Lib/Src/stm8s_beep.c: 67: void BEEP_Init(BEEP_Frequency_TypeDef BEEP_Frequency)
                                      61 ;	-----------------------------------------
                                      62 ;	 function BEEP_Init
                                      63 ;	-----------------------------------------
-      00856F                         64 _BEEP_Init:
+      008764                         64 _BEEP_Init:
                                      65 ;	Source/Std_Lib/Src/stm8s_beep.c: 73: if ((BEEP->CSR & BEEP_CSR_BEEPDIV) == BEEP_CSR_BEEPDIV)
-      00856F C6 50 F3         [ 1]   66 	ld	a, 0x50f3
-      008572 A4 1F            [ 1]   67 	and	a, #0x1f
-      008574 A1 1F            [ 1]   68 	cp	a, #0x1f
-      008576 26 10            [ 1]   69 	jrne	00102$
+      008764 C6 50 F3         [ 1]   66 	ld	a, 0x50f3
+      008767 A4 1F            [ 1]   67 	and	a, #0x1f
+      008769 A1 1F            [ 1]   68 	cp	a, #0x1f
+      00876B 26 10            [ 1]   69 	jrne	00102$
                                      70 ;	Source/Std_Lib/Src/stm8s_beep.c: 75: BEEP->CSR &= (uint8_t)(~BEEP_CSR_BEEPDIV); /* Clear bits */
-      008578 C6 50 F3         [ 1]   71 	ld	a, 0x50f3
-      00857B A4 E0            [ 1]   72 	and	a, #0xe0
-      00857D C7 50 F3         [ 1]   73 	ld	0x50f3, a
+      00876D C6 50 F3         [ 1]   71 	ld	a, 0x50f3
+      008770 A4 E0            [ 1]   72 	and	a, #0xe0
+      008772 C7 50 F3         [ 1]   73 	ld	0x50f3, a
                                      74 ;	Source/Std_Lib/Src/stm8s_beep.c: 76: BEEP->CSR |= BEEP_CALIBRATION_DEFAULT;
-      008580 C6 50 F3         [ 1]   75 	ld	a, 0x50f3
-      008583 AA 0B            [ 1]   76 	or	a, #0x0b
-      008585 C7 50 F3         [ 1]   77 	ld	0x50f3, a
-      008588                         78 00102$:
+      008775 C6 50 F3         [ 1]   75 	ld	a, 0x50f3
+      008778 AA 0B            [ 1]   76 	or	a, #0x0b
+      00877A C7 50 F3         [ 1]   77 	ld	0x50f3, a
+      00877D                         78 00102$:
                                      79 ;	Source/Std_Lib/Src/stm8s_beep.c: 80: BEEP->CSR &= (uint8_t)(~BEEP_CSR_BEEPSEL);
-      008588 C6 50 F3         [ 1]   80 	ld	a, 0x50f3
-      00858B A4 3F            [ 1]   81 	and	a, #0x3f
-      00858D C7 50 F3         [ 1]   82 	ld	0x50f3, a
+      00877D C6 50 F3         [ 1]   80 	ld	a, 0x50f3
+      008780 A4 3F            [ 1]   81 	and	a, #0x3f
+      008782 C7 50 F3         [ 1]   82 	ld	0x50f3, a
                                      83 ;	Source/Std_Lib/Src/stm8s_beep.c: 81: BEEP->CSR |= (uint8_t)(BEEP_Frequency);
-      008590 C6 50 F3         [ 1]   84 	ld	a, 0x50f3
-      008593 1A 03            [ 1]   85 	or	a, (0x03, sp)
-      008595 C7 50 F3         [ 1]   86 	ld	0x50f3, a
+      008785 C6 50 F3         [ 1]   84 	ld	a, 0x50f3
+      008788 1A 03            [ 1]   85 	or	a, (0x03, sp)
+      00878A C7 50 F3         [ 1]   86 	ld	0x50f3, a
                                      87 ;	Source/Std_Lib/Src/stm8s_beep.c: 82: }
-      008598 81               [ 4]   88 	ret
+      00878D 81               [ 4]   88 	ret
                                      89 ;	Source/Std_Lib/Src/stm8s_beep.c: 91: void BEEP_Cmd(FunctionalState NewState)
                                      90 ;	-----------------------------------------
                                      91 ;	 function BEEP_Cmd
                                      92 ;	-----------------------------------------
-      008599                         93 _BEEP_Cmd:
+      00878E                         93 _BEEP_Cmd:
                                      94 ;	Source/Std_Lib/Src/stm8s_beep.c: 96: BEEP->CSR |= BEEP_CSR_BEEPEN;
-      008599 C6 50 F3         [ 1]   95 	ld	a, 0x50f3
+      00878E C6 50 F3         [ 1]   95 	ld	a, 0x50f3
                                      96 ;	Source/Std_Lib/Src/stm8s_beep.c: 93: if (NewState != DISABLE)
-      00859C 0D 03            [ 1]   97 	tnz	(0x03, sp)
-      00859E 27 06            [ 1]   98 	jreq	00102$
+      008791 0D 03            [ 1]   97 	tnz	(0x03, sp)
+      008793 27 06            [ 1]   98 	jreq	00102$
                                      99 ;	Source/Std_Lib/Src/stm8s_beep.c: 96: BEEP->CSR |= BEEP_CSR_BEEPEN;
-      0085A0 AA 20            [ 1]  100 	or	a, #0x20
-      0085A2 C7 50 F3         [ 1]  101 	ld	0x50f3, a
-      0085A5 81               [ 4]  102 	ret
-      0085A6                        103 00102$:
+      008795 AA 20            [ 1]  100 	or	a, #0x20
+      008797 C7 50 F3         [ 1]  101 	ld	0x50f3, a
+      00879A 81               [ 4]  102 	ret
+      00879B                        103 00102$:
                                     104 ;	Source/Std_Lib/Src/stm8s_beep.c: 101: BEEP->CSR &= (uint8_t)(~BEEP_CSR_BEEPEN);
-      0085A6 A4 DF            [ 1]  105 	and	a, #0xdf
-      0085A8 C7 50 F3         [ 1]  106 	ld	0x50f3, a
+      00879B A4 DF            [ 1]  105 	and	a, #0xdf
+      00879D C7 50 F3         [ 1]  106 	ld	0x50f3, a
                                     107 ;	Source/Std_Lib/Src/stm8s_beep.c: 103: }
-      0085AB 81               [ 4]  108 	ret
+      0087A0 81               [ 4]  108 	ret
                                     109 	.area CODE
                                     110 	.area CONST
                                     111 	.area INITIALIZER

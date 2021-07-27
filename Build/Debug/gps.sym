@@ -7,364 +7,526 @@ Symbol Table
     .__.ABS.                                                    =  000000 G
     .__.CPU.                                                    =  000000 L
     .__.H$L.                                                    =  000001 L
-  9 A$gpsld/Debug/gps$103                                          00001A GR
-  9 A$gpsld/Debug/gps$105                                          00001C GR
-  9 A$gpsld/Debug/gps$107                                          00001E GR
-  9 A$gpsld/Debug/gps$109                                          000020 GR
-  9 A$gpsld/Debug/gps$110                                          000023 GR
-  9 A$gpsld/Debug/gps$114                                          000025 GR
-  9 A$gpsld/Debug/gps$116                                          000027 GR
-  9 A$gpsld/Debug/gps$118                                          000029 GR
-  9 A$gpsld/Debug/gps$120                                          00002B GR
-  9 A$gpsld/Debug/gps$121                                          00002E GR
-  9 A$gpsld/Debug/gps$125                                          000030 GR
-  9 A$gpsld/Debug/gps$127                                          000032 GR
-  9 A$gpsld/Debug/gps$128                                          000035 GR
-  9 A$gpsld/Debug/gps$134                                          000036 GR
-  9 A$gpsld/Debug/gps$143                                          000037 GR
-  9 A$gpsld/Debug/gps$149                                          000039 GR
-  9 A$gpsld/Debug/gps$151                                          00003B GR
-  9 A$gpsld/Debug/gps$152                                          00003F GR
-  9 A$gpsld/Debug/gps$155                                          000041 GR
-  9 A$gpsld/Debug/gps$156                                          000044 GR
-  9 A$gpsld/Debug/gps$157                                          000046 GR
-  9 A$gpsld/Debug/gps$158                                          000047 GR
-  9 A$gpsld/Debug/gps$159                                          00004A GR
-  9 A$gpsld/Debug/gps$160                                          00004D GR
-  9 A$gpsld/Debug/gps$161                                          00004F GR
-  9 A$gpsld/Debug/gps$162                                          000050 GR
-  9 A$gpsld/Debug/gps$163                                          000053 GR
-  9 A$gpsld/Debug/gps$164                                          000054 GR
-  9 A$gpsld/Debug/gps$165                                          000055 GR
-  9 A$gpsld/Debug/gps$166                                          000056 GR
-  9 A$gpsld/Debug/gps$167                                          000058 GR
+  9 A$gpsld/Debug/gps$101                                          000015 GR
+  9 A$gpsld/Debug/gps$103                                          000017 GR
+  9 A$gpsld/Debug/gps$104                                          00001A GR
+  9 A$gpsld/Debug/gps$108                                          00001C GR
+  9 A$gpsld/Debug/gps$111                                          00001F GR
+  9 A$gpsld/Debug/gps$113                                          000021 GR
+  9 A$gpsld/Debug/gps$115                                          000023 GR
+  9 A$gpsld/Debug/gps$117                                          000025 GR
+  9 A$gpsld/Debug/gps$119                                          000027 GR
+  9 A$gpsld/Debug/gps$121                                          000029 GR
+  9 A$gpsld/Debug/gps$123                                          00002B GR
+  9 A$gpsld/Debug/gps$125                                          00002D GR
+  9 A$gpsld/Debug/gps$126                                          00002E GR
+  9 A$gpsld/Debug/gps$128                                          00002F GR
+  9 A$gpsld/Debug/gps$129                                          000032 GR
+  9 A$gpsld/Debug/gps$133                                          000034 GR
+  9 A$gpsld/Debug/gps$135                                          000036 GR
+  9 A$gpsld/Debug/gps$137                                          000038 GR
+  9 A$gpsld/Debug/gps$139                                          00003A GR
+  9 A$gpsld/Debug/gps$140                                          00003D GR
+  9 A$gpsld/Debug/gps$144                                          00003F GR
+  9 A$gpsld/Debug/gps$146                                          000041 GR
+  9 A$gpsld/Debug/gps$148                                          000043 GR
+  9 A$gpsld/Debug/gps$150                                          000045 GR
+  9 A$gpsld/Debug/gps$151                                          000048 GR
+  9 A$gpsld/Debug/gps$155                                          00004A GR
+  9 A$gpsld/Debug/gps$157                                          00004C GR
+  9 A$gpsld/Debug/gps$158                                          00004F GR
+  9 A$gpsld/Debug/gps$163                                          000050 GR
+  9 A$gpsld/Debug/gps$164                                          000052 GR
+  9 A$gpsld/Debug/gps$165                                          000054 GR
+  9 A$gpsld/Debug/gps$166                                          000055 GR
+  9 A$gpsld/Debug/gps$167                                          000057 GR
   9 A$gpsld/Debug/gps$168                                          000059 GR
-  9 A$gpsld/Debug/gps$169                                          00005C GR
-  9 A$gpsld/Debug/gps$170                                          00005D GR
-  9 A$gpsld/Debug/gps$171                                          00005F GR
-  9 A$gpsld/Debug/gps$174                                          000060 GR
-  9 A$gpsld/Debug/gps$175                                          000062 GR
-  9 A$gpsld/Debug/gps$179                                          000064 GR
-  9 A$gpsld/Debug/gps$180                                          000067 GR
-  9 A$gpsld/Debug/gps$181                                          000068 GR
-  9 A$gpsld/Debug/gps$182                                          00006A GR
-  9 A$gpsld/Debug/gps$185                                          00006B GR
-  9 A$gpsld/Debug/gps$186                                          00006F GR
-  9 A$gpsld/Debug/gps$187                                          000072 GR
-  9 A$gpsld/Debug/gps$188                                          000073 GR
-  9 A$gpsld/Debug/gps$189                                          000075 GR
-  9 A$gpsld/Debug/gps$190                                          000077 GR
-  9 A$gpsld/Debug/gps$191                                          00007A GR
-  9 A$gpsld/Debug/gps$192                                          00007B GR
-  9 A$gpsld/Debug/gps$193                                          00007D GR
-  9 A$gpsld/Debug/gps$194                                          00007E GR
+  9 A$gpsld/Debug/gps$169                                          00005A GR
+  9 A$gpsld/Debug/gps$170                                          00005C GR
+  9 A$gpsld/Debug/gps$171                                          00005E GR
+  9 A$gpsld/Debug/gps$172                                          00005F GR
+  9 A$gpsld/Debug/gps$173                                          000061 GR
+  9 A$gpsld/Debug/gps$174                                          000062 GR
+  9 A$gpsld/Debug/gps$175                                          000064 GR
+  9 A$gpsld/Debug/gps$176                                          000066 GR
+  9 A$gpsld/Debug/gps$177                                          000067 GR
+  9 A$gpsld/Debug/gps$178                                          000069 GR
+  9 A$gpsld/Debug/gps$179                                          00006B GR
+  9 A$gpsld/Debug/gps$180                                          00006C GR
+  9 A$gpsld/Debug/gps$181                                          00006E GR
+  9 A$gpsld/Debug/gps$182                                          000070 GR
+  9 A$gpsld/Debug/gps$183                                          000071 GR
+  9 A$gpsld/Debug/gps$184                                          000073 GR
+  9 A$gpsld/Debug/gps$185                                          000075 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$gpsld/Debug/gps$195                                          000080 GR
-  9 A$gpsld/Debug/gps$196                                          000081 GR
-  9 A$gpsld/Debug/gps$199                                          000083 GR
-  9 A$gpsld/Debug/gps$203                                          000085 GR
-  9 A$gpsld/Debug/gps$211                                          000086 GR
-  9 A$gpsld/Debug/gps$215                                          000087 GR
-  9 A$gpsld/Debug/gps$217                                          000089 GR
-  9 A$gpsld/Debug/gps$219                                          00008B GR
-  9 A$gpsld/Debug/gps$220                                          00008E GR
-  9 A$gpsld/Debug/gps$222                                          00008F GR
-  9 A$gpsld/Debug/gps$223                                          000090 GR
-  9 A$gpsld/Debug/gps$228                                          000092 GR
-  9 A$gpsld/Debug/gps$229                                          000095 GR
-  9 A$gpsld/Debug/gps$230                                          000097 GR
-  9 A$gpsld/Debug/gps$234                                          000099 GR
-  9 A$gpsld/Debug/gps$235                                          00009A GR
-  9 A$gpsld/Debug/gps$236                                          00009D GR
-  9 A$gpsld/Debug/gps$237                                          00009E GR
-  9 A$gpsld/Debug/gps$238                                          0000A1 GR
-  9 A$gpsld/Debug/gps$240                                          0000A2 GR
-  9 A$gpsld/Debug/gps$241                                          0000A5 GR
-  9 A$gpsld/Debug/gps$243                                          0000A6 GR
-  9 A$gpsld/Debug/gps$246                                          0000A7 GR
-  9 A$gpsld/Debug/gps$248                                          0000AB GR
-  9 A$gpsld/Debug/gps$252                                          0000AD GR
-  9 A$gpsld/Debug/gps$254                                          0000B1 GR
-  9 A$gpsld/Debug/gps$258                                          0000B3 GR
-  9 A$gpsld/Debug/gps$260                                          0000B5 GR
-  9 A$gpsld/Debug/gps$262                                          0000B7 GR
-  9 A$gpsld/Debug/gps$263                                          0000BA GR
-  9 A$gpsld/Debug/gps$265                                          0000BB GR
-  9 A$gpsld/Debug/gps$266                                          0000BC GR
-  9 A$gpsld/Debug/gps$271                                          0000BE GR
-  9 A$gpsld/Debug/gps$274                                          0000C1 GR
-  9 A$gpsld/Debug/gps$277                                          0000C5 GR
-  9 A$gpsld/Debug/gps$278                                          0000C8 GR
-  9 A$gpsld/Debug/gps$279                                          0000C9 GR
-  9 A$gpsld/Debug/gps$284                                          0000CB GR
-  9 A$gpsld/Debug/gps$291                                          0000CE GR
-  9 A$gpsld/Debug/gps$300                                          0000CF GR
-  9 A$gpsld/Debug/gps$304                                          0000D1 GR
-  9 A$gpsld/Debug/gps$305                                          0000D4 GR
-  9 A$gpsld/Debug/gps$306                                          0000D6 GR
-  9 A$gpsld/Debug/gps$307                                          0000D8 GR
-  9 A$gpsld/Debug/gps$308                                          0000D9 GR
-  9 A$gpsld/Debug/gps$309                                          0000DB GR
-  9 A$gpsld/Debug/gps$310                                          0000DF GR
-  9 A$gpsld/Debug/gps$311                                          0000E2 GR
-  9 A$gpsld/Debug/gps$312                                          0000E4 GR
-  9 A$gpsld/Debug/gps$313                                          0000E5 GR
-  9 A$gpsld/Debug/gps$314                                          0000E7 GR
-  9 A$gpsld/Debug/gps$315                                          0000E9 GR
-  9 A$gpsld/Debug/gps$316                                          0000EB GR
-  9 A$gpsld/Debug/gps$317                                          0000EE GR
-  9 A$gpsld/Debug/gps$318                                          0000EF GR
+  9 A$gpsld/Debug/gps$186                                          000076 GR
+  9 A$gpsld/Debug/gps$187                                          000078 GR
+  9 A$gpsld/Debug/gps$188                                          00007A GR
+  9 A$gpsld/Debug/gps$189                                          00007B GR
+  9 A$gpsld/Debug/gps$190                                          00007D GR
+  9 A$gpsld/Debug/gps$191                                          00007E GR
+  9 A$gpsld/Debug/gps$192                                          000080 GR
+  9 A$gpsld/Debug/gps$193                                          000082 GR
+  9 A$gpsld/Debug/gps$194                                          000083 GR
+  9 A$gpsld/Debug/gps$195                                          000085 GR
+  9 A$gpsld/Debug/gps$196                                          000087 GR
+  9 A$gpsld/Debug/gps$197                                          000088 GR
+  9 A$gpsld/Debug/gps$198                                          00008A GR
+  9 A$gpsld/Debug/gps$199                                          00008C GR
+  9 A$gpsld/Debug/gps$200                                          00008D GR
+  9 A$gpsld/Debug/gps$201                                          00008F GR
+  9 A$gpsld/Debug/gps$204                                          000091 GR
+  9 A$gpsld/Debug/gps$205                                          000093 GR
+  9 A$gpsld/Debug/gps$206                                          000095 GR
+  9 A$gpsld/Debug/gps$207                                          000096 GR
+  9 A$gpsld/Debug/gps$208                                          000098 GR
+  9 A$gpsld/Debug/gps$209                                          00009A GR
+  9 A$gpsld/Debug/gps$210                                          00009B GR
+  9 A$gpsld/Debug/gps$211                                          00009D GR
+  9 A$gpsld/Debug/gps$212                                          00009F GR
+  9 A$gpsld/Debug/gps$213                                          0000A0 GR
+  9 A$gpsld/Debug/gps$214                                          0000A2 GR
+  9 A$gpsld/Debug/gps$215                                          0000A4 GR
+  9 A$gpsld/Debug/gps$216                                          0000A5 GR
+  9 A$gpsld/Debug/gps$217                                          0000A7 GR
+  9 A$gpsld/Debug/gps$218                                          0000A9 GR
+  9 A$gpsld/Debug/gps$219                                          0000AA GR
+  9 A$gpsld/Debug/gps$220                                          0000AC GR
+  9 A$gpsld/Debug/gps$221                                          0000AE GR
+  9 A$gpsld/Debug/gps$222                                          0000AF GR
+  9 A$gpsld/Debug/gps$223                                          0000B1 GR
+  9 A$gpsld/Debug/gps$224                                          0000B3 GR
+  9 A$gpsld/Debug/gps$225                                          0000B4 GR
+  9 A$gpsld/Debug/gps$226                                          0000B6 GR
+  9 A$gpsld/Debug/gps$227                                          0000B8 GR
+  9 A$gpsld/Debug/gps$228                                          0000B9 GR
+  9 A$gpsld/Debug/gps$229                                          0000BB GR
+  9 A$gpsld/Debug/gps$230                                          0000BD GR
+  9 A$gpsld/Debug/gps$231                                          0000BE GR
+  9 A$gpsld/Debug/gps$232                                          0000C0 GR
+  9 A$gpsld/Debug/gps$233                                          0000C2 GR
+  9 A$gpsld/Debug/gps$234                                          0000C3 GR
+  9 A$gpsld/Debug/gps$235                                          0000C5 GR
+  9 A$gpsld/Debug/gps$236                                          0000C7 GR
+  9 A$gpsld/Debug/gps$237                                          0000C8 GR
+  9 A$gpsld/Debug/gps$238                                          0000CA GR
+  9 A$gpsld/Debug/gps$239                                          0000CC GR
+  9 A$gpsld/Debug/gps$240                                          0000CD GR
+  9 A$gpsld/Debug/gps$241                                          0000CF GR
+  9 A$gpsld/Debug/gps$242                                          0000D1 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 3.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$gpsld/Debug/gps$319                                          0000F1 GR
-  9 A$gpsld/Debug/gps$320                                          0000F3 GR
-  9 A$gpsld/Debug/gps$321                                          0000F4 GR
-  9 A$gpsld/Debug/gps$322                                          0000F5 GR
-  9 A$gpsld/Debug/gps$323                                          0000F6 GR
-  9 A$gpsld/Debug/gps$324                                          0000F8 GR
-  9 A$gpsld/Debug/gps$325                                          0000FA GR
-  9 A$gpsld/Debug/gps$326                                          0000FC GR
-  9 A$gpsld/Debug/gps$327                                          0000FD GR
-  9 A$gpsld/Debug/gps$328                                          0000FF GR
-  9 A$gpsld/Debug/gps$329                                          000101 GR
-  9 A$gpsld/Debug/gps$330                                          000102 GR
-  9 A$gpsld/Debug/gps$331                                          000104 GR
-  9 A$gpsld/Debug/gps$332                                          000106 GR
-  9 A$gpsld/Debug/gps$333                                          000108 GR
-  9 A$gpsld/Debug/gps$334                                          00010A GR
-  9 A$gpsld/Debug/gps$335                                          00010B GR
-  9 A$gpsld/Debug/gps$336                                          00010D GR
-  9 A$gpsld/Debug/gps$337                                          00010E GR
-  9 A$gpsld/Debug/gps$338                                          000110 GR
-  9 A$gpsld/Debug/gps$339                                          000112 GR
-  9 A$gpsld/Debug/gps$340                                          000114 GR
-  9 A$gpsld/Debug/gps$341                                          000115 GR
-  9 A$gpsld/Debug/gps$342                                          000117 GR
-  9 A$gpsld/Debug/gps$343                                          000118 GR
-  9 A$gpsld/Debug/gps$344                                          00011A GR
-  9 A$gpsld/Debug/gps$345                                          00011B GR
-  9 A$gpsld/Debug/gps$346                                          00011C GR
-  9 A$gpsld/Debug/gps$347                                          00011E GR
-  9 A$gpsld/Debug/gps$348                                          000120 GR
-  9 A$gpsld/Debug/gps$349                                          000122 GR
-  9 A$gpsld/Debug/gps$352                                          000124 GR
-  9 A$gpsld/Debug/gps$354                                          000126 GR
-  9 A$gpsld/Debug/gps$355                                          000127 GR
-  9 A$gpsld/Debug/gps$356                                          000129 GR
-  9 A$gpsld/Debug/gps$357                                          00012B GR
-  9 A$gpsld/Debug/gps$358                                          00012D GR
-  9 A$gpsld/Debug/gps$359                                          00012F GR
-  9 A$gpsld/Debug/gps$363                                          000131 GR
-  9 A$gpsld/Debug/gps$364                                          000133 GR
-  9 A$gpsld/Debug/gps$365                                          000135 GR
-  9 A$gpsld/Debug/gps$367                                          000137 GR
-  9 A$gpsld/Debug/gps$368                                          000138 GR
-  9 A$gpsld/Debug/gps$370                                          00013A GR
-  9 A$gpsld/Debug/gps$371                                          00013C GR
-  9 A$gpsld/Debug/gps$372                                          00013D GR
-  9 A$gpsld/Debug/gps$373                                          00013E GR
-  9 A$gpsld/Debug/gps$374                                          00013F GR
-  9 A$gpsld/Debug/gps$375                                          000140 GR
-  9 A$gpsld/Debug/gps$376                                          000141 GR
-  9 A$gpsld/Debug/gps$377                                          000143 GR
-  9 A$gpsld/Debug/gps$378                                          000145 GR
-  9 A$gpsld/Debug/gps$379                                          000146 GR
-  9 A$gpsld/Debug/gps$380                                          000147 GR
-  9 A$gpsld/Debug/gps$381                                          000148 GR
+  9 A$gpsld/Debug/gps$243                                          0000D2 GR
+  9 A$gpsld/Debug/gps$244                                          0000D4 GR
+  9 A$gpsld/Debug/gps$245                                          0000D6 GR
+  9 A$gpsld/Debug/gps$246                                          0000D7 GR
+  9 A$gpsld/Debug/gps$247                                          0000D9 GR
+  9 A$gpsld/Debug/gps$250                                          0000DB GR
+  9 A$gpsld/Debug/gps$253                                          0000DD GR
+  9 A$gpsld/Debug/gps$254                                          0000DF GR
+  9 A$gpsld/Debug/gps$255                                          0000E1 GR
+  9 A$gpsld/Debug/gps$260                                          0000E3 GR
+  9 A$gpsld/Debug/gps$262                                          0000E5 GR
+  9 A$gpsld/Debug/gps$264                                          0000E7 GR
+  9 A$gpsld/Debug/gps$265                                          0000EA GR
+  9 A$gpsld/Debug/gps$267                                          0000EB GR
+  9 A$gpsld/Debug/gps$268                                          0000EC GR
+  9 A$gpsld/Debug/gps$272                                          0000EE GR
+  9 A$gpsld/Debug/gps$273                                          0000EF GR
+  9 A$gpsld/Debug/gps$274                                          0000F1 GR
+  9 A$gpsld/Debug/gps$275                                          0000F2 GR
+  9 A$gpsld/Debug/gps$277                                          0000F3 GR
+  9 A$gpsld/Debug/gps$278                                          0000F4 GR
+  9 A$gpsld/Debug/gps$279                                          0000F7 GR
+  9 A$gpsld/Debug/gps$280                                          0000FA GR
+  9 A$gpsld/Debug/gps$282                                          0000FC GR
+  9 A$gpsld/Debug/gps$283                                          0000FD GR
+  9 A$gpsld/Debug/gps$285                                          0000FE GR
+  9 A$gpsld/Debug/gps$286                                          000101 GR
+  9 A$gpsld/Debug/gps$291                                          000102 GR
+  9 A$gpsld/Debug/gps$292                                          000104 GR
+  9 A$gpsld/Debug/gps$297                                          000106 GR
+  9 A$gpsld/Debug/gps$300                                          000108 GR
+  9 A$gpsld/Debug/gps$301                                          00010A GR
+  9 A$gpsld/Debug/gps$302                                          00010C GR
+  9 A$gpsld/Debug/gps$307                                          00010E GR
+  9 A$gpsld/Debug/gps$309                                          000110 GR
+  9 A$gpsld/Debug/gps$311                                          000112 GR
+  9 A$gpsld/Debug/gps$312                                          000115 GR
+  9 A$gpsld/Debug/gps$314                                          000116 GR
+  9 A$gpsld/Debug/gps$315                                          000117 GR
+  9 A$gpsld/Debug/gps$319                                          000119 GR
+  9 A$gpsld/Debug/gps$320                                          00011A GR
+  9 A$gpsld/Debug/gps$321                                          00011C GR
+  9 A$gpsld/Debug/gps$322                                          00011D GR
+  9 A$gpsld/Debug/gps$324                                          00011E GR
+  9 A$gpsld/Debug/gps$325                                          00011F GR
+  9 A$gpsld/Debug/gps$326                                          000122 GR
+  9 A$gpsld/Debug/gps$327                                          000125 GR
+  9 A$gpsld/Debug/gps$329                                          000127 GR
+  9 A$gpsld/Debug/gps$330                                          000128 GR
+  9 A$gpsld/Debug/gps$332                                          000129 GR
+  9 A$gpsld/Debug/gps$333                                          00012C GR
+  9 A$gpsld/Debug/gps$338                                          00012D GR
+  9 A$gpsld/Debug/gps$339                                          00012F GR
+  9 A$gpsld/Debug/gps$344                                          000131 GR
+  9 A$gpsld/Debug/gps$348                                          000133 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 4.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$gpsld/Debug/gps$382                                          00014A GR
-  9 A$gpsld/Debug/gps$385                                          00014C GR
-  9 A$gpsld/Debug/gps$387                                          00014E GR
-  9 A$gpsld/Debug/gps$388                                          00014F GR
-  9 A$gpsld/Debug/gps$389                                          000150 GR
-  9 A$gpsld/Debug/gps$391                                          000152 GR
-  9 A$gpsld/Debug/gps$393                                          000154 GR
-  9 A$gpsld/Debug/gps$395                                          000155 GR
-  9 A$gpsld/Debug/gps$396                                          000158 GR
-  9 A$gpsld/Debug/gps$398                                          00015A GR
-  9 A$gpsld/Debug/gps$399                                          00015C GR
-  9 A$gpsld/Debug/gps$400                                          00015E GR
-  9 A$gpsld/Debug/gps$401                                          00015F GR
-  9 A$gpsld/Debug/gps$402                                          000161 GR
-  9 A$gpsld/Debug/gps$403                                          000163 GR
-  9 A$gpsld/Debug/gps$407                                          000166 GR
-  9 A$gpsld/Debug/gps$408                                          000168 GR
-  9 A$gpsld/Debug/gps$409                                          000169 GR
-  9 A$gpsld/Debug/gps$410                                          00016A GR
-  9 A$gpsld/Debug/gps$411                                          00016C GR
-  9 A$gpsld/Debug/gps$412                                          00016E GR
-  9 A$gpsld/Debug/gps$413                                          00016F GR
-  9 A$gpsld/Debug/gps$414                                          000170 GR
-  9 A$gpsld/Debug/gps$415                                          000171 GR
-  9 A$gpsld/Debug/gps$416                                          000173 GR
-  9 A$gpsld/Debug/gps$417                                          000174 GR
-  9 A$gpsld/Debug/gps$418                                          000177 GR
-  9 A$gpsld/Debug/gps$419                                          000178 GR
-  9 A$gpsld/Debug/gps$420                                          00017A GR
-  9 A$gpsld/Debug/gps$421                                          00017C GR
-  9 A$gpsld/Debug/gps$422                                          00017D GR
-  9 A$gpsld/Debug/gps$423                                          00017F GR
-  9 A$gpsld/Debug/gps$424                                          000181 GR
-  9 A$gpsld/Debug/gps$425                                          000183 GR
-  9 A$gpsld/Debug/gps$426                                          000185 GR
-  9 A$gpsld/Debug/gps$427                                          000187 GR
-  9 A$gpsld/Debug/gps$428                                          000189 GR
-  9 A$gpsld/Debug/gps$429                                          00018B GR
-  9 A$gpsld/Debug/gps$430                                          00018D GR
-  9 A$gpsld/Debug/gps$431                                          00018E GR
-  9 A$gpsld/Debug/gps$432                                          00018F GR
-  9 A$gpsld/Debug/gps$433                                          000190 GR
-  9 A$gpsld/Debug/gps$434                                          000192 GR
-  9 A$gpsld/Debug/gps$435                                          000193 GR
-  9 A$gpsld/Debug/gps$436                                          000196 GR
-  9 A$gpsld/Debug/gps$437                                          000197 GR
-  9 A$gpsld/Debug/gps$438                                          000198 GR
-  9 A$gpsld/Debug/gps$439                                          000199 GR
-  9 A$gpsld/Debug/gps$440                                          00019B GR
-  9 A$gpsld/Debug/gps$441                                          00019D GR
-  9 A$gpsld/Debug/gps$442                                          00019F GR
-  9 A$gpsld/Debug/gps$443                                          0001A0 GR
-  9 A$gpsld/Debug/gps$446                                          0001A2 GR
-  9 A$gpsld/Debug/gps$447                                          0001A4 GR
-  9 A$gpsld/Debug/gps$448                                          0001A6 GR
+  9 A$gpsld/Debug/gps$357                                          000134 GR
+  9 A$gpsld/Debug/gps$363                                          000136 GR
+  9 A$gpsld/Debug/gps$365                                          000138 GR
+  9 A$gpsld/Debug/gps$366                                          00013C GR
+  9 A$gpsld/Debug/gps$369                                          00013E GR
+  9 A$gpsld/Debug/gps$370                                          000141 GR
+  9 A$gpsld/Debug/gps$371                                          000143 GR
+  9 A$gpsld/Debug/gps$372                                          000144 GR
+  9 A$gpsld/Debug/gps$373                                          000147 GR
+  9 A$gpsld/Debug/gps$374                                          00014A GR
+  9 A$gpsld/Debug/gps$375                                          00014C GR
+  9 A$gpsld/Debug/gps$376                                          00014D GR
+  9 A$gpsld/Debug/gps$377                                          000150 GR
+  9 A$gpsld/Debug/gps$378                                          000151 GR
+  9 A$gpsld/Debug/gps$379                                          000152 GR
+  9 A$gpsld/Debug/gps$380                                          000153 GR
+  9 A$gpsld/Debug/gps$381                                          000155 GR
+  9 A$gpsld/Debug/gps$382                                          000156 GR
+  9 A$gpsld/Debug/gps$383                                          000159 GR
+  9 A$gpsld/Debug/gps$384                                          00015A GR
+  9 A$gpsld/Debug/gps$385                                          00015C GR
+  9 A$gpsld/Debug/gps$388                                          00015D GR
+  9 A$gpsld/Debug/gps$389                                          00015F GR
+  9 A$gpsld/Debug/gps$393                                          000161 GR
+  9 A$gpsld/Debug/gps$394                                          000165 GR
+  9 A$gpsld/Debug/gps$395                                          000167 GR
+  9 A$gpsld/Debug/gps$396                                          000168 GR
+  9 A$gpsld/Debug/gps$397                                          000169 GR
+  9 A$gpsld/Debug/gps$402                                          00016C GR
+  9 A$gpsld/Debug/gps$403                                          00016F GR
+  9 A$gpsld/Debug/gps$406                                          000171 GR
+  9 A$gpsld/Debug/gps$407                                          000173 GR
+  9 A$gpsld/Debug/gps$408                                          000175 GR
+  9 A$gpsld/Debug/gps$412                                          000177 GR
+  9 A$gpsld/Debug/gps$413                                          000179 GR
+  9 A$gpsld/Debug/gps$417                                          00017B GR
+  9 A$gpsld/Debug/gps$418                                          00017F GR
+  9 A$gpsld/Debug/gps$419                                          000182 GR
+  9 A$gpsld/Debug/gps$420                                          000183 GR
+  9 A$gpsld/Debug/gps$421                                          000185 GR
+  9 A$gpsld/Debug/gps$422                                          000188 GR
+  9 A$gpsld/Debug/gps$423                                          00018A GR
+  9 A$gpsld/Debug/gps$424                                          00018C GR
+  9 A$gpsld/Debug/gps$425                                          00018D GR
+  9 A$gpsld/Debug/gps$426                                          00018F GR
+  9 A$gpsld/Debug/gps$427                                          000190 GR
+  9 A$gpsld/Debug/gps$430                                          000192 GR
+  9 A$gpsld/Debug/gps$434                                          000194 GR
+  9 A$gpsld/Debug/gps$442                                          000195 GR
+  9 A$gpsld/Debug/gps$446                                          000196 GR
+  9 A$gpsld/Debug/gps$448                                          000198 GR
+  9 A$gpsld/Debug/gps$450                                          00019A GR
+  9 A$gpsld/Debug/gps$451                                          00019D GR
+  9 A$gpsld/Debug/gps$453                                          00019E GR
+  9 A$gpsld/Debug/gps$454                                          00019F GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 5.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$gpsld/Debug/gps$449                                          0001A7 GR
-  9 A$gpsld/Debug/gps$450                                          0001A8 GR
-  9 A$gpsld/Debug/gps$451                                          0001A9 GR
-  9 A$gpsld/Debug/gps$452                                          0001AB GR
-  9 A$gpsld/Debug/gps$453                                          0001AC GR
-  9 A$gpsld/Debug/gps$454                                          0001AF GR
-  9 A$gpsld/Debug/gps$455                                          0001B0 GR
-  9 A$gpsld/Debug/gps$456                                          0001B2 GR
-  9 A$gpsld/Debug/gps$457                                          0001B3 GR
-  9 A$gpsld/Debug/gps$458                                          0001B4 GR
-  9 A$gpsld/Debug/gps$459                                          0001B5 GR
-  9 A$gpsld/Debug/gps$460                                          0001B6 GR
-  9 A$gpsld/Debug/gps$461                                          0001B8 GR
-  9 A$gpsld/Debug/gps$462                                          0001BA GR
-  9 A$gpsld/Debug/gps$463                                          0001BC GR
-  9 A$gpsld/Debug/gps$464                                          0001BE GR
-  9 A$gpsld/Debug/gps$465                                          0001C0 GR
-  9 A$gpsld/Debug/gps$466                                          0001C1 GR
-  9 A$gpsld/Debug/gps$467                                          0001C2 GR
-  9 A$gpsld/Debug/gps$468                                          0001C3 GR
-  9 A$gpsld/Debug/gps$469                                          0001C5 GR
-  9 A$gpsld/Debug/gps$470                                          0001C6 GR
-  9 A$gpsld/Debug/gps$471                                          0001C9 GR
-  9 A$gpsld/Debug/gps$472                                          0001CA GR
-  9 A$gpsld/Debug/gps$473                                          0001CB GR
-  9 A$gpsld/Debug/gps$474                                          0001CC GR
-  9 A$gpsld/Debug/gps$475                                          0001CE GR
-  9 A$gpsld/Debug/gps$476                                          0001CF GR
-  9 A$gpsld/Debug/gps$477                                          0001D1 GR
-  9 A$gpsld/Debug/gps$478                                          0001D3 GR
-  9 A$gpsld/Debug/gps$480                                          0001D5 GR
-  9 A$gpsld/Debug/gps$481                                          0001D7 GR
-  9 A$gpsld/Debug/gps$483                                          0001D9 GR
-  9 A$gpsld/Debug/gps$484                                          0001DA GR
-  9 A$gpsld/Debug/gps$485                                          0001DB GR
-  9 A$gpsld/Debug/gps$486                                          0001DC GR
-  9 A$gpsld/Debug/gps$487                                          0001DE GR
-  9 A$gpsld/Debug/gps$489                                          0001DF GR
-  9 A$gpsld/Debug/gps$490                                          0001E1 GR
-  9 A$gpsld/Debug/gps$491                                          0001E4 GR
-  9 A$gpsld/Debug/gps$492                                          0001E5 GR
-  9 A$gpsld/Debug/gps$493                                          0001E7 GR
-  9 A$gpsld/Debug/gps$494                                          0001E8 GR
-  9 A$gpsld/Debug/gps$495                                          0001EA GR
-  9 A$gpsld/Debug/gps$496                                          0001EB GR
-  9 A$gpsld/Debug/gps$497                                          0001ED GR
-  9 A$gpsld/Debug/gps$500                                          0001EF GR
-  9 A$gpsld/Debug/gps$501                                          0001F1 GR
-  9 A$gpsld/Debug/gps$502                                          0001F2 GR
-  9 A$gpsld/Debug/gps$503                                          0001F4 GR
-  9 A$gpsld/Debug/gps$507                                          0001F7 GR
-  9 A$gpsld/Debug/gps$508                                          0001FA GR
-  9 A$gpsld/Debug/gps$509                                          0001FC GR
-  9 A$gpsld/Debug/gps$510                                          0001FE GR
-  9 A$gpsld/Debug/gps$511                                          0001FF GR
+  9 A$gpsld/Debug/gps$459                                          0001A1 GR
+  9 A$gpsld/Debug/gps$460                                          0001A4 GR
+  9 A$gpsld/Debug/gps$461                                          0001A6 GR
+  9 A$gpsld/Debug/gps$465                                          0001A8 GR
+  9 A$gpsld/Debug/gps$466                                          0001A9 GR
+  9 A$gpsld/Debug/gps$467                                          0001AC GR
+  9 A$gpsld/Debug/gps$468                                          0001AD GR
+  9 A$gpsld/Debug/gps$469                                          0001B0 GR
+  9 A$gpsld/Debug/gps$471                                          0001B1 GR
+  9 A$gpsld/Debug/gps$472                                          0001B4 GR
+  9 A$gpsld/Debug/gps$474                                          0001B5 GR
+  9 A$gpsld/Debug/gps$477                                          0001B6 GR
+  9 A$gpsld/Debug/gps$479                                          0001BA GR
+  9 A$gpsld/Debug/gps$483                                          0001BC GR
+  9 A$gpsld/Debug/gps$485                                          0001C0 GR
+  9 A$gpsld/Debug/gps$489                                          0001C2 GR
+  9 A$gpsld/Debug/gps$491                                          0001C4 GR
+  9 A$gpsld/Debug/gps$493                                          0001C6 GR
+  9 A$gpsld/Debug/gps$494                                          0001C9 GR
+  9 A$gpsld/Debug/gps$496                                          0001CA GR
+  9 A$gpsld/Debug/gps$497                                          0001CB GR
+  9 A$gpsld/Debug/gps$502                                          0001CD GR
+  9 A$gpsld/Debug/gps$505                                          0001D0 GR
+  9 A$gpsld/Debug/gps$508                                          0001D4 GR
+  9 A$gpsld/Debug/gps$509                                          0001D7 GR
+  9 A$gpsld/Debug/gps$510                                          0001D8 GR
+  9 A$gpsld/Debug/gps$515                                          0001DA GR
+  9 A$gpsld/Debug/gps$522                                          0001DD GR
+  9 A$gpsld/Debug/gps$531                                          0001DE GR
+  9 A$gpsld/Debug/gps$535                                          0001E0 GR
+  9 A$gpsld/Debug/gps$536                                          0001E3 GR
+  9 A$gpsld/Debug/gps$537                                          0001E5 GR
+  9 A$gpsld/Debug/gps$538                                          0001E7 GR
+  9 A$gpsld/Debug/gps$539                                          0001E8 GR
+  9 A$gpsld/Debug/gps$540                                          0001EA GR
+  9 A$gpsld/Debug/gps$541                                          0001EE GR
+  9 A$gpsld/Debug/gps$542                                          0001F1 GR
+  9 A$gpsld/Debug/gps$543                                          0001F3 GR
+  9 A$gpsld/Debug/gps$544                                          0001F4 GR
+  9 A$gpsld/Debug/gps$545                                          0001F6 GR
+  9 A$gpsld/Debug/gps$546                                          0001F8 GR
+  9 A$gpsld/Debug/gps$547                                          0001FA GR
+  9 A$gpsld/Debug/gps$548                                          0001FD GR
+  9 A$gpsld/Debug/gps$549                                          0001FE GR
+  9 A$gpsld/Debug/gps$550                                          000200 GR
+  9 A$gpsld/Debug/gps$551                                          000202 GR
+  9 A$gpsld/Debug/gps$552                                          000203 GR
+  9 A$gpsld/Debug/gps$553                                          000204 GR
+  9 A$gpsld/Debug/gps$554                                          000205 GR
+  9 A$gpsld/Debug/gps$555                                          000207 GR
+  9 A$gpsld/Debug/gps$556                                          000209 GR
+  9 A$gpsld/Debug/gps$557                                          00020B GR
+  9 A$gpsld/Debug/gps$558                                          00020C GR
+  9 A$gpsld/Debug/gps$559                                          00020E GR
+  9 A$gpsld/Debug/gps$560                                          000210 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 6.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$gpsld/Debug/gps$512                                          000201 GR
-  9 A$gpsld/Debug/gps$513                                          000202 GR
-  9 A$gpsld/Debug/gps$514                                          000204 GR
-  9 A$gpsld/Debug/gps$515                                          000206 GR
-  9 A$gpsld/Debug/gps$516                                          000208 GR
-  9 A$gpsld/Debug/gps$517                                          00020B GR
-  9 A$gpsld/Debug/gps$518                                          00020C GR
-  9 A$gpsld/Debug/gps$519                                          00020D GR
-  9 A$gpsld/Debug/gps$520                                          00020F GR
-  9 A$gpsld/Debug/gps$521                                          000211 GR
-  9 A$gpsld/Debug/gps$522                                          000213 GR
-  9 A$gpsld/Debug/gps$523                                          000214 GR
-  9 A$gpsld/Debug/gps$526                                          000216 GR
-  9 A$gpsld/Debug/gps$527                                          000219 GR
-  9 A$gpsld/Debug/gps$528                                          00021A GR
-  9 A$gpsld/Debug/gps$529                                          00021C GR
-  9 A$gpsld/Debug/gps$530                                          00021E GR
-  9 A$gpsld/Debug/gps$531                                          00021F GR
-  9 A$gpsld/Debug/gps$532                                          000221 GR
-  9 A$gpsld/Debug/gps$533                                          000223 GR
-  9 A$gpsld/Debug/gps$534                                          000225 GR
-  9 A$gpsld/Debug/gps$535                                          000226 GR
-  9 A$gpsld/Debug/gps$536                                          000228 GR
-  9 A$gpsld/Debug/gps$537                                          00022B GR
-  9 A$gpsld/Debug/gps$538                                          00022C GR
-  9 A$gpsld/Debug/gps$539                                          00022E GR
-  9 A$gpsld/Debug/gps$540                                          00022F GR
-  9 A$gpsld/Debug/gps$541                                          000230 GR
-  9 A$gpsld/Debug/gps$542                                          000232 GR
-  9 A$gpsld/Debug/gps$543                                          000234 GR
-  9 A$gpsld/Debug/gps$544                                          000236 GR
-  9 A$gpsld/Debug/gps$547                                          000238 GR
-  9 A$gpsld/Debug/gps$549                                          00023A GR
-  9 A$gpsld/Debug/gps$550                                          00023B GR
-  9 A$gpsld/Debug/gps$551                                          00023D GR
-  9 A$gpsld/Debug/gps$552                                          00023E GR
-  9 A$gpsld/Debug/gps$553                                          000240 GR
-  9 A$gpsld/Debug/gps$554                                          000242 GR
-  9 A$gpsld/Debug/gps$555                                          000243 GR
-  9 A$gpsld/Debug/gps$556                                          000245 GR
-  9 A$gpsld/Debug/gps$560                                          000247 GR
-  9 A$gpsld/Debug/gps$561                                          000249 GR
-  9 A$gpsld/Debug/gps$565                                          00024B GR
-  9 A$gpsld/Debug/gps$569                                          00024C GR
-  9 A$gpsld/Debug/gps$573                                          00024E GR
-  9 A$gpsld/Debug/gps$77                                           000000 GR
-  9 A$gpsld/Debug/gps$80                                           000003 GR
-  9 A$gpsld/Debug/gps$82                                           000005 GR
-  9 A$gpsld/Debug/gps$84                                           000007 GR
-  9 A$gpsld/Debug/gps$86                                           000009 GR
-  9 A$gpsld/Debug/gps$88                                           00000B GR
-  9 A$gpsld/Debug/gps$90                                           00000D GR
-  9 A$gpsld/Debug/gps$92                                           00000F GR
-  9 A$gpsld/Debug/gps$94                                           000011 GR
-  9 A$gpsld/Debug/gps$96                                           000013 GR
+  9 A$gpsld/Debug/gps$561                                          000211 GR
+  9 A$gpsld/Debug/gps$562                                          000213 GR
+  9 A$gpsld/Debug/gps$563                                          000215 GR
+  9 A$gpsld/Debug/gps$564                                          000217 GR
+  9 A$gpsld/Debug/gps$565                                          000219 GR
+  9 A$gpsld/Debug/gps$566                                          00021A GR
+  9 A$gpsld/Debug/gps$567                                          00021C GR
+  9 A$gpsld/Debug/gps$568                                          00021D GR
+  9 A$gpsld/Debug/gps$569                                          00021F GR
+  9 A$gpsld/Debug/gps$570                                          000221 GR
+  9 A$gpsld/Debug/gps$571                                          000223 GR
+  9 A$gpsld/Debug/gps$572                                          000224 GR
+  9 A$gpsld/Debug/gps$573                                          000226 GR
+  9 A$gpsld/Debug/gps$574                                          000227 GR
+  9 A$gpsld/Debug/gps$575                                          000229 GR
+  9 A$gpsld/Debug/gps$576                                          00022A GR
+  9 A$gpsld/Debug/gps$577                                          00022B GR
+  9 A$gpsld/Debug/gps$578                                          00022D GR
+  9 A$gpsld/Debug/gps$579                                          00022F GR
+  9 A$gpsld/Debug/gps$580                                          000231 GR
+  9 A$gpsld/Debug/gps$583                                          000233 GR
+  9 A$gpsld/Debug/gps$585                                          000235 GR
+  9 A$gpsld/Debug/gps$586                                          000236 GR
+  9 A$gpsld/Debug/gps$587                                          000238 GR
+  9 A$gpsld/Debug/gps$588                                          00023A GR
+  9 A$gpsld/Debug/gps$589                                          00023C GR
+  9 A$gpsld/Debug/gps$590                                          00023E GR
+  9 A$gpsld/Debug/gps$594                                          000240 GR
+  9 A$gpsld/Debug/gps$595                                          000242 GR
+  9 A$gpsld/Debug/gps$596                                          000244 GR
+  9 A$gpsld/Debug/gps$598                                          000246 GR
+  9 A$gpsld/Debug/gps$599                                          000247 GR
+  9 A$gpsld/Debug/gps$601                                          000249 GR
+  9 A$gpsld/Debug/gps$602                                          00024B GR
+  9 A$gpsld/Debug/gps$603                                          00024C GR
+  9 A$gpsld/Debug/gps$604                                          00024D GR
+  9 A$gpsld/Debug/gps$605                                          00024E GR
+  9 A$gpsld/Debug/gps$606                                          00024F GR
+  9 A$gpsld/Debug/gps$607                                          000250 GR
+  9 A$gpsld/Debug/gps$608                                          000252 GR
+  9 A$gpsld/Debug/gps$609                                          000254 GR
+  9 A$gpsld/Debug/gps$610                                          000255 GR
+  9 A$gpsld/Debug/gps$611                                          000256 GR
+  9 A$gpsld/Debug/gps$612                                          000257 GR
+  9 A$gpsld/Debug/gps$613                                          000259 GR
+  9 A$gpsld/Debug/gps$616                                          00025B GR
+  9 A$gpsld/Debug/gps$618                                          00025D GR
+  9 A$gpsld/Debug/gps$619                                          00025E GR
+  9 A$gpsld/Debug/gps$620                                          00025F GR
+  9 A$gpsld/Debug/gps$622                                          000261 GR
+  9 A$gpsld/Debug/gps$624                                          000263 GR
+  9 A$gpsld/Debug/gps$626                                          000264 GR
+  9 A$gpsld/Debug/gps$627                                          000267 GR
+  9 A$gpsld/Debug/gps$629                                          000269 GR
+  9 A$gpsld/Debug/gps$630                                          00026B GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 7.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$gpsld/Debug/gps$98                                           000015 GR
-  9 A$gpsld/Debug/gps$99                                           000018 GR
+  9 A$gpsld/Debug/gps$631                                          00026D GR
+  9 A$gpsld/Debug/gps$632                                          00026E GR
+  9 A$gpsld/Debug/gps$633                                          000270 GR
+  9 A$gpsld/Debug/gps$634                                          000272 GR
+  9 A$gpsld/Debug/gps$638                                          000275 GR
+  9 A$gpsld/Debug/gps$639                                          000277 GR
+  9 A$gpsld/Debug/gps$640                                          000278 GR
+  9 A$gpsld/Debug/gps$641                                          000279 GR
+  9 A$gpsld/Debug/gps$642                                          00027B GR
+  9 A$gpsld/Debug/gps$643                                          00027D GR
+  9 A$gpsld/Debug/gps$644                                          00027E GR
+  9 A$gpsld/Debug/gps$645                                          00027F GR
+  9 A$gpsld/Debug/gps$646                                          000280 GR
+  9 A$gpsld/Debug/gps$647                                          000282 GR
+  9 A$gpsld/Debug/gps$648                                          000283 GR
+  9 A$gpsld/Debug/gps$649                                          000286 GR
+  9 A$gpsld/Debug/gps$650                                          000287 GR
+  9 A$gpsld/Debug/gps$651                                          000289 GR
+  9 A$gpsld/Debug/gps$652                                          00028B GR
+  9 A$gpsld/Debug/gps$653                                          00028C GR
+  9 A$gpsld/Debug/gps$654                                          00028E GR
+  9 A$gpsld/Debug/gps$655                                          000290 GR
+  9 A$gpsld/Debug/gps$656                                          000292 GR
+  9 A$gpsld/Debug/gps$657                                          000294 GR
+  9 A$gpsld/Debug/gps$658                                          000296 GR
+  9 A$gpsld/Debug/gps$659                                          000298 GR
+  9 A$gpsld/Debug/gps$660                                          00029A GR
+  9 A$gpsld/Debug/gps$661                                          00029C GR
+  9 A$gpsld/Debug/gps$662                                          00029D GR
+  9 A$gpsld/Debug/gps$663                                          00029E GR
+  9 A$gpsld/Debug/gps$664                                          00029F GR
+  9 A$gpsld/Debug/gps$665                                          0002A1 GR
+  9 A$gpsld/Debug/gps$666                                          0002A2 GR
+  9 A$gpsld/Debug/gps$667                                          0002A5 GR
+  9 A$gpsld/Debug/gps$668                                          0002A6 GR
+  9 A$gpsld/Debug/gps$669                                          0002A7 GR
+  9 A$gpsld/Debug/gps$670                                          0002A8 GR
+  9 A$gpsld/Debug/gps$671                                          0002AA GR
+  9 A$gpsld/Debug/gps$672                                          0002AC GR
+  9 A$gpsld/Debug/gps$673                                          0002AE GR
+  9 A$gpsld/Debug/gps$674                                          0002AF GR
+  9 A$gpsld/Debug/gps$677                                          0002B1 GR
+  9 A$gpsld/Debug/gps$678                                          0002B3 GR
+  9 A$gpsld/Debug/gps$679                                          0002B5 GR
+  9 A$gpsld/Debug/gps$680                                          0002B6 GR
+  9 A$gpsld/Debug/gps$681                                          0002B7 GR
+  9 A$gpsld/Debug/gps$682                                          0002B8 GR
+  9 A$gpsld/Debug/gps$683                                          0002BA GR
+  9 A$gpsld/Debug/gps$684                                          0002BB GR
+  9 A$gpsld/Debug/gps$685                                          0002BE GR
+  9 A$gpsld/Debug/gps$686                                          0002BF GR
+  9 A$gpsld/Debug/gps$687                                          0002C1 GR
+  9 A$gpsld/Debug/gps$688                                          0002C2 GR
+  9 A$gpsld/Debug/gps$689                                          0002C3 GR
+  9 A$gpsld/Debug/gps$690                                          0002C4 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 8.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 A$gpsld/Debug/gps$691                                          0002C5 GR
+  9 A$gpsld/Debug/gps$692                                          0002C7 GR
+  9 A$gpsld/Debug/gps$693                                          0002C9 GR
+  9 A$gpsld/Debug/gps$694                                          0002CB GR
+  9 A$gpsld/Debug/gps$695                                          0002CD GR
+  9 A$gpsld/Debug/gps$696                                          0002CF GR
+  9 A$gpsld/Debug/gps$697                                          0002D0 GR
+  9 A$gpsld/Debug/gps$698                                          0002D1 GR
+  9 A$gpsld/Debug/gps$699                                          0002D2 GR
+  9 A$gpsld/Debug/gps$700                                          0002D4 GR
+  9 A$gpsld/Debug/gps$701                                          0002D5 GR
+  9 A$gpsld/Debug/gps$702                                          0002D8 GR
+  9 A$gpsld/Debug/gps$703                                          0002D9 GR
+  9 A$gpsld/Debug/gps$704                                          0002DA GR
+  9 A$gpsld/Debug/gps$705                                          0002DB GR
+  9 A$gpsld/Debug/gps$706                                          0002DD GR
+  9 A$gpsld/Debug/gps$707                                          0002DE GR
+  9 A$gpsld/Debug/gps$708                                          0002E0 GR
+  9 A$gpsld/Debug/gps$709                                          0002E2 GR
+  9 A$gpsld/Debug/gps$711                                          0002E4 GR
+  9 A$gpsld/Debug/gps$712                                          0002E6 GR
+  9 A$gpsld/Debug/gps$714                                          0002E8 GR
+  9 A$gpsld/Debug/gps$715                                          0002E9 GR
+  9 A$gpsld/Debug/gps$716                                          0002EA GR
+  9 A$gpsld/Debug/gps$717                                          0002EB GR
+  9 A$gpsld/Debug/gps$718                                          0002ED GR
+  9 A$gpsld/Debug/gps$720                                          0002EE GR
+  9 A$gpsld/Debug/gps$721                                          0002F0 GR
+  9 A$gpsld/Debug/gps$722                                          0002F3 GR
+  9 A$gpsld/Debug/gps$723                                          0002F4 GR
+  9 A$gpsld/Debug/gps$724                                          0002F6 GR
+  9 A$gpsld/Debug/gps$725                                          0002F7 GR
+  9 A$gpsld/Debug/gps$726                                          0002F9 GR
+  9 A$gpsld/Debug/gps$727                                          0002FA GR
+  9 A$gpsld/Debug/gps$728                                          0002FC GR
+  9 A$gpsld/Debug/gps$731                                          0002FE GR
+  9 A$gpsld/Debug/gps$732                                          000300 GR
+  9 A$gpsld/Debug/gps$733                                          000301 GR
+  9 A$gpsld/Debug/gps$734                                          000303 GR
+  9 A$gpsld/Debug/gps$738                                          000306 GR
+  9 A$gpsld/Debug/gps$739                                          000309 GR
+  9 A$gpsld/Debug/gps$740                                          00030B GR
+  9 A$gpsld/Debug/gps$741                                          00030D GR
+  9 A$gpsld/Debug/gps$742                                          00030E GR
+  9 A$gpsld/Debug/gps$743                                          000310 GR
+  9 A$gpsld/Debug/gps$744                                          000311 GR
+  9 A$gpsld/Debug/gps$745                                          000313 GR
+  9 A$gpsld/Debug/gps$746                                          000315 GR
+  9 A$gpsld/Debug/gps$747                                          000317 GR
+  9 A$gpsld/Debug/gps$748                                          00031A GR
+  9 A$gpsld/Debug/gps$749                                          00031B GR
+  9 A$gpsld/Debug/gps$750                                          00031C GR
+  9 A$gpsld/Debug/gps$751                                          00031E GR
+  9 A$gpsld/Debug/gps$752                                          000320 GR
+  9 A$gpsld/Debug/gps$753                                          000322 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 9.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 A$gpsld/Debug/gps$754                                          000323 GR
+  9 A$gpsld/Debug/gps$757                                          000325 GR
+  9 A$gpsld/Debug/gps$758                                          000328 GR
+  9 A$gpsld/Debug/gps$759                                          000329 GR
+  9 A$gpsld/Debug/gps$760                                          00032B GR
+  9 A$gpsld/Debug/gps$761                                          00032D GR
+  9 A$gpsld/Debug/gps$762                                          00032E GR
+  9 A$gpsld/Debug/gps$763                                          000330 GR
+  9 A$gpsld/Debug/gps$764                                          000332 GR
+  9 A$gpsld/Debug/gps$765                                          000334 GR
+  9 A$gpsld/Debug/gps$766                                          000335 GR
+  9 A$gpsld/Debug/gps$767                                          000337 GR
+  9 A$gpsld/Debug/gps$768                                          00033A GR
+  9 A$gpsld/Debug/gps$769                                          00033B GR
+  9 A$gpsld/Debug/gps$770                                          00033D GR
+  9 A$gpsld/Debug/gps$771                                          00033E GR
+  9 A$gpsld/Debug/gps$772                                          00033F GR
+  9 A$gpsld/Debug/gps$773                                          000341 GR
+  9 A$gpsld/Debug/gps$774                                          000343 GR
+  9 A$gpsld/Debug/gps$775                                          000345 GR
+  9 A$gpsld/Debug/gps$778                                          000347 GR
+  9 A$gpsld/Debug/gps$78                                           000000 GR
+  9 A$gpsld/Debug/gps$780                                          000349 GR
+  9 A$gpsld/Debug/gps$781                                          00034A GR
+  9 A$gpsld/Debug/gps$782                                          00034C GR
+  9 A$gpsld/Debug/gps$783                                          00034D GR
+  9 A$gpsld/Debug/gps$784                                          00034F GR
+  9 A$gpsld/Debug/gps$785                                          000351 GR
+  9 A$gpsld/Debug/gps$786                                          000352 GR
+  9 A$gpsld/Debug/gps$787                                          000354 GR
+  9 A$gpsld/Debug/gps$791                                          000356 GR
+  9 A$gpsld/Debug/gps$792                                          000358 GR
+  9 A$gpsld/Debug/gps$796                                          00035A GR
+  9 A$gpsld/Debug/gps$800                                          00035B GR
+  9 A$gpsld/Debug/gps$804                                          00035D GR
+  9 A$gpsld/Debug/gps$82                                           000002 GR
+  9 A$gpsld/Debug/gps$84                                           000004 GR
+  9 A$gpsld/Debug/gps$86                                           000006 GR
+  9 A$gpsld/Debug/gps$88                                           000008 GR
+  9 A$gpsld/Debug/gps$90                                           00000A GR
+  9 A$gpsld/Debug/gps$91                                           00000D GR
+  9 A$gpsld/Debug/gps$95                                           00000F GR
+  9 A$gpsld/Debug/gps$97                                           000011 GR
+  9 A$gpsld/Debug/gps$99                                           000013 GR
   8 Fgps$__xinit_GPS_RxBuf$0_0$0                                =  000000 GR
   8 Fgps$__xinit_num$0_0$0                                      =  000022 GR
   2 Fgps$num$0_0$0                                              =  000022 GR
@@ -376,149 +538,214 @@ Symbol Table
  10 Ldebug_CIE1_start                                              00005E R
  10 Ldebug_CIE2_end                                                0000E2 R
  10 Ldebug_CIE2_start                                              0000D4 R
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 10.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
  10 Ldebug_CIE3_end                                                000119 R
  10 Ldebug_CIE3_start                                              00010B R
   D Ldebug_abbrev                                                  000000 R
-  E Ldebug_info_end                                                000282 R
+  E Ldebug_info_end                                                000319 R
   E Ldebug_info_start                                              000004 R
-  B Ldebug_line_end                                                00018A R
+  B Ldebug_line_end                                                0001EB R
   B Ldebug_line_start                                              000004 R
   B Ldebug_line_stmt                                               000082 R
   C Ldebug_loc_start                                               000000 R
   F Ldebug_pubnames_end                                            00006F R
   F Ldebug_pubnames_start                                          000004 R
-  9 Sgps$GPS_GetTime$30                                         =  000037 GR
-  9 Sgps$GPS_GetTime$31                                         =  000037 GR
-  9 Sgps$GPS_GetTime$32                                         =  000039 GR
-  9 Sgps$GPS_GetTime$33                                         =  000039 GR
-  9 Sgps$GPS_GetTime$34                                         =  000039 GR
-  9 Sgps$GPS_GetTime$35                                         =  000039 GR
-  9 Sgps$GPS_GetTime$36                                         =  000041 GR
-  9 Sgps$GPS_GetTime$37                                         =  000060 GR
-  9 Sgps$GPS_GetTime$38                                         =  000064 GR
-  9 Sgps$GPS_GetTime$39                                         =  00006B GR
-  9 Sgps$GPS_GetTime$40                                         =  000083 GR
-  9 Sgps$GPS_GetTime$41                                         =  000085 GR
-  9 Sgps$GPS_GetTime$42                                         =  000085 GR
-  9 Sgps$GPS_GetTime$43                                         =  000086 GR
+  9 Sgps$GPS_GetTime$78                                         =  000134 GR
+  9 Sgps$GPS_GetTime$79                                         =  000134 GR
+  9 Sgps$GPS_GetTime$80                                         =  000136 GR
+  9 Sgps$GPS_GetTime$81                                         =  000136 GR
+  9 Sgps$GPS_GetTime$82                                         =  000136 GR
+  9 Sgps$GPS_GetTime$83                                         =  000136 GR
+  9 Sgps$GPS_GetTime$84                                         =  00013E GR
+  9 Sgps$GPS_GetTime$85                                         =  00015D GR
+  9 Sgps$GPS_GetTime$86                                         =  000161 GR
+  9 Sgps$GPS_GetTime$87                                         =  00016C GR
+  9 Sgps$GPS_GetTime$88                                         =  00016C GR
+  9 Sgps$GPS_GetTime$89                                         =  000171 GR
+  9 Sgps$GPS_GetTime$90                                         =  000177 GR
+  9 Sgps$GPS_GetTime$91                                         =  00017B GR
+  9 Sgps$GPS_GetTime$92                                         =  000192 GR
+  9 Sgps$GPS_GetTime$93                                         =  000194 GR
+  9 Sgps$GPS_GetTime$94                                         =  000194 GR
+  9 Sgps$GPS_GetTime$95                                         =  000195 GR
   9 Sgps$GPS_Init$0                                             =  000000 GR
   9 Sgps$GPS_Init$1                                             =  000000 GR
   9 Sgps$GPS_Init$10                                            =  000011 GR
   9 Sgps$GPS_Init$11                                            =  000013 GR
   9 Sgps$GPS_Init$12                                            =  000015 GR
-  9 Sgps$GPS_Init$13                                            =  00001A GR
-  9 Sgps$GPS_Init$14                                            =  00001A GR
+  9 Sgps$GPS_Init$13                                            =  000017 GR
+  9 Sgps$GPS_Init$14                                            =  00001C GR
   9 Sgps$GPS_Init$15                                            =  00001C GR
-  9 Sgps$GPS_Init$16                                            =  00001E GR
-  9 Sgps$GPS_Init$17                                            =  000020 GR
-  9 Sgps$GPS_Init$18                                            =  000025 GR
+  9 Sgps$GPS_Init$16                                            =  00001F GR
+  9 Sgps$GPS_Init$17                                            =  000021 GR
+  9 Sgps$GPS_Init$18                                            =  000023 GR
   9 Sgps$GPS_Init$19                                            =  000025 GR
-  9 Sgps$GPS_Init$2                                             =  000000 GR
+  9 Sgps$GPS_Init$2                                             =  000002 GR
   9 Sgps$GPS_Init$20                                            =  000027 GR
   9 Sgps$GPS_Init$21                                            =  000029 GR
   9 Sgps$GPS_Init$22                                            =  00002B GR
-  9 Sgps$GPS_Init$23                                            =  000030 GR
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 8.
-Hexadecimal [24-Bits]
-
-Symbol Table
-
-  9 Sgps$GPS_Init$24                                            =  000030 GR
-  9 Sgps$GPS_Init$25                                            =  000032 GR
-  9 Sgps$GPS_Init$26                                            =  000036 GR
+  9 Sgps$GPS_Init$23                                            =  00002D GR
+  9 Sgps$GPS_Init$24                                            =  00002F GR
+  9 Sgps$GPS_Init$25                                            =  000034 GR
+  9 Sgps$GPS_Init$26                                            =  000034 GR
   9 Sgps$GPS_Init$27                                            =  000036 GR
-  9 Sgps$GPS_Init$28                                            =  000036 GR
-  9 Sgps$GPS_Init$29                                            =  000037 GR
-  9 Sgps$GPS_Init$3                                             =  000003 GR
-  9 Sgps$GPS_Init$4                                             =  000005 GR
-  9 Sgps$GPS_Init$5                                             =  000007 GR
-  9 Sgps$GPS_Init$6                                             =  000009 GR
-  9 Sgps$GPS_Init$7                                             =  00000B GR
-  9 Sgps$GPS_Init$8                                             =  00000D GR
-  9 Sgps$GPS_Init$9                                             =  00000F GR
-  9 Sgps$UART1_RX_IRQHandler$44                                 =  000086 GR
-  9 Sgps$UART1_RX_IRQHandler$45                                 =  000087 GR
-  9 Sgps$UART1_RX_IRQHandler$46                                 =  000087 GR
-  9 Sgps$UART1_RX_IRQHandler$47                                 =  000089 GR
-  9 Sgps$UART1_RX_IRQHandler$48                                 =  00008B GR
-  9 Sgps$UART1_RX_IRQHandler$49                                 =  00008F GR
-  9 Sgps$UART1_RX_IRQHandler$50                                 =  000092 GR
-  9 Sgps$UART1_RX_IRQHandler$51                                 =  000092 GR
-  9 Sgps$UART1_RX_IRQHandler$52                                 =  000092 GR
-  9 Sgps$UART1_RX_IRQHandler$53                                 =  000099 GR
-  9 Sgps$UART1_RX_IRQHandler$54                                 =  000099 GR
-  9 Sgps$UART1_RX_IRQHandler$55                                 =  0000A2 GR
-  9 Sgps$UART1_RX_IRQHandler$56                                 =  0000A6 GR
-  9 Sgps$UART1_RX_IRQHandler$57                                 =  0000A7 GR
-  9 Sgps$UART1_RX_IRQHandler$58                                 =  0000AB GR
-  9 Sgps$UART1_RX_IRQHandler$59                                 =  0000AD GR
-  9 Sgps$UART1_RX_IRQHandler$60                                 =  0000B1 GR
-  9 Sgps$UART1_RX_IRQHandler$61                                 =  0000B3 GR
-  9 Sgps$UART1_RX_IRQHandler$62                                 =  0000B5 GR
-  9 Sgps$UART1_RX_IRQHandler$63                                 =  0000B7 GR
-  9 Sgps$UART1_RX_IRQHandler$64                                 =  0000BB GR
-  9 Sgps$UART1_RX_IRQHandler$65                                 =  0000BE GR
-  9 Sgps$UART1_RX_IRQHandler$66                                 =  0000BE GR
-  9 Sgps$UART1_RX_IRQHandler$67                                 =  0000BE GR
-  9 Sgps$UART1_RX_IRQHandler$68                                 =  0000C1 GR
-  9 Sgps$UART1_RX_IRQHandler$69                                 =  0000C5 GR
-  9 Sgps$UART1_RX_IRQHandler$70                                 =  0000CB GR
-  9 Sgps$UART1_RX_IRQHandler$71                                 =  0000CB GR
-  9 Sgps$UART1_RX_IRQHandler$72                                 =  0000CB GR
-  9 Sgps$UART1_RX_IRQHandler$73                                 =  0000CE GR
-  9 Sgps$UART1_RX_IRQHandler$74                                 =  0000CE GR
-  9 Sgps$UART1_RX_IRQHandler$75                                 =  0000CE GR
-  9 Sgps$UART1_RX_IRQHandler$76                                 =  0000CF GR
-  9 Sgps$checksum$77                                            =  0000CF GR
-  9 Sgps$checksum$78                                            =  0000CF GR
-  9 Sgps$checksum$79                                            =  0000D1 GR
-  9 Sgps$checksum$80                                            =  0000D1 GR
-  9 Sgps$checksum$81                                            =  000131 GR
-  9 Sgps$checksum$82                                            =  000131 GR
-  9 Sgps$checksum$83                                            =  000137 GR
-  9 Sgps$checksum$84                                            =  000152 GR
-  9 Sgps$checksum$85                                            =  000154 GR
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 9.
+  9 Sgps$GPS_Init$28                                            =  000038 GR
+  9 Sgps$GPS_Init$29                                            =  00003A GR
+  9 Sgps$GPS_Init$3                                             =  000002 GR
+  9 Sgps$GPS_Init$30                                            =  00003F GR
+  9 Sgps$GPS_Init$31                                            =  00003F GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 11.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 Sgps$checksum$86                                            =  000155 GR
-  9 Sgps$checksum$87                                            =  00015A GR
-  9 Sgps$checksum$88                                            =  000166 GR
-  9 Sgps$checksum$89                                            =  0001A2 GR
-  9 Sgps$checksum$90                                            =  0001EF GR
-  9 Sgps$checksum$91                                            =  0001F7 GR
-  9 Sgps$checksum$92                                            =  000216 GR
-  9 Sgps$checksum$93                                            =  000247 GR
-  9 Sgps$checksum$94                                            =  000247 GR
-  9 Sgps$checksum$95                                            =  00024B GR
-  9 Sgps$checksum$96                                            =  00024C GR
-  9 Sgps$checksum$97                                            =  00024E GR
-  9 Sgps$checksum$98                                            =  00024E GR
-  9 Sgps$checksum$99                                            =  00024F GR
-  9 XFgps$checksum$0$0                                          =  00024E GR
-  9 XG$GPS_GetTime$0$0                                          =  000085 GR
-  9 XG$GPS_Init$0$0                                             =  000036 GR
-  9 XG$UART1_RX_IRQHandler$0$0                                  =  0000CE GR
-  9 _GPS_GetTime                                                   000037 GR
+  9 Sgps$GPS_Init$32                                            =  000041 GR
+  9 Sgps$GPS_Init$33                                            =  000043 GR
+  9 Sgps$GPS_Init$34                                            =  000045 GR
+  9 Sgps$GPS_Init$35                                            =  00004A GR
+  9 Sgps$GPS_Init$36                                            =  00004A GR
+  9 Sgps$GPS_Init$37                                            =  00004C GR
+  9 Sgps$GPS_Init$38                                            =  000050 GR
+  9 Sgps$GPS_Init$39                                            =  000050 GR
+  9 Sgps$GPS_Init$4                                             =  000004 GR
+  9 Sgps$GPS_Init$40                                            =  000050 GR
+  9 Sgps$GPS_Init$41                                            =  000091 GR
+  9 Sgps$GPS_Init$42                                            =  0000DB GR
+  9 Sgps$GPS_Init$43                                            =  0000DD GR
+  9 Sgps$GPS_Init$44                                            =  0000E3 GR
+  9 Sgps$GPS_Init$45                                            =  0000E3 GR
+  9 Sgps$GPS_Init$46                                            =  0000E5 GR
+  9 Sgps$GPS_Init$47                                            =  0000E7 GR
+  9 Sgps$GPS_Init$48                                            =  0000EB GR
+  9 Sgps$GPS_Init$49                                            =  0000EE GR
+  9 Sgps$GPS_Init$5                                             =  000006 GR
+  9 Sgps$GPS_Init$50                                            =  0000EE GR
+  9 Sgps$GPS_Init$51                                            =  0000F3 GR
+  9 Sgps$GPS_Init$52                                            =  0000FC GR
+  9 Sgps$GPS_Init$53                                            =  0000FE GR
+  9 Sgps$GPS_Init$54                                            =  000102 GR
+  9 Sgps$GPS_Init$55                                            =  000102 GR
+  9 Sgps$GPS_Init$56                                            =  000102 GR
+  9 Sgps$GPS_Init$57                                            =  000106 GR
+  9 Sgps$GPS_Init$58                                            =  000106 GR
+  9 Sgps$GPS_Init$59                                            =  000108 GR
+  9 Sgps$GPS_Init$6                                             =  000008 GR
+  9 Sgps$GPS_Init$60                                            =  00010E GR
+  9 Sgps$GPS_Init$61                                            =  00010E GR
+  9 Sgps$GPS_Init$62                                            =  000110 GR
+  9 Sgps$GPS_Init$63                                            =  000112 GR
+  9 Sgps$GPS_Init$64                                            =  000116 GR
+  9 Sgps$GPS_Init$65                                            =  000119 GR
+  9 Sgps$GPS_Init$66                                            =  000119 GR
+  9 Sgps$GPS_Init$67                                            =  00011E GR
+  9 Sgps$GPS_Init$68                                            =  000127 GR
+  9 Sgps$GPS_Init$69                                            =  000129 GR
+  9 Sgps$GPS_Init$7                                             =  00000A GR
+  9 Sgps$GPS_Init$70                                            =  00012D GR
+  9 Sgps$GPS_Init$71                                            =  00012D GR
+  9 Sgps$GPS_Init$72                                            =  00012D GR
+  9 Sgps$GPS_Init$73                                            =  000131 GR
+  9 Sgps$GPS_Init$74                                            =  000131 GR
+  9 Sgps$GPS_Init$75                                            =  000133 GR
+  9 Sgps$GPS_Init$76                                            =  000133 GR
+  9 Sgps$GPS_Init$77                                            =  000134 GR
+  9 Sgps$GPS_Init$8                                             =  00000F GR
+  9 Sgps$GPS_Init$9                                             =  00000F GR
+  9 Sgps$UART1_RX_IRQHandler$100                                =  00019A GR
+  9 Sgps$UART1_RX_IRQHandler$101                                =  00019E GR
+  9 Sgps$UART1_RX_IRQHandler$102                                =  0001A1 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 12.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 Sgps$UART1_RX_IRQHandler$103                                =  0001A1 GR
+  9 Sgps$UART1_RX_IRQHandler$104                                =  0001A1 GR
+  9 Sgps$UART1_RX_IRQHandler$105                                =  0001A8 GR
+  9 Sgps$UART1_RX_IRQHandler$106                                =  0001A8 GR
+  9 Sgps$UART1_RX_IRQHandler$107                                =  0001B1 GR
+  9 Sgps$UART1_RX_IRQHandler$108                                =  0001B5 GR
+  9 Sgps$UART1_RX_IRQHandler$109                                =  0001B6 GR
+  9 Sgps$UART1_RX_IRQHandler$110                                =  0001BA GR
+  9 Sgps$UART1_RX_IRQHandler$111                                =  0001BC GR
+  9 Sgps$UART1_RX_IRQHandler$112                                =  0001C0 GR
+  9 Sgps$UART1_RX_IRQHandler$113                                =  0001C2 GR
+  9 Sgps$UART1_RX_IRQHandler$114                                =  0001C4 GR
+  9 Sgps$UART1_RX_IRQHandler$115                                =  0001C6 GR
+  9 Sgps$UART1_RX_IRQHandler$116                                =  0001CA GR
+  9 Sgps$UART1_RX_IRQHandler$117                                =  0001CD GR
+  9 Sgps$UART1_RX_IRQHandler$118                                =  0001CD GR
+  9 Sgps$UART1_RX_IRQHandler$119                                =  0001CD GR
+  9 Sgps$UART1_RX_IRQHandler$120                                =  0001D0 GR
+  9 Sgps$UART1_RX_IRQHandler$121                                =  0001D4 GR
+  9 Sgps$UART1_RX_IRQHandler$122                                =  0001DA GR
+  9 Sgps$UART1_RX_IRQHandler$123                                =  0001DA GR
+  9 Sgps$UART1_RX_IRQHandler$124                                =  0001DA GR
+  9 Sgps$UART1_RX_IRQHandler$125                                =  0001DD GR
+  9 Sgps$UART1_RX_IRQHandler$126                                =  0001DD GR
+  9 Sgps$UART1_RX_IRQHandler$127                                =  0001DD GR
+  9 Sgps$UART1_RX_IRQHandler$128                                =  0001DE GR
+  9 Sgps$UART1_RX_IRQHandler$96                                 =  000195 GR
+  9 Sgps$UART1_RX_IRQHandler$97                                 =  000196 GR
+  9 Sgps$UART1_RX_IRQHandler$98                                 =  000196 GR
+  9 Sgps$UART1_RX_IRQHandler$99                                 =  000198 GR
+  9 Sgps$checksum$129                                           =  0001DE GR
+  9 Sgps$checksum$130                                           =  0001DE GR
+  9 Sgps$checksum$131                                           =  0001E0 GR
+  9 Sgps$checksum$132                                           =  0001E0 GR
+  9 Sgps$checksum$133                                           =  000240 GR
+  9 Sgps$checksum$134                                           =  000240 GR
+  9 Sgps$checksum$135                                           =  000246 GR
+  9 Sgps$checksum$136                                           =  000261 GR
+  9 Sgps$checksum$137                                           =  000263 GR
+  9 Sgps$checksum$138                                           =  000264 GR
+  9 Sgps$checksum$139                                           =  000269 GR
+  9 Sgps$checksum$140                                           =  000275 GR
+  9 Sgps$checksum$141                                           =  0002B1 GR
+  9 Sgps$checksum$142                                           =  0002FE GR
+  9 Sgps$checksum$143                                           =  000306 GR
+  9 Sgps$checksum$144                                           =  000325 GR
+  9 Sgps$checksum$145                                           =  000356 GR
+  9 Sgps$checksum$146                                           =  000356 GR
+  9 Sgps$checksum$147                                           =  00035A GR
+  9 Sgps$checksum$148                                           =  00035B GR
+  9 Sgps$checksum$149                                           =  00035D GR
+  9 Sgps$checksum$150                                           =  00035D GR
+  9 Sgps$checksum$151                                           =  00035E GR
+  9 XFgps$checksum$0$0                                          =  00035D GR
+  9 XG$GPS_GetTime$0$0                                          =  000194 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 13.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 XG$GPS_Init$0$0                                             =  000133 GR
+  9 XG$UART1_RX_IRQHandler$0$0                                  =  0001DD GR
+    _GPIO_Init                                                     ****** GX
+  9 _GPS_GetTime                                                   000134 GR
   9 _GPS_Init                                                      000000 GR
   2 _GPS_RxBuf                                                     000000 GR
   1 _GPS_TimeDataSturcture                                         000000 GR
     _UART1_Cmd                                                     ****** GX
     _UART1_DeInit                                                  ****** GX
+    _UART1_GetFlagStatus                                           ****** GX
     _UART1_GetITStatus                                             ****** GX
     _UART1_ITConfig                                                ****** GX
     _UART1_Init                                                    ****** GX
-  9 _UART1_RX_IRQHandler                                           000086 GR
+  9 _UART1_RX_IRQHandler                                           000195 GR
     _UART1_ReceiveData8                                            ****** GX
+    _UART1_SendData8                                               ****** GX
     __divsint                                                      ****** GX
   8 __xinit__GPS_RxBuf                                             000000 R
   8 __xinit__num                                                   000022 R
-  9 _checksum                                                      0000CF R
+  9 _checksum                                                      0001DE R
   2 _num                                                           000022 R
 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 10.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 14.
 Hexadecimal [24-Bits]
 
 Area Table
@@ -532,12 +759,12 @@ Area Table
    6 GSFINAL                                    size      0   flags    0
    7 CONST                                      size      0   flags    0
    8 INITIALIZER                                size     23   flags    0
-   9 CODE                                       size    24F   flags    0
+   9 CODE                                       size    35E   flags    0
    A CABS                                       size      0   flags    8
-   B .debug_line                                size    18A   flags  100
-   C .debug_loc                                 size    230   flags  100
-   D .debug_abbrev                              size     C3   flags  100
-   E .debug_info                                size    282   flags  100
+   B .debug_line                                size    1EB   flags  100
+   C .debug_loc                                 size    374   flags  100
+   D .debug_abbrev                              size     B4   flags  100
+   E .debug_info                                size    319   flags  100
    F .debug_pubnames                            size     6F   flags  100
-  10 .debug_frame                               size    1BC   flags  100
+  10 .debug_frame                               size    279   flags  100
 

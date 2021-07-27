@@ -349,8 +349,8 @@ typedef enum {
 /** @addtogroup CLK_Exported_functions
   * @{
   */
-void CLK_DeInit(void);
-// void CLK_HSECmd(FunctionalState NewState);
+// void CLK_DeInit(void);
+void CLK_HSECmd(FunctionalState NewState);
 // void CLK_HSICmd(FunctionalState NewState);
 // void CLK_LSICmd(FunctionalState NewState);
 // void CLK_CCOCmd(FunctionalState NewState);
@@ -358,7 +358,7 @@ void CLK_DeInit(void);
 // void CLK_FastHaltWakeUpCmd(FunctionalState NewState);
 // void CLK_SlowActiveHaltWakeUpCmd(FunctionalState NewState);
 // void CLK_PeripheralClockConfig(CLK_Peripheral_TypeDef CLK_Peripheral, FunctionalState NewState);
-// ErrorStatus CLK_ClockSwitchConfig(CLK_SwitchMode_TypeDef CLK_SwitchMode, CLK_Source_TypeDef CLK_NewClock, FunctionalState ITState, CLK_CurrentClockState_TypeDef CLK_CurrentClockState);
+ErrorStatus CLK_ClockSwitchConfig(CLK_SwitchMode_TypeDef CLK_SwitchMode, CLK_Source_TypeDef CLK_NewClock, FunctionalState ITState, CLK_CurrentClockState_TypeDef CLK_CurrentClockState);
 // void CLK_HSIPrescalerConfig(CLK_Prescaler_TypeDef HSIPrescaler);
 // void CLK_CCOConfig(CLK_Output_TypeDef CLK_CCO);
 // void CLK_ITConfig(CLK_IT_TypeDef CLK_IT, FunctionalState NewState);

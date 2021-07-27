@@ -11,6 +11,7 @@
 	.globl _GPIO_Init
 	.globl _GPIO_WriteHigh
 	.globl _GPIO_WriteLow
+	.globl _GPIO_ReadInputPin
 ;--------------------------------------------------------
 ; ram data
 ;--------------------------------------------------------
@@ -244,6 +245,24 @@ _GPIO_WriteLow:
 	XG$GPIO_WriteLow$0$0 ==.
 	ret
 	Sstm8s_gpio$GPIO_WriteLow$61 ==.
+	Sstm8s_gpio$GPIO_ReadInputPin$62 ==.
+;	Source/Std_Lib/Src/stm8s_gpio.c: 213: BitStatus GPIO_ReadInputPin(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef GPIO_Pin)
+;	-----------------------------------------
+;	 function GPIO_ReadInputPin
+;	-----------------------------------------
+_GPIO_ReadInputPin:
+	Sstm8s_gpio$GPIO_ReadInputPin$63 ==.
+	Sstm8s_gpio$GPIO_ReadInputPin$64 ==.
+;	Source/Std_Lib/Src/stm8s_gpio.c: 215: return ((BitStatus)(GPIOx->IDR & (uint8_t)GPIO_Pin));
+	ldw	x, (0x03, sp)
+	ld	a, (0x1, x)
+	and	a, (0x05, sp)
+	Sstm8s_gpio$GPIO_ReadInputPin$65 ==.
+;	Source/Std_Lib/Src/stm8s_gpio.c: 216: }
+	Sstm8s_gpio$GPIO_ReadInputPin$66 ==.
+	XG$GPIO_ReadInputPin$0$0 ==.
+	ret
+	Sstm8s_gpio$GPIO_ReadInputPin$67 ==.
 	.area CODE
 	.area CONST
 	.area INITIALIZER
@@ -426,10 +445,39 @@ Ldebug_line_stmt:
 	.db	0
 	.uleb128	1
 	.db	1
+	.db	0
+	.uleb128	5
+	.db	2
+	.dw	0,(Sstm8s_gpio$GPIO_ReadInputPin$62)
+	.db	3
+	.sleb128	212
+	.db	1
+	.db	9
+	.dw	Sstm8s_gpio$GPIO_ReadInputPin$64-Sstm8s_gpio$GPIO_ReadInputPin$62
+	.db	3
+	.sleb128	2
+	.db	1
+	.db	9
+	.dw	Sstm8s_gpio$GPIO_ReadInputPin$65-Sstm8s_gpio$GPIO_ReadInputPin$64
+	.db	3
+	.sleb128	1
+	.db	1
+	.db	9
+	.dw	1+Sstm8s_gpio$GPIO_ReadInputPin$66-Sstm8s_gpio$GPIO_ReadInputPin$65
+	.db	0
+	.uleb128	1
+	.db	1
 Ldebug_line_end:
 
 	.area .debug_loc (NOLOAD)
 Ldebug_loc_start:
+	.dw	0,(Sstm8s_gpio$GPIO_ReadInputPin$63)
+	.dw	0,(Sstm8s_gpio$GPIO_ReadInputPin$67)
+	.dw	2
+	.db	120
+	.sleb128	1
+	.dw	0,0
+	.dw	0,0
 	.dw	0,(Sstm8s_gpio$GPIO_WriteLow$59)
 	.dw	0,(Sstm8s_gpio$GPIO_WriteLow$61)
 	.dw	2
@@ -530,6 +578,23 @@ Ldebug_abbrev:
 	.uleb128	19
 	.uleb128	0
 	.uleb128	0
+	.uleb128	11
+	.uleb128	46
+	.db	1
+	.uleb128	3
+	.uleb128	8
+	.uleb128	17
+	.uleb128	1
+	.uleb128	18
+	.uleb128	1
+	.uleb128	63
+	.uleb128	12
+	.uleb128	64
+	.uleb128	6
+	.uleb128	73
+	.uleb128	19
+	.uleb128	0
+	.uleb128	0
 	.uleb128	7
 	.uleb128	5
 	.db	0
@@ -591,21 +656,6 @@ Ldebug_abbrev:
 	.uleb128	1
 	.uleb128	0
 	.uleb128	0
-	.uleb128	11
-	.uleb128	46
-	.db	1
-	.uleb128	3
-	.uleb128	8
-	.uleb128	17
-	.uleb128	1
-	.uleb128	18
-	.uleb128	1
-	.uleb128	63
-	.uleb128	12
-	.uleb128	64
-	.uleb128	6
-	.uleb128	0
-	.uleb128	0
 	.uleb128	8
 	.uleb128	11
 	.db	1
@@ -661,7 +711,7 @@ Ldebug_info_start:
 	.dw	0,(_GPIO_Init)
 	.dw	0,(XG$GPIO_Init$0$0+1)
 	.db	1
-	.dw	0,(Ldebug_loc_start+64)
+	.dw	0,(Ldebug_loc_start+84)
 	.uleb128	3
 	.dw	0,187
 	.ascii "GPIO_struct"
@@ -773,7 +823,30 @@ Ldebug_info_start:
 	.dw	0,(_GPIO_WriteHigh)
 	.dw	0,(XG$GPIO_WriteHigh$0$0+1)
 	.db	1
-	.dw	0,(Ldebug_loc_start+44)
+	.dw	0,(Ldebug_loc_start+64)
+	.uleb128	7
+	.db	2
+	.db	145
+	.sleb128	2
+	.ascii "GPIOx"
+	.db	0
+	.dw	0,187
+	.uleb128	7
+	.db	2
+	.db	145
+	.sleb128	4
+	.ascii "PortPins"
+	.db	0
+	.dw	0,337
+	.uleb128	0
+	.uleb128	2
+	.dw	0,483
+	.ascii "GPIO_WriteLow"
+	.db	0
+	.dw	0,(_GPIO_WriteLow)
+	.dw	0,(XG$GPIO_WriteLow$0$0+1)
+	.db	1
+	.dw	0,(Ldebug_loc_start+20)
 	.uleb128	7
 	.db	2
 	.db	145
@@ -790,12 +863,13 @@ Ldebug_info_start:
 	.dw	0,337
 	.uleb128	0
 	.uleb128	11
-	.ascii "GPIO_WriteLow"
+	.ascii "GPIO_ReadInputPin"
 	.db	0
-	.dw	0,(_GPIO_WriteLow)
-	.dw	0,(XG$GPIO_WriteLow$0$0+1)
+	.dw	0,(_GPIO_ReadInputPin)
+	.dw	0,(XG$GPIO_ReadInputPin$0$0+1)
 	.db	1
 	.dw	0,(Ldebug_loc_start)
+	.dw	0,337
 	.uleb128	7
 	.db	2
 	.db	145
@@ -807,7 +881,7 @@ Ldebug_info_start:
 	.db	2
 	.db	145
 	.sleb128	4
-	.ascii "PortPins"
+	.ascii "GPIO_Pin"
 	.db	0
 	.dw	0,337
 	.uleb128	0
@@ -831,6 +905,9 @@ Ldebug_pubnames_start:
 	.dw	0,419
 	.ascii "GPIO_WriteLow"
 	.db	0
+	.dw	0,483
+	.ascii "GPIO_ReadInputPin"
+	.db	0
 	.dw	0,0
 Ldebug_pubnames_end:
 
@@ -851,20 +928,12 @@ Ldebug_CIE0_start:
 	.db	137
 	.uleb128	1
 Ldebug_CIE0_end:
-	.dw	0,33
+	.dw	0,19
 	.dw	0,(Ldebug_CIE0_start-4)
-	.dw	0,(Sstm8s_gpio$GPIO_WriteLow$55)	;initial loc
-	.dw	0,Sstm8s_gpio$GPIO_WriteLow$61-Sstm8s_gpio$GPIO_WriteLow$55
+	.dw	0,(Sstm8s_gpio$GPIO_ReadInputPin$63)	;initial loc
+	.dw	0,Sstm8s_gpio$GPIO_ReadInputPin$67-Sstm8s_gpio$GPIO_ReadInputPin$63
 	.db	1
-	.dw	0,(Sstm8s_gpio$GPIO_WriteLow$55)
-	.db	14
-	.uleb128	2
-	.db	1
-	.dw	0,(Sstm8s_gpio$GPIO_WriteLow$56)
-	.db	14
-	.uleb128	3
-	.db	1
-	.dw	0,(Sstm8s_gpio$GPIO_WriteLow$59)
+	.dw	0,(Sstm8s_gpio$GPIO_ReadInputPin$63)
 	.db	14
 	.uleb128	2
 
@@ -885,12 +954,20 @@ Ldebug_CIE1_start:
 	.db	137
 	.uleb128	1
 Ldebug_CIE1_end:
-	.dw	0,19
+	.dw	0,33
 	.dw	0,(Ldebug_CIE1_start-4)
-	.dw	0,(Sstm8s_gpio$GPIO_WriteHigh$49)	;initial loc
-	.dw	0,Sstm8s_gpio$GPIO_WriteHigh$53-Sstm8s_gpio$GPIO_WriteHigh$49
+	.dw	0,(Sstm8s_gpio$GPIO_WriteLow$55)	;initial loc
+	.dw	0,Sstm8s_gpio$GPIO_WriteLow$61-Sstm8s_gpio$GPIO_WriteLow$55
 	.db	1
-	.dw	0,(Sstm8s_gpio$GPIO_WriteHigh$49)
+	.dw	0,(Sstm8s_gpio$GPIO_WriteLow$55)
+	.db	14
+	.uleb128	2
+	.db	1
+	.dw	0,(Sstm8s_gpio$GPIO_WriteLow$56)
+	.db	14
+	.uleb128	3
+	.db	1
+	.dw	0,(Sstm8s_gpio$GPIO_WriteLow$59)
 	.db	14
 	.uleb128	2
 
@@ -911,8 +988,34 @@ Ldebug_CIE2_start:
 	.db	137
 	.uleb128	1
 Ldebug_CIE2_end:
-	.dw	0,89
+	.dw	0,19
 	.dw	0,(Ldebug_CIE2_start-4)
+	.dw	0,(Sstm8s_gpio$GPIO_WriteHigh$49)	;initial loc
+	.dw	0,Sstm8s_gpio$GPIO_WriteHigh$53-Sstm8s_gpio$GPIO_WriteHigh$49
+	.db	1
+	.dw	0,(Sstm8s_gpio$GPIO_WriteHigh$49)
+	.db	14
+	.uleb128	2
+
+	.area .debug_frame (NOLOAD)
+	.dw	0
+	.dw	Ldebug_CIE3_end-Ldebug_CIE3_start
+Ldebug_CIE3_start:
+	.dw	0xffff
+	.dw	0xffff
+	.db	1
+	.db	0
+	.uleb128	1
+	.sleb128	-1
+	.db	9
+	.db	12
+	.uleb128	8
+	.uleb128	2
+	.db	137
+	.uleb128	1
+Ldebug_CIE3_end:
+	.dw	0,89
+	.dw	0,(Ldebug_CIE3_start-4)
 	.dw	0,(Sstm8s_gpio$GPIO_Init$1)	;initial loc
 	.dw	0,Sstm8s_gpio$GPIO_Init$47-Sstm8s_gpio$GPIO_Init$1
 	.db	1

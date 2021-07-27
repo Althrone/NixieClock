@@ -7,19 +7,43 @@ Symbol Table
     .__.ABS.                                                    =  000000 G
     .__.CPU.                                                    =  000000 L
     .__.H$L.                                                    =  000001 L
-    _CLK_DeInit                                                    ****** GX
+    _CLK_ClockSwitchConfig                                         ****** GX
+    _CLK_HSECmd                                                    ****** GX
     _DS3231_GetTime                                                ****** GX
     _DS3231_Init                                                   ****** GX
+  A _EXTI_PORTA_IRQHandler                                         000105 GR
+  A _EXTI_PORTC_IRQHandler                                         000106 GR
+  A _EXTI_PORTD_IRQHandler                                         000132 GR
+    _EXTI_SetExtIntSensitivity                                     ****** GX
+    _GPIO_Init                                                     ****** GX
+    _GPIO_ReadInputPin                                             ****** GX
     _GPS_Init                                                      ****** GX
+    _GPS_TimeDataSturcture                                         ****** GX
+    _ITC_SetSoftwarePriority                                       ****** GX
+  2 _KEY_StateMachine_Enumeration                                  000001 GR
     _NIXIE_DisplayTime                                             ****** GX
     _NIXIE_Init                                                    ****** GX
+    _TIM4_ARRPreloadConfig                                         ****** GX
+    _TIM4_ClearITPendingBit                                        ****** GX
+    _TIM4_Cmd                                                      ****** GX
+    _TIM4_GetITStatus                                              ****** GX
+    _TIM4_ITConfig                                                 ****** GX
+    _TIM4_TimeBaseInit                                             ****** GX
+  A _TIM4_UPD_OVF_IRQHandler                                       0000D1 GR
     _UART1_RX_IRQHandler                                           ****** GX
   5 __interrupt_vect                                               000000 R
   6 __sdcc_gs_init_startup                                         000000 R
   6 __sdcc_init_data                                               000000 R
-  5 __sdcc_program_startup                                         000054 R
+  5 __sdcc_program_startup                                         000068 R
   3 __start__stack                                                 000000 R
+  9 __xinit__KEY_StateMachine_Enumeration                          000001 R
+  9 __xinit__ir_always_on                                          000000 R
+  2 _ir_always_on                                                  000000 GR
+  1 _ir_delay                                                      000000 GR
+  1 _ir_double_click_delay                                         000002 GR
+  1 _key_delay_2s                                                  000003 GR
   A _main                                                          000000 GR
+    _tube_state                                                    ****** GX
     l_DATA                                                         ****** GX
     l_INITIALIZER                                                  ****** GX
     s_DATA                                                         ****** GX
@@ -34,15 +58,15 @@ Hexadecimal [24-Bits]
 Area Table
 
    0 _CODE                                      size      0   flags    0
-   1 DATA                                       size      0   flags    0
-   2 INITIALIZED                                size      0   flags    0
+   1 DATA                                       size      5   flags    0
+   2 INITIALIZED                                size      2   flags    0
    3 SSEG                                       size      1   flags    0
    4 DABS                                       size      0   flags    8
-   5 HOME                                       size     57   flags    0
+   5 HOME                                       size     6B   flags    0
    6 GSINIT                                     size     1A   flags    0
    7 GSFINAL                                    size      3   flags    0
    8 CONST                                      size      0   flags    0
-   9 INITIALIZER                                size      0   flags    0
-   A CODE                                       size     1B   flags    0
+   9 INITIALIZER                                size      2   flags    0
+   A CODE                                       size    16D   flags    0
    B CABS                                       size      0   flags    8
 

@@ -8,6 +8,7 @@ Symbol Table
     .__.CPU.                                                    =  000000 L
     .__.H$L.                                                    =  000001 L
   9 _GPIO_Init                                                     000000 GR
+  9 _GPIO_ReadInputPin                                             00008A GR
   9 _GPIO_WriteHigh                                                000075 GR
   9 _GPIO_WriteLow                                                 00007C GR
 
@@ -26,6 +27,6 @@ Area Table
    6 GSFINAL                                    size      0   flags    0
    7 CONST                                      size      0   flags    0
    8 INITIALIZER                                size      0   flags    0
-   9 CODE                                       size     8A   flags    0
+   9 CODE                                       size     91   flags    0
    A CABS                                       size      0   flags    8
 

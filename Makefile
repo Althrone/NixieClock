@@ -58,9 +58,9 @@ debug release \
 user stdperiph device driver\
 burn link
 
-all: debug release \
-user stdperiph device driver\
-$(BUILD_DIR)/main.elf $(BUILD_DIR)/main.ihx \
+all: debug release
+# user stdperiph device driver\
+# $(BUILD_DIR)/main.elf $(BUILD_DIR)/main.ihx \
 
 debug: $(BUILD_DIR)/Debug/main.elf
 
@@ -68,12 +68,14 @@ release: $(BUILD_DIR)/Release/main.ihx
 
 $(BUILD_DIR)/Debug/main.elf: $(BUILD_DIR)/Debug/main.rel \
 $(BUILD_DIR)/Debug/stm8s_gpio.rel $(BUILD_DIR)/Debug/stm8s_clk.rel $(BUILD_DIR)/Debug/stm8s_spi.rel $(BUILD_DIR)/Debug/stm8s_uart1.rel $(BUILD_DIR)/Debug/stm8s_beep.rel \
+$(BUILD_DIR)/Debug/stm8s_exti.rel $(BUILD_DIR)/Debug/stm8s_itc.rel $(BUILD_DIR)/Debug/stm8s_tim4.rel \
 $(BUILD_DIR)/Debug/soft_i2c.rel \
 $(BUILD_DIR)/Debug/nixie.rel $(BUILD_DIR)/Debug/ds3231.rel $(BUILD_DIR)/Debug/gps.rel
 	$(CC) $(CFLAGS) --debug --opt-code-size --out-fmt-elf -o $@ $^
 
 $(BUILD_DIR)/Release/main.ihx: $(BUILD_DIR)/Release/main.rel \
 $(BUILD_DIR)/Release/stm8s_gpio.rel $(BUILD_DIR)/Release/stm8s_clk.rel $(BUILD_DIR)/Release/stm8s_spi.rel $(BUILD_DIR)/Release/stm8s_uart1.rel $(BUILD_DIR)/Release/stm8s_beep.rel \
+$(BUILD_DIR)/Release/stm8s_exti.rel $(BUILD_DIR)/Release/stm8s_itc.rel $(BUILD_DIR)/Release/stm8s_tim4.rel \
 $(BUILD_DIR)/Release/soft_i2c.rel \
 $(BUILD_DIR)/Release/nixie.rel $(BUILD_DIR)/Release/ds3231.rel $(BUILD_DIR)/Release/gps.rel
 	$(CC) $(CFLAGS) --opt-code-size --out-fmt-ihx -o $@ $^

@@ -7,148 +7,319 @@ Symbol Table
     .__.ABS.                                                    =  000000 G
     .__.CPU.                                                    =  000000 L
     .__.H$L.                                                    =  000001 L
-  9 A$stm8s_clkug/stm8s_clk$100                                    000032 GR
-  9 A$stm8s_clkug/stm8s_clk$105                                    000036 GR
-  9 A$stm8s_clkug/stm8s_clk$114                                    000037 GR
-  9 A$stm8s_clkug/stm8s_clk$118                                    000039 GR
-  9 A$stm8s_clkug/stm8s_clk$119                                    00003C GR
-  9 A$stm8s_clkug/stm8s_clk$122                                    00003E GR
-  9 A$stm8s_clkug/stm8s_clk$123                                    000040 GR
-  9 A$stm8s_clkug/stm8s_clk$124                                    000042 GR
-  9 A$stm8s_clkug/stm8s_clk$129                                    000044 GR
-  9 A$stm8s_clkug/stm8s_clk$130                                    000047 GR
-  9 A$stm8s_clkug/stm8s_clk$133                                    000049 GR
-  9 A$stm8s_clkug/stm8s_clk$134                                    00004A GR
-  9 A$stm8s_clkug/stm8s_clk$135                                    00004B GR
-  9 A$stm8s_clkug/stm8s_clk$138                                    00004C GR
-  9 A$stm8s_clkug/stm8s_clk$139                                    00004D GR
-  9 A$stm8s_clkug/stm8s_clk$140                                    00004E GR
-  9 A$stm8s_clkug/stm8s_clk$141                                    000051 GR
-  9 A$stm8s_clkug/stm8s_clk$144                                    000052 GR
-  9 A$stm8s_clkug/stm8s_clk$145                                    000053 GR
-  9 A$stm8s_clkug/stm8s_clk$146                                    000054 GR
-  9 A$stm8s_clkug/stm8s_clk$148                                    000056 GR
-  9 A$stm8s_clkug/stm8s_clk$150                                    000057 GR
-  9 A$stm8s_clkug/stm8s_clk$152                                    000059 GR
-  9 A$stm8s_clkug/stm8s_clk$154                                    00005B GR
-  9 A$stm8s_clkug/stm8s_clk$156                                    00005D GR
-  9 A$stm8s_clkug/stm8s_clk$158                                    00005F GR
-  9 A$stm8s_clkug/stm8s_clk$160                                    000061 GR
-  9 A$stm8s_clkug/stm8s_clk$161                                    000064 GR
-  9 A$stm8s_clkug/stm8s_clk$163                                    000066 GR
-  9 A$stm8s_clkug/stm8s_clk$164                                    000068 GR
-  9 A$stm8s_clkug/stm8s_clk$168                                    00006A GR
-  9 A$stm8s_clkug/stm8s_clk$169                                    00006C GR
-  9 A$stm8s_clkug/stm8s_clk$170                                    00006E GR
-  9 A$stm8s_clkug/stm8s_clk$175                                    000070 GR
-  9 A$stm8s_clkug/stm8s_clk$176                                    000073 GR
-  9 A$stm8s_clkug/stm8s_clk$177                                    000075 GR
-  9 A$stm8s_clkug/stm8s_clk$179                                    000079 GR
-  9 A$stm8s_clkug/stm8s_clk$184                                    00007B GR
-  9 A$stm8s_clkug/stm8s_clk$185                                    00007E GR
-  9 A$stm8s_clkug/stm8s_clk$186                                    000080 GR
-  9 A$stm8s_clkug/stm8s_clk$191                                    000084 GR
-  9 A$stm8s_clkug/stm8s_clk$194                                    000086 GR
-  9 A$stm8s_clkug/stm8s_clk$198                                    000088 GR
-  9 A$stm8s_clkug/stm8s_clk$61                                     000000 GR
-  9 A$stm8s_clkug/stm8s_clk$64                                     000004 GR
-  9 A$stm8s_clkug/stm8s_clk$67                                     000008 GR
-  9 A$stm8s_clkug/stm8s_clk$70                                     00000C GR
-  9 A$stm8s_clkug/stm8s_clk$73                                     000010 GR
-  9 A$stm8s_clkug/stm8s_clk$76                                     000014 GR
-  9 A$stm8s_clkug/stm8s_clk$79                                     000018 GR
-  9 A$stm8s_clkug/stm8s_clk$82                                     00001C GR
+  9 A$stm8s_clkug/stm8s_clk$101                                    000019 GR
+  9 A$stm8s_clkug/stm8s_clk$104                                    00001C GR
+  9 A$stm8s_clkug/stm8s_clk$106                                    00001D GR
+  9 A$stm8s_clkug/stm8s_clk$107                                    00001F GR
+  9 A$stm8s_clkug/stm8s_clk$108                                    000020 GR
+  9 A$stm8s_clkug/stm8s_clk$110                                    000021 GR
+  9 A$stm8s_clkug/stm8s_clk$111                                    000023 GR
+  9 A$stm8s_clkug/stm8s_clk$117                                    000026 GR
+  9 A$stm8s_clkug/stm8s_clk$118                                    000028 GR
+  9 A$stm8s_clkug/stm8s_clk$120                                    00002B GR
+  9 A$stm8s_clkug/stm8s_clk$123                                    00002E GR
+  9 A$stm8s_clkug/stm8s_clk$124                                    000030 GR
+  9 A$stm8s_clkug/stm8s_clk$128                                    000032 GR
+  9 A$stm8s_clkug/stm8s_clk$129                                    000034 GR
+  9 A$stm8s_clkug/stm8s_clk$131                                    000037 GR
+  9 A$stm8s_clkug/stm8s_clk$136                                    000039 GR
+  9 A$stm8s_clkug/stm8s_clk$137                                    00003B GR
+  9 A$stm8s_clkug/stm8s_clk$142                                    00003E GR
+  9 A$stm8s_clkug/stm8s_clk$143                                    000041 GR
+  9 A$stm8s_clkug/stm8s_clk$144                                    000043 GR
+  9 A$stm8s_clkug/stm8s_clk$148                                    000044 GR
+  9 A$stm8s_clkug/stm8s_clk$149                                    000045 GR
+  9 A$stm8s_clkug/stm8s_clk$151                                    000046 GR
+  9 A$stm8s_clkug/stm8s_clk$152                                    000049 GR
+  9 A$stm8s_clkug/stm8s_clk$153                                    00004A GR
+  9 A$stm8s_clkug/stm8s_clk$154                                    00004C GR
+  9 A$stm8s_clkug/stm8s_clk$155                                    00004D GR
+  9 A$stm8s_clkug/stm8s_clk$159                                    00004F GR
+  9 A$stm8s_clkug/stm8s_clk$161                                    000050 GR
+  9 A$stm8s_clkug/stm8s_clk$165                                    000052 GR
+  9 A$stm8s_clkug/stm8s_clk$166                                    000053 GR
+  9 A$stm8s_clkug/stm8s_clk$170                                    000055 GR
+  9 A$stm8s_clkug/stm8s_clk$171                                    000057 GR
+  9 A$stm8s_clkug/stm8s_clk$173                                    000058 GR
+  9 A$stm8s_clkug/stm8s_clk$178                                    00005B GR
+  9 A$stm8s_clkug/stm8s_clk$180                                    00005C GR
+  9 A$stm8s_clkug/stm8s_clk$185                                    00005F GR
+  9 A$stm8s_clkug/stm8s_clk$186                                    000061 GR
+  9 A$stm8s_clkug/stm8s_clk$190                                    000063 GR
+  9 A$stm8s_clkug/stm8s_clk$191                                    000065 GR
+  9 A$stm8s_clkug/stm8s_clk$193                                    000068 GR
+  9 A$stm8s_clkug/stm8s_clk$198                                    00006A GR
+  9 A$stm8s_clkug/stm8s_clk$199                                    00006C GR
+  9 A$stm8s_clkug/stm8s_clk$204                                    00006F GR
+  9 A$stm8s_clkug/stm8s_clk$205                                    000072 GR
+  9 A$stm8s_clkug/stm8s_clk$206                                    000074 GR
+  9 A$stm8s_clkug/stm8s_clk$210                                    000075 GR
+  9 A$stm8s_clkug/stm8s_clk$211                                    000076 GR
+  9 A$stm8s_clkug/stm8s_clk$213                                    000077 GR
+  9 A$stm8s_clkug/stm8s_clk$214                                    00007A GR
+  9 A$stm8s_clkug/stm8s_clk$215                                    00007C GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$stm8s_clkug/stm8s_clk$85                                     000020 GR
-  9 A$stm8s_clkug/stm8s_clk$89                                     000024 GR
-  9 A$stm8s_clkug/stm8s_clk$90                                     000027 GR
-  9 A$stm8s_clkug/stm8s_clk$91                                     000028 GR
-  9 A$stm8s_clkug/stm8s_clk$94                                     00002A GR
-  9 A$stm8s_clkug/stm8s_clk$97                                     00002E GR
+  9 A$stm8s_clkug/stm8s_clk$216                                    00007E GR
+  9 A$stm8s_clkug/stm8s_clk$217                                    00007F GR
+  9 A$stm8s_clkug/stm8s_clk$221                                    000081 GR
+  9 A$stm8s_clkug/stm8s_clk$223                                    000082 GR
+  9 A$stm8s_clkug/stm8s_clk$227                                    000084 GR
+  9 A$stm8s_clkug/stm8s_clk$228                                    000085 GR
+  9 A$stm8s_clkug/stm8s_clk$232                                    000087 GR
+  9 A$stm8s_clkug/stm8s_clk$235                                    00008B GR
+  9 A$stm8s_clkug/stm8s_clk$236                                    00008D GR
+  9 A$stm8s_clkug/stm8s_clk$238                                    00008E GR
+  9 A$stm8s_clkug/stm8s_clk$243                                    000090 GR
+  9 A$stm8s_clkug/stm8s_clk$248                                    000091 GR
+  9 A$stm8s_clkug/stm8s_clk$249                                    000092 GR
+  9 A$stm8s_clkug/stm8s_clk$250                                    000093 GR
+  9 A$stm8s_clkug/stm8s_clk$251                                    000095 GR
+  9 A$stm8s_clkug/stm8s_clk$256                                    000098 GR
+  9 A$stm8s_clkug/stm8s_clk$257                                    00009A GR
+  9 A$stm8s_clkug/stm8s_clk$258                                    00009C GR
+  9 A$stm8s_clkug/stm8s_clk$259                                    00009E GR
+  9 A$stm8s_clkug/stm8s_clk$260                                    0000A0 GR
+  9 A$stm8s_clkug/stm8s_clk$265                                    0000A2 GR
+  9 A$stm8s_clkug/stm8s_clk$267                                    0000A6 GR
+  9 A$stm8s_clkug/stm8s_clk$271                                    0000A8 GR
+  9 A$stm8s_clkug/stm8s_clk$272                                    0000AA GR
+  9 A$stm8s_clkug/stm8s_clk$273                                    0000AC GR
+  9 A$stm8s_clkug/stm8s_clk$274                                    0000AE GR
+  9 A$stm8s_clkug/stm8s_clk$275                                    0000B0 GR
+  9 A$stm8s_clkug/stm8s_clk$280                                    0000B2 GR
+  9 A$stm8s_clkug/stm8s_clk$282                                    0000B6 GR
+  9 A$stm8s_clkug/stm8s_clk$286                                    0000B8 GR
+  9 A$stm8s_clkug/stm8s_clk$287                                    0000BA GR
+  9 A$stm8s_clkug/stm8s_clk$288                                    0000BC GR
+  9 A$stm8s_clkug/stm8s_clk$289                                    0000BE GR
+  9 A$stm8s_clkug/stm8s_clk$290                                    0000C0 GR
+  9 A$stm8s_clkug/stm8s_clk$295                                    0000C2 GR
+  9 A$stm8s_clkug/stm8s_clk$300                                    0000C6 GR
+  9 A$stm8s_clkug/stm8s_clk$305                                    0000C7 GR
+  9 A$stm8s_clkug/stm8s_clk$314                                    0000C8 GR
+  9 A$stm8s_clkug/stm8s_clk$318                                    0000CA GR
+  9 A$stm8s_clkug/stm8s_clk$319                                    0000CD GR
+  9 A$stm8s_clkug/stm8s_clk$322                                    0000CF GR
+  9 A$stm8s_clkug/stm8s_clk$323                                    0000D1 GR
+  9 A$stm8s_clkug/stm8s_clk$324                                    0000D3 GR
+  9 A$stm8s_clkug/stm8s_clk$329                                    0000D5 GR
+  9 A$stm8s_clkug/stm8s_clk$330                                    0000D8 GR
+  9 A$stm8s_clkug/stm8s_clk$333                                    0000DA GR
+  9 A$stm8s_clkug/stm8s_clk$334                                    0000DB GR
+  9 A$stm8s_clkug/stm8s_clk$335                                    0000DC GR
+  9 A$stm8s_clkug/stm8s_clk$338                                    0000DD GR
+  9 A$stm8s_clkug/stm8s_clk$339                                    0000DE GR
+  9 A$stm8s_clkug/stm8s_clk$340                                    0000DF GR
+  9 A$stm8s_clkug/stm8s_clk$341                                    0000E2 GR
+  9 A$stm8s_clkug/stm8s_clk$344                                    0000E3 GR
+  9 A$stm8s_clkug/stm8s_clk$345                                    0000E4 GR
+  9 A$stm8s_clkug/stm8s_clk$346                                    0000E5 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 3.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 A$stm8s_clkug/stm8s_clk$348                                    0000E7 GR
+  9 A$stm8s_clkug/stm8s_clk$350                                    0000E8 GR
+  9 A$stm8s_clkug/stm8s_clk$352                                    0000EA GR
+  9 A$stm8s_clkug/stm8s_clk$354                                    0000EC GR
+  9 A$stm8s_clkug/stm8s_clk$356                                    0000EE GR
+  9 A$stm8s_clkug/stm8s_clk$358                                    0000F0 GR
+  9 A$stm8s_clkug/stm8s_clk$360                                    0000F2 GR
+  9 A$stm8s_clkug/stm8s_clk$361                                    0000F5 GR
+  9 A$stm8s_clkug/stm8s_clk$363                                    0000F7 GR
+  9 A$stm8s_clkug/stm8s_clk$364                                    0000F9 GR
+  9 A$stm8s_clkug/stm8s_clk$368                                    0000FB GR
+  9 A$stm8s_clkug/stm8s_clk$369                                    0000FD GR
+  9 A$stm8s_clkug/stm8s_clk$370                                    0000FF GR
+  9 A$stm8s_clkug/stm8s_clk$375                                    000101 GR
+  9 A$stm8s_clkug/stm8s_clk$376                                    000104 GR
+  9 A$stm8s_clkug/stm8s_clk$377                                    000106 GR
+  9 A$stm8s_clkug/stm8s_clk$379                                    00010A GR
+  9 A$stm8s_clkug/stm8s_clk$384                                    00010C GR
+  9 A$stm8s_clkug/stm8s_clk$385                                    00010F GR
+  9 A$stm8s_clkug/stm8s_clk$386                                    000111 GR
+  9 A$stm8s_clkug/stm8s_clk$391                                    000115 GR
+  9 A$stm8s_clkug/stm8s_clk$394                                    000117 GR
+  9 A$stm8s_clkug/stm8s_clk$398                                    000119 GR
+  9 A$stm8s_clkug/stm8s_clk$62                                     000000 GR
+  9 A$stm8s_clkug/stm8s_clk$65                                     000003 GR
+  9 A$stm8s_clkug/stm8s_clk$66                                     000005 GR
+  9 A$stm8s_clkug/stm8s_clk$70                                     000007 GR
+  9 A$stm8s_clkug/stm8s_clk$71                                     000009 GR
+  9 A$stm8s_clkug/stm8s_clk$73                                     00000C GR
+  9 A$stm8s_clkug/stm8s_clk$78                                     00000E GR
+  9 A$stm8s_clkug/stm8s_clk$79                                     000010 GR
+  9 A$stm8s_clkug/stm8s_clk$86                                     000013 GR
+  9 A$stm8s_clkug/stm8s_clk$97                                     000014 GR
+  9 A$stm8s_clkug/stm8s_clk$98                                     000017 GR
   7 G$CLKPrescTable$0_0$0                                       =  000004 GR
   7 G$HSIDivFactor$0_0$0                                        =  000000 GR
  10 Ldebug_CIE0_end                                                000012 R
  10 Ldebug_CIE0_start                                              000004 R
  10 Ldebug_CIE1_end                                                000088 R
  10 Ldebug_CIE1_start                                              00007A R
+ 10 Ldebug_CIE2_end                                                0000DB R
+ 10 Ldebug_CIE2_start                                              0000CD R
   D Ldebug_abbrev                                                  000000 R
-  E Ldebug_info_end                                                00016C R
+  E Ldebug_info_end                                                0002FE R
   E Ldebug_info_start                                              000004 R
-  B Ldebug_line_end                                                000141 R
+  B Ldebug_line_end                                                0001DC R
   B Ldebug_line_start                                              000004 R
   B Ldebug_line_stmt                                               000089 R
   C Ldebug_loc_start                                               000000 R
-  F Ldebug_pubnames_end                                            000059 R
+  F Ldebug_pubnames_end                                            000073 R
   F Ldebug_pubnames_start                                          000004 R
-  9 Sstm8s_clk$CLK_DeInit$0                                     =  000000 GR
-  9 Sstm8s_clk$CLK_DeInit$1                                     =  000000 GR
-  9 Sstm8s_clk$CLK_DeInit$10                                    =  000020 GR
-  9 Sstm8s_clk$CLK_DeInit$11                                    =  000024 GR
-  9 Sstm8s_clk$CLK_DeInit$12                                    =  00002A GR
-  9 Sstm8s_clk$CLK_DeInit$13                                    =  00002E GR
-  9 Sstm8s_clk$CLK_DeInit$14                                    =  000032 GR
-  9 Sstm8s_clk$CLK_DeInit$15                                    =  000036 GR
-  9 Sstm8s_clk$CLK_DeInit$16                                    =  000036 GR
-  9 Sstm8s_clk$CLK_DeInit$17                                    =  000037 GR
-  9 Sstm8s_clk$CLK_DeInit$2                                     =  000000 GR
-  9 Sstm8s_clk$CLK_DeInit$3                                     =  000004 GR
-  9 Sstm8s_clk$CLK_DeInit$4                                     =  000008 GR
-  9 Sstm8s_clk$CLK_DeInit$5                                     =  00000C GR
-  9 Sstm8s_clk$CLK_DeInit$6                                     =  000010 GR
-  9 Sstm8s_clk$CLK_DeInit$7                                     =  000014 GR
-  9 Sstm8s_clk$CLK_DeInit$8                                     =  000018 GR
-  9 Sstm8s_clk$CLK_DeInit$9                                     =  00001C GR
-  9 Sstm8s_clk$CLK_GetClockFreq$18                              =  000037 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$19                              =  000037 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$20                              =  000039 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$21                              =  000039 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$22                              =  00003E GR
-  9 Sstm8s_clk$CLK_GetClockFreq$23                              =  000044 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$24                              =  000044 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$25                              =  000044 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$26                              =  000049 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$27                              =  00004C GR
-  9 Sstm8s_clk$CLK_GetClockFreq$28                              =  000052 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$29                              =  000056 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$30                              =  000057 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$31                              =  000059 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$32                              =  00005B GR
-  9 Sstm8s_clk$CLK_GetClockFreq$33                              =  00005D GR
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 3.
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$13                         =  000014 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$14                         =  000014 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$15                         =  000014 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$16                         =  000019 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 4.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 Sstm8s_clk$CLK_GetClockFreq$34                              =  00005F GR
-  9 Sstm8s_clk$CLK_GetClockFreq$35                              =  000061 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$36                              =  000066 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$37                              =  00006A GR
-  9 Sstm8s_clk$CLK_GetClockFreq$38                              =  000070 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$39                              =  000070 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$40                              =  000070 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$41                              =  000079 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$42                              =  00007B GR
-  9 Sstm8s_clk$CLK_GetClockFreq$43                              =  00007B GR
-  9 Sstm8s_clk$CLK_GetClockFreq$44                              =  000084 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$45                              =  000084 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$46                              =  000086 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$47                              =  000088 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$48                              =  000088 GR
-  9 Sstm8s_clk$CLK_GetClockFreq$49                              =  000089 GR
-  9 XG$CLK_DeInit$0$0                                           =  000036 GR
-  9 XG$CLK_GetClockFreq$0$0                                     =  000088 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$17                         =  00001C GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$18                         =  00001D GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$19                         =  000021 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$20                         =  000026 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$21                         =  000026 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$22                         =  000026 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$23                         =  00002B GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$24                         =  00002E GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$25                         =  000032 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$26                         =  000032 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$27                         =  000037 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$28                         =  000039 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$29                         =  000039 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$30                         =  00003E GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$31                         =  00003E GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$32                         =  000044 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$33                         =  000044 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$34                         =  00004F GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$35                         =  00004F GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$36                         =  000050 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$37                         =  000052 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$38                         =  000055 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$39                         =  000055 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$40                         =  000058 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$41                         =  00005B GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$42                         =  00005B GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$43                         =  00005C GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$44                         =  00005F GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$45                         =  00005F GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$46                         =  000063 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$47                         =  000063 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$48                         =  000068 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$49                         =  00006A GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$50                         =  00006A GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$51                         =  00006F GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$52                         =  00006F GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$53                         =  000075 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$54                         =  000075 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$55                         =  000081 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$56                         =  000081 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$57                         =  000082 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$58                         =  000084 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$59                         =  000087 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$60                         =  000087 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$61                         =  00008B GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$62                         =  00008E GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$63                         =  000090 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$64                         =  000090 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$65                         =  000091 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$66                         =  000091 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$67                         =  000098 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$68                         =  000098 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$69                         =  0000A2 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$70                         =  0000A2 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$71                         =  0000A2 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 5.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$72                         =  0000A6 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$73                         =  0000A8 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$74                         =  0000B2 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$75                         =  0000B2 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$76                         =  0000B2 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$77                         =  0000B6 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$78                         =  0000B8 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$79                         =  0000C2 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$80                         =  0000C2 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$81                         =  0000C2 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$82                         =  0000C6 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$83                         =  0000C6 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$84                         =  0000C7 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$85                         =  0000C7 GR
+  9 Sstm8s_clk$CLK_ClockSwitchConfig$86                         =  0000C8 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$100                             =  0000EA GR
+  9 Sstm8s_clk$CLK_GetClockFreq$101                             =  0000EC GR
+  9 Sstm8s_clk$CLK_GetClockFreq$102                             =  0000EE GR
+  9 Sstm8s_clk$CLK_GetClockFreq$103                             =  0000F0 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$104                             =  0000F2 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$105                             =  0000F7 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$106                             =  0000FB GR
+  9 Sstm8s_clk$CLK_GetClockFreq$107                             =  000101 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$108                             =  000101 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$109                             =  000101 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$110                             =  00010A GR
+  9 Sstm8s_clk$CLK_GetClockFreq$111                             =  00010C GR
+  9 Sstm8s_clk$CLK_GetClockFreq$112                             =  00010C GR
+  9 Sstm8s_clk$CLK_GetClockFreq$113                             =  000115 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$114                             =  000115 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$115                             =  000117 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$116                             =  000119 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$117                             =  000119 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$118                             =  00011A GR
+  9 Sstm8s_clk$CLK_GetClockFreq$87                              =  0000C8 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$88                              =  0000C8 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$89                              =  0000CA GR
+  9 Sstm8s_clk$CLK_GetClockFreq$90                              =  0000CA GR
+  9 Sstm8s_clk$CLK_GetClockFreq$91                              =  0000CF GR
+  9 Sstm8s_clk$CLK_GetClockFreq$92                              =  0000D5 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$93                              =  0000D5 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$94                              =  0000D5 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$95                              =  0000DA GR
+  9 Sstm8s_clk$CLK_GetClockFreq$96                              =  0000DD GR
+  9 Sstm8s_clk$CLK_GetClockFreq$97                              =  0000E3 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$98                              =  0000E7 GR
+  9 Sstm8s_clk$CLK_GetClockFreq$99                              =  0000E8 GR
+  9 Sstm8s_clk$CLK_HSECmd$0                                     =  000000 GR
+  9 Sstm8s_clk$CLK_HSECmd$1                                     =  000000 GR
+  9 Sstm8s_clk$CLK_HSECmd$10                                    =  000013 GR
+  9 Sstm8s_clk$CLK_HSECmd$11                                    =  000013 GR
+  9 Sstm8s_clk$CLK_HSECmd$12                                    =  000014 GR
+  9 Sstm8s_clk$CLK_HSECmd$2                                     =  000000 GR
+  9 Sstm8s_clk$CLK_HSECmd$3                                     =  000003 GR
+  9 Sstm8s_clk$CLK_HSECmd$4                                     =  000007 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 6.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 Sstm8s_clk$CLK_HSECmd$5                                     =  000007 GR
+  9 Sstm8s_clk$CLK_HSECmd$6                                     =  00000C GR
+  9 Sstm8s_clk$CLK_HSECmd$7                                     =  00000E GR
+  9 Sstm8s_clk$CLK_HSECmd$8                                     =  00000E GR
+  9 Sstm8s_clk$CLK_HSECmd$9                                     =  000013 GR
+  9 XG$CLK_ClockSwitchConfig$0$0                                =  0000C7 GR
+  9 XG$CLK_GetClockFreq$0$0                                     =  000119 GR
+  9 XG$CLK_HSECmd$0$0                                           =  000013 GR
   7 _CLKPrescTable                                                 000004 GR
-  9 _CLK_DeInit                                                    000000 GR
-  9 _CLK_GetClockFreq                                              000037 GR
+  9 _CLK_ClockSwitchConfig                                         000014 GR
+  9 _CLK_GetClockFreq                                              0000C8 GR
+  9 _CLK_HSECmd                                                    000000 GR
   7 _HSIDivFactor                                                  000000 GR
     __divulong                                                     ****** GX
 
 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 4.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 7.
 Hexadecimal [24-Bits]
 
 Area Table
@@ -162,12 +333,12 @@ Area Table
    6 GSFINAL                                    size      0   flags    0
    7 CONST                                      size      C   flags    0
    8 INITIALIZER                                size      0   flags    0
-   9 CODE                                       size     89   flags    0
+   9 CODE                                       size    11A   flags    0
    A CABS                                       size      0   flags    8
-   B .debug_line                                size    141   flags  100
-   C .debug_loc                                 size     AC   flags  100
-   D .debug_abbrev                              size     75   flags  100
-   E .debug_info                                size    16C   flags  100
-   F .debug_pubnames                            size     59   flags  100
-  10 .debug_frame                               size     9F   flags  100
+   B .debug_line                                size    1DC   flags  100
+   C .debug_loc                                 size    108   flags  100
+   D .debug_abbrev                              size     96   flags  100
+   E .debug_info                                size    2FE   flags  100
+   F .debug_pubnames                            size     73   flags  100
+  10 .debug_frame                               size     F2   flags  100
 

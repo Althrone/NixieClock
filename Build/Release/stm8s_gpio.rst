@@ -11,175 +11,187 @@
                                      11 	.globl _GPIO_Init
                                      12 	.globl _GPIO_WriteHigh
                                      13 	.globl _GPIO_WriteLow
-                                     14 ;--------------------------------------------------------
-                                     15 ; ram data
-                                     16 ;--------------------------------------------------------
-                                     17 	.area DATA
-                                     18 ;--------------------------------------------------------
-                                     19 ; ram data
-                                     20 ;--------------------------------------------------------
-                                     21 	.area INITIALIZED
-                                     22 ;--------------------------------------------------------
-                                     23 ; absolute external ram data
-                                     24 ;--------------------------------------------------------
-                                     25 	.area DABS (ABS)
-                                     26 
-                                     27 ; default segment ordering for linker
-                                     28 	.area HOME
-                                     29 	.area GSINIT
-                                     30 	.area GSFINAL
-                                     31 	.area CONST
-                                     32 	.area INITIALIZER
-                                     33 	.area CODE
-                                     34 
-                                     35 ;--------------------------------------------------------
-                                     36 ; global & static initialisations
-                                     37 ;--------------------------------------------------------
-                                     38 	.area HOME
-                                     39 	.area GSINIT
-                                     40 	.area GSFINAL
-                                     41 	.area GSINIT
-                                     42 ;--------------------------------------------------------
-                                     43 ; Home
-                                     44 ;--------------------------------------------------------
-                                     45 	.area HOME
+                                     14 	.globl _GPIO_ReadInputPin
+                                     15 ;--------------------------------------------------------
+                                     16 ; ram data
+                                     17 ;--------------------------------------------------------
+                                     18 	.area DATA
+                                     19 ;--------------------------------------------------------
+                                     20 ; ram data
+                                     21 ;--------------------------------------------------------
+                                     22 	.area INITIALIZED
+                                     23 ;--------------------------------------------------------
+                                     24 ; absolute external ram data
+                                     25 ;--------------------------------------------------------
+                                     26 	.area DABS (ABS)
+                                     27 
+                                     28 ; default segment ordering for linker
+                                     29 	.area HOME
+                                     30 	.area GSINIT
+                                     31 	.area GSFINAL
+                                     32 	.area CONST
+                                     33 	.area INITIALIZER
+                                     34 	.area CODE
+                                     35 
+                                     36 ;--------------------------------------------------------
+                                     37 ; global & static initialisations
+                                     38 ;--------------------------------------------------------
+                                     39 	.area HOME
+                                     40 	.area GSINIT
+                                     41 	.area GSFINAL
+                                     42 	.area GSINIT
+                                     43 ;--------------------------------------------------------
+                                     44 ; Home
+                                     45 ;--------------------------------------------------------
                                      46 	.area HOME
-                                     47 ;--------------------------------------------------------
-                                     48 ; code
-                                     49 ;--------------------------------------------------------
-                                     50 	.area CODE
-                                     51 ;	Source/Std_Lib/Src/stm8s_gpio.c: 71: void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef GPIO_Pin, GPIO_Mode_TypeDef GPIO_Mode)
-                                     52 ;	-----------------------------------------
-                                     53 ;	 function GPIO_Init
-                                     54 ;	-----------------------------------------
-      0080C8                         55 _GPIO_Init:
-      0080C8 52 05            [ 2]   56 	sub	sp, #5
-                                     57 ;	Source/Std_Lib/Src/stm8s_gpio.c: 81: GPIOx->CR2 &= (uint8_t)(~(GPIO_Pin));
-      0080CA 16 08            [ 2]   58 	ldw	y, (0x08, sp)
-      0080CC 93               [ 1]   59 	ldw	x, y
-      0080CD 1C 00 04         [ 2]   60 	addw	x, #0x0004
-      0080D0 1F 01            [ 2]   61 	ldw	(0x01, sp), x
-      0080D2 F6               [ 1]   62 	ld	a, (x)
-      0080D3 88               [ 1]   63 	push	a
-      0080D4 7B 0B            [ 1]   64 	ld	a, (0x0b, sp)
-      0080D6 43               [ 1]   65 	cpl	a
-      0080D7 6B 04            [ 1]   66 	ld	(0x04, sp), a
-      0080D9 84               [ 1]   67 	pop	a
-      0080DA 14 03            [ 1]   68 	and	a, (0x03, sp)
-      0080DC 1E 01            [ 2]   69 	ldw	x, (0x01, sp)
-      0080DE F7               [ 1]   70 	ld	(x), a
-                                     71 ;	Source/Std_Lib/Src/stm8s_gpio.c: 98: GPIOx->DDR |= (uint8_t)GPIO_Pin;
-      0080DF 93               [ 1]   72 	ldw	x, y
-      0080E0 5C               [ 1]   73 	incw	x
-      0080E1 5C               [ 1]   74 	incw	x
-      0080E2 1F 04            [ 2]   75 	ldw	(0x04, sp), x
-                                     76 ;	Source/Std_Lib/Src/stm8s_gpio.c: 87: if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x80) != (uint8_t)0x00) /* Output mode */
-      0080E4 0D 0B            [ 1]   77 	tnz	(0x0b, sp)
-      0080E6 2A 1E            [ 1]   78 	jrpl	00105$
-                                     79 ;	Source/Std_Lib/Src/stm8s_gpio.c: 91: GPIOx->ODR |= (uint8_t)GPIO_Pin;
-      0080E8 90 F6            [ 1]   80 	ld	a, (y)
-                                     81 ;	Source/Std_Lib/Src/stm8s_gpio.c: 89: if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x10) != (uint8_t)0x00) /* High level */
-      0080EA 88               [ 1]   82 	push	a
-      0080EB 7B 0C            [ 1]   83 	ld	a, (0x0c, sp)
-      0080ED A5 10            [ 1]   84 	bcp	a, #0x10
-      0080EF 84               [ 1]   85 	pop	a
-      0080F0 27 06            [ 1]   86 	jreq	00102$
-                                     87 ;	Source/Std_Lib/Src/stm8s_gpio.c: 91: GPIOx->ODR |= (uint8_t)GPIO_Pin;
-      0080F2 1A 0A            [ 1]   88 	or	a, (0x0a, sp)
-      0080F4 90 F7            [ 1]   89 	ld	(y), a
-      0080F6 20 04            [ 2]   90 	jra	00103$
-      0080F8                         91 00102$:
-                                     92 ;	Source/Std_Lib/Src/stm8s_gpio.c: 95: GPIOx->ODR &= (uint8_t)(~(GPIO_Pin));
-      0080F8 14 03            [ 1]   93 	and	a, (0x03, sp)
-      0080FA 90 F7            [ 1]   94 	ld	(y), a
-      0080FC                         95 00103$:
-                                     96 ;	Source/Std_Lib/Src/stm8s_gpio.c: 98: GPIOx->DDR |= (uint8_t)GPIO_Pin;
-      0080FC 1E 04            [ 2]   97 	ldw	x, (0x04, sp)
-      0080FE F6               [ 1]   98 	ld	a, (x)
-      0080FF 1A 0A            [ 1]   99 	or	a, (0x0a, sp)
-      008101 1E 04            [ 2]  100 	ldw	x, (0x04, sp)
-      008103 F7               [ 1]  101 	ld	(x), a
-      008104 20 08            [ 2]  102 	jra	00106$
-      008106                        103 00105$:
-                                    104 ;	Source/Std_Lib/Src/stm8s_gpio.c: 103: GPIOx->DDR &= (uint8_t)(~(GPIO_Pin));
-      008106 1E 04            [ 2]  105 	ldw	x, (0x04, sp)
-      008108 F6               [ 1]  106 	ld	a, (x)
-      008109 14 03            [ 1]  107 	and	a, (0x03, sp)
-      00810B 1E 04            [ 2]  108 	ldw	x, (0x04, sp)
-      00810D F7               [ 1]  109 	ld	(x), a
-      00810E                        110 00106$:
-                                    111 ;	Source/Std_Lib/Src/stm8s_gpio.c: 112: GPIOx->CR1 |= (uint8_t)GPIO_Pin;
-      00810E 93               [ 1]  112 	ldw	x, y
-      00810F 1C 00 03         [ 2]  113 	addw	x, #0x0003
-      008112 F6               [ 1]  114 	ld	a, (x)
-                                    115 ;	Source/Std_Lib/Src/stm8s_gpio.c: 110: if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x40) != (uint8_t)0x00) /* Pull-Up or Push-Pull */
-      008113 88               [ 1]  116 	push	a
-      008114 7B 0C            [ 1]  117 	ld	a, (0x0c, sp)
-      008116 A5 40            [ 1]  118 	bcp	a, #0x40
-      008118 84               [ 1]  119 	pop	a
-      008119 27 05            [ 1]  120 	jreq	00108$
-                                    121 ;	Source/Std_Lib/Src/stm8s_gpio.c: 112: GPIOx->CR1 |= (uint8_t)GPIO_Pin;
-      00811B 1A 0A            [ 1]  122 	or	a, (0x0a, sp)
-      00811D F7               [ 1]  123 	ld	(x), a
-      00811E 20 03            [ 2]  124 	jra	00109$
-      008120                        125 00108$:
-                                    126 ;	Source/Std_Lib/Src/stm8s_gpio.c: 116: GPIOx->CR1 &= (uint8_t)(~(GPIO_Pin));
-      008120 14 03            [ 1]  127 	and	a, (0x03, sp)
-      008122 F7               [ 1]  128 	ld	(x), a
-      008123                        129 00109$:
-                                    130 ;	Source/Std_Lib/Src/stm8s_gpio.c: 81: GPIOx->CR2 &= (uint8_t)(~(GPIO_Pin));
-      008123 1E 01            [ 2]  131 	ldw	x, (0x01, sp)
-      008125 F6               [ 1]  132 	ld	a, (x)
-                                    133 ;	Source/Std_Lib/Src/stm8s_gpio.c: 123: if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x20) != (uint8_t)0x00) /* Interrupt or Slow slope */
-      008126 88               [ 1]  134 	push	a
-      008127 7B 0C            [ 1]  135 	ld	a, (0x0c, sp)
-      008129 A5 20            [ 1]  136 	bcp	a, #0x20
-      00812B 84               [ 1]  137 	pop	a
-      00812C 27 07            [ 1]  138 	jreq	00111$
-                                    139 ;	Source/Std_Lib/Src/stm8s_gpio.c: 125: GPIOx->CR2 |= (uint8_t)GPIO_Pin;
-      00812E 1A 0A            [ 1]  140 	or	a, (0x0a, sp)
-      008130 1E 01            [ 2]  141 	ldw	x, (0x01, sp)
-      008132 F7               [ 1]  142 	ld	(x), a
-      008133 20 05            [ 2]  143 	jra	00113$
-      008135                        144 00111$:
-                                    145 ;	Source/Std_Lib/Src/stm8s_gpio.c: 129: GPIOx->CR2 &= (uint8_t)(~(GPIO_Pin));
-      008135 14 03            [ 1]  146 	and	a, (0x03, sp)
-      008137 1E 01            [ 2]  147 	ldw	x, (0x01, sp)
-      008139 F7               [ 1]  148 	ld	(x), a
-      00813A                        149 00113$:
-                                    150 ;	Source/Std_Lib/Src/stm8s_gpio.c: 131: }
-      00813A 5B 05            [ 2]  151 	addw	sp, #5
-      00813C 81               [ 4]  152 	ret
-                                    153 ;	Source/Std_Lib/Src/stm8s_gpio.c: 154: void GPIO_WriteHigh(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
-                                    154 ;	-----------------------------------------
-                                    155 ;	 function GPIO_WriteHigh
-                                    156 ;	-----------------------------------------
-      00813D                        157 _GPIO_WriteHigh:
-                                    158 ;	Source/Std_Lib/Src/stm8s_gpio.c: 156: GPIOx->ODR |= (uint8_t)PortPins;
-      00813D 1E 03            [ 2]  159 	ldw	x, (0x03, sp)
-      00813F F6               [ 1]  160 	ld	a, (x)
-      008140 1A 05            [ 1]  161 	or	a, (0x05, sp)
-      008142 F7               [ 1]  162 	ld	(x), a
-                                    163 ;	Source/Std_Lib/Src/stm8s_gpio.c: 157: }
-      008143 81               [ 4]  164 	ret
-                                    165 ;	Source/Std_Lib/Src/stm8s_gpio.c: 167: void GPIO_WriteLow(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
-                                    166 ;	-----------------------------------------
-                                    167 ;	 function GPIO_WriteLow
-                                    168 ;	-----------------------------------------
-      008144                        169 _GPIO_WriteLow:
-      008144 88               [ 1]  170 	push	a
-                                    171 ;	Source/Std_Lib/Src/stm8s_gpio.c: 169: GPIOx->ODR &= (uint8_t)(~PortPins);
-      008145 1E 04            [ 2]  172 	ldw	x, (0x04, sp)
-      008147 F6               [ 1]  173 	ld	a, (x)
-      008148 6B 01            [ 1]  174 	ld	(0x01, sp), a
-      00814A 7B 06            [ 1]  175 	ld	a, (0x06, sp)
-      00814C 43               [ 1]  176 	cpl	a
-      00814D 14 01            [ 1]  177 	and	a, (0x01, sp)
-      00814F F7               [ 1]  178 	ld	(x), a
-                                    179 ;	Source/Std_Lib/Src/stm8s_gpio.c: 170: }
-      008150 84               [ 1]  180 	pop	a
-      008151 81               [ 4]  181 	ret
-                                    182 	.area CODE
-                                    183 	.area CONST
-                                    184 	.area INITIALIZER
-                                    185 	.area CABS (ABS)
+                                     47 	.area HOME
+                                     48 ;--------------------------------------------------------
+                                     49 ; code
+                                     50 ;--------------------------------------------------------
+                                     51 	.area CODE
+                                     52 ;	Source/Std_Lib/Src/stm8s_gpio.c: 71: void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef GPIO_Pin, GPIO_Mode_TypeDef GPIO_Mode)
+                                     53 ;	-----------------------------------------
+                                     54 ;	 function GPIO_Init
+                                     55 ;	-----------------------------------------
+      00822F                         56 _GPIO_Init:
+      00822F 52 05            [ 2]   57 	sub	sp, #5
+                                     58 ;	Source/Std_Lib/Src/stm8s_gpio.c: 81: GPIOx->CR2 &= (uint8_t)(~(GPIO_Pin));
+      008231 16 08            [ 2]   59 	ldw	y, (0x08, sp)
+      008233 93               [ 1]   60 	ldw	x, y
+      008234 1C 00 04         [ 2]   61 	addw	x, #0x0004
+      008237 1F 01            [ 2]   62 	ldw	(0x01, sp), x
+      008239 F6               [ 1]   63 	ld	a, (x)
+      00823A 88               [ 1]   64 	push	a
+      00823B 7B 0B            [ 1]   65 	ld	a, (0x0b, sp)
+      00823D 43               [ 1]   66 	cpl	a
+      00823E 6B 04            [ 1]   67 	ld	(0x04, sp), a
+      008240 84               [ 1]   68 	pop	a
+      008241 14 03            [ 1]   69 	and	a, (0x03, sp)
+      008243 1E 01            [ 2]   70 	ldw	x, (0x01, sp)
+      008245 F7               [ 1]   71 	ld	(x), a
+                                     72 ;	Source/Std_Lib/Src/stm8s_gpio.c: 98: GPIOx->DDR |= (uint8_t)GPIO_Pin;
+      008246 93               [ 1]   73 	ldw	x, y
+      008247 5C               [ 1]   74 	incw	x
+      008248 5C               [ 1]   75 	incw	x
+      008249 1F 04            [ 2]   76 	ldw	(0x04, sp), x
+                                     77 ;	Source/Std_Lib/Src/stm8s_gpio.c: 87: if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x80) != (uint8_t)0x00) /* Output mode */
+      00824B 0D 0B            [ 1]   78 	tnz	(0x0b, sp)
+      00824D 2A 1E            [ 1]   79 	jrpl	00105$
+                                     80 ;	Source/Std_Lib/Src/stm8s_gpio.c: 91: GPIOx->ODR |= (uint8_t)GPIO_Pin;
+      00824F 90 F6            [ 1]   81 	ld	a, (y)
+                                     82 ;	Source/Std_Lib/Src/stm8s_gpio.c: 89: if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x10) != (uint8_t)0x00) /* High level */
+      008251 88               [ 1]   83 	push	a
+      008252 7B 0C            [ 1]   84 	ld	a, (0x0c, sp)
+      008254 A5 10            [ 1]   85 	bcp	a, #0x10
+      008256 84               [ 1]   86 	pop	a
+      008257 27 06            [ 1]   87 	jreq	00102$
+                                     88 ;	Source/Std_Lib/Src/stm8s_gpio.c: 91: GPIOx->ODR |= (uint8_t)GPIO_Pin;
+      008259 1A 0A            [ 1]   89 	or	a, (0x0a, sp)
+      00825B 90 F7            [ 1]   90 	ld	(y), a
+      00825D 20 04            [ 2]   91 	jra	00103$
+      00825F                         92 00102$:
+                                     93 ;	Source/Std_Lib/Src/stm8s_gpio.c: 95: GPIOx->ODR &= (uint8_t)(~(GPIO_Pin));
+      00825F 14 03            [ 1]   94 	and	a, (0x03, sp)
+      008261 90 F7            [ 1]   95 	ld	(y), a
+      008263                         96 00103$:
+                                     97 ;	Source/Std_Lib/Src/stm8s_gpio.c: 98: GPIOx->DDR |= (uint8_t)GPIO_Pin;
+      008263 1E 04            [ 2]   98 	ldw	x, (0x04, sp)
+      008265 F6               [ 1]   99 	ld	a, (x)
+      008266 1A 0A            [ 1]  100 	or	a, (0x0a, sp)
+      008268 1E 04            [ 2]  101 	ldw	x, (0x04, sp)
+      00826A F7               [ 1]  102 	ld	(x), a
+      00826B 20 08            [ 2]  103 	jra	00106$
+      00826D                        104 00105$:
+                                    105 ;	Source/Std_Lib/Src/stm8s_gpio.c: 103: GPIOx->DDR &= (uint8_t)(~(GPIO_Pin));
+      00826D 1E 04            [ 2]  106 	ldw	x, (0x04, sp)
+      00826F F6               [ 1]  107 	ld	a, (x)
+      008270 14 03            [ 1]  108 	and	a, (0x03, sp)
+      008272 1E 04            [ 2]  109 	ldw	x, (0x04, sp)
+      008274 F7               [ 1]  110 	ld	(x), a
+      008275                        111 00106$:
+                                    112 ;	Source/Std_Lib/Src/stm8s_gpio.c: 112: GPIOx->CR1 |= (uint8_t)GPIO_Pin;
+      008275 93               [ 1]  113 	ldw	x, y
+      008276 1C 00 03         [ 2]  114 	addw	x, #0x0003
+      008279 F6               [ 1]  115 	ld	a, (x)
+                                    116 ;	Source/Std_Lib/Src/stm8s_gpio.c: 110: if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x40) != (uint8_t)0x00) /* Pull-Up or Push-Pull */
+      00827A 88               [ 1]  117 	push	a
+      00827B 7B 0C            [ 1]  118 	ld	a, (0x0c, sp)
+      00827D A5 40            [ 1]  119 	bcp	a, #0x40
+      00827F 84               [ 1]  120 	pop	a
+      008280 27 05            [ 1]  121 	jreq	00108$
+                                    122 ;	Source/Std_Lib/Src/stm8s_gpio.c: 112: GPIOx->CR1 |= (uint8_t)GPIO_Pin;
+      008282 1A 0A            [ 1]  123 	or	a, (0x0a, sp)
+      008284 F7               [ 1]  124 	ld	(x), a
+      008285 20 03            [ 2]  125 	jra	00109$
+      008287                        126 00108$:
+                                    127 ;	Source/Std_Lib/Src/stm8s_gpio.c: 116: GPIOx->CR1 &= (uint8_t)(~(GPIO_Pin));
+      008287 14 03            [ 1]  128 	and	a, (0x03, sp)
+      008289 F7               [ 1]  129 	ld	(x), a
+      00828A                        130 00109$:
+                                    131 ;	Source/Std_Lib/Src/stm8s_gpio.c: 81: GPIOx->CR2 &= (uint8_t)(~(GPIO_Pin));
+      00828A 1E 01            [ 2]  132 	ldw	x, (0x01, sp)
+      00828C F6               [ 1]  133 	ld	a, (x)
+                                    134 ;	Source/Std_Lib/Src/stm8s_gpio.c: 123: if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x20) != (uint8_t)0x00) /* Interrupt or Slow slope */
+      00828D 88               [ 1]  135 	push	a
+      00828E 7B 0C            [ 1]  136 	ld	a, (0x0c, sp)
+      008290 A5 20            [ 1]  137 	bcp	a, #0x20
+      008292 84               [ 1]  138 	pop	a
+      008293 27 07            [ 1]  139 	jreq	00111$
+                                    140 ;	Source/Std_Lib/Src/stm8s_gpio.c: 125: GPIOx->CR2 |= (uint8_t)GPIO_Pin;
+      008295 1A 0A            [ 1]  141 	or	a, (0x0a, sp)
+      008297 1E 01            [ 2]  142 	ldw	x, (0x01, sp)
+      008299 F7               [ 1]  143 	ld	(x), a
+      00829A 20 05            [ 2]  144 	jra	00113$
+      00829C                        145 00111$:
+                                    146 ;	Source/Std_Lib/Src/stm8s_gpio.c: 129: GPIOx->CR2 &= (uint8_t)(~(GPIO_Pin));
+      00829C 14 03            [ 1]  147 	and	a, (0x03, sp)
+      00829E 1E 01            [ 2]  148 	ldw	x, (0x01, sp)
+      0082A0 F7               [ 1]  149 	ld	(x), a
+      0082A1                        150 00113$:
+                                    151 ;	Source/Std_Lib/Src/stm8s_gpio.c: 131: }
+      0082A1 5B 05            [ 2]  152 	addw	sp, #5
+      0082A3 81               [ 4]  153 	ret
+                                    154 ;	Source/Std_Lib/Src/stm8s_gpio.c: 154: void GPIO_WriteHigh(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
+                                    155 ;	-----------------------------------------
+                                    156 ;	 function GPIO_WriteHigh
+                                    157 ;	-----------------------------------------
+      0082A4                        158 _GPIO_WriteHigh:
+                                    159 ;	Source/Std_Lib/Src/stm8s_gpio.c: 156: GPIOx->ODR |= (uint8_t)PortPins;
+      0082A4 1E 03            [ 2]  160 	ldw	x, (0x03, sp)
+      0082A6 F6               [ 1]  161 	ld	a, (x)
+      0082A7 1A 05            [ 1]  162 	or	a, (0x05, sp)
+      0082A9 F7               [ 1]  163 	ld	(x), a
+                                    164 ;	Source/Std_Lib/Src/stm8s_gpio.c: 157: }
+      0082AA 81               [ 4]  165 	ret
+                                    166 ;	Source/Std_Lib/Src/stm8s_gpio.c: 167: void GPIO_WriteLow(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
+                                    167 ;	-----------------------------------------
+                                    168 ;	 function GPIO_WriteLow
+                                    169 ;	-----------------------------------------
+      0082AB                        170 _GPIO_WriteLow:
+      0082AB 88               [ 1]  171 	push	a
+                                    172 ;	Source/Std_Lib/Src/stm8s_gpio.c: 169: GPIOx->ODR &= (uint8_t)(~PortPins);
+      0082AC 1E 04            [ 2]  173 	ldw	x, (0x04, sp)
+      0082AE F6               [ 1]  174 	ld	a, (x)
+      0082AF 6B 01            [ 1]  175 	ld	(0x01, sp), a
+      0082B1 7B 06            [ 1]  176 	ld	a, (0x06, sp)
+      0082B3 43               [ 1]  177 	cpl	a
+      0082B4 14 01            [ 1]  178 	and	a, (0x01, sp)
+      0082B6 F7               [ 1]  179 	ld	(x), a
+                                    180 ;	Source/Std_Lib/Src/stm8s_gpio.c: 170: }
+      0082B7 84               [ 1]  181 	pop	a
+      0082B8 81               [ 4]  182 	ret
+                                    183 ;	Source/Std_Lib/Src/stm8s_gpio.c: 213: BitStatus GPIO_ReadInputPin(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef GPIO_Pin)
+                                    184 ;	-----------------------------------------
+                                    185 ;	 function GPIO_ReadInputPin
+                                    186 ;	-----------------------------------------
+      0082B9                        187 _GPIO_ReadInputPin:
+                                    188 ;	Source/Std_Lib/Src/stm8s_gpio.c: 215: return ((BitStatus)(GPIOx->IDR & (uint8_t)GPIO_Pin));
+      0082B9 1E 03            [ 2]  189 	ldw	x, (0x03, sp)
+      0082BB E6 01            [ 1]  190 	ld	a, (0x1, x)
+      0082BD 14 05            [ 1]  191 	and	a, (0x05, sp)
+                                    192 ;	Source/Std_Lib/Src/stm8s_gpio.c: 216: }
+      0082BF 81               [ 4]  193 	ret
+                                    194 	.area CODE
+                                    195 	.area CONST
+                                    196 	.area INITIALIZER
+                                    197 	.area CABS (ABS)

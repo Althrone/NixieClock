@@ -1,6 +1,6 @@
 ;!FILE Build/Debug/stm8s_gpio.asm
 XH3
-H 11 areas 9B global symbols
+H 11 areas A7 global symbols
 M stm8s_gpio
 O -mstm8
 S .__.ABS. Def000000
@@ -13,114 +13,126 @@ A GSINIT size 0 flags 0 addr 0
 A GSFINAL size 0 flags 0 addr 0
 A CONST size 0 flags 0 addr 0
 A INITIALIZER size 0 flags 0 addr 0
-A CODE size 8A flags 0 addr 0
+A CODE size 91 flags 0 addr 0
 S Sstm8s_gpio$GPIO_Init$6 Def000017
 S Sstm8s_gpio$GPIO_Init$7 Def00001C
 S _GPIO_Init Def000000
 S Sstm8s_gpio$GPIO_Init$8 Def000020
 S Sstm8s_gpio$GPIO_Init$9 Def000022
 S XG$GPIO_WriteHigh$0$0 Def00007B
-S A$stm8s_gpiog/stm8s_gpio$200 Def000074
-S A$stm8s_gpiog/stm8s_gpio$120 Def000039
-S A$stm8s_gpiog/stm8s_gpio$111 Def000030
-S A$stm8s_gpiog/stm8s_gpio$211 Def000075
-S A$stm8s_gpiog/stm8s_gpio$130 Def000041
-S A$stm8s_gpiog/stm8s_gpio$121 Def00003B
-S A$stm8s_gpiog/stm8s_gpio$112 Def000032
-S A$stm8s_gpiog/stm8s_gpio$103 Def00002A
+S A$stm8s_gpiog/stm8s_gpio$100 Def000028
+S A$stm8s_gpiog/stm8s_gpio$201 Def000074
+S A$stm8s_gpiog/stm8s_gpio$120 Def000037
+S A$stm8s_gpiog/stm8s_gpio$220 Def00007B
+S A$stm8s_gpiog/stm8s_gpio$130 Def000040
+S A$stm8s_gpiog/stm8s_gpio$121 Def000039
+S A$stm8s_gpiog/stm8s_gpio$112 Def000030
 S XG$GPIO_Init$0$0 Def000074
-S A$stm8s_gpiog/stm8s_gpio$212 Def000077
-S A$stm8s_gpiog/stm8s_gpio$131 Def000043
-S A$stm8s_gpiog/stm8s_gpio$104 Def00002C
-S A$stm8s_gpiog/stm8s_gpio$213 Def000078
-S A$stm8s_gpiog/stm8s_gpio$132 Def000045
-S A$stm8s_gpiog/stm8s_gpio$123 Def00003C
-S A$stm8s_gpiog/stm8s_gpio$241 Def000088
-S A$stm8s_gpiog/stm8s_gpio$232 Def00007D
-S A$stm8s_gpiog/stm8s_gpio$214 Def00007A
-S A$stm8s_gpiog/stm8s_gpio$160 Def000058
-S A$stm8s_gpiog/stm8s_gpio$142 Def00004B
-S A$stm8s_gpiog/stm8s_gpio$106 Def00002E
-S A$stm8s_gpiog/stm8s_gpio$233 Def00007F
-S A$stm8s_gpiog/stm8s_gpio$170 Def00005E
-S A$stm8s_gpiog/stm8s_gpio$161 Def00005A
-S A$stm8s_gpiog/stm8s_gpio$152 Def000053
-S A$stm8s_gpiog/stm8s_gpio$234 Def000080
-S A$stm8s_gpiog/stm8s_gpio$180 Def000066
-S A$stm8s_gpiog/stm8s_gpio$153 Def000055
-S A$stm8s_gpiog/stm8s_gpio$144 Def00004C
-S A$stm8s_gpiog/stm8s_gpio$117 Def000034
-S A$stm8s_gpiog/stm8s_gpio$235 Def000082
-S A$stm8s_gpiog/stm8s_gpio$190 Def00006F
-S A$stm8s_gpiog/stm8s_gpio$181 Def000068
-S A$stm8s_gpiog/stm8s_gpio$172 Def00005F
-S A$stm8s_gpiog/stm8s_gpio$145 Def00004E
-S A$stm8s_gpiog/stm8s_gpio$118 Def000036
-S A$stm8s_gpiog/stm8s_gpio$245 Def000089
-S A$stm8s_gpiog/stm8s_gpio$236 Def000084
-S A$stm8s_gpiog/stm8s_gpio$191 Def000071
-S A$stm8s_gpiog/stm8s_gpio$182 Def00006A
-S A$stm8s_gpiog/stm8s_gpio$173 Def000061
-S A$stm8s_gpiog/stm8s_gpio$155 Def000056
-S A$stm8s_gpiog/stm8s_gpio$146 Def000050
-S A$stm8s_gpiog/stm8s_gpio$137 Def000046
-S A$stm8s_gpiog/stm8s_gpio$128 Def00003E
-S A$stm8s_gpiog/stm8s_gpio$119 Def000037
-S A$stm8s_gpiog/stm8s_gpio$237 Def000085
-S A$stm8s_gpiog/stm8s_gpio$228 Def00007C
-S A$stm8s_gpiog/stm8s_gpio$219 Def00007B
-S A$stm8s_gpiog/stm8s_gpio$174 Def000063
-S A$stm8s_gpiog/stm8s_gpio$138 Def000047
-S A$stm8s_gpiog/stm8s_gpio$129 Def000040
-S A$stm8s_gpiog/stm8s_gpio$238 Def000087
-S A$stm8s_gpiog/stm8s_gpio$184 Def00006B
-S A$stm8s_gpiog/stm8s_gpio$166 Def00005B
-S A$stm8s_gpiog/stm8s_gpio$148 Def000051
-S A$stm8s_gpiog/stm8s_gpio$139 Def00004A
-S A$stm8s_gpiog/stm8s_gpio$176 Def000064
-S A$stm8s_gpiog/stm8s_gpio$167 Def00005D
-S A$stm8s_gpiog/stm8s_gpio$196 Def000072
+S A$stm8s_gpiog/stm8s_gpio$212 Def000075
+S A$stm8s_gpiog/stm8s_gpio$140 Def00004A
+S A$stm8s_gpiog/stm8s_gpio$131 Def000041
+S A$stm8s_gpiog/stm8s_gpio$122 Def00003B
+S A$stm8s_gpiog/stm8s_gpio$113 Def000032
+S A$stm8s_gpiog/stm8s_gpio$104 Def00002A
+S A$stm8s_gpiog/stm8s_gpio$213 Def000077
+S A$stm8s_gpiog/stm8s_gpio$132 Def000043
+S A$stm8s_gpiog/stm8s_gpio$105 Def00002C
+S A$stm8s_gpiog/stm8s_gpio$214 Def000078
+S A$stm8s_gpiog/stm8s_gpio$133 Def000045
+S A$stm8s_gpiog/stm8s_gpio$124 Def00003C
+S A$stm8s_gpiog/stm8s_gpio$242 Def000088
+S A$stm8s_gpiog/stm8s_gpio$233 Def00007D
+S A$stm8s_gpiog/stm8s_gpio$215 Def00007A
+S A$stm8s_gpiog/stm8s_gpio$161 Def000058
+S A$stm8s_gpiog/stm8s_gpio$143 Def00004B
+S A$stm8s_gpiog/stm8s_gpio$107 Def00002E
+S Sstm8s_gpio$GPIO_ReadInputPin$62 Def00008A
+S A$stm8s_gpiog/stm8s_gpio$234 Def00007F
+S A$stm8s_gpiog/stm8s_gpio$171 Def00005E
+S A$stm8s_gpiog/stm8s_gpio$162 Def00005A
+S A$stm8s_gpiog/stm8s_gpio$153 Def000053
+S Sstm8s_gpio$GPIO_ReadInputPin$63 Def00008A
+S A$stm8s_gpiog/stm8s_gpio$235 Def000080
+S A$stm8s_gpiog/stm8s_gpio$190 Def00006D
+S A$stm8s_gpiog/stm8s_gpio$181 Def000066
+S A$stm8s_gpiog/stm8s_gpio$154 Def000055
+S A$stm8s_gpiog/stm8s_gpio$145 Def00004C
+S A$stm8s_gpiog/stm8s_gpio$118 Def000034
+S Sstm8s_gpio$GPIO_ReadInputPin$64 Def00008A
+S A$stm8s_gpiog/stm8s_gpio$236 Def000082
+S A$stm8s_gpiog/stm8s_gpio$191 Def00006F
+S A$stm8s_gpiog/stm8s_gpio$182 Def000068
+S A$stm8s_gpiog/stm8s_gpio$173 Def00005F
+S A$stm8s_gpiog/stm8s_gpio$146 Def00004E
+S A$stm8s_gpiog/stm8s_gpio$119 Def000036
+S Sstm8s_gpio$GPIO_ReadInputPin$65 Def000090
+S A$stm8s_gpiog/stm8s_gpio$264 Def000090
+S A$stm8s_gpiog/stm8s_gpio$246 Def000089
+S A$stm8s_gpiog/stm8s_gpio$237 Def000084
+S A$stm8s_gpiog/stm8s_gpio$192 Def000071
+S A$stm8s_gpiog/stm8s_gpio$183 Def00006A
+S A$stm8s_gpiog/stm8s_gpio$174 Def000061
+S A$stm8s_gpiog/stm8s_gpio$156 Def000056
+S A$stm8s_gpiog/stm8s_gpio$147 Def000050
+S A$stm8s_gpiog/stm8s_gpio$138 Def000046
+S A$stm8s_gpiog/stm8s_gpio$129 Def00003E
+S Sstm8s_gpio$GPIO_ReadInputPin$66 Def000090
+S A$stm8s_gpiog/stm8s_gpio$238 Def000085
+S A$stm8s_gpiog/stm8s_gpio$229 Def00007C
+S A$stm8s_gpiog/stm8s_gpio$175 Def000063
+S A$stm8s_gpiog/stm8s_gpio$139 Def000047
+S Sstm8s_gpio$GPIO_ReadInputPin$67 Def000091
+S A$stm8s_gpiog/stm8s_gpio$257 Def00008A
+S A$stm8s_gpiog/stm8s_gpio$239 Def000087
+S A$stm8s_gpiog/stm8s_gpio$185 Def00006B
+S A$stm8s_gpiog/stm8s_gpio$167 Def00005B
+S A$stm8s_gpiog/stm8s_gpio$149 Def000051
+S A$stm8s_gpiog/stm8s_gpio$258 Def00008C
+S A$stm8s_gpiog/stm8s_gpio$177 Def000064
+S A$stm8s_gpiog/stm8s_gpio$168 Def00005D
+S A$stm8s_gpiog/stm8s_gpio$259 Def00008E
 S Sstm8s_gpio$GPIO_WriteLow$60 Def000089
+S A$stm8s_gpiog/stm8s_gpio$197 Def000072
 S Sstm8s_gpio$GPIO_WriteLow$61 Def00008A
-S A$stm8s_gpiog/stm8s_gpio$189 Def00006D
 S Sstm8s_gpio$GPIO_WriteLow$54 Def00007C
 S Sstm8s_gpio$GPIO_WriteLow$55 Def00007C
 S Sstm8s_gpio$GPIO_WriteLow$56 Def00007D
 S Sstm8s_gpio$GPIO_WriteLow$57 Def00007D
-S A$stm8s_gpiog/stm8s_gpio$70 Def00000E
+S A$stm8s_gpiog/stm8s_gpio$70 Def00000C
 S Sstm8s_gpio$GPIO_WriteLow$58 Def000088
-S A$stm8s_gpiog/stm8s_gpio$80 Def000018
-S A$stm8s_gpiog/stm8s_gpio$71 Def00000F
-S A$stm8s_gpiog/stm8s_gpio$62 Def000002
+S _GPIO_ReadInputPin Def00008A
+S A$stm8s_gpiog/stm8s_gpio$80 Def000017
+S A$stm8s_gpiog/stm8s_gpio$71 Def00000E
 S Sstm8s_gpio$GPIO_WriteLow$59 Def000089
-S A$stm8s_gpiog/stm8s_gpio$81 Def000019
-S A$stm8s_gpiog/stm8s_gpio$72 Def000011
-S A$stm8s_gpiog/stm8s_gpio$63 Def000004
-S A$stm8s_gpiog/stm8s_gpio$82 Def00001A
-S A$stm8s_gpiog/stm8s_gpio$64 Def000005
-S A$stm8s_gpiog/stm8s_gpio$74 Def000012
-S A$stm8s_gpiog/stm8s_gpio$65 Def000008
-S A$stm8s_gpiog/stm8s_gpio$93 Def000022
-S A$stm8s_gpiog/stm8s_gpio$75 Def000014
-S A$stm8s_gpiog/stm8s_gpio$66 Def00000A
-S A$stm8s_gpiog/stm8s_gpio$85 Def00001C
-S A$stm8s_gpiog/stm8s_gpio$76 Def000016
-S A$stm8s_gpiog/stm8s_gpio$67 Def00000B
-S A$stm8s_gpiog/stm8s_gpio$58 Def000000
+S A$stm8s_gpiog/stm8s_gpio$90 Def000020
+S A$stm8s_gpiog/stm8s_gpio$81 Def000018
+S A$stm8s_gpiog/stm8s_gpio$72 Def00000F
+S A$stm8s_gpiog/stm8s_gpio$63 Def000002
+S A$stm8s_gpiog/stm8s_gpio$82 Def000019
+S A$stm8s_gpiog/stm8s_gpio$73 Def000011
+S A$stm8s_gpiog/stm8s_gpio$64 Def000004
+S A$stm8s_gpiog/stm8s_gpio$83 Def00001A
+S A$stm8s_gpiog/stm8s_gpio$65 Def000005
+S A$stm8s_gpiog/stm8s_gpio$75 Def000012
+S A$stm8s_gpiog/stm8s_gpio$66 Def000008
+S A$stm8s_gpiog/stm8s_gpio$94 Def000022
+S A$stm8s_gpiog/stm8s_gpio$76 Def000014
+S A$stm8s_gpiog/stm8s_gpio$67 Def00000A
 S Sstm8s_gpio$GPIO_WriteHigh$50 Def000075
-S A$stm8s_gpiog/stm8s_gpio$95 Def000023
-S A$stm8s_gpiog/stm8s_gpio$86 Def00001E
+S A$stm8s_gpiog/stm8s_gpio$86 Def00001C
+S A$stm8s_gpiog/stm8s_gpio$77 Def000016
+S A$stm8s_gpiog/stm8s_gpio$68 Def00000B
+S A$stm8s_gpiog/stm8s_gpio$59 Def000000
 S Sstm8s_gpio$GPIO_WriteHigh$51 Def00007B
-S A$stm8s_gpiog/stm8s_gpio$96 Def000025
-S A$stm8s_gpiog/stm8s_gpio$69 Def00000C
+S A$stm8s_gpiog/stm8s_gpio$96 Def000023
+S A$stm8s_gpiog/stm8s_gpio$87 Def00001E
 S Sstm8s_gpio$GPIO_WriteHigh$52 Def00007B
-S A$stm8s_gpiog/stm8s_gpio$97 Def000027
-S A$stm8s_gpiog/stm8s_gpio$79 Def000017
+S A$stm8s_gpiog/stm8s_gpio$97 Def000025
 S Sstm8s_gpio$GPIO_WriteHigh$53 Def00007C
-S A$stm8s_gpiog/stm8s_gpio$89 Def000020
+S A$stm8s_gpiog/stm8s_gpio$98 Def000027
 S _GPIO_WriteLow Def00007C
-S A$stm8s_gpiog/stm8s_gpio$99 Def000028
 S Sstm8s_gpio$GPIO_Init$10 Def000022
+S XG$GPIO_ReadInputPin$0$0 Def000090
 S Sstm8s_gpio$GPIO_Init$20 Def00003C
 S Sstm8s_gpio$GPIO_Init$11 Def000023
 S Sstm8s_gpio$GPIO_WriteHigh$48 Def000075
@@ -169,12 +181,12 @@ S Sstm8s_gpio$GPIO_Init$3 Def000002
 S Sstm8s_gpio$GPIO_Init$4 Def00000C
 S Sstm8s_gpio$GPIO_Init$5 Def000012
 A CABS size 0 flags 8 addr 0
-A .debug_line size 141 flags 100 addr 0
-A .debug_loc size CC flags 100 addr 0
-A .debug_abbrev size 7E flags 100 addr 0
-A .debug_info size 1E2 flags 100 addr 0
-A .debug_pubnames size 45 flags 100 addr 0
-A .debug_frame size CF flags 100 addr 0
+A .debug_line size 15E flags 100 addr 0
+A .debug_loc size E0 flags 100 addr 0
+A .debug_abbrev size 80 flags 100 addr 0
+A .debug_info size 22A flags 100 addr 0
+A .debug_pubnames size 5B flags 100 addr 0
+A .debug_frame size F8 flags 100 addr 0
 T 00 00 00
 R 00 00 00 09
 T 00 00 00 52 05 16 08 93 1C 00 04 1F 01 F6 88 7B
@@ -231,7 +243,11 @@ T 00 00 7C 88 1E 04 F6 6B 01 7B 06 43 14 01 F7 84
 R 00 00 00 09
 T 00 00 89 81
 R 00 00 00 09
-T 00 00 00 00 00 01 3D
+T 00 00 8A
+R 00 00 00 09
+T 00 00 8A 1E 03 E6 01 14 05 81
+R 00 00 00 09
+T 00 00 00 00 00 01 5A
 R 00 00 00 0B
 T 00 00 04
 R 00 00 00 0B
@@ -287,69 +303,79 @@ T 00 01 1C 01 01 09 00 01 00 01 01 00 05 02 00 00
 R 00 00 00 0B
 T 00 01 29 00 7C 03 A6 01 01 09 00 01 03 02 01 09
 R 00 00 00 0B 00 03 00 09
-T 00 01 36 00 0B 03 01 01 09 00 02 00 01 01
+T 00 01 36 00 0B 03 01 01 09 00 02 00 01 01 00 05
 R 00 00 00 0B
-T 00 01 41
+T 00 01 43 02 00 00 00 8A 03 D4 01 01 09 00 00 03
+R 00 00 00 0B 00 06 00 09
+T 00 01 50 02 01 09 00 06 03 01 01 09 00 01 00 01
+R 00 00 00 0B
+T 00 01 5D 01
+R 00 00 00 0B
+T 00 01 5E
 R 00 00 00 0B
 T 00 00 00
 R 00 00 00 0C
-T 00 00 00 00 00 00 89 00 00 00 8A 00 02 78 01
+T 00 00 00 00 00 00 8A 00 00 00 91 00 02 78 01
 R 00 00 00 0C 00 05 00 09 00 09 00 09
-T 00 00 0C 00 00 00 7D 00 00 00 89 00 02 78 02
-R 00 00 00 0C 00 05 00 09 00 09 00 09
-T 00 00 18 00 00 00 7C 00 00 00 7D 00 02 78 01
-R 00 00 00 0C 00 05 00 09 00 09 00 09
-T 00 00 24 00 00 00 00 00 00 00 00 00 00 00 75
+T 00 00 0C 00 00 00 00 00 00 00 00 00 00 00 89
 R 00 00 00 0C 00 0D 00 09
-T 00 00 30 00 00 00 7C 00 02 78 01 00 00 00 00
+T 00 00 18 00 00 00 8A 00 02 78 01 00 00 00 7D
+R 00 00 00 0C 00 05 00 09 00 0D 00 09
+T 00 00 24 00 00 00 89 00 02 78 02 00 00 00 7C
+R 00 00 00 0C 00 05 00 09 00 0D 00 09
+T 00 00 30 00 00 00 7D 00 02 78 01 00 00 00 00
 R 00 00 00 0C 00 05 00 09
-T 00 00 3C 00 00 00 00 00 00 00 74 00 00 00 75
+T 00 00 3C 00 00 00 00 00 00 00 75 00 00 00 7C
 R 00 00 00 0C 00 09 00 09 00 0D 00 09
-T 00 00 48 00 02 78 01 00 00 00 64 00 00 00 74
-R 00 00 00 0C 00 09 00 09 00 0D 00 09
-T 00 00 54 00 02 78 06 00 00 00 5F 00 00 00 64
-R 00 00 00 0C 00 09 00 09 00 0D 00 09
-T 00 00 60 00 02 78 07 00 00 00 51 00 00 00 5F
-R 00 00 00 0C 00 09 00 09 00 0D 00 09
-T 00 00 6C 00 02 78 06 00 00 00 4C 00 00 00 51
-R 00 00 00 0C 00 09 00 09 00 0D 00 09
-T 00 00 78 00 02 78 07 00 00 00 28 00 00 00 4C
-R 00 00 00 0C 00 09 00 09 00 0D 00 09
-T 00 00 84 00 02 78 06 00 00 00 23 00 00 00 28
-R 00 00 00 0C 00 09 00 09 00 0D 00 09
-T 00 00 90 00 02 78 07 00 00 00 12 00 00 00 23
-R 00 00 00 0C 00 09 00 09 00 0D 00 09
-T 00 00 9C 00 02 78 06 00 00 00 0C 00 00 00 12
-R 00 00 00 0C 00 09 00 09 00 0D 00 09
-T 00 00 A8 00 02 78 07 00 00 00 02 00 00 00 0C
-R 00 00 00 0C 00 09 00 09 00 0D 00 09
-T 00 00 B4 00 02 78 06 00 00 00 00 00 00 00 02
-R 00 00 00 0C 00 09 00 09 00 0D 00 09
-T 00 00 C0 00 02 78 01 00 00 00 00 00 00 00 00
+T 00 00 48 00 02 78 01 00 00 00 00 00 00 00 00
+R 00 00 00 0C
+T 00 00 54 00 00 00 74 00 00 00 75 00 02 78 01
+R 00 00 00 0C 00 05 00 09 00 09 00 09
+T 00 00 60 00 00 00 64 00 00 00 74 00 02 78 06
+R 00 00 00 0C 00 05 00 09 00 09 00 09
+T 00 00 6C 00 00 00 5F 00 00 00 64 00 02 78 07
+R 00 00 00 0C 00 05 00 09 00 09 00 09
+T 00 00 78 00 00 00 51 00 00 00 5F 00 02 78 06
+R 00 00 00 0C 00 05 00 09 00 09 00 09
+T 00 00 84 00 00 00 4C 00 00 00 51 00 02 78 07
+R 00 00 00 0C 00 05 00 09 00 09 00 09
+T 00 00 90 00 00 00 28 00 00 00 4C 00 02 78 06
+R 00 00 00 0C 00 05 00 09 00 09 00 09
+T 00 00 9C 00 00 00 23 00 00 00 28 00 02 78 07
+R 00 00 00 0C 00 05 00 09 00 09 00 09
+T 00 00 A8 00 00 00 12 00 00 00 23 00 02 78 06
+R 00 00 00 0C 00 05 00 09 00 09 00 09
+T 00 00 B4 00 00 00 0C 00 00 00 12 00 02 78 07
+R 00 00 00 0C 00 05 00 09 00 09 00 09
+T 00 00 C0 00 00 00 02 00 00 00 0C 00 02 78 06
+R 00 00 00 0C 00 05 00 09 00 09 00 09
+T 00 00 CC 00 00 00 00 00 00 00 02 00 02 78 01
+R 00 00 00 0C 00 05 00 09 00 09 00 09
+T 00 00 D8 00 00 00 00 00 00 00 00
 R 00 00 00 0C
 T 00 00 00
 R 00 00 00 0D
 T 00 00 00 06 0F 00 0B 0B 49 13 00 00 04 35 00 49
 R 00 00 00 0D
-T 00 00 0D 13 00 00 07 05 00 02 0A 03 08 49 13 00
+T 00 00 0D 13 00 00 0B 2E 01 03 08 11 01 12 01 3F
 R 00 00 00 0D
-T 00 00 1A 00 02 2E 01 01 13 03 08 11 01 12 01 3F
+T 00 00 1A 0C 40 06 49 13 00 00 07 05 00 02 0A 03
 R 00 00 00 0D
-T 00 00 27 0C 40 06 00 00 01 11 01 03 08 10 06 13
+T 00 00 27 08 49 13 00 00 02 2E 01 01 13 03 08 11
 R 00 00 00 0D
-T 00 00 34 0B 25 08 00 00 05 0D 00 03 08 38 0A 49
+T 00 00 34 01 12 01 3F 0C 40 06 00 00 01 11 01 03
 R 00 00 00 0D
-T 00 00 41 13 00 00 09 0B 00 11 01 12 01 00 00 0B
+T 00 00 41 08 10 06 13 0B 25 08 00 00 05 0D 00 03
 R 00 00 00 0D
-T 00 00 4E 2E 01 03 08 11 01 12 01 3F 0C 40 06 00
+T 00 00 4E 08 38 0A 49 13 00 00 09 0B 00 11 01 12
 R 00 00 00 0D
-T 00 00 5B 00 08 0B 01 01 13 11 01 12 01 00 00 03
+T 00 00 5B 01 00 00 08 0B 01 01 13 11 01 12 01 00
 R 00 00 00 0D
-T 00 00 68 13 01 01 13 03 08 0B 0B 00 00 0A 24 00
+T 00 00 68 00 03 13 01 01 13 03 08 0B 0B 00 00 0A
 R 00 00 00 0D
-T 00 00 75 03 08 0B 0B 3E 0B 00 00 00
+T 00 00 75 24 00 03 08 0B 0B 3E 0B 00 00 00
 R 00 00 00 0D
-T 00 00 00 00 00 01 DE
+T 00 00 00 00 00 02 26
 R 00 00 00 0E
 T 00 00 04
 R 00 00 00 0E
@@ -367,7 +393,7 @@ T 00 00 45 31 31 35 32 38 00 02 00 00 01 40 47 50
 R 00 00 00 0E
 T 00 00 52 49 4F 5F 49 6E 69 74 00 00 00 00 00
 R 00 00 00 0E 00 0D 00 09
-T 00 00 5E 00 00 00 75 01 00 00 00 40 03 00 00
+T 00 00 5E 00 00 00 75 01 00 00 00 54 03 00 00
 R 00 00 00 0E 00 05 00 09 00 0A 00 0C
 T 00 00 6A 00 BB 47 50 49 4F 5F 73 74 72 75 63 74
 R 00 00 00 0E
@@ -415,31 +441,41 @@ T 00 01 60 01 08 02 00 00 01 A3 47 50 49 4F 5F 57
 R 00 00 00 0E
 T 00 01 6D 72 69 74 65 48 69 67 68 00 00 00 00 75
 R 00 00 00 0E 00 0E 00 09
-T 00 01 7A 00 00 00 7C 01 00 00 00 2C 07 02 91 02
+T 00 01 7A 00 00 00 7C 01 00 00 00 40 07 02 91 02
 R 00 00 00 0E 00 05 00 09 00 0A 00 0C
 T 00 01 87 47 50 49 4F 78 00 00 00 00 BB 07 02 91
 R 00 00 00 0E
 T 00 01 94 04 50 6F 72 74 50 69 6E 73 00 00 00
 R 00 00 00 0E
-T 00 01 A0 01 51 00 0B 47 50 49 4F 5F 57 72 69 74
+T 00 01 A0 01 51 00 02 00 00 01 E3 47 50 49 4F 5F
 R 00 00 00 0E
-T 00 01 AD 65 4C 6F 77 00 00 00 00 7C 00 00 00 8A
-R 00 00 00 0E 00 0A 00 09 00 0E 00 09
-T 00 01 BA 01 00 00 00 00 07 02 91 02 47 50 49 4F
-R 00 00 00 0E 00 06 00 0C
-T 00 01 C7 78 00 00 00 00 BB 07 02 91 04 50 6F 72
+T 00 01 AD 57 72 69 74 65 4C 6F 77 00 00 00 00 7C
+R 00 00 00 0E 00 0E 00 09
+T 00 01 BA 00 00 00 8A 01 00 00 00 14 07 02 91 02
+R 00 00 00 0E 00 05 00 09 00 0A 00 0C
+T 00 01 C7 47 50 49 4F 78 00 00 00 00 BB 07 02 91
 R 00 00 00 0E
-T 00 01 D4 74 50 69 6E 73 00 00 00 01 51 00 00 00
+T 00 01 D4 04 50 6F 72 74 50 69 6E 73 00 00 00
 R 00 00 00 0E
-T 00 01 E1 00
+T 00 01 E0 01 51 00 0B 47 50 49 4F 5F 52 65 61 64
 R 00 00 00 0E
-T 00 01 E2
+T 00 01 ED 49 6E 70 75 74 50 69 6E 00 00 00 00 8A
+R 00 00 00 0E 00 0E 00 09
+T 00 01 FA 00 00 00 91 01 00 00 00 00 00 00 01 51
+R 00 00 00 0E 00 05 00 09 00 0A 00 0C
+T 00 02 07 07 02 91 02 47 50 49 4F 78 00 00 00
 R 00 00 00 0E
-T 00 00 00 00 00 00 41
+T 00 02 13 00 BB 07 02 91 04 47 50 49 4F 5F 50 69
+R 00 00 00 0E
+T 00 02 20 6E 00 00 00 01 51 00 00 00 00
+R 00 00 00 0E
+T 00 02 2A
+R 00 00 00 0E
+T 00 00 00 00 00 00 57
 R 00 00 00 0F
 T 00 00 04
 R 00 00 00 0F
-T 00 00 04 00 02 00 00 00 00 00 00 01 E2 00 00
+T 00 00 04 00 02 00 00 00 00 00 00 02 2A 00 00
 R 00 00 00 0F 00 07 00 0E
 T 00 00 10 00 4B 47 50 49 4F 5F 49 6E 69 74 00
 R 00 00 00 0F
@@ -449,9 +485,11 @@ T 00 00 29 65 48 69 67 68 00 00 00 01 A3 47 50 49
 R 00 00 00 0F
 T 00 00 36 4F 5F 57 72 69 74 65 4C 6F 77 00 00 00
 R 00 00 00 0F
-T 00 00 43 00 00
+T 00 00 43 01 E3 47 50 49 4F 5F 52 65 61 64 49 6E
 R 00 00 00 0F
-T 00 00 45
+T 00 00 50 70 75 74 50 69 6E 00 00 00 00 00
+R 00 00 00 0F
+T 00 00 5B
 R 00 00 00 0F
 T 00 00 00 00 00 00 0E
 R 00 00 00 10
@@ -463,26 +501,26 @@ T 00 00 11 01
 R 00 00 00 10
 T 00 00 12
 R 00 00 00 10
-T 00 00 12 00 00 00 21 00 00 00 00 00 00 00 7C
+T 00 00 12 00 00 00 13 00 00 00 00 00 00 00 8A
 R 00 00 00 10 00 09 00 10 00 0D 00 09
-T 00 00 1E 00 00 00 0E 01 00 00 00 7C 0E 02 01
+T 00 00 1E 00 00 00 07 01 00 00 00 8A 0E 02
 R 00 00 00 10 00 0A 00 09
-T 00 00 2A 00 00 00 7D 0E 03 01 00 00 00 89 0E 02
-R 00 00 00 10 00 05 00 09 00 0C 00 09
-T 00 00 37 00 00 00 0E
+T 00 00 29 00 00 00 0E
+R 00 00 00 10
+T 00 00 2D
+R 00 00 00 10
+T 00 00 2D FF FF FF FF 01 00 01 7F 09 0C 08 02 89
+R 00 00 00 10
+T 00 00 3A 01
 R 00 00 00 10
 T 00 00 3B
 R 00 00 00 10
-T 00 00 3B FF FF FF FF 01 00 01 7F 09 0C 08 02 89
-R 00 00 00 10
-T 00 00 48 01
-R 00 00 00 10
-T 00 00 49
-R 00 00 00 10
-T 00 00 49 00 00 00 13 00 00 00 37 00 00 00 75
+T 00 00 3B 00 00 00 21 00 00 00 29 00 00 00 7C
 R 00 00 00 10 00 09 00 10 00 0D 00 09
-T 00 00 55 00 00 00 07 01 00 00 00 75 0E 02
+T 00 00 47 00 00 00 0E 01 00 00 00 7C 0E 02 01
 R 00 00 00 10 00 0A 00 09
+T 00 00 53 00 00 00 7D 0E 03 01 00 00 00 89 0E 02
+R 00 00 00 10 00 05 00 09 00 0C 00 09
 T 00 00 60 00 00 00 0E
 R 00 00 00 10
 T 00 00 64
@@ -493,19 +531,33 @@ T 00 00 71 01
 R 00 00 00 10
 T 00 00 72
 R 00 00 00 10
-T 00 00 72 00 00 00 59 00 00 00 60 00 00 00 00
+T 00 00 72 00 00 00 13 00 00 00 60 00 00 00 75
 R 00 00 00 10 00 09 00 10 00 0D 00 09
-T 00 00 7E 00 00 00 75 01 00 00 00 00 0E 02 01
+T 00 00 7E 00 00 00 07 01 00 00 00 75 0E 02
 R 00 00 00 10 00 0A 00 09
-T 00 00 8A 00 00 00 02 0E 07 01 00 00 00 0C 0E 08
+T 00 00 89 00 00 00 0E
+R 00 00 00 10
+T 00 00 8D
+R 00 00 00 10
+T 00 00 8D FF FF FF FF 01 00 01 7F 09 0C 08 02 89
+R 00 00 00 10
+T 00 00 9A 01
+R 00 00 00 10
+T 00 00 9B
+R 00 00 00 10
+T 00 00 9B 00 00 00 59 00 00 00 89 00 00 00 00
+R 00 00 00 10 00 09 00 10 00 0D 00 09
+T 00 00 A7 00 00 00 75 01 00 00 00 00 0E 02 01
+R 00 00 00 10 00 0A 00 09
+T 00 00 B3 00 00 00 02 0E 07 01 00 00 00 0C 0E 08
 R 00 00 00 10 00 05 00 09 00 0C 00 09
-T 00 00 97 01 00 00 00 12 0E 07 01 00 00 00 23 0E
+T 00 00 C0 01 00 00 00 12 0E 07 01 00 00 00 23 0E
 R 00 00 00 10 00 06 00 09 00 0D 00 09
-T 00 00 A4 08 01 00 00 00 28 0E 07 01 00 00 00 4C
+T 00 00 CD 08 01 00 00 00 28 0E 07 01 00 00 00 4C
 R 00 00 00 10 00 07 00 09 00 0E 00 09
-T 00 00 B1 0E 08 01 00 00 00 51 0E 07 01 00 00
+T 00 00 DA 0E 08 01 00 00 00 51 0E 07 01 00 00
 R 00 00 00 10 00 08 00 09
-T 00 00 BD 00 5F 0E 08 01 00 00 00 64 0E 07 01
+T 00 00 E6 00 5F 0E 08 01 00 00 00 64 0E 07 01
 R 00 00 00 10 00 03 00 09 00 0A 00 09
-T 00 00 C9 00 00 00 74 0E 02
+T 00 00 F2 00 00 00 74 0E 02
 R 00 00 00 10 00 05 00 09

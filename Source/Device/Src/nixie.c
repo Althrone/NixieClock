@@ -41,6 +41,9 @@ P是小数点，A是阳极
 /* Private define ------------------------------------------------------------*/
 /* Private typedef -----------------------------------------------------------*/
 /* Public variables ----------------------------------------------------------*/
+
+FunctionalState tube_state=DISABLE;
+
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Public functions ----------------------------------------------------------*/
@@ -109,8 +112,6 @@ uint16_t NIXIE_DisplayChar(uint8_t tubeNum,char* character,FunctionalState tubeS
     return output;
 }
 
-int aaaa=0;
-
 /**
  * @brief   显示时间
  * @param   hour: 小时
@@ -121,36 +122,24 @@ void NIXIE_DisplayTime(uint8_t hour,uint8_t min)
 {
     uint16_t tube1,tube2,tube3,tube4;
 
-    char tube1s[]="0",tube2s[]="0",tube3s[]="0",tube4s[]="0";
+    char tube1s[]="0",tube2s[]="0",tube3s[]="0.",tube4s[]="0";
 
-    uint8_t tmp=aaaa/1000;
+    uint8_t tmp=hour/10;
     tube1s[0]+=tmp;
 
-     tmp=aaaa%1000/100;
+     tmp=hour%10;
     tube2s[0]+=tmp;
 
-     tmp=aaaa%100/10;
+     tmp=min/10;
     tube3s[0]+=tmp;
 
-     tmp=aaaa%10;
+     tmp=min%10;
     tube4s[0]+=tmp;
 
-    tube1=NIXIE_DisplayChar(1,tube1s,ENABLE);
-    tube2=NIXIE_DisplayChar(2,tube2s,ENABLE);
-    tube3=NIXIE_DisplayChar(3,tube3s,ENABLE);
-    tube4=NIXIE_DisplayChar(4,tube4s,ENABLE);
-
-
-    ++aaaa;
-    if(aaaa==9999)
-        aaaa=0;
-    
-    
-
-    // tube1=NIXIE_DisplayChar(1,"6",ENABLE);
-    // tube2=NIXIE_DisplayChar(2,"6",ENABLE);
-    // tube3=NIXIE_DisplayChar(3,"6",ENABLE);
-    // tube4=NIXIE_DisplayChar(4,"6",ENABLE);
+    tube1=NIXIE_DisplayChar(1,tube1s,tube_state);
+    tube2=NIXIE_DisplayChar(2,tube2s,tube_state);
+    tube3=NIXIE_DisplayChar(3,tube3s,tube_state);
+    tube4=NIXIE_DisplayChar(4,tube4s,tube_state);
 
     //输出到595
 

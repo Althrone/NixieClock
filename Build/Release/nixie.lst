@@ -18,7 +18,7 @@
                                      18 	.globl _GPIO_WriteLow
                                      19 	.globl _GPIO_WriteHigh
                                      20 	.globl _GPIO_Init
-                                     21 	.globl _aaaa
+                                     21 	.globl _tube_state
                                      22 	.globl _NIXIE_Init
                                      23 	.globl _NIXIE_DisplayChar
                                      24 	.globl _NIXIE_DisplayTime
@@ -30,8 +30,8 @@
                                      30 ; ram data
                                      31 ;--------------------------------------------------------
                                      32 	.area INITIALIZED
-      000000                         33 _aaaa::
-      000000                         34 	.ds 2
+      000000                         33 _tube_state::
+      000000                         34 	.ds 1
                                      35 ;--------------------------------------------------------
                                      36 ; absolute external ram data
                                      37 ;--------------------------------------------------------
@@ -61,12 +61,12 @@
                                      61 ; code
                                      62 ;--------------------------------------------------------
                                      63 	.area CODE
-                                     64 ;	Source/Device/Src/nixie.c: 48: void delay(void)
+                                     64 ;	Source/Device/Src/nixie.c: 51: void delay(void)
                                      65 ;	-----------------------------------------
                                      66 ;	 function delay
                                      67 ;	-----------------------------------------
       000000                         68 _delay:
-                                     69 ;	Source/Device/Src/nixie.c: 57: for (int i = 0; i < 300; i++);//这个比较合适
+                                     69 ;	Source/Device/Src/nixie.c: 60: for (int i = 0; i < 300; i++);//这个比较合适
       000000 5F               [ 1]   70 	clrw	x
       000001                         71 00103$:
       000001 A3 01 2C         [ 2]   72 	cpw	x, #0x012c
@@ -75,37 +75,37 @@
       000007                         75 00118$:
       000007 5C               [ 1]   76 	incw	x
       000008 20 F7            [ 2]   77 	jra	00103$
-                                     78 ;	Source/Device/Src/nixie.c: 58: }
+                                     78 ;	Source/Device/Src/nixie.c: 61: }
       00000A 81               [ 4]   79 	ret
-                                     80 ;	Source/Device/Src/nixie.c: 63: void NIXIE_Init(void)
+                                     80 ;	Source/Device/Src/nixie.c: 66: void NIXIE_Init(void)
                                      81 ;	-----------------------------------------
                                      82 ;	 function NIXIE_Init
                                      83 ;	-----------------------------------------
       00000B                         84 _NIXIE_Init:
-                                     85 ;	Source/Device/Src/nixie.c: 65: GPIO_Init(GPIOC,GPIO_PIN_5,GPIO_MODE_OUT_PP_LOW_FAST);//PC5 SHCP 复用功能
+                                     85 ;	Source/Device/Src/nixie.c: 68: GPIO_Init(GPIOC,GPIO_PIN_5,GPIO_MODE_OUT_PP_LOW_FAST);//PC5 SHCP 复用功能
       00000B 4B E0            [ 1]   86 	push	#0xe0
       00000D 4B 20            [ 1]   87 	push	#0x20
       00000F 4B 0A            [ 1]   88 	push	#0x0a
       000011 4B 50            [ 1]   89 	push	#0x50
       000013 CDr00r00         [ 4]   90 	call	_GPIO_Init
       000016 5B 04            [ 2]   91 	addw	sp, #4
-                                     92 ;	Source/Device/Src/nixie.c: 66: GPIO_Init(GPIOC,GPIO_PIN_6,GPIO_MODE_OUT_PP_LOW_FAST);//PC6 DATA 复用功能
+                                     92 ;	Source/Device/Src/nixie.c: 69: GPIO_Init(GPIOC,GPIO_PIN_6,GPIO_MODE_OUT_PP_LOW_FAST);//PC6 DATA 复用功能
       000018 4B E0            [ 1]   93 	push	#0xe0
       00001A 4B 40            [ 1]   94 	push	#0x40
       00001C 4B 0A            [ 1]   95 	push	#0x0a
       00001E 4B 50            [ 1]   96 	push	#0x50
       000020 CDr00r00         [ 4]   97 	call	_GPIO_Init
       000023 5B 04            [ 2]   98 	addw	sp, #4
-                                     99 ;	Source/Device/Src/nixie.c: 67: GPIO_Init(GPIOC,GPIO_PIN_7,GPIO_MODE_OUT_PP_LOW_FAST);//PC7 STCP 普通IO口
+                                     99 ;	Source/Device/Src/nixie.c: 70: GPIO_Init(GPIOC,GPIO_PIN_7,GPIO_MODE_OUT_PP_LOW_FAST);//PC7 STCP 普通IO口
       000025 4B E0            [ 1]  100 	push	#0xe0
       000027 4B 80            [ 1]  101 	push	#0x80
       000029 4B 0A            [ 1]  102 	push	#0x0a
       00002B 4B 50            [ 1]  103 	push	#0x50
       00002D CDr00r00         [ 4]  104 	call	_GPIO_Init
       000030 5B 04            [ 2]  105 	addw	sp, #4
-                                    106 ;	Source/Device/Src/nixie.c: 68: SPI_DeInit();
+                                    106 ;	Source/Device/Src/nixie.c: 71: SPI_DeInit();
       000032 CDr00r00         [ 4]  107 	call	_SPI_DeInit
-                                    108 ;	Source/Device/Src/nixie.c: 70: SPI_Init(SPI_FIRSTBIT_LSB,
+                                    108 ;	Source/Device/Src/nixie.c: 73: SPI_Init(SPI_FIRSTBIT_LSB,
       000035 4B 07            [ 1]  109 	push	#0x07
       000037 4B 02            [ 1]  110 	push	#0x02
       000039 4B C0            [ 1]  111 	push	#0xc0
@@ -116,22 +116,22 @@
       000043 4B 80            [ 1]  116 	push	#0x80
       000045 CDr00r00         [ 4]  117 	call	_SPI_Init
       000048 5B 08            [ 2]  118 	addw	sp, #8
-                                    119 ;	Source/Device/Src/nixie.c: 78: SPI_Cmd(ENABLE);
+                                    119 ;	Source/Device/Src/nixie.c: 81: SPI_Cmd(ENABLE);
       00004A 4B 01            [ 1]  120 	push	#0x01
       00004C CDr00r00         [ 4]  121 	call	_SPI_Cmd
       00004F 84               [ 1]  122 	pop	a
-                                    123 ;	Source/Device/Src/nixie.c: 79: }
+                                    123 ;	Source/Device/Src/nixie.c: 82: }
       000050 81               [ 4]  124 	ret
-                                    125 ;	Source/Device/Src/nixie.c: 89: uint16_t NIXIE_DisplayChar(uint8_t tubeNum,char* character,FunctionalState tubeState)
+                                    125 ;	Source/Device/Src/nixie.c: 92: uint16_t NIXIE_DisplayChar(uint8_t tubeNum,char* character,FunctionalState tubeState)
                                     126 ;	-----------------------------------------
                                     127 ;	 function NIXIE_DisplayChar
                                     128 ;	-----------------------------------------
       000051                        129 _NIXIE_DisplayChar:
       000051 52 05            [ 2]  130 	sub	sp, #5
-                                    131 ;	Source/Device/Src/nixie.c: 91: uint16_t tmp=0;
+                                    131 ;	Source/Device/Src/nixie.c: 94: uint16_t tmp=0;
       000053 5F               [ 1]  132 	clrw	x
       000054 1F 03            [ 2]  133 	ldw	(0x03, sp), x
-                                    134 ;	Source/Device/Src/nixie.c: 94: if(strchr(character,'.')!=NULL)
+                                    134 ;	Source/Device/Src/nixie.c: 97: if(strchr(character,'.')!=NULL)
       000056 4B 2E            [ 1]  135 	push	#0x2e
       000058 4B 00            [ 1]  136 	push	#0x00
       00005A 1E 0B            [ 2]  137 	ldw	x, (0x0b, sp)
@@ -140,17 +140,17 @@
       000060 5B 04            [ 2]  140 	addw	sp, #4
       000062 5D               [ 2]  141 	tnzw	x
       000063 27 05            [ 1]  142 	jreq	00118$
-                                    143 ;	Source/Device/Src/nixie.c: 95: tmp|=1<<11;
+                                    143 ;	Source/Device/Src/nixie.c: 98: tmp|=1<<11;
       000065 AE 08 00         [ 2]  144 	ldw	x, #0x0800
       000068 1F 03            [ 2]  145 	ldw	(0x03, sp), x
-                                    146 ;	Source/Device/Src/nixie.c: 96: for(uint8_t i=0;i<9;++i)
+                                    146 ;	Source/Device/Src/nixie.c: 99: for(uint8_t i=0;i<9;++i)
       00006A                        147 00118$:
       00006A 0F 05            [ 1]  148 	clr	(0x05, sp)
       00006C                        149 00111$:
       00006C 7B 05            [ 1]  150 	ld	a, (0x05, sp)
       00006E A1 09            [ 1]  151 	cp	a, #0x09
       000070 24 2E            [ 1]  152 	jrnc	00105$
-                                    153 ;	Source/Device/Src/nixie.c: 98: if(strchr(character,'1'+i)!=NULL)
+                                    153 ;	Source/Device/Src/nixie.c: 101: if(strchr(character,'1'+i)!=NULL)
       000072 7B 05            [ 1]  154 	ld	a, (0x05, sp)
       000074 5F               [ 1]  155 	clrw	x
       000075 97               [ 1]  156 	ld	xl, a
@@ -162,7 +162,7 @@
       000080 5B 04            [ 2]  162 	addw	sp, #4
       000082 1F 01            [ 2]  163 	ldw	(0x01, sp), x
       000084 27 16            [ 1]  164 	jreq	00112$
-                                    165 ;	Source/Device/Src/nixie.c: 99: tmp|=1<<10-i;
+                                    165 ;	Source/Device/Src/nixie.c: 102: tmp|=1<<10-i;
       000086 A6 0A            [ 1]  166 	ld	a, #0x0a
       000088 10 05            [ 1]  167 	sub	a, (0x05, sp)
       00008A 5F               [ 1]  168 	clrw	x
@@ -181,11 +181,11 @@
       000099 95               [ 1]  181 	ld	xh, a
       00009A 1F 03            [ 2]  182 	ldw	(0x03, sp), x
       00009C                        183 00112$:
-                                    184 ;	Source/Device/Src/nixie.c: 96: for(uint8_t i=0;i<9;++i)
+                                    184 ;	Source/Device/Src/nixie.c: 99: for(uint8_t i=0;i<9;++i)
       00009C 0C 05            [ 1]  185 	inc	(0x05, sp)
       00009E 20 CC            [ 2]  186 	jra	00111$
       0000A0                        187 00105$:
-                                    188 ;	Source/Device/Src/nixie.c: 101: if(strchr(character,'0')!=NULL)
+                                    188 ;	Source/Device/Src/nixie.c: 104: if(strchr(character,'0')!=NULL)
       0000A0 4B 30            [ 1]  189 	push	#0x30
       0000A2 4B 00            [ 1]  190 	push	#0x00
       0000A4 1E 0B            [ 2]  191 	ldw	x, (0x0b, sp)
@@ -194,7 +194,7 @@
       0000AA 5B 04            [ 2]  194 	addw	sp, #4
       0000AC 5D               [ 2]  195 	tnzw	x
       0000AD 27 0A            [ 1]  196 	jreq	00107$
-                                    197 ;	Source/Device/Src/nixie.c: 102: tmp|=1<<1;
+                                    197 ;	Source/Device/Src/nixie.c: 105: tmp|=1<<1;
       0000AF 7B 04            [ 1]  198 	ld	a, (0x04, sp)
       0000B1 AA 02            [ 1]  199 	or	a, #0x02
       0000B3 97               [ 1]  200 	ld	xl, a
@@ -202,18 +202,18 @@
       0000B6 95               [ 1]  202 	ld	xh, a
       0000B7 1F 03            [ 2]  203 	ldw	(0x03, sp), x
       0000B9                        204 00107$:
-                                    205 ;	Source/Device/Src/nixie.c: 103: if(tubeState==ENABLE)
+                                    205 ;	Source/Device/Src/nixie.c: 106: if(tubeState==ENABLE)
       0000B9 7B 0B            [ 1]  206 	ld	a, (0x0b, sp)
       0000BB 4A               [ 1]  207 	dec	a
       0000BC 26 07            [ 1]  208 	jrne	00109$
-                                    209 ;	Source/Device/Src/nixie.c: 104: tmp|=1<<0;
+                                    209 ;	Source/Device/Src/nixie.c: 107: tmp|=1<<0;
       0000BE 1E 03            [ 2]  210 	ldw	x, (0x03, sp)
       0000C0 54               [ 2]  211 	srlw	x
       0000C1 99               [ 1]  212 	scf
       0000C2 59               [ 2]  213 	rlcw	x
       0000C3 1F 03            [ 2]  214 	ldw	(0x03, sp), x
       0000C5                        215 00109$:
-                                    216 ;	Source/Device/Src/nixie.c: 106: output=(tmp&0xAAA)>>1;
+                                    216 ;	Source/Device/Src/nixie.c: 109: output=(tmp&0xAAA)>>1;
       0000C5 1E 03            [ 2]  217 	ldw	x, (0x03, sp)
       0000C7 9F               [ 1]  218 	ld	a, xl
       0000C8 A4 AA            [ 1]  219 	and	a, #0xaa
@@ -222,7 +222,7 @@
       0000CD A4 0A            [ 1]  222 	and	a, #0x0a
       0000CF 90 95            [ 1]  223 	ld	yh, a
       0000D1 90 54            [ 2]  224 	srlw	y
-                                    225 ;	Source/Device/Src/nixie.c: 107: output|=(tmp&0x555)<<1;
+                                    225 ;	Source/Device/Src/nixie.c: 110: output|=(tmp&0x555)<<1;
       0000D3 9F               [ 1]  226 	ld	a, xl
       0000D4 A4 55            [ 1]  227 	and	a, #0x55
       0000D6 02               [ 1]  228 	rlwa	x
@@ -234,18 +234,18 @@
       0000DE 1A 05            [ 1]  234 	or	a, (0x05, sp)
       0000E0 02               [ 1]  235 	rlwa	x
       0000E1 1A 04            [ 1]  236 	or	a, (0x04, sp)
-                                    237 ;	Source/Device/Src/nixie.c: 109: return output;
+                                    237 ;	Source/Device/Src/nixie.c: 112: return output;
       0000E3 95               [ 1]  238 	ld	xh, a
-                                    239 ;	Source/Device/Src/nixie.c: 110: }
+                                    239 ;	Source/Device/Src/nixie.c: 113: }
       0000E4 5B 05            [ 2]  240 	addw	sp, #5
       0000E6 81               [ 4]  241 	ret
-                                    242 ;	Source/Device/Src/nixie.c: 120: void NIXIE_DisplayTime(uint8_t hour,uint8_t min)
+                                    242 ;	Source/Device/Src/nixie.c: 121: void NIXIE_DisplayTime(uint8_t hour,uint8_t min)
                                     243 ;	-----------------------------------------
                                     244 ;	 function NIXIE_DisplayTime
                                     245 ;	-----------------------------------------
       0000E7                        246 _NIXIE_DisplayTime:
-      0000E7 52 11            [ 2]  247 	sub	sp, #17
-                                    248 ;	Source/Device/Src/nixie.c: 124: char tube1s[]="0",tube2s[]="0",tube3s[]="0",tube4s[]="0";
+      0000E7 52 12            [ 2]  247 	sub	sp, #18
+                                    248 ;	Source/Device/Src/nixie.c: 125: char tube1s[]="0",tube2s[]="0",tube3s[]="0.",tube4s[]="0";
       0000E9 A6 30            [ 1]  249 	ld	a, #0x30
       0000EB 6B 01            [ 1]  250 	ld	(0x01, sp), a
       0000ED 96               [ 1]  251 	ldw	x, sp
@@ -257,336 +257,324 @@
       0000F7 A6 30            [ 1]  257 	ld	a, #0x30
       0000F9 6B 05            [ 1]  258 	ld	(0x05, sp), a
       0000FB 96               [ 1]  259 	ldw	x, sp
-      0000FC 6F 06            [ 1]  260 	clr	(6, x)
-      0000FE A6 30            [ 1]  261 	ld	a, #0x30
-      000100 6B 07            [ 1]  262 	ld	(0x07, sp), a
-      000102 96               [ 1]  263 	ldw	x, sp
-      000103 6F 08            [ 1]  264 	clr	(8, x)
-                                    265 ;	Source/Device/Src/nixie.c: 126: uint8_t tmp=aaaa/1000;
-      000105 4B E8            [ 1]  266 	push	#0xe8
-      000107 4B 03            [ 1]  267 	push	#0x03
-      000109 CEu00u00         [ 2]  268 	ldw	x, _aaaa+0
-      00010C 89               [ 2]  269 	pushw	x
-      00010D CDr00r00         [ 4]  270 	call	__divsint
-      000110 5B 04            [ 2]  271 	addw	sp, #4
-                                    272 ;	Source/Device/Src/nixie.c: 127: tube1s[0]+=tmp;
-      000112 7B 01            [ 1]  273 	ld	a, (0x01, sp)
-      000114 89               [ 2]  274 	pushw	x
-      000115 1B 02            [ 1]  275 	add	a, (2, sp)
-      000117 85               [ 2]  276 	popw	x
-      000118 6B 01            [ 1]  277 	ld	(0x01, sp), a
-                                    278 ;	Source/Device/Src/nixie.c: 129: tmp=aaaa%1000/100;
-      00011A 4B E8            [ 1]  279 	push	#0xe8
-      00011C 4B 03            [ 1]  280 	push	#0x03
-      00011E CEu00u00         [ 2]  281 	ldw	x, _aaaa+0
-      000121 89               [ 2]  282 	pushw	x
-      000122 CDr00r00         [ 4]  283 	call	__modsint
-      000125 5B 04            [ 2]  284 	addw	sp, #4
-      000127 4B 64            [ 1]  285 	push	#0x64
-      000129 4B 00            [ 1]  286 	push	#0x00
-      00012B 89               [ 2]  287 	pushw	x
-      00012C CDr00r00         [ 4]  288 	call	__divsint
-      00012F 5B 04            [ 2]  289 	addw	sp, #4
-                                    290 ;	Source/Device/Src/nixie.c: 130: tube2s[0]+=tmp;
-      000131 7B 03            [ 1]  291 	ld	a, (0x03, sp)
-      000133 89               [ 2]  292 	pushw	x
-      000134 1B 02            [ 1]  293 	add	a, (2, sp)
-      000136 85               [ 2]  294 	popw	x
-      000137 6B 03            [ 1]  295 	ld	(0x03, sp), a
-                                    296 ;	Source/Device/Src/nixie.c: 132: tmp=aaaa%100/10;
-      000139 4B 64            [ 1]  297 	push	#0x64
-      00013B 4B 00            [ 1]  298 	push	#0x00
-      00013D CEu00u00         [ 2]  299 	ldw	x, _aaaa+0
-      000140 89               [ 2]  300 	pushw	x
-      000141 CDr00r00         [ 4]  301 	call	__modsint
-      000144 5B 04            [ 2]  302 	addw	sp, #4
-      000146 4B 0A            [ 1]  303 	push	#0x0a
-      000148 4B 00            [ 1]  304 	push	#0x00
-      00014A 89               [ 2]  305 	pushw	x
-      00014B CDr00r00         [ 4]  306 	call	__divsint
-      00014E 5B 04            [ 2]  307 	addw	sp, #4
-                                    308 ;	Source/Device/Src/nixie.c: 133: tube3s[0]+=tmp;
-      000150 7B 05            [ 1]  309 	ld	a, (0x05, sp)
-      000152 89               [ 2]  310 	pushw	x
-      000153 1B 02            [ 1]  311 	add	a, (2, sp)
-      000155 85               [ 2]  312 	popw	x
-      000156 6B 05            [ 1]  313 	ld	(0x05, sp), a
-                                    314 ;	Source/Device/Src/nixie.c: 135: tmp=aaaa%10;
-      000158 4B 0A            [ 1]  315 	push	#0x0a
-      00015A 4B 00            [ 1]  316 	push	#0x00
-      00015C CEu00u00         [ 2]  317 	ldw	x, _aaaa+0
-      00015F 89               [ 2]  318 	pushw	x
-      000160 CDr00r00         [ 4]  319 	call	__modsint
-      000163 5B 04            [ 2]  320 	addw	sp, #4
-                                    321 ;	Source/Device/Src/nixie.c: 136: tube4s[0]+=tmp;
-      000165 7B 07            [ 1]  322 	ld	a, (0x07, sp)
-      000167 89               [ 2]  323 	pushw	x
-      000168 1B 02            [ 1]  324 	add	a, (2, sp)
-      00016A 85               [ 2]  325 	popw	x
-      00016B 6B 07            [ 1]  326 	ld	(0x07, sp), a
-                                    327 ;	Source/Device/Src/nixie.c: 138: tube1=NIXIE_DisplayChar(1,tube1s,ENABLE);
-      00016D 4B 01            [ 1]  328 	push	#0x01
-      00016F 96               [ 1]  329 	ldw	x, sp
-      000170 5C               [ 1]  330 	incw	x
-      000171 5C               [ 1]  331 	incw	x
-      000172 89               [ 2]  332 	pushw	x
-      000173 4B 01            [ 1]  333 	push	#0x01
-      000175 CDr00r51         [ 4]  334 	call	_NIXIE_DisplayChar
-      000178 5B 04            [ 2]  335 	addw	sp, #4
-      00017A 1F 09            [ 2]  336 	ldw	(0x09, sp), x
-                                    337 ;	Source/Device/Src/nixie.c: 139: tube2=NIXIE_DisplayChar(2,tube2s,ENABLE);
-      00017C 4B 01            [ 1]  338 	push	#0x01
-      00017E 96               [ 1]  339 	ldw	x, sp
-      00017F 1C 00 04         [ 2]  340 	addw	x, #4
-      000182 89               [ 2]  341 	pushw	x
-      000183 4B 02            [ 1]  342 	push	#0x02
-      000185 CDr00r51         [ 4]  343 	call	_NIXIE_DisplayChar
-      000188 5B 04            [ 2]  344 	addw	sp, #4
-      00018A 1F 0B            [ 2]  345 	ldw	(0x0b, sp), x
-                                    346 ;	Source/Device/Src/nixie.c: 140: tube3=NIXIE_DisplayChar(3,tube3s,ENABLE);
-      00018C 4B 01            [ 1]  347 	push	#0x01
-      00018E 96               [ 1]  348 	ldw	x, sp
-      00018F 1C 00 06         [ 2]  349 	addw	x, #6
-      000192 89               [ 2]  350 	pushw	x
-      000193 4B 03            [ 1]  351 	push	#0x03
-      000195 CDr00r51         [ 4]  352 	call	_NIXIE_DisplayChar
-      000198 5B 04            [ 2]  353 	addw	sp, #4
-      00019A 1F 0D            [ 2]  354 	ldw	(0x0d, sp), x
-                                    355 ;	Source/Device/Src/nixie.c: 141: tube4=NIXIE_DisplayChar(4,tube4s,ENABLE);
-      00019C 4B 01            [ 1]  356 	push	#0x01
-      00019E 96               [ 1]  357 	ldw	x, sp
-      00019F 1C 00 08         [ 2]  358 	addw	x, #8
-      0001A2 89               [ 2]  359 	pushw	x
-      0001A3 4B 04            [ 1]  360 	push	#0x04
-      0001A5 CDr00r51         [ 4]  361 	call	_NIXIE_DisplayChar
-      0001A8 5B 04            [ 2]  362 	addw	sp, #4
-      0001AA 1F 0F            [ 2]  363 	ldw	(0x0f, sp), x
-                                    364 ;	Source/Device/Src/nixie.c: 144: ++aaaa;
-      0001AC CEu00u00         [ 2]  365 	ldw	x, _aaaa+0
-      0001AF 5C               [ 1]  366 	incw	x
-                                    367 ;	Source/Device/Src/nixie.c: 145: if(aaaa==9999)
-      0001B0 CFu00u00         [ 2]  368 	ldw	_aaaa+0, x
-      0001B3 A3 27 0F         [ 2]  369 	cpw	x, #0x270f
-      0001B6 26 04            [ 1]  370 	jrne	00102$
-                                    371 ;	Source/Device/Src/nixie.c: 146: aaaa=0;
-      0001B8 5F               [ 1]  372 	clrw	x
-      0001B9 CFu00u00         [ 2]  373 	ldw	_aaaa+0, x
-      0001BC                        374 00102$:
-                                    375 ;	Source/Device/Src/nixie.c: 157: GPIO_WriteLow(GPIOC,GPIO_PIN_7);//595的输出线拉低
-      0001BC 4B 80            [ 1]  376 	push	#0x80
-      0001BE 4B 0A            [ 1]  377 	push	#0x0a
-      0001C0 4B 50            [ 1]  378 	push	#0x50
-      0001C2 CDr00r00         [ 4]  379 	call	_GPIO_WriteLow
-      0001C5 5B 03            [ 2]  380 	addw	sp, #3
-                                    381 ;	Source/Device/Src/nixie.c: 162: tmp1=(uint8_t)((tube4&0b11111110)>>1);
-      0001C7 1E 0F            [ 2]  382 	ldw	x, (0x0f, sp)
-      0001C9 54               [ 2]  383 	srlw	x
-      0001CA 58               [ 2]  384 	sllw	x
-      0001CB 4F               [ 1]  385 	clr	a
-      0001CC 95               [ 1]  386 	ld	xh, a
-      0001CD 54               [ 2]  387 	srlw	x
-                                    388 ;	Source/Device/Src/nixie.c: 163: tmp2=(uint8_t)((tube4&0b00000001)<<7);
-      0001CE 7B 10            [ 1]  389 	ld	a, (0x10, sp)
-      0001D0 A4 01            [ 1]  390 	and	a, #0x01
-      0001D2 4E               [ 1]  391 	swap	a
-      0001D3 A4 F0            [ 1]  392 	and	a, #0xf0
-      0001D5 48               [ 1]  393 	sll	a
-      0001D6 48               [ 1]  394 	sll	a
-      0001D7 48               [ 1]  395 	sll	a
-                                    396 ;	Source/Device/Src/nixie.c: 164: tmp1=tmp1|tmp2;
-      0001D8 89               [ 2]  397 	pushw	x
-      0001D9 1A 02            [ 1]  398 	or	a, (2, sp)
-      0001DB 85               [ 2]  399 	popw	x
-                                    400 ;	Source/Device/Src/nixie.c: 165: SPI_SendData(tmp1);
-      0001DC 88               [ 1]  401 	push	a
-      0001DD CDr00r00         [ 4]  402 	call	_SPI_SendData
-      0001E0 84               [ 1]  403 	pop	a
-                                    404 ;	Source/Device/Src/nixie.c: 167: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
-      0001E1                        405 00103$:
-      0001E1 4B 02            [ 1]  406 	push	#0x02
-      0001E3 CDr00r00         [ 4]  407 	call	_SPI_GetFlagStatus
-      0001E6 5B 01            [ 2]  408 	addw	sp, #1
-      0001E8 4D               [ 1]  409 	tnz	a
-      0001E9 27 F6            [ 1]  410 	jreq	00103$
-                                    411 ;	Source/Device/Src/nixie.c: 169: tmp1=(uint8_t)((tube3&0b1111)<<4);
-      0001EB 7B 0E            [ 1]  412 	ld	a, (0x0e, sp)
-      0001ED A4 0F            [ 1]  413 	and	a, #0x0f
-      0001EF 4E               [ 1]  414 	swap	a
-      0001F0 A4 F0            [ 1]  415 	and	a, #0xf0
-      0001F2 6B 11            [ 1]  416 	ld	(0x11, sp), a
-                                    417 ;	Source/Device/Src/nixie.c: 170: tmp2=(uint8_t)(tube4>>8);
-      0001F4 7B 0F            [ 1]  418 	ld	a, (0x0f, sp)
-      0001F6 5F               [ 1]  419 	clrw	x
-                                    420 ;	Source/Device/Src/nixie.c: 171: tmp1=tmp1|tmp2;
-      0001F7 1A 11            [ 1]  421 	or	a, (0x11, sp)
-                                    422 ;	Source/Device/Src/nixie.c: 172: tmp2=(tmp1&0b00000001)<<7;
-      0001F9 97               [ 1]  423 	ld	xl, a
-      0001FA A4 01            [ 1]  424 	and	a, #0x01
-      0001FC 4E               [ 1]  425 	swap	a
-      0001FD A4 F0            [ 1]  426 	and	a, #0xf0
-      0001FF 48               [ 1]  427 	sll	a
-      000200 48               [ 1]  428 	sll	a
-      000201 48               [ 1]  429 	sll	a
-      000202 6B 11            [ 1]  430 	ld	(0x11, sp), a
-                                    431 ;	Source/Device/Src/nixie.c: 173: tmp1=(tmp1>>1)|tmp2;
-      000204 9F               [ 1]  432 	ld	a, xl
-      000205 44               [ 1]  433 	srl	a
-      000206 1A 11            [ 1]  434 	or	a, (0x11, sp)
-                                    435 ;	Source/Device/Src/nixie.c: 174: SPI_SendData(tmp1);
-      000208 88               [ 1]  436 	push	a
-      000209 CDr00r00         [ 4]  437 	call	_SPI_SendData
-      00020C 84               [ 1]  438 	pop	a
-                                    439 ;	Source/Device/Src/nixie.c: 176: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
-      00020D                        440 00106$:
-      00020D 4B 02            [ 1]  441 	push	#0x02
-      00020F CDr00r00         [ 4]  442 	call	_SPI_GetFlagStatus
-      000212 5B 01            [ 2]  443 	addw	sp, #1
-      000214 4D               [ 1]  444 	tnz	a
-      000215 27 F6            [ 1]  445 	jreq	00106$
-                                    446 ;	Source/Device/Src/nixie.c: 178: tmp1=(uint8_t)(tube3>>5);
-      000217 1E 0D            [ 2]  447 	ldw	x, (0x0d, sp)
-      000219 A6 20            [ 1]  448 	ld	a, #0x20
-      00021B 62               [ 2]  449 	div	x, a
-      00021C 41               [ 1]  450 	exg	a, xl
-      00021D 6B 11            [ 1]  451 	ld	(0x11, sp), a
-      00021F 41               [ 1]  452 	exg	a, xl
-                                    453 ;	Source/Device/Src/nixie.c: 179: tmp2=(uint8_t)(((tube3&0b10000)>>4)<<7);
-      000220 16 0D            [ 2]  454 	ldw	y, (0x0d, sp)
-      000222 5F               [ 1]  455 	clrw	x
-      000223 90 9F            [ 1]  456 	ld	a, yl
-      000225 A4 10            [ 1]  457 	and	a, #0x10
-      000227 97               [ 1]  458 	ld	xl, a
-      000228 A6 10            [ 1]  459 	ld	a, #0x10
-      00022A 62               [ 2]  460 	div	x, a
-      00022B 9F               [ 1]  461 	ld	a, xl
-      00022C 4E               [ 1]  462 	swap	a
-      00022D A4 F0            [ 1]  463 	and	a, #0xf0
-      00022F 48               [ 1]  464 	sll	a
-      000230 48               [ 1]  465 	sll	a
-      000231 48               [ 1]  466 	sll	a
-                                    467 ;	Source/Device/Src/nixie.c: 180: tmp1=tmp1|tmp2;
-      000232 1A 11            [ 1]  468 	or	a, (0x11, sp)
-                                    469 ;	Source/Device/Src/nixie.c: 181: SPI_SendData(tmp1);
-      000234 88               [ 1]  470 	push	a
-      000235 CDr00r00         [ 4]  471 	call	_SPI_SendData
-      000238 84               [ 1]  472 	pop	a
-                                    473 ;	Source/Device/Src/nixie.c: 183: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
-      000239                        474 00109$:
-      000239 4B 02            [ 1]  475 	push	#0x02
-      00023B CDr00r00         [ 4]  476 	call	_SPI_GetFlagStatus
-      00023E 5B 01            [ 2]  477 	addw	sp, #1
-      000240 4D               [ 1]  478 	tnz	a
-      000241 27 F6            [ 1]  479 	jreq	00109$
-                                    480 ;	Source/Device/Src/nixie.c: 186: tmp1=(uint8_t)((tube2&0b11111110)>>1);
-      000243 1E 0B            [ 2]  481 	ldw	x, (0x0b, sp)
-      000245 54               [ 2]  482 	srlw	x
-      000246 58               [ 2]  483 	sllw	x
-      000247 4F               [ 1]  484 	clr	a
-      000248 95               [ 1]  485 	ld	xh, a
-      000249 54               [ 2]  486 	srlw	x
-                                    487 ;	Source/Device/Src/nixie.c: 187: tmp2=(uint8_t)((tube2&0b00000001)<<7);
-      00024A 7B 0C            [ 1]  488 	ld	a, (0x0c, sp)
-      00024C A4 01            [ 1]  489 	and	a, #0x01
-      00024E 4E               [ 1]  490 	swap	a
-      00024F A4 F0            [ 1]  491 	and	a, #0xf0
-      000251 48               [ 1]  492 	sll	a
-      000252 48               [ 1]  493 	sll	a
-      000253 48               [ 1]  494 	sll	a
-                                    495 ;	Source/Device/Src/nixie.c: 188: tmp1=tmp1|tmp2;
-      000254 89               [ 2]  496 	pushw	x
-      000255 1A 02            [ 1]  497 	or	a, (2, sp)
-      000257 85               [ 2]  498 	popw	x
-                                    499 ;	Source/Device/Src/nixie.c: 189: SPI_SendData(tmp1);
-      000258 88               [ 1]  500 	push	a
-      000259 CDr00r00         [ 4]  501 	call	_SPI_SendData
-      00025C 84               [ 1]  502 	pop	a
-                                    503 ;	Source/Device/Src/nixie.c: 191: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
-      00025D                        504 00112$:
-      00025D 4B 02            [ 1]  505 	push	#0x02
-      00025F CDr00r00         [ 4]  506 	call	_SPI_GetFlagStatus
-      000262 5B 01            [ 2]  507 	addw	sp, #1
-      000264 4D               [ 1]  508 	tnz	a
-      000265 27 F6            [ 1]  509 	jreq	00112$
-                                    510 ;	Source/Device/Src/nixie.c: 193: tmp1=(uint8_t)((tube1&0b1111)<<4);
-      000267 7B 0A            [ 1]  511 	ld	a, (0x0a, sp)
-      000269 A4 0F            [ 1]  512 	and	a, #0x0f
-      00026B 4E               [ 1]  513 	swap	a
-      00026C A4 F0            [ 1]  514 	and	a, #0xf0
-      00026E 6B 11            [ 1]  515 	ld	(0x11, sp), a
-                                    516 ;	Source/Device/Src/nixie.c: 194: tmp2=(uint8_t)(tube2>>8);
-      000270 7B 0B            [ 1]  517 	ld	a, (0x0b, sp)
-      000272 5F               [ 1]  518 	clrw	x
-                                    519 ;	Source/Device/Src/nixie.c: 195: tmp1=tmp1|tmp2;
-      000273 1A 11            [ 1]  520 	or	a, (0x11, sp)
-                                    521 ;	Source/Device/Src/nixie.c: 196: tmp2=(tmp1&0b00000001)<<7;
-      000275 97               [ 1]  522 	ld	xl, a
-      000276 A4 01            [ 1]  523 	and	a, #0x01
-      000278 4E               [ 1]  524 	swap	a
-      000279 A4 F0            [ 1]  525 	and	a, #0xf0
-      00027B 48               [ 1]  526 	sll	a
-      00027C 48               [ 1]  527 	sll	a
-      00027D 48               [ 1]  528 	sll	a
-      00027E 6B 11            [ 1]  529 	ld	(0x11, sp), a
-                                    530 ;	Source/Device/Src/nixie.c: 197: tmp1=(tmp1>>1)|tmp2;
-      000280 9F               [ 1]  531 	ld	a, xl
-      000281 44               [ 1]  532 	srl	a
-      000282 1A 11            [ 1]  533 	or	a, (0x11, sp)
-                                    534 ;	Source/Device/Src/nixie.c: 198: SPI_SendData(tmp1);
-      000284 88               [ 1]  535 	push	a
-      000285 CDr00r00         [ 4]  536 	call	_SPI_SendData
-      000288 84               [ 1]  537 	pop	a
-                                    538 ;	Source/Device/Src/nixie.c: 200: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
-      000289                        539 00115$:
-      000289 4B 02            [ 1]  540 	push	#0x02
-      00028B CDr00r00         [ 4]  541 	call	_SPI_GetFlagStatus
-      00028E 5B 01            [ 2]  542 	addw	sp, #1
-      000290 4D               [ 1]  543 	tnz	a
-      000291 27 F6            [ 1]  544 	jreq	00115$
-                                    545 ;	Source/Device/Src/nixie.c: 202: tmp1=(uint8_t)(tube1>>5);
-      000293 1E 09            [ 2]  546 	ldw	x, (0x09, sp)
-      000295 A6 20            [ 1]  547 	ld	a, #0x20
-      000297 62               [ 2]  548 	div	x, a
-      000298 41               [ 1]  549 	exg	a, xl
-      000299 6B 11            [ 1]  550 	ld	(0x11, sp), a
-      00029B 41               [ 1]  551 	exg	a, xl
-                                    552 ;	Source/Device/Src/nixie.c: 203: tmp2=(uint8_t)(((tube1&0b10000)>>4)<<7);
-      00029C 16 09            [ 2]  553 	ldw	y, (0x09, sp)
-      00029E 5F               [ 1]  554 	clrw	x
-      00029F 90 9F            [ 1]  555 	ld	a, yl
-      0002A1 A4 10            [ 1]  556 	and	a, #0x10
-      0002A3 97               [ 1]  557 	ld	xl, a
-      0002A4 A6 10            [ 1]  558 	ld	a, #0x10
-      0002A6 62               [ 2]  559 	div	x, a
-      0002A7 9F               [ 1]  560 	ld	a, xl
-      0002A8 4E               [ 1]  561 	swap	a
-      0002A9 A4 F0            [ 1]  562 	and	a, #0xf0
-      0002AB 48               [ 1]  563 	sll	a
-      0002AC 48               [ 1]  564 	sll	a
-      0002AD 48               [ 1]  565 	sll	a
-                                    566 ;	Source/Device/Src/nixie.c: 204: tmp1=tmp1|tmp2;
-      0002AE 1A 11            [ 1]  567 	or	a, (0x11, sp)
-                                    568 ;	Source/Device/Src/nixie.c: 205: SPI_SendData(tmp1);
-      0002B0 88               [ 1]  569 	push	a
-      0002B1 CDr00r00         [ 4]  570 	call	_SPI_SendData
-      0002B4 84               [ 1]  571 	pop	a
-                                    572 ;	Source/Device/Src/nixie.c: 207: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
-      0002B5                        573 00118$:
-      0002B5 4B 02            [ 1]  574 	push	#0x02
-      0002B7 CDr00r00         [ 4]  575 	call	_SPI_GetFlagStatus
-      0002BA 5B 01            [ 2]  576 	addw	sp, #1
-      0002BC 4D               [ 1]  577 	tnz	a
-      0002BD 27 F6            [ 1]  578 	jreq	00118$
-                                    579 ;	Source/Device/Src/nixie.c: 209: GPIO_WriteHigh(GPIOC,GPIO_PIN_7);//更新所有595输出
-      0002BF 4B 80            [ 1]  580 	push	#0x80
-      0002C1 4B 0A            [ 1]  581 	push	#0x0a
-      0002C3 4B 50            [ 1]  582 	push	#0x50
-      0002C5 CDr00r00         [ 4]  583 	call	_GPIO_WriteHigh
-                                    584 ;	Source/Device/Src/nixie.c: 210: }
-      0002C8 5B 14            [ 2]  585 	addw	sp, #20
-      0002CA 81               [ 4]  586 	ret
-                                    587 	.area CODE
-                                    588 	.area CONST
-                                    589 	.area INITIALIZER
-      000000                        590 __xinit__aaaa:
-      000000 00 00                  591 	.dw #0x0000
-                                    592 	.area CABS (ABS)
+      0000FC A6 2E            [ 1]  260 	ld	a, #0x2e
+      0000FE E7 06            [ 1]  261 	ld	(6, x), a
+      000100 96               [ 1]  262 	ldw	x, sp
+      000101 6F 07            [ 1]  263 	clr	(7, x)
+      000103 A6 30            [ 1]  264 	ld	a, #0x30
+      000105 6B 08            [ 1]  265 	ld	(0x08, sp), a
+      000107 96               [ 1]  266 	ldw	x, sp
+      000108 6F 09            [ 1]  267 	clr	(9, x)
+                                    268 ;	Source/Device/Src/nixie.c: 127: uint8_t tmp=hour/10;
+      00010A 7B 15            [ 1]  269 	ld	a, (0x15, sp)
+      00010C 6B 12            [ 1]  270 	ld	(0x12, sp), a
+      00010E 0F 11            [ 1]  271 	clr	(0x11, sp)
+      000110 4B 0A            [ 1]  272 	push	#0x0a
+      000112 4B 00            [ 1]  273 	push	#0x00
+      000114 1E 13            [ 2]  274 	ldw	x, (0x13, sp)
+      000116 89               [ 2]  275 	pushw	x
+      000117 CDr00r00         [ 4]  276 	call	__divsint
+      00011A 5B 04            [ 2]  277 	addw	sp, #4
+                                    278 ;	Source/Device/Src/nixie.c: 128: tube1s[0]+=tmp;
+      00011C 7B 01            [ 1]  279 	ld	a, (0x01, sp)
+      00011E 89               [ 2]  280 	pushw	x
+      00011F 1B 02            [ 1]  281 	add	a, (2, sp)
+      000121 85               [ 2]  282 	popw	x
+      000122 6B 01            [ 1]  283 	ld	(0x01, sp), a
+                                    284 ;	Source/Device/Src/nixie.c: 130: tmp=hour%10;
+      000124 4B 0A            [ 1]  285 	push	#0x0a
+      000126 4B 00            [ 1]  286 	push	#0x00
+      000128 1E 13            [ 2]  287 	ldw	x, (0x13, sp)
+      00012A 89               [ 2]  288 	pushw	x
+      00012B CDr00r00         [ 4]  289 	call	__modsint
+      00012E 5B 04            [ 2]  290 	addw	sp, #4
+                                    291 ;	Source/Device/Src/nixie.c: 131: tube2s[0]+=tmp;
+      000130 7B 03            [ 1]  292 	ld	a, (0x03, sp)
+      000132 89               [ 2]  293 	pushw	x
+      000133 1B 02            [ 1]  294 	add	a, (2, sp)
+      000135 85               [ 2]  295 	popw	x
+      000136 6B 03            [ 1]  296 	ld	(0x03, sp), a
+                                    297 ;	Source/Device/Src/nixie.c: 133: tmp=min/10;
+      000138 7B 16            [ 1]  298 	ld	a, (0x16, sp)
+      00013A 6B 12            [ 1]  299 	ld	(0x12, sp), a
+      00013C 0F 11            [ 1]  300 	clr	(0x11, sp)
+      00013E 4B 0A            [ 1]  301 	push	#0x0a
+      000140 4B 00            [ 1]  302 	push	#0x00
+      000142 1E 13            [ 2]  303 	ldw	x, (0x13, sp)
+      000144 89               [ 2]  304 	pushw	x
+      000145 CDr00r00         [ 4]  305 	call	__divsint
+      000148 5B 04            [ 2]  306 	addw	sp, #4
+                                    307 ;	Source/Device/Src/nixie.c: 134: tube3s[0]+=tmp;
+      00014A 7B 05            [ 1]  308 	ld	a, (0x05, sp)
+      00014C 89               [ 2]  309 	pushw	x
+      00014D 1B 02            [ 1]  310 	add	a, (2, sp)
+      00014F 85               [ 2]  311 	popw	x
+      000150 6B 05            [ 1]  312 	ld	(0x05, sp), a
+                                    313 ;	Source/Device/Src/nixie.c: 136: tmp=min%10;
+      000152 4B 0A            [ 1]  314 	push	#0x0a
+      000154 4B 00            [ 1]  315 	push	#0x00
+      000156 1E 13            [ 2]  316 	ldw	x, (0x13, sp)
+      000158 89               [ 2]  317 	pushw	x
+      000159 CDr00r00         [ 4]  318 	call	__modsint
+      00015C 5B 04            [ 2]  319 	addw	sp, #4
+                                    320 ;	Source/Device/Src/nixie.c: 137: tube4s[0]+=tmp;
+      00015E 7B 08            [ 1]  321 	ld	a, (0x08, sp)
+      000160 89               [ 2]  322 	pushw	x
+      000161 1B 02            [ 1]  323 	add	a, (2, sp)
+      000163 85               [ 2]  324 	popw	x
+      000164 6B 08            [ 1]  325 	ld	(0x08, sp), a
+                                    326 ;	Source/Device/Src/nixie.c: 139: tube1=NIXIE_DisplayChar(1,tube1s,tube_state);
+      000166 3Bu00u00         [ 1]  327 	push	_tube_state+0
+      000169 96               [ 1]  328 	ldw	x, sp
+      00016A 5C               [ 1]  329 	incw	x
+      00016B 5C               [ 1]  330 	incw	x
+      00016C 89               [ 2]  331 	pushw	x
+      00016D 4B 01            [ 1]  332 	push	#0x01
+      00016F CDr00r51         [ 4]  333 	call	_NIXIE_DisplayChar
+      000172 5B 04            [ 2]  334 	addw	sp, #4
+      000174 1F 0A            [ 2]  335 	ldw	(0x0a, sp), x
+                                    336 ;	Source/Device/Src/nixie.c: 140: tube2=NIXIE_DisplayChar(2,tube2s,tube_state);
+      000176 3Bu00u00         [ 1]  337 	push	_tube_state+0
+      000179 96               [ 1]  338 	ldw	x, sp
+      00017A 1C 00 04         [ 2]  339 	addw	x, #4
+      00017D 89               [ 2]  340 	pushw	x
+      00017E 4B 02            [ 1]  341 	push	#0x02
+      000180 CDr00r51         [ 4]  342 	call	_NIXIE_DisplayChar
+      000183 5B 04            [ 2]  343 	addw	sp, #4
+      000185 1F 0C            [ 2]  344 	ldw	(0x0c, sp), x
+                                    345 ;	Source/Device/Src/nixie.c: 141: tube3=NIXIE_DisplayChar(3,tube3s,tube_state);
+      000187 3Bu00u00         [ 1]  346 	push	_tube_state+0
+      00018A 96               [ 1]  347 	ldw	x, sp
+      00018B 1C 00 06         [ 2]  348 	addw	x, #6
+      00018E 89               [ 2]  349 	pushw	x
+      00018F 4B 03            [ 1]  350 	push	#0x03
+      000191 CDr00r51         [ 4]  351 	call	_NIXIE_DisplayChar
+      000194 5B 04            [ 2]  352 	addw	sp, #4
+      000196 1F 0E            [ 2]  353 	ldw	(0x0e, sp), x
+                                    354 ;	Source/Device/Src/nixie.c: 142: tube4=NIXIE_DisplayChar(4,tube4s,tube_state);
+      000198 3Bu00u00         [ 1]  355 	push	_tube_state+0
+      00019B 96               [ 1]  356 	ldw	x, sp
+      00019C 1C 00 09         [ 2]  357 	addw	x, #9
+      00019F 89               [ 2]  358 	pushw	x
+      0001A0 4B 04            [ 1]  359 	push	#0x04
+      0001A2 CDr00r51         [ 4]  360 	call	_NIXIE_DisplayChar
+      0001A5 5B 04            [ 2]  361 	addw	sp, #4
+      0001A7 1F 10            [ 2]  362 	ldw	(0x10, sp), x
+                                    363 ;	Source/Device/Src/nixie.c: 146: GPIO_WriteLow(GPIOC,GPIO_PIN_7);//595的输出线拉低
+      0001A9 4B 80            [ 1]  364 	push	#0x80
+      0001AB 4B 0A            [ 1]  365 	push	#0x0a
+      0001AD 4B 50            [ 1]  366 	push	#0x50
+      0001AF CDr00r00         [ 4]  367 	call	_GPIO_WriteLow
+      0001B2 5B 03            [ 2]  368 	addw	sp, #3
+                                    369 ;	Source/Device/Src/nixie.c: 151: tmp1=(uint8_t)((tube4&0b11111110)>>1);
+      0001B4 1E 10            [ 2]  370 	ldw	x, (0x10, sp)
+      0001B6 54               [ 2]  371 	srlw	x
+      0001B7 58               [ 2]  372 	sllw	x
+      0001B8 4F               [ 1]  373 	clr	a
+      0001B9 95               [ 1]  374 	ld	xh, a
+      0001BA 54               [ 2]  375 	srlw	x
+                                    376 ;	Source/Device/Src/nixie.c: 152: tmp2=(uint8_t)((tube4&0b00000001)<<7);
+      0001BB 7B 11            [ 1]  377 	ld	a, (0x11, sp)
+      0001BD A4 01            [ 1]  378 	and	a, #0x01
+      0001BF 4E               [ 1]  379 	swap	a
+      0001C0 A4 F0            [ 1]  380 	and	a, #0xf0
+      0001C2 48               [ 1]  381 	sll	a
+      0001C3 48               [ 1]  382 	sll	a
+      0001C4 48               [ 1]  383 	sll	a
+                                    384 ;	Source/Device/Src/nixie.c: 153: tmp1=tmp1|tmp2;
+      0001C5 89               [ 2]  385 	pushw	x
+      0001C6 1A 02            [ 1]  386 	or	a, (2, sp)
+      0001C8 85               [ 2]  387 	popw	x
+                                    388 ;	Source/Device/Src/nixie.c: 154: SPI_SendData(tmp1);
+      0001C9 88               [ 1]  389 	push	a
+      0001CA CDr00r00         [ 4]  390 	call	_SPI_SendData
+      0001CD 84               [ 1]  391 	pop	a
+                                    392 ;	Source/Device/Src/nixie.c: 156: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
+      0001CE                        393 00101$:
+      0001CE 4B 02            [ 1]  394 	push	#0x02
+      0001D0 CDr00r00         [ 4]  395 	call	_SPI_GetFlagStatus
+      0001D3 5B 01            [ 2]  396 	addw	sp, #1
+      0001D5 4D               [ 1]  397 	tnz	a
+      0001D6 27 F6            [ 1]  398 	jreq	00101$
+                                    399 ;	Source/Device/Src/nixie.c: 158: tmp1=(uint8_t)((tube3&0b1111)<<4);
+      0001D8 7B 0F            [ 1]  400 	ld	a, (0x0f, sp)
+      0001DA A4 0F            [ 1]  401 	and	a, #0x0f
+      0001DC 4E               [ 1]  402 	swap	a
+      0001DD A4 F0            [ 1]  403 	and	a, #0xf0
+      0001DF 6B 12            [ 1]  404 	ld	(0x12, sp), a
+                                    405 ;	Source/Device/Src/nixie.c: 159: tmp2=(uint8_t)(tube4>>8);
+      0001E1 7B 10            [ 1]  406 	ld	a, (0x10, sp)
+      0001E3 5F               [ 1]  407 	clrw	x
+                                    408 ;	Source/Device/Src/nixie.c: 160: tmp1=tmp1|tmp2;
+      0001E4 1A 12            [ 1]  409 	or	a, (0x12, sp)
+                                    410 ;	Source/Device/Src/nixie.c: 161: tmp2=(tmp1&0b00000001)<<7;
+      0001E6 97               [ 1]  411 	ld	xl, a
+      0001E7 A4 01            [ 1]  412 	and	a, #0x01
+      0001E9 4E               [ 1]  413 	swap	a
+      0001EA A4 F0            [ 1]  414 	and	a, #0xf0
+      0001EC 48               [ 1]  415 	sll	a
+      0001ED 48               [ 1]  416 	sll	a
+      0001EE 48               [ 1]  417 	sll	a
+      0001EF 6B 12            [ 1]  418 	ld	(0x12, sp), a
+                                    419 ;	Source/Device/Src/nixie.c: 162: tmp1=(tmp1>>1)|tmp2;
+      0001F1 9F               [ 1]  420 	ld	a, xl
+      0001F2 44               [ 1]  421 	srl	a
+      0001F3 1A 12            [ 1]  422 	or	a, (0x12, sp)
+                                    423 ;	Source/Device/Src/nixie.c: 163: SPI_SendData(tmp1);
+      0001F5 88               [ 1]  424 	push	a
+      0001F6 CDr00r00         [ 4]  425 	call	_SPI_SendData
+      0001F9 84               [ 1]  426 	pop	a
+                                    427 ;	Source/Device/Src/nixie.c: 165: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
+      0001FA                        428 00104$:
+      0001FA 4B 02            [ 1]  429 	push	#0x02
+      0001FC CDr00r00         [ 4]  430 	call	_SPI_GetFlagStatus
+      0001FF 5B 01            [ 2]  431 	addw	sp, #1
+      000201 4D               [ 1]  432 	tnz	a
+      000202 27 F6            [ 1]  433 	jreq	00104$
+                                    434 ;	Source/Device/Src/nixie.c: 167: tmp1=(uint8_t)(tube3>>5);
+      000204 1E 0E            [ 2]  435 	ldw	x, (0x0e, sp)
+      000206 A6 20            [ 1]  436 	ld	a, #0x20
+      000208 62               [ 2]  437 	div	x, a
+      000209 41               [ 1]  438 	exg	a, xl
+      00020A 6B 12            [ 1]  439 	ld	(0x12, sp), a
+      00020C 41               [ 1]  440 	exg	a, xl
+                                    441 ;	Source/Device/Src/nixie.c: 168: tmp2=(uint8_t)(((tube3&0b10000)>>4)<<7);
+      00020D 16 0E            [ 2]  442 	ldw	y, (0x0e, sp)
+      00020F 5F               [ 1]  443 	clrw	x
+      000210 90 9F            [ 1]  444 	ld	a, yl
+      000212 A4 10            [ 1]  445 	and	a, #0x10
+      000214 97               [ 1]  446 	ld	xl, a
+      000215 A6 10            [ 1]  447 	ld	a, #0x10
+      000217 62               [ 2]  448 	div	x, a
+      000218 9F               [ 1]  449 	ld	a, xl
+      000219 4E               [ 1]  450 	swap	a
+      00021A A4 F0            [ 1]  451 	and	a, #0xf0
+      00021C 48               [ 1]  452 	sll	a
+      00021D 48               [ 1]  453 	sll	a
+      00021E 48               [ 1]  454 	sll	a
+                                    455 ;	Source/Device/Src/nixie.c: 169: tmp1=tmp1|tmp2;
+      00021F 1A 12            [ 1]  456 	or	a, (0x12, sp)
+                                    457 ;	Source/Device/Src/nixie.c: 170: SPI_SendData(tmp1);
+      000221 88               [ 1]  458 	push	a
+      000222 CDr00r00         [ 4]  459 	call	_SPI_SendData
+      000225 84               [ 1]  460 	pop	a
+                                    461 ;	Source/Device/Src/nixie.c: 172: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
+      000226                        462 00107$:
+      000226 4B 02            [ 1]  463 	push	#0x02
+      000228 CDr00r00         [ 4]  464 	call	_SPI_GetFlagStatus
+      00022B 5B 01            [ 2]  465 	addw	sp, #1
+      00022D 4D               [ 1]  466 	tnz	a
+      00022E 27 F6            [ 1]  467 	jreq	00107$
+                                    468 ;	Source/Device/Src/nixie.c: 175: tmp1=(uint8_t)((tube2&0b11111110)>>1);
+      000230 1E 0C            [ 2]  469 	ldw	x, (0x0c, sp)
+      000232 54               [ 2]  470 	srlw	x
+      000233 58               [ 2]  471 	sllw	x
+      000234 4F               [ 1]  472 	clr	a
+      000235 95               [ 1]  473 	ld	xh, a
+      000236 54               [ 2]  474 	srlw	x
+                                    475 ;	Source/Device/Src/nixie.c: 176: tmp2=(uint8_t)((tube2&0b00000001)<<7);
+      000237 7B 0D            [ 1]  476 	ld	a, (0x0d, sp)
+      000239 A4 01            [ 1]  477 	and	a, #0x01
+      00023B 4E               [ 1]  478 	swap	a
+      00023C A4 F0            [ 1]  479 	and	a, #0xf0
+      00023E 48               [ 1]  480 	sll	a
+      00023F 48               [ 1]  481 	sll	a
+      000240 48               [ 1]  482 	sll	a
+                                    483 ;	Source/Device/Src/nixie.c: 177: tmp1=tmp1|tmp2;
+      000241 89               [ 2]  484 	pushw	x
+      000242 1A 02            [ 1]  485 	or	a, (2, sp)
+      000244 85               [ 2]  486 	popw	x
+                                    487 ;	Source/Device/Src/nixie.c: 178: SPI_SendData(tmp1);
+      000245 88               [ 1]  488 	push	a
+      000246 CDr00r00         [ 4]  489 	call	_SPI_SendData
+      000249 84               [ 1]  490 	pop	a
+                                    491 ;	Source/Device/Src/nixie.c: 180: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
+      00024A                        492 00110$:
+      00024A 4B 02            [ 1]  493 	push	#0x02
+      00024C CDr00r00         [ 4]  494 	call	_SPI_GetFlagStatus
+      00024F 5B 01            [ 2]  495 	addw	sp, #1
+      000251 4D               [ 1]  496 	tnz	a
+      000252 27 F6            [ 1]  497 	jreq	00110$
+                                    498 ;	Source/Device/Src/nixie.c: 182: tmp1=(uint8_t)((tube1&0b1111)<<4);
+      000254 7B 0B            [ 1]  499 	ld	a, (0x0b, sp)
+      000256 A4 0F            [ 1]  500 	and	a, #0x0f
+      000258 4E               [ 1]  501 	swap	a
+      000259 A4 F0            [ 1]  502 	and	a, #0xf0
+      00025B 6B 12            [ 1]  503 	ld	(0x12, sp), a
+                                    504 ;	Source/Device/Src/nixie.c: 183: tmp2=(uint8_t)(tube2>>8);
+      00025D 7B 0C            [ 1]  505 	ld	a, (0x0c, sp)
+      00025F 5F               [ 1]  506 	clrw	x
+                                    507 ;	Source/Device/Src/nixie.c: 184: tmp1=tmp1|tmp2;
+      000260 1A 12            [ 1]  508 	or	a, (0x12, sp)
+                                    509 ;	Source/Device/Src/nixie.c: 185: tmp2=(tmp1&0b00000001)<<7;
+      000262 97               [ 1]  510 	ld	xl, a
+      000263 A4 01            [ 1]  511 	and	a, #0x01
+      000265 4E               [ 1]  512 	swap	a
+      000266 A4 F0            [ 1]  513 	and	a, #0xf0
+      000268 48               [ 1]  514 	sll	a
+      000269 48               [ 1]  515 	sll	a
+      00026A 48               [ 1]  516 	sll	a
+      00026B 6B 12            [ 1]  517 	ld	(0x12, sp), a
+                                    518 ;	Source/Device/Src/nixie.c: 186: tmp1=(tmp1>>1)|tmp2;
+      00026D 9F               [ 1]  519 	ld	a, xl
+      00026E 44               [ 1]  520 	srl	a
+      00026F 1A 12            [ 1]  521 	or	a, (0x12, sp)
+                                    522 ;	Source/Device/Src/nixie.c: 187: SPI_SendData(tmp1);
+      000271 88               [ 1]  523 	push	a
+      000272 CDr00r00         [ 4]  524 	call	_SPI_SendData
+      000275 84               [ 1]  525 	pop	a
+                                    526 ;	Source/Device/Src/nixie.c: 189: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
+      000276                        527 00113$:
+      000276 4B 02            [ 1]  528 	push	#0x02
+      000278 CDr00r00         [ 4]  529 	call	_SPI_GetFlagStatus
+      00027B 5B 01            [ 2]  530 	addw	sp, #1
+      00027D 4D               [ 1]  531 	tnz	a
+      00027E 27 F6            [ 1]  532 	jreq	00113$
+                                    533 ;	Source/Device/Src/nixie.c: 191: tmp1=(uint8_t)(tube1>>5);
+      000280 1E 0A            [ 2]  534 	ldw	x, (0x0a, sp)
+      000282 A6 20            [ 1]  535 	ld	a, #0x20
+      000284 62               [ 2]  536 	div	x, a
+      000285 41               [ 1]  537 	exg	a, xl
+      000286 6B 12            [ 1]  538 	ld	(0x12, sp), a
+      000288 41               [ 1]  539 	exg	a, xl
+                                    540 ;	Source/Device/Src/nixie.c: 192: tmp2=(uint8_t)(((tube1&0b10000)>>4)<<7);
+      000289 16 0A            [ 2]  541 	ldw	y, (0x0a, sp)
+      00028B 5F               [ 1]  542 	clrw	x
+      00028C 90 9F            [ 1]  543 	ld	a, yl
+      00028E A4 10            [ 1]  544 	and	a, #0x10
+      000290 97               [ 1]  545 	ld	xl, a
+      000291 A6 10            [ 1]  546 	ld	a, #0x10
+      000293 62               [ 2]  547 	div	x, a
+      000294 9F               [ 1]  548 	ld	a, xl
+      000295 4E               [ 1]  549 	swap	a
+      000296 A4 F0            [ 1]  550 	and	a, #0xf0
+      000298 48               [ 1]  551 	sll	a
+      000299 48               [ 1]  552 	sll	a
+      00029A 48               [ 1]  553 	sll	a
+                                    554 ;	Source/Device/Src/nixie.c: 193: tmp1=tmp1|tmp2;
+      00029B 1A 12            [ 1]  555 	or	a, (0x12, sp)
+                                    556 ;	Source/Device/Src/nixie.c: 194: SPI_SendData(tmp1);
+      00029D 88               [ 1]  557 	push	a
+      00029E CDr00r00         [ 4]  558 	call	_SPI_SendData
+      0002A1 84               [ 1]  559 	pop	a
+                                    560 ;	Source/Device/Src/nixie.c: 196: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
+      0002A2                        561 00116$:
+      0002A2 4B 02            [ 1]  562 	push	#0x02
+      0002A4 CDr00r00         [ 4]  563 	call	_SPI_GetFlagStatus
+      0002A7 5B 01            [ 2]  564 	addw	sp, #1
+      0002A9 4D               [ 1]  565 	tnz	a
+      0002AA 27 F6            [ 1]  566 	jreq	00116$
+                                    567 ;	Source/Device/Src/nixie.c: 198: GPIO_WriteHigh(GPIOC,GPIO_PIN_7);//更新所有595输出
+      0002AC 4B 80            [ 1]  568 	push	#0x80
+      0002AE 4B 0A            [ 1]  569 	push	#0x0a
+      0002B0 4B 50            [ 1]  570 	push	#0x50
+      0002B2 CDr00r00         [ 4]  571 	call	_GPIO_WriteHigh
+                                    572 ;	Source/Device/Src/nixie.c: 199: }
+      0002B5 5B 15            [ 2]  573 	addw	sp, #21
+      0002B7 81               [ 4]  574 	ret
+                                    575 	.area CODE
+                                    576 	.area CONST
+                                    577 	.area INITIALIZER
+      000000                        578 __xinit__tube_state:
+      000000 00                     579 	.db #0x00	; 0
+                                    580 	.area CABS (ABS)

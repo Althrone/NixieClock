@@ -1,5 +1,5 @@
 XH3
-H B areas 4 global symbols
+H B areas 5 global symbols
 M stm8s_gpio
 O -mstm8
 S .__.ABS. Def000000
@@ -12,8 +12,9 @@ A GSINIT size 0 flags 0 addr 0
 A GSFINAL size 0 flags 0 addr 0
 A CONST size 0 flags 0 addr 0
 A INITIALIZER size 0 flags 0 addr 0
-A CODE size 8A flags 0 addr 0
+A CODE size 91 flags 0 addr 0
 S _GPIO_Init Def000000
+S _GPIO_ReadInputPin Def00008A
 S _GPIO_WriteLow Def00007C
 S _GPIO_WriteHigh Def000075
 A CABS size 0 flags 8 addr 0
@@ -72,4 +73,8 @@ R 00 00 00 09
 T 00 00 7C 88 1E 04 F6 6B 01 7B 06 43 14 01 F7 84
 R 00 00 00 09
 T 00 00 89 81
+R 00 00 00 09
+T 00 00 8A
+R 00 00 00 09
+T 00 00 8A 1E 03 E6 01 14 05 81
 R 00 00 00 09

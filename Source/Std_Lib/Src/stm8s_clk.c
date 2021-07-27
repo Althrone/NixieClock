@@ -58,34 +58,34 @@ CONST uint8_t CLKPrescTable[8] = {1, 2, 4, 8, 10, 16, 20, 40}; /*!< Holds the di
   * @{
   */
 
-/**
-  * @brief  Deinitializes the CLK peripheral registers to their default reset
-  * values.
-  * @param  None
-  * @retval None
-  * @par Warning:
-  * Resetting the CCOR register: \n
-  * When the CCOEN bit is set, the reset of the CCOR register require
-  * two consecutive write instructions in order to reset first the CCOEN bit
-  * and the second one is to reset the CCOSEL bits.
-  */
-void CLK_DeInit(void)
-{
-  CLK->ICKR = CLK_ICKR_RESET_VALUE;
-  CLK->ECKR = CLK_ECKR_RESET_VALUE;
-  CLK->SWR  = CLK_SWR_RESET_VALUE;
-  CLK->SWCR = CLK_SWCR_RESET_VALUE;
-  CLK->CKDIVR = CLK_CKDIVR_RESET_VALUE;
-  CLK->PCKENR1 = CLK_PCKENR1_RESET_VALUE;
-  CLK->PCKENR2 = CLK_PCKENR2_RESET_VALUE;
-  CLK->CSSR = CLK_CSSR_RESET_VALUE;
-  CLK->CCOR = CLK_CCOR_RESET_VALUE;
-  while ((CLK->CCOR & CLK_CCOR_CCOEN)!= 0)
-  {}
-  CLK->CCOR = CLK_CCOR_RESET_VALUE;
-  CLK->HSITRIMR = CLK_HSITRIMR_RESET_VALUE;
-  CLK->SWIMCCR = CLK_SWIMCCR_RESET_VALUE;
-}
+// /**
+//   * @brief  Deinitializes the CLK peripheral registers to their default reset
+//   * values.
+//   * @param  None
+//   * @retval None
+//   * @par Warning:
+//   * Resetting the CCOR register: \n
+//   * When the CCOEN bit is set, the reset of the CCOR register require
+//   * two consecutive write instructions in order to reset first the CCOEN bit
+//   * and the second one is to reset the CCOSEL bits.
+//   */
+// void CLK_DeInit(void)
+// {
+//   CLK->ICKR = CLK_ICKR_RESET_VALUE;
+//   CLK->ECKR = CLK_ECKR_RESET_VALUE;
+//   CLK->SWR  = CLK_SWR_RESET_VALUE;
+//   CLK->SWCR = CLK_SWCR_RESET_VALUE;
+//   CLK->CKDIVR = CLK_CKDIVR_RESET_VALUE;
+//   CLK->PCKENR1 = CLK_PCKENR1_RESET_VALUE;
+//   CLK->PCKENR2 = CLK_PCKENR2_RESET_VALUE;
+//   CLK->CSSR = CLK_CSSR_RESET_VALUE;
+//   CLK->CCOR = CLK_CCOR_RESET_VALUE;
+//   while ((CLK->CCOR & CLK_CCOR_CCOEN)!= 0)
+//   {}
+//   CLK->CCOR = CLK_CCOR_RESET_VALUE;
+//   CLK->HSITRIMR = CLK_HSITRIMR_RESET_VALUE;
+//   CLK->SWIMCCR = CLK_SWIMCCR_RESET_VALUE;
+// }
 
 // /**
 //   * @brief   Configures the High Speed Internal oscillator (HSI).
@@ -113,27 +113,27 @@ void CLK_DeInit(void)
 //   }
 // }
 
-// /**
-//   * @brief  Enable or Disable the External High Speed oscillator (HSE).
-//   * @param   NewState new state of HSEEN, value accepted ENABLE, DISABLE.
-//   * @retval None
-//   */
-// void CLK_HSECmd(FunctionalState NewState)
-// {
-//   /* Check the parameters */
-//   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+/**
+  * @brief  Enable or Disable the External High Speed oscillator (HSE).
+  * @param   NewState new state of HSEEN, value accepted ENABLE, DISABLE.
+  * @retval None
+  */
+void CLK_HSECmd(FunctionalState NewState)
+{
+  /* Check the parameters */
+  assert_param(IS_FUNCTIONALSTATE_OK(NewState));
   
-//   if (NewState != DISABLE)
-//   {
-//     /* Set HSEEN bit */
-//     CLK->ECKR |= CLK_ECKR_HSEEN;
-//   }
-//   else
-//   {
-//     /* Reset HSEEN bit */
-//     CLK->ECKR &= (uint8_t)(~CLK_ECKR_HSEEN);
-//   }
-// }
+  if (NewState != DISABLE)
+  {
+    /* Set HSEEN bit */
+    CLK->ECKR |= CLK_ECKR_HSEEN;
+  }
+  else
+  {
+    /* Reset HSEEN bit */
+    CLK->ECKR &= (uint8_t)(~CLK_ECKR_HSEEN);
+  }
+}
 
 // /**
 //   * @brief  Enables or disables the Internal High Speed oscillator (HSI).
@@ -180,12 +180,12 @@ void CLK_DeInit(void)
 //   }
 // }
 
-// /**
-//   * @brief  Enables or disablle the Configurable Clock Output (CCO).
-//   * @param   NewState : New state of CCEN bit (CCO register).
-//   * This parameter can be any of the @ref FunctionalState enumeration.
-//   * @retval None
-//   */
+/**
+  * @brief  Enables or disablle the Configurable Clock Output (CCO).
+  * @param   NewState : New state of CCEN bit (CCO register).
+  * This parameter can be any of the @ref FunctionalState enumeration.
+  * @retval None
+  */
 // void CLK_CCOCmd(FunctionalState NewState)
 // {
 //   /* Check the parameters */
@@ -294,117 +294,117 @@ void CLK_DeInit(void)
 //   }
 // }
 
-// /**
-//   * @brief  configures the Switch from one clock to another
-//   * @param   CLK_SwitchMode select the clock switch mode.
-//   * It can be set of the values of @ref CLK_SwitchMode_TypeDef
-//   * @param   CLK_NewClock choice of the future clock.
-//   * It can be set of the values of @ref CLK_Source_TypeDef
-//   * @param   ITState Enable or Disable the Clock Switch interrupt.
-//   * @param   CLK_CurrentClockState current clock to switch OFF or to keep ON.
-//   * It can be set of the values of @ref CLK_CurrentClockState_TypeDef
-//   * @note LSI selected as master clock source only if LSI_EN option bit is set.
-//   * @retval ErrorStatus this shows the clock switch status (ERROR/SUCCESS).
-//   */
-// ErrorStatus CLK_ClockSwitchConfig(CLK_SwitchMode_TypeDef CLK_SwitchMode, CLK_Source_TypeDef CLK_NewClock, FunctionalState ITState, CLK_CurrentClockState_TypeDef CLK_CurrentClockState)
-// {
-//   CLK_Source_TypeDef clock_master;
-//   uint16_t DownCounter = CLK_TIMEOUT;
-//   ErrorStatus Swif = ERROR;
+/**
+  * @brief  configures the Switch from one clock to another
+  * @param   CLK_SwitchMode select the clock switch mode.
+  * It can be set of the values of @ref CLK_SwitchMode_TypeDef
+  * @param   CLK_NewClock choice of the future clock.
+  * It can be set of the values of @ref CLK_Source_TypeDef
+  * @param   ITState Enable or Disable the Clock Switch interrupt.
+  * @param   CLK_CurrentClockState current clock to switch OFF or to keep ON.
+  * It can be set of the values of @ref CLK_CurrentClockState_TypeDef
+  * @note LSI selected as master clock source only if LSI_EN option bit is set.
+  * @retval ErrorStatus this shows the clock switch status (ERROR/SUCCESS).
+  */
+ErrorStatus CLK_ClockSwitchConfig(CLK_SwitchMode_TypeDef CLK_SwitchMode, CLK_Source_TypeDef CLK_NewClock, FunctionalState ITState, CLK_CurrentClockState_TypeDef CLK_CurrentClockState)
+{
+  CLK_Source_TypeDef clock_master;
+  uint16_t DownCounter = CLK_TIMEOUT;
+  ErrorStatus Swif = ERROR;
   
-//   /* Check the parameters */
-//   assert_param(IS_CLK_SOURCE_OK(CLK_NewClock));
-//   assert_param(IS_CLK_SWITCHMODE_OK(CLK_SwitchMode));
-//   assert_param(IS_FUNCTIONALSTATE_OK(ITState));
-//   assert_param(IS_CLK_CURRENTCLOCKSTATE_OK(CLK_CurrentClockState));
+  /* Check the parameters */
+  assert_param(IS_CLK_SOURCE_OK(CLK_NewClock));
+  assert_param(IS_CLK_SWITCHMODE_OK(CLK_SwitchMode));
+  assert_param(IS_FUNCTIONALSTATE_OK(ITState));
+  assert_param(IS_CLK_CURRENTCLOCKSTATE_OK(CLK_CurrentClockState));
   
-//   /* Current clock master saving */
-//   clock_master = (CLK_Source_TypeDef)CLK->CMSR;
+  /* Current clock master saving */
+  clock_master = (CLK_Source_TypeDef)CLK->CMSR;
   
-//   /* Automatic switch mode management */
-//   if (CLK_SwitchMode == CLK_SWITCHMODE_AUTO)
-//   {
-//     /* Enables Clock switch */
-//     CLK->SWCR |= CLK_SWCR_SWEN;
+  /* Automatic switch mode management */
+  if (CLK_SwitchMode == CLK_SWITCHMODE_AUTO)
+  {
+    /* Enables Clock switch */
+    CLK->SWCR |= CLK_SWCR_SWEN;
     
-//     /* Enables or Disables Switch interrupt */
-//     if (ITState != DISABLE)
-//     {
-//       CLK->SWCR |= CLK_SWCR_SWIEN;
-//     }
-//     else
-//     {
-//       CLK->SWCR &= (uint8_t)(~CLK_SWCR_SWIEN);
-//     }
+    /* Enables or Disables Switch interrupt */
+    if (ITState != DISABLE)
+    {
+      CLK->SWCR |= CLK_SWCR_SWIEN;
+    }
+    else
+    {
+      CLK->SWCR &= (uint8_t)(~CLK_SWCR_SWIEN);
+    }
     
-//     /* Selection of the target clock source */
-//     CLK->SWR = (uint8_t)CLK_NewClock;
+    /* Selection of the target clock source */
+    CLK->SWR = (uint8_t)CLK_NewClock;
     
-//     /* Wait until the target clock source is ready */
-//     while((((CLK->SWCR & CLK_SWCR_SWBSY) != 0 )&& (DownCounter != 0)))
-//     {
-//       DownCounter--;
-//     }
+    /* Wait until the target clock source is ready */
+    while((((CLK->SWCR & CLK_SWCR_SWBSY) != 0 )&& (DownCounter != 0)))
+    {
+      DownCounter--;
+    }
     
-//     if(DownCounter != 0)
-//     {
-//       Swif = SUCCESS;
-//     }
-//     else
-//     {
-//       Swif = ERROR;
-//     }
-//   }
-//   else /* CLK_SwitchMode == CLK_SWITCHMODE_MANUAL */
-//   {
-//     /* Enables or Disables Switch interrupt  if required  */
-//     if (ITState != DISABLE)
-//     {
-//       CLK->SWCR |= CLK_SWCR_SWIEN;
-//     }
-//     else
-//     {
-//       CLK->SWCR &= (uint8_t)(~CLK_SWCR_SWIEN);
-//     }
+    if(DownCounter != 0)
+    {
+      Swif = SUCCESS;
+    }
+    else
+    {
+      Swif = ERROR;
+    }
+  }
+  else /* CLK_SwitchMode == CLK_SWITCHMODE_MANUAL */
+  {
+    /* Enables or Disables Switch interrupt  if required  */
+    if (ITState != DISABLE)
+    {
+      CLK->SWCR |= CLK_SWCR_SWIEN;
+    }
+    else
+    {
+      CLK->SWCR &= (uint8_t)(~CLK_SWCR_SWIEN);
+    }
     
-//     /* Selection of the target clock source */
-//     CLK->SWR = (uint8_t)CLK_NewClock;
+    /* Selection of the target clock source */
+    CLK->SWR = (uint8_t)CLK_NewClock;
     
-//     /* Wait until the target clock source is ready */
-//     while((((CLK->SWCR & CLK_SWCR_SWIF) != 0 ) && (DownCounter != 0)))
-//     {
-//       DownCounter--;
-//     }
+    /* Wait until the target clock source is ready */
+    while((((CLK->SWCR & CLK_SWCR_SWIF) != 0 ) && (DownCounter != 0)))
+    {
+      DownCounter--;
+    }
     
-//     if(DownCounter != 0)
-//     {
-//       /* Enables Clock switch */
-//       CLK->SWCR |= CLK_SWCR_SWEN;
-//       Swif = SUCCESS;
-//     }
-//     else
-//     {
-//       Swif = ERROR;
-//     }
-//   }
-//   if(Swif != ERROR)
-//   {
-//     /* Switch OFF current clock if required */
-//     if((CLK_CurrentClockState == CLK_CURRENTCLOCKSTATE_DISABLE) && ( clock_master == CLK_SOURCE_HSI))
-//     {
-//       CLK->ICKR &= (uint8_t)(~CLK_ICKR_HSIEN);
-//     }
-//     else if((CLK_CurrentClockState == CLK_CURRENTCLOCKSTATE_DISABLE) && ( clock_master == CLK_SOURCE_LSI))
-//     {
-//       CLK->ICKR &= (uint8_t)(~CLK_ICKR_LSIEN);
-//     }
-//     else if ((CLK_CurrentClockState == CLK_CURRENTCLOCKSTATE_DISABLE) && ( clock_master == CLK_SOURCE_HSE))
-//     {
-//       CLK->ECKR &= (uint8_t)(~CLK_ECKR_HSEEN);
-//     }
-//   }
-//   return(Swif);
-// }
+    if(DownCounter != 0)
+    {
+      /* Enables Clock switch */
+      CLK->SWCR |= CLK_SWCR_SWEN;
+      Swif = SUCCESS;
+    }
+    else
+    {
+      Swif = ERROR;
+    }
+  }
+  if(Swif != ERROR)
+  {
+    /* Switch OFF current clock if required */
+    if((CLK_CurrentClockState == CLK_CURRENTCLOCKSTATE_DISABLE) && ( clock_master == CLK_SOURCE_HSI))
+    {
+      CLK->ICKR &= (uint8_t)(~CLK_ICKR_HSIEN);
+    }
+    else if((CLK_CurrentClockState == CLK_CURRENTCLOCKSTATE_DISABLE) && ( clock_master == CLK_SOURCE_LSI))
+    {
+      CLK->ICKR &= (uint8_t)(~CLK_ICKR_LSIEN);
+    }
+    else if ((CLK_CurrentClockState == CLK_CURRENTCLOCKSTATE_DISABLE) && ( clock_master == CLK_SOURCE_HSE))
+    {
+      CLK->ECKR &= (uint8_t)(~CLK_ECKR_HSEEN);
+    }
+  }
+  return(Swif);
+}
 
 // /**
 //   * @brief  Configures the HSI clock dividers.

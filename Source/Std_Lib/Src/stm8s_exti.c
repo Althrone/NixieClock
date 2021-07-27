@@ -101,22 +101,22 @@ void EXTI_SetExtIntSensitivity(EXTI_Port_TypeDef Port, EXTI_Sensitivity_TypeDef 
   }
 }
 
-// /**
-//   * @brief  Set the TLI interrupt sensitivity.
-//   * @param   SensitivityValue The TLI interrupt sensitivity value.
-//   * @retval None
-//   * @par Required preconditions:
-//   * Global interrupts must be disabled before calling this function.
-//   */
-// void EXTI_SetTLISensitivity(EXTI_TLISensitivity_TypeDef SensitivityValue)
-// {
-//   /* Check function parameters */
-//   assert_param(IS_EXTI_TLISENSITIVITY_OK(SensitivityValue));
+/**
+  * @brief  Set the TLI interrupt sensitivity.
+  * @param   SensitivityValue The TLI interrupt sensitivity value.
+  * @retval None
+  * @par Required preconditions:
+  * Global interrupts must be disabled before calling this function.
+  */
+void EXTI_SetTLISensitivity(EXTI_TLISensitivity_TypeDef SensitivityValue)
+{
+  /* Check function parameters */
+  assert_param(IS_EXTI_TLISENSITIVITY_OK(SensitivityValue));
   
-//   /* Set TLI interrupt sensitivity */
-//   EXTI->CR2 &= (uint8_t)(~EXTI_CR2_TLIS);
-//   EXTI->CR2 |= (uint8_t)(SensitivityValue);
-// }
+  /* Set TLI interrupt sensitivity */
+  EXTI->CR2 &= (uint8_t)(~EXTI_CR2_TLIS);
+  EXTI->CR2 |= (uint8_t)(SensitivityValue);
+}
 
 // /**
 //   * @brief  Get the external interrupt sensitivity of the selected port.
