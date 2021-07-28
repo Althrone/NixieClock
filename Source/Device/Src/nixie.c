@@ -43,22 +43,14 @@ P是小数点，A是阳极
 /* Public variables ----------------------------------------------------------*/
 
 FunctionalState tube_state=DISABLE;
+FunctionalState nixie_tube1=DISABLE;
+FunctionalState nixie_tube2=DISABLE;
+FunctionalState nixie_tube3=DISABLE;
+FunctionalState nixie_tube4=DISABLE;
 
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Public functions ----------------------------------------------------------*/
-
-void delay(void)
-{
-    // for (char i = 0; i < 100; i++)
-    //     {
-    //         for (char j = 0; j < 100; j++)
-    //         {
-    //             // for (char k = 0; k < 10; k++);
-    //         }
-    //     };
-    for (int i = 0; i < 300; i++);//这个比较合适
-}
 
 /**
  * @brief   显示设备初始化，实际上就是用spi驱动595
@@ -79,16 +71,28 @@ void NIXIE_Init(void)
              SPI_NSS_SOFT,
              0x07);
     SPI_Cmd(ENABLE);
+
+    //辉光自检
+    for(uint8_t i=0;i<10;++i)
+    {
+        tube_state=ENABLE;
+        NIXIE_DisplayTime(i*10+i,i*10+i);
+        for(uint16_t k=0;k<100;++k)
+        {
+            for(uint16_t j=0;j<1000;++j);
+        }
+    }
 }
 
 /**
  * @brief   其中一个管子的显示信息
  * @param   tubeNum: 几号管
  * @param   character: 显示字符，控制阴极
- * @param   tubeState: 辉光管状态，控制阳极
+ * @param   tubeState: 管子状态
  * @retval  1.32547698A0的二进制值
  * @note    由于一个管子可以同时显示几个字符，所以用字符串的形式表示
  **/
+// uint16_t NIXIE_DisplayChar(uint8_t tubeNum,char* character,uint16_t tubeOn,uint16_t tubeOff)
 uint16_t NIXIE_DisplayChar(uint8_t tubeNum,char* character,FunctionalState tubeState)
 {
     uint16_t tmp=0;
@@ -111,6 +115,16 @@ uint16_t NIXIE_DisplayChar(uint8_t tubeNum,char* character,FunctionalState tubeS
 
     return output;
 }
+
+// /**
+//  * @brief   设置管子的闪烁频率
+//  * @param   tubeOn: 管子点亮时间，单位ms，为0的时候管子常关
+//  * @param   tubeOn: 管子熄灭时间，单位ms，为0的时候管子常亮
+//  **/
+// void NIXIE_SetTubeRate(uint8_t tubeNum,uint16_t tubeOn,uint16_t tubeOff)
+// {
+
+// }
 
 /**
  * @brief   显示时间

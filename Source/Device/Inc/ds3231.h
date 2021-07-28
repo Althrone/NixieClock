@@ -10,6 +10,7 @@
 /* Includes ------------------------------------------------------------------*/
 
 #include "soft_i2c.h"
+#include "gps.h"
 
 /* Device Address ------------------------------------------------------------*/
 
@@ -70,6 +71,8 @@ typedef struct
 
 void DS3231_Init(void);
 void DS3231_GetTime(void);
+void DS3231_GPSSetTime(void);
+
 
 #ifdef __cplusplus
 }

@@ -31,7 +31,7 @@
 	.globl _CLK_ClockSwitchConfig
 	.globl _CLK_HSECmd
 	.globl _KEY_StateMachine_Enumeration
-	.globl _ir_always_on
+	.globl _nixie_always_on
 	.globl _key_delay_2s
 	.globl _ir_double_click_delay
 	.globl _ir_delay
@@ -49,7 +49,7 @@ _key_delay_2s::
 ; ram data
 ;--------------------------------------------------------
 	.area INITIALIZED
-_ir_always_on::
+_nixie_always_on::
 	.ds 1
 _KEY_StateMachine_Enumeration::
 	.ds 1
@@ -144,204 +144,178 @@ __sdcc_program_startup:
 ; code
 ;--------------------------------------------------------
 	.area CODE
-;	Source/User/main.c: 15: int main(void)
+;	Source/User/main.c: 32: int main(void)
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-	sub	sp, #3
-;	Source/User/main.c: 18: CLK_HSECmd(ENABLE);
+	pushw	x
+;	Source/User/main.c: 35: CLK_HSECmd(ENABLE);
 	push	#0x01
 	call	_CLK_HSECmd
 	pop	a
-;	Source/User/main.c: 19: CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO,CLK_SOURCE_HSE,DISABLE,CLK_CURRENTCLOCKSTATE_DISABLE);//8MHz
+;	Source/User/main.c: 36: CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO,CLK_SOURCE_HSE,DISABLE,CLK_CURRENTCLOCKSTATE_DISABLE);//8MHz
 	push	#0x00
 	push	#0x00
 	push	#0xb4
 	push	#0x01
 	call	_CLK_ClockSwitchConfig
 	addw	sp, #4
-;	Source/User/main.c: 22: ITC_SetSoftwarePriority(ITC_IRQ_PORTD,ITC_PRIORITYLEVEL_1);
+;	Source/User/main.c: 39: ITC_SetSoftwarePriority(ITC_IRQ_PORTD,ITC_PRIORITYLEVEL_1);
 	push	#0x01
 	push	#0x06
 	call	_ITC_SetSoftwarePriority
 	popw	x
-;	Source/User/main.c: 23: EXTI_SetExtIntSensitivity(EXTI_PORT_GPIOD,EXTI_SENSITIVITY_FALL_ONLY);
+;	Source/User/main.c: 40: EXTI_SetExtIntSensitivity(EXTI_PORT_GPIOD,EXTI_SENSITIVITY_FALL_ONLY);
 	push	#0x02
 	push	#0x03
 	call	_EXTI_SetExtIntSensitivity
 	popw	x
-;	Source/User/main.c: 24: GPIO_Init(GPIOD,GPIO_PIN_2,GPIO_MODE_IN_FL_IT);
+;	Source/User/main.c: 41: GPIO_Init(GPIOD,GPIO_PIN_2,GPIO_MODE_IN_FL_IT);
 	push	#0x20
 	push	#0x04
 	push	#0x0f
 	push	#0x50
 	call	_GPIO_Init
 	addw	sp, #4
-;	Source/User/main.c: 27: GPIO_Init(GPIOC,GPIO_PIN_3,GPIO_MODE_IN_PU_IT);//GPIO_PIN_3
+;	Source/User/main.c: 44: GPIO_Init(GPIOC,GPIO_PIN_3,GPIO_MODE_IN_PU_IT);//GPIO_PIN_3
 	push	#0x60
 	push	#0x08
 	push	#0x0a
 	push	#0x50
 	call	_GPIO_Init
 	addw	sp, #4
-;	Source/User/main.c: 28: EXTI_SetExtIntSensitivity(EXTI_PORT_GPIOC,EXTI_SENSITIVITY_FALL_ONLY);
+;	Source/User/main.c: 45: EXTI_SetExtIntSensitivity(EXTI_PORT_GPIOC,EXTI_SENSITIVITY_FALL_ONLY);
 	push	#0x02
 	push	#0x02
 	call	_EXTI_SetExtIntSensitivity
 	popw	x
-;	Source/User/main.c: 29: rim();
+;	Source/User/main.c: 46: rim();
 	rim
-;	Source/User/main.c: 31: GPS_Init();//PD5 PD6
+;	Source/User/main.c: 48: GPS_Init();//PD5 PD6
 	call	_GPS_Init
-;	Source/User/main.c: 33: NIXIE_Init();//PC5 PC6 PC7
+;	Source/User/main.c: 50: NIXIE_Init();//PC5 PC6 PC7
 	call	_NIXIE_Init
-;	Source/User/main.c: 35: for(uint8_t i=0;i<10;++i)
-	clr	(0x01, sp)
-00114$:
-	ld	a, (0x01, sp)
-	cp	a, #0x0a
-	jrnc	00103$
-;	Source/User/main.c: 37: tube_state=ENABLE;
-	mov	_tube_state+0, #0x01
-;	Source/User/main.c: 38: NIXIE_DisplayTime(i*10+i,i*10+i);
-	ld	a, (0x01, sp)
-	ld	xl, a
-	ld	a, #0x0a
-	mul	x, a
-	ld	a, (0x01, sp)
-	pushw	x
-	add	a, (2, sp)
-	popw	x
-	push	a
-	push	a
-	call	_NIXIE_DisplayTime
-	popw	x
-;	Source/User/main.c: 39: for(uint16_t k=0;k<100;++k)
-	clrw	x
-	ldw	(0x02, sp), x
-00111$:
-	ldw	x, (0x02, sp)
-	cpw	x, #0x0064
-	jrnc	00115$
-;	Source/User/main.c: 41: for(uint16_t j=0;j<1000;++j);
-	clrw	x
-00108$:
-	ldw	y, x
-	cpw	y, #0x03e8
-	jrnc	00112$
-	incw	x
-	jra	00108$
-00112$:
-;	Source/User/main.c: 39: for(uint16_t k=0;k<100;++k)
-	ldw	x, (0x02, sp)
-	incw	x
-	ldw	(0x02, sp), x
-	jra	00111$
-00115$:
-;	Source/User/main.c: 35: for(uint8_t i=0;i<10;++i)
-	inc	(0x01, sp)
-	jra	00114$
-00103$:
-;	Source/User/main.c: 44: ir_delay=DELAY_10S;
+;	Source/User/main.c: 51: ir_delay=DELAY_10S;
 	ldw	x, #0x09c4
 	ldw	_ir_delay+0, x
-;	Source/User/main.c: 46: DS3231_Init();
+;	Source/User/main.c: 53: DS3231_Init();
 	call	_DS3231_Init
-;	Source/User/main.c: 49: TIM4_TimeBaseInit(TIM4_PRESCALER_128,250);//4ms
+;	Source/User/main.c: 56: TIM4_TimeBaseInit(TIM4_PRESCALER_128,250);//4ms
 	push	#0xfa
 	push	#0x07
 	call	_TIM4_TimeBaseInit
 	popw	x
-;	Source/User/main.c: 50: TIM4_ITConfig(TIM4_IT_UPDATE,ENABLE);
+;	Source/User/main.c: 57: TIM4_ITConfig(TIM4_IT_UPDATE,ENABLE);
 	push	#0x01
 	push	#0x01
 	call	_TIM4_ITConfig
 	popw	x
-;	Source/User/main.c: 51: TIM4_ARRPreloadConfig(ENABLE);
+;	Source/User/main.c: 58: TIM4_ARRPreloadConfig(ENABLE);
 	push	#0x01
 	call	_TIM4_ARRPreloadConfig
 	pop	a
-;	Source/User/main.c: 52: ITC_SetSoftwarePriority(ITC_IRQ_TIM4_OVF,ITC_PRIORITYLEVEL_1);
+;	Source/User/main.c: 59: ITC_SetSoftwarePriority(ITC_IRQ_TIM4_OVF,ITC_PRIORITYLEVEL_1);
 	push	#0x01
 	push	#0x17
 	call	_ITC_SetSoftwarePriority
 	popw	x
-;	Source/User/main.c: 53: TIM4_Cmd(ENABLE);
+;	Source/User/main.c: 60: TIM4_Cmd(ENABLE);
 	push	#0x01
 	call	_TIM4_Cmd
 	pop	a
-;	Source/User/main.c: 55: while(1)
+;	Source/User/main.c: 65: while(1)
 00105$:
-;	Source/User/main.c: 58: NIXIE_DisplayTime(GPS_TimeDataSturcture.hour,GPS_TimeDataSturcture.min);
-	ld	a, _GPS_TimeDataSturcture+19
+;	Source/User/main.c: 69: NIXIE_DisplayTime(DS3231_TimeSturcture.hours,DS3231_TimeSturcture.minutes);
+	ldw	x, #(_DS3231_TimeSturcture + 0)+1
+	ldw	(0x01, sp), x
+	ld	a, (x)
 	ld	xl, a
-	ld	a, _GPS_TimeDataSturcture+18
+	ld	a, _DS3231_TimeSturcture+2
 	pushw	x
 	addw	sp, #1
 	push	a
 	call	_NIXIE_DisplayTime
 	popw	x
-;	Source/User/main.c: 60: DS3231_GetTime();
+;	Source/User/main.c: 70: DS3231_GetTime();
 	call	_DS3231_GetTime
+;	Source/User/main.c: 72: if((DS3231_TimeSturcture.minutes%10==0)&&(DS3231_TimeSturcture.seconds==0))
+	ldw	x, (0x01, sp)
+	ld	a, (x)
+	clrw	x
+	ld	xl, a
+	push	#0x0a
+	push	#0x00
+	pushw	x
+	call	__modsint
+	addw	sp, #4
+	tnzw	x
+	jrne	00105$
+	ld	a, _DS3231_TimeSturcture+0
+	jrne	00105$
+;	Source/User/main.c: 73: ir_delay=DELAY_10S;
+	ldw	x, #0x09c4
+	ldw	_ir_delay+0, x
 	jra	00105$
-;	Source/User/main.c: 63: }
-	addw	sp, #3
+;	Source/User/main.c: 76: }
+	addw	sp, #2
 	ret
-;	Source/User/main.c: 72: void TIM4_UPD_OVF_IRQHandler(void) __interrupt(23)
+;	Source/User/main.c: 85: void TIM4_UPD_OVF_IRQHandler(void) __interrupt(23)
 ;	-----------------------------------------
 ;	 function TIM4_UPD_OVF_IRQHandler
 ;	-----------------------------------------
 _TIM4_UPD_OVF_IRQHandler:
 	div	x, a
-;	Source/User/main.c: 75: if(TIM4_GetITStatus(TIM4_IT_UPDATE)==SET)
+;	Source/User/main.c: 88: if(TIM4_GetITStatus(TIM4_IT_UPDATE)==SET)
 	push	#0x01
 	call	_TIM4_GetITStatus
 	addw	sp, #1
 	dec	a
 	jrne	00110$
-;	Source/User/main.c: 86: if(ir_double_click_delay>0)//双击计时
+;	Source/User/main.c: 99: if(ir_double_click_delay>0)//双击计时
 	tnz	_ir_double_click_delay+0
 	jreq	00102$
-;	Source/User/main.c: 87: --ir_double_click_delay;
+;	Source/User/main.c: 100: --ir_double_click_delay;
 	dec	_ir_double_click_delay+0
 00102$:
-;	Source/User/main.c: 93: if(ir_delay>0)
-;	Source/User/main.c: 94: --ir_delay;
+;	Source/User/main.c: 106: if(ir_delay>0)
+;	Source/User/main.c: 108: --ir_delay;
 	ldw	x, _ir_delay+0
 	jreq	00104$
 	decw	x
 	ldw	_ir_delay+0, x
+;	Source/User/main.c: 109: tube_state=ENABLE;
+	mov	_tube_state+0, #0x01
 00104$:
-;	Source/User/main.c: 95: if((ir_delay==0)&&(ir_always_on==RESET))
+;	Source/User/main.c: 111: if((ir_delay==0)&&(nixie_always_on==RESET))
 	ldw	x, _ir_delay+0
 	jrne	00106$
-	tnz	_ir_always_on+0
+	tnz	_nixie_always_on+0
 	jrne	00106$
-;	Source/User/main.c: 98: tube_state=DISABLE;
+;	Source/User/main.c: 114: tube_state=DISABLE;
 	clr	_tube_state+0
 00106$:
-;	Source/User/main.c: 101: TIM4_ClearITPendingBit(TIM4_IT_UPDATE);
+;	Source/User/main.c: 117: TIM4_ClearITPendingBit(TIM4_IT_UPDATE);
 	push	#0x01
 	call	_TIM4_ClearITPendingBit
 	pop	a
 00110$:
-;	Source/User/main.c: 103: }
+;	Source/User/main.c: 119: }
 	iret
-;	Source/User/main.c: 110: void EXTI_PORTA_IRQHandler(void) __interrupt(3)
+;	Source/User/main.c: 126: void EXTI_PORTA_IRQHandler(void) __interrupt(3)
 ;	-----------------------------------------
 ;	 function EXTI_PORTA_IRQHandler
 ;	-----------------------------------------
 _EXTI_PORTA_IRQHandler:
-;	Source/User/main.c: 159: }
+;	Source/User/main.c: 175: }
 	iret
-;	Source/User/main.c: 166: void EXTI_PORTC_IRQHandler(void) __interrupt(5)
+;	Source/User/main.c: 182: void EXTI_PORTC_IRQHandler(void) __interrupt(5)
 ;	-----------------------------------------
 ;	 function EXTI_PORTC_IRQHandler
 ;	-----------------------------------------
 _EXTI_PORTC_IRQHandler:
 	div	x, a
-;	Source/User/main.c: 168: if(GPIO_ReadInputPin(GPIOC,GPIO_PIN_3)==RESET)
+;	Source/User/main.c: 184: if(GPIO_ReadInputPin(GPIOC,GPIO_PIN_3)==RESET)
 	push	#0x08
 	push	#0x0a
 	push	#0x50
@@ -349,12 +323,12 @@ _EXTI_PORTC_IRQHandler:
 	addw	sp, #3
 	tnz	a
 	jrne	00104$
-;	Source/User/main.c: 171: key_delay_2s=DELAY_2S;
+;	Source/User/main.c: 187: key_delay_2s=DELAY_2S;
 	ldw	x, #0x01f4
 	ldw	_key_delay_2s+0, x
 	jra	00106$
 00104$:
-;	Source/User/main.c: 173: else if(GPIO_ReadInputPin(GPIOC,GPIO_PIN_4)==RESET)
+;	Source/User/main.c: 189: else if(GPIO_ReadInputPin(GPIOC,GPIO_PIN_4)==RESET)
 	push	#0x10
 	push	#0x0a
 	push	#0x50
@@ -362,19 +336,19 @@ _EXTI_PORTC_IRQHandler:
 	addw	sp, #3
 	tnz	a
 	jrne	00106$
-;	Source/User/main.c: 176: key_delay_2s=DELAY_2S;
+;	Source/User/main.c: 192: key_delay_2s=DELAY_2S;
 	ldw	x, #0x01f4
 	ldw	_key_delay_2s+0, x
 00106$:
-;	Source/User/main.c: 178: }
+;	Source/User/main.c: 194: }
 	iret
-;	Source/User/main.c: 185: void EXTI_PORTD_IRQHandler(void) __interrupt(6)
+;	Source/User/main.c: 201: void EXTI_PORTD_IRQHandler(void) __interrupt(6)
 ;	-----------------------------------------
 ;	 function EXTI_PORTD_IRQHandler
 ;	-----------------------------------------
 _EXTI_PORTD_IRQHandler:
 	div	x, a
-;	Source/User/main.c: 187: if(GPIO_ReadInputPin(GPIOD,GPIO_PIN_2)==RESET)
+;	Source/User/main.c: 203: if(GPIO_ReadInputPin(GPIOD,GPIO_PIN_2)==RESET)
 	push	#0x04
 	push	#0x0f
 	push	#0x50
@@ -382,37 +356,37 @@ _EXTI_PORTD_IRQHandler:
 	addw	sp, #3
 	tnz	a
 	jrne	00107$
-;	Source/User/main.c: 190: tube_state=ENABLE;
+;	Source/User/main.c: 206: tube_state=ENABLE;
 	mov	_tube_state+0, #0x01
-;	Source/User/main.c: 192: ir_delay=DELAY_10S;
+;	Source/User/main.c: 208: ir_delay=DELAY_10S;
 	ldw	x, #0x09c4
 	ldw	_ir_delay+0, x
-;	Source/User/main.c: 193: if(ir_double_click_delay>0)//相当于20ms内又触发了红外
+;	Source/User/main.c: 209: if(ir_double_click_delay>0)//相当于20ms内又触发了红外
 	tnz	_ir_double_click_delay+0
 	jreq	00102$
-;	Source/User/main.c: 195: ir_always_on=~ir_always_on;
-	cpl	_ir_always_on+0
-;	Source/User/main.c: 196: ir_double_click_delay=0;
+;	Source/User/main.c: 211: nixie_always_on=~nixie_always_on;
+	cpl	_nixie_always_on+0
+;	Source/User/main.c: 212: ir_double_click_delay=0;
 	clr	_ir_double_click_delay+0
 	jra	00109$
 00102$:
-;	Source/User/main.c: 199: ir_double_click_delay=DELAY_2S;
+;	Source/User/main.c: 215: ir_double_click_delay=DELAY_2S;
 	mov	_ir_double_click_delay+0, #0xf4
 	jra	00109$
 00107$:
-;	Source/User/main.c: 201: else if(GPIO_ReadInputPin(GPIOD,GPIO_PIN_3)==RESET)//key1
+;	Source/User/main.c: 217: else if(GPIO_ReadInputPin(GPIOD,GPIO_PIN_3)==RESET)//key1
 	push	#0x08
 	push	#0x0f
 	push	#0x50
 	call	_GPIO_ReadInputPin
 	addw	sp, #3
 00109$:
-;	Source/User/main.c: 228: }
+;	Source/User/main.c: 244: }
 	iret
 	.area CODE
 	.area CONST
 	.area INITIALIZER
-__xinit__ir_always_on:
+__xinit__nixie_always_on:
 	.db #0x00	; 0
 __xinit__KEY_StateMachine_Enumeration:
 	.db #0x00	; 0

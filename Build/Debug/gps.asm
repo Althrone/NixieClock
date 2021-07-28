@@ -17,6 +17,7 @@
 	.globl _UART1_Init
 	.globl _UART1_DeInit
 	.globl _GPIO_Init
+	.globl _gps_first_send
 	.globl _GPS_RxBuf
 	.globl _GPS_TimeDataSturcture
 	.globl _GPS_Init
@@ -36,6 +37,9 @@ _GPS_TimeDataSturcture::
 G$GPS_RxBuf$0_0$0==.
 _GPS_RxBuf::
 	.ds 34
+G$gps_first_send$0_0$0==.
+_gps_first_send::
+	.ds 1
 Fgps$num$0_0$0==.
 _num:
 	.ds 1
@@ -69,7 +73,7 @@ _num:
 ;--------------------------------------------------------
 	.area CODE
 	Sgps$GPS_Init$0 ==.
-;	Source/Device/Src/gps.c: 32: void GPS_Init(void)
+;	Source/Device/Src/gps.c: 33: void GPS_Init(void)
 ;	-----------------------------------------
 ;	 function GPS_Init
 ;	-----------------------------------------
@@ -78,7 +82,7 @@ _GPS_Init:
 	sub	sp, #30
 	Sgps$GPS_Init$2 ==.
 	Sgps$GPS_Init$3 ==.
-;	Source/Device/Src/gps.c: 34: GPIO_Init(GPIOD,GPIO_PIN_5,GPIO_MODE_OUT_PP_HIGH_FAST);
+;	Source/Device/Src/gps.c: 35: GPIO_Init(GPIOD,GPIO_PIN_5,GPIO_MODE_OUT_PP_HIGH_FAST);
 	push	#0xf0
 	Sgps$GPS_Init$4 ==.
 	push	#0x20
@@ -91,7 +95,7 @@ _GPS_Init:
 	addw	sp, #4
 	Sgps$GPS_Init$8 ==.
 	Sgps$GPS_Init$9 ==.
-;	Source/Device/Src/gps.c: 35: GPIO_Init(GPIOD,GPIO_PIN_6,GPIO_MODE_IN_FL_NO_IT);
+;	Source/Device/Src/gps.c: 36: GPIO_Init(GPIOD,GPIO_PIN_6,GPIO_MODE_IN_FL_NO_IT);
 	push	#0x00
 	Sgps$GPS_Init$10 ==.
 	push	#0x40
@@ -104,10 +108,10 @@ _GPS_Init:
 	addw	sp, #4
 	Sgps$GPS_Init$14 ==.
 	Sgps$GPS_Init$15 ==.
-;	Source/Device/Src/gps.c: 36: UART1_DeInit();
+;	Source/Device/Src/gps.c: 37: UART1_DeInit();
 	call	_UART1_DeInit
 	Sgps$GPS_Init$16 ==.
-;	Source/Device/Src/gps.c: 37: UART1_Init((uint32_t)9600,
+;	Source/Device/Src/gps.c: 38: UART1_Init((uint32_t)9600,
 	push	#0x0c
 	Sgps$GPS_Init$17 ==.
 	push	#0x80
@@ -129,7 +133,7 @@ _GPS_Init:
 	addw	sp, #9
 	Sgps$GPS_Init$25 ==.
 	Sgps$GPS_Init$26 ==.
-;	Source/Device/Src/gps.c: 43: UART1_ITConfig(UART1_IT_RXNE_OR,ENABLE);
+;	Source/Device/Src/gps.c: 44: UART1_ITConfig(UART1_IT_RXNE_OR,ENABLE);
 	push	#0x01
 	Sgps$GPS_Init$27 ==.
 	push	#0x05
@@ -140,7 +144,7 @@ _GPS_Init:
 	addw	sp, #3
 	Sgps$GPS_Init$30 ==.
 	Sgps$GPS_Init$31 ==.
-;	Source/Device/Src/gps.c: 44: UART1_ITConfig(UART1_IT_IDLE,ENABLE);
+;	Source/Device/Src/gps.c: 45: UART1_ITConfig(UART1_IT_IDLE,ENABLE);
 	push	#0x01
 	Sgps$GPS_Init$32 ==.
 	push	#0x44
@@ -151,7 +155,7 @@ _GPS_Init:
 	addw	sp, #3
 	Sgps$GPS_Init$35 ==.
 	Sgps$GPS_Init$36 ==.
-;	Source/Device/Src/gps.c: 45: UART1_Cmd(ENABLE);
+;	Source/Device/Src/gps.c: 46: UART1_Cmd(ENABLE);
 	push	#0x01
 	Sgps$GPS_Init$37 ==.
 	call	_UART1_Cmd
@@ -159,7 +163,7 @@ _GPS_Init:
 	Sgps$GPS_Init$38 ==.
 	Sgps$GPS_Init$39 ==.
 	Sgps$GPS_Init$40 ==.
-;	Source/Device/Src/gps.c: 48: uint8_t open_nav_timeutc[]={0xBA,0xCE,0x04,0x00,0x06,0x01,0x01,0x10,0x01,0x00,0x05,0x10,0x07,0x01};
+;	Source/Device/Src/gps.c: 49: uint8_t open_nav_timeutc[]={0xBA,0xCE,0x04,0x00,0x06,0x01,0x01,0x10,0x01,0x00,0x05,0x10,0x07,0x01};
 	ld	a, #0xba
 	ld	(0x01, sp), a
 	ldw	x, sp
@@ -200,7 +204,7 @@ _GPS_Init:
 	ld	a, #0x01
 	ld	(14, x), a
 	Sgps$GPS_Init$41 ==.
-;	Source/Device/Src/gps.c: 49: uint8_t close_all_nmea[]={'$','C','C','R','M','O',',',',','3',',','*','4','F',0x0D,0x0A};//$CCRMO,,3,*4F 其实字符串也不是不可以，只是为了省一个字节而已
+;	Source/Device/Src/gps.c: 50: uint8_t close_all_nmea[]={'$','C','C','R','M','O',',',',','3',',','*','4','F',0x0D,0x0A};//$CCRMO,,3,*4F 其实字符串也不是不可以，只是为了省一个字节而已
 	ld	a, #0x24
 	ld	(0x0f, sp), a
 	ldw	x, sp
@@ -246,7 +250,7 @@ _GPS_Init:
 	ld	a, #0x0a
 	ld	(29, x), a
 	Sgps$GPS_Init$42 ==.
-;	Source/Device/Src/gps.c: 52: for(uint8_t i=0;i<sizeof(close_all_nmea);++i)
+;	Source/Device/Src/gps.c: 53: for(uint8_t i=0;i<sizeof(close_all_nmea);++i)
 	clr	(0x1e, sp)
 	Sgps$GPS_Init$43 ==.
 00110$:
@@ -255,7 +259,7 @@ _GPS_Init:
 	jrnc	00104$
 	Sgps$GPS_Init$44 ==.
 	Sgps$GPS_Init$45 ==.
-;	Source/Device/Src/gps.c: 54: while(UART1_GetFlagStatus(UART1_FLAG_TXE)!=SET);
+;	Source/Device/Src/gps.c: 55: while(UART1_GetFlagStatus(UART1_FLAG_TXE)!=SET);
 00101$:
 	push	#0x80
 	Sgps$GPS_Init$46 ==.
@@ -268,7 +272,7 @@ _GPS_Init:
 	jrne	00101$
 	Sgps$GPS_Init$49 ==.
 	Sgps$GPS_Init$50 ==.
-;	Source/Device/Src/gps.c: 55: UART1_SendData8(close_all_nmea[i]);
+;	Source/Device/Src/gps.c: 56: UART1_SendData8(close_all_nmea[i]);
 	clrw	x
 	ld	a, (0x1e, sp)
 	ld	xl, a
@@ -287,13 +291,13 @@ _GPS_Init:
 	Sgps$GPS_Init$54 ==.
 	Sgps$GPS_Init$55 ==.
 	Sgps$GPS_Init$56 ==.
-;	Source/Device/Src/gps.c: 52: for(uint8_t i=0;i<sizeof(close_all_nmea);++i)
+;	Source/Device/Src/gps.c: 53: for(uint8_t i=0;i<sizeof(close_all_nmea);++i)
 	inc	(0x1e, sp)
 	jra	00110$
 00104$:
 	Sgps$GPS_Init$57 ==.
 	Sgps$GPS_Init$58 ==.
-;	Source/Device/Src/gps.c: 64: for(uint8_t i=0;i<sizeof(open_nav_timeutc);++i)
+;	Source/Device/Src/gps.c: 65: for(uint8_t i=0;i<sizeof(open_nav_timeutc);++i)
 	clr	(0x1e, sp)
 	Sgps$GPS_Init$59 ==.
 00113$:
@@ -302,7 +306,7 @@ _GPS_Init:
 	jrnc	00115$
 	Sgps$GPS_Init$60 ==.
 	Sgps$GPS_Init$61 ==.
-;	Source/Device/Src/gps.c: 66: while(UART1_GetFlagStatus(UART1_FLAG_TXE)!=SET);
+;	Source/Device/Src/gps.c: 67: while(UART1_GetFlagStatus(UART1_FLAG_TXE)!=SET);
 00105$:
 	push	#0x80
 	Sgps$GPS_Init$62 ==.
@@ -315,7 +319,7 @@ _GPS_Init:
 	jrne	00105$
 	Sgps$GPS_Init$65 ==.
 	Sgps$GPS_Init$66 ==.
-;	Source/Device/Src/gps.c: 67: UART1_SendData8(open_nav_timeutc[i]);
+;	Source/Device/Src/gps.c: 68: UART1_SendData8(open_nav_timeutc[i]);
 	clrw	x
 	ld	a, (0x1e, sp)
 	ld	xl, a
@@ -334,13 +338,13 @@ _GPS_Init:
 	Sgps$GPS_Init$70 ==.
 	Sgps$GPS_Init$71 ==.
 	Sgps$GPS_Init$72 ==.
-;	Source/Device/Src/gps.c: 64: for(uint8_t i=0;i<sizeof(open_nav_timeutc);++i)
+;	Source/Device/Src/gps.c: 65: for(uint8_t i=0;i<sizeof(open_nav_timeutc);++i)
 	inc	(0x1e, sp)
 	jra	00113$
 	Sgps$GPS_Init$73 ==.
 00115$:
 	Sgps$GPS_Init$74 ==.
-;	Source/Device/Src/gps.c: 69: }
+;	Source/Device/Src/gps.c: 70: }
 	addw	sp, #30
 	Sgps$GPS_Init$75 ==.
 	Sgps$GPS_Init$76 ==.
@@ -348,7 +352,7 @@ _GPS_Init:
 	ret
 	Sgps$GPS_Init$77 ==.
 	Sgps$GPS_GetTime$78 ==.
-;	Source/Device/Src/gps.c: 74: void GPS_GetTime(void)
+;	Source/Device/Src/gps.c: 75: void GPS_GetTime(void)
 ;	-----------------------------------------
 ;	 function GPS_GetTime
 ;	-----------------------------------------
@@ -358,14 +362,14 @@ _GPS_GetTime:
 	Sgps$GPS_GetTime$80 ==.
 	Sgps$GPS_GetTime$81 ==.
 	Sgps$GPS_GetTime$82 ==.
-;	Source/Device/Src/gps.c: 78: for(int i=0;i<8;++i)
+;	Source/Device/Src/gps.c: 79: for(int i=0;i<8;++i)
 	Sgps$GPS_GetTime$83 ==.
 	clrw	y
 00106$:
 	cpw	y, #0x0008
 	jrsge	00101$
 	Sgps$GPS_GetTime$84 ==.
-;	Source/Device/Src/gps.c: 79: ((uint8_t*)(&GPS_TimeDataSturcture))[i+16]=GPS_RxBuf[22+i];
+;	Source/Device/Src/gps.c: 80: ((uint8_t*)(&GPS_TimeDataSturcture))[i+16]=GPS_RxBuf[22+i];
 	ldw	x, #(_GPS_TimeDataSturcture + 0)
 	ldw	(0x01, sp), x
 	ldw	x, y
@@ -384,36 +388,36 @@ _GPS_GetTime:
 	ldw	x, (0x03, sp)
 	ld	(x), a
 	Sgps$GPS_GetTime$85 ==.
-;	Source/Device/Src/gps.c: 78: for(int i=0;i<8;++i)
+;	Source/Device/Src/gps.c: 79: for(int i=0;i<8;++i)
 	incw	y
 	jra	00106$
 00101$:
 	Sgps$GPS_GetTime$86 ==.
-;	Source/Device/Src/gps.c: 80: if(GPS_TimeDataSturcture.hour+8>24)
+;	Source/Device/Src/gps.c: 81: if(GPS_TimeDataSturcture.hour+8>24)
 	ldw	y, #(_GPS_TimeDataSturcture + 0)+18
 	ld	a, (y)
 	clrw	x
 	ld	xl, a
 	addw	x, #0x0008
 	Sgps$GPS_GetTime$87 ==.
-;	Source/Device/Src/gps.c: 81: GPS_TimeDataSturcture.hour+=8-24;
+;	Source/Device/Src/gps.c: 82: GPS_TimeDataSturcture.hour+=8-24;
 	Sgps$GPS_GetTime$88 ==.
-;	Source/Device/Src/gps.c: 80: if(GPS_TimeDataSturcture.hour+8>24)
+;	Source/Device/Src/gps.c: 81: if(GPS_TimeDataSturcture.hour+8>24)
 	cpw	x, #0x0018
 	jrsle	00103$
 	Sgps$GPS_GetTime$89 ==.
-;	Source/Device/Src/gps.c: 81: GPS_TimeDataSturcture.hour+=8-24;
+;	Source/Device/Src/gps.c: 82: GPS_TimeDataSturcture.hour+=8-24;
 	add	a, #0xf0
 	ld	(y), a
 	jra	00104$
 00103$:
 	Sgps$GPS_GetTime$90 ==.
-;	Source/Device/Src/gps.c: 83: GPS_TimeDataSturcture.hour+=8;
+;	Source/Device/Src/gps.c: 84: GPS_TimeDataSturcture.hour+=8;
 	add	a, #0x08
 	ld	(y), a
 00104$:
 	Sgps$GPS_GetTime$91 ==.
-;	Source/Device/Src/gps.c: 84: GPS_TimeDataSturcture.year=((uint16_t)GPS_RxBuf[21]<<8)|GPS_RxBuf[20];
+;	Source/Device/Src/gps.c: 85: GPS_TimeDataSturcture.year=((uint16_t)GPS_RxBuf[21]<<8)|GPS_RxBuf[20];
 	ldw	y, #(_GPS_TimeDataSturcture + 0)+14
 	ld	a, _GPS_RxBuf+21
 	ld	xh, a
@@ -426,7 +430,7 @@ _GPS_GetTime:
 	ld	xh, a
 	ldw	(y), x
 	Sgps$GPS_GetTime$92 ==.
-;	Source/Device/Src/gps.c: 85: }
+;	Source/Device/Src/gps.c: 86: }
 	addw	sp, #4
 	Sgps$GPS_GetTime$93 ==.
 	Sgps$GPS_GetTime$94 ==.
@@ -434,7 +438,7 @@ _GPS_GetTime:
 	ret
 	Sgps$GPS_GetTime$95 ==.
 	Sgps$UART1_RX_IRQHandler$96 ==.
-;	Source/Device/Src/gps.c: 93: INTERRUPT_HANDLER(UART1_RX_IRQHandler, 18)
+;	Source/Device/Src/gps.c: 94: INTERRUPT_HANDLER(UART1_RX_IRQHandler, 18)
 ;	-----------------------------------------
 ;	 function UART1_RX_IRQHandler
 ;	-----------------------------------------
@@ -442,7 +446,7 @@ _UART1_RX_IRQHandler:
 	div	x, a
 	Sgps$UART1_RX_IRQHandler$97 ==.
 	Sgps$UART1_RX_IRQHandler$98 ==.
-;	Source/Device/Src/gps.c: 95: if(UART1_GetITStatus(UART1_IT_RXNE)==SET)
+;	Source/Device/Src/gps.c: 96: if(UART1_GetITStatus(UART1_IT_RXNE)==SET)
 	push	#0x55
 	Sgps$UART1_RX_IRQHandler$99 ==.
 	push	#0x02
@@ -455,13 +459,13 @@ _UART1_RX_IRQHandler:
 	Sgps$UART1_RX_IRQHandler$102 ==.
 	Sgps$UART1_RX_IRQHandler$103 ==.
 	Sgps$UART1_RX_IRQHandler$104 ==.
-;	Source/Device/Src/gps.c: 97: if(num<34)
+;	Source/Device/Src/gps.c: 98: if(num<34)
 	ld	a, _num+0
 	cp	a, #0x22
 	jrnc	00102$
 	Sgps$UART1_RX_IRQHandler$105 ==.
 	Sgps$UART1_RX_IRQHandler$106 ==.
-;	Source/Device/Src/gps.c: 99: GPS_RxBuf[num]=UART1_ReceiveData8();
+;	Source/Device/Src/gps.c: 100: GPS_RxBuf[num]=UART1_ReceiveData8();
 	clrw	x
 	ld	a, _num+0
 	ld	xl, a
@@ -473,19 +477,19 @@ _UART1_RX_IRQHandler:
 	Sgps$UART1_RX_IRQHandler$108 ==.
 	ld	(x), a
 	Sgps$UART1_RX_IRQHandler$109 ==.
-;	Source/Device/Src/gps.c: 100: ++num;
+;	Source/Device/Src/gps.c: 101: ++num;
 	inc	_num+0
 	Sgps$UART1_RX_IRQHandler$110 ==.
 	jra	00111$
 00102$:
 	Sgps$UART1_RX_IRQHandler$111 ==.
-;	Source/Device/Src/gps.c: 103: num=0;
+;	Source/Device/Src/gps.c: 104: num=0;
 	clr	_num+0
 	Sgps$UART1_RX_IRQHandler$112 ==.
 	jra	00111$
 00109$:
 	Sgps$UART1_RX_IRQHandler$113 ==.
-;	Source/Device/Src/gps.c: 105: else if(UART1_GetITStatus(UART1_IT_IDLE)==SET)
+;	Source/Device/Src/gps.c: 106: else if(UART1_GetITStatus(UART1_IT_IDLE)==SET)
 	push	#0x44
 	Sgps$UART1_RX_IRQHandler$114 ==.
 	push	#0x02
@@ -498,40 +502,43 @@ _UART1_RX_IRQHandler:
 	Sgps$UART1_RX_IRQHandler$117 ==.
 	Sgps$UART1_RX_IRQHandler$118 ==.
 	Sgps$UART1_RX_IRQHandler$119 ==.
-;	Source/Device/Src/gps.c: 107: UART1_ReceiveData8();
+;	Source/Device/Src/gps.c: 108: UART1_ReceiveData8();
 	call	_UART1_ReceiveData8
 	Sgps$UART1_RX_IRQHandler$120 ==.
-;	Source/Device/Src/gps.c: 108: num=0;
+;	Source/Device/Src/gps.c: 109: num=0;
 	clr	_num+0
 	Sgps$UART1_RX_IRQHandler$121 ==.
-;	Source/Device/Src/gps.c: 109: if(checksum()==SUCCESS)
+;	Source/Device/Src/gps.c: 110: if(checksum()==SUCCESS)
 	call	_checksum
 	dec	a
 	jrne	00111$
 	Sgps$UART1_RX_IRQHandler$122 ==.
 	Sgps$UART1_RX_IRQHandler$123 ==.
 	Sgps$UART1_RX_IRQHandler$124 ==.
-;	Source/Device/Src/gps.c: 111: GPS_GetTime();
+;	Source/Device/Src/gps.c: 112: GPS_GetTime();
 	call	_GPS_GetTime
 	Sgps$UART1_RX_IRQHandler$125 ==.
-00111$:
+;	Source/Device/Src/gps.c: 113: gps_first_send=SET;
+	mov	_gps_first_send+0, #0x01
 	Sgps$UART1_RX_IRQHandler$126 ==.
-;	Source/Device/Src/gps.c: 114: }
+00111$:
 	Sgps$UART1_RX_IRQHandler$127 ==.
+;	Source/Device/Src/gps.c: 116: }
+	Sgps$UART1_RX_IRQHandler$128 ==.
 	XG$UART1_RX_IRQHandler$0$0 ==.
 	iret
-	Sgps$UART1_RX_IRQHandler$128 ==.
-	Sgps$checksum$129 ==.
-;	Source/Device/Src/gps.c: 122: static ErrorStatus checksum(void)
+	Sgps$UART1_RX_IRQHandler$129 ==.
+	Sgps$checksum$130 ==.
+;	Source/Device/Src/gps.c: 124: static ErrorStatus checksum(void)
 ;	-----------------------------------------
 ;	 function checksum
 ;	-----------------------------------------
 _checksum:
-	Sgps$checksum$130 ==.
-	sub	sp, #14
 	Sgps$checksum$131 ==.
+	sub	sp, #14
 	Sgps$checksum$132 ==.
-;	Source/Device/Src/gps.c: 125: uint32_t ckSum = ((uint32_t)GPS_RxBuf[5]<<24) || ((uint32_t)GPS_RxBuf[4]<<16) ||
+	Sgps$checksum$133 ==.
+;	Source/Device/Src/gps.c: 127: uint32_t ckSum = ((uint32_t)GPS_RxBuf[5]<<24) || ((uint32_t)GPS_RxBuf[4]<<16) ||
 	ld	a, _GPS_RxBuf+5
 	clr	(0x05, sp)
 	ld	(0x0a, sp), a
@@ -588,13 +595,13 @@ _checksum:
 	ldw	(0x02, sp), x
 	ld	a, (0x0a, sp)
 	ld	(0x01, sp), a
-	Sgps$checksum$133 ==.
 	Sgps$checksum$134 ==.
-;	Source/Device/Src/gps.c: 128: for (uint16_t i = 0; i < (( ((uint16_t)GPS_RxBuf[2]<< 8) || ((uint16_t)GPS_RxBuf[3]<< 0) )/4); i++)
+	Sgps$checksum$135 ==.
+;	Source/Device/Src/gps.c: 130: for (uint16_t i = 0; i < (( ((uint16_t)GPS_RxBuf[2]<< 8) || ((uint16_t)GPS_RxBuf[3]<< 0) )/4); i++)
 	ld	a, (0x0e, sp)
 	ld	(0x05, sp), a
 	ldw	(0x06, sp), y
-	Sgps$checksum$135 ==.
+	Sgps$checksum$136 ==.
 	clrw	x
 	ldw	(0x0d, sp), x
 00106$:
@@ -618,14 +625,14 @@ _checksum:
 	clrw	x
 	ld	xl, a
 	push	#0x04
-	Sgps$checksum$136 ==.
-	push	#0x00
 	Sgps$checksum$137 ==.
-	pushw	x
+	push	#0x00
 	Sgps$checksum$138 ==.
+	pushw	x
+	Sgps$checksum$139 ==.
 	call	__divsint
 	addw	sp, #4
-	Sgps$checksum$139 ==.
+	Sgps$checksum$140 ==.
 	ldw	y, (0x0d, sp)
 	ldw	(0x0b, sp), x
 	ldw	x, y
@@ -633,8 +640,8 @@ _checksum:
 	jrc	00236$
 	jp	00101$
 00236$:
-	Sgps$checksum$140 ==.
-;	Source/Device/Src/gps.c: 129: ckSum += ((uint32_t)GPS_RxBuf[6+i*4]<<24) || ((uint32_t)GPS_RxBuf[7+i*4]<<16) ||
+	Sgps$checksum$141 ==.
+;	Source/Device/Src/gps.c: 131: ckSum += ((uint32_t)GPS_RxBuf[6+i*4]<<24) || ((uint32_t)GPS_RxBuf[7+i*4]<<16) ||
 	ld	a, (0x0e, sp)
 	sll	a
 	sll	a
@@ -672,8 +679,8 @@ _checksum:
 	jrne	00123$
 	tnzw	x
 	jrne	00123$
-	Sgps$checksum$141 ==.
-;	Source/Device/Src/gps.c: 130: ((uint32_t)GPS_RxBuf[8+i*4]<< 8) || ((uint32_t)GPS_RxBuf[9+i*4]<< 0);
+	Sgps$checksum$142 ==.
+;	Source/Device/Src/gps.c: 132: ((uint32_t)GPS_RxBuf[8+i*4]<< 8) || ((uint32_t)GPS_RxBuf[9+i*4]<< 0);
 	ld	a, (0x08, sp)
 	add	a, #0x08
 	ld	xl, a
@@ -726,15 +733,15 @@ _checksum:
 	ld	xh, a
 	ldw	(0x03, sp), y
 	ldw	(0x01, sp), x
-	Sgps$checksum$142 ==.
-;	Source/Device/Src/gps.c: 128: for (uint16_t i = 0; i < (( ((uint16_t)GPS_RxBuf[2]<< 8) || ((uint16_t)GPS_RxBuf[3]<< 0) )/4); i++)
+	Sgps$checksum$143 ==.
+;	Source/Device/Src/gps.c: 130: for (uint16_t i = 0; i < (( ((uint16_t)GPS_RxBuf[2]<< 8) || ((uint16_t)GPS_RxBuf[3]<< 0) )/4); i++)
 	ldw	x, (0x0d, sp)
 	incw	x
 	ldw	(0x0d, sp), x
 	jp	00106$
 00101$:
-	Sgps$checksum$143 ==.
-;	Source/Device/Src/gps.c: 132: if(ckSum == ( ((uint32_t)GPS_RxBuf[30]<<24) || ((uint32_t)GPS_RxBuf[31]<<16) ||
+	Sgps$checksum$144 ==.
+;	Source/Device/Src/gps.c: 134: if(ckSum == ( ((uint32_t)GPS_RxBuf[30]<<24) || ((uint32_t)GPS_RxBuf[31]<<16) ||
 	ld	a, _GPS_RxBuf+30
 	clr	(0x0b, sp)
 	ld	(0x0b, sp), a
@@ -752,8 +759,8 @@ _checksum:
 	jrne	00132$
 	tnzw	x
 	jrne	00132$
-	Sgps$checksum$144 ==.
-;	Source/Device/Src/gps.c: 133: ((uint32_t)GPS_RxBuf[32]<< 8) || ((uint32_t)GPS_RxBuf[33]<< 0) ))
+	Sgps$checksum$145 ==.
+;	Source/Device/Src/gps.c: 135: ((uint32_t)GPS_RxBuf[32]<< 8) || ((uint32_t)GPS_RxBuf[33]<< 0) ))
 	ld	a, _GPS_RxBuf+32
 	clrw	x
 	clr	(0x0b, sp)
@@ -785,24 +792,24 @@ _checksum:
 	ldw	x, y
 	cpw	x, (0x01, sp)
 	jrne	00103$
-	Sgps$checksum$145 ==.
 	Sgps$checksum$146 ==.
-;	Source/Device/Src/gps.c: 134: return SUCCESS;
+	Sgps$checksum$147 ==.
+;	Source/Device/Src/gps.c: 136: return SUCCESS;
 	ld	a, #0x01
 	jra	00108$
 00103$:
-	Sgps$checksum$147 ==.
-;	Source/Device/Src/gps.c: 136: return ERROR;
+	Sgps$checksum$148 ==.
+;	Source/Device/Src/gps.c: 138: return ERROR;
 	clr	a
 00108$:
-	Sgps$checksum$148 ==.
-;	Source/Device/Src/gps.c: 137: }
-	addw	sp, #14
 	Sgps$checksum$149 ==.
+;	Source/Device/Src/gps.c: 139: }
+	addw	sp, #14
 	Sgps$checksum$150 ==.
+	Sgps$checksum$151 ==.
 	XFgps$checksum$0$0 ==.
 	ret
-	Sgps$checksum$151 ==.
+	Sgps$checksum$152 ==.
 	.area CODE
 	.area CONST
 	.area INITIALIZER
@@ -842,6 +849,9 @@ __xinit__GPS_RxBuf:
 	.db 0x00
 	.db 0x00
 	.db 0x00
+Fgps$__xinit_gps_first_send$0_0$0 == .
+__xinit__gps_first_send:
+	.db #0x00	; 0
 Fgps$__xinit_num$0_0$0 == .
 __xinit__num:
 	.db #0x00	; 0
@@ -883,7 +893,7 @@ Ldebug_line_stmt:
 	.db	2
 	.dw	0,(Sgps$GPS_Init$0)
 	.db	3
-	.sleb128	31
+	.sleb128	32
 	.db	1
 	.db	9
 	.dw	Sgps$GPS_Init$3-Sgps$GPS_Init$0
@@ -985,7 +995,7 @@ Ldebug_line_stmt:
 	.db	2
 	.dw	0,(Sgps$GPS_GetTime$78)
 	.db	3
-	.sleb128	73
+	.sleb128	74
 	.db	1
 	.db	9
 	.dw	Sgps$GPS_GetTime$82-Sgps$GPS_GetTime$78
@@ -1047,7 +1057,7 @@ Ldebug_line_stmt:
 	.db	2
 	.dw	0,(Sgps$UART1_RX_IRQHandler$96)
 	.db	3
-	.sleb128	92
+	.sleb128	93
 	.db	1
 	.db	9
 	.dw	Sgps$UART1_RX_IRQHandler$98-Sgps$UART1_RX_IRQHandler$96
@@ -1100,74 +1110,79 @@ Ldebug_line_stmt:
 	.sleb128	2
 	.db	1
 	.db	9
-	.dw	Sgps$UART1_RX_IRQHandler$126-Sgps$UART1_RX_IRQHandler$124
+	.dw	Sgps$UART1_RX_IRQHandler$125-Sgps$UART1_RX_IRQHandler$124
+	.db	3
+	.sleb128	1
+	.db	1
+	.db	9
+	.dw	Sgps$UART1_RX_IRQHandler$127-Sgps$UART1_RX_IRQHandler$125
 	.db	3
 	.sleb128	3
 	.db	1
 	.db	9
-	.dw	1+Sgps$UART1_RX_IRQHandler$127-Sgps$UART1_RX_IRQHandler$126
+	.dw	1+Sgps$UART1_RX_IRQHandler$128-Sgps$UART1_RX_IRQHandler$127
 	.db	0
 	.uleb128	1
 	.db	1
 	.db	0
 	.uleb128	5
 	.db	2
-	.dw	0,(Sgps$checksum$129)
+	.dw	0,(Sgps$checksum$130)
 	.db	3
-	.sleb128	121
+	.sleb128	123
 	.db	1
 	.db	9
-	.dw	Sgps$checksum$132-Sgps$checksum$129
-	.db	3
-	.sleb128	3
-	.db	1
-	.db	9
-	.dw	Sgps$checksum$134-Sgps$checksum$132
+	.dw	Sgps$checksum$133-Sgps$checksum$130
 	.db	3
 	.sleb128	3
 	.db	1
 	.db	9
-	.dw	Sgps$checksum$140-Sgps$checksum$134
+	.dw	Sgps$checksum$135-Sgps$checksum$133
 	.db	3
-	.sleb128	1
+	.sleb128	3
 	.db	1
 	.db	9
-	.dw	Sgps$checksum$141-Sgps$checksum$140
+	.dw	Sgps$checksum$141-Sgps$checksum$135
 	.db	3
 	.sleb128	1
 	.db	1
 	.db	9
 	.dw	Sgps$checksum$142-Sgps$checksum$141
 	.db	3
-	.sleb128	-2
+	.sleb128	1
 	.db	1
 	.db	9
 	.dw	Sgps$checksum$143-Sgps$checksum$142
 	.db	3
-	.sleb128	4
+	.sleb128	-2
 	.db	1
 	.db	9
 	.dw	Sgps$checksum$144-Sgps$checksum$143
 	.db	3
-	.sleb128	1
+	.sleb128	4
 	.db	1
 	.db	9
-	.dw	Sgps$checksum$146-Sgps$checksum$144
+	.dw	Sgps$checksum$145-Sgps$checksum$144
 	.db	3
 	.sleb128	1
 	.db	1
 	.db	9
-	.dw	Sgps$checksum$147-Sgps$checksum$146
+	.dw	Sgps$checksum$147-Sgps$checksum$145
 	.db	3
-	.sleb128	2
+	.sleb128	1
 	.db	1
 	.db	9
 	.dw	Sgps$checksum$148-Sgps$checksum$147
 	.db	3
+	.sleb128	2
+	.db	1
+	.db	9
+	.dw	Sgps$checksum$149-Sgps$checksum$148
+	.db	3
 	.sleb128	1
 	.db	1
 	.db	9
-	.dw	1+Sgps$checksum$150-Sgps$checksum$148
+	.dw	1+Sgps$checksum$151-Sgps$checksum$149
 	.db	0
 	.uleb128	1
 	.db	1
@@ -1175,50 +1190,50 @@ Ldebug_line_end:
 
 	.area .debug_loc (NOLOAD)
 Ldebug_loc_start:
-	.dw	0,(Sgps$checksum$149)
-	.dw	0,(Sgps$checksum$151)
+	.dw	0,(Sgps$checksum$150)
+	.dw	0,(Sgps$checksum$152)
 	.dw	2
 	.db	120
 	.sleb128	1
-	.dw	0,(Sgps$checksum$145)
-	.dw	0,(Sgps$checksum$149)
+	.dw	0,(Sgps$checksum$146)
+	.dw	0,(Sgps$checksum$150)
+	.dw	2
+	.db	120
+	.sleb128	15
+	.dw	0,(Sgps$checksum$140)
+	.dw	0,(Sgps$checksum$146)
 	.dw	2
 	.db	120
 	.sleb128	15
 	.dw	0,(Sgps$checksum$139)
-	.dw	0,(Sgps$checksum$145)
-	.dw	2
-	.db	120
-	.sleb128	15
-	.dw	0,(Sgps$checksum$138)
-	.dw	0,(Sgps$checksum$139)
+	.dw	0,(Sgps$checksum$140)
 	.dw	2
 	.db	120
 	.sleb128	19
+	.dw	0,(Sgps$checksum$138)
+	.dw	0,(Sgps$checksum$139)
+	.dw	2
+	.db	120
+	.sleb128	17
 	.dw	0,(Sgps$checksum$137)
 	.dw	0,(Sgps$checksum$138)
 	.dw	2
 	.db	120
-	.sleb128	17
-	.dw	0,(Sgps$checksum$136)
+	.sleb128	16
+	.dw	0,(Sgps$checksum$132)
 	.dw	0,(Sgps$checksum$137)
 	.dw	2
 	.db	120
-	.sleb128	16
-	.dw	0,(Sgps$checksum$131)
-	.dw	0,(Sgps$checksum$136)
-	.dw	2
-	.db	120
 	.sleb128	15
-	.dw	0,(Sgps$checksum$130)
 	.dw	0,(Sgps$checksum$131)
+	.dw	0,(Sgps$checksum$132)
 	.dw	2
 	.db	120
 	.sleb128	1
 	.dw	0,0
 	.dw	0,0
 	.dw	0,(Sgps$UART1_RX_IRQHandler$122)
-	.dw	0,(Sgps$UART1_RX_IRQHandler$128)
+	.dw	0,(Sgps$UART1_RX_IRQHandler$129)
 	.dw	2
 	.db	120
 	.sleb128	1
@@ -1860,7 +1875,7 @@ Ldebug_info_start:
 	.dw	0,(Sgps$UART1_RX_IRQHandler$118)
 	.uleb128	5
 	.dw	0,(Sgps$UART1_RX_IRQHandler$123)
-	.dw	0,(Sgps$UART1_RX_IRQHandler$125)
+	.dw	0,(Sgps$UART1_RX_IRQHandler$126)
 	.uleb128	0
 	.uleb128	0
 	.uleb128	12
@@ -1874,8 +1889,8 @@ Ldebug_info_start:
 	.dw	0,241
 	.uleb128	4
 	.dw	0,453
-	.dw	0,(Sgps$checksum$133)
-	.dw	0,(Sgps$checksum$135)
+	.dw	0,(Sgps$checksum$134)
+	.dw	0,(Sgps$checksum$136)
 	.uleb128	6
 	.db	2
 	.db	145
@@ -1917,6 +1932,14 @@ Ldebug_info_start:
 	.db	0
 	.db	1
 	.dw	0,501
+	.uleb128	13
+	.db	5
+	.db	3
+	.dw	0,(_gps_first_send)
+	.ascii "gps_first_send"
+	.db	0
+	.db	1
+	.dw	0,241
 	.uleb128	6
 	.db	5
 	.db	3
@@ -1930,7 +1953,7 @@ Ldebug_info_start:
 	.db	4
 	.db	4
 	.uleb128	14
-	.dw	0,756
+	.dw	0,783
 	.ascii "__00000009"
 	.db	0
 	.db	24
@@ -1947,14 +1970,14 @@ Ldebug_info_start:
 	.db	2
 	.db	35
 	.uleb128	4
-	.dw	0,551
+	.dw	0,578
 	.uleb128	15
 	.ascii "msErr"
 	.db	0
 	.db	2
 	.db	35
 	.uleb128	8
-	.dw	0,551
+	.dw	0,578
 	.uleb128	15
 	.ascii "ms"
 	.db	0
@@ -2033,7 +2056,7 @@ Ldebug_info_start:
 	.ascii "GPS_TimeDataSturcture"
 	.db	0
 	.db	1
-	.dw	0,560
+	.dw	0,587
 	.uleb128	0
 	.uleb128	0
 	.uleb128	0
@@ -2057,7 +2080,10 @@ Ldebug_pubnames_start:
 	.dw	0,514
 	.ascii "GPS_RxBuf"
 	.db	0
-	.dw	0,756
+	.dw	0,536
+	.ascii "gps_first_send"
+	.db	0
+	.dw	0,783
 	.ascii "GPS_TimeDataSturcture"
 	.db	0
 	.dw	0,0
@@ -2082,38 +2108,38 @@ Ldebug_CIE0_start:
 Ldebug_CIE0_end:
 	.dw	0,68
 	.dw	0,(Ldebug_CIE0_start-4)
-	.dw	0,(Sgps$checksum$130)	;initial loc
-	.dw	0,Sgps$checksum$151-Sgps$checksum$130
-	.db	1
-	.dw	0,(Sgps$checksum$130)
-	.db	14
-	.uleb128	2
+	.dw	0,(Sgps$checksum$131)	;initial loc
+	.dw	0,Sgps$checksum$152-Sgps$checksum$131
 	.db	1
 	.dw	0,(Sgps$checksum$131)
 	.db	14
-	.uleb128	16
+	.uleb128	2
 	.db	1
-	.dw	0,(Sgps$checksum$136)
+	.dw	0,(Sgps$checksum$132)
 	.db	14
-	.uleb128	17
+	.uleb128	16
 	.db	1
 	.dw	0,(Sgps$checksum$137)
 	.db	14
-	.uleb128	18
+	.uleb128	17
 	.db	1
 	.dw	0,(Sgps$checksum$138)
 	.db	14
-	.uleb128	20
+	.uleb128	18
 	.db	1
 	.dw	0,(Sgps$checksum$139)
 	.db	14
-	.uleb128	16
+	.uleb128	20
 	.db	1
-	.dw	0,(Sgps$checksum$145)
+	.dw	0,(Sgps$checksum$140)
 	.db	14
 	.uleb128	16
 	.db	1
-	.dw	0,(Sgps$checksum$149)
+	.dw	0,(Sgps$checksum$146)
+	.db	14
+	.uleb128	16
+	.db	1
+	.dw	0,(Sgps$checksum$150)
 	.db	14
 	.uleb128	2
 
@@ -2137,7 +2163,7 @@ Ldebug_CIE1_end:
 	.dw	0,96
 	.dw	0,(Ldebug_CIE1_start-4)
 	.dw	0,(Sgps$UART1_RX_IRQHandler$97)	;initial loc
-	.dw	0,Sgps$UART1_RX_IRQHandler$128-Sgps$UART1_RX_IRQHandler$97
+	.dw	0,Sgps$UART1_RX_IRQHandler$129-Sgps$UART1_RX_IRQHandler$97
 	.db	1
 	.dw	0,(Sgps$UART1_RX_IRQHandler$97)
 	.db	14

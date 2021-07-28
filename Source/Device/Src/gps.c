@@ -18,6 +18,7 @@
 
 uint8_t GPS_RxBuf[34]={0};
 GPS_TimeDataTypeDef GPS_TimeDataSturcture;
+FlagStatus gps_first_send=RESET;
 
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
@@ -109,6 +110,7 @@ INTERRUPT_HANDLER(UART1_RX_IRQHandler, 18)
         if(checksum()==SUCCESS)
         {
             GPS_GetTime();
+            gps_first_send=SET;
         }
     }
 }

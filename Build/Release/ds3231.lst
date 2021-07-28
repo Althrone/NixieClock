@@ -8,236 +8,455 @@
                                       8 ;--------------------------------------------------------
                                       9 ; Public variables in this module
                                      10 ;--------------------------------------------------------
-                                     11 	.globl _I2C_MasterReceiveData
-                                     12 	.globl _I2C_Init
-                                     13 	.globl _DS3231_Buf
-                                     14 	.globl _DS3231_TimeSturcture
-                                     15 	.globl _DS3231_Init
-                                     16 	.globl _DS3231_GetTime
-                                     17 ;--------------------------------------------------------
-                                     18 ; ram data
+                                     11 	.globl _I2C_MasterSendData
+                                     12 	.globl _I2C_MasterReceiveData
+                                     13 	.globl _I2C_Init
+                                     14 	.globl _DS3231_Buf
+                                     15 	.globl _DS3231_TimeSturcture
+                                     16 	.globl _DS3231_Init
+                                     17 	.globl _DS3231_GetTime
+                                     18 	.globl _DS3231_GPSSetTime
                                      19 ;--------------------------------------------------------
-                                     20 	.area DATA
-      000000                         21 _DS3231_TimeSturcture::
-      000000                         22 	.ds 8
-                                     23 ;--------------------------------------------------------
-                                     24 ; ram data
+                                     20 ; ram data
+                                     21 ;--------------------------------------------------------
+                                     22 	.area DATA
+      000000                         23 _DS3231_TimeSturcture::
+      000000                         24 	.ds 8
                                      25 ;--------------------------------------------------------
-                                     26 	.area INITIALIZED
-      000000                         27 _DS3231_Buf::
-      000000                         28 	.ds 8
-                                     29 ;--------------------------------------------------------
-                                     30 ; absolute external ram data
+                                     26 ; ram data
+                                     27 ;--------------------------------------------------------
+                                     28 	.area INITIALIZED
+      000000                         29 _DS3231_Buf::
+      000000                         30 	.ds 8
                                      31 ;--------------------------------------------------------
-                                     32 	.area DABS (ABS)
-                                     33 
-                                     34 ; default segment ordering for linker
-                                     35 	.area HOME
-                                     36 	.area GSINIT
-                                     37 	.area GSFINAL
-                                     38 	.area CONST
-                                     39 	.area INITIALIZER
-                                     40 	.area CODE
-                                     41 
-                                     42 ;--------------------------------------------------------
-                                     43 ; global & static initialisations
+                                     32 ; absolute external ram data
+                                     33 ;--------------------------------------------------------
+                                     34 	.area DABS (ABS)
+                                     35 
+                                     36 ; default segment ordering for linker
+                                     37 	.area HOME
+                                     38 	.area GSINIT
+                                     39 	.area GSFINAL
+                                     40 	.area CONST
+                                     41 	.area INITIALIZER
+                                     42 	.area CODE
+                                     43 
                                      44 ;--------------------------------------------------------
-                                     45 	.area HOME
-                                     46 	.area GSINIT
-                                     47 	.area GSFINAL
+                                     45 ; global & static initialisations
+                                     46 ;--------------------------------------------------------
+                                     47 	.area HOME
                                      48 	.area GSINIT
-                                     49 ;--------------------------------------------------------
-                                     50 ; Home
+                                     49 	.area GSFINAL
+                                     50 	.area GSINIT
                                      51 ;--------------------------------------------------------
-                                     52 	.area HOME
-                                     53 	.area HOME
-                                     54 ;--------------------------------------------------------
-                                     55 ; code
+                                     52 ; Home
+                                     53 ;--------------------------------------------------------
+                                     54 	.area HOME
+                                     55 	.area HOME
                                      56 ;--------------------------------------------------------
-                                     57 	.area CODE
-                                     58 ;	Source/Device/Src/ds3231.c: 29: void DS3231_Init(void)
-                                     59 ;	-----------------------------------------
-                                     60 ;	 function DS3231_Init
+                                     57 ; code
+                                     58 ;--------------------------------------------------------
+                                     59 	.area CODE
+                                     60 ;	Source/Device/Src/ds3231.c: 30: void DS3231_Init(void)
                                      61 ;	-----------------------------------------
-      000000                         62 _DS3231_Init:
-                                     63 ;	Source/Device/Src/ds3231.c: 31: I2C_Init();
-                                     64 ;	Source/Device/Src/ds3231.c: 32: }
-      000000 CCr00r00         [ 2]   65 	jp	_I2C_Init
-                                     66 ;	Source/Device/Src/ds3231.c: 34: void DS3231_GetTime(void)
-                                     67 ;	-----------------------------------------
-                                     68 ;	 function DS3231_GetTime
+                                     62 ;	 function DS3231_Init
+                                     63 ;	-----------------------------------------
+      000000                         64 _DS3231_Init:
+                                     65 ;	Source/Device/Src/ds3231.c: 32: I2C_Init();
+                                     66 ;	Source/Device/Src/ds3231.c: 33: }
+      000000 CCr00r00         [ 2]   67 	jp	_I2C_Init
+                                     68 ;	Source/Device/Src/ds3231.c: 35: void DS3231_GetTime(void)
                                      69 ;	-----------------------------------------
-      000003                         70 _DS3231_GetTime:
-      000003 52 04            [ 2]   71 	sub	sp, #4
-                                     72 ;	Source/Device/Src/ds3231.c: 36: for(int i=0;i<7;++i)
-      000005 5F               [ 1]   73 	clrw	x
-      000006 1F 03            [ 2]   74 	ldw	(0x03, sp), x
-      000008                         75 00103$:
-      000008 1E 03            [ 2]   76 	ldw	x, (0x03, sp)
-      00000A A3 00 07         [ 2]   77 	cpw	x, #0x0007
-      00000D 2E 19            [ 1]   78 	jrsge	00101$
-                                     79 ;	Source/Device/Src/ds3231.c: 39: &DS3231_Buf[i],1);
-      00000F 1E 03            [ 2]   80 	ldw	x, (0x03, sp)
-      000011 1Cr00r00         [ 2]   81 	addw	x, #(_DS3231_Buf + 0)
-                                     82 ;	Source/Device/Src/ds3231.c: 38: I2C_MasterReceiveData(DS3231_ADDR,DS3231_SECONDS+i,
-      000014 7B 04            [ 1]   83 	ld	a, (0x04, sp)
-      000016 4B 01            [ 1]   84 	push	#0x01
-      000018 89               [ 2]   85 	pushw	x
-      000019 88               [ 1]   86 	push	a
-      00001A 4B 68            [ 1]   87 	push	#0x68
-      00001C CDr00r00         [ 4]   88 	call	_I2C_MasterReceiveData
-      00001F 5B 05            [ 2]   89 	addw	sp, #5
-                                     90 ;	Source/Device/Src/ds3231.c: 36: for(int i=0;i<7;++i)
-      000021 1E 03            [ 2]   91 	ldw	x, (0x03, sp)
-      000023 5C               [ 1]   92 	incw	x
-      000024 1F 03            [ 2]   93 	ldw	(0x03, sp), x
-      000026 20 E0            [ 2]   94 	jra	00103$
-      000028                         95 00101$:
-                                     96 ;	Source/Device/Src/ds3231.c: 44: DS3231_TimeSturcture.seconds=(DS3231_Buf[0]&0x0F)+((DS3231_Buf[0]&0xF0)>>4)*10;
-      000028 C6u00u00         [ 1]   97 	ld	a, _DS3231_Buf+0
-      00002B 97               [ 1]   98 	ld	xl, a
-      00002C A4 0F            [ 1]   99 	and	a, #0x0f
-      00002E 6B 04            [ 1]  100 	ld	(0x04, sp), a
-      000030 9F               [ 1]  101 	ld	a, xl
-      000031 A4 F0            [ 1]  102 	and	a, #0xf0
-      000033 97               [ 1]  103 	ld	xl, a
-      000034 4F               [ 1]  104 	clr	a
-      000035 95               [ 1]  105 	ld	xh, a
-      000036 57               [ 2]  106 	sraw	x
-      000037 57               [ 2]  107 	sraw	x
-      000038 57               [ 2]  108 	sraw	x
-      000039 57               [ 2]  109 	sraw	x
-      00003A A6 0A            [ 1]  110 	ld	a, #0x0a
-      00003C 42               [ 4]  111 	mul	x, a
-      00003D 9F               [ 1]  112 	ld	a, xl
-      00003E 1B 04            [ 1]  113 	add	a, (0x04, sp)
-      000040 C7u00u00         [ 1]  114 	ld	_DS3231_TimeSturcture+0, a
-                                    115 ;	Source/Device/Src/ds3231.c: 45: DS3231_TimeSturcture.minutes=(DS3231_Buf[1]&0x0F)+((DS3231_Buf[1]&0xF0)>>4)*10;
-      000043 90 AEr00r01      [ 2]  116 	ldw	y, #(_DS3231_TimeSturcture + 0)+1
-      000047 C6u00u01         [ 1]  117 	ld	a, _DS3231_Buf+1
-      00004A 97               [ 1]  118 	ld	xl, a
-      00004B A4 0F            [ 1]  119 	and	a, #0x0f
-      00004D 6B 04            [ 1]  120 	ld	(0x04, sp), a
-      00004F 9F               [ 1]  121 	ld	a, xl
-      000050 A4 F0            [ 1]  122 	and	a, #0xf0
-      000052 97               [ 1]  123 	ld	xl, a
-      000053 4F               [ 1]  124 	clr	a
-      000054 95               [ 1]  125 	ld	xh, a
-      000055 57               [ 2]  126 	sraw	x
-      000056 57               [ 2]  127 	sraw	x
-      000057 57               [ 2]  128 	sraw	x
-      000058 57               [ 2]  129 	sraw	x
-      000059 A6 0A            [ 1]  130 	ld	a, #0x0a
-      00005B 42               [ 4]  131 	mul	x, a
-      00005C 9F               [ 1]  132 	ld	a, xl
-      00005D 1B 04            [ 1]  133 	add	a, (0x04, sp)
-      00005F 90 F7            [ 1]  134 	ld	(y), a
-                                    135 ;	Source/Device/Src/ds3231.c: 46: DS3231_TimeSturcture.hours=(DS3231_Buf[2]&0x0F)+((DS3231_Buf[2]&0xF0)>>4)*10;
-      000061 90 AEr00r02      [ 2]  136 	ldw	y, #(_DS3231_TimeSturcture + 0)+2
-      000065 C6u00u02         [ 1]  137 	ld	a, _DS3231_Buf+2
-      000068 97               [ 1]  138 	ld	xl, a
-      000069 A4 0F            [ 1]  139 	and	a, #0x0f
-      00006B 6B 04            [ 1]  140 	ld	(0x04, sp), a
-      00006D 9F               [ 1]  141 	ld	a, xl
-      00006E A4 F0            [ 1]  142 	and	a, #0xf0
-      000070 97               [ 1]  143 	ld	xl, a
-      000071 4F               [ 1]  144 	clr	a
-      000072 95               [ 1]  145 	ld	xh, a
-      000073 57               [ 2]  146 	sraw	x
-      000074 57               [ 2]  147 	sraw	x
-      000075 57               [ 2]  148 	sraw	x
-      000076 57               [ 2]  149 	sraw	x
-      000077 A6 0A            [ 1]  150 	ld	a, #0x0a
-      000079 42               [ 4]  151 	mul	x, a
-      00007A 9F               [ 1]  152 	ld	a, xl
-      00007B 1B 04            [ 1]  153 	add	a, (0x04, sp)
-      00007D 90 F7            [ 1]  154 	ld	(y), a
-                                    155 ;	Source/Device/Src/ds3231.c: 47: DS3231_TimeSturcture.day=(DS3231_Buf[3]&0x0F);
-      00007F AEr00r03         [ 2]  156 	ldw	x, #(_DS3231_TimeSturcture + 0)+3
-      000082 C6u00u03         [ 1]  157 	ld	a, _DS3231_Buf+3
-      000085 A4 0F            [ 1]  158 	and	a, #0x0f
-      000087 F7               [ 1]  159 	ld	(x), a
-                                    160 ;	Source/Device/Src/ds3231.c: 48: DS3231_TimeSturcture.date=(DS3231_Buf[4]&0x0F)+((DS3231_Buf[4]&0xF0)>>4)*10;
-      000088 90 AEr00r04      [ 2]  161 	ldw	y, #(_DS3231_TimeSturcture + 0)+4
-      00008C C6u00u04         [ 1]  162 	ld	a, _DS3231_Buf+4
-      00008F 97               [ 1]  163 	ld	xl, a
-      000090 A4 0F            [ 1]  164 	and	a, #0x0f
-      000092 6B 04            [ 1]  165 	ld	(0x04, sp), a
-      000094 9F               [ 1]  166 	ld	a, xl
-      000095 A4 F0            [ 1]  167 	and	a, #0xf0
-      000097 97               [ 1]  168 	ld	xl, a
-      000098 4F               [ 1]  169 	clr	a
-      000099 95               [ 1]  170 	ld	xh, a
-      00009A 57               [ 2]  171 	sraw	x
-      00009B 57               [ 2]  172 	sraw	x
-      00009C 57               [ 2]  173 	sraw	x
-      00009D 57               [ 2]  174 	sraw	x
-      00009E A6 0A            [ 1]  175 	ld	a, #0x0a
-      0000A0 42               [ 4]  176 	mul	x, a
-      0000A1 9F               [ 1]  177 	ld	a, xl
-      0000A2 1B 04            [ 1]  178 	add	a, (0x04, sp)
-      0000A4 90 F7            [ 1]  179 	ld	(y), a
-                                    180 ;	Source/Device/Src/ds3231.c: 49: DS3231_TimeSturcture.month=(DS3231_Buf[5]&0x0F)+((DS3231_Buf[5]&0xF0)>>4)*10;
-      0000A6 90 AEr00r05      [ 2]  181 	ldw	y, #(_DS3231_TimeSturcture + 0)+5
-      0000AA C6u00u05         [ 1]  182 	ld	a, _DS3231_Buf+5
-      0000AD 97               [ 1]  183 	ld	xl, a
-      0000AE A4 0F            [ 1]  184 	and	a, #0x0f
-      0000B0 6B 04            [ 1]  185 	ld	(0x04, sp), a
-      0000B2 9F               [ 1]  186 	ld	a, xl
-      0000B3 A4 F0            [ 1]  187 	and	a, #0xf0
-      0000B5 97               [ 1]  188 	ld	xl, a
-      0000B6 4F               [ 1]  189 	clr	a
-      0000B7 95               [ 1]  190 	ld	xh, a
-      0000B8 57               [ 2]  191 	sraw	x
-      0000B9 57               [ 2]  192 	sraw	x
-      0000BA 57               [ 2]  193 	sraw	x
-      0000BB 57               [ 2]  194 	sraw	x
-      0000BC A6 0A            [ 1]  195 	ld	a, #0x0a
-      0000BE 42               [ 4]  196 	mul	x, a
-      0000BF 9F               [ 1]  197 	ld	a, xl
-      0000C0 1B 04            [ 1]  198 	add	a, (0x04, sp)
-      0000C2 90 F7            [ 1]  199 	ld	(y), a
-                                    200 ;	Source/Device/Src/ds3231.c: 50: DS3231_TimeSturcture.year=2000+(DS3231_Buf[6]&0x0F)+((DS3231_Buf[6]&0xF0)>>4)*10;
-      0000C4 90 AEr00r06      [ 2]  201 	ldw	y, #(_DS3231_TimeSturcture + 0)+6
-      0000C8 C6u00u06         [ 1]  202 	ld	a, _DS3231_Buf+6
-      0000CB 0F 01            [ 1]  203 	clr	(0x01, sp)
-      0000CD 88               [ 1]  204 	push	a
-      0000CE A4 0F            [ 1]  205 	and	a, #0x0f
-      0000D0 97               [ 1]  206 	ld	xl, a
-      0000D1 4F               [ 1]  207 	clr	a
-      0000D2 95               [ 1]  208 	ld	xh, a
-      0000D3 84               [ 1]  209 	pop	a
-      0000D4 1C 07 D0         [ 2]  210 	addw	x, #0x07d0
-      0000D7 1F 03            [ 2]  211 	ldw	(0x03, sp), x
-      0000D9 A4 F0            [ 1]  212 	and	a, #0xf0
-      0000DB 97               [ 1]  213 	ld	xl, a
-      0000DC 4F               [ 1]  214 	clr	a
-      0000DD 95               [ 1]  215 	ld	xh, a
-      0000DE 57               [ 2]  216 	sraw	x
-      0000DF 57               [ 2]  217 	sraw	x
-      0000E0 57               [ 2]  218 	sraw	x
-      0000E1 57               [ 2]  219 	sraw	x
-      0000E2 89               [ 2]  220 	pushw	x
-      0000E3 58               [ 2]  221 	sllw	x
-      0000E4 58               [ 2]  222 	sllw	x
-      0000E5 72 FB 01         [ 2]  223 	addw	x, (1, sp)
-      0000E8 58               [ 2]  224 	sllw	x
-      0000E9 5B 02            [ 2]  225 	addw	sp, #2
-      0000EB 72 FB 03         [ 2]  226 	addw	x, (0x03, sp)
-      0000EE 90 FF            [ 2]  227 	ldw	(y), x
-                                    228 ;	Source/Device/Src/ds3231.c: 51: }
-      0000F0 5B 04            [ 2]  229 	addw	sp, #4
-      0000F2 81               [ 4]  230 	ret
-                                    231 	.area CODE
-                                    232 	.area CONST
-                                    233 	.area INITIALIZER
-      000000                        234 __xinit__DS3231_Buf:
-      000000 00                     235 	.db #0x00	; 0
-      000001 00                     236 	.db 0x00
-      000002 00                     237 	.db 0x00
-      000003 00                     238 	.db 0x00
-      000004 00                     239 	.db 0x00
-      000005 00                     240 	.db 0x00
-      000006 00                     241 	.db 0x00
-      000007 00                     242 	.db 0x00
-                                    243 	.area CABS (ABS)
+                                     70 ;	 function DS3231_GetTime
+                                     71 ;	-----------------------------------------
+      000003                         72 _DS3231_GetTime:
+      000003 52 04            [ 2]   73 	sub	sp, #4
+                                     74 ;	Source/Device/Src/ds3231.c: 37: for(int i=0;i<7;++i)
+      000005 5F               [ 1]   75 	clrw	x
+      000006 1F 03            [ 2]   76 	ldw	(0x03, sp), x
+      000008                         77 00103$:
+      000008 1E 03            [ 2]   78 	ldw	x, (0x03, sp)
+      00000A A3 00 07         [ 2]   79 	cpw	x, #0x0007
+      00000D 2E 19            [ 1]   80 	jrsge	00101$
+                                     81 ;	Source/Device/Src/ds3231.c: 40: &DS3231_Buf[i],1);
+      00000F 1E 03            [ 2]   82 	ldw	x, (0x03, sp)
+      000011 1Cr00r00         [ 2]   83 	addw	x, #(_DS3231_Buf + 0)
+                                     84 ;	Source/Device/Src/ds3231.c: 39: I2C_MasterReceiveData(DS3231_ADDR,DS3231_SECONDS+i,
+      000014 7B 04            [ 1]   85 	ld	a, (0x04, sp)
+      000016 4B 01            [ 1]   86 	push	#0x01
+      000018 89               [ 2]   87 	pushw	x
+      000019 88               [ 1]   88 	push	a
+      00001A 4B 68            [ 1]   89 	push	#0x68
+      00001C CDr00r00         [ 4]   90 	call	_I2C_MasterReceiveData
+      00001F 5B 05            [ 2]   91 	addw	sp, #5
+                                     92 ;	Source/Device/Src/ds3231.c: 37: for(int i=0;i<7;++i)
+      000021 1E 03            [ 2]   93 	ldw	x, (0x03, sp)
+      000023 5C               [ 1]   94 	incw	x
+      000024 1F 03            [ 2]   95 	ldw	(0x03, sp), x
+      000026 20 E0            [ 2]   96 	jra	00103$
+      000028                         97 00101$:
+                                     98 ;	Source/Device/Src/ds3231.c: 45: DS3231_TimeSturcture.seconds=(DS3231_Buf[0]&0x0F)+((DS3231_Buf[0]&0xF0)>>4)*10;
+      000028 C6u00u00         [ 1]   99 	ld	a, _DS3231_Buf+0
+      00002B 97               [ 1]  100 	ld	xl, a
+      00002C A4 0F            [ 1]  101 	and	a, #0x0f
+      00002E 6B 04            [ 1]  102 	ld	(0x04, sp), a
+      000030 9F               [ 1]  103 	ld	a, xl
+      000031 A4 F0            [ 1]  104 	and	a, #0xf0
+      000033 97               [ 1]  105 	ld	xl, a
+      000034 4F               [ 1]  106 	clr	a
+      000035 95               [ 1]  107 	ld	xh, a
+      000036 57               [ 2]  108 	sraw	x
+      000037 57               [ 2]  109 	sraw	x
+      000038 57               [ 2]  110 	sraw	x
+      000039 57               [ 2]  111 	sraw	x
+      00003A A6 0A            [ 1]  112 	ld	a, #0x0a
+      00003C 42               [ 4]  113 	mul	x, a
+      00003D 9F               [ 1]  114 	ld	a, xl
+      00003E 1B 04            [ 1]  115 	add	a, (0x04, sp)
+      000040 C7u00u00         [ 1]  116 	ld	_DS3231_TimeSturcture+0, a
+                                    117 ;	Source/Device/Src/ds3231.c: 46: DS3231_TimeSturcture.minutes=(DS3231_Buf[1]&0x0F)+((DS3231_Buf[1]&0xF0)>>4)*10;
+      000043 90 AEr00r01      [ 2]  118 	ldw	y, #(_DS3231_TimeSturcture + 0)+1
+      000047 C6u00u01         [ 1]  119 	ld	a, _DS3231_Buf+1
+      00004A 97               [ 1]  120 	ld	xl, a
+      00004B A4 0F            [ 1]  121 	and	a, #0x0f
+      00004D 6B 04            [ 1]  122 	ld	(0x04, sp), a
+      00004F 9F               [ 1]  123 	ld	a, xl
+      000050 A4 F0            [ 1]  124 	and	a, #0xf0
+      000052 97               [ 1]  125 	ld	xl, a
+      000053 4F               [ 1]  126 	clr	a
+      000054 95               [ 1]  127 	ld	xh, a
+      000055 57               [ 2]  128 	sraw	x
+      000056 57               [ 2]  129 	sraw	x
+      000057 57               [ 2]  130 	sraw	x
+      000058 57               [ 2]  131 	sraw	x
+      000059 A6 0A            [ 1]  132 	ld	a, #0x0a
+      00005B 42               [ 4]  133 	mul	x, a
+      00005C 9F               [ 1]  134 	ld	a, xl
+      00005D 1B 04            [ 1]  135 	add	a, (0x04, sp)
+      00005F 90 F7            [ 1]  136 	ld	(y), a
+                                    137 ;	Source/Device/Src/ds3231.c: 47: DS3231_TimeSturcture.hours=(DS3231_Buf[2]&0x0F)+((DS3231_Buf[2]&0xF0)>>4)*10;
+      000061 90 AEr00r02      [ 2]  138 	ldw	y, #(_DS3231_TimeSturcture + 0)+2
+      000065 C6u00u02         [ 1]  139 	ld	a, _DS3231_Buf+2
+      000068 97               [ 1]  140 	ld	xl, a
+      000069 A4 0F            [ 1]  141 	and	a, #0x0f
+      00006B 6B 04            [ 1]  142 	ld	(0x04, sp), a
+      00006D 9F               [ 1]  143 	ld	a, xl
+      00006E A4 F0            [ 1]  144 	and	a, #0xf0
+      000070 97               [ 1]  145 	ld	xl, a
+      000071 4F               [ 1]  146 	clr	a
+      000072 95               [ 1]  147 	ld	xh, a
+      000073 57               [ 2]  148 	sraw	x
+      000074 57               [ 2]  149 	sraw	x
+      000075 57               [ 2]  150 	sraw	x
+      000076 57               [ 2]  151 	sraw	x
+      000077 A6 0A            [ 1]  152 	ld	a, #0x0a
+      000079 42               [ 4]  153 	mul	x, a
+      00007A 9F               [ 1]  154 	ld	a, xl
+      00007B 1B 04            [ 1]  155 	add	a, (0x04, sp)
+      00007D 90 F7            [ 1]  156 	ld	(y), a
+                                    157 ;	Source/Device/Src/ds3231.c: 48: DS3231_TimeSturcture.day=(DS3231_Buf[3]&0x0F);
+      00007F AEr00r03         [ 2]  158 	ldw	x, #(_DS3231_TimeSturcture + 0)+3
+      000082 C6u00u03         [ 1]  159 	ld	a, _DS3231_Buf+3
+      000085 A4 0F            [ 1]  160 	and	a, #0x0f
+      000087 F7               [ 1]  161 	ld	(x), a
+                                    162 ;	Source/Device/Src/ds3231.c: 49: DS3231_TimeSturcture.date=(DS3231_Buf[4]&0x0F)+((DS3231_Buf[4]&0xF0)>>4)*10;
+      000088 90 AEr00r04      [ 2]  163 	ldw	y, #(_DS3231_TimeSturcture + 0)+4
+      00008C C6u00u04         [ 1]  164 	ld	a, _DS3231_Buf+4
+      00008F 97               [ 1]  165 	ld	xl, a
+      000090 A4 0F            [ 1]  166 	and	a, #0x0f
+      000092 6B 04            [ 1]  167 	ld	(0x04, sp), a
+      000094 9F               [ 1]  168 	ld	a, xl
+      000095 A4 F0            [ 1]  169 	and	a, #0xf0
+      000097 97               [ 1]  170 	ld	xl, a
+      000098 4F               [ 1]  171 	clr	a
+      000099 95               [ 1]  172 	ld	xh, a
+      00009A 57               [ 2]  173 	sraw	x
+      00009B 57               [ 2]  174 	sraw	x
+      00009C 57               [ 2]  175 	sraw	x
+      00009D 57               [ 2]  176 	sraw	x
+      00009E A6 0A            [ 1]  177 	ld	a, #0x0a
+      0000A0 42               [ 4]  178 	mul	x, a
+      0000A1 9F               [ 1]  179 	ld	a, xl
+      0000A2 1B 04            [ 1]  180 	add	a, (0x04, sp)
+      0000A4 90 F7            [ 1]  181 	ld	(y), a
+                                    182 ;	Source/Device/Src/ds3231.c: 50: DS3231_TimeSturcture.month=(DS3231_Buf[5]&0x0F)+((DS3231_Buf[5]&0xF0)>>4)*10;
+      0000A6 90 AEr00r05      [ 2]  183 	ldw	y, #(_DS3231_TimeSturcture + 0)+5
+      0000AA C6u00u05         [ 1]  184 	ld	a, _DS3231_Buf+5
+      0000AD 97               [ 1]  185 	ld	xl, a
+      0000AE A4 0F            [ 1]  186 	and	a, #0x0f
+      0000B0 6B 04            [ 1]  187 	ld	(0x04, sp), a
+      0000B2 9F               [ 1]  188 	ld	a, xl
+      0000B3 A4 F0            [ 1]  189 	and	a, #0xf0
+      0000B5 97               [ 1]  190 	ld	xl, a
+      0000B6 4F               [ 1]  191 	clr	a
+      0000B7 95               [ 1]  192 	ld	xh, a
+      0000B8 57               [ 2]  193 	sraw	x
+      0000B9 57               [ 2]  194 	sraw	x
+      0000BA 57               [ 2]  195 	sraw	x
+      0000BB 57               [ 2]  196 	sraw	x
+      0000BC A6 0A            [ 1]  197 	ld	a, #0x0a
+      0000BE 42               [ 4]  198 	mul	x, a
+      0000BF 9F               [ 1]  199 	ld	a, xl
+      0000C0 1B 04            [ 1]  200 	add	a, (0x04, sp)
+      0000C2 90 F7            [ 1]  201 	ld	(y), a
+                                    202 ;	Source/Device/Src/ds3231.c: 51: DS3231_TimeSturcture.year=2000+(DS3231_Buf[6]&0x0F)+((DS3231_Buf[6]&0xF0)>>4)*10;
+      0000C4 90 AEr00r06      [ 2]  203 	ldw	y, #(_DS3231_TimeSturcture + 0)+6
+      0000C8 C6u00u06         [ 1]  204 	ld	a, _DS3231_Buf+6
+      0000CB 0F 01            [ 1]  205 	clr	(0x01, sp)
+      0000CD 88               [ 1]  206 	push	a
+      0000CE A4 0F            [ 1]  207 	and	a, #0x0f
+      0000D0 97               [ 1]  208 	ld	xl, a
+      0000D1 4F               [ 1]  209 	clr	a
+      0000D2 95               [ 1]  210 	ld	xh, a
+      0000D3 84               [ 1]  211 	pop	a
+      0000D4 1C 07 D0         [ 2]  212 	addw	x, #0x07d0
+      0000D7 1F 03            [ 2]  213 	ldw	(0x03, sp), x
+      0000D9 A4 F0            [ 1]  214 	and	a, #0xf0
+      0000DB 97               [ 1]  215 	ld	xl, a
+      0000DC 4F               [ 1]  216 	clr	a
+      0000DD 95               [ 1]  217 	ld	xh, a
+      0000DE 57               [ 2]  218 	sraw	x
+      0000DF 57               [ 2]  219 	sraw	x
+      0000E0 57               [ 2]  220 	sraw	x
+      0000E1 57               [ 2]  221 	sraw	x
+      0000E2 89               [ 2]  222 	pushw	x
+      0000E3 58               [ 2]  223 	sllw	x
+      0000E4 58               [ 2]  224 	sllw	x
+      0000E5 72 FB 01         [ 2]  225 	addw	x, (1, sp)
+      0000E8 58               [ 2]  226 	sllw	x
+      0000E9 5B 02            [ 2]  227 	addw	sp, #2
+      0000EB 72 FB 03         [ 2]  228 	addw	x, (0x03, sp)
+      0000EE 90 FF            [ 2]  229 	ldw	(y), x
+                                    230 ;	Source/Device/Src/ds3231.c: 52: }
+      0000F0 5B 04            [ 2]  231 	addw	sp, #4
+      0000F2 81               [ 4]  232 	ret
+                                    233 ;	Source/Device/Src/ds3231.c: 54: void DS3231_GPSSetTime(void)
+                                    234 ;	-----------------------------------------
+                                    235 ;	 function DS3231_GPSSetTime
+                                    236 ;	-----------------------------------------
+      0000F3                        237 _DS3231_GPSSetTime:
+      0000F3 52 15            [ 2]  238 	sub	sp, #21
+                                    239 ;	Source/Device/Src/ds3231.c: 56: uint8_t tmp[7]={0};
+      0000F5 0F 01            [ 1]  240 	clr	(0x01, sp)
+      0000F7 96               [ 1]  241 	ldw	x, sp
+      0000F8 1C 00 02         [ 2]  242 	addw	x, #2
+      0000FB 1F 08            [ 2]  243 	ldw	(0x08, sp), x
+      0000FD 7F               [ 1]  244 	clr	(x)
+      0000FE 96               [ 1]  245 	ldw	x, sp
+      0000FF 1C 00 03         [ 2]  246 	addw	x, #3
+      000102 1F 0A            [ 2]  247 	ldw	(0x0a, sp), x
+      000104 7F               [ 1]  248 	clr	(x)
+      000105 96               [ 1]  249 	ldw	x, sp
+      000106 1C 00 04         [ 2]  250 	addw	x, #4
+      000109 1F 0C            [ 2]  251 	ldw	(0x0c, sp), x
+      00010B 7F               [ 1]  252 	clr	(x)
+      00010C 96               [ 1]  253 	ldw	x, sp
+      00010D 1C 00 05         [ 2]  254 	addw	x, #5
+      000110 1F 0E            [ 2]  255 	ldw	(0x0e, sp), x
+      000112 7F               [ 1]  256 	clr	(x)
+      000113 96               [ 1]  257 	ldw	x, sp
+      000114 1C 00 06         [ 2]  258 	addw	x, #6
+      000117 1F 10            [ 2]  259 	ldw	(0x10, sp), x
+      000119 7F               [ 1]  260 	clr	(x)
+      00011A 96               [ 1]  261 	ldw	x, sp
+      00011B 1C 00 07         [ 2]  262 	addw	x, #7
+      00011E 1F 12            [ 2]  263 	ldw	(0x12, sp), x
+      000120 7F               [ 1]  264 	clr	(x)
+                                    265 ;	Source/Device/Src/ds3231.c: 57: tmp[0]=(((GPS_TimeDataSturcture.sec+3)/10)<<4)|((GPS_TimeDataSturcture.sec+3)%10);
+      000121 C6u00u14         [ 1]  266 	ld	a, _GPS_TimeDataSturcture+20
+      000124 5F               [ 1]  267 	clrw	x
+      000125 97               [ 1]  268 	ld	xl, a
+      000126 1C 00 03         [ 2]  269 	addw	x, #0x0003
+      000129 89               [ 2]  270 	pushw	x
+      00012A 4B 0A            [ 1]  271 	push	#0x0a
+      00012C 4B 00            [ 1]  272 	push	#0x00
+      00012E 89               [ 2]  273 	pushw	x
+      00012F CDr00r00         [ 4]  274 	call	__divsint
+      000132 5B 04            [ 2]  275 	addw	sp, #4
+      000134 1F 16            [ 2]  276 	ldw	(0x16, sp), x
+      000136 85               [ 2]  277 	popw	x
+      000137 7B 15            [ 1]  278 	ld	a, (0x15, sp)
+      000139 4E               [ 1]  279 	swap	a
+      00013A A4 F0            [ 1]  280 	and	a, #0xf0
+      00013C 88               [ 1]  281 	push	a
+      00013D 4B 0A            [ 1]  282 	push	#0x0a
+      00013F 4B 00            [ 1]  283 	push	#0x00
+      000141 89               [ 2]  284 	pushw	x
+      000142 CDr00r00         [ 4]  285 	call	__modsint
+      000145 5B 04            [ 2]  286 	addw	sp, #4
+      000147 84               [ 1]  287 	pop	a
+      000148 89               [ 2]  288 	pushw	x
+      000149 1A 02            [ 1]  289 	or	a, (2, sp)
+      00014B 85               [ 2]  290 	popw	x
+      00014C 6B 01            [ 1]  291 	ld	(0x01, sp), a
+                                    292 ;	Source/Device/Src/ds3231.c: 58: tmp[1]=((GPS_TimeDataSturcture.min/10)<<4)|(GPS_TimeDataSturcture.min%10);
+      00014E C6u00u13         [ 1]  293 	ld	a, _GPS_TimeDataSturcture+19
+      000151 5F               [ 1]  294 	clrw	x
+      000152 97               [ 1]  295 	ld	xl, a
+      000153 89               [ 2]  296 	pushw	x
+      000154 4B 0A            [ 1]  297 	push	#0x0a
+      000156 4B 00            [ 1]  298 	push	#0x00
+      000158 89               [ 2]  299 	pushw	x
+      000159 CDr00r00         [ 4]  300 	call	__divsint
+      00015C 5B 04            [ 2]  301 	addw	sp, #4
+      00015E 1F 16            [ 2]  302 	ldw	(0x16, sp), x
+      000160 85               [ 2]  303 	popw	x
+      000161 7B 15            [ 1]  304 	ld	a, (0x15, sp)
+      000163 4E               [ 1]  305 	swap	a
+      000164 A4 F0            [ 1]  306 	and	a, #0xf0
+      000166 88               [ 1]  307 	push	a
+      000167 4B 0A            [ 1]  308 	push	#0x0a
+      000169 4B 00            [ 1]  309 	push	#0x00
+      00016B 89               [ 2]  310 	pushw	x
+      00016C CDr00r00         [ 4]  311 	call	__modsint
+      00016F 5B 04            [ 2]  312 	addw	sp, #4
+      000171 84               [ 1]  313 	pop	a
+      000172 89               [ 2]  314 	pushw	x
+      000173 1A 02            [ 1]  315 	or	a, (2, sp)
+      000175 85               [ 2]  316 	popw	x
+      000176 1E 08            [ 2]  317 	ldw	x, (0x08, sp)
+      000178 F7               [ 1]  318 	ld	(x), a
+                                    319 ;	Source/Device/Src/ds3231.c: 59: tmp[2]=((GPS_TimeDataSturcture.hour/10)<<4)|(GPS_TimeDataSturcture.hour%10);//24小时制
+      000179 C6u00u12         [ 1]  320 	ld	a, _GPS_TimeDataSturcture+18
+      00017C 5F               [ 1]  321 	clrw	x
+      00017D 97               [ 1]  322 	ld	xl, a
+      00017E 89               [ 2]  323 	pushw	x
+      00017F 4B 0A            [ 1]  324 	push	#0x0a
+      000181 4B 00            [ 1]  325 	push	#0x00
+      000183 89               [ 2]  326 	pushw	x
+      000184 CDr00r00         [ 4]  327 	call	__divsint
+      000187 5B 04            [ 2]  328 	addw	sp, #4
+      000189 1F 16            [ 2]  329 	ldw	(0x16, sp), x
+      00018B 85               [ 2]  330 	popw	x
+      00018C 7B 15            [ 1]  331 	ld	a, (0x15, sp)
+      00018E 4E               [ 1]  332 	swap	a
+      00018F A4 F0            [ 1]  333 	and	a, #0xf0
+      000191 88               [ 1]  334 	push	a
+      000192 4B 0A            [ 1]  335 	push	#0x0a
+      000194 4B 00            [ 1]  336 	push	#0x00
+      000196 89               [ 2]  337 	pushw	x
+      000197 CDr00r00         [ 4]  338 	call	__modsint
+      00019A 5B 04            [ 2]  339 	addw	sp, #4
+      00019C 84               [ 1]  340 	pop	a
+      00019D 89               [ 2]  341 	pushw	x
+      00019E 1A 02            [ 1]  342 	or	a, (2, sp)
+      0001A0 85               [ 2]  343 	popw	x
+      0001A1 1E 0A            [ 2]  344 	ldw	x, (0x0a, sp)
+      0001A3 F7               [ 1]  345 	ld	(x), a
+                                    346 ;	Source/Device/Src/ds3231.c: 60: tmp[3]=2;//这个自己设置，gps信号里面没有
+      0001A4 1E 0C            [ 2]  347 	ldw	x, (0x0c, sp)
+      0001A6 A6 02            [ 1]  348 	ld	a, #0x02
+      0001A8 F7               [ 1]  349 	ld	(x), a
+                                    350 ;	Source/Device/Src/ds3231.c: 61: tmp[4]=((GPS_TimeDataSturcture.day/10)<<4)|(GPS_TimeDataSturcture.day%10);
+      0001A9 C6u00u11         [ 1]  351 	ld	a, _GPS_TimeDataSturcture+17
+      0001AC 5F               [ 1]  352 	clrw	x
+      0001AD 97               [ 1]  353 	ld	xl, a
+      0001AE 89               [ 2]  354 	pushw	x
+      0001AF 4B 0A            [ 1]  355 	push	#0x0a
+      0001B1 4B 00            [ 1]  356 	push	#0x00
+      0001B3 89               [ 2]  357 	pushw	x
+      0001B4 CDr00r00         [ 4]  358 	call	__divsint
+      0001B7 5B 04            [ 2]  359 	addw	sp, #4
+      0001B9 1F 16            [ 2]  360 	ldw	(0x16, sp), x
+      0001BB 85               [ 2]  361 	popw	x
+      0001BC 7B 15            [ 1]  362 	ld	a, (0x15, sp)
+      0001BE 4E               [ 1]  363 	swap	a
+      0001BF A4 F0            [ 1]  364 	and	a, #0xf0
+      0001C1 88               [ 1]  365 	push	a
+      0001C2 4B 0A            [ 1]  366 	push	#0x0a
+      0001C4 4B 00            [ 1]  367 	push	#0x00
+      0001C6 89               [ 2]  368 	pushw	x
+      0001C7 CDr00r00         [ 4]  369 	call	__modsint
+      0001CA 5B 04            [ 2]  370 	addw	sp, #4
+      0001CC 84               [ 1]  371 	pop	a
+      0001CD 89               [ 2]  372 	pushw	x
+      0001CE 1A 02            [ 1]  373 	or	a, (2, sp)
+      0001D0 85               [ 2]  374 	popw	x
+      0001D1 1E 0E            [ 2]  375 	ldw	x, (0x0e, sp)
+      0001D3 F7               [ 1]  376 	ld	(x), a
+                                    377 ;	Source/Device/Src/ds3231.c: 62: tmp[5]=((GPS_TimeDataSturcture.month/10)<<4)|(GPS_TimeDataSturcture.month%10);//世纪位我这辈子都用不到了
+      0001D4 AEr00r10         [ 2]  378 	ldw	x, #(_GPS_TimeDataSturcture + 0)+16
+      0001D7 1F 0E            [ 2]  379 	ldw	(0x0e, sp), x
+      0001D9 F6               [ 1]  380 	ld	a, (x)
+      0001DA 5F               [ 1]  381 	clrw	x
+      0001DB 97               [ 1]  382 	ld	xl, a
+      0001DC 89               [ 2]  383 	pushw	x
+      0001DD 4B 0A            [ 1]  384 	push	#0x0a
+      0001DF 4B 00            [ 1]  385 	push	#0x00
+      0001E1 89               [ 2]  386 	pushw	x
+      0001E2 CDr00r00         [ 4]  387 	call	__divsint
+      0001E5 5B 04            [ 2]  388 	addw	sp, #4
+      0001E7 1F 16            [ 2]  389 	ldw	(0x16, sp), x
+      0001E9 85               [ 2]  390 	popw	x
+      0001EA 7B 15            [ 1]  391 	ld	a, (0x15, sp)
+      0001EC 4E               [ 1]  392 	swap	a
+      0001ED A4 F0            [ 1]  393 	and	a, #0xf0
+      0001EF 88               [ 1]  394 	push	a
+      0001F0 4B 0A            [ 1]  395 	push	#0x0a
+      0001F2 4B 00            [ 1]  396 	push	#0x00
+      0001F4 89               [ 2]  397 	pushw	x
+      0001F5 CDr00r00         [ 4]  398 	call	__modsint
+      0001F8 5B 04            [ 2]  399 	addw	sp, #4
+      0001FA 84               [ 1]  400 	pop	a
+      0001FB 89               [ 2]  401 	pushw	x
+      0001FC 1A 02            [ 1]  402 	or	a, (2, sp)
+      0001FE 85               [ 2]  403 	popw	x
+      0001FF 1E 10            [ 2]  404 	ldw	x, (0x10, sp)
+      000201 F7               [ 1]  405 	ld	(x), a
+                                    406 ;	Source/Device/Src/ds3231.c: 63: tmp[6]=((GPS_TimeDataSturcture.month%100/10)<<4)|(GPS_TimeDataSturcture.month%10);
+      000202 1E 0E            [ 2]  407 	ldw	x, (0x0e, sp)
+      000204 F6               [ 1]  408 	ld	a, (x)
+      000205 6B 15            [ 1]  409 	ld	(0x15, sp), a
+      000207 0F 14            [ 1]  410 	clr	(0x14, sp)
+      000209 4B 64            [ 1]  411 	push	#0x64
+      00020B 4B 00            [ 1]  412 	push	#0x00
+      00020D 1E 16            [ 2]  413 	ldw	x, (0x16, sp)
+      00020F 89               [ 2]  414 	pushw	x
+      000210 CDr00r00         [ 4]  415 	call	__modsint
+      000213 5B 04            [ 2]  416 	addw	sp, #4
+      000215 4B 0A            [ 1]  417 	push	#0x0a
+      000217 4B 00            [ 1]  418 	push	#0x00
+      000219 89               [ 2]  419 	pushw	x
+      00021A CDr00r00         [ 4]  420 	call	__divsint
+      00021D 5B 04            [ 2]  421 	addw	sp, #4
+      00021F 9F               [ 1]  422 	ld	a, xl
+      000220 4E               [ 1]  423 	swap	a
+      000221 A4 F0            [ 1]  424 	and	a, #0xf0
+      000223 88               [ 1]  425 	push	a
+      000224 4B 0A            [ 1]  426 	push	#0x0a
+      000226 4B 00            [ 1]  427 	push	#0x00
+      000228 1E 17            [ 2]  428 	ldw	x, (0x17, sp)
+      00022A 89               [ 2]  429 	pushw	x
+      00022B CDr00r00         [ 4]  430 	call	__modsint
+      00022E 5B 04            [ 2]  431 	addw	sp, #4
+      000230 84               [ 1]  432 	pop	a
+      000231 89               [ 2]  433 	pushw	x
+      000232 1A 02            [ 1]  434 	or	a, (2, sp)
+      000234 85               [ 2]  435 	popw	x
+      000235 1E 12            [ 2]  436 	ldw	x, (0x12, sp)
+      000237 F7               [ 1]  437 	ld	(x), a
+                                    438 ;	Source/Device/Src/ds3231.c: 64: I2C_MasterSendData(DS3231_ADDR,DS3231_SECONDS,tmp,sizeof(tmp));
+      000238 4B 07            [ 1]  439 	push	#0x07
+      00023A 96               [ 1]  440 	ldw	x, sp
+      00023B 5C               [ 1]  441 	incw	x
+      00023C 5C               [ 1]  442 	incw	x
+      00023D 89               [ 2]  443 	pushw	x
+      00023E 4B 00            [ 1]  444 	push	#0x00
+      000240 4B 68            [ 1]  445 	push	#0x68
+      000242 CDr00r00         [ 4]  446 	call	_I2C_MasterSendData
+                                    447 ;	Source/Device/Src/ds3231.c: 65: }
+      000245 5B 1A            [ 2]  448 	addw	sp, #26
+      000247 81               [ 4]  449 	ret
+                                    450 	.area CODE
+                                    451 	.area CONST
+                                    452 	.area INITIALIZER
+      000000                        453 __xinit__DS3231_Buf:
+      000000 00                     454 	.db #0x00	; 0
+      000001 00                     455 	.db 0x00
+      000002 00                     456 	.db 0x00
+      000003 00                     457 	.db 0x00
+      000004 00                     458 	.db 0x00
+      000005 00                     459 	.db 0x00
+      000006 00                     460 	.db 0x00
+      000007 00                     461 	.db 0x00
+                                    462 	.area CABS (ABS)

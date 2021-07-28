@@ -22,16 +22,16 @@ Area                                    Addr        Size        Decimal Bytes (A
      0000001A  l_GSINIT                        
      00000025  l_DATA                          
      00000026  s_INITIALIZED                   
-     0000002E  l_INITIALIZED                   
-     0000002E  l_INITIALIZER                   
+     00000033  l_INITIALIZED                   
+     00000033  l_INITIALIZER                   
      0000006B  l_HOME                          
-     000013DC  l_CODE                          
+     00001551  l_CODE                          
      00008000  s_HOME                          
      0000806B  s_GSINIT                        
      00008085  s_GSFINAL                       
      00008088  s_CONST                         
      00008094  s_INITIALIZER                   
-     000080C2  s_CODE                          
+     000080C7  s_CODE                          
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
@@ -53,15 +53,20 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-INITIALIZED                         00000026    0000002E =          46. bytes (REL,CON)
+INITIALIZED                         00000026    00000033 =          51. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00000026  _ir_always_on                      main
+     00000026  _nixie_always_on                   main
      00000027  _KEY_StateMachine_Enumeration      main
      00000028  _tube_state                        nixie
-     00000029  _DS3231_Buf                        ds3231
-     00000031  _GPS_RxBuf                         gps
+     00000029  _nixie_tube1                       nixie
+     0000002A  _nixie_tube2                       nixie
+     0000002B  _nixie_tube3                       nixie
+     0000002C  _nixie_tube4                       nixie
+     0000002D  _DS3231_Buf                        ds3231
+     00000035  _GPS_RxBuf                         gps
+     00000057  _gps_first_send                    gps
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 Hexadecimal  [32-Bits]
@@ -116,7 +121,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-INITIALIZER                         00008094    0000002E =          46. bytes (REL,CON)
+INITIALIZER                         00008094    00000033 =          51. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -125,87 +130,87 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CODE                                000080C2    000013DC =        5084. bytes (REL,CON)
+CODE                                000080C7    00001551 =        5457. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     000080C2  _main                              main
-     00008193  _TIM4_UPD_OVF_IRQHandler           main
-     000081C7  _EXTI_PORTA_IRQHandler             main
-     000081C8  _EXTI_PORTC_IRQHandler             main
-     000081F4  _EXTI_PORTD_IRQHandler             main
-     0000822F  _GPIO_Init                         stm8s_gpio
-     000082A4  _GPIO_WriteHigh                    stm8s_gpio
-     000082AB  _GPIO_WriteLow                     stm8s_gpio
-     000082B9  _GPIO_ReadInputPin                 stm8s_gpio
-     000082C0  _CLK_HSECmd                        stm8s_clk
-     000082D3  _CLK_ClockSwitchConfig             stm8s_clk
-     0000837E  _CLK_GetClockFreq                  stm8s_clk
-     000083CE  _SPI_DeInit                        stm8s_spi
-     000083E3  _SPI_Init                          stm8s_spi
-     00008421  _SPI_Cmd                           stm8s_spi
-     00008434  _SPI_SendData                      stm8s_spi
-     0000843B  _SPI_GetFlagStatus                 stm8s_spi
-     00008447  _SPI_ClearFlag                     stm8s_spi
-     0000844E  _UART1_DeInit                      stm8s_uart1
-     00008479  _UART1_Init                        stm8s_uart1
-     000085F6  _UART1_Cmd                         stm8s_uart1
-     00008609  _UART1_ITConfig                    stm8s_uart1
-     00008681  _UART1_ReceiveData8                stm8s_uart1
-     00008685  _UART1_SendData8                   stm8s_uart1
-     0000868C  _UART1_GetFlagStatus               stm8s_uart1
-     000086CE  _UART1_GetITStatus                 stm8s_uart1
-     0000874E  _UART1_ClearITPendingBit           stm8s_uart1
-     0000875F  _BEEP_DeInit                       stm8s_beep
-     00008764  _BEEP_Init                         stm8s_beep
-     0000878E  _BEEP_Cmd                          stm8s_beep
-     000087A1  _EXTI_SetExtIntSensitivity         stm8s_exti
-     00008831  _EXTI_SetTLISensitivity            stm8s_exti
-     00008842  _ITC_GetCPUCC                      stm8s_itc
-     00008845  _ITC_DeInit                        stm8s_itc
-     00008866  _ITC_GetSoftIntStatus              stm8s_itc
-     0000886C  _ITC_GetSoftwarePriority           stm8s_itc
-     0000890F  _ITC_SetSoftwarePriority           stm8s_itc
-     000089F8  _TIM4_TimeBaseInit                 stm8s_tim4
-     00008A05  _TIM4_Cmd                          stm8s_tim4
-     00008A18  _TIM4_ITConfig                     stm8s_tim4
-     00008A35  _TIM4_ARRPreloadConfig             stm8s_tim4
-     00008A48  _TIM4_GetITStatus                  stm8s_tim4
-     00008A63  _TIM4_ClearITPendingBit            stm8s_tim4
-     00008A6A  _I2C_Init                          soft_i2c
-     00008A8D  _I2C_Start                         soft_i2c
-     00008AA4  _I2C_Stop                          soft_i2c
-     00008ABE  _I2C_Wait_Ack                      soft_i2c
-     00008AEF  _I2C_Ack                           soft_i2c
-     00008B06  _I2C_NAck                          soft_i2c
-     00008B1D  _I2C_Send_Byte                     soft_i2c
+     000080C7  _main                              main
+     00008178  _TIM4_UPD_OVF_IRQHandler           main
+     000081B0  _EXTI_PORTA_IRQHandler             main
+     000081B1  _EXTI_PORTC_IRQHandler             main
+     000081DD  _EXTI_PORTD_IRQHandler             main
+     00008218  _GPIO_Init                         stm8s_gpio
+     0000828D  _GPIO_WriteHigh                    stm8s_gpio
+     00008294  _GPIO_WriteLow                     stm8s_gpio
+     000082A2  _GPIO_ReadInputPin                 stm8s_gpio
+     000082A9  _CLK_HSECmd                        stm8s_clk
+     000082BC  _CLK_ClockSwitchConfig             stm8s_clk
+     00008367  _CLK_GetClockFreq                  stm8s_clk
+     000083B7  _SPI_DeInit                        stm8s_spi
+     000083CC  _SPI_Init                          stm8s_spi
+     0000840A  _SPI_Cmd                           stm8s_spi
+     0000841D  _SPI_SendData                      stm8s_spi
+     00008424  _SPI_GetFlagStatus                 stm8s_spi
+     00008430  _SPI_ClearFlag                     stm8s_spi
+     00008437  _UART1_DeInit                      stm8s_uart1
+     00008462  _UART1_Init                        stm8s_uart1
+     000085DF  _UART1_Cmd                         stm8s_uart1
+     000085F2  _UART1_ITConfig                    stm8s_uart1
+     0000866A  _UART1_ReceiveData8                stm8s_uart1
+     0000866E  _UART1_SendData8                   stm8s_uart1
+     00008675  _UART1_GetFlagStatus               stm8s_uart1
+     000086B7  _UART1_GetITStatus                 stm8s_uart1
+     00008737  _UART1_ClearITPendingBit           stm8s_uart1
+     00008748  _BEEP_DeInit                       stm8s_beep
+     0000874D  _BEEP_Init                         stm8s_beep
+     00008777  _BEEP_Cmd                          stm8s_beep
+     0000878A  _EXTI_SetExtIntSensitivity         stm8s_exti
+     0000881A  _EXTI_SetTLISensitivity            stm8s_exti
+     0000882B  _ITC_GetCPUCC                      stm8s_itc
+     0000882E  _ITC_DeInit                        stm8s_itc
+     0000884F  _ITC_GetSoftIntStatus              stm8s_itc
+     00008855  _ITC_GetSoftwarePriority           stm8s_itc
+     000088F8  _ITC_SetSoftwarePriority           stm8s_itc
+     000089E1  _TIM4_TimeBaseInit                 stm8s_tim4
+     000089EE  _TIM4_Cmd                          stm8s_tim4
+     00008A01  _TIM4_ITConfig                     stm8s_tim4
+     00008A1E  _TIM4_ARRPreloadConfig             stm8s_tim4
+     00008A31  _TIM4_GetITStatus                  stm8s_tim4
+     00008A4C  _TIM4_ClearITPendingBit            stm8s_tim4
+     00008A53  _I2C_Init                          soft_i2c
+     00008A76  _I2C_Start                         soft_i2c
+     00008A8D  _I2C_Stop                          soft_i2c
+     00008AA7  _I2C_Wait_Ack                      soft_i2c
+     00008AD8  _I2C_Ack                           soft_i2c
+     00008AEF  _I2C_NAck                          soft_i2c
+     00008B06  _I2C_Send_Byte                     soft_i2c
 ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CODE                                000080C2    000013DC =        5084. bytes (REL,CON)
+CODE                                000080C7    00001551 =        5457. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00008B62  _I2C_Read_Byte                     soft_i2c
-     00008B9B  _I2C_MasterReceiveData             soft_i2c
-     00008C1C  _I2C_MasterSendData                soft_i2c
-     00008C6B  _delay_us                          soft_i2c
-     00008C70  _delay                             nixie
-     00008C7B  _NIXIE_Init                        nixie
-     00008CC1  _NIXIE_DisplayChar                 nixie
-     00008D57  _NIXIE_DisplayTime                 nixie
-     00008F28  _DS3231_Init                       ds3231
-     00008F2B  _DS3231_GetTime                    ds3231
-     0000901B  _GPS_Init                          gps
-     0000914F  _GPS_GetTime                       gps
-     000091B0  _UART1_RX_IRQHandler               gps
-     00009378  __divulong                         
-     000093D2  _strchr                            _strchr
-     000093F8  __modsint                          
-     0000940E  __mullong                          
-     0000948A  __divsint                          
+     00008B4B  _I2C_Read_Byte                     soft_i2c
+     00008B84  _I2C_MasterReceiveData             soft_i2c
+     00008C05  _I2C_MasterSendData                soft_i2c
+     00008C54  _delay_us                          soft_i2c
+     00008C59  _NIXIE_Init                        nixie
+     00008CE2  _NIXIE_DisplayChar                 nixie
+     00008D78  _NIXIE_DisplayTime                 nixie
+     00008F49  _DS3231_Init                       ds3231
+     00008F4C  _DS3231_GetTime                    ds3231
+     0000903C  _DS3231_GPSSetTime                 ds3231
+     00009191  _GPS_Init                          gps
+     000092C5  _GPS_GetTime                       gps
+     00009326  _UART1_RX_IRQHandler               gps
+     000094F2  __divulong                         
+     0000954C  _strchr                            _strchr
+     00009572  __mullong                          
+     000095EE  __modsint                          
+     00009604  __divsint                          
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
 
@@ -233,9 +238,9 @@ C:\Program Files\SDCC\bin\..\lib\stm8/stm8.lib
 C:\Program Files\SDCC\bin\..\lib\stm8/stm8.lib
                                           [ _strchr.rel ]
 C:\Program Files\SDCC\bin\..\lib\stm8/stm8.lib
-                                          [ _modsint.rel ]
-C:\Program Files\SDCC\bin\..\lib\stm8/stm8.lib
                                           [ _mullong.rel ]
+C:\Program Files\SDCC\bin\..\lib\stm8/stm8.lib
+                                          [ _modsint.rel ]
 C:\Program Files\SDCC\bin\..\lib\stm8/stm8.lib
                                           [ _divsint.rel ]
 

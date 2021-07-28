@@ -8,2924 +8,3104 @@
                                       8 ;--------------------------------------------------------
                                       9 ; Public variables in this module
                                      10 ;--------------------------------------------------------
-                                     11 	.globl _delay
-                                     12 	.globl _strchr
-                                     13 	.globl _SPI_GetFlagStatus
-                                     14 	.globl _SPI_SendData
-                                     15 	.globl _SPI_Cmd
-                                     16 	.globl _SPI_Init
-                                     17 	.globl _SPI_DeInit
-                                     18 	.globl _GPIO_WriteLow
-                                     19 	.globl _GPIO_WriteHigh
-                                     20 	.globl _GPIO_Init
-                                     21 	.globl _tube_state
-                                     22 	.globl _NIXIE_Init
-                                     23 	.globl _NIXIE_DisplayChar
-                                     24 	.globl _NIXIE_DisplayTime
-                                     25 ;--------------------------------------------------------
-                                     26 ; ram data
-                                     27 ;--------------------------------------------------------
-                                     28 	.area DATA
-                                     29 ;--------------------------------------------------------
-                                     30 ; ram data
-                                     31 ;--------------------------------------------------------
-                                     32 	.area INITIALIZED
-                           000000    33 G$tube_state$0_0$0==.
-      000028                         34 _tube_state::
-      000028                         35 	.ds 1
-                                     36 ;--------------------------------------------------------
-                                     37 ; absolute external ram data
-                                     38 ;--------------------------------------------------------
-                                     39 	.area DABS (ABS)
-                                     40 
-                                     41 ; default segment ordering for linker
-                                     42 	.area HOME
-                                     43 	.area GSINIT
-                                     44 	.area GSFINAL
-                                     45 	.area CONST
-                                     46 	.area INITIALIZER
-                                     47 	.area CODE
-                                     48 
-                                     49 ;--------------------------------------------------------
-                                     50 ; global & static initialisations
+                                     11 	.globl _strchr
+                                     12 	.globl _SPI_GetFlagStatus
+                                     13 	.globl _SPI_SendData
+                                     14 	.globl _SPI_Cmd
+                                     15 	.globl _SPI_Init
+                                     16 	.globl _SPI_DeInit
+                                     17 	.globl _GPIO_WriteLow
+                                     18 	.globl _GPIO_WriteHigh
+                                     19 	.globl _GPIO_Init
+                                     20 	.globl _nixie_tube4
+                                     21 	.globl _nixie_tube3
+                                     22 	.globl _nixie_tube2
+                                     23 	.globl _nixie_tube1
+                                     24 	.globl _tube_state
+                                     25 	.globl _NIXIE_Init
+                                     26 	.globl _NIXIE_DisplayChar
+                                     27 	.globl _NIXIE_DisplayTime
+                                     28 ;--------------------------------------------------------
+                                     29 ; ram data
+                                     30 ;--------------------------------------------------------
+                                     31 	.area DATA
+                                     32 ;--------------------------------------------------------
+                                     33 ; ram data
+                                     34 ;--------------------------------------------------------
+                                     35 	.area INITIALIZED
+                           000000    36 G$tube_state$0_0$0==.
+      000028                         37 _tube_state::
+      000028                         38 	.ds 1
+                           000001    39 G$nixie_tube1$0_0$0==.
+      000029                         40 _nixie_tube1::
+      000029                         41 	.ds 1
+                           000002    42 G$nixie_tube2$0_0$0==.
+      00002A                         43 _nixie_tube2::
+      00002A                         44 	.ds 1
+                           000003    45 G$nixie_tube3$0_0$0==.
+      00002B                         46 _nixie_tube3::
+      00002B                         47 	.ds 1
+                           000004    48 G$nixie_tube4$0_0$0==.
+      00002C                         49 _nixie_tube4::
+      00002C                         50 	.ds 1
                                      51 ;--------------------------------------------------------
-                                     52 	.area HOME
-                                     53 	.area GSINIT
-                                     54 	.area GSFINAL
-                                     55 	.area GSINIT
-                                     56 ;--------------------------------------------------------
-                                     57 ; Home
-                                     58 ;--------------------------------------------------------
-                                     59 	.area HOME
-                                     60 	.area HOME
-                                     61 ;--------------------------------------------------------
-                                     62 ; code
-                                     63 ;--------------------------------------------------------
-                                     64 	.area CODE
-                           000000    65 	Snixie$delay$0 ==.
-                           000000    66 	Snixie$delay$1 ==.
-                                     67 ;	Source/Device/Src/nixie.c: 51: void delay(void)
-                                     68 ;	-----------------------------------------
-                                     69 ;	 function delay
-                                     70 ;	-----------------------------------------
-      008CA8                         71 _delay:
-                           000000    72 	Snixie$delay$2 ==.
-                           000000    73 	Snixie$delay$3 ==.
-                                     74 ;	Source/Device/Src/nixie.c: 60: for (int i = 0; i < 300; i++);//这个比较合适
-      008CA8 5F               [ 1]   75 	clrw	x
-      008CA9                         76 00103$:
-      008CA9 A3 01 2C         [ 2]   77 	cpw	x, #0x012c
-      008CAC 2E 03            [ 1]   78 	jrsge	00105$
-      008CAE 5C               [ 1]   79 	incw	x
-      008CAF 20 F8            [ 2]   80 	jra	00103$
-      008CB1                         81 00105$:
-                           000009    82 	Snixie$delay$4 ==.
-                                     83 ;	Source/Device/Src/nixie.c: 61: }
-                           000009    84 	Snixie$delay$5 ==.
-                           000009    85 	XG$delay$0$0 ==.
-      008CB1 81               [ 4]   86 	ret
-                           00000A    87 	Snixie$delay$6 ==.
-                           00000A    88 	Snixie$NIXIE_Init$7 ==.
-                                     89 ;	Source/Device/Src/nixie.c: 66: void NIXIE_Init(void)
-                                     90 ;	-----------------------------------------
-                                     91 ;	 function NIXIE_Init
-                                     92 ;	-----------------------------------------
-      008CB2                         93 _NIXIE_Init:
-                           00000A    94 	Snixie$NIXIE_Init$8 ==.
-                           00000A    95 	Snixie$NIXIE_Init$9 ==.
-                                     96 ;	Source/Device/Src/nixie.c: 68: GPIO_Init(GPIOC,GPIO_PIN_5,GPIO_MODE_OUT_PP_LOW_FAST);//PC5 SHCP 复用功能
-      008CB2 4B E0            [ 1]   97 	push	#0xe0
-                           00000C    98 	Snixie$NIXIE_Init$10 ==.
-      008CB4 4B 20            [ 1]   99 	push	#0x20
-                           00000E   100 	Snixie$NIXIE_Init$11 ==.
-      008CB6 4B 0A            [ 1]  101 	push	#0x0a
-                           000010   102 	Snixie$NIXIE_Init$12 ==.
-      008CB8 4B 50            [ 1]  103 	push	#0x50
-                           000012   104 	Snixie$NIXIE_Init$13 ==.
-      008CBA CD 82 36         [ 4]  105 	call	_GPIO_Init
-      008CBD 5B 04            [ 2]  106 	addw	sp, #4
-                           000017   107 	Snixie$NIXIE_Init$14 ==.
-                           000017   108 	Snixie$NIXIE_Init$15 ==.
-                                    109 ;	Source/Device/Src/nixie.c: 69: GPIO_Init(GPIOC,GPIO_PIN_6,GPIO_MODE_OUT_PP_LOW_FAST);//PC6 DATA 复用功能
-      008CBF 4B E0            [ 1]  110 	push	#0xe0
-                           000019   111 	Snixie$NIXIE_Init$16 ==.
-      008CC1 4B 40            [ 1]  112 	push	#0x40
-                           00001B   113 	Snixie$NIXIE_Init$17 ==.
-      008CC3 4B 0A            [ 1]  114 	push	#0x0a
-                           00001D   115 	Snixie$NIXIE_Init$18 ==.
-      008CC5 4B 50            [ 1]  116 	push	#0x50
-                           00001F   117 	Snixie$NIXIE_Init$19 ==.
-      008CC7 CD 82 36         [ 4]  118 	call	_GPIO_Init
-      008CCA 5B 04            [ 2]  119 	addw	sp, #4
-                           000024   120 	Snixie$NIXIE_Init$20 ==.
-                           000024   121 	Snixie$NIXIE_Init$21 ==.
-                                    122 ;	Source/Device/Src/nixie.c: 70: GPIO_Init(GPIOC,GPIO_PIN_7,GPIO_MODE_OUT_PP_LOW_FAST);//PC7 STCP 普通IO口
-      008CCC 4B E0            [ 1]  123 	push	#0xe0
-                           000026   124 	Snixie$NIXIE_Init$22 ==.
-      008CCE 4B 80            [ 1]  125 	push	#0x80
-                           000028   126 	Snixie$NIXIE_Init$23 ==.
-      008CD0 4B 0A            [ 1]  127 	push	#0x0a
-                           00002A   128 	Snixie$NIXIE_Init$24 ==.
-      008CD2 4B 50            [ 1]  129 	push	#0x50
-                           00002C   130 	Snixie$NIXIE_Init$25 ==.
-      008CD4 CD 82 36         [ 4]  131 	call	_GPIO_Init
-      008CD7 5B 04            [ 2]  132 	addw	sp, #4
-                           000031   133 	Snixie$NIXIE_Init$26 ==.
-                           000031   134 	Snixie$NIXIE_Init$27 ==.
-                                    135 ;	Source/Device/Src/nixie.c: 71: SPI_DeInit();
-      008CD9 CD 83 E1         [ 4]  136 	call	_SPI_DeInit
-                           000034   137 	Snixie$NIXIE_Init$28 ==.
-                                    138 ;	Source/Device/Src/nixie.c: 73: SPI_Init(SPI_FIRSTBIT_LSB,
-      008CDC 4B 07            [ 1]  139 	push	#0x07
-                           000036   140 	Snixie$NIXIE_Init$29 ==.
-      008CDE 4B 02            [ 1]  141 	push	#0x02
-                           000038   142 	Snixie$NIXIE_Init$30 ==.
-      008CE0 4B C0            [ 1]  143 	push	#0xc0
-                           00003A   144 	Snixie$NIXIE_Init$31 ==.
-      008CE2 4B 00            [ 1]  145 	push	#0x00
-                           00003C   146 	Snixie$NIXIE_Init$32 ==.
-      008CE4 4B 00            [ 1]  147 	push	#0x00
-                           00003E   148 	Snixie$NIXIE_Init$33 ==.
-      008CE6 4B 04            [ 1]  149 	push	#0x04
-                           000040   150 	Snixie$NIXIE_Init$34 ==.
-      008CE8 4B 00            [ 1]  151 	push	#0x00
-                           000042   152 	Snixie$NIXIE_Init$35 ==.
-      008CEA 4B 80            [ 1]  153 	push	#0x80
-                           000044   154 	Snixie$NIXIE_Init$36 ==.
-      008CEC CD 83 F6         [ 4]  155 	call	_SPI_Init
-      008CEF 5B 08            [ 2]  156 	addw	sp, #8
-                           000049   157 	Snixie$NIXIE_Init$37 ==.
-                           000049   158 	Snixie$NIXIE_Init$38 ==.
-                                    159 ;	Source/Device/Src/nixie.c: 81: SPI_Cmd(ENABLE);
-      008CF1 4B 01            [ 1]  160 	push	#0x01
-                           00004B   161 	Snixie$NIXIE_Init$39 ==.
-      008CF3 CD 84 34         [ 4]  162 	call	_SPI_Cmd
-      008CF6 84               [ 1]  163 	pop	a
-                           00004F   164 	Snixie$NIXIE_Init$40 ==.
-                           00004F   165 	Snixie$NIXIE_Init$41 ==.
-                                    166 ;	Source/Device/Src/nixie.c: 82: }
-                           00004F   167 	Snixie$NIXIE_Init$42 ==.
-                           00004F   168 	XG$NIXIE_Init$0$0 ==.
-      008CF7 81               [ 4]  169 	ret
-                           000050   170 	Snixie$NIXIE_Init$43 ==.
-                           000050   171 	Snixie$NIXIE_DisplayChar$44 ==.
-                                    172 ;	Source/Device/Src/nixie.c: 92: uint16_t NIXIE_DisplayChar(uint8_t tubeNum,char* character,FunctionalState tubeState)
-                                    173 ;	-----------------------------------------
-                                    174 ;	 function NIXIE_DisplayChar
-                                    175 ;	-----------------------------------------
-      008CF8                        176 _NIXIE_DisplayChar:
-                           000050   177 	Snixie$NIXIE_DisplayChar$45 ==.
-      008CF8 52 05            [ 2]  178 	sub	sp, #5
-                           000052   179 	Snixie$NIXIE_DisplayChar$46 ==.
-                           000052   180 	Snixie$NIXIE_DisplayChar$47 ==.
-                                    181 ;	Source/Device/Src/nixie.c: 94: uint16_t tmp=0;
-      008CFA 5F               [ 1]  182 	clrw	x
-      008CFB 1F 03            [ 2]  183 	ldw	(0x03, sp), x
-                           000055   184 	Snixie$NIXIE_DisplayChar$48 ==.
-                                    185 ;	Source/Device/Src/nixie.c: 97: if(strchr(character,'.')!=NULL)
-      008CFD 4B 2E            [ 1]  186 	push	#0x2e
-                           000057   187 	Snixie$NIXIE_DisplayChar$49 ==.
-      008CFF 4B 00            [ 1]  188 	push	#0x00
-                           000059   189 	Snixie$NIXIE_DisplayChar$50 ==.
-      008D01 1E 0B            [ 2]  190 	ldw	x, (0x0b, sp)
-      008D03 89               [ 2]  191 	pushw	x
-                           00005C   192 	Snixie$NIXIE_DisplayChar$51 ==.
-      008D04 CD 94 0F         [ 4]  193 	call	_strchr
-      008D07 5B 04            [ 2]  194 	addw	sp, #4
-                           000061   195 	Snixie$NIXIE_DisplayChar$52 ==.
-      008D09 5D               [ 2]  196 	tnzw	x
-      008D0A 27 05            [ 1]  197 	jreq	00118$
-                           000064   198 	Snixie$NIXIE_DisplayChar$53 ==.
-                                    199 ;	Source/Device/Src/nixie.c: 98: tmp|=1<<11;
-      008D0C AE 08 00         [ 2]  200 	ldw	x, #0x0800
-      008D0F 1F 03            [ 2]  201 	ldw	(0x03, sp), x
-                           000069   202 	Snixie$NIXIE_DisplayChar$54 ==.
-                                    203 ;	Source/Device/Src/nixie.c: 99: for(uint8_t i=0;i<9;++i)
-      008D11                        204 00118$:
-      008D11 0F 05            [ 1]  205 	clr	(0x05, sp)
-                           00006B   206 	Snixie$NIXIE_DisplayChar$55 ==.
-      008D13                        207 00111$:
-      008D13 7B 05            [ 1]  208 	ld	a, (0x05, sp)
-      008D15 A1 09            [ 1]  209 	cp	a, #0x09
-      008D17 24 2E            [ 1]  210 	jrnc	00105$
-                           000071   211 	Snixie$NIXIE_DisplayChar$56 ==.
-                           000071   212 	Snixie$NIXIE_DisplayChar$57 ==.
-                                    213 ;	Source/Device/Src/nixie.c: 101: if(strchr(character,'1'+i)!=NULL)
-      008D19 7B 05            [ 1]  214 	ld	a, (0x05, sp)
-      008D1B 5F               [ 1]  215 	clrw	x
-      008D1C 97               [ 1]  216 	ld	xl, a
-      008D1D 1C 00 31         [ 2]  217 	addw	x, #0x0031
-      008D20 89               [ 2]  218 	pushw	x
-                           000079   219 	Snixie$NIXIE_DisplayChar$58 ==.
-      008D21 1E 0B            [ 2]  220 	ldw	x, (0x0b, sp)
-      008D23 89               [ 2]  221 	pushw	x
-                           00007C   222 	Snixie$NIXIE_DisplayChar$59 ==.
-      008D24 CD 94 0F         [ 4]  223 	call	_strchr
-      008D27 5B 04            [ 2]  224 	addw	sp, #4
-                           000081   225 	Snixie$NIXIE_DisplayChar$60 ==.
-      008D29 1F 01            [ 2]  226 	ldw	(0x01, sp), x
-      008D2B 27 16            [ 1]  227 	jreq	00112$
-                           000085   228 	Snixie$NIXIE_DisplayChar$61 ==.
-                                    229 ;	Source/Device/Src/nixie.c: 102: tmp|=1<<10-i;
-      008D2D A6 0A            [ 1]  230 	ld	a, #0x0a
-      008D2F 10 05            [ 1]  231 	sub	a, (0x05, sp)
-      008D31 5F               [ 1]  232 	clrw	x
-      008D32 5C               [ 1]  233 	incw	x
-      008D33 4D               [ 1]  234 	tnz	a
-      008D34 27 04            [ 1]  235 	jreq	00150$
-      008D36                        236 00149$:
-      008D36 58               [ 2]  237 	sllw	x
-      008D37 4A               [ 1]  238 	dec	a
-      008D38 26 FC            [ 1]  239 	jrne	00149$
-      008D3A                        240 00150$:
-      008D3A 9F               [ 1]  241 	ld	a, xl
-      008D3B 1A 04            [ 1]  242 	or	a, (0x04, sp)
-      008D3D 02               [ 1]  243 	rlwa	x
-      008D3E 1A 03            [ 1]  244 	or	a, (0x03, sp)
-      008D40 95               [ 1]  245 	ld	xh, a
-      008D41 1F 03            [ 2]  246 	ldw	(0x03, sp), x
-      008D43                        247 00112$:
-                           00009B   248 	Snixie$NIXIE_DisplayChar$62 ==.
-                           00009B   249 	Snixie$NIXIE_DisplayChar$63 ==.
-                                    250 ;	Source/Device/Src/nixie.c: 99: for(uint8_t i=0;i<9;++i)
-      008D43 0C 05            [ 1]  251 	inc	(0x05, sp)
-      008D45 20 CC            [ 2]  252 	jra	00111$
-      008D47                        253 00105$:
-                           00009F   254 	Snixie$NIXIE_DisplayChar$64 ==.
-                           00009F   255 	Snixie$NIXIE_DisplayChar$65 ==.
-                                    256 ;	Source/Device/Src/nixie.c: 104: if(strchr(character,'0')!=NULL)
-      008D47 4B 30            [ 1]  257 	push	#0x30
-                           0000A1   258 	Snixie$NIXIE_DisplayChar$66 ==.
-      008D49 4B 00            [ 1]  259 	push	#0x00
-                           0000A3   260 	Snixie$NIXIE_DisplayChar$67 ==.
-      008D4B 1E 0B            [ 2]  261 	ldw	x, (0x0b, sp)
-      008D4D 89               [ 2]  262 	pushw	x
-                           0000A6   263 	Snixie$NIXIE_DisplayChar$68 ==.
-      008D4E CD 94 0F         [ 4]  264 	call	_strchr
-      008D51 5B 04            [ 2]  265 	addw	sp, #4
-                           0000AB   266 	Snixie$NIXIE_DisplayChar$69 ==.
-      008D53 5D               [ 2]  267 	tnzw	x
-      008D54 27 0A            [ 1]  268 	jreq	00107$
-                           0000AE   269 	Snixie$NIXIE_DisplayChar$70 ==.
-                                    270 ;	Source/Device/Src/nixie.c: 105: tmp|=1<<1;
-      008D56 7B 04            [ 1]  271 	ld	a, (0x04, sp)
-      008D58 AA 02            [ 1]  272 	or	a, #0x02
-      008D5A 97               [ 1]  273 	ld	xl, a
-      008D5B 7B 03            [ 1]  274 	ld	a, (0x03, sp)
-      008D5D 95               [ 1]  275 	ld	xh, a
-      008D5E 1F 03            [ 2]  276 	ldw	(0x03, sp), x
-      008D60                        277 00107$:
-                           0000B8   278 	Snixie$NIXIE_DisplayChar$71 ==.
-                                    279 ;	Source/Device/Src/nixie.c: 106: if(tubeState==ENABLE)
-      008D60 7B 0B            [ 1]  280 	ld	a, (0x0b, sp)
-      008D62 4A               [ 1]  281 	dec	a
-      008D63 26 07            [ 1]  282 	jrne	00109$
-                           0000BD   283 	Snixie$NIXIE_DisplayChar$72 ==.
-                           0000BD   284 	Snixie$NIXIE_DisplayChar$73 ==.
-                                    285 ;	Source/Device/Src/nixie.c: 107: tmp|=1<<0;
-      008D65 1E 03            [ 2]  286 	ldw	x, (0x03, sp)
-      008D67 54               [ 2]  287 	srlw	x
-      008D68 99               [ 1]  288 	scf
-      008D69 59               [ 2]  289 	rlcw	x
-      008D6A 1F 03            [ 2]  290 	ldw	(0x03, sp), x
-      008D6C                        291 00109$:
-                           0000C4   292 	Snixie$NIXIE_DisplayChar$74 ==.
-                                    293 ;	Source/Device/Src/nixie.c: 109: output=(tmp&0xAAA)>>1;
-      008D6C 1E 03            [ 2]  294 	ldw	x, (0x03, sp)
-      008D6E 9F               [ 1]  295 	ld	a, xl
-      008D6F A4 AA            [ 1]  296 	and	a, #0xaa
-      008D71 90 97            [ 1]  297 	ld	yl, a
-      008D73 9E               [ 1]  298 	ld	a, xh
-      008D74 A4 0A            [ 1]  299 	and	a, #0x0a
-      008D76 90 95            [ 1]  300 	ld	yh, a
-      008D78 90 54            [ 2]  301 	srlw	y
-                           0000D2   302 	Snixie$NIXIE_DisplayChar$75 ==.
-                                    303 ;	Source/Device/Src/nixie.c: 110: output|=(tmp&0x555)<<1;
-      008D7A 9F               [ 1]  304 	ld	a, xl
-      008D7B A4 55            [ 1]  305 	and	a, #0x55
-      008D7D 02               [ 1]  306 	rlwa	x
-      008D7E A4 05            [ 1]  307 	and	a, #0x05
-      008D80 95               [ 1]  308 	ld	xh, a
-      008D81 58               [ 2]  309 	sllw	x
-      008D82 17 04            [ 2]  310 	ldw	(0x04, sp), y
-      008D84 9F               [ 1]  311 	ld	a, xl
-      008D85 1A 05            [ 1]  312 	or	a, (0x05, sp)
-      008D87 02               [ 1]  313 	rlwa	x
-      008D88 1A 04            [ 1]  314 	or	a, (0x04, sp)
-                           0000E2   315 	Snixie$NIXIE_DisplayChar$76 ==.
-                                    316 ;	Source/Device/Src/nixie.c: 112: return output;
-      008D8A 95               [ 1]  317 	ld	xh, a
-                           0000E3   318 	Snixie$NIXIE_DisplayChar$77 ==.
-                                    319 ;	Source/Device/Src/nixie.c: 113: }
-      008D8B 5B 05            [ 2]  320 	addw	sp, #5
-                           0000E5   321 	Snixie$NIXIE_DisplayChar$78 ==.
-                           0000E5   322 	Snixie$NIXIE_DisplayChar$79 ==.
-                           0000E5   323 	XG$NIXIE_DisplayChar$0$0 ==.
-      008D8D 81               [ 4]  324 	ret
-                           0000E6   325 	Snixie$NIXIE_DisplayChar$80 ==.
-                           0000E6   326 	Snixie$NIXIE_DisplayTime$81 ==.
-                                    327 ;	Source/Device/Src/nixie.c: 121: void NIXIE_DisplayTime(uint8_t hour,uint8_t min)
-                                    328 ;	-----------------------------------------
-                                    329 ;	 function NIXIE_DisplayTime
-                                    330 ;	-----------------------------------------
-      008D8E                        331 _NIXIE_DisplayTime:
-                           0000E6   332 	Snixie$NIXIE_DisplayTime$82 ==.
-      008D8E 52 12            [ 2]  333 	sub	sp, #18
-                           0000E8   334 	Snixie$NIXIE_DisplayTime$83 ==.
-                           0000E8   335 	Snixie$NIXIE_DisplayTime$84 ==.
-                                    336 ;	Source/Device/Src/nixie.c: 125: char tube1s[]="0",tube2s[]="0",tube3s[]="0.",tube4s[]="0";
-      008D90 A6 30            [ 1]  337 	ld	a, #0x30
-      008D92 6B 01            [ 1]  338 	ld	(0x01, sp), a
-      008D94 96               [ 1]  339 	ldw	x, sp
-      008D95 6F 02            [ 1]  340 	clr	(2, x)
-      008D97 A6 30            [ 1]  341 	ld	a, #0x30
-      008D99 6B 03            [ 1]  342 	ld	(0x03, sp), a
-      008D9B 96               [ 1]  343 	ldw	x, sp
-      008D9C 6F 04            [ 1]  344 	clr	(4, x)
-      008D9E A6 30            [ 1]  345 	ld	a, #0x30
-      008DA0 6B 05            [ 1]  346 	ld	(0x05, sp), a
-      008DA2 96               [ 1]  347 	ldw	x, sp
-      008DA3 A6 2E            [ 1]  348 	ld	a, #0x2e
-      008DA5 E7 06            [ 1]  349 	ld	(6, x), a
-      008DA7 96               [ 1]  350 	ldw	x, sp
-      008DA8 6F 07            [ 1]  351 	clr	(7, x)
-      008DAA A6 30            [ 1]  352 	ld	a, #0x30
-      008DAC 6B 08            [ 1]  353 	ld	(0x08, sp), a
-      008DAE 96               [ 1]  354 	ldw	x, sp
-      008DAF 6F 09            [ 1]  355 	clr	(9, x)
-                           000109   356 	Snixie$NIXIE_DisplayTime$85 ==.
-                                    357 ;	Source/Device/Src/nixie.c: 127: uint8_t tmp=hour/10;
-      008DB1 7B 15            [ 1]  358 	ld	a, (0x15, sp)
-      008DB3 6B 12            [ 1]  359 	ld	(0x12, sp), a
-      008DB5 0F 11            [ 1]  360 	clr	(0x11, sp)
-      008DB7 4B 0A            [ 1]  361 	push	#0x0a
-                           000111   362 	Snixie$NIXIE_DisplayTime$86 ==.
-      008DB9 4B 00            [ 1]  363 	push	#0x00
-                           000113   364 	Snixie$NIXIE_DisplayTime$87 ==.
-      008DBB 1E 13            [ 2]  365 	ldw	x, (0x13, sp)
-      008DBD 89               [ 2]  366 	pushw	x
-                           000116   367 	Snixie$NIXIE_DisplayTime$88 ==.
-      008DBE CD 94 C7         [ 4]  368 	call	__divsint
-      008DC1 5B 04            [ 2]  369 	addw	sp, #4
-                           00011B   370 	Snixie$NIXIE_DisplayTime$89 ==.
-                           00011B   371 	Snixie$NIXIE_DisplayTime$90 ==.
-                                    372 ;	Source/Device/Src/nixie.c: 128: tube1s[0]+=tmp;
-      008DC3 7B 01            [ 1]  373 	ld	a, (0x01, sp)
-      008DC5 89               [ 2]  374 	pushw	x
-                           00011E   375 	Snixie$NIXIE_DisplayTime$91 ==.
-      008DC6 1B 02            [ 1]  376 	add	a, (2, sp)
-      008DC8 85               [ 2]  377 	popw	x
-                           000121   378 	Snixie$NIXIE_DisplayTime$92 ==.
-      008DC9 6B 01            [ 1]  379 	ld	(0x01, sp), a
-                           000123   380 	Snixie$NIXIE_DisplayTime$93 ==.
-                                    381 ;	Source/Device/Src/nixie.c: 130: tmp=hour%10;
-      008DCB 4B 0A            [ 1]  382 	push	#0x0a
-                           000125   383 	Snixie$NIXIE_DisplayTime$94 ==.
-      008DCD 4B 00            [ 1]  384 	push	#0x00
-                           000127   385 	Snixie$NIXIE_DisplayTime$95 ==.
-      008DCF 1E 13            [ 2]  386 	ldw	x, (0x13, sp)
-      008DD1 89               [ 2]  387 	pushw	x
-                           00012A   388 	Snixie$NIXIE_DisplayTime$96 ==.
-      008DD2 CD 94 35         [ 4]  389 	call	__modsint
-      008DD5 5B 04            [ 2]  390 	addw	sp, #4
-                           00012F   391 	Snixie$NIXIE_DisplayTime$97 ==.
-                           00012F   392 	Snixie$NIXIE_DisplayTime$98 ==.
-                                    393 ;	Source/Device/Src/nixie.c: 131: tube2s[0]+=tmp;
-      008DD7 7B 03            [ 1]  394 	ld	a, (0x03, sp)
-      008DD9 89               [ 2]  395 	pushw	x
-                           000132   396 	Snixie$NIXIE_DisplayTime$99 ==.
-      008DDA 1B 02            [ 1]  397 	add	a, (2, sp)
-      008DDC 85               [ 2]  398 	popw	x
-                           000135   399 	Snixie$NIXIE_DisplayTime$100 ==.
-      008DDD 6B 03            [ 1]  400 	ld	(0x03, sp), a
-                           000137   401 	Snixie$NIXIE_DisplayTime$101 ==.
-                                    402 ;	Source/Device/Src/nixie.c: 133: tmp=min/10;
-      008DDF 7B 16            [ 1]  403 	ld	a, (0x16, sp)
-      008DE1 6B 12            [ 1]  404 	ld	(0x12, sp), a
-      008DE3 0F 11            [ 1]  405 	clr	(0x11, sp)
-      008DE5 4B 0A            [ 1]  406 	push	#0x0a
-                           00013F   407 	Snixie$NIXIE_DisplayTime$102 ==.
-      008DE7 4B 00            [ 1]  408 	push	#0x00
-                           000141   409 	Snixie$NIXIE_DisplayTime$103 ==.
-      008DE9 1E 13            [ 2]  410 	ldw	x, (0x13, sp)
-      008DEB 89               [ 2]  411 	pushw	x
-                           000144   412 	Snixie$NIXIE_DisplayTime$104 ==.
-      008DEC CD 94 C7         [ 4]  413 	call	__divsint
-      008DEF 5B 04            [ 2]  414 	addw	sp, #4
-                           000149   415 	Snixie$NIXIE_DisplayTime$105 ==.
-                           000149   416 	Snixie$NIXIE_DisplayTime$106 ==.
-                                    417 ;	Source/Device/Src/nixie.c: 134: tube3s[0]+=tmp;
-      008DF1 7B 05            [ 1]  418 	ld	a, (0x05, sp)
-      008DF3 89               [ 2]  419 	pushw	x
-                           00014C   420 	Snixie$NIXIE_DisplayTime$107 ==.
-      008DF4 1B 02            [ 1]  421 	add	a, (2, sp)
-      008DF6 85               [ 2]  422 	popw	x
-                           00014F   423 	Snixie$NIXIE_DisplayTime$108 ==.
-      008DF7 6B 05            [ 1]  424 	ld	(0x05, sp), a
-                           000151   425 	Snixie$NIXIE_DisplayTime$109 ==.
-                                    426 ;	Source/Device/Src/nixie.c: 136: tmp=min%10;
-      008DF9 4B 0A            [ 1]  427 	push	#0x0a
-                           000153   428 	Snixie$NIXIE_DisplayTime$110 ==.
-      008DFB 4B 00            [ 1]  429 	push	#0x00
-                           000155   430 	Snixie$NIXIE_DisplayTime$111 ==.
-      008DFD 1E 13            [ 2]  431 	ldw	x, (0x13, sp)
-      008DFF 89               [ 2]  432 	pushw	x
-                           000158   433 	Snixie$NIXIE_DisplayTime$112 ==.
-      008E00 CD 94 35         [ 4]  434 	call	__modsint
-      008E03 5B 04            [ 2]  435 	addw	sp, #4
-                           00015D   436 	Snixie$NIXIE_DisplayTime$113 ==.
-                           00015D   437 	Snixie$NIXIE_DisplayTime$114 ==.
-                                    438 ;	Source/Device/Src/nixie.c: 137: tube4s[0]+=tmp;
-      008E05 7B 08            [ 1]  439 	ld	a, (0x08, sp)
-      008E07 89               [ 2]  440 	pushw	x
-                           000160   441 	Snixie$NIXIE_DisplayTime$115 ==.
-      008E08 1B 02            [ 1]  442 	add	a, (2, sp)
-      008E0A 85               [ 2]  443 	popw	x
-                           000163   444 	Snixie$NIXIE_DisplayTime$116 ==.
-      008E0B 6B 08            [ 1]  445 	ld	(0x08, sp), a
-                           000165   446 	Snixie$NIXIE_DisplayTime$117 ==.
-                                    447 ;	Source/Device/Src/nixie.c: 139: tube1=NIXIE_DisplayChar(1,tube1s,tube_state);
-      008E0D 3B 00 28         [ 1]  448 	push	_tube_state+0
-                           000168   449 	Snixie$NIXIE_DisplayTime$118 ==.
-      008E10 96               [ 1]  450 	ldw	x, sp
-      008E11 5C               [ 1]  451 	incw	x
-      008E12 5C               [ 1]  452 	incw	x
-      008E13 89               [ 2]  453 	pushw	x
-                           00016C   454 	Snixie$NIXIE_DisplayTime$119 ==.
-      008E14 4B 01            [ 1]  455 	push	#0x01
-                           00016E   456 	Snixie$NIXIE_DisplayTime$120 ==.
-      008E16 CD 8C F8         [ 4]  457 	call	_NIXIE_DisplayChar
-      008E19 5B 04            [ 2]  458 	addw	sp, #4
-                           000173   459 	Snixie$NIXIE_DisplayTime$121 ==.
-      008E1B 1F 0A            [ 2]  460 	ldw	(0x0a, sp), x
-                           000175   461 	Snixie$NIXIE_DisplayTime$122 ==.
-                                    462 ;	Source/Device/Src/nixie.c: 140: tube2=NIXIE_DisplayChar(2,tube2s,tube_state);
-      008E1D 3B 00 28         [ 1]  463 	push	_tube_state+0
-                           000178   464 	Snixie$NIXIE_DisplayTime$123 ==.
-      008E20 96               [ 1]  465 	ldw	x, sp
-      008E21 1C 00 04         [ 2]  466 	addw	x, #4
-      008E24 89               [ 2]  467 	pushw	x
-                           00017D   468 	Snixie$NIXIE_DisplayTime$124 ==.
-      008E25 4B 02            [ 1]  469 	push	#0x02
-                           00017F   470 	Snixie$NIXIE_DisplayTime$125 ==.
-      008E27 CD 8C F8         [ 4]  471 	call	_NIXIE_DisplayChar
-      008E2A 5B 04            [ 2]  472 	addw	sp, #4
-                           000184   473 	Snixie$NIXIE_DisplayTime$126 ==.
-      008E2C 1F 0C            [ 2]  474 	ldw	(0x0c, sp), x
-                           000186   475 	Snixie$NIXIE_DisplayTime$127 ==.
-                                    476 ;	Source/Device/Src/nixie.c: 141: tube3=NIXIE_DisplayChar(3,tube3s,tube_state);
-      008E2E 3B 00 28         [ 1]  477 	push	_tube_state+0
-                           000189   478 	Snixie$NIXIE_DisplayTime$128 ==.
-      008E31 96               [ 1]  479 	ldw	x, sp
-      008E32 1C 00 06         [ 2]  480 	addw	x, #6
-      008E35 89               [ 2]  481 	pushw	x
-                           00018E   482 	Snixie$NIXIE_DisplayTime$129 ==.
-      008E36 4B 03            [ 1]  483 	push	#0x03
-                           000190   484 	Snixie$NIXIE_DisplayTime$130 ==.
-      008E38 CD 8C F8         [ 4]  485 	call	_NIXIE_DisplayChar
-      008E3B 5B 04            [ 2]  486 	addw	sp, #4
-                           000195   487 	Snixie$NIXIE_DisplayTime$131 ==.
-      008E3D 1F 0E            [ 2]  488 	ldw	(0x0e, sp), x
-                           000197   489 	Snixie$NIXIE_DisplayTime$132 ==.
-                                    490 ;	Source/Device/Src/nixie.c: 142: tube4=NIXIE_DisplayChar(4,tube4s,tube_state);
-      008E3F 3B 00 28         [ 1]  491 	push	_tube_state+0
-                           00019A   492 	Snixie$NIXIE_DisplayTime$133 ==.
-      008E42 96               [ 1]  493 	ldw	x, sp
-      008E43 1C 00 09         [ 2]  494 	addw	x, #9
-      008E46 89               [ 2]  495 	pushw	x
-                           00019F   496 	Snixie$NIXIE_DisplayTime$134 ==.
-      008E47 4B 04            [ 1]  497 	push	#0x04
-                           0001A1   498 	Snixie$NIXIE_DisplayTime$135 ==.
-      008E49 CD 8C F8         [ 4]  499 	call	_NIXIE_DisplayChar
-      008E4C 5B 04            [ 2]  500 	addw	sp, #4
-                           0001A6   501 	Snixie$NIXIE_DisplayTime$136 ==.
-      008E4E 1F 10            [ 2]  502 	ldw	(0x10, sp), x
-                           0001A8   503 	Snixie$NIXIE_DisplayTime$137 ==.
-                                    504 ;	Source/Device/Src/nixie.c: 146: GPIO_WriteLow(GPIOC,GPIO_PIN_7);//595的输出线拉低
-      008E50 4B 80            [ 1]  505 	push	#0x80
-                           0001AA   506 	Snixie$NIXIE_DisplayTime$138 ==.
-      008E52 4B 0A            [ 1]  507 	push	#0x0a
-                           0001AC   508 	Snixie$NIXIE_DisplayTime$139 ==.
-      008E54 4B 50            [ 1]  509 	push	#0x50
-                           0001AE   510 	Snixie$NIXIE_DisplayTime$140 ==.
-      008E56 CD 82 B2         [ 4]  511 	call	_GPIO_WriteLow
-      008E59 5B 03            [ 2]  512 	addw	sp, #3
-                           0001B3   513 	Snixie$NIXIE_DisplayTime$141 ==.
-                           0001B3   514 	Snixie$NIXIE_DisplayTime$142 ==.
-                           0001B3   515 	Snixie$NIXIE_DisplayTime$143 ==.
-                                    516 ;	Source/Device/Src/nixie.c: 151: tmp1=(uint8_t)((tube4&0b11111110)>>1);
-      008E5B 1E 10            [ 2]  517 	ldw	x, (0x10, sp)
-      008E5D 54               [ 2]  518 	srlw	x
-      008E5E 58               [ 2]  519 	sllw	x
-      008E5F 4F               [ 1]  520 	clr	a
-      008E60 95               [ 1]  521 	ld	xh, a
-      008E61 54               [ 2]  522 	srlw	x
-                           0001BA   523 	Snixie$NIXIE_DisplayTime$144 ==.
-                                    524 ;	Source/Device/Src/nixie.c: 152: tmp2=(uint8_t)((tube4&0b00000001)<<7);
-      008E62 7B 11            [ 1]  525 	ld	a, (0x11, sp)
-      008E64 A4 01            [ 1]  526 	and	a, #0x01
-      008E66 4E               [ 1]  527 	swap	a
-      008E67 A4 F0            [ 1]  528 	and	a, #0xf0
-      008E69 48               [ 1]  529 	sll	a
-      008E6A 48               [ 1]  530 	sll	a
-      008E6B 48               [ 1]  531 	sll	a
-                           0001C4   532 	Snixie$NIXIE_DisplayTime$145 ==.
-                                    533 ;	Source/Device/Src/nixie.c: 153: tmp1=tmp1|tmp2;
-      008E6C 89               [ 2]  534 	pushw	x
-                           0001C5   535 	Snixie$NIXIE_DisplayTime$146 ==.
-      008E6D 1A 02            [ 1]  536 	or	a, (2, sp)
-      008E6F 85               [ 2]  537 	popw	x
-                           0001C8   538 	Snixie$NIXIE_DisplayTime$147 ==.
-                           0001C8   539 	Snixie$NIXIE_DisplayTime$148 ==.
-                                    540 ;	Source/Device/Src/nixie.c: 154: SPI_SendData(tmp1);
-      008E70 88               [ 1]  541 	push	a
-                           0001C9   542 	Snixie$NIXIE_DisplayTime$149 ==.
-      008E71 CD 84 48         [ 4]  543 	call	_SPI_SendData
-      008E74 84               [ 1]  544 	pop	a
-                           0001CD   545 	Snixie$NIXIE_DisplayTime$150 ==.
-                           0001CD   546 	Snixie$NIXIE_DisplayTime$151 ==.
-                                    547 ;	Source/Device/Src/nixie.c: 156: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
-      008E75                        548 00101$:
-      008E75 4B 02            [ 1]  549 	push	#0x02
-                           0001CF   550 	Snixie$NIXIE_DisplayTime$152 ==.
-      008E77 CD 84 4F         [ 4]  551 	call	_SPI_GetFlagStatus
-      008E7A 5B 01            [ 2]  552 	addw	sp, #1
-                           0001D4   553 	Snixie$NIXIE_DisplayTime$153 ==.
-      008E7C 4D               [ 1]  554 	tnz	a
-      008E7D 27 F6            [ 1]  555 	jreq	00101$
-                           0001D7   556 	Snixie$NIXIE_DisplayTime$154 ==.
-                                    557 ;	Source/Device/Src/nixie.c: 158: tmp1=(uint8_t)((tube3&0b1111)<<4);
-      008E7F 7B 0F            [ 1]  558 	ld	a, (0x0f, sp)
-      008E81 A4 0F            [ 1]  559 	and	a, #0x0f
-      008E83 4E               [ 1]  560 	swap	a
-      008E84 A4 F0            [ 1]  561 	and	a, #0xf0
-      008E86 6B 12            [ 1]  562 	ld	(0x12, sp), a
-                           0001E0   563 	Snixie$NIXIE_DisplayTime$155 ==.
-                                    564 ;	Source/Device/Src/nixie.c: 159: tmp2=(uint8_t)(tube4>>8);
-      008E88 7B 10            [ 1]  565 	ld	a, (0x10, sp)
-      008E8A 5F               [ 1]  566 	clrw	x
-                           0001E3   567 	Snixie$NIXIE_DisplayTime$156 ==.
-                                    568 ;	Source/Device/Src/nixie.c: 160: tmp1=tmp1|tmp2;
-      008E8B 1A 12            [ 1]  569 	or	a, (0x12, sp)
-      008E8D 97               [ 1]  570 	ld	xl, a
-                           0001E6   571 	Snixie$NIXIE_DisplayTime$157 ==.
-                                    572 ;	Source/Device/Src/nixie.c: 161: tmp2=(tmp1&0b00000001)<<7;
-      008E8E 9F               [ 1]  573 	ld	a, xl
-      008E8F A4 01            [ 1]  574 	and	a, #0x01
-      008E91 4E               [ 1]  575 	swap	a
-      008E92 A4 F0            [ 1]  576 	and	a, #0xf0
-      008E94 48               [ 1]  577 	sll	a
-      008E95 48               [ 1]  578 	sll	a
-      008E96 48               [ 1]  579 	sll	a
-      008E97 6B 12            [ 1]  580 	ld	(0x12, sp), a
-                           0001F1   581 	Snixie$NIXIE_DisplayTime$158 ==.
-                                    582 ;	Source/Device/Src/nixie.c: 162: tmp1=(tmp1>>1)|tmp2;
-      008E99 9F               [ 1]  583 	ld	a, xl
-      008E9A 44               [ 1]  584 	srl	a
-      008E9B 1A 12            [ 1]  585 	or	a, (0x12, sp)
-                           0001F5   586 	Snixie$NIXIE_DisplayTime$159 ==.
-                                    587 ;	Source/Device/Src/nixie.c: 163: SPI_SendData(tmp1);
-      008E9D 88               [ 1]  588 	push	a
-                           0001F6   589 	Snixie$NIXIE_DisplayTime$160 ==.
-      008E9E CD 84 48         [ 4]  590 	call	_SPI_SendData
-      008EA1 84               [ 1]  591 	pop	a
-                           0001FA   592 	Snixie$NIXIE_DisplayTime$161 ==.
-                           0001FA   593 	Snixie$NIXIE_DisplayTime$162 ==.
-                                    594 ;	Source/Device/Src/nixie.c: 165: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
-      008EA2                        595 00104$:
-      008EA2 4B 02            [ 1]  596 	push	#0x02
-                           0001FC   597 	Snixie$NIXIE_DisplayTime$163 ==.
-      008EA4 CD 84 4F         [ 4]  598 	call	_SPI_GetFlagStatus
-      008EA7 5B 01            [ 2]  599 	addw	sp, #1
-                           000201   600 	Snixie$NIXIE_DisplayTime$164 ==.
-      008EA9 4D               [ 1]  601 	tnz	a
-      008EAA 27 F6            [ 1]  602 	jreq	00104$
-                           000204   603 	Snixie$NIXIE_DisplayTime$165 ==.
-                                    604 ;	Source/Device/Src/nixie.c: 167: tmp1=(uint8_t)(tube3>>5);
-      008EAC 1E 0E            [ 2]  605 	ldw	x, (0x0e, sp)
-      008EAE A6 20            [ 1]  606 	ld	a, #0x20
-      008EB0 62               [ 2]  607 	div	x, a
-      008EB1 41               [ 1]  608 	exg	a, xl
-      008EB2 6B 12            [ 1]  609 	ld	(0x12, sp), a
-      008EB4 41               [ 1]  610 	exg	a, xl
-                           00020D   611 	Snixie$NIXIE_DisplayTime$166 ==.
-                                    612 ;	Source/Device/Src/nixie.c: 168: tmp2=(uint8_t)(((tube3&0b10000)>>4)<<7);
-      008EB5 16 0E            [ 2]  613 	ldw	y, (0x0e, sp)
-      008EB7 5F               [ 1]  614 	clrw	x
-      008EB8 90 9F            [ 1]  615 	ld	a, yl
-      008EBA A4 10            [ 1]  616 	and	a, #0x10
-      008EBC 97               [ 1]  617 	ld	xl, a
-      008EBD A6 10            [ 1]  618 	ld	a, #0x10
-      008EBF 62               [ 2]  619 	div	x, a
-      008EC0 9F               [ 1]  620 	ld	a, xl
-      008EC1 4E               [ 1]  621 	swap	a
-      008EC2 A4 F0            [ 1]  622 	and	a, #0xf0
-      008EC4 48               [ 1]  623 	sll	a
-      008EC5 48               [ 1]  624 	sll	a
-      008EC6 48               [ 1]  625 	sll	a
-                           00021F   626 	Snixie$NIXIE_DisplayTime$167 ==.
-                                    627 ;	Source/Device/Src/nixie.c: 169: tmp1=tmp1|tmp2;
-      008EC7 1A 12            [ 1]  628 	or	a, (0x12, sp)
-                           000221   629 	Snixie$NIXIE_DisplayTime$168 ==.
-                                    630 ;	Source/Device/Src/nixie.c: 170: SPI_SendData(tmp1);
-      008EC9 88               [ 1]  631 	push	a
-                           000222   632 	Snixie$NIXIE_DisplayTime$169 ==.
-      008ECA CD 84 48         [ 4]  633 	call	_SPI_SendData
-      008ECD 84               [ 1]  634 	pop	a
-                           000226   635 	Snixie$NIXIE_DisplayTime$170 ==.
-                           000226   636 	Snixie$NIXIE_DisplayTime$171 ==.
-                                    637 ;	Source/Device/Src/nixie.c: 172: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
-      008ECE                        638 00107$:
-      008ECE 4B 02            [ 1]  639 	push	#0x02
-                           000228   640 	Snixie$NIXIE_DisplayTime$172 ==.
-      008ED0 CD 84 4F         [ 4]  641 	call	_SPI_GetFlagStatus
-      008ED3 5B 01            [ 2]  642 	addw	sp, #1
-                           00022D   643 	Snixie$NIXIE_DisplayTime$173 ==.
-      008ED5 4D               [ 1]  644 	tnz	a
-      008ED6 27 F6            [ 1]  645 	jreq	00107$
-                           000230   646 	Snixie$NIXIE_DisplayTime$174 ==.
-                                    647 ;	Source/Device/Src/nixie.c: 175: tmp1=(uint8_t)((tube2&0b11111110)>>1);
-      008ED8 1E 0C            [ 2]  648 	ldw	x, (0x0c, sp)
-      008EDA 54               [ 2]  649 	srlw	x
-      008EDB 58               [ 2]  650 	sllw	x
-      008EDC 4F               [ 1]  651 	clr	a
-      008EDD 95               [ 1]  652 	ld	xh, a
-      008EDE 54               [ 2]  653 	srlw	x
-                           000237   654 	Snixie$NIXIE_DisplayTime$175 ==.
-                                    655 ;	Source/Device/Src/nixie.c: 176: tmp2=(uint8_t)((tube2&0b00000001)<<7);
-      008EDF 7B 0D            [ 1]  656 	ld	a, (0x0d, sp)
-      008EE1 A4 01            [ 1]  657 	and	a, #0x01
-      008EE3 4E               [ 1]  658 	swap	a
-      008EE4 A4 F0            [ 1]  659 	and	a, #0xf0
-      008EE6 48               [ 1]  660 	sll	a
-      008EE7 48               [ 1]  661 	sll	a
-      008EE8 48               [ 1]  662 	sll	a
-                           000241   663 	Snixie$NIXIE_DisplayTime$176 ==.
-                                    664 ;	Source/Device/Src/nixie.c: 177: tmp1=tmp1|tmp2;
-      008EE9 89               [ 2]  665 	pushw	x
-                           000242   666 	Snixie$NIXIE_DisplayTime$177 ==.
-      008EEA 1A 02            [ 1]  667 	or	a, (2, sp)
-      008EEC 85               [ 2]  668 	popw	x
-                           000245   669 	Snixie$NIXIE_DisplayTime$178 ==.
-                           000245   670 	Snixie$NIXIE_DisplayTime$179 ==.
-                                    671 ;	Source/Device/Src/nixie.c: 178: SPI_SendData(tmp1);
-      008EED 88               [ 1]  672 	push	a
-                           000246   673 	Snixie$NIXIE_DisplayTime$180 ==.
-      008EEE CD 84 48         [ 4]  674 	call	_SPI_SendData
-      008EF1 84               [ 1]  675 	pop	a
-                           00024A   676 	Snixie$NIXIE_DisplayTime$181 ==.
+                                     52 ; absolute external ram data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area DABS (ABS)
+                                     55 
+                                     56 ; default segment ordering for linker
+                                     57 	.area HOME
+                                     58 	.area GSINIT
+                                     59 	.area GSFINAL
+                                     60 	.area CONST
+                                     61 	.area INITIALIZER
+                                     62 	.area CODE
+                                     63 
+                                     64 ;--------------------------------------------------------
+                                     65 ; global & static initialisations
+                                     66 ;--------------------------------------------------------
+                                     67 	.area HOME
+                                     68 	.area GSINIT
+                                     69 	.area GSFINAL
+                                     70 	.area GSINIT
+                                     71 ;--------------------------------------------------------
+                                     72 ; Home
+                                     73 ;--------------------------------------------------------
+                                     74 	.area HOME
+                                     75 	.area HOME
+                                     76 ;--------------------------------------------------------
+                                     77 ; code
+                                     78 ;--------------------------------------------------------
+                                     79 	.area CODE
+                           000000    80 	Snixie$NIXIE_Init$0 ==.
+                                     81 ;	Source/Device/Src/nixie.c: 58: void NIXIE_Init(void)
+                                     82 ;	-----------------------------------------
+                                     83 ;	 function NIXIE_Init
+                                     84 ;	-----------------------------------------
+      008C90                         85 _NIXIE_Init:
+                           000000    86 	Snixie$NIXIE_Init$1 ==.
+      008C90 52 03            [ 2]   87 	sub	sp, #3
+                           000002    88 	Snixie$NIXIE_Init$2 ==.
+                           000002    89 	Snixie$NIXIE_Init$3 ==.
+                                     90 ;	Source/Device/Src/nixie.c: 60: GPIO_Init(GPIOC,GPIO_PIN_5,GPIO_MODE_OUT_PP_LOW_FAST);//PC5 SHCP 复用功能
+      008C92 4B E0            [ 1]   91 	push	#0xe0
+                           000004    92 	Snixie$NIXIE_Init$4 ==.
+      008C94 4B 20            [ 1]   93 	push	#0x20
+                           000006    94 	Snixie$NIXIE_Init$5 ==.
+      008C96 4B 0A            [ 1]   95 	push	#0x0a
+                           000008    96 	Snixie$NIXIE_Init$6 ==.
+      008C98 4B 50            [ 1]   97 	push	#0x50
+                           00000A    98 	Snixie$NIXIE_Init$7 ==.
+      008C9A CD 82 1E         [ 4]   99 	call	_GPIO_Init
+      008C9D 5B 04            [ 2]  100 	addw	sp, #4
+                           00000F   101 	Snixie$NIXIE_Init$8 ==.
+                           00000F   102 	Snixie$NIXIE_Init$9 ==.
+                                    103 ;	Source/Device/Src/nixie.c: 61: GPIO_Init(GPIOC,GPIO_PIN_6,GPIO_MODE_OUT_PP_LOW_FAST);//PC6 DATA 复用功能
+      008C9F 4B E0            [ 1]  104 	push	#0xe0
+                           000011   105 	Snixie$NIXIE_Init$10 ==.
+      008CA1 4B 40            [ 1]  106 	push	#0x40
+                           000013   107 	Snixie$NIXIE_Init$11 ==.
+      008CA3 4B 0A            [ 1]  108 	push	#0x0a
+                           000015   109 	Snixie$NIXIE_Init$12 ==.
+      008CA5 4B 50            [ 1]  110 	push	#0x50
+                           000017   111 	Snixie$NIXIE_Init$13 ==.
+      008CA7 CD 82 1E         [ 4]  112 	call	_GPIO_Init
+      008CAA 5B 04            [ 2]  113 	addw	sp, #4
+                           00001C   114 	Snixie$NIXIE_Init$14 ==.
+                           00001C   115 	Snixie$NIXIE_Init$15 ==.
+                                    116 ;	Source/Device/Src/nixie.c: 62: GPIO_Init(GPIOC,GPIO_PIN_7,GPIO_MODE_OUT_PP_LOW_FAST);//PC7 STCP 普通IO口
+      008CAC 4B E0            [ 1]  117 	push	#0xe0
+                           00001E   118 	Snixie$NIXIE_Init$16 ==.
+      008CAE 4B 80            [ 1]  119 	push	#0x80
+                           000020   120 	Snixie$NIXIE_Init$17 ==.
+      008CB0 4B 0A            [ 1]  121 	push	#0x0a
+                           000022   122 	Snixie$NIXIE_Init$18 ==.
+      008CB2 4B 50            [ 1]  123 	push	#0x50
+                           000024   124 	Snixie$NIXIE_Init$19 ==.
+      008CB4 CD 82 1E         [ 4]  125 	call	_GPIO_Init
+      008CB7 5B 04            [ 2]  126 	addw	sp, #4
+                           000029   127 	Snixie$NIXIE_Init$20 ==.
+                           000029   128 	Snixie$NIXIE_Init$21 ==.
+                                    129 ;	Source/Device/Src/nixie.c: 63: SPI_DeInit();
+      008CB9 CD 83 C9         [ 4]  130 	call	_SPI_DeInit
+                           00002C   131 	Snixie$NIXIE_Init$22 ==.
+                                    132 ;	Source/Device/Src/nixie.c: 65: SPI_Init(SPI_FIRSTBIT_LSB,
+      008CBC 4B 07            [ 1]  133 	push	#0x07
+                           00002E   134 	Snixie$NIXIE_Init$23 ==.
+      008CBE 4B 02            [ 1]  135 	push	#0x02
+                           000030   136 	Snixie$NIXIE_Init$24 ==.
+      008CC0 4B C0            [ 1]  137 	push	#0xc0
+                           000032   138 	Snixie$NIXIE_Init$25 ==.
+      008CC2 4B 00            [ 1]  139 	push	#0x00
+                           000034   140 	Snixie$NIXIE_Init$26 ==.
+      008CC4 4B 00            [ 1]  141 	push	#0x00
+                           000036   142 	Snixie$NIXIE_Init$27 ==.
+      008CC6 4B 04            [ 1]  143 	push	#0x04
+                           000038   144 	Snixie$NIXIE_Init$28 ==.
+      008CC8 4B 00            [ 1]  145 	push	#0x00
+                           00003A   146 	Snixie$NIXIE_Init$29 ==.
+      008CCA 4B 80            [ 1]  147 	push	#0x80
+                           00003C   148 	Snixie$NIXIE_Init$30 ==.
+      008CCC CD 83 DE         [ 4]  149 	call	_SPI_Init
+      008CCF 5B 08            [ 2]  150 	addw	sp, #8
+                           000041   151 	Snixie$NIXIE_Init$31 ==.
+                           000041   152 	Snixie$NIXIE_Init$32 ==.
+                                    153 ;	Source/Device/Src/nixie.c: 73: SPI_Cmd(ENABLE);
+      008CD1 4B 01            [ 1]  154 	push	#0x01
+                           000043   155 	Snixie$NIXIE_Init$33 ==.
+      008CD3 CD 84 1C         [ 4]  156 	call	_SPI_Cmd
+      008CD6 84               [ 1]  157 	pop	a
+                           000047   158 	Snixie$NIXIE_Init$34 ==.
+                           000047   159 	Snixie$NIXIE_Init$35 ==.
+                                    160 ;	Source/Device/Src/nixie.c: 76: for(uint8_t i=0;i<10;++i)
+      008CD7 0F 01            [ 1]  161 	clr	(0x01, sp)
+                           000049   162 	Snixie$NIXIE_Init$36 ==.
+      008CD9                        163 00111$:
+      008CD9 7B 01            [ 1]  164 	ld	a, (0x01, sp)
+      008CDB A1 0A            [ 1]  165 	cp	a, #0x0a
+      008CDD 25 03            [ 1]  166 	jrc	00148$
+      008CDF CC 8D 1A         [ 2]  167 	jp	00113$
+      008CE2                        168 00148$:
+                           000052   169 	Snixie$NIXIE_Init$37 ==.
+                           000052   170 	Snixie$NIXIE_Init$38 ==.
+                                    171 ;	Source/Device/Src/nixie.c: 78: tube_state=ENABLE;
+      008CE2 35 01 00 28      [ 1]  172 	mov	_tube_state+0, #0x01
+                           000056   173 	Snixie$NIXIE_Init$39 ==.
+                                    174 ;	Source/Device/Src/nixie.c: 79: NIXIE_DisplayTime(i*10+i,i*10+i);
+      008CE6 7B 01            [ 1]  175 	ld	a, (0x01, sp)
+      008CE8 97               [ 1]  176 	ld	xl, a
+      008CE9 A6 0A            [ 1]  177 	ld	a, #0x0a
+      008CEB 42               [ 4]  178 	mul	x, a
+      008CEC 7B 01            [ 1]  179 	ld	a, (0x01, sp)
+      008CEE 89               [ 2]  180 	pushw	x
+                           00005F   181 	Snixie$NIXIE_Init$40 ==.
+      008CEF 1B 02            [ 1]  182 	add	a, (2, sp)
+      008CF1 85               [ 2]  183 	popw	x
+                           000062   184 	Snixie$NIXIE_Init$41 ==.
+      008CF2 88               [ 1]  185 	push	a
+                           000063   186 	Snixie$NIXIE_Init$42 ==.
+      008CF3 88               [ 1]  187 	push	a
+                           000064   188 	Snixie$NIXIE_Init$43 ==.
+      008CF4 CD 8D B3         [ 4]  189 	call	_NIXIE_DisplayTime
+      008CF7 85               [ 2]  190 	popw	x
+                           000068   191 	Snixie$NIXIE_Init$44 ==.
+                           000068   192 	Snixie$NIXIE_Init$45 ==.
+                           000068   193 	Snixie$NIXIE_Init$46 ==.
+                                    194 ;	Source/Device/Src/nixie.c: 80: for(uint16_t k=0;k<100;++k)
+      008CF8 5F               [ 1]  195 	clrw	x
+      008CF9 1F 02            [ 2]  196 	ldw	(0x02, sp), x
+                           00006B   197 	Snixie$NIXIE_Init$47 ==.
+      008CFB                        198 00108$:
+      008CFB 1E 02            [ 2]  199 	ldw	x, (0x02, sp)
+      008CFD A3 00 64         [ 2]  200 	cpw	x, #0x0064
+      008D00 24 13            [ 1]  201 	jrnc	00112$
+                           000072   202 	Snixie$NIXIE_Init$48 ==.
+                           000072   203 	Snixie$NIXIE_Init$49 ==.
+                                    204 ;	Source/Device/Src/nixie.c: 82: for(uint16_t j=0;j<1000;++j);
+      008D02 5F               [ 1]  205 	clrw	x
+                           000073   206 	Snixie$NIXIE_Init$50 ==.
+      008D03                        207 00105$:
+      008D03 90 93            [ 1]  208 	ldw	y, x
+      008D05 90 A3 03 E8      [ 2]  209 	cpw	y, #0x03e8
+      008D09 24 03            [ 1]  210 	jrnc	00109$
+      008D0B 5C               [ 1]  211 	incw	x
+      008D0C 20 F5            [ 2]  212 	jra	00105$
+      008D0E                        213 00109$:
+                           00007E   214 	Snixie$NIXIE_Init$51 ==.
+                           00007E   215 	Snixie$NIXIE_Init$52 ==.
+                                    216 ;	Source/Device/Src/nixie.c: 80: for(uint16_t k=0;k<100;++k)
+      008D0E 1E 02            [ 2]  217 	ldw	x, (0x02, sp)
+      008D10 5C               [ 1]  218 	incw	x
+      008D11 1F 02            [ 2]  219 	ldw	(0x02, sp), x
+      008D13 20 E6            [ 2]  220 	jra	00108$
+      008D15                        221 00112$:
+                           000085   222 	Snixie$NIXIE_Init$53 ==.
+                           000085   223 	Snixie$NIXIE_Init$54 ==.
+                                    224 ;	Source/Device/Src/nixie.c: 76: for(uint8_t i=0;i<10;++i)
+      008D15 0C 01            [ 1]  225 	inc	(0x01, sp)
+      008D17 CC 8C D9         [ 2]  226 	jp	00111$
+                           00008A   227 	Snixie$NIXIE_Init$55 ==.
+      008D1A                        228 00113$:
+                           00008A   229 	Snixie$NIXIE_Init$56 ==.
+                                    230 ;	Source/Device/Src/nixie.c: 85: }
+      008D1A 5B 03            [ 2]  231 	addw	sp, #3
+                           00008C   232 	Snixie$NIXIE_Init$57 ==.
+                           00008C   233 	Snixie$NIXIE_Init$58 ==.
+                           00008C   234 	XG$NIXIE_Init$0$0 ==.
+      008D1C 81               [ 4]  235 	ret
+                           00008D   236 	Snixie$NIXIE_Init$59 ==.
+                           00008D   237 	Snixie$NIXIE_DisplayChar$60 ==.
+                                    238 ;	Source/Device/Src/nixie.c: 96: uint16_t NIXIE_DisplayChar(uint8_t tubeNum,char* character,FunctionalState tubeState)
+                                    239 ;	-----------------------------------------
+                                    240 ;	 function NIXIE_DisplayChar
+                                    241 ;	-----------------------------------------
+      008D1D                        242 _NIXIE_DisplayChar:
+                           00008D   243 	Snixie$NIXIE_DisplayChar$61 ==.
+      008D1D 52 05            [ 2]  244 	sub	sp, #5
+                           00008F   245 	Snixie$NIXIE_DisplayChar$62 ==.
+                           00008F   246 	Snixie$NIXIE_DisplayChar$63 ==.
+                                    247 ;	Source/Device/Src/nixie.c: 98: uint16_t tmp=0;
+      008D1F 5F               [ 1]  248 	clrw	x
+      008D20 1F 03            [ 2]  249 	ldw	(0x03, sp), x
+                           000092   250 	Snixie$NIXIE_DisplayChar$64 ==.
+                                    251 ;	Source/Device/Src/nixie.c: 101: if(strchr(character,'.')!=NULL)
+      008D22 4B 2E            [ 1]  252 	push	#0x2e
+                           000094   253 	Snixie$NIXIE_DisplayChar$65 ==.
+      008D24 4B 00            [ 1]  254 	push	#0x00
+                           000096   255 	Snixie$NIXIE_DisplayChar$66 ==.
+      008D26 1E 0B            [ 2]  256 	ldw	x, (0x0b, sp)
+      008D28 89               [ 2]  257 	pushw	x
+                           000099   258 	Snixie$NIXIE_DisplayChar$67 ==.
+      008D29 CD 95 8F         [ 4]  259 	call	_strchr
+      008D2C 5B 04            [ 2]  260 	addw	sp, #4
+                           00009E   261 	Snixie$NIXIE_DisplayChar$68 ==.
+      008D2E 5D               [ 2]  262 	tnzw	x
+      008D2F 27 05            [ 1]  263 	jreq	00118$
+                           0000A1   264 	Snixie$NIXIE_DisplayChar$69 ==.
+                                    265 ;	Source/Device/Src/nixie.c: 102: tmp|=1<<11;
+      008D31 AE 08 00         [ 2]  266 	ldw	x, #0x0800
+      008D34 1F 03            [ 2]  267 	ldw	(0x03, sp), x
+                           0000A6   268 	Snixie$NIXIE_DisplayChar$70 ==.
+                                    269 ;	Source/Device/Src/nixie.c: 103: for(uint8_t i=0;i<9;++i)
+      008D36                        270 00118$:
+      008D36 0F 05            [ 1]  271 	clr	(0x05, sp)
+                           0000A8   272 	Snixie$NIXIE_DisplayChar$71 ==.
+      008D38                        273 00111$:
+      008D38 7B 05            [ 1]  274 	ld	a, (0x05, sp)
+      008D3A A1 09            [ 1]  275 	cp	a, #0x09
+      008D3C 24 2E            [ 1]  276 	jrnc	00105$
+                           0000AE   277 	Snixie$NIXIE_DisplayChar$72 ==.
+                           0000AE   278 	Snixie$NIXIE_DisplayChar$73 ==.
+                                    279 ;	Source/Device/Src/nixie.c: 105: if(strchr(character,'1'+i)!=NULL)
+      008D3E 7B 05            [ 1]  280 	ld	a, (0x05, sp)
+      008D40 5F               [ 1]  281 	clrw	x
+      008D41 97               [ 1]  282 	ld	xl, a
+      008D42 1C 00 31         [ 2]  283 	addw	x, #0x0031
+      008D45 89               [ 2]  284 	pushw	x
+                           0000B6   285 	Snixie$NIXIE_DisplayChar$74 ==.
+      008D46 1E 0B            [ 2]  286 	ldw	x, (0x0b, sp)
+      008D48 89               [ 2]  287 	pushw	x
+                           0000B9   288 	Snixie$NIXIE_DisplayChar$75 ==.
+      008D49 CD 95 8F         [ 4]  289 	call	_strchr
+      008D4C 5B 04            [ 2]  290 	addw	sp, #4
+                           0000BE   291 	Snixie$NIXIE_DisplayChar$76 ==.
+      008D4E 1F 01            [ 2]  292 	ldw	(0x01, sp), x
+      008D50 27 16            [ 1]  293 	jreq	00112$
+                           0000C2   294 	Snixie$NIXIE_DisplayChar$77 ==.
+                                    295 ;	Source/Device/Src/nixie.c: 106: tmp|=1<<10-i;
+      008D52 A6 0A            [ 1]  296 	ld	a, #0x0a
+      008D54 10 05            [ 1]  297 	sub	a, (0x05, sp)
+      008D56 5F               [ 1]  298 	clrw	x
+      008D57 5C               [ 1]  299 	incw	x
+      008D58 4D               [ 1]  300 	tnz	a
+      008D59 27 04            [ 1]  301 	jreq	00150$
+      008D5B                        302 00149$:
+      008D5B 58               [ 2]  303 	sllw	x
+      008D5C 4A               [ 1]  304 	dec	a
+      008D5D 26 FC            [ 1]  305 	jrne	00149$
+      008D5F                        306 00150$:
+      008D5F 9F               [ 1]  307 	ld	a, xl
+      008D60 1A 04            [ 1]  308 	or	a, (0x04, sp)
+      008D62 02               [ 1]  309 	rlwa	x
+      008D63 1A 03            [ 1]  310 	or	a, (0x03, sp)
+      008D65 95               [ 1]  311 	ld	xh, a
+      008D66 1F 03            [ 2]  312 	ldw	(0x03, sp), x
+      008D68                        313 00112$:
+                           0000D8   314 	Snixie$NIXIE_DisplayChar$78 ==.
+                           0000D8   315 	Snixie$NIXIE_DisplayChar$79 ==.
+                                    316 ;	Source/Device/Src/nixie.c: 103: for(uint8_t i=0;i<9;++i)
+      008D68 0C 05            [ 1]  317 	inc	(0x05, sp)
+      008D6A 20 CC            [ 2]  318 	jra	00111$
+      008D6C                        319 00105$:
+                           0000DC   320 	Snixie$NIXIE_DisplayChar$80 ==.
+                           0000DC   321 	Snixie$NIXIE_DisplayChar$81 ==.
+                                    322 ;	Source/Device/Src/nixie.c: 108: if(strchr(character,'0')!=NULL)
+      008D6C 4B 30            [ 1]  323 	push	#0x30
+                           0000DE   324 	Snixie$NIXIE_DisplayChar$82 ==.
+      008D6E 4B 00            [ 1]  325 	push	#0x00
+                           0000E0   326 	Snixie$NIXIE_DisplayChar$83 ==.
+      008D70 1E 0B            [ 2]  327 	ldw	x, (0x0b, sp)
+      008D72 89               [ 2]  328 	pushw	x
+                           0000E3   329 	Snixie$NIXIE_DisplayChar$84 ==.
+      008D73 CD 95 8F         [ 4]  330 	call	_strchr
+      008D76 5B 04            [ 2]  331 	addw	sp, #4
+                           0000E8   332 	Snixie$NIXIE_DisplayChar$85 ==.
+      008D78 5D               [ 2]  333 	tnzw	x
+      008D79 27 0A            [ 1]  334 	jreq	00107$
+                           0000EB   335 	Snixie$NIXIE_DisplayChar$86 ==.
+                                    336 ;	Source/Device/Src/nixie.c: 109: tmp|=1<<1;
+      008D7B 7B 04            [ 1]  337 	ld	a, (0x04, sp)
+      008D7D AA 02            [ 1]  338 	or	a, #0x02
+      008D7F 97               [ 1]  339 	ld	xl, a
+      008D80 7B 03            [ 1]  340 	ld	a, (0x03, sp)
+      008D82 95               [ 1]  341 	ld	xh, a
+      008D83 1F 03            [ 2]  342 	ldw	(0x03, sp), x
+      008D85                        343 00107$:
+                           0000F5   344 	Snixie$NIXIE_DisplayChar$87 ==.
+                                    345 ;	Source/Device/Src/nixie.c: 110: if(tubeState==ENABLE)
+      008D85 7B 0B            [ 1]  346 	ld	a, (0x0b, sp)
+      008D87 4A               [ 1]  347 	dec	a
+      008D88 26 07            [ 1]  348 	jrne	00109$
+                           0000FA   349 	Snixie$NIXIE_DisplayChar$88 ==.
+                           0000FA   350 	Snixie$NIXIE_DisplayChar$89 ==.
+                                    351 ;	Source/Device/Src/nixie.c: 111: tmp|=1<<0;
+      008D8A 1E 03            [ 2]  352 	ldw	x, (0x03, sp)
+      008D8C 54               [ 2]  353 	srlw	x
+      008D8D 99               [ 1]  354 	scf
+      008D8E 59               [ 2]  355 	rlcw	x
+      008D8F 1F 03            [ 2]  356 	ldw	(0x03, sp), x
+      008D91                        357 00109$:
+                           000101   358 	Snixie$NIXIE_DisplayChar$90 ==.
+                                    359 ;	Source/Device/Src/nixie.c: 113: output=(tmp&0xAAA)>>1;
+      008D91 1E 03            [ 2]  360 	ldw	x, (0x03, sp)
+      008D93 9F               [ 1]  361 	ld	a, xl
+      008D94 A4 AA            [ 1]  362 	and	a, #0xaa
+      008D96 90 97            [ 1]  363 	ld	yl, a
+      008D98 9E               [ 1]  364 	ld	a, xh
+      008D99 A4 0A            [ 1]  365 	and	a, #0x0a
+      008D9B 90 95            [ 1]  366 	ld	yh, a
+      008D9D 90 54            [ 2]  367 	srlw	y
+                           00010F   368 	Snixie$NIXIE_DisplayChar$91 ==.
+                                    369 ;	Source/Device/Src/nixie.c: 114: output|=(tmp&0x555)<<1;
+      008D9F 9F               [ 1]  370 	ld	a, xl
+      008DA0 A4 55            [ 1]  371 	and	a, #0x55
+      008DA2 02               [ 1]  372 	rlwa	x
+      008DA3 A4 05            [ 1]  373 	and	a, #0x05
+      008DA5 95               [ 1]  374 	ld	xh, a
+      008DA6 58               [ 2]  375 	sllw	x
+      008DA7 17 04            [ 2]  376 	ldw	(0x04, sp), y
+      008DA9 9F               [ 1]  377 	ld	a, xl
+      008DAA 1A 05            [ 1]  378 	or	a, (0x05, sp)
+      008DAC 02               [ 1]  379 	rlwa	x
+      008DAD 1A 04            [ 1]  380 	or	a, (0x04, sp)
+                           00011F   381 	Snixie$NIXIE_DisplayChar$92 ==.
+                                    382 ;	Source/Device/Src/nixie.c: 116: return output;
+      008DAF 95               [ 1]  383 	ld	xh, a
+                           000120   384 	Snixie$NIXIE_DisplayChar$93 ==.
+                                    385 ;	Source/Device/Src/nixie.c: 117: }
+      008DB0 5B 05            [ 2]  386 	addw	sp, #5
+                           000122   387 	Snixie$NIXIE_DisplayChar$94 ==.
+                           000122   388 	Snixie$NIXIE_DisplayChar$95 ==.
+                           000122   389 	XG$NIXIE_DisplayChar$0$0 ==.
+      008DB2 81               [ 4]  390 	ret
+                           000123   391 	Snixie$NIXIE_DisplayChar$96 ==.
+                           000123   392 	Snixie$NIXIE_DisplayTime$97 ==.
+                                    393 ;	Source/Device/Src/nixie.c: 135: void NIXIE_DisplayTime(uint8_t hour,uint8_t min)
+                                    394 ;	-----------------------------------------
+                                    395 ;	 function NIXIE_DisplayTime
+                                    396 ;	-----------------------------------------
+      008DB3                        397 _NIXIE_DisplayTime:
+                           000123   398 	Snixie$NIXIE_DisplayTime$98 ==.
+      008DB3 52 12            [ 2]  399 	sub	sp, #18
+                           000125   400 	Snixie$NIXIE_DisplayTime$99 ==.
+                           000125   401 	Snixie$NIXIE_DisplayTime$100 ==.
+                                    402 ;	Source/Device/Src/nixie.c: 139: char tube1s[]="0",tube2s[]="0",tube3s[]="0.",tube4s[]="0";
+      008DB5 A6 30            [ 1]  403 	ld	a, #0x30
+      008DB7 6B 01            [ 1]  404 	ld	(0x01, sp), a
+      008DB9 96               [ 1]  405 	ldw	x, sp
+      008DBA 6F 02            [ 1]  406 	clr	(2, x)
+      008DBC A6 30            [ 1]  407 	ld	a, #0x30
+      008DBE 6B 03            [ 1]  408 	ld	(0x03, sp), a
+      008DC0 96               [ 1]  409 	ldw	x, sp
+      008DC1 6F 04            [ 1]  410 	clr	(4, x)
+      008DC3 A6 30            [ 1]  411 	ld	a, #0x30
+      008DC5 6B 05            [ 1]  412 	ld	(0x05, sp), a
+      008DC7 96               [ 1]  413 	ldw	x, sp
+      008DC8 A6 2E            [ 1]  414 	ld	a, #0x2e
+      008DCA E7 06            [ 1]  415 	ld	(6, x), a
+      008DCC 96               [ 1]  416 	ldw	x, sp
+      008DCD 6F 07            [ 1]  417 	clr	(7, x)
+      008DCF A6 30            [ 1]  418 	ld	a, #0x30
+      008DD1 6B 08            [ 1]  419 	ld	(0x08, sp), a
+      008DD3 96               [ 1]  420 	ldw	x, sp
+      008DD4 6F 09            [ 1]  421 	clr	(9, x)
+                           000146   422 	Snixie$NIXIE_DisplayTime$101 ==.
+                                    423 ;	Source/Device/Src/nixie.c: 141: uint8_t tmp=hour/10;
+      008DD6 7B 15            [ 1]  424 	ld	a, (0x15, sp)
+      008DD8 6B 12            [ 1]  425 	ld	(0x12, sp), a
+      008DDA 0F 11            [ 1]  426 	clr	(0x11, sp)
+      008DDC 4B 0A            [ 1]  427 	push	#0x0a
+                           00014E   428 	Snixie$NIXIE_DisplayTime$102 ==.
+      008DDE 4B 00            [ 1]  429 	push	#0x00
+                           000150   430 	Snixie$NIXIE_DisplayTime$103 ==.
+      008DE0 1E 13            [ 2]  431 	ldw	x, (0x13, sp)
+      008DE2 89               [ 2]  432 	pushw	x
+                           000153   433 	Snixie$NIXIE_DisplayTime$104 ==.
+      008DE3 CD 96 47         [ 4]  434 	call	__divsint
+      008DE6 5B 04            [ 2]  435 	addw	sp, #4
+                           000158   436 	Snixie$NIXIE_DisplayTime$105 ==.
+                           000158   437 	Snixie$NIXIE_DisplayTime$106 ==.
+                                    438 ;	Source/Device/Src/nixie.c: 142: tube1s[0]+=tmp;
+      008DE8 7B 01            [ 1]  439 	ld	a, (0x01, sp)
+      008DEA 89               [ 2]  440 	pushw	x
+                           00015B   441 	Snixie$NIXIE_DisplayTime$107 ==.
+      008DEB 1B 02            [ 1]  442 	add	a, (2, sp)
+      008DED 85               [ 2]  443 	popw	x
+                           00015E   444 	Snixie$NIXIE_DisplayTime$108 ==.
+      008DEE 6B 01            [ 1]  445 	ld	(0x01, sp), a
+                           000160   446 	Snixie$NIXIE_DisplayTime$109 ==.
+                                    447 ;	Source/Device/Src/nixie.c: 144: tmp=hour%10;
+      008DF0 4B 0A            [ 1]  448 	push	#0x0a
+                           000162   449 	Snixie$NIXIE_DisplayTime$110 ==.
+      008DF2 4B 00            [ 1]  450 	push	#0x00
+                           000164   451 	Snixie$NIXIE_DisplayTime$111 ==.
+      008DF4 1E 13            [ 2]  452 	ldw	x, (0x13, sp)
+      008DF6 89               [ 2]  453 	pushw	x
+                           000167   454 	Snixie$NIXIE_DisplayTime$112 ==.
+      008DF7 CD 96 31         [ 4]  455 	call	__modsint
+      008DFA 5B 04            [ 2]  456 	addw	sp, #4
+                           00016C   457 	Snixie$NIXIE_DisplayTime$113 ==.
+                           00016C   458 	Snixie$NIXIE_DisplayTime$114 ==.
+                                    459 ;	Source/Device/Src/nixie.c: 145: tube2s[0]+=tmp;
+      008DFC 7B 03            [ 1]  460 	ld	a, (0x03, sp)
+      008DFE 89               [ 2]  461 	pushw	x
+                           00016F   462 	Snixie$NIXIE_DisplayTime$115 ==.
+      008DFF 1B 02            [ 1]  463 	add	a, (2, sp)
+      008E01 85               [ 2]  464 	popw	x
+                           000172   465 	Snixie$NIXIE_DisplayTime$116 ==.
+      008E02 6B 03            [ 1]  466 	ld	(0x03, sp), a
+                           000174   467 	Snixie$NIXIE_DisplayTime$117 ==.
+                                    468 ;	Source/Device/Src/nixie.c: 147: tmp=min/10;
+      008E04 7B 16            [ 1]  469 	ld	a, (0x16, sp)
+      008E06 6B 12            [ 1]  470 	ld	(0x12, sp), a
+      008E08 0F 11            [ 1]  471 	clr	(0x11, sp)
+      008E0A 4B 0A            [ 1]  472 	push	#0x0a
+                           00017C   473 	Snixie$NIXIE_DisplayTime$118 ==.
+      008E0C 4B 00            [ 1]  474 	push	#0x00
+                           00017E   475 	Snixie$NIXIE_DisplayTime$119 ==.
+      008E0E 1E 13            [ 2]  476 	ldw	x, (0x13, sp)
+      008E10 89               [ 2]  477 	pushw	x
+                           000181   478 	Snixie$NIXIE_DisplayTime$120 ==.
+      008E11 CD 96 47         [ 4]  479 	call	__divsint
+      008E14 5B 04            [ 2]  480 	addw	sp, #4
+                           000186   481 	Snixie$NIXIE_DisplayTime$121 ==.
+                           000186   482 	Snixie$NIXIE_DisplayTime$122 ==.
+                                    483 ;	Source/Device/Src/nixie.c: 148: tube3s[0]+=tmp;
+      008E16 7B 05            [ 1]  484 	ld	a, (0x05, sp)
+      008E18 89               [ 2]  485 	pushw	x
+                           000189   486 	Snixie$NIXIE_DisplayTime$123 ==.
+      008E19 1B 02            [ 1]  487 	add	a, (2, sp)
+      008E1B 85               [ 2]  488 	popw	x
+                           00018C   489 	Snixie$NIXIE_DisplayTime$124 ==.
+      008E1C 6B 05            [ 1]  490 	ld	(0x05, sp), a
+                           00018E   491 	Snixie$NIXIE_DisplayTime$125 ==.
+                                    492 ;	Source/Device/Src/nixie.c: 150: tmp=min%10;
+      008E1E 4B 0A            [ 1]  493 	push	#0x0a
+                           000190   494 	Snixie$NIXIE_DisplayTime$126 ==.
+      008E20 4B 00            [ 1]  495 	push	#0x00
+                           000192   496 	Snixie$NIXIE_DisplayTime$127 ==.
+      008E22 1E 13            [ 2]  497 	ldw	x, (0x13, sp)
+      008E24 89               [ 2]  498 	pushw	x
+                           000195   499 	Snixie$NIXIE_DisplayTime$128 ==.
+      008E25 CD 96 31         [ 4]  500 	call	__modsint
+      008E28 5B 04            [ 2]  501 	addw	sp, #4
+                           00019A   502 	Snixie$NIXIE_DisplayTime$129 ==.
+                           00019A   503 	Snixie$NIXIE_DisplayTime$130 ==.
+                                    504 ;	Source/Device/Src/nixie.c: 151: tube4s[0]+=tmp;
+      008E2A 7B 08            [ 1]  505 	ld	a, (0x08, sp)
+      008E2C 89               [ 2]  506 	pushw	x
+                           00019D   507 	Snixie$NIXIE_DisplayTime$131 ==.
+      008E2D 1B 02            [ 1]  508 	add	a, (2, sp)
+      008E2F 85               [ 2]  509 	popw	x
+                           0001A0   510 	Snixie$NIXIE_DisplayTime$132 ==.
+      008E30 6B 08            [ 1]  511 	ld	(0x08, sp), a
+                           0001A2   512 	Snixie$NIXIE_DisplayTime$133 ==.
+                                    513 ;	Source/Device/Src/nixie.c: 153: tube1=NIXIE_DisplayChar(1,tube1s,tube_state);
+      008E32 3B 00 28         [ 1]  514 	push	_tube_state+0
+                           0001A5   515 	Snixie$NIXIE_DisplayTime$134 ==.
+      008E35 96               [ 1]  516 	ldw	x, sp
+      008E36 5C               [ 1]  517 	incw	x
+      008E37 5C               [ 1]  518 	incw	x
+      008E38 89               [ 2]  519 	pushw	x
+                           0001A9   520 	Snixie$NIXIE_DisplayTime$135 ==.
+      008E39 4B 01            [ 1]  521 	push	#0x01
+                           0001AB   522 	Snixie$NIXIE_DisplayTime$136 ==.
+      008E3B CD 8D 1D         [ 4]  523 	call	_NIXIE_DisplayChar
+      008E3E 5B 04            [ 2]  524 	addw	sp, #4
+                           0001B0   525 	Snixie$NIXIE_DisplayTime$137 ==.
+      008E40 1F 0A            [ 2]  526 	ldw	(0x0a, sp), x
+                           0001B2   527 	Snixie$NIXIE_DisplayTime$138 ==.
+                                    528 ;	Source/Device/Src/nixie.c: 154: tube2=NIXIE_DisplayChar(2,tube2s,tube_state);
+      008E42 3B 00 28         [ 1]  529 	push	_tube_state+0
+                           0001B5   530 	Snixie$NIXIE_DisplayTime$139 ==.
+      008E45 96               [ 1]  531 	ldw	x, sp
+      008E46 1C 00 04         [ 2]  532 	addw	x, #4
+      008E49 89               [ 2]  533 	pushw	x
+                           0001BA   534 	Snixie$NIXIE_DisplayTime$140 ==.
+      008E4A 4B 02            [ 1]  535 	push	#0x02
+                           0001BC   536 	Snixie$NIXIE_DisplayTime$141 ==.
+      008E4C CD 8D 1D         [ 4]  537 	call	_NIXIE_DisplayChar
+      008E4F 5B 04            [ 2]  538 	addw	sp, #4
+                           0001C1   539 	Snixie$NIXIE_DisplayTime$142 ==.
+      008E51 1F 0C            [ 2]  540 	ldw	(0x0c, sp), x
+                           0001C3   541 	Snixie$NIXIE_DisplayTime$143 ==.
+                                    542 ;	Source/Device/Src/nixie.c: 155: tube3=NIXIE_DisplayChar(3,tube3s,tube_state);
+      008E53 3B 00 28         [ 1]  543 	push	_tube_state+0
+                           0001C6   544 	Snixie$NIXIE_DisplayTime$144 ==.
+      008E56 96               [ 1]  545 	ldw	x, sp
+      008E57 1C 00 06         [ 2]  546 	addw	x, #6
+      008E5A 89               [ 2]  547 	pushw	x
+                           0001CB   548 	Snixie$NIXIE_DisplayTime$145 ==.
+      008E5B 4B 03            [ 1]  549 	push	#0x03
+                           0001CD   550 	Snixie$NIXIE_DisplayTime$146 ==.
+      008E5D CD 8D 1D         [ 4]  551 	call	_NIXIE_DisplayChar
+      008E60 5B 04            [ 2]  552 	addw	sp, #4
+                           0001D2   553 	Snixie$NIXIE_DisplayTime$147 ==.
+      008E62 1F 0E            [ 2]  554 	ldw	(0x0e, sp), x
+                           0001D4   555 	Snixie$NIXIE_DisplayTime$148 ==.
+                                    556 ;	Source/Device/Src/nixie.c: 156: tube4=NIXIE_DisplayChar(4,tube4s,tube_state);
+      008E64 3B 00 28         [ 1]  557 	push	_tube_state+0
+                           0001D7   558 	Snixie$NIXIE_DisplayTime$149 ==.
+      008E67 96               [ 1]  559 	ldw	x, sp
+      008E68 1C 00 09         [ 2]  560 	addw	x, #9
+      008E6B 89               [ 2]  561 	pushw	x
+                           0001DC   562 	Snixie$NIXIE_DisplayTime$150 ==.
+      008E6C 4B 04            [ 1]  563 	push	#0x04
+                           0001DE   564 	Snixie$NIXIE_DisplayTime$151 ==.
+      008E6E CD 8D 1D         [ 4]  565 	call	_NIXIE_DisplayChar
+      008E71 5B 04            [ 2]  566 	addw	sp, #4
+                           0001E3   567 	Snixie$NIXIE_DisplayTime$152 ==.
+      008E73 1F 10            [ 2]  568 	ldw	(0x10, sp), x
+                           0001E5   569 	Snixie$NIXIE_DisplayTime$153 ==.
+                                    570 ;	Source/Device/Src/nixie.c: 160: GPIO_WriteLow(GPIOC,GPIO_PIN_7);//595的输出线拉低
+      008E75 4B 80            [ 1]  571 	push	#0x80
+                           0001E7   572 	Snixie$NIXIE_DisplayTime$154 ==.
+      008E77 4B 0A            [ 1]  573 	push	#0x0a
+                           0001E9   574 	Snixie$NIXIE_DisplayTime$155 ==.
+      008E79 4B 50            [ 1]  575 	push	#0x50
+                           0001EB   576 	Snixie$NIXIE_DisplayTime$156 ==.
+      008E7B CD 82 9A         [ 4]  577 	call	_GPIO_WriteLow
+      008E7E 5B 03            [ 2]  578 	addw	sp, #3
+                           0001F0   579 	Snixie$NIXIE_DisplayTime$157 ==.
+                           0001F0   580 	Snixie$NIXIE_DisplayTime$158 ==.
+                           0001F0   581 	Snixie$NIXIE_DisplayTime$159 ==.
+                                    582 ;	Source/Device/Src/nixie.c: 165: tmp1=(uint8_t)((tube4&0b11111110)>>1);
+      008E80 1E 10            [ 2]  583 	ldw	x, (0x10, sp)
+      008E82 54               [ 2]  584 	srlw	x
+      008E83 58               [ 2]  585 	sllw	x
+      008E84 4F               [ 1]  586 	clr	a
+      008E85 95               [ 1]  587 	ld	xh, a
+      008E86 54               [ 2]  588 	srlw	x
+                           0001F7   589 	Snixie$NIXIE_DisplayTime$160 ==.
+                                    590 ;	Source/Device/Src/nixie.c: 166: tmp2=(uint8_t)((tube4&0b00000001)<<7);
+      008E87 7B 11            [ 1]  591 	ld	a, (0x11, sp)
+      008E89 A4 01            [ 1]  592 	and	a, #0x01
+      008E8B 4E               [ 1]  593 	swap	a
+      008E8C A4 F0            [ 1]  594 	and	a, #0xf0
+      008E8E 48               [ 1]  595 	sll	a
+      008E8F 48               [ 1]  596 	sll	a
+      008E90 48               [ 1]  597 	sll	a
+                           000201   598 	Snixie$NIXIE_DisplayTime$161 ==.
+                                    599 ;	Source/Device/Src/nixie.c: 167: tmp1=tmp1|tmp2;
+      008E91 89               [ 2]  600 	pushw	x
+                           000202   601 	Snixie$NIXIE_DisplayTime$162 ==.
+      008E92 1A 02            [ 1]  602 	or	a, (2, sp)
+      008E94 85               [ 2]  603 	popw	x
+                           000205   604 	Snixie$NIXIE_DisplayTime$163 ==.
+                           000205   605 	Snixie$NIXIE_DisplayTime$164 ==.
+                                    606 ;	Source/Device/Src/nixie.c: 168: SPI_SendData(tmp1);
+      008E95 88               [ 1]  607 	push	a
+                           000206   608 	Snixie$NIXIE_DisplayTime$165 ==.
+      008E96 CD 84 30         [ 4]  609 	call	_SPI_SendData
+      008E99 84               [ 1]  610 	pop	a
+                           00020A   611 	Snixie$NIXIE_DisplayTime$166 ==.
+                           00020A   612 	Snixie$NIXIE_DisplayTime$167 ==.
+                                    613 ;	Source/Device/Src/nixie.c: 170: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
+      008E9A                        614 00101$:
+      008E9A 4B 02            [ 1]  615 	push	#0x02
+                           00020C   616 	Snixie$NIXIE_DisplayTime$168 ==.
+      008E9C CD 84 37         [ 4]  617 	call	_SPI_GetFlagStatus
+      008E9F 5B 01            [ 2]  618 	addw	sp, #1
+                           000211   619 	Snixie$NIXIE_DisplayTime$169 ==.
+      008EA1 4D               [ 1]  620 	tnz	a
+      008EA2 27 F6            [ 1]  621 	jreq	00101$
+                           000214   622 	Snixie$NIXIE_DisplayTime$170 ==.
+                                    623 ;	Source/Device/Src/nixie.c: 172: tmp1=(uint8_t)((tube3&0b1111)<<4);
+      008EA4 7B 0F            [ 1]  624 	ld	a, (0x0f, sp)
+      008EA6 A4 0F            [ 1]  625 	and	a, #0x0f
+      008EA8 4E               [ 1]  626 	swap	a
+      008EA9 A4 F0            [ 1]  627 	and	a, #0xf0
+      008EAB 6B 12            [ 1]  628 	ld	(0x12, sp), a
+                           00021D   629 	Snixie$NIXIE_DisplayTime$171 ==.
+                                    630 ;	Source/Device/Src/nixie.c: 173: tmp2=(uint8_t)(tube4>>8);
+      008EAD 7B 10            [ 1]  631 	ld	a, (0x10, sp)
+      008EAF 5F               [ 1]  632 	clrw	x
+                           000220   633 	Snixie$NIXIE_DisplayTime$172 ==.
+                                    634 ;	Source/Device/Src/nixie.c: 174: tmp1=tmp1|tmp2;
+      008EB0 1A 12            [ 1]  635 	or	a, (0x12, sp)
+      008EB2 97               [ 1]  636 	ld	xl, a
+                           000223   637 	Snixie$NIXIE_DisplayTime$173 ==.
+                                    638 ;	Source/Device/Src/nixie.c: 175: tmp2=(tmp1&0b00000001)<<7;
+      008EB3 9F               [ 1]  639 	ld	a, xl
+      008EB4 A4 01            [ 1]  640 	and	a, #0x01
+      008EB6 4E               [ 1]  641 	swap	a
+      008EB7 A4 F0            [ 1]  642 	and	a, #0xf0
+      008EB9 48               [ 1]  643 	sll	a
+      008EBA 48               [ 1]  644 	sll	a
+      008EBB 48               [ 1]  645 	sll	a
+      008EBC 6B 12            [ 1]  646 	ld	(0x12, sp), a
+                           00022E   647 	Snixie$NIXIE_DisplayTime$174 ==.
+                                    648 ;	Source/Device/Src/nixie.c: 176: tmp1=(tmp1>>1)|tmp2;
+      008EBE 9F               [ 1]  649 	ld	a, xl
+      008EBF 44               [ 1]  650 	srl	a
+      008EC0 1A 12            [ 1]  651 	or	a, (0x12, sp)
+                           000232   652 	Snixie$NIXIE_DisplayTime$175 ==.
+                                    653 ;	Source/Device/Src/nixie.c: 177: SPI_SendData(tmp1);
+      008EC2 88               [ 1]  654 	push	a
+                           000233   655 	Snixie$NIXIE_DisplayTime$176 ==.
+      008EC3 CD 84 30         [ 4]  656 	call	_SPI_SendData
+      008EC6 84               [ 1]  657 	pop	a
+                           000237   658 	Snixie$NIXIE_DisplayTime$177 ==.
+                           000237   659 	Snixie$NIXIE_DisplayTime$178 ==.
+                                    660 ;	Source/Device/Src/nixie.c: 179: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
+      008EC7                        661 00104$:
+      008EC7 4B 02            [ 1]  662 	push	#0x02
+                           000239   663 	Snixie$NIXIE_DisplayTime$179 ==.
+      008EC9 CD 84 37         [ 4]  664 	call	_SPI_GetFlagStatus
+      008ECC 5B 01            [ 2]  665 	addw	sp, #1
+                           00023E   666 	Snixie$NIXIE_DisplayTime$180 ==.
+      008ECE 4D               [ 1]  667 	tnz	a
+      008ECF 27 F6            [ 1]  668 	jreq	00104$
+                           000241   669 	Snixie$NIXIE_DisplayTime$181 ==.
+                                    670 ;	Source/Device/Src/nixie.c: 181: tmp1=(uint8_t)(tube3>>5);
+      008ED1 1E 0E            [ 2]  671 	ldw	x, (0x0e, sp)
+      008ED3 A6 20            [ 1]  672 	ld	a, #0x20
+      008ED5 62               [ 2]  673 	div	x, a
+      008ED6 41               [ 1]  674 	exg	a, xl
+      008ED7 6B 12            [ 1]  675 	ld	(0x12, sp), a
+      008ED9 41               [ 1]  676 	exg	a, xl
                            00024A   677 	Snixie$NIXIE_DisplayTime$182 ==.
-                                    678 ;	Source/Device/Src/nixie.c: 180: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
-      008EF2                        679 00110$:
-      008EF2 4B 02            [ 1]  680 	push	#0x02
-                           00024C   681 	Snixie$NIXIE_DisplayTime$183 ==.
-      008EF4 CD 84 4F         [ 4]  682 	call	_SPI_GetFlagStatus
-      008EF7 5B 01            [ 2]  683 	addw	sp, #1
-                           000251   684 	Snixie$NIXIE_DisplayTime$184 ==.
-      008EF9 4D               [ 1]  685 	tnz	a
-      008EFA 27 F6            [ 1]  686 	jreq	00110$
-                           000254   687 	Snixie$NIXIE_DisplayTime$185 ==.
-                                    688 ;	Source/Device/Src/nixie.c: 182: tmp1=(uint8_t)((tube1&0b1111)<<4);
-      008EFC 7B 0B            [ 1]  689 	ld	a, (0x0b, sp)
-      008EFE A4 0F            [ 1]  690 	and	a, #0x0f
-      008F00 4E               [ 1]  691 	swap	a
-      008F01 A4 F0            [ 1]  692 	and	a, #0xf0
-      008F03 6B 12            [ 1]  693 	ld	(0x12, sp), a
-                           00025D   694 	Snixie$NIXIE_DisplayTime$186 ==.
-                                    695 ;	Source/Device/Src/nixie.c: 183: tmp2=(uint8_t)(tube2>>8);
-      008F05 7B 0C            [ 1]  696 	ld	a, (0x0c, sp)
-      008F07 5F               [ 1]  697 	clrw	x
-                           000260   698 	Snixie$NIXIE_DisplayTime$187 ==.
-                                    699 ;	Source/Device/Src/nixie.c: 184: tmp1=tmp1|tmp2;
-      008F08 1A 12            [ 1]  700 	or	a, (0x12, sp)
-      008F0A 97               [ 1]  701 	ld	xl, a
-                           000263   702 	Snixie$NIXIE_DisplayTime$188 ==.
-                                    703 ;	Source/Device/Src/nixie.c: 185: tmp2=(tmp1&0b00000001)<<7;
-      008F0B 9F               [ 1]  704 	ld	a, xl
-      008F0C A4 01            [ 1]  705 	and	a, #0x01
-      008F0E 4E               [ 1]  706 	swap	a
-      008F0F A4 F0            [ 1]  707 	and	a, #0xf0
-      008F11 48               [ 1]  708 	sll	a
-      008F12 48               [ 1]  709 	sll	a
-      008F13 48               [ 1]  710 	sll	a
-      008F14 6B 12            [ 1]  711 	ld	(0x12, sp), a
-                           00026E   712 	Snixie$NIXIE_DisplayTime$189 ==.
-                                    713 ;	Source/Device/Src/nixie.c: 186: tmp1=(tmp1>>1)|tmp2;
-      008F16 9F               [ 1]  714 	ld	a, xl
-      008F17 44               [ 1]  715 	srl	a
-      008F18 1A 12            [ 1]  716 	or	a, (0x12, sp)
-                           000272   717 	Snixie$NIXIE_DisplayTime$190 ==.
-                                    718 ;	Source/Device/Src/nixie.c: 187: SPI_SendData(tmp1);
-      008F1A 88               [ 1]  719 	push	a
-                           000273   720 	Snixie$NIXIE_DisplayTime$191 ==.
-      008F1B CD 84 48         [ 4]  721 	call	_SPI_SendData
-      008F1E 84               [ 1]  722 	pop	a
-                           000277   723 	Snixie$NIXIE_DisplayTime$192 ==.
-                           000277   724 	Snixie$NIXIE_DisplayTime$193 ==.
-                                    725 ;	Source/Device/Src/nixie.c: 189: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
-      008F1F                        726 00113$:
-      008F1F 4B 02            [ 1]  727 	push	#0x02
-                           000279   728 	Snixie$NIXIE_DisplayTime$194 ==.
-      008F21 CD 84 4F         [ 4]  729 	call	_SPI_GetFlagStatus
-      008F24 5B 01            [ 2]  730 	addw	sp, #1
-                           00027E   731 	Snixie$NIXIE_DisplayTime$195 ==.
-      008F26 4D               [ 1]  732 	tnz	a
-      008F27 27 F6            [ 1]  733 	jreq	00113$
-                           000281   734 	Snixie$NIXIE_DisplayTime$196 ==.
-                                    735 ;	Source/Device/Src/nixie.c: 191: tmp1=(uint8_t)(tube1>>5);
-      008F29 1E 0A            [ 2]  736 	ldw	x, (0x0a, sp)
-      008F2B A6 20            [ 1]  737 	ld	a, #0x20
-      008F2D 62               [ 2]  738 	div	x, a
-      008F2E 41               [ 1]  739 	exg	a, xl
-      008F2F 6B 12            [ 1]  740 	ld	(0x12, sp), a
-      008F31 41               [ 1]  741 	exg	a, xl
-                           00028A   742 	Snixie$NIXIE_DisplayTime$197 ==.
-                                    743 ;	Source/Device/Src/nixie.c: 192: tmp2=(uint8_t)(((tube1&0b10000)>>4)<<7);
-      008F32 16 0A            [ 2]  744 	ldw	y, (0x0a, sp)
-      008F34 5F               [ 1]  745 	clrw	x
-      008F35 90 9F            [ 1]  746 	ld	a, yl
-      008F37 A4 10            [ 1]  747 	and	a, #0x10
-      008F39 97               [ 1]  748 	ld	xl, a
-      008F3A A6 10            [ 1]  749 	ld	a, #0x10
-      008F3C 62               [ 2]  750 	div	x, a
-      008F3D 9F               [ 1]  751 	ld	a, xl
-      008F3E 4E               [ 1]  752 	swap	a
-      008F3F A4 F0            [ 1]  753 	and	a, #0xf0
-      008F41 48               [ 1]  754 	sll	a
-      008F42 48               [ 1]  755 	sll	a
-      008F43 48               [ 1]  756 	sll	a
-                           00029C   757 	Snixie$NIXIE_DisplayTime$198 ==.
-                                    758 ;	Source/Device/Src/nixie.c: 193: tmp1=tmp1|tmp2;
-      008F44 1A 12            [ 1]  759 	or	a, (0x12, sp)
-                           00029E   760 	Snixie$NIXIE_DisplayTime$199 ==.
-                                    761 ;	Source/Device/Src/nixie.c: 194: SPI_SendData(tmp1);
-      008F46 88               [ 1]  762 	push	a
-                           00029F   763 	Snixie$NIXIE_DisplayTime$200 ==.
-      008F47 CD 84 48         [ 4]  764 	call	_SPI_SendData
-      008F4A 84               [ 1]  765 	pop	a
-                           0002A3   766 	Snixie$NIXIE_DisplayTime$201 ==.
-                           0002A3   767 	Snixie$NIXIE_DisplayTime$202 ==.
-                                    768 ;	Source/Device/Src/nixie.c: 196: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
-      008F4B                        769 00116$:
-      008F4B 4B 02            [ 1]  770 	push	#0x02
-                           0002A5   771 	Snixie$NIXIE_DisplayTime$203 ==.
-      008F4D CD 84 4F         [ 4]  772 	call	_SPI_GetFlagStatus
-      008F50 5B 01            [ 2]  773 	addw	sp, #1
-                           0002AA   774 	Snixie$NIXIE_DisplayTime$204 ==.
-      008F52 4D               [ 1]  775 	tnz	a
-      008F53 27 F6            [ 1]  776 	jreq	00116$
-                           0002AD   777 	Snixie$NIXIE_DisplayTime$205 ==.
-                                    778 ;	Source/Device/Src/nixie.c: 198: GPIO_WriteHigh(GPIOC,GPIO_PIN_7);//更新所有595输出
-      008F55 4B 80            [ 1]  779 	push	#0x80
-                           0002AF   780 	Snixie$NIXIE_DisplayTime$206 ==.
-      008F57 4B 0A            [ 1]  781 	push	#0x0a
-                           0002B1   782 	Snixie$NIXIE_DisplayTime$207 ==.
-      008F59 4B 50            [ 1]  783 	push	#0x50
-                           0002B3   784 	Snixie$NIXIE_DisplayTime$208 ==.
-      008F5B CD 82 AB         [ 4]  785 	call	_GPIO_WriteHigh
-      008F5E 5B 03            [ 2]  786 	addw	sp, #3
-                           0002B8   787 	Snixie$NIXIE_DisplayTime$209 ==.
-                           0002B8   788 	Snixie$NIXIE_DisplayTime$210 ==.
-                           0002B8   789 	Snixie$NIXIE_DisplayTime$211 ==.
-                                    790 ;	Source/Device/Src/nixie.c: 199: }
-      008F60 5B 12            [ 2]  791 	addw	sp, #18
-                           0002BA   792 	Snixie$NIXIE_DisplayTime$212 ==.
-                           0002BA   793 	Snixie$NIXIE_DisplayTime$213 ==.
-                           0002BA   794 	XG$NIXIE_DisplayTime$0$0 ==.
-      008F62 81               [ 4]  795 	ret
-                           0002BB   796 	Snixie$NIXIE_DisplayTime$214 ==.
-                                    797 	.area CODE
-                                    798 	.area CONST
-                                    799 	.area INITIALIZER
-                           000000   800 Fnixie$__xinit_tube_state$0_0$0 == .
-      008096                        801 __xinit__tube_state:
-      008096 00                     802 	.db #0x00	; 0
-                                    803 	.area CABS (ABS)
-                                    804 
-                                    805 	.area .debug_line (NOLOAD)
-      0014D9 00 00 02 7F            806 	.dw	0,Ldebug_line_end-Ldebug_line_start
-      0014DD                        807 Ldebug_line_start:
-      0014DD 00 02                  808 	.dw	2
-      0014DF 00 00 00 7A            809 	.dw	0,Ldebug_line_stmt-6-Ldebug_line_start
-      0014E3 01                     810 	.db	1
-      0014E4 01                     811 	.db	1
-      0014E5 FB                     812 	.db	-5
-      0014E6 0F                     813 	.db	15
-      0014E7 0A                     814 	.db	10
-      0014E8 00                     815 	.db	0
-      0014E9 01                     816 	.db	1
-      0014EA 01                     817 	.db	1
-      0014EB 01                     818 	.db	1
-      0014EC 01                     819 	.db	1
-      0014ED 00                     820 	.db	0
-      0014EE 00                     821 	.db	0
-      0014EF 00                     822 	.db	0
-      0014F0 01                     823 	.db	1
-      0014F1 43 3A 5C 50 72 6F 67   824 	.ascii "C:\Program Files\SDCC\bin\..\include\stm8"
+                                    678 ;	Source/Device/Src/nixie.c: 182: tmp2=(uint8_t)(((tube3&0b10000)>>4)<<7);
+      008EDA 16 0E            [ 2]  679 	ldw	y, (0x0e, sp)
+      008EDC 5F               [ 1]  680 	clrw	x
+      008EDD 90 9F            [ 1]  681 	ld	a, yl
+      008EDF A4 10            [ 1]  682 	and	a, #0x10
+      008EE1 97               [ 1]  683 	ld	xl, a
+      008EE2 A6 10            [ 1]  684 	ld	a, #0x10
+      008EE4 62               [ 2]  685 	div	x, a
+      008EE5 9F               [ 1]  686 	ld	a, xl
+      008EE6 4E               [ 1]  687 	swap	a
+      008EE7 A4 F0            [ 1]  688 	and	a, #0xf0
+      008EE9 48               [ 1]  689 	sll	a
+      008EEA 48               [ 1]  690 	sll	a
+      008EEB 48               [ 1]  691 	sll	a
+                           00025C   692 	Snixie$NIXIE_DisplayTime$183 ==.
+                                    693 ;	Source/Device/Src/nixie.c: 183: tmp1=tmp1|tmp2;
+      008EEC 1A 12            [ 1]  694 	or	a, (0x12, sp)
+                           00025E   695 	Snixie$NIXIE_DisplayTime$184 ==.
+                                    696 ;	Source/Device/Src/nixie.c: 184: SPI_SendData(tmp1);
+      008EEE 88               [ 1]  697 	push	a
+                           00025F   698 	Snixie$NIXIE_DisplayTime$185 ==.
+      008EEF CD 84 30         [ 4]  699 	call	_SPI_SendData
+      008EF2 84               [ 1]  700 	pop	a
+                           000263   701 	Snixie$NIXIE_DisplayTime$186 ==.
+                           000263   702 	Snixie$NIXIE_DisplayTime$187 ==.
+                                    703 ;	Source/Device/Src/nixie.c: 186: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
+      008EF3                        704 00107$:
+      008EF3 4B 02            [ 1]  705 	push	#0x02
+                           000265   706 	Snixie$NIXIE_DisplayTime$188 ==.
+      008EF5 CD 84 37         [ 4]  707 	call	_SPI_GetFlagStatus
+      008EF8 5B 01            [ 2]  708 	addw	sp, #1
+                           00026A   709 	Snixie$NIXIE_DisplayTime$189 ==.
+      008EFA 4D               [ 1]  710 	tnz	a
+      008EFB 27 F6            [ 1]  711 	jreq	00107$
+                           00026D   712 	Snixie$NIXIE_DisplayTime$190 ==.
+                                    713 ;	Source/Device/Src/nixie.c: 189: tmp1=(uint8_t)((tube2&0b11111110)>>1);
+      008EFD 1E 0C            [ 2]  714 	ldw	x, (0x0c, sp)
+      008EFF 54               [ 2]  715 	srlw	x
+      008F00 58               [ 2]  716 	sllw	x
+      008F01 4F               [ 1]  717 	clr	a
+      008F02 95               [ 1]  718 	ld	xh, a
+      008F03 54               [ 2]  719 	srlw	x
+                           000274   720 	Snixie$NIXIE_DisplayTime$191 ==.
+                                    721 ;	Source/Device/Src/nixie.c: 190: tmp2=(uint8_t)((tube2&0b00000001)<<7);
+      008F04 7B 0D            [ 1]  722 	ld	a, (0x0d, sp)
+      008F06 A4 01            [ 1]  723 	and	a, #0x01
+      008F08 4E               [ 1]  724 	swap	a
+      008F09 A4 F0            [ 1]  725 	and	a, #0xf0
+      008F0B 48               [ 1]  726 	sll	a
+      008F0C 48               [ 1]  727 	sll	a
+      008F0D 48               [ 1]  728 	sll	a
+                           00027E   729 	Snixie$NIXIE_DisplayTime$192 ==.
+                                    730 ;	Source/Device/Src/nixie.c: 191: tmp1=tmp1|tmp2;
+      008F0E 89               [ 2]  731 	pushw	x
+                           00027F   732 	Snixie$NIXIE_DisplayTime$193 ==.
+      008F0F 1A 02            [ 1]  733 	or	a, (2, sp)
+      008F11 85               [ 2]  734 	popw	x
+                           000282   735 	Snixie$NIXIE_DisplayTime$194 ==.
+                           000282   736 	Snixie$NIXIE_DisplayTime$195 ==.
+                                    737 ;	Source/Device/Src/nixie.c: 192: SPI_SendData(tmp1);
+      008F12 88               [ 1]  738 	push	a
+                           000283   739 	Snixie$NIXIE_DisplayTime$196 ==.
+      008F13 CD 84 30         [ 4]  740 	call	_SPI_SendData
+      008F16 84               [ 1]  741 	pop	a
+                           000287   742 	Snixie$NIXIE_DisplayTime$197 ==.
+                           000287   743 	Snixie$NIXIE_DisplayTime$198 ==.
+                                    744 ;	Source/Device/Src/nixie.c: 194: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
+      008F17                        745 00110$:
+      008F17 4B 02            [ 1]  746 	push	#0x02
+                           000289   747 	Snixie$NIXIE_DisplayTime$199 ==.
+      008F19 CD 84 37         [ 4]  748 	call	_SPI_GetFlagStatus
+      008F1C 5B 01            [ 2]  749 	addw	sp, #1
+                           00028E   750 	Snixie$NIXIE_DisplayTime$200 ==.
+      008F1E 4D               [ 1]  751 	tnz	a
+      008F1F 27 F6            [ 1]  752 	jreq	00110$
+                           000291   753 	Snixie$NIXIE_DisplayTime$201 ==.
+                                    754 ;	Source/Device/Src/nixie.c: 196: tmp1=(uint8_t)((tube1&0b1111)<<4);
+      008F21 7B 0B            [ 1]  755 	ld	a, (0x0b, sp)
+      008F23 A4 0F            [ 1]  756 	and	a, #0x0f
+      008F25 4E               [ 1]  757 	swap	a
+      008F26 A4 F0            [ 1]  758 	and	a, #0xf0
+      008F28 6B 12            [ 1]  759 	ld	(0x12, sp), a
+                           00029A   760 	Snixie$NIXIE_DisplayTime$202 ==.
+                                    761 ;	Source/Device/Src/nixie.c: 197: tmp2=(uint8_t)(tube2>>8);
+      008F2A 7B 0C            [ 1]  762 	ld	a, (0x0c, sp)
+      008F2C 5F               [ 1]  763 	clrw	x
+                           00029D   764 	Snixie$NIXIE_DisplayTime$203 ==.
+                                    765 ;	Source/Device/Src/nixie.c: 198: tmp1=tmp1|tmp2;
+      008F2D 1A 12            [ 1]  766 	or	a, (0x12, sp)
+      008F2F 97               [ 1]  767 	ld	xl, a
+                           0002A0   768 	Snixie$NIXIE_DisplayTime$204 ==.
+                                    769 ;	Source/Device/Src/nixie.c: 199: tmp2=(tmp1&0b00000001)<<7;
+      008F30 9F               [ 1]  770 	ld	a, xl
+      008F31 A4 01            [ 1]  771 	and	a, #0x01
+      008F33 4E               [ 1]  772 	swap	a
+      008F34 A4 F0            [ 1]  773 	and	a, #0xf0
+      008F36 48               [ 1]  774 	sll	a
+      008F37 48               [ 1]  775 	sll	a
+      008F38 48               [ 1]  776 	sll	a
+      008F39 6B 12            [ 1]  777 	ld	(0x12, sp), a
+                           0002AB   778 	Snixie$NIXIE_DisplayTime$205 ==.
+                                    779 ;	Source/Device/Src/nixie.c: 200: tmp1=(tmp1>>1)|tmp2;
+      008F3B 9F               [ 1]  780 	ld	a, xl
+      008F3C 44               [ 1]  781 	srl	a
+      008F3D 1A 12            [ 1]  782 	or	a, (0x12, sp)
+                           0002AF   783 	Snixie$NIXIE_DisplayTime$206 ==.
+                                    784 ;	Source/Device/Src/nixie.c: 201: SPI_SendData(tmp1);
+      008F3F 88               [ 1]  785 	push	a
+                           0002B0   786 	Snixie$NIXIE_DisplayTime$207 ==.
+      008F40 CD 84 30         [ 4]  787 	call	_SPI_SendData
+      008F43 84               [ 1]  788 	pop	a
+                           0002B4   789 	Snixie$NIXIE_DisplayTime$208 ==.
+                           0002B4   790 	Snixie$NIXIE_DisplayTime$209 ==.
+                                    791 ;	Source/Device/Src/nixie.c: 203: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
+      008F44                        792 00113$:
+      008F44 4B 02            [ 1]  793 	push	#0x02
+                           0002B6   794 	Snixie$NIXIE_DisplayTime$210 ==.
+      008F46 CD 84 37         [ 4]  795 	call	_SPI_GetFlagStatus
+      008F49 5B 01            [ 2]  796 	addw	sp, #1
+                           0002BB   797 	Snixie$NIXIE_DisplayTime$211 ==.
+      008F4B 4D               [ 1]  798 	tnz	a
+      008F4C 27 F6            [ 1]  799 	jreq	00113$
+                           0002BE   800 	Snixie$NIXIE_DisplayTime$212 ==.
+                                    801 ;	Source/Device/Src/nixie.c: 205: tmp1=(uint8_t)(tube1>>5);
+      008F4E 1E 0A            [ 2]  802 	ldw	x, (0x0a, sp)
+      008F50 A6 20            [ 1]  803 	ld	a, #0x20
+      008F52 62               [ 2]  804 	div	x, a
+      008F53 41               [ 1]  805 	exg	a, xl
+      008F54 6B 12            [ 1]  806 	ld	(0x12, sp), a
+      008F56 41               [ 1]  807 	exg	a, xl
+                           0002C7   808 	Snixie$NIXIE_DisplayTime$213 ==.
+                                    809 ;	Source/Device/Src/nixie.c: 206: tmp2=(uint8_t)(((tube1&0b10000)>>4)<<7);
+      008F57 16 0A            [ 2]  810 	ldw	y, (0x0a, sp)
+      008F59 5F               [ 1]  811 	clrw	x
+      008F5A 90 9F            [ 1]  812 	ld	a, yl
+      008F5C A4 10            [ 1]  813 	and	a, #0x10
+      008F5E 97               [ 1]  814 	ld	xl, a
+      008F5F A6 10            [ 1]  815 	ld	a, #0x10
+      008F61 62               [ 2]  816 	div	x, a
+      008F62 9F               [ 1]  817 	ld	a, xl
+      008F63 4E               [ 1]  818 	swap	a
+      008F64 A4 F0            [ 1]  819 	and	a, #0xf0
+      008F66 48               [ 1]  820 	sll	a
+      008F67 48               [ 1]  821 	sll	a
+      008F68 48               [ 1]  822 	sll	a
+                           0002D9   823 	Snixie$NIXIE_DisplayTime$214 ==.
+                                    824 ;	Source/Device/Src/nixie.c: 207: tmp1=tmp1|tmp2;
+      008F69 1A 12            [ 1]  825 	or	a, (0x12, sp)
+                           0002DB   826 	Snixie$NIXIE_DisplayTime$215 ==.
+                                    827 ;	Source/Device/Src/nixie.c: 208: SPI_SendData(tmp1);
+      008F6B 88               [ 1]  828 	push	a
+                           0002DC   829 	Snixie$NIXIE_DisplayTime$216 ==.
+      008F6C CD 84 30         [ 4]  830 	call	_SPI_SendData
+      008F6F 84               [ 1]  831 	pop	a
+                           0002E0   832 	Snixie$NIXIE_DisplayTime$217 ==.
+                           0002E0   833 	Snixie$NIXIE_DisplayTime$218 ==.
+                                    834 ;	Source/Device/Src/nixie.c: 210: while(SPI_GetFlagStatus(SPI_FLAG_TXE)==RESET);
+      008F70                        835 00116$:
+      008F70 4B 02            [ 1]  836 	push	#0x02
+                           0002E2   837 	Snixie$NIXIE_DisplayTime$219 ==.
+      008F72 CD 84 37         [ 4]  838 	call	_SPI_GetFlagStatus
+      008F75 5B 01            [ 2]  839 	addw	sp, #1
+                           0002E7   840 	Snixie$NIXIE_DisplayTime$220 ==.
+      008F77 4D               [ 1]  841 	tnz	a
+      008F78 27 F6            [ 1]  842 	jreq	00116$
+                           0002EA   843 	Snixie$NIXIE_DisplayTime$221 ==.
+                                    844 ;	Source/Device/Src/nixie.c: 212: GPIO_WriteHigh(GPIOC,GPIO_PIN_7);//更新所有595输出
+      008F7A 4B 80            [ 1]  845 	push	#0x80
+                           0002EC   846 	Snixie$NIXIE_DisplayTime$222 ==.
+      008F7C 4B 0A            [ 1]  847 	push	#0x0a
+                           0002EE   848 	Snixie$NIXIE_DisplayTime$223 ==.
+      008F7E 4B 50            [ 1]  849 	push	#0x50
+                           0002F0   850 	Snixie$NIXIE_DisplayTime$224 ==.
+      008F80 CD 82 93         [ 4]  851 	call	_GPIO_WriteHigh
+      008F83 5B 03            [ 2]  852 	addw	sp, #3
+                           0002F5   853 	Snixie$NIXIE_DisplayTime$225 ==.
+                           0002F5   854 	Snixie$NIXIE_DisplayTime$226 ==.
+                           0002F5   855 	Snixie$NIXIE_DisplayTime$227 ==.
+                                    856 ;	Source/Device/Src/nixie.c: 213: }
+      008F85 5B 12            [ 2]  857 	addw	sp, #18
+                           0002F7   858 	Snixie$NIXIE_DisplayTime$228 ==.
+                           0002F7   859 	Snixie$NIXIE_DisplayTime$229 ==.
+                           0002F7   860 	XG$NIXIE_DisplayTime$0$0 ==.
+      008F87 81               [ 4]  861 	ret
+                           0002F8   862 	Snixie$NIXIE_DisplayTime$230 ==.
+                                    863 	.area CODE
+                                    864 	.area CONST
+                                    865 	.area INITIALIZER
+                           000000   866 Fnixie$__xinit_tube_state$0_0$0 == .
+      008096                        867 __xinit__tube_state:
+      008096 00                     868 	.db #0x00	; 0
+                           000001   869 Fnixie$__xinit_nixie_tube1$0_0$0 == .
+      008097                        870 __xinit__nixie_tube1:
+      008097 00                     871 	.db #0x00	; 0
+                           000002   872 Fnixie$__xinit_nixie_tube2$0_0$0 == .
+      008098                        873 __xinit__nixie_tube2:
+      008098 00                     874 	.db #0x00	; 0
+                           000003   875 Fnixie$__xinit_nixie_tube3$0_0$0 == .
+      008099                        876 __xinit__nixie_tube3:
+      008099 00                     877 	.db #0x00	; 0
+                           000004   878 Fnixie$__xinit_nixie_tube4$0_0$0 == .
+      00809A                        879 __xinit__nixie_tube4:
+      00809A 00                     880 	.db #0x00	; 0
+                                    881 	.area CABS (ABS)
+                                    882 
+                                    883 	.area .debug_line (NOLOAD)
+      0014C1 00 00 02 8C            884 	.dw	0,Ldebug_line_end-Ldebug_line_start
+      0014C5                        885 Ldebug_line_start:
+      0014C5 00 02                  886 	.dw	2
+      0014C7 00 00 00 7A            887 	.dw	0,Ldebug_line_stmt-6-Ldebug_line_start
+      0014CB 01                     888 	.db	1
+      0014CC 01                     889 	.db	1
+      0014CD FB                     890 	.db	-5
+      0014CE 0F                     891 	.db	15
+      0014CF 0A                     892 	.db	10
+      0014D0 00                     893 	.db	0
+      0014D1 01                     894 	.db	1
+      0014D2 01                     895 	.db	1
+      0014D3 01                     896 	.db	1
+      0014D4 01                     897 	.db	1
+      0014D5 00                     898 	.db	0
+      0014D6 00                     899 	.db	0
+      0014D7 00                     900 	.db	0
+      0014D8 01                     901 	.db	1
+      0014D9 43 3A 5C 50 72 6F 67   902 	.ascii "C:\Program Files\SDCC\bin\..\include\stm8"
              72 61 6D 20 46 69 6C
              65 73 5C 53 44 43 43
              08 69 6E 5C 2E 2E 5C
              69 6E 63 6C 75 64 65
              5C 73 74 6D 38
-      001519 00                     825 	.db	0
-      00151A 43 3A 5C 50 72 6F 67   826 	.ascii "C:\Program Files\SDCC\bin\..\include"
+      001501 00                     903 	.db	0
+      001502 43 3A 5C 50 72 6F 67   904 	.ascii "C:\Program Files\SDCC\bin\..\include"
              72 61 6D 20 46 69 6C
              65 73 5C 53 44 43 43
              08 69 6E 5C 2E 2E 5C
              69 6E 63 6C 75 64 65
-      00153D 00                     827 	.db	0
-      00153E 00                     828 	.db	0
-      00153F 53 6F 75 72 63 65 2F   829 	.ascii "Source/Device/Src/nixie.c"
+      001525 00                     905 	.db	0
+      001526 00                     906 	.db	0
+      001527 53 6F 75 72 63 65 2F   907 	.ascii "Source/Device/Src/nixie.c"
              44 65 76 69 63 65 2F
              53 72 63 2F 6E 69 78
              69 65 2E 63
-      001558 00                     830 	.db	0
-      001559 00                     831 	.uleb128	0
-      00155A 00                     832 	.uleb128	0
-      00155B 00                     833 	.uleb128	0
-      00155C 00                     834 	.db	0
-      00155D                        835 Ldebug_line_stmt:
-      00155D 00                     836 	.db	0
-      00155E 05                     837 	.uleb128	5
-      00155F 02                     838 	.db	2
-      001560 00 00 8C A8            839 	.dw	0,(Snixie$delay$1)
-      001564 03                     840 	.db	3
-      001565 32                     841 	.sleb128	50
-      001566 01                     842 	.db	1
-      001567 09                     843 	.db	9
-      001568 00 00                  844 	.dw	Snixie$delay$3-Snixie$delay$1
-      00156A 03                     845 	.db	3
-      00156B 09                     846 	.sleb128	9
-      00156C 01                     847 	.db	1
-      00156D 09                     848 	.db	9
-      00156E 00 09                  849 	.dw	Snixie$delay$4-Snixie$delay$3
-      001570 03                     850 	.db	3
-      001571 01                     851 	.sleb128	1
-      001572 01                     852 	.db	1
-      001573 09                     853 	.db	9
-      001574 00 01                  854 	.dw	1+Snixie$delay$5-Snixie$delay$4
-      001576 00                     855 	.db	0
-      001577 01                     856 	.uleb128	1
-      001578 01                     857 	.db	1
-      001579 00                     858 	.db	0
-      00157A 05                     859 	.uleb128	5
-      00157B 02                     860 	.db	2
-      00157C 00 00 8C B2            861 	.dw	0,(Snixie$NIXIE_Init$7)
-      001580 03                     862 	.db	3
-      001581 C1 00                  863 	.sleb128	65
-      001583 01                     864 	.db	1
-      001584 09                     865 	.db	9
-      001585 00 00                  866 	.dw	Snixie$NIXIE_Init$9-Snixie$NIXIE_Init$7
-      001587 03                     867 	.db	3
-      001588 02                     868 	.sleb128	2
-      001589 01                     869 	.db	1
-      00158A 09                     870 	.db	9
-      00158B 00 0D                  871 	.dw	Snixie$NIXIE_Init$15-Snixie$NIXIE_Init$9
-      00158D 03                     872 	.db	3
-      00158E 01                     873 	.sleb128	1
-      00158F 01                     874 	.db	1
-      001590 09                     875 	.db	9
-      001591 00 0D                  876 	.dw	Snixie$NIXIE_Init$21-Snixie$NIXIE_Init$15
-      001593 03                     877 	.db	3
-      001594 01                     878 	.sleb128	1
-      001595 01                     879 	.db	1
-      001596 09                     880 	.db	9
-      001597 00 0D                  881 	.dw	Snixie$NIXIE_Init$27-Snixie$NIXIE_Init$21
-      001599 03                     882 	.db	3
-      00159A 01                     883 	.sleb128	1
-      00159B 01                     884 	.db	1
-      00159C 09                     885 	.db	9
-      00159D 00 03                  886 	.dw	Snixie$NIXIE_Init$28-Snixie$NIXIE_Init$27
-      00159F 03                     887 	.db	3
-      0015A0 02                     888 	.sleb128	2
-      0015A1 01                     889 	.db	1
-      0015A2 09                     890 	.db	9
-      0015A3 00 15                  891 	.dw	Snixie$NIXIE_Init$38-Snixie$NIXIE_Init$28
-      0015A5 03                     892 	.db	3
-      0015A6 08                     893 	.sleb128	8
-      0015A7 01                     894 	.db	1
-      0015A8 09                     895 	.db	9
-      0015A9 00 06                  896 	.dw	Snixie$NIXIE_Init$41-Snixie$NIXIE_Init$38
-      0015AB 03                     897 	.db	3
-      0015AC 01                     898 	.sleb128	1
-      0015AD 01                     899 	.db	1
-      0015AE 09                     900 	.db	9
-      0015AF 00 01                  901 	.dw	1+Snixie$NIXIE_Init$42-Snixie$NIXIE_Init$41
-      0015B1 00                     902 	.db	0
-      0015B2 01                     903 	.uleb128	1
-      0015B3 01                     904 	.db	1
-      0015B4 00                     905 	.db	0
-      0015B5 05                     906 	.uleb128	5
-      0015B6 02                     907 	.db	2
-      0015B7 00 00 8C F8            908 	.dw	0,(Snixie$NIXIE_DisplayChar$44)
-      0015BB 03                     909 	.db	3
-      0015BC DB 00                  910 	.sleb128	91
-      0015BE 01                     911 	.db	1
-      0015BF 09                     912 	.db	9
-      0015C0 00 02                  913 	.dw	Snixie$NIXIE_DisplayChar$47-Snixie$NIXIE_DisplayChar$44
-      0015C2 03                     914 	.db	3
-      0015C3 02                     915 	.sleb128	2
-      0015C4 01                     916 	.db	1
-      0015C5 09                     917 	.db	9
-      0015C6 00 03                  918 	.dw	Snixie$NIXIE_DisplayChar$48-Snixie$NIXIE_DisplayChar$47
-      0015C8 03                     919 	.db	3
-      0015C9 03                     920 	.sleb128	3
-      0015CA 01                     921 	.db	1
-      0015CB 09                     922 	.db	9
-      0015CC 00 0F                  923 	.dw	Snixie$NIXIE_DisplayChar$53-Snixie$NIXIE_DisplayChar$48
-      0015CE 03                     924 	.db	3
-      0015CF 01                     925 	.sleb128	1
-      0015D0 01                     926 	.db	1
-      0015D1 09                     927 	.db	9
-      0015D2 00 05                  928 	.dw	Snixie$NIXIE_DisplayChar$54-Snixie$NIXIE_DisplayChar$53
-      0015D4 03                     929 	.db	3
-      0015D5 01                     930 	.sleb128	1
-      0015D6 01                     931 	.db	1
-      0015D7 09                     932 	.db	9
-      0015D8 00 08                  933 	.dw	Snixie$NIXIE_DisplayChar$57-Snixie$NIXIE_DisplayChar$54
-      0015DA 03                     934 	.db	3
-      0015DB 02                     935 	.sleb128	2
-      0015DC 01                     936 	.db	1
-      0015DD 09                     937 	.db	9
-      0015DE 00 14                  938 	.dw	Snixie$NIXIE_DisplayChar$61-Snixie$NIXIE_DisplayChar$57
-      0015E0 03                     939 	.db	3
-      0015E1 01                     940 	.sleb128	1
-      0015E2 01                     941 	.db	1
-      0015E3 09                     942 	.db	9
-      0015E4 00 16                  943 	.dw	Snixie$NIXIE_DisplayChar$63-Snixie$NIXIE_DisplayChar$61
-      0015E6 03                     944 	.db	3
-      0015E7 7D                     945 	.sleb128	-3
-      0015E8 01                     946 	.db	1
-      0015E9 09                     947 	.db	9
-      0015EA 00 04                  948 	.dw	Snixie$NIXIE_DisplayChar$65-Snixie$NIXIE_DisplayChar$63
-      0015EC 03                     949 	.db	3
-      0015ED 05                     950 	.sleb128	5
-      0015EE 01                     951 	.db	1
-      0015EF 09                     952 	.db	9
-      0015F0 00 0F                  953 	.dw	Snixie$NIXIE_DisplayChar$70-Snixie$NIXIE_DisplayChar$65
-      0015F2 03                     954 	.db	3
-      0015F3 01                     955 	.sleb128	1
-      0015F4 01                     956 	.db	1
-      0015F5 09                     957 	.db	9
-      0015F6 00 0A                  958 	.dw	Snixie$NIXIE_DisplayChar$71-Snixie$NIXIE_DisplayChar$70
-      0015F8 03                     959 	.db	3
-      0015F9 01                     960 	.sleb128	1
-      0015FA 01                     961 	.db	1
-      0015FB 09                     962 	.db	9
-      0015FC 00 05                  963 	.dw	Snixie$NIXIE_DisplayChar$73-Snixie$NIXIE_DisplayChar$71
-      0015FE 03                     964 	.db	3
-      0015FF 01                     965 	.sleb128	1
-      001600 01                     966 	.db	1
-      001601 09                     967 	.db	9
-      001602 00 07                  968 	.dw	Snixie$NIXIE_DisplayChar$74-Snixie$NIXIE_DisplayChar$73
-      001604 03                     969 	.db	3
-      001605 02                     970 	.sleb128	2
-      001606 01                     971 	.db	1
-      001607 09                     972 	.db	9
-      001608 00 0E                  973 	.dw	Snixie$NIXIE_DisplayChar$75-Snixie$NIXIE_DisplayChar$74
-      00160A 03                     974 	.db	3
-      00160B 01                     975 	.sleb128	1
-      00160C 01                     976 	.db	1
-      00160D 09                     977 	.db	9
-      00160E 00 10                  978 	.dw	Snixie$NIXIE_DisplayChar$76-Snixie$NIXIE_DisplayChar$75
-      001610 03                     979 	.db	3
-      001611 02                     980 	.sleb128	2
-      001612 01                     981 	.db	1
-      001613 09                     982 	.db	9
-      001614 00 01                  983 	.dw	Snixie$NIXIE_DisplayChar$77-Snixie$NIXIE_DisplayChar$76
-      001616 03                     984 	.db	3
-      001617 01                     985 	.sleb128	1
-      001618 01                     986 	.db	1
-      001619 09                     987 	.db	9
-      00161A 00 03                  988 	.dw	1+Snixie$NIXIE_DisplayChar$79-Snixie$NIXIE_DisplayChar$77
-      00161C 00                     989 	.db	0
-      00161D 01                     990 	.uleb128	1
-      00161E 01                     991 	.db	1
-      00161F 00                     992 	.db	0
-      001620 05                     993 	.uleb128	5
-      001621 02                     994 	.db	2
-      001622 00 00 8D 8E            995 	.dw	0,(Snixie$NIXIE_DisplayTime$81)
-      001626 03                     996 	.db	3
-      001627 F8 00                  997 	.sleb128	120
-      001629 01                     998 	.db	1
-      00162A 09                     999 	.db	9
-      00162B 00 02                 1000 	.dw	Snixie$NIXIE_DisplayTime$84-Snixie$NIXIE_DisplayTime$81
-      00162D 03                    1001 	.db	3
-      00162E 04                    1002 	.sleb128	4
-      00162F 01                    1003 	.db	1
-      001630 09                    1004 	.db	9
-      001631 00 21                 1005 	.dw	Snixie$NIXIE_DisplayTime$85-Snixie$NIXIE_DisplayTime$84
-      001633 03                    1006 	.db	3
-      001634 02                    1007 	.sleb128	2
-      001635 01                    1008 	.db	1
-      001636 09                    1009 	.db	9
-      001637 00 12                 1010 	.dw	Snixie$NIXIE_DisplayTime$90-Snixie$NIXIE_DisplayTime$85
-      001639 03                    1011 	.db	3
-      00163A 01                    1012 	.sleb128	1
-      00163B 01                    1013 	.db	1
-      00163C 09                    1014 	.db	9
-      00163D 00 08                 1015 	.dw	Snixie$NIXIE_DisplayTime$93-Snixie$NIXIE_DisplayTime$90
-      00163F 03                    1016 	.db	3
-      001640 02                    1017 	.sleb128	2
-      001641 01                    1018 	.db	1
-      001642 09                    1019 	.db	9
-      001643 00 0C                 1020 	.dw	Snixie$NIXIE_DisplayTime$98-Snixie$NIXIE_DisplayTime$93
-      001645 03                    1021 	.db	3
-      001646 01                    1022 	.sleb128	1
-      001647 01                    1023 	.db	1
-      001648 09                    1024 	.db	9
-      001649 00 08                 1025 	.dw	Snixie$NIXIE_DisplayTime$101-Snixie$NIXIE_DisplayTime$98
-      00164B 03                    1026 	.db	3
-      00164C 02                    1027 	.sleb128	2
-      00164D 01                    1028 	.db	1
-      00164E 09                    1029 	.db	9
-      00164F 00 12                 1030 	.dw	Snixie$NIXIE_DisplayTime$106-Snixie$NIXIE_DisplayTime$101
-      001651 03                    1031 	.db	3
-      001652 01                    1032 	.sleb128	1
-      001653 01                    1033 	.db	1
-      001654 09                    1034 	.db	9
-      001655 00 08                 1035 	.dw	Snixie$NIXIE_DisplayTime$109-Snixie$NIXIE_DisplayTime$106
-      001657 03                    1036 	.db	3
-      001658 02                    1037 	.sleb128	2
-      001659 01                    1038 	.db	1
-      00165A 09                    1039 	.db	9
-      00165B 00 0C                 1040 	.dw	Snixie$NIXIE_DisplayTime$114-Snixie$NIXIE_DisplayTime$109
-      00165D 03                    1041 	.db	3
-      00165E 01                    1042 	.sleb128	1
-      00165F 01                    1043 	.db	1
-      001660 09                    1044 	.db	9
-      001661 00 08                 1045 	.dw	Snixie$NIXIE_DisplayTime$117-Snixie$NIXIE_DisplayTime$114
-      001663 03                    1046 	.db	3
-      001664 02                    1047 	.sleb128	2
-      001665 01                    1048 	.db	1
-      001666 09                    1049 	.db	9
-      001667 00 10                 1050 	.dw	Snixie$NIXIE_DisplayTime$122-Snixie$NIXIE_DisplayTime$117
-      001669 03                    1051 	.db	3
-      00166A 01                    1052 	.sleb128	1
-      00166B 01                    1053 	.db	1
-      00166C 09                    1054 	.db	9
-      00166D 00 11                 1055 	.dw	Snixie$NIXIE_DisplayTime$127-Snixie$NIXIE_DisplayTime$122
-      00166F 03                    1056 	.db	3
-      001670 01                    1057 	.sleb128	1
-      001671 01                    1058 	.db	1
-      001672 09                    1059 	.db	9
-      001673 00 11                 1060 	.dw	Snixie$NIXIE_DisplayTime$132-Snixie$NIXIE_DisplayTime$127
-      001675 03                    1061 	.db	3
-      001676 01                    1062 	.sleb128	1
-      001677 01                    1063 	.db	1
-      001678 09                    1064 	.db	9
-      001679 00 11                 1065 	.dw	Snixie$NIXIE_DisplayTime$137-Snixie$NIXIE_DisplayTime$132
-      00167B 03                    1066 	.db	3
-      00167C 04                    1067 	.sleb128	4
-      00167D 01                    1068 	.db	1
-      00167E 09                    1069 	.db	9
-      00167F 00 0B                 1070 	.dw	Snixie$NIXIE_DisplayTime$143-Snixie$NIXIE_DisplayTime$137
-      001681 03                    1071 	.db	3
-      001682 05                    1072 	.sleb128	5
-      001683 01                    1073 	.db	1
-      001684 09                    1074 	.db	9
-      001685 00 07                 1075 	.dw	Snixie$NIXIE_DisplayTime$144-Snixie$NIXIE_DisplayTime$143
-      001687 03                    1076 	.db	3
-      001688 01                    1077 	.sleb128	1
-      001689 01                    1078 	.db	1
-      00168A 09                    1079 	.db	9
-      00168B 00 0A                 1080 	.dw	Snixie$NIXIE_DisplayTime$145-Snixie$NIXIE_DisplayTime$144
-      00168D 03                    1081 	.db	3
-      00168E 01                    1082 	.sleb128	1
-      00168F 01                    1083 	.db	1
-      001690 09                    1084 	.db	9
-      001691 00 04                 1085 	.dw	Snixie$NIXIE_DisplayTime$148-Snixie$NIXIE_DisplayTime$145
-      001693 03                    1086 	.db	3
-      001694 01                    1087 	.sleb128	1
-      001695 01                    1088 	.db	1
-      001696 09                    1089 	.db	9
-      001697 00 05                 1090 	.dw	Snixie$NIXIE_DisplayTime$151-Snixie$NIXIE_DisplayTime$148
-      001699 03                    1091 	.db	3
-      00169A 02                    1092 	.sleb128	2
-      00169B 01                    1093 	.db	1
-      00169C 09                    1094 	.db	9
-      00169D 00 0A                 1095 	.dw	Snixie$NIXIE_DisplayTime$154-Snixie$NIXIE_DisplayTime$151
-      00169F 03                    1096 	.db	3
-      0016A0 02                    1097 	.sleb128	2
-      0016A1 01                    1098 	.db	1
-      0016A2 09                    1099 	.db	9
-      0016A3 00 09                 1100 	.dw	Snixie$NIXIE_DisplayTime$155-Snixie$NIXIE_DisplayTime$154
-      0016A5 03                    1101 	.db	3
-      0016A6 01                    1102 	.sleb128	1
-      0016A7 01                    1103 	.db	1
-      0016A8 09                    1104 	.db	9
-      0016A9 00 03                 1105 	.dw	Snixie$NIXIE_DisplayTime$156-Snixie$NIXIE_DisplayTime$155
-      0016AB 03                    1106 	.db	3
-      0016AC 01                    1107 	.sleb128	1
-      0016AD 01                    1108 	.db	1
-      0016AE 09                    1109 	.db	9
-      0016AF 00 03                 1110 	.dw	Snixie$NIXIE_DisplayTime$157-Snixie$NIXIE_DisplayTime$156
-      0016B1 03                    1111 	.db	3
-      0016B2 01                    1112 	.sleb128	1
-      0016B3 01                    1113 	.db	1
-      0016B4 09                    1114 	.db	9
-      0016B5 00 0B                 1115 	.dw	Snixie$NIXIE_DisplayTime$158-Snixie$NIXIE_DisplayTime$157
-      0016B7 03                    1116 	.db	3
-      0016B8 01                    1117 	.sleb128	1
-      0016B9 01                    1118 	.db	1
-      0016BA 09                    1119 	.db	9
-      0016BB 00 04                 1120 	.dw	Snixie$NIXIE_DisplayTime$159-Snixie$NIXIE_DisplayTime$158
-      0016BD 03                    1121 	.db	3
-      0016BE 01                    1122 	.sleb128	1
-      0016BF 01                    1123 	.db	1
-      0016C0 09                    1124 	.db	9
-      0016C1 00 05                 1125 	.dw	Snixie$NIXIE_DisplayTime$162-Snixie$NIXIE_DisplayTime$159
-      0016C3 03                    1126 	.db	3
-      0016C4 02                    1127 	.sleb128	2
-      0016C5 01                    1128 	.db	1
-      0016C6 09                    1129 	.db	9
-      0016C7 00 0A                 1130 	.dw	Snixie$NIXIE_DisplayTime$165-Snixie$NIXIE_DisplayTime$162
-      0016C9 03                    1131 	.db	3
-      0016CA 02                    1132 	.sleb128	2
-      0016CB 01                    1133 	.db	1
-      0016CC 09                    1134 	.db	9
-      0016CD 00 09                 1135 	.dw	Snixie$NIXIE_DisplayTime$166-Snixie$NIXIE_DisplayTime$165
-      0016CF 03                    1136 	.db	3
-      0016D0 01                    1137 	.sleb128	1
-      0016D1 01                    1138 	.db	1
-      0016D2 09                    1139 	.db	9
-      0016D3 00 12                 1140 	.dw	Snixie$NIXIE_DisplayTime$167-Snixie$NIXIE_DisplayTime$166
-      0016D5 03                    1141 	.db	3
-      0016D6 01                    1142 	.sleb128	1
-      0016D7 01                    1143 	.db	1
-      0016D8 09                    1144 	.db	9
-      0016D9 00 02                 1145 	.dw	Snixie$NIXIE_DisplayTime$168-Snixie$NIXIE_DisplayTime$167
-      0016DB 03                    1146 	.db	3
-      0016DC 01                    1147 	.sleb128	1
-      0016DD 01                    1148 	.db	1
-      0016DE 09                    1149 	.db	9
-      0016DF 00 05                 1150 	.dw	Snixie$NIXIE_DisplayTime$171-Snixie$NIXIE_DisplayTime$168
-      0016E1 03                    1151 	.db	3
-      0016E2 02                    1152 	.sleb128	2
-      0016E3 01                    1153 	.db	1
-      0016E4 09                    1154 	.db	9
-      0016E5 00 0A                 1155 	.dw	Snixie$NIXIE_DisplayTime$174-Snixie$NIXIE_DisplayTime$171
-      0016E7 03                    1156 	.db	3
-      0016E8 03                    1157 	.sleb128	3
-      0016E9 01                    1158 	.db	1
-      0016EA 09                    1159 	.db	9
-      0016EB 00 07                 1160 	.dw	Snixie$NIXIE_DisplayTime$175-Snixie$NIXIE_DisplayTime$174
-      0016ED 03                    1161 	.db	3
-      0016EE 01                    1162 	.sleb128	1
-      0016EF 01                    1163 	.db	1
-      0016F0 09                    1164 	.db	9
-      0016F1 00 0A                 1165 	.dw	Snixie$NIXIE_DisplayTime$176-Snixie$NIXIE_DisplayTime$175
-      0016F3 03                    1166 	.db	3
-      0016F4 01                    1167 	.sleb128	1
-      0016F5 01                    1168 	.db	1
-      0016F6 09                    1169 	.db	9
-      0016F7 00 04                 1170 	.dw	Snixie$NIXIE_DisplayTime$179-Snixie$NIXIE_DisplayTime$176
-      0016F9 03                    1171 	.db	3
-      0016FA 01                    1172 	.sleb128	1
-      0016FB 01                    1173 	.db	1
-      0016FC 09                    1174 	.db	9
-      0016FD 00 05                 1175 	.dw	Snixie$NIXIE_DisplayTime$182-Snixie$NIXIE_DisplayTime$179
-      0016FF 03                    1176 	.db	3
-      001700 02                    1177 	.sleb128	2
-      001701 01                    1178 	.db	1
-      001702 09                    1179 	.db	9
-      001703 00 0A                 1180 	.dw	Snixie$NIXIE_DisplayTime$185-Snixie$NIXIE_DisplayTime$182
-      001705 03                    1181 	.db	3
-      001706 02                    1182 	.sleb128	2
-      001707 01                    1183 	.db	1
-      001708 09                    1184 	.db	9
-      001709 00 09                 1185 	.dw	Snixie$NIXIE_DisplayTime$186-Snixie$NIXIE_DisplayTime$185
-      00170B 03                    1186 	.db	3
-      00170C 01                    1187 	.sleb128	1
-      00170D 01                    1188 	.db	1
-      00170E 09                    1189 	.db	9
-      00170F 00 03                 1190 	.dw	Snixie$NIXIE_DisplayTime$187-Snixie$NIXIE_DisplayTime$186
-      001711 03                    1191 	.db	3
-      001712 01                    1192 	.sleb128	1
-      001713 01                    1193 	.db	1
-      001714 09                    1194 	.db	9
-      001715 00 03                 1195 	.dw	Snixie$NIXIE_DisplayTime$188-Snixie$NIXIE_DisplayTime$187
-      001717 03                    1196 	.db	3
-      001718 01                    1197 	.sleb128	1
-      001719 01                    1198 	.db	1
-      00171A 09                    1199 	.db	9
-      00171B 00 0B                 1200 	.dw	Snixie$NIXIE_DisplayTime$189-Snixie$NIXIE_DisplayTime$188
-      00171D 03                    1201 	.db	3
-      00171E 01                    1202 	.sleb128	1
-      00171F 01                    1203 	.db	1
-      001720 09                    1204 	.db	9
-      001721 00 04                 1205 	.dw	Snixie$NIXIE_DisplayTime$190-Snixie$NIXIE_DisplayTime$189
-      001723 03                    1206 	.db	3
-      001724 01                    1207 	.sleb128	1
-      001725 01                    1208 	.db	1
-      001726 09                    1209 	.db	9
-      001727 00 05                 1210 	.dw	Snixie$NIXIE_DisplayTime$193-Snixie$NIXIE_DisplayTime$190
-      001729 03                    1211 	.db	3
-      00172A 02                    1212 	.sleb128	2
-      00172B 01                    1213 	.db	1
-      00172C 09                    1214 	.db	9
-      00172D 00 0A                 1215 	.dw	Snixie$NIXIE_DisplayTime$196-Snixie$NIXIE_DisplayTime$193
-      00172F 03                    1216 	.db	3
-      001730 02                    1217 	.sleb128	2
-      001731 01                    1218 	.db	1
-      001732 09                    1219 	.db	9
-      001733 00 09                 1220 	.dw	Snixie$NIXIE_DisplayTime$197-Snixie$NIXIE_DisplayTime$196
-      001735 03                    1221 	.db	3
-      001736 01                    1222 	.sleb128	1
-      001737 01                    1223 	.db	1
-      001738 09                    1224 	.db	9
-      001739 00 12                 1225 	.dw	Snixie$NIXIE_DisplayTime$198-Snixie$NIXIE_DisplayTime$197
-      00173B 03                    1226 	.db	3
-      00173C 01                    1227 	.sleb128	1
-      00173D 01                    1228 	.db	1
-      00173E 09                    1229 	.db	9
-      00173F 00 02                 1230 	.dw	Snixie$NIXIE_DisplayTime$199-Snixie$NIXIE_DisplayTime$198
-      001741 03                    1231 	.db	3
-      001742 01                    1232 	.sleb128	1
-      001743 01                    1233 	.db	1
-      001744 09                    1234 	.db	9
-      001745 00 05                 1235 	.dw	Snixie$NIXIE_DisplayTime$202-Snixie$NIXIE_DisplayTime$199
-      001747 03                    1236 	.db	3
-      001748 02                    1237 	.sleb128	2
-      001749 01                    1238 	.db	1
-      00174A 09                    1239 	.db	9
-      00174B 00 0A                 1240 	.dw	Snixie$NIXIE_DisplayTime$205-Snixie$NIXIE_DisplayTime$202
-      00174D 03                    1241 	.db	3
-      00174E 02                    1242 	.sleb128	2
-      00174F 01                    1243 	.db	1
-      001750 09                    1244 	.db	9
-      001751 00 0B                 1245 	.dw	Snixie$NIXIE_DisplayTime$211-Snixie$NIXIE_DisplayTime$205
-      001753 03                    1246 	.db	3
-      001754 01                    1247 	.sleb128	1
-      001755 01                    1248 	.db	1
-      001756 09                    1249 	.db	9
-      001757 00 03                 1250 	.dw	1+Snixie$NIXIE_DisplayTime$213-Snixie$NIXIE_DisplayTime$211
-      001759 00                    1251 	.db	0
-      00175A 01                    1252 	.uleb128	1
-      00175B 01                    1253 	.db	1
-      00175C                       1254 Ldebug_line_end:
-                                   1255 
-                                   1256 	.area .debug_loc (NOLOAD)
-      000E7C                       1257 Ldebug_loc_start:
-      000E7C 00 00 8F 62           1258 	.dw	0,(Snixie$NIXIE_DisplayTime$212)
-      000E80 00 00 8F 63           1259 	.dw	0,(Snixie$NIXIE_DisplayTime$214)
-      000E84 00 02                 1260 	.dw	2
-      000E86 78                    1261 	.db	120
-      000E87 01                    1262 	.sleb128	1
-      000E88 00 00 8F 60           1263 	.dw	0,(Snixie$NIXIE_DisplayTime$209)
-      000E8C 00 00 8F 62           1264 	.dw	0,(Snixie$NIXIE_DisplayTime$212)
-      000E90 00 02                 1265 	.dw	2
-      000E92 78                    1266 	.db	120
-      000E93 13                    1267 	.sleb128	19
-      000E94 00 00 8F 5B           1268 	.dw	0,(Snixie$NIXIE_DisplayTime$208)
-      000E98 00 00 8F 60           1269 	.dw	0,(Snixie$NIXIE_DisplayTime$209)
-      000E9C 00 02                 1270 	.dw	2
-      000E9E 78                    1271 	.db	120
-      000E9F 16                    1272 	.sleb128	22
-      000EA0 00 00 8F 59           1273 	.dw	0,(Snixie$NIXIE_DisplayTime$207)
-      000EA4 00 00 8F 5B           1274 	.dw	0,(Snixie$NIXIE_DisplayTime$208)
-      000EA8 00 02                 1275 	.dw	2
-      000EAA 78                    1276 	.db	120
-      000EAB 15                    1277 	.sleb128	21
-      000EAC 00 00 8F 57           1278 	.dw	0,(Snixie$NIXIE_DisplayTime$206)
-      000EB0 00 00 8F 59           1279 	.dw	0,(Snixie$NIXIE_DisplayTime$207)
-      000EB4 00 02                 1280 	.dw	2
-      000EB6 78                    1281 	.db	120
-      000EB7 14                    1282 	.sleb128	20
-      000EB8 00 00 8F 52           1283 	.dw	0,(Snixie$NIXIE_DisplayTime$204)
-      000EBC 00 00 8F 57           1284 	.dw	0,(Snixie$NIXIE_DisplayTime$206)
-      000EC0 00 02                 1285 	.dw	2
-      000EC2 78                    1286 	.db	120
-      000EC3 13                    1287 	.sleb128	19
-      000EC4 00 00 8F 4D           1288 	.dw	0,(Snixie$NIXIE_DisplayTime$203)
-      000EC8 00 00 8F 52           1289 	.dw	0,(Snixie$NIXIE_DisplayTime$204)
-      000ECC 00 02                 1290 	.dw	2
-      000ECE 78                    1291 	.db	120
-      000ECF 14                    1292 	.sleb128	20
-      000ED0 00 00 8F 4B           1293 	.dw	0,(Snixie$NIXIE_DisplayTime$201)
-      000ED4 00 00 8F 4D           1294 	.dw	0,(Snixie$NIXIE_DisplayTime$203)
-      000ED8 00 02                 1295 	.dw	2
-      000EDA 78                    1296 	.db	120
-      000EDB 13                    1297 	.sleb128	19
-      000EDC 00 00 8F 47           1298 	.dw	0,(Snixie$NIXIE_DisplayTime$200)
-      000EE0 00 00 8F 4B           1299 	.dw	0,(Snixie$NIXIE_DisplayTime$201)
-      000EE4 00 02                 1300 	.dw	2
-      000EE6 78                    1301 	.db	120
-      000EE7 14                    1302 	.sleb128	20
-      000EE8 00 00 8F 26           1303 	.dw	0,(Snixie$NIXIE_DisplayTime$195)
-      000EEC 00 00 8F 47           1304 	.dw	0,(Snixie$NIXIE_DisplayTime$200)
-      000EF0 00 02                 1305 	.dw	2
-      000EF2 78                    1306 	.db	120
-      000EF3 13                    1307 	.sleb128	19
-      000EF4 00 00 8F 21           1308 	.dw	0,(Snixie$NIXIE_DisplayTime$194)
-      000EF8 00 00 8F 26           1309 	.dw	0,(Snixie$NIXIE_DisplayTime$195)
-      000EFC 00 02                 1310 	.dw	2
-      000EFE 78                    1311 	.db	120
-      000EFF 14                    1312 	.sleb128	20
-      000F00 00 00 8F 1F           1313 	.dw	0,(Snixie$NIXIE_DisplayTime$192)
-      000F04 00 00 8F 21           1314 	.dw	0,(Snixie$NIXIE_DisplayTime$194)
-      000F08 00 02                 1315 	.dw	2
-      000F0A 78                    1316 	.db	120
-      000F0B 13                    1317 	.sleb128	19
-      000F0C 00 00 8F 1B           1318 	.dw	0,(Snixie$NIXIE_DisplayTime$191)
-      000F10 00 00 8F 1F           1319 	.dw	0,(Snixie$NIXIE_DisplayTime$192)
-      000F14 00 02                 1320 	.dw	2
-      000F16 78                    1321 	.db	120
-      000F17 14                    1322 	.sleb128	20
-      000F18 00 00 8E F9           1323 	.dw	0,(Snixie$NIXIE_DisplayTime$184)
-      000F1C 00 00 8F 1B           1324 	.dw	0,(Snixie$NIXIE_DisplayTime$191)
-      000F20 00 02                 1325 	.dw	2
-      000F22 78                    1326 	.db	120
-      000F23 13                    1327 	.sleb128	19
-      000F24 00 00 8E F4           1328 	.dw	0,(Snixie$NIXIE_DisplayTime$183)
-      000F28 00 00 8E F9           1329 	.dw	0,(Snixie$NIXIE_DisplayTime$184)
-      000F2C 00 02                 1330 	.dw	2
-      000F2E 78                    1331 	.db	120
-      000F2F 14                    1332 	.sleb128	20
-      000F30 00 00 8E F2           1333 	.dw	0,(Snixie$NIXIE_DisplayTime$181)
-      000F34 00 00 8E F4           1334 	.dw	0,(Snixie$NIXIE_DisplayTime$183)
-      000F38 00 02                 1335 	.dw	2
-      000F3A 78                    1336 	.db	120
-      000F3B 13                    1337 	.sleb128	19
-      000F3C 00 00 8E EE           1338 	.dw	0,(Snixie$NIXIE_DisplayTime$180)
-      000F40 00 00 8E F2           1339 	.dw	0,(Snixie$NIXIE_DisplayTime$181)
-      000F44 00 02                 1340 	.dw	2
-      000F46 78                    1341 	.db	120
-      000F47 14                    1342 	.sleb128	20
-      000F48 00 00 8E ED           1343 	.dw	0,(Snixie$NIXIE_DisplayTime$178)
-      000F4C 00 00 8E EE           1344 	.dw	0,(Snixie$NIXIE_DisplayTime$180)
-      000F50 00 02                 1345 	.dw	2
-      000F52 78                    1346 	.db	120
-      000F53 13                    1347 	.sleb128	19
-      000F54 00 00 8E EA           1348 	.dw	0,(Snixie$NIXIE_DisplayTime$177)
-      000F58 00 00 8E ED           1349 	.dw	0,(Snixie$NIXIE_DisplayTime$178)
-      000F5C 00 02                 1350 	.dw	2
-      000F5E 78                    1351 	.db	120
-      000F5F 15                    1352 	.sleb128	21
-      000F60 00 00 8E D5           1353 	.dw	0,(Snixie$NIXIE_DisplayTime$173)
-      000F64 00 00 8E EA           1354 	.dw	0,(Snixie$NIXIE_DisplayTime$177)
-      000F68 00 02                 1355 	.dw	2
-      000F6A 78                    1356 	.db	120
-      000F6B 13                    1357 	.sleb128	19
-      000F6C 00 00 8E D0           1358 	.dw	0,(Snixie$NIXIE_DisplayTime$172)
-      000F70 00 00 8E D5           1359 	.dw	0,(Snixie$NIXIE_DisplayTime$173)
-      000F74 00 02                 1360 	.dw	2
-      000F76 78                    1361 	.db	120
-      000F77 14                    1362 	.sleb128	20
-      000F78 00 00 8E CE           1363 	.dw	0,(Snixie$NIXIE_DisplayTime$170)
-      000F7C 00 00 8E D0           1364 	.dw	0,(Snixie$NIXIE_DisplayTime$172)
-      000F80 00 02                 1365 	.dw	2
-      000F82 78                    1366 	.db	120
-      000F83 13                    1367 	.sleb128	19
-      000F84 00 00 8E CA           1368 	.dw	0,(Snixie$NIXIE_DisplayTime$169)
-      000F88 00 00 8E CE           1369 	.dw	0,(Snixie$NIXIE_DisplayTime$170)
-      000F8C 00 02                 1370 	.dw	2
-      000F8E 78                    1371 	.db	120
-      000F8F 14                    1372 	.sleb128	20
-      000F90 00 00 8E A9           1373 	.dw	0,(Snixie$NIXIE_DisplayTime$164)
-      000F94 00 00 8E CA           1374 	.dw	0,(Snixie$NIXIE_DisplayTime$169)
-      000F98 00 02                 1375 	.dw	2
-      000F9A 78                    1376 	.db	120
-      000F9B 13                    1377 	.sleb128	19
-      000F9C 00 00 8E A4           1378 	.dw	0,(Snixie$NIXIE_DisplayTime$163)
-      000FA0 00 00 8E A9           1379 	.dw	0,(Snixie$NIXIE_DisplayTime$164)
-      000FA4 00 02                 1380 	.dw	2
-      000FA6 78                    1381 	.db	120
-      000FA7 14                    1382 	.sleb128	20
-      000FA8 00 00 8E A2           1383 	.dw	0,(Snixie$NIXIE_DisplayTime$161)
-      000FAC 00 00 8E A4           1384 	.dw	0,(Snixie$NIXIE_DisplayTime$163)
-      000FB0 00 02                 1385 	.dw	2
-      000FB2 78                    1386 	.db	120
-      000FB3 13                    1387 	.sleb128	19
-      000FB4 00 00 8E 9E           1388 	.dw	0,(Snixie$NIXIE_DisplayTime$160)
-      000FB8 00 00 8E A2           1389 	.dw	0,(Snixie$NIXIE_DisplayTime$161)
-      000FBC 00 02                 1390 	.dw	2
-      000FBE 78                    1391 	.db	120
-      000FBF 14                    1392 	.sleb128	20
-      000FC0 00 00 8E 7C           1393 	.dw	0,(Snixie$NIXIE_DisplayTime$153)
-      000FC4 00 00 8E 9E           1394 	.dw	0,(Snixie$NIXIE_DisplayTime$160)
-      000FC8 00 02                 1395 	.dw	2
-      000FCA 78                    1396 	.db	120
-      000FCB 13                    1397 	.sleb128	19
-      000FCC 00 00 8E 77           1398 	.dw	0,(Snixie$NIXIE_DisplayTime$152)
-      000FD0 00 00 8E 7C           1399 	.dw	0,(Snixie$NIXIE_DisplayTime$153)
-      000FD4 00 02                 1400 	.dw	2
-      000FD6 78                    1401 	.db	120
-      000FD7 14                    1402 	.sleb128	20
-      000FD8 00 00 8E 75           1403 	.dw	0,(Snixie$NIXIE_DisplayTime$150)
-      000FDC 00 00 8E 77           1404 	.dw	0,(Snixie$NIXIE_DisplayTime$152)
-      000FE0 00 02                 1405 	.dw	2
-      000FE2 78                    1406 	.db	120
-      000FE3 13                    1407 	.sleb128	19
-      000FE4 00 00 8E 71           1408 	.dw	0,(Snixie$NIXIE_DisplayTime$149)
-      000FE8 00 00 8E 75           1409 	.dw	0,(Snixie$NIXIE_DisplayTime$150)
-      000FEC 00 02                 1410 	.dw	2
-      000FEE 78                    1411 	.db	120
-      000FEF 14                    1412 	.sleb128	20
-      000FF0 00 00 8E 70           1413 	.dw	0,(Snixie$NIXIE_DisplayTime$147)
-      000FF4 00 00 8E 71           1414 	.dw	0,(Snixie$NIXIE_DisplayTime$149)
-      000FF8 00 02                 1415 	.dw	2
-      000FFA 78                    1416 	.db	120
-      000FFB 13                    1417 	.sleb128	19
-      000FFC 00 00 8E 6D           1418 	.dw	0,(Snixie$NIXIE_DisplayTime$146)
-      001000 00 00 8E 70           1419 	.dw	0,(Snixie$NIXIE_DisplayTime$147)
-      001004 00 02                 1420 	.dw	2
-      001006 78                    1421 	.db	120
-      001007 15                    1422 	.sleb128	21
-      001008 00 00 8E 5B           1423 	.dw	0,(Snixie$NIXIE_DisplayTime$141)
-      00100C 00 00 8E 6D           1424 	.dw	0,(Snixie$NIXIE_DisplayTime$146)
-      001010 00 02                 1425 	.dw	2
-      001012 78                    1426 	.db	120
-      001013 13                    1427 	.sleb128	19
-      001014 00 00 8E 56           1428 	.dw	0,(Snixie$NIXIE_DisplayTime$140)
-      001018 00 00 8E 5B           1429 	.dw	0,(Snixie$NIXIE_DisplayTime$141)
-      00101C 00 02                 1430 	.dw	2
-      00101E 78                    1431 	.db	120
-      00101F 16                    1432 	.sleb128	22
-      001020 00 00 8E 54           1433 	.dw	0,(Snixie$NIXIE_DisplayTime$139)
-      001024 00 00 8E 56           1434 	.dw	0,(Snixie$NIXIE_DisplayTime$140)
-      001028 00 02                 1435 	.dw	2
-      00102A 78                    1436 	.db	120
-      00102B 15                    1437 	.sleb128	21
-      00102C 00 00 8E 52           1438 	.dw	0,(Snixie$NIXIE_DisplayTime$138)
-      001030 00 00 8E 54           1439 	.dw	0,(Snixie$NIXIE_DisplayTime$139)
-      001034 00 02                 1440 	.dw	2
-      001036 78                    1441 	.db	120
-      001037 14                    1442 	.sleb128	20
-      001038 00 00 8E 4E           1443 	.dw	0,(Snixie$NIXIE_DisplayTime$136)
-      00103C 00 00 8E 52           1444 	.dw	0,(Snixie$NIXIE_DisplayTime$138)
-      001040 00 02                 1445 	.dw	2
-      001042 78                    1446 	.db	120
-      001043 13                    1447 	.sleb128	19
-      001044 00 00 8E 49           1448 	.dw	0,(Snixie$NIXIE_DisplayTime$135)
-      001048 00 00 8E 4E           1449 	.dw	0,(Snixie$NIXIE_DisplayTime$136)
-      00104C 00 02                 1450 	.dw	2
-      00104E 78                    1451 	.db	120
-      00104F 17                    1452 	.sleb128	23
-      001050 00 00 8E 47           1453 	.dw	0,(Snixie$NIXIE_DisplayTime$134)
-      001054 00 00 8E 49           1454 	.dw	0,(Snixie$NIXIE_DisplayTime$135)
-      001058 00 02                 1455 	.dw	2
-      00105A 78                    1456 	.db	120
-      00105B 16                    1457 	.sleb128	22
-      00105C 00 00 8E 42           1458 	.dw	0,(Snixie$NIXIE_DisplayTime$133)
-      001060 00 00 8E 47           1459 	.dw	0,(Snixie$NIXIE_DisplayTime$134)
-      001064 00 02                 1460 	.dw	2
-      001066 78                    1461 	.db	120
-      001067 14                    1462 	.sleb128	20
-      001068 00 00 8E 3D           1463 	.dw	0,(Snixie$NIXIE_DisplayTime$131)
-      00106C 00 00 8E 42           1464 	.dw	0,(Snixie$NIXIE_DisplayTime$133)
-      001070 00 02                 1465 	.dw	2
-      001072 78                    1466 	.db	120
-      001073 13                    1467 	.sleb128	19
-      001074 00 00 8E 38           1468 	.dw	0,(Snixie$NIXIE_DisplayTime$130)
-      001078 00 00 8E 3D           1469 	.dw	0,(Snixie$NIXIE_DisplayTime$131)
-      00107C 00 02                 1470 	.dw	2
-      00107E 78                    1471 	.db	120
-      00107F 17                    1472 	.sleb128	23
-      001080 00 00 8E 36           1473 	.dw	0,(Snixie$NIXIE_DisplayTime$129)
-      001084 00 00 8E 38           1474 	.dw	0,(Snixie$NIXIE_DisplayTime$130)
-      001088 00 02                 1475 	.dw	2
-      00108A 78                    1476 	.db	120
-      00108B 16                    1477 	.sleb128	22
-      00108C 00 00 8E 31           1478 	.dw	0,(Snixie$NIXIE_DisplayTime$128)
-      001090 00 00 8E 36           1479 	.dw	0,(Snixie$NIXIE_DisplayTime$129)
-      001094 00 02                 1480 	.dw	2
-      001096 78                    1481 	.db	120
-      001097 14                    1482 	.sleb128	20
-      001098 00 00 8E 2C           1483 	.dw	0,(Snixie$NIXIE_DisplayTime$126)
-      00109C 00 00 8E 31           1484 	.dw	0,(Snixie$NIXIE_DisplayTime$128)
-      0010A0 00 02                 1485 	.dw	2
-      0010A2 78                    1486 	.db	120
-      0010A3 13                    1487 	.sleb128	19
-      0010A4 00 00 8E 27           1488 	.dw	0,(Snixie$NIXIE_DisplayTime$125)
-      0010A8 00 00 8E 2C           1489 	.dw	0,(Snixie$NIXIE_DisplayTime$126)
-      0010AC 00 02                 1490 	.dw	2
-      0010AE 78                    1491 	.db	120
-      0010AF 17                    1492 	.sleb128	23
-      0010B0 00 00 8E 25           1493 	.dw	0,(Snixie$NIXIE_DisplayTime$124)
-      0010B4 00 00 8E 27           1494 	.dw	0,(Snixie$NIXIE_DisplayTime$125)
-      0010B8 00 02                 1495 	.dw	2
-      0010BA 78                    1496 	.db	120
-      0010BB 16                    1497 	.sleb128	22
-      0010BC 00 00 8E 20           1498 	.dw	0,(Snixie$NIXIE_DisplayTime$123)
-      0010C0 00 00 8E 25           1499 	.dw	0,(Snixie$NIXIE_DisplayTime$124)
-      0010C4 00 02                 1500 	.dw	2
-      0010C6 78                    1501 	.db	120
-      0010C7 14                    1502 	.sleb128	20
-      0010C8 00 00 8E 1B           1503 	.dw	0,(Snixie$NIXIE_DisplayTime$121)
-      0010CC 00 00 8E 20           1504 	.dw	0,(Snixie$NIXIE_DisplayTime$123)
-      0010D0 00 02                 1505 	.dw	2
-      0010D2 78                    1506 	.db	120
-      0010D3 13                    1507 	.sleb128	19
-      0010D4 00 00 8E 16           1508 	.dw	0,(Snixie$NIXIE_DisplayTime$120)
-      0010D8 00 00 8E 1B           1509 	.dw	0,(Snixie$NIXIE_DisplayTime$121)
-      0010DC 00 02                 1510 	.dw	2
-      0010DE 78                    1511 	.db	120
-      0010DF 17                    1512 	.sleb128	23
-      0010E0 00 00 8E 14           1513 	.dw	0,(Snixie$NIXIE_DisplayTime$119)
-      0010E4 00 00 8E 16           1514 	.dw	0,(Snixie$NIXIE_DisplayTime$120)
-      0010E8 00 02                 1515 	.dw	2
-      0010EA 78                    1516 	.db	120
-      0010EB 16                    1517 	.sleb128	22
-      0010EC 00 00 8E 10           1518 	.dw	0,(Snixie$NIXIE_DisplayTime$118)
-      0010F0 00 00 8E 14           1519 	.dw	0,(Snixie$NIXIE_DisplayTime$119)
-      0010F4 00 02                 1520 	.dw	2
-      0010F6 78                    1521 	.db	120
-      0010F7 14                    1522 	.sleb128	20
-      0010F8 00 00 8E 0B           1523 	.dw	0,(Snixie$NIXIE_DisplayTime$116)
-      0010FC 00 00 8E 10           1524 	.dw	0,(Snixie$NIXIE_DisplayTime$118)
-      001100 00 02                 1525 	.dw	2
-      001102 78                    1526 	.db	120
-      001103 13                    1527 	.sleb128	19
-      001104 00 00 8E 08           1528 	.dw	0,(Snixie$NIXIE_DisplayTime$115)
-      001108 00 00 8E 0B           1529 	.dw	0,(Snixie$NIXIE_DisplayTime$116)
-      00110C 00 02                 1530 	.dw	2
-      00110E 78                    1531 	.db	120
-      00110F 15                    1532 	.sleb128	21
-      001110 00 00 8E 05           1533 	.dw	0,(Snixie$NIXIE_DisplayTime$113)
-      001114 00 00 8E 08           1534 	.dw	0,(Snixie$NIXIE_DisplayTime$115)
-      001118 00 02                 1535 	.dw	2
-      00111A 78                    1536 	.db	120
-      00111B 13                    1537 	.sleb128	19
-      00111C 00 00 8E 00           1538 	.dw	0,(Snixie$NIXIE_DisplayTime$112)
-      001120 00 00 8E 05           1539 	.dw	0,(Snixie$NIXIE_DisplayTime$113)
-      001124 00 02                 1540 	.dw	2
-      001126 78                    1541 	.db	120
-      001127 17                    1542 	.sleb128	23
-      001128 00 00 8D FD           1543 	.dw	0,(Snixie$NIXIE_DisplayTime$111)
-      00112C 00 00 8E 00           1544 	.dw	0,(Snixie$NIXIE_DisplayTime$112)
-      001130 00 02                 1545 	.dw	2
-      001132 78                    1546 	.db	120
-      001133 15                    1547 	.sleb128	21
-      001134 00 00 8D FB           1548 	.dw	0,(Snixie$NIXIE_DisplayTime$110)
-      001138 00 00 8D FD           1549 	.dw	0,(Snixie$NIXIE_DisplayTime$111)
-      00113C 00 02                 1550 	.dw	2
-      00113E 78                    1551 	.db	120
-      00113F 14                    1552 	.sleb128	20
-      001140 00 00 8D F7           1553 	.dw	0,(Snixie$NIXIE_DisplayTime$108)
-      001144 00 00 8D FB           1554 	.dw	0,(Snixie$NIXIE_DisplayTime$110)
-      001148 00 02                 1555 	.dw	2
-      00114A 78                    1556 	.db	120
-      00114B 13                    1557 	.sleb128	19
-      00114C 00 00 8D F4           1558 	.dw	0,(Snixie$NIXIE_DisplayTime$107)
-      001150 00 00 8D F7           1559 	.dw	0,(Snixie$NIXIE_DisplayTime$108)
-      001154 00 02                 1560 	.dw	2
-      001156 78                    1561 	.db	120
-      001157 15                    1562 	.sleb128	21
-      001158 00 00 8D F1           1563 	.dw	0,(Snixie$NIXIE_DisplayTime$105)
-      00115C 00 00 8D F4           1564 	.dw	0,(Snixie$NIXIE_DisplayTime$107)
-      001160 00 02                 1565 	.dw	2
-      001162 78                    1566 	.db	120
-      001163 13                    1567 	.sleb128	19
-      001164 00 00 8D EC           1568 	.dw	0,(Snixie$NIXIE_DisplayTime$104)
-      001168 00 00 8D F1           1569 	.dw	0,(Snixie$NIXIE_DisplayTime$105)
-      00116C 00 02                 1570 	.dw	2
-      00116E 78                    1571 	.db	120
-      00116F 17                    1572 	.sleb128	23
-      001170 00 00 8D E9           1573 	.dw	0,(Snixie$NIXIE_DisplayTime$103)
-      001174 00 00 8D EC           1574 	.dw	0,(Snixie$NIXIE_DisplayTime$104)
-      001178 00 02                 1575 	.dw	2
-      00117A 78                    1576 	.db	120
-      00117B 15                    1577 	.sleb128	21
-      00117C 00 00 8D E7           1578 	.dw	0,(Snixie$NIXIE_DisplayTime$102)
-      001180 00 00 8D E9           1579 	.dw	0,(Snixie$NIXIE_DisplayTime$103)
-      001184 00 02                 1580 	.dw	2
-      001186 78                    1581 	.db	120
-      001187 14                    1582 	.sleb128	20
-      001188 00 00 8D DD           1583 	.dw	0,(Snixie$NIXIE_DisplayTime$100)
-      00118C 00 00 8D E7           1584 	.dw	0,(Snixie$NIXIE_DisplayTime$102)
-      001190 00 02                 1585 	.dw	2
-      001192 78                    1586 	.db	120
-      001193 13                    1587 	.sleb128	19
-      001194 00 00 8D DA           1588 	.dw	0,(Snixie$NIXIE_DisplayTime$99)
-      001198 00 00 8D DD           1589 	.dw	0,(Snixie$NIXIE_DisplayTime$100)
-      00119C 00 02                 1590 	.dw	2
-      00119E 78                    1591 	.db	120
-      00119F 15                    1592 	.sleb128	21
-      0011A0 00 00 8D D7           1593 	.dw	0,(Snixie$NIXIE_DisplayTime$97)
-      0011A4 00 00 8D DA           1594 	.dw	0,(Snixie$NIXIE_DisplayTime$99)
-      0011A8 00 02                 1595 	.dw	2
-      0011AA 78                    1596 	.db	120
-      0011AB 13                    1597 	.sleb128	19
-      0011AC 00 00 8D D2           1598 	.dw	0,(Snixie$NIXIE_DisplayTime$96)
-      0011B0 00 00 8D D7           1599 	.dw	0,(Snixie$NIXIE_DisplayTime$97)
-      0011B4 00 02                 1600 	.dw	2
-      0011B6 78                    1601 	.db	120
-      0011B7 17                    1602 	.sleb128	23
-      0011B8 00 00 8D CF           1603 	.dw	0,(Snixie$NIXIE_DisplayTime$95)
-      0011BC 00 00 8D D2           1604 	.dw	0,(Snixie$NIXIE_DisplayTime$96)
-      0011C0 00 02                 1605 	.dw	2
-      0011C2 78                    1606 	.db	120
-      0011C3 15                    1607 	.sleb128	21
-      0011C4 00 00 8D CD           1608 	.dw	0,(Snixie$NIXIE_DisplayTime$94)
-      0011C8 00 00 8D CF           1609 	.dw	0,(Snixie$NIXIE_DisplayTime$95)
-      0011CC 00 02                 1610 	.dw	2
-      0011CE 78                    1611 	.db	120
-      0011CF 14                    1612 	.sleb128	20
-      0011D0 00 00 8D C9           1613 	.dw	0,(Snixie$NIXIE_DisplayTime$92)
-      0011D4 00 00 8D CD           1614 	.dw	0,(Snixie$NIXIE_DisplayTime$94)
-      0011D8 00 02                 1615 	.dw	2
-      0011DA 78                    1616 	.db	120
-      0011DB 13                    1617 	.sleb128	19
-      0011DC 00 00 8D C6           1618 	.dw	0,(Snixie$NIXIE_DisplayTime$91)
-      0011E0 00 00 8D C9           1619 	.dw	0,(Snixie$NIXIE_DisplayTime$92)
-      0011E4 00 02                 1620 	.dw	2
-      0011E6 78                    1621 	.db	120
-      0011E7 15                    1622 	.sleb128	21
-      0011E8 00 00 8D C3           1623 	.dw	0,(Snixie$NIXIE_DisplayTime$89)
-      0011EC 00 00 8D C6           1624 	.dw	0,(Snixie$NIXIE_DisplayTime$91)
-      0011F0 00 02                 1625 	.dw	2
-      0011F2 78                    1626 	.db	120
-      0011F3 13                    1627 	.sleb128	19
-      0011F4 00 00 8D BE           1628 	.dw	0,(Snixie$NIXIE_DisplayTime$88)
-      0011F8 00 00 8D C3           1629 	.dw	0,(Snixie$NIXIE_DisplayTime$89)
-      0011FC 00 02                 1630 	.dw	2
-      0011FE 78                    1631 	.db	120
-      0011FF 17                    1632 	.sleb128	23
-      001200 00 00 8D BB           1633 	.dw	0,(Snixie$NIXIE_DisplayTime$87)
-      001204 00 00 8D BE           1634 	.dw	0,(Snixie$NIXIE_DisplayTime$88)
-      001208 00 02                 1635 	.dw	2
-      00120A 78                    1636 	.db	120
-      00120B 15                    1637 	.sleb128	21
-      00120C 00 00 8D B9           1638 	.dw	0,(Snixie$NIXIE_DisplayTime$86)
-      001210 00 00 8D BB           1639 	.dw	0,(Snixie$NIXIE_DisplayTime$87)
-      001214 00 02                 1640 	.dw	2
-      001216 78                    1641 	.db	120
-      001217 14                    1642 	.sleb128	20
-      001218 00 00 8D 90           1643 	.dw	0,(Snixie$NIXIE_DisplayTime$83)
-      00121C 00 00 8D B9           1644 	.dw	0,(Snixie$NIXIE_DisplayTime$86)
-      001220 00 02                 1645 	.dw	2
-      001222 78                    1646 	.db	120
-      001223 13                    1647 	.sleb128	19
-      001224 00 00 8D 8E           1648 	.dw	0,(Snixie$NIXIE_DisplayTime$82)
-      001228 00 00 8D 90           1649 	.dw	0,(Snixie$NIXIE_DisplayTime$83)
-      00122C 00 02                 1650 	.dw	2
-      00122E 78                    1651 	.db	120
-      00122F 01                    1652 	.sleb128	1
-      001230 00 00 00 00           1653 	.dw	0,0
-      001234 00 00 00 00           1654 	.dw	0,0
-      001238 00 00 8D 8D           1655 	.dw	0,(Snixie$NIXIE_DisplayChar$78)
-      00123C 00 00 8D 8E           1656 	.dw	0,(Snixie$NIXIE_DisplayChar$80)
-      001240 00 02                 1657 	.dw	2
-      001242 78                    1658 	.db	120
-      001243 01                    1659 	.sleb128	1
-      001244 00 00 8D 65           1660 	.dw	0,(Snixie$NIXIE_DisplayChar$72)
-      001248 00 00 8D 8D           1661 	.dw	0,(Snixie$NIXIE_DisplayChar$78)
-      00124C 00 02                 1662 	.dw	2
-      00124E 78                    1663 	.db	120
-      00124F 06                    1664 	.sleb128	6
-      001250 00 00 8D 53           1665 	.dw	0,(Snixie$NIXIE_DisplayChar$69)
-      001254 00 00 8D 65           1666 	.dw	0,(Snixie$NIXIE_DisplayChar$72)
-      001258 00 02                 1667 	.dw	2
-      00125A 78                    1668 	.db	120
-      00125B 06                    1669 	.sleb128	6
-      00125C 00 00 8D 4E           1670 	.dw	0,(Snixie$NIXIE_DisplayChar$68)
-      001260 00 00 8D 53           1671 	.dw	0,(Snixie$NIXIE_DisplayChar$69)
-      001264 00 02                 1672 	.dw	2
-      001266 78                    1673 	.db	120
-      001267 0A                    1674 	.sleb128	10
-      001268 00 00 8D 4B           1675 	.dw	0,(Snixie$NIXIE_DisplayChar$67)
-      00126C 00 00 8D 4E           1676 	.dw	0,(Snixie$NIXIE_DisplayChar$68)
-      001270 00 02                 1677 	.dw	2
-      001272 78                    1678 	.db	120
-      001273 08                    1679 	.sleb128	8
-      001274 00 00 8D 49           1680 	.dw	0,(Snixie$NIXIE_DisplayChar$66)
-      001278 00 00 8D 4B           1681 	.dw	0,(Snixie$NIXIE_DisplayChar$67)
-      00127C 00 02                 1682 	.dw	2
-      00127E 78                    1683 	.db	120
-      00127F 07                    1684 	.sleb128	7
-      001280 00 00 8D 29           1685 	.dw	0,(Snixie$NIXIE_DisplayChar$60)
-      001284 00 00 8D 49           1686 	.dw	0,(Snixie$NIXIE_DisplayChar$66)
-      001288 00 02                 1687 	.dw	2
-      00128A 78                    1688 	.db	120
-      00128B 06                    1689 	.sleb128	6
-      00128C 00 00 8D 24           1690 	.dw	0,(Snixie$NIXIE_DisplayChar$59)
-      001290 00 00 8D 29           1691 	.dw	0,(Snixie$NIXIE_DisplayChar$60)
-      001294 00 02                 1692 	.dw	2
-      001296 78                    1693 	.db	120
-      001297 0A                    1694 	.sleb128	10
-      001298 00 00 8D 21           1695 	.dw	0,(Snixie$NIXIE_DisplayChar$58)
-      00129C 00 00 8D 24           1696 	.dw	0,(Snixie$NIXIE_DisplayChar$59)
-      0012A0 00 02                 1697 	.dw	2
-      0012A2 78                    1698 	.db	120
-      0012A3 08                    1699 	.sleb128	8
-      0012A4 00 00 8D 09           1700 	.dw	0,(Snixie$NIXIE_DisplayChar$52)
-      0012A8 00 00 8D 21           1701 	.dw	0,(Snixie$NIXIE_DisplayChar$58)
-      0012AC 00 02                 1702 	.dw	2
-      0012AE 78                    1703 	.db	120
-      0012AF 06                    1704 	.sleb128	6
-      0012B0 00 00 8D 04           1705 	.dw	0,(Snixie$NIXIE_DisplayChar$51)
-      0012B4 00 00 8D 09           1706 	.dw	0,(Snixie$NIXIE_DisplayChar$52)
-      0012B8 00 02                 1707 	.dw	2
-      0012BA 78                    1708 	.db	120
-      0012BB 0A                    1709 	.sleb128	10
-      0012BC 00 00 8D 01           1710 	.dw	0,(Snixie$NIXIE_DisplayChar$50)
-      0012C0 00 00 8D 04           1711 	.dw	0,(Snixie$NIXIE_DisplayChar$51)
-      0012C4 00 02                 1712 	.dw	2
-      0012C6 78                    1713 	.db	120
-      0012C7 08                    1714 	.sleb128	8
-      0012C8 00 00 8C FF           1715 	.dw	0,(Snixie$NIXIE_DisplayChar$49)
-      0012CC 00 00 8D 01           1716 	.dw	0,(Snixie$NIXIE_DisplayChar$50)
-      0012D0 00 02                 1717 	.dw	2
-      0012D2 78                    1718 	.db	120
-      0012D3 07                    1719 	.sleb128	7
-      0012D4 00 00 8C FA           1720 	.dw	0,(Snixie$NIXIE_DisplayChar$46)
-      0012D8 00 00 8C FF           1721 	.dw	0,(Snixie$NIXIE_DisplayChar$49)
-      0012DC 00 02                 1722 	.dw	2
-      0012DE 78                    1723 	.db	120
-      0012DF 06                    1724 	.sleb128	6
-      0012E0 00 00 8C F8           1725 	.dw	0,(Snixie$NIXIE_DisplayChar$45)
-      0012E4 00 00 8C FA           1726 	.dw	0,(Snixie$NIXIE_DisplayChar$46)
-      0012E8 00 02                 1727 	.dw	2
-      0012EA 78                    1728 	.db	120
-      0012EB 01                    1729 	.sleb128	1
-      0012EC 00 00 00 00           1730 	.dw	0,0
-      0012F0 00 00 00 00           1731 	.dw	0,0
-      0012F4 00 00 8C F7           1732 	.dw	0,(Snixie$NIXIE_Init$40)
-      0012F8 00 00 8C F8           1733 	.dw	0,(Snixie$NIXIE_Init$43)
-      0012FC 00 02                 1734 	.dw	2
-      0012FE 78                    1735 	.db	120
-      0012FF 01                    1736 	.sleb128	1
-      001300 00 00 8C F3           1737 	.dw	0,(Snixie$NIXIE_Init$39)
-      001304 00 00 8C F7           1738 	.dw	0,(Snixie$NIXIE_Init$40)
-      001308 00 02                 1739 	.dw	2
-      00130A 78                    1740 	.db	120
-      00130B 02                    1741 	.sleb128	2
-      00130C 00 00 8C F1           1742 	.dw	0,(Snixie$NIXIE_Init$37)
-      001310 00 00 8C F3           1743 	.dw	0,(Snixie$NIXIE_Init$39)
-      001314 00 02                 1744 	.dw	2
-      001316 78                    1745 	.db	120
-      001317 01                    1746 	.sleb128	1
-      001318 00 00 8C EC           1747 	.dw	0,(Snixie$NIXIE_Init$36)
-      00131C 00 00 8C F1           1748 	.dw	0,(Snixie$NIXIE_Init$37)
-      001320 00 02                 1749 	.dw	2
-      001322 78                    1750 	.db	120
-      001323 09                    1751 	.sleb128	9
-      001324 00 00 8C EA           1752 	.dw	0,(Snixie$NIXIE_Init$35)
-      001328 00 00 8C EC           1753 	.dw	0,(Snixie$NIXIE_Init$36)
-      00132C 00 02                 1754 	.dw	2
-      00132E 78                    1755 	.db	120
-      00132F 08                    1756 	.sleb128	8
-      001330 00 00 8C E8           1757 	.dw	0,(Snixie$NIXIE_Init$34)
-      001334 00 00 8C EA           1758 	.dw	0,(Snixie$NIXIE_Init$35)
-      001338 00 02                 1759 	.dw	2
-      00133A 78                    1760 	.db	120
-      00133B 07                    1761 	.sleb128	7
-      00133C 00 00 8C E6           1762 	.dw	0,(Snixie$NIXIE_Init$33)
-      001340 00 00 8C E8           1763 	.dw	0,(Snixie$NIXIE_Init$34)
-      001344 00 02                 1764 	.dw	2
-      001346 78                    1765 	.db	120
-      001347 06                    1766 	.sleb128	6
-      001348 00 00 8C E4           1767 	.dw	0,(Snixie$NIXIE_Init$32)
-      00134C 00 00 8C E6           1768 	.dw	0,(Snixie$NIXIE_Init$33)
-      001350 00 02                 1769 	.dw	2
-      001352 78                    1770 	.db	120
-      001353 05                    1771 	.sleb128	5
-      001354 00 00 8C E2           1772 	.dw	0,(Snixie$NIXIE_Init$31)
-      001358 00 00 8C E4           1773 	.dw	0,(Snixie$NIXIE_Init$32)
-      00135C 00 02                 1774 	.dw	2
-      00135E 78                    1775 	.db	120
-      00135F 04                    1776 	.sleb128	4
-      001360 00 00 8C E0           1777 	.dw	0,(Snixie$NIXIE_Init$30)
-      001364 00 00 8C E2           1778 	.dw	0,(Snixie$NIXIE_Init$31)
-      001368 00 02                 1779 	.dw	2
-      00136A 78                    1780 	.db	120
-      00136B 03                    1781 	.sleb128	3
-      00136C 00 00 8C DE           1782 	.dw	0,(Snixie$NIXIE_Init$29)
-      001370 00 00 8C E0           1783 	.dw	0,(Snixie$NIXIE_Init$30)
-      001374 00 02                 1784 	.dw	2
-      001376 78                    1785 	.db	120
-      001377 02                    1786 	.sleb128	2
-      001378 00 00 8C D9           1787 	.dw	0,(Snixie$NIXIE_Init$26)
-      00137C 00 00 8C DE           1788 	.dw	0,(Snixie$NIXIE_Init$29)
-      001380 00 02                 1789 	.dw	2
-      001382 78                    1790 	.db	120
-      001383 01                    1791 	.sleb128	1
-      001384 00 00 8C D4           1792 	.dw	0,(Snixie$NIXIE_Init$25)
-      001388 00 00 8C D9           1793 	.dw	0,(Snixie$NIXIE_Init$26)
-      00138C 00 02                 1794 	.dw	2
-      00138E 78                    1795 	.db	120
-      00138F 05                    1796 	.sleb128	5
-      001390 00 00 8C D2           1797 	.dw	0,(Snixie$NIXIE_Init$24)
-      001394 00 00 8C D4           1798 	.dw	0,(Snixie$NIXIE_Init$25)
-      001398 00 02                 1799 	.dw	2
-      00139A 78                    1800 	.db	120
-      00139B 04                    1801 	.sleb128	4
-      00139C 00 00 8C D0           1802 	.dw	0,(Snixie$NIXIE_Init$23)
-      0013A0 00 00 8C D2           1803 	.dw	0,(Snixie$NIXIE_Init$24)
-      0013A4 00 02                 1804 	.dw	2
-      0013A6 78                    1805 	.db	120
-      0013A7 03                    1806 	.sleb128	3
-      0013A8 00 00 8C CE           1807 	.dw	0,(Snixie$NIXIE_Init$22)
-      0013AC 00 00 8C D0           1808 	.dw	0,(Snixie$NIXIE_Init$23)
-      0013B0 00 02                 1809 	.dw	2
-      0013B2 78                    1810 	.db	120
-      0013B3 02                    1811 	.sleb128	2
-      0013B4 00 00 8C CC           1812 	.dw	0,(Snixie$NIXIE_Init$20)
-      0013B8 00 00 8C CE           1813 	.dw	0,(Snixie$NIXIE_Init$22)
-      0013BC 00 02                 1814 	.dw	2
-      0013BE 78                    1815 	.db	120
-      0013BF 01                    1816 	.sleb128	1
-      0013C0 00 00 8C C7           1817 	.dw	0,(Snixie$NIXIE_Init$19)
-      0013C4 00 00 8C CC           1818 	.dw	0,(Snixie$NIXIE_Init$20)
-      0013C8 00 02                 1819 	.dw	2
-      0013CA 78                    1820 	.db	120
-      0013CB 05                    1821 	.sleb128	5
-      0013CC 00 00 8C C5           1822 	.dw	0,(Snixie$NIXIE_Init$18)
-      0013D0 00 00 8C C7           1823 	.dw	0,(Snixie$NIXIE_Init$19)
-      0013D4 00 02                 1824 	.dw	2
-      0013D6 78                    1825 	.db	120
-      0013D7 04                    1826 	.sleb128	4
-      0013D8 00 00 8C C3           1827 	.dw	0,(Snixie$NIXIE_Init$17)
-      0013DC 00 00 8C C5           1828 	.dw	0,(Snixie$NIXIE_Init$18)
-      0013E0 00 02                 1829 	.dw	2
-      0013E2 78                    1830 	.db	120
-      0013E3 03                    1831 	.sleb128	3
-      0013E4 00 00 8C C1           1832 	.dw	0,(Snixie$NIXIE_Init$16)
-      0013E8 00 00 8C C3           1833 	.dw	0,(Snixie$NIXIE_Init$17)
-      0013EC 00 02                 1834 	.dw	2
-      0013EE 78                    1835 	.db	120
-      0013EF 02                    1836 	.sleb128	2
-      0013F0 00 00 8C BF           1837 	.dw	0,(Snixie$NIXIE_Init$14)
-      0013F4 00 00 8C C1           1838 	.dw	0,(Snixie$NIXIE_Init$16)
-      0013F8 00 02                 1839 	.dw	2
-      0013FA 78                    1840 	.db	120
-      0013FB 01                    1841 	.sleb128	1
-      0013FC 00 00 8C BA           1842 	.dw	0,(Snixie$NIXIE_Init$13)
-      001400 00 00 8C BF           1843 	.dw	0,(Snixie$NIXIE_Init$14)
-      001404 00 02                 1844 	.dw	2
-      001406 78                    1845 	.db	120
-      001407 05                    1846 	.sleb128	5
-      001408 00 00 8C B8           1847 	.dw	0,(Snixie$NIXIE_Init$12)
-      00140C 00 00 8C BA           1848 	.dw	0,(Snixie$NIXIE_Init$13)
-      001410 00 02                 1849 	.dw	2
-      001412 78                    1850 	.db	120
-      001413 04                    1851 	.sleb128	4
-      001414 00 00 8C B6           1852 	.dw	0,(Snixie$NIXIE_Init$11)
-      001418 00 00 8C B8           1853 	.dw	0,(Snixie$NIXIE_Init$12)
-      00141C 00 02                 1854 	.dw	2
-      00141E 78                    1855 	.db	120
-      00141F 03                    1856 	.sleb128	3
-      001420 00 00 8C B4           1857 	.dw	0,(Snixie$NIXIE_Init$10)
-      001424 00 00 8C B6           1858 	.dw	0,(Snixie$NIXIE_Init$11)
-      001428 00 02                 1859 	.dw	2
-      00142A 78                    1860 	.db	120
-      00142B 02                    1861 	.sleb128	2
-      00142C 00 00 8C B2           1862 	.dw	0,(Snixie$NIXIE_Init$8)
-      001430 00 00 8C B4           1863 	.dw	0,(Snixie$NIXIE_Init$10)
-      001434 00 02                 1864 	.dw	2
-      001436 78                    1865 	.db	120
-      001437 01                    1866 	.sleb128	1
-      001438 00 00 00 00           1867 	.dw	0,0
-      00143C 00 00 00 00           1868 	.dw	0,0
-      001440 00 00 8C A8           1869 	.dw	0,(Snixie$delay$2)
-      001444 00 00 8C B2           1870 	.dw	0,(Snixie$delay$6)
-      001448 00 02                 1871 	.dw	2
-      00144A 78                    1872 	.db	120
-      00144B 01                    1873 	.sleb128	1
-      00144C 00 00 00 00           1874 	.dw	0,0
-      001450 00 00 00 00           1875 	.dw	0,0
-                                   1876 
-                                   1877 	.area .debug_abbrev (NOLOAD)
-      0004EE                       1878 Ldebug_abbrev:
-      0004EE 09                    1879 	.uleb128	9
-      0004EF 0F                    1880 	.uleb128	15
-      0004F0 00                    1881 	.db	0
-      0004F1 0B                    1882 	.uleb128	11
-      0004F2 0B                    1883 	.uleb128	11
-      0004F3 49                    1884 	.uleb128	73
-      0004F4 13                    1885 	.uleb128	19
-      0004F5 00                    1886 	.uleb128	0
-      0004F6 00                    1887 	.uleb128	0
-      0004F7 0E                    1888 	.uleb128	14
-      0004F8 34                    1889 	.uleb128	52
-      0004F9 00                    1890 	.db	0
-      0004FA 02                    1891 	.uleb128	2
-      0004FB 0A                    1892 	.uleb128	10
-      0004FC 03                    1893 	.uleb128	3
-      0004FD 08                    1894 	.uleb128	8
-      0004FE 3F                    1895 	.uleb128	63
-      0004FF 0C                    1896 	.uleb128	12
-      000500 49                    1897 	.uleb128	73
-      000501 13                    1898 	.uleb128	19
-      000502 00                    1899 	.uleb128	0
-      000503 00                    1900 	.uleb128	0
-      000504 08                    1901 	.uleb128	8
-      000505 05                    1902 	.uleb128	5
-      000506 00                    1903 	.db	0
-      000507 02                    1904 	.uleb128	2
-      000508 0A                    1905 	.uleb128	10
-      000509 03                    1906 	.uleb128	3
-      00050A 08                    1907 	.uleb128	8
-      00050B 49                    1908 	.uleb128	73
-      00050C 13                    1909 	.uleb128	19
-      00050D 00                    1910 	.uleb128	0
-      00050E 00                    1911 	.uleb128	0
-      00050F 0C                    1912 	.uleb128	12
-      000510 01                    1913 	.uleb128	1
-      000511 01                    1914 	.db	1
-      000512 01                    1915 	.uleb128	1
-      000513 13                    1916 	.uleb128	19
-      000514 0B                    1917 	.uleb128	11
-      000515 0B                    1918 	.uleb128	11
-      000516 49                    1919 	.uleb128	73
-      000517 13                    1920 	.uleb128	19
-      000518 00                    1921 	.uleb128	0
-      000519 00                    1922 	.uleb128	0
-      00051A 02                    1923 	.uleb128	2
-      00051B 2E                    1924 	.uleb128	46
-      00051C 01                    1925 	.db	1
-      00051D 01                    1926 	.uleb128	1
-      00051E 13                    1927 	.uleb128	19
-      00051F 03                    1928 	.uleb128	3
-      000520 08                    1929 	.uleb128	8
-      000521 11                    1930 	.uleb128	17
-      000522 01                    1931 	.uleb128	1
-      000523 12                    1932 	.uleb128	18
-      000524 01                    1933 	.uleb128	1
-      000525 3F                    1934 	.uleb128	63
-      000526 0C                    1935 	.uleb128	12
-      000527 40                    1936 	.uleb128	64
-      000528 06                    1937 	.uleb128	6
-      000529 00                    1938 	.uleb128	0
-      00052A 00                    1939 	.uleb128	0
-      00052B 04                    1940 	.uleb128	4
-      00052C 34                    1941 	.uleb128	52
-      00052D 00                    1942 	.db	0
-      00052E 02                    1943 	.uleb128	2
-      00052F 0A                    1944 	.uleb128	10
-      000530 03                    1945 	.uleb128	3
-      000531 08                    1946 	.uleb128	8
-      000532 49                    1947 	.uleb128	73
-      000533 13                    1948 	.uleb128	19
-      000534 00                    1949 	.uleb128	0
-      000535 00                    1950 	.uleb128	0
-      000536 07                    1951 	.uleb128	7
-      000537 2E                    1952 	.uleb128	46
-      000538 01                    1953 	.db	1
-      000539 01                    1954 	.uleb128	1
-      00053A 13                    1955 	.uleb128	19
-      00053B 03                    1956 	.uleb128	3
-      00053C 08                    1957 	.uleb128	8
-      00053D 11                    1958 	.uleb128	17
-      00053E 01                    1959 	.uleb128	1
-      00053F 12                    1960 	.uleb128	18
-      000540 01                    1961 	.uleb128	1
-      000541 3F                    1962 	.uleb128	63
-      000542 0C                    1963 	.uleb128	12
-      000543 40                    1964 	.uleb128	64
-      000544 06                    1965 	.uleb128	6
-      000545 49                    1966 	.uleb128	73
-      000546 13                    1967 	.uleb128	19
-      000547 00                    1968 	.uleb128	0
-      000548 00                    1969 	.uleb128	0
-      000549 03                    1970 	.uleb128	3
-      00054A 0B                    1971 	.uleb128	11
-      00054B 01                    1972 	.db	1
-      00054C 11                    1973 	.uleb128	17
-      00054D 01                    1974 	.uleb128	1
-      00054E 00                    1975 	.uleb128	0
-      00054F 00                    1976 	.uleb128	0
-      000550 01                    1977 	.uleb128	1
-      000551 11                    1978 	.uleb128	17
-      000552 01                    1979 	.db	1
-      000553 03                    1980 	.uleb128	3
-      000554 08                    1981 	.uleb128	8
-      000555 10                    1982 	.uleb128	16
-      000556 06                    1983 	.uleb128	6
-      000557 13                    1984 	.uleb128	19
-      000558 0B                    1985 	.uleb128	11
-      000559 25                    1986 	.uleb128	37
-      00055A 08                    1987 	.uleb128	8
-      00055B 00                    1988 	.uleb128	0
-      00055C 00                    1989 	.uleb128	0
-      00055D 0B                    1990 	.uleb128	11
-      00055E 0B                    1991 	.uleb128	11
-      00055F 00                    1992 	.db	0
-      000560 11                    1993 	.uleb128	17
-      000561 01                    1994 	.uleb128	1
-      000562 12                    1995 	.uleb128	18
-      000563 01                    1996 	.uleb128	1
-      000564 00                    1997 	.uleb128	0
-      000565 00                    1998 	.uleb128	0
-      000566 06                    1999 	.uleb128	6
-      000567 2E                    2000 	.uleb128	46
-      000568 00                    2001 	.db	0
-      000569 03                    2002 	.uleb128	3
-      00056A 08                    2003 	.uleb128	8
-      00056B 11                    2004 	.uleb128	17
-      00056C 01                    2005 	.uleb128	1
-      00056D 12                    2006 	.uleb128	18
-      00056E 01                    2007 	.uleb128	1
-      00056F 3F                    2008 	.uleb128	63
-      000570 0C                    2009 	.uleb128	12
-      000571 40                    2010 	.uleb128	64
-      000572 06                    2011 	.uleb128	6
-      000573 00                    2012 	.uleb128	0
-      000574 00                    2013 	.uleb128	0
-      000575 0A                    2014 	.uleb128	10
-      000576 0B                    2015 	.uleb128	11
-      000577 01                    2016 	.db	1
-      000578 01                    2017 	.uleb128	1
-      000579 13                    2018 	.uleb128	19
-      00057A 11                    2019 	.uleb128	17
-      00057B 01                    2020 	.uleb128	1
-      00057C 12                    2021 	.uleb128	18
-      00057D 01                    2022 	.uleb128	1
-      00057E 00                    2023 	.uleb128	0
-      00057F 00                    2024 	.uleb128	0
-      000580 0D                    2025 	.uleb128	13
-      000581 21                    2026 	.uleb128	33
-      000582 00                    2027 	.db	0
-      000583 2F                    2028 	.uleb128	47
-      000584 0B                    2029 	.uleb128	11
-      000585 00                    2030 	.uleb128	0
-      000586 00                    2031 	.uleb128	0
-      000587 05                    2032 	.uleb128	5
-      000588 24                    2033 	.uleb128	36
-      000589 00                    2034 	.db	0
-      00058A 03                    2035 	.uleb128	3
-      00058B 08                    2036 	.uleb128	8
-      00058C 0B                    2037 	.uleb128	11
-      00058D 0B                    2038 	.uleb128	11
-      00058E 3E                    2039 	.uleb128	62
-      00058F 0B                    2040 	.uleb128	11
-      000590 00                    2041 	.uleb128	0
-      000591 00                    2042 	.uleb128	0
-      000592 00                    2043 	.uleb128	0
-                                   2044 
-                                   2045 	.area .debug_info (NOLOAD)
-      0017EA 00 00 02 69           2046 	.dw	0,Ldebug_info_end-Ldebug_info_start
-      0017EE                       2047 Ldebug_info_start:
-      0017EE 00 02                 2048 	.dw	2
-      0017F0 00 00 04 EE           2049 	.dw	0,(Ldebug_abbrev)
-      0017F4 04                    2050 	.db	4
-      0017F5 01                    2051 	.uleb128	1
-      0017F6 53 6F 75 72 63 65 2F  2052 	.ascii "Source/Device/Src/nixie.c"
+      001540 00                     908 	.db	0
+      001541 00                     909 	.uleb128	0
+      001542 00                     910 	.uleb128	0
+      001543 00                     911 	.uleb128	0
+      001544 00                     912 	.db	0
+      001545                        913 Ldebug_line_stmt:
+      001545 00                     914 	.db	0
+      001546 05                     915 	.uleb128	5
+      001547 02                     916 	.db	2
+      001548 00 00 8C 90            917 	.dw	0,(Snixie$NIXIE_Init$0)
+      00154C 03                     918 	.db	3
+      00154D 39                     919 	.sleb128	57
+      00154E 01                     920 	.db	1
+      00154F 09                     921 	.db	9
+      001550 00 02                  922 	.dw	Snixie$NIXIE_Init$3-Snixie$NIXIE_Init$0
+      001552 03                     923 	.db	3
+      001553 02                     924 	.sleb128	2
+      001554 01                     925 	.db	1
+      001555 09                     926 	.db	9
+      001556 00 0D                  927 	.dw	Snixie$NIXIE_Init$9-Snixie$NIXIE_Init$3
+      001558 03                     928 	.db	3
+      001559 01                     929 	.sleb128	1
+      00155A 01                     930 	.db	1
+      00155B 09                     931 	.db	9
+      00155C 00 0D                  932 	.dw	Snixie$NIXIE_Init$15-Snixie$NIXIE_Init$9
+      00155E 03                     933 	.db	3
+      00155F 01                     934 	.sleb128	1
+      001560 01                     935 	.db	1
+      001561 09                     936 	.db	9
+      001562 00 0D                  937 	.dw	Snixie$NIXIE_Init$21-Snixie$NIXIE_Init$15
+      001564 03                     938 	.db	3
+      001565 01                     939 	.sleb128	1
+      001566 01                     940 	.db	1
+      001567 09                     941 	.db	9
+      001568 00 03                  942 	.dw	Snixie$NIXIE_Init$22-Snixie$NIXIE_Init$21
+      00156A 03                     943 	.db	3
+      00156B 02                     944 	.sleb128	2
+      00156C 01                     945 	.db	1
+      00156D 09                     946 	.db	9
+      00156E 00 15                  947 	.dw	Snixie$NIXIE_Init$32-Snixie$NIXIE_Init$22
+      001570 03                     948 	.db	3
+      001571 08                     949 	.sleb128	8
+      001572 01                     950 	.db	1
+      001573 09                     951 	.db	9
+      001574 00 06                  952 	.dw	Snixie$NIXIE_Init$35-Snixie$NIXIE_Init$32
+      001576 03                     953 	.db	3
+      001577 03                     954 	.sleb128	3
+      001578 01                     955 	.db	1
+      001579 09                     956 	.db	9
+      00157A 00 0B                  957 	.dw	Snixie$NIXIE_Init$38-Snixie$NIXIE_Init$35
+      00157C 03                     958 	.db	3
+      00157D 02                     959 	.sleb128	2
+      00157E 01                     960 	.db	1
+      00157F 09                     961 	.db	9
+      001580 00 04                  962 	.dw	Snixie$NIXIE_Init$39-Snixie$NIXIE_Init$38
+      001582 03                     963 	.db	3
+      001583 01                     964 	.sleb128	1
+      001584 01                     965 	.db	1
+      001585 09                     966 	.db	9
+      001586 00 12                  967 	.dw	Snixie$NIXIE_Init$46-Snixie$NIXIE_Init$39
+      001588 03                     968 	.db	3
+      001589 01                     969 	.sleb128	1
+      00158A 01                     970 	.db	1
+      00158B 09                     971 	.db	9
+      00158C 00 0A                  972 	.dw	Snixie$NIXIE_Init$49-Snixie$NIXIE_Init$46
+      00158E 03                     973 	.db	3
+      00158F 02                     974 	.sleb128	2
+      001590 01                     975 	.db	1
+      001591 09                     976 	.db	9
+      001592 00 0C                  977 	.dw	Snixie$NIXIE_Init$52-Snixie$NIXIE_Init$49
+      001594 03                     978 	.db	3
+      001595 7E                     979 	.sleb128	-2
+      001596 01                     980 	.db	1
+      001597 09                     981 	.db	9
+      001598 00 07                  982 	.dw	Snixie$NIXIE_Init$54-Snixie$NIXIE_Init$52
+      00159A 03                     983 	.db	3
+      00159B 7C                     984 	.sleb128	-4
+      00159C 01                     985 	.db	1
+      00159D 09                     986 	.db	9
+      00159E 00 05                  987 	.dw	Snixie$NIXIE_Init$56-Snixie$NIXIE_Init$54
+      0015A0 03                     988 	.db	3
+      0015A1 09                     989 	.sleb128	9
+      0015A2 01                     990 	.db	1
+      0015A3 09                     991 	.db	9
+      0015A4 00 03                  992 	.dw	1+Snixie$NIXIE_Init$58-Snixie$NIXIE_Init$56
+      0015A6 00                     993 	.db	0
+      0015A7 01                     994 	.uleb128	1
+      0015A8 01                     995 	.db	1
+      0015A9 00                     996 	.db	0
+      0015AA 05                     997 	.uleb128	5
+      0015AB 02                     998 	.db	2
+      0015AC 00 00 8D 1D            999 	.dw	0,(Snixie$NIXIE_DisplayChar$60)
+      0015B0 03                    1000 	.db	3
+      0015B1 DF 00                 1001 	.sleb128	95
+      0015B3 01                    1002 	.db	1
+      0015B4 09                    1003 	.db	9
+      0015B5 00 02                 1004 	.dw	Snixie$NIXIE_DisplayChar$63-Snixie$NIXIE_DisplayChar$60
+      0015B7 03                    1005 	.db	3
+      0015B8 02                    1006 	.sleb128	2
+      0015B9 01                    1007 	.db	1
+      0015BA 09                    1008 	.db	9
+      0015BB 00 03                 1009 	.dw	Snixie$NIXIE_DisplayChar$64-Snixie$NIXIE_DisplayChar$63
+      0015BD 03                    1010 	.db	3
+      0015BE 03                    1011 	.sleb128	3
+      0015BF 01                    1012 	.db	1
+      0015C0 09                    1013 	.db	9
+      0015C1 00 0F                 1014 	.dw	Snixie$NIXIE_DisplayChar$69-Snixie$NIXIE_DisplayChar$64
+      0015C3 03                    1015 	.db	3
+      0015C4 01                    1016 	.sleb128	1
+      0015C5 01                    1017 	.db	1
+      0015C6 09                    1018 	.db	9
+      0015C7 00 05                 1019 	.dw	Snixie$NIXIE_DisplayChar$70-Snixie$NIXIE_DisplayChar$69
+      0015C9 03                    1020 	.db	3
+      0015CA 01                    1021 	.sleb128	1
+      0015CB 01                    1022 	.db	1
+      0015CC 09                    1023 	.db	9
+      0015CD 00 08                 1024 	.dw	Snixie$NIXIE_DisplayChar$73-Snixie$NIXIE_DisplayChar$70
+      0015CF 03                    1025 	.db	3
+      0015D0 02                    1026 	.sleb128	2
+      0015D1 01                    1027 	.db	1
+      0015D2 09                    1028 	.db	9
+      0015D3 00 14                 1029 	.dw	Snixie$NIXIE_DisplayChar$77-Snixie$NIXIE_DisplayChar$73
+      0015D5 03                    1030 	.db	3
+      0015D6 01                    1031 	.sleb128	1
+      0015D7 01                    1032 	.db	1
+      0015D8 09                    1033 	.db	9
+      0015D9 00 16                 1034 	.dw	Snixie$NIXIE_DisplayChar$79-Snixie$NIXIE_DisplayChar$77
+      0015DB 03                    1035 	.db	3
+      0015DC 7D                    1036 	.sleb128	-3
+      0015DD 01                    1037 	.db	1
+      0015DE 09                    1038 	.db	9
+      0015DF 00 04                 1039 	.dw	Snixie$NIXIE_DisplayChar$81-Snixie$NIXIE_DisplayChar$79
+      0015E1 03                    1040 	.db	3
+      0015E2 05                    1041 	.sleb128	5
+      0015E3 01                    1042 	.db	1
+      0015E4 09                    1043 	.db	9
+      0015E5 00 0F                 1044 	.dw	Snixie$NIXIE_DisplayChar$86-Snixie$NIXIE_DisplayChar$81
+      0015E7 03                    1045 	.db	3
+      0015E8 01                    1046 	.sleb128	1
+      0015E9 01                    1047 	.db	1
+      0015EA 09                    1048 	.db	9
+      0015EB 00 0A                 1049 	.dw	Snixie$NIXIE_DisplayChar$87-Snixie$NIXIE_DisplayChar$86
+      0015ED 03                    1050 	.db	3
+      0015EE 01                    1051 	.sleb128	1
+      0015EF 01                    1052 	.db	1
+      0015F0 09                    1053 	.db	9
+      0015F1 00 05                 1054 	.dw	Snixie$NIXIE_DisplayChar$89-Snixie$NIXIE_DisplayChar$87
+      0015F3 03                    1055 	.db	3
+      0015F4 01                    1056 	.sleb128	1
+      0015F5 01                    1057 	.db	1
+      0015F6 09                    1058 	.db	9
+      0015F7 00 07                 1059 	.dw	Snixie$NIXIE_DisplayChar$90-Snixie$NIXIE_DisplayChar$89
+      0015F9 03                    1060 	.db	3
+      0015FA 02                    1061 	.sleb128	2
+      0015FB 01                    1062 	.db	1
+      0015FC 09                    1063 	.db	9
+      0015FD 00 0E                 1064 	.dw	Snixie$NIXIE_DisplayChar$91-Snixie$NIXIE_DisplayChar$90
+      0015FF 03                    1065 	.db	3
+      001600 01                    1066 	.sleb128	1
+      001601 01                    1067 	.db	1
+      001602 09                    1068 	.db	9
+      001603 00 10                 1069 	.dw	Snixie$NIXIE_DisplayChar$92-Snixie$NIXIE_DisplayChar$91
+      001605 03                    1070 	.db	3
+      001606 02                    1071 	.sleb128	2
+      001607 01                    1072 	.db	1
+      001608 09                    1073 	.db	9
+      001609 00 01                 1074 	.dw	Snixie$NIXIE_DisplayChar$93-Snixie$NIXIE_DisplayChar$92
+      00160B 03                    1075 	.db	3
+      00160C 01                    1076 	.sleb128	1
+      00160D 01                    1077 	.db	1
+      00160E 09                    1078 	.db	9
+      00160F 00 03                 1079 	.dw	1+Snixie$NIXIE_DisplayChar$95-Snixie$NIXIE_DisplayChar$93
+      001611 00                    1080 	.db	0
+      001612 01                    1081 	.uleb128	1
+      001613 01                    1082 	.db	1
+      001614 00                    1083 	.db	0
+      001615 05                    1084 	.uleb128	5
+      001616 02                    1085 	.db	2
+      001617 00 00 8D B3           1086 	.dw	0,(Snixie$NIXIE_DisplayTime$97)
+      00161B 03                    1087 	.db	3
+      00161C 86 01                 1088 	.sleb128	134
+      00161E 01                    1089 	.db	1
+      00161F 09                    1090 	.db	9
+      001620 00 02                 1091 	.dw	Snixie$NIXIE_DisplayTime$100-Snixie$NIXIE_DisplayTime$97
+      001622 03                    1092 	.db	3
+      001623 04                    1093 	.sleb128	4
+      001624 01                    1094 	.db	1
+      001625 09                    1095 	.db	9
+      001626 00 21                 1096 	.dw	Snixie$NIXIE_DisplayTime$101-Snixie$NIXIE_DisplayTime$100
+      001628 03                    1097 	.db	3
+      001629 02                    1098 	.sleb128	2
+      00162A 01                    1099 	.db	1
+      00162B 09                    1100 	.db	9
+      00162C 00 12                 1101 	.dw	Snixie$NIXIE_DisplayTime$106-Snixie$NIXIE_DisplayTime$101
+      00162E 03                    1102 	.db	3
+      00162F 01                    1103 	.sleb128	1
+      001630 01                    1104 	.db	1
+      001631 09                    1105 	.db	9
+      001632 00 08                 1106 	.dw	Snixie$NIXIE_DisplayTime$109-Snixie$NIXIE_DisplayTime$106
+      001634 03                    1107 	.db	3
+      001635 02                    1108 	.sleb128	2
+      001636 01                    1109 	.db	1
+      001637 09                    1110 	.db	9
+      001638 00 0C                 1111 	.dw	Snixie$NIXIE_DisplayTime$114-Snixie$NIXIE_DisplayTime$109
+      00163A 03                    1112 	.db	3
+      00163B 01                    1113 	.sleb128	1
+      00163C 01                    1114 	.db	1
+      00163D 09                    1115 	.db	9
+      00163E 00 08                 1116 	.dw	Snixie$NIXIE_DisplayTime$117-Snixie$NIXIE_DisplayTime$114
+      001640 03                    1117 	.db	3
+      001641 02                    1118 	.sleb128	2
+      001642 01                    1119 	.db	1
+      001643 09                    1120 	.db	9
+      001644 00 12                 1121 	.dw	Snixie$NIXIE_DisplayTime$122-Snixie$NIXIE_DisplayTime$117
+      001646 03                    1122 	.db	3
+      001647 01                    1123 	.sleb128	1
+      001648 01                    1124 	.db	1
+      001649 09                    1125 	.db	9
+      00164A 00 08                 1126 	.dw	Snixie$NIXIE_DisplayTime$125-Snixie$NIXIE_DisplayTime$122
+      00164C 03                    1127 	.db	3
+      00164D 02                    1128 	.sleb128	2
+      00164E 01                    1129 	.db	1
+      00164F 09                    1130 	.db	9
+      001650 00 0C                 1131 	.dw	Snixie$NIXIE_DisplayTime$130-Snixie$NIXIE_DisplayTime$125
+      001652 03                    1132 	.db	3
+      001653 01                    1133 	.sleb128	1
+      001654 01                    1134 	.db	1
+      001655 09                    1135 	.db	9
+      001656 00 08                 1136 	.dw	Snixie$NIXIE_DisplayTime$133-Snixie$NIXIE_DisplayTime$130
+      001658 03                    1137 	.db	3
+      001659 02                    1138 	.sleb128	2
+      00165A 01                    1139 	.db	1
+      00165B 09                    1140 	.db	9
+      00165C 00 10                 1141 	.dw	Snixie$NIXIE_DisplayTime$138-Snixie$NIXIE_DisplayTime$133
+      00165E 03                    1142 	.db	3
+      00165F 01                    1143 	.sleb128	1
+      001660 01                    1144 	.db	1
+      001661 09                    1145 	.db	9
+      001662 00 11                 1146 	.dw	Snixie$NIXIE_DisplayTime$143-Snixie$NIXIE_DisplayTime$138
+      001664 03                    1147 	.db	3
+      001665 01                    1148 	.sleb128	1
+      001666 01                    1149 	.db	1
+      001667 09                    1150 	.db	9
+      001668 00 11                 1151 	.dw	Snixie$NIXIE_DisplayTime$148-Snixie$NIXIE_DisplayTime$143
+      00166A 03                    1152 	.db	3
+      00166B 01                    1153 	.sleb128	1
+      00166C 01                    1154 	.db	1
+      00166D 09                    1155 	.db	9
+      00166E 00 11                 1156 	.dw	Snixie$NIXIE_DisplayTime$153-Snixie$NIXIE_DisplayTime$148
+      001670 03                    1157 	.db	3
+      001671 04                    1158 	.sleb128	4
+      001672 01                    1159 	.db	1
+      001673 09                    1160 	.db	9
+      001674 00 0B                 1161 	.dw	Snixie$NIXIE_DisplayTime$159-Snixie$NIXIE_DisplayTime$153
+      001676 03                    1162 	.db	3
+      001677 05                    1163 	.sleb128	5
+      001678 01                    1164 	.db	1
+      001679 09                    1165 	.db	9
+      00167A 00 07                 1166 	.dw	Snixie$NIXIE_DisplayTime$160-Snixie$NIXIE_DisplayTime$159
+      00167C 03                    1167 	.db	3
+      00167D 01                    1168 	.sleb128	1
+      00167E 01                    1169 	.db	1
+      00167F 09                    1170 	.db	9
+      001680 00 0A                 1171 	.dw	Snixie$NIXIE_DisplayTime$161-Snixie$NIXIE_DisplayTime$160
+      001682 03                    1172 	.db	3
+      001683 01                    1173 	.sleb128	1
+      001684 01                    1174 	.db	1
+      001685 09                    1175 	.db	9
+      001686 00 04                 1176 	.dw	Snixie$NIXIE_DisplayTime$164-Snixie$NIXIE_DisplayTime$161
+      001688 03                    1177 	.db	3
+      001689 01                    1178 	.sleb128	1
+      00168A 01                    1179 	.db	1
+      00168B 09                    1180 	.db	9
+      00168C 00 05                 1181 	.dw	Snixie$NIXIE_DisplayTime$167-Snixie$NIXIE_DisplayTime$164
+      00168E 03                    1182 	.db	3
+      00168F 02                    1183 	.sleb128	2
+      001690 01                    1184 	.db	1
+      001691 09                    1185 	.db	9
+      001692 00 0A                 1186 	.dw	Snixie$NIXIE_DisplayTime$170-Snixie$NIXIE_DisplayTime$167
+      001694 03                    1187 	.db	3
+      001695 02                    1188 	.sleb128	2
+      001696 01                    1189 	.db	1
+      001697 09                    1190 	.db	9
+      001698 00 09                 1191 	.dw	Snixie$NIXIE_DisplayTime$171-Snixie$NIXIE_DisplayTime$170
+      00169A 03                    1192 	.db	3
+      00169B 01                    1193 	.sleb128	1
+      00169C 01                    1194 	.db	1
+      00169D 09                    1195 	.db	9
+      00169E 00 03                 1196 	.dw	Snixie$NIXIE_DisplayTime$172-Snixie$NIXIE_DisplayTime$171
+      0016A0 03                    1197 	.db	3
+      0016A1 01                    1198 	.sleb128	1
+      0016A2 01                    1199 	.db	1
+      0016A3 09                    1200 	.db	9
+      0016A4 00 03                 1201 	.dw	Snixie$NIXIE_DisplayTime$173-Snixie$NIXIE_DisplayTime$172
+      0016A6 03                    1202 	.db	3
+      0016A7 01                    1203 	.sleb128	1
+      0016A8 01                    1204 	.db	1
+      0016A9 09                    1205 	.db	9
+      0016AA 00 0B                 1206 	.dw	Snixie$NIXIE_DisplayTime$174-Snixie$NIXIE_DisplayTime$173
+      0016AC 03                    1207 	.db	3
+      0016AD 01                    1208 	.sleb128	1
+      0016AE 01                    1209 	.db	1
+      0016AF 09                    1210 	.db	9
+      0016B0 00 04                 1211 	.dw	Snixie$NIXIE_DisplayTime$175-Snixie$NIXIE_DisplayTime$174
+      0016B2 03                    1212 	.db	3
+      0016B3 01                    1213 	.sleb128	1
+      0016B4 01                    1214 	.db	1
+      0016B5 09                    1215 	.db	9
+      0016B6 00 05                 1216 	.dw	Snixie$NIXIE_DisplayTime$178-Snixie$NIXIE_DisplayTime$175
+      0016B8 03                    1217 	.db	3
+      0016B9 02                    1218 	.sleb128	2
+      0016BA 01                    1219 	.db	1
+      0016BB 09                    1220 	.db	9
+      0016BC 00 0A                 1221 	.dw	Snixie$NIXIE_DisplayTime$181-Snixie$NIXIE_DisplayTime$178
+      0016BE 03                    1222 	.db	3
+      0016BF 02                    1223 	.sleb128	2
+      0016C0 01                    1224 	.db	1
+      0016C1 09                    1225 	.db	9
+      0016C2 00 09                 1226 	.dw	Snixie$NIXIE_DisplayTime$182-Snixie$NIXIE_DisplayTime$181
+      0016C4 03                    1227 	.db	3
+      0016C5 01                    1228 	.sleb128	1
+      0016C6 01                    1229 	.db	1
+      0016C7 09                    1230 	.db	9
+      0016C8 00 12                 1231 	.dw	Snixie$NIXIE_DisplayTime$183-Snixie$NIXIE_DisplayTime$182
+      0016CA 03                    1232 	.db	3
+      0016CB 01                    1233 	.sleb128	1
+      0016CC 01                    1234 	.db	1
+      0016CD 09                    1235 	.db	9
+      0016CE 00 02                 1236 	.dw	Snixie$NIXIE_DisplayTime$184-Snixie$NIXIE_DisplayTime$183
+      0016D0 03                    1237 	.db	3
+      0016D1 01                    1238 	.sleb128	1
+      0016D2 01                    1239 	.db	1
+      0016D3 09                    1240 	.db	9
+      0016D4 00 05                 1241 	.dw	Snixie$NIXIE_DisplayTime$187-Snixie$NIXIE_DisplayTime$184
+      0016D6 03                    1242 	.db	3
+      0016D7 02                    1243 	.sleb128	2
+      0016D8 01                    1244 	.db	1
+      0016D9 09                    1245 	.db	9
+      0016DA 00 0A                 1246 	.dw	Snixie$NIXIE_DisplayTime$190-Snixie$NIXIE_DisplayTime$187
+      0016DC 03                    1247 	.db	3
+      0016DD 03                    1248 	.sleb128	3
+      0016DE 01                    1249 	.db	1
+      0016DF 09                    1250 	.db	9
+      0016E0 00 07                 1251 	.dw	Snixie$NIXIE_DisplayTime$191-Snixie$NIXIE_DisplayTime$190
+      0016E2 03                    1252 	.db	3
+      0016E3 01                    1253 	.sleb128	1
+      0016E4 01                    1254 	.db	1
+      0016E5 09                    1255 	.db	9
+      0016E6 00 0A                 1256 	.dw	Snixie$NIXIE_DisplayTime$192-Snixie$NIXIE_DisplayTime$191
+      0016E8 03                    1257 	.db	3
+      0016E9 01                    1258 	.sleb128	1
+      0016EA 01                    1259 	.db	1
+      0016EB 09                    1260 	.db	9
+      0016EC 00 04                 1261 	.dw	Snixie$NIXIE_DisplayTime$195-Snixie$NIXIE_DisplayTime$192
+      0016EE 03                    1262 	.db	3
+      0016EF 01                    1263 	.sleb128	1
+      0016F0 01                    1264 	.db	1
+      0016F1 09                    1265 	.db	9
+      0016F2 00 05                 1266 	.dw	Snixie$NIXIE_DisplayTime$198-Snixie$NIXIE_DisplayTime$195
+      0016F4 03                    1267 	.db	3
+      0016F5 02                    1268 	.sleb128	2
+      0016F6 01                    1269 	.db	1
+      0016F7 09                    1270 	.db	9
+      0016F8 00 0A                 1271 	.dw	Snixie$NIXIE_DisplayTime$201-Snixie$NIXIE_DisplayTime$198
+      0016FA 03                    1272 	.db	3
+      0016FB 02                    1273 	.sleb128	2
+      0016FC 01                    1274 	.db	1
+      0016FD 09                    1275 	.db	9
+      0016FE 00 09                 1276 	.dw	Snixie$NIXIE_DisplayTime$202-Snixie$NIXIE_DisplayTime$201
+      001700 03                    1277 	.db	3
+      001701 01                    1278 	.sleb128	1
+      001702 01                    1279 	.db	1
+      001703 09                    1280 	.db	9
+      001704 00 03                 1281 	.dw	Snixie$NIXIE_DisplayTime$203-Snixie$NIXIE_DisplayTime$202
+      001706 03                    1282 	.db	3
+      001707 01                    1283 	.sleb128	1
+      001708 01                    1284 	.db	1
+      001709 09                    1285 	.db	9
+      00170A 00 03                 1286 	.dw	Snixie$NIXIE_DisplayTime$204-Snixie$NIXIE_DisplayTime$203
+      00170C 03                    1287 	.db	3
+      00170D 01                    1288 	.sleb128	1
+      00170E 01                    1289 	.db	1
+      00170F 09                    1290 	.db	9
+      001710 00 0B                 1291 	.dw	Snixie$NIXIE_DisplayTime$205-Snixie$NIXIE_DisplayTime$204
+      001712 03                    1292 	.db	3
+      001713 01                    1293 	.sleb128	1
+      001714 01                    1294 	.db	1
+      001715 09                    1295 	.db	9
+      001716 00 04                 1296 	.dw	Snixie$NIXIE_DisplayTime$206-Snixie$NIXIE_DisplayTime$205
+      001718 03                    1297 	.db	3
+      001719 01                    1298 	.sleb128	1
+      00171A 01                    1299 	.db	1
+      00171B 09                    1300 	.db	9
+      00171C 00 05                 1301 	.dw	Snixie$NIXIE_DisplayTime$209-Snixie$NIXIE_DisplayTime$206
+      00171E 03                    1302 	.db	3
+      00171F 02                    1303 	.sleb128	2
+      001720 01                    1304 	.db	1
+      001721 09                    1305 	.db	9
+      001722 00 0A                 1306 	.dw	Snixie$NIXIE_DisplayTime$212-Snixie$NIXIE_DisplayTime$209
+      001724 03                    1307 	.db	3
+      001725 02                    1308 	.sleb128	2
+      001726 01                    1309 	.db	1
+      001727 09                    1310 	.db	9
+      001728 00 09                 1311 	.dw	Snixie$NIXIE_DisplayTime$213-Snixie$NIXIE_DisplayTime$212
+      00172A 03                    1312 	.db	3
+      00172B 01                    1313 	.sleb128	1
+      00172C 01                    1314 	.db	1
+      00172D 09                    1315 	.db	9
+      00172E 00 12                 1316 	.dw	Snixie$NIXIE_DisplayTime$214-Snixie$NIXIE_DisplayTime$213
+      001730 03                    1317 	.db	3
+      001731 01                    1318 	.sleb128	1
+      001732 01                    1319 	.db	1
+      001733 09                    1320 	.db	9
+      001734 00 02                 1321 	.dw	Snixie$NIXIE_DisplayTime$215-Snixie$NIXIE_DisplayTime$214
+      001736 03                    1322 	.db	3
+      001737 01                    1323 	.sleb128	1
+      001738 01                    1324 	.db	1
+      001739 09                    1325 	.db	9
+      00173A 00 05                 1326 	.dw	Snixie$NIXIE_DisplayTime$218-Snixie$NIXIE_DisplayTime$215
+      00173C 03                    1327 	.db	3
+      00173D 02                    1328 	.sleb128	2
+      00173E 01                    1329 	.db	1
+      00173F 09                    1330 	.db	9
+      001740 00 0A                 1331 	.dw	Snixie$NIXIE_DisplayTime$221-Snixie$NIXIE_DisplayTime$218
+      001742 03                    1332 	.db	3
+      001743 02                    1333 	.sleb128	2
+      001744 01                    1334 	.db	1
+      001745 09                    1335 	.db	9
+      001746 00 0B                 1336 	.dw	Snixie$NIXIE_DisplayTime$227-Snixie$NIXIE_DisplayTime$221
+      001748 03                    1337 	.db	3
+      001749 01                    1338 	.sleb128	1
+      00174A 01                    1339 	.db	1
+      00174B 09                    1340 	.db	9
+      00174C 00 03                 1341 	.dw	1+Snixie$NIXIE_DisplayTime$229-Snixie$NIXIE_DisplayTime$227
+      00174E 00                    1342 	.db	0
+      00174F 01                    1343 	.uleb128	1
+      001750 01                    1344 	.db	1
+      001751                       1345 Ldebug_line_end:
+                                   1346 
+                                   1347 	.area .debug_loc (NOLOAD)
+      000E70                       1348 Ldebug_loc_start:
+      000E70 00 00 8F 87           1349 	.dw	0,(Snixie$NIXIE_DisplayTime$228)
+      000E74 00 00 8F 88           1350 	.dw	0,(Snixie$NIXIE_DisplayTime$230)
+      000E78 00 02                 1351 	.dw	2
+      000E7A 78                    1352 	.db	120
+      000E7B 01                    1353 	.sleb128	1
+      000E7C 00 00 8F 85           1354 	.dw	0,(Snixie$NIXIE_DisplayTime$225)
+      000E80 00 00 8F 87           1355 	.dw	0,(Snixie$NIXIE_DisplayTime$228)
+      000E84 00 02                 1356 	.dw	2
+      000E86 78                    1357 	.db	120
+      000E87 13                    1358 	.sleb128	19
+      000E88 00 00 8F 80           1359 	.dw	0,(Snixie$NIXIE_DisplayTime$224)
+      000E8C 00 00 8F 85           1360 	.dw	0,(Snixie$NIXIE_DisplayTime$225)
+      000E90 00 02                 1361 	.dw	2
+      000E92 78                    1362 	.db	120
+      000E93 16                    1363 	.sleb128	22
+      000E94 00 00 8F 7E           1364 	.dw	0,(Snixie$NIXIE_DisplayTime$223)
+      000E98 00 00 8F 80           1365 	.dw	0,(Snixie$NIXIE_DisplayTime$224)
+      000E9C 00 02                 1366 	.dw	2
+      000E9E 78                    1367 	.db	120
+      000E9F 15                    1368 	.sleb128	21
+      000EA0 00 00 8F 7C           1369 	.dw	0,(Snixie$NIXIE_DisplayTime$222)
+      000EA4 00 00 8F 7E           1370 	.dw	0,(Snixie$NIXIE_DisplayTime$223)
+      000EA8 00 02                 1371 	.dw	2
+      000EAA 78                    1372 	.db	120
+      000EAB 14                    1373 	.sleb128	20
+      000EAC 00 00 8F 77           1374 	.dw	0,(Snixie$NIXIE_DisplayTime$220)
+      000EB0 00 00 8F 7C           1375 	.dw	0,(Snixie$NIXIE_DisplayTime$222)
+      000EB4 00 02                 1376 	.dw	2
+      000EB6 78                    1377 	.db	120
+      000EB7 13                    1378 	.sleb128	19
+      000EB8 00 00 8F 72           1379 	.dw	0,(Snixie$NIXIE_DisplayTime$219)
+      000EBC 00 00 8F 77           1380 	.dw	0,(Snixie$NIXIE_DisplayTime$220)
+      000EC0 00 02                 1381 	.dw	2
+      000EC2 78                    1382 	.db	120
+      000EC3 14                    1383 	.sleb128	20
+      000EC4 00 00 8F 70           1384 	.dw	0,(Snixie$NIXIE_DisplayTime$217)
+      000EC8 00 00 8F 72           1385 	.dw	0,(Snixie$NIXIE_DisplayTime$219)
+      000ECC 00 02                 1386 	.dw	2
+      000ECE 78                    1387 	.db	120
+      000ECF 13                    1388 	.sleb128	19
+      000ED0 00 00 8F 6C           1389 	.dw	0,(Snixie$NIXIE_DisplayTime$216)
+      000ED4 00 00 8F 70           1390 	.dw	0,(Snixie$NIXIE_DisplayTime$217)
+      000ED8 00 02                 1391 	.dw	2
+      000EDA 78                    1392 	.db	120
+      000EDB 14                    1393 	.sleb128	20
+      000EDC 00 00 8F 4B           1394 	.dw	0,(Snixie$NIXIE_DisplayTime$211)
+      000EE0 00 00 8F 6C           1395 	.dw	0,(Snixie$NIXIE_DisplayTime$216)
+      000EE4 00 02                 1396 	.dw	2
+      000EE6 78                    1397 	.db	120
+      000EE7 13                    1398 	.sleb128	19
+      000EE8 00 00 8F 46           1399 	.dw	0,(Snixie$NIXIE_DisplayTime$210)
+      000EEC 00 00 8F 4B           1400 	.dw	0,(Snixie$NIXIE_DisplayTime$211)
+      000EF0 00 02                 1401 	.dw	2
+      000EF2 78                    1402 	.db	120
+      000EF3 14                    1403 	.sleb128	20
+      000EF4 00 00 8F 44           1404 	.dw	0,(Snixie$NIXIE_DisplayTime$208)
+      000EF8 00 00 8F 46           1405 	.dw	0,(Snixie$NIXIE_DisplayTime$210)
+      000EFC 00 02                 1406 	.dw	2
+      000EFE 78                    1407 	.db	120
+      000EFF 13                    1408 	.sleb128	19
+      000F00 00 00 8F 40           1409 	.dw	0,(Snixie$NIXIE_DisplayTime$207)
+      000F04 00 00 8F 44           1410 	.dw	0,(Snixie$NIXIE_DisplayTime$208)
+      000F08 00 02                 1411 	.dw	2
+      000F0A 78                    1412 	.db	120
+      000F0B 14                    1413 	.sleb128	20
+      000F0C 00 00 8F 1E           1414 	.dw	0,(Snixie$NIXIE_DisplayTime$200)
+      000F10 00 00 8F 40           1415 	.dw	0,(Snixie$NIXIE_DisplayTime$207)
+      000F14 00 02                 1416 	.dw	2
+      000F16 78                    1417 	.db	120
+      000F17 13                    1418 	.sleb128	19
+      000F18 00 00 8F 19           1419 	.dw	0,(Snixie$NIXIE_DisplayTime$199)
+      000F1C 00 00 8F 1E           1420 	.dw	0,(Snixie$NIXIE_DisplayTime$200)
+      000F20 00 02                 1421 	.dw	2
+      000F22 78                    1422 	.db	120
+      000F23 14                    1423 	.sleb128	20
+      000F24 00 00 8F 17           1424 	.dw	0,(Snixie$NIXIE_DisplayTime$197)
+      000F28 00 00 8F 19           1425 	.dw	0,(Snixie$NIXIE_DisplayTime$199)
+      000F2C 00 02                 1426 	.dw	2
+      000F2E 78                    1427 	.db	120
+      000F2F 13                    1428 	.sleb128	19
+      000F30 00 00 8F 13           1429 	.dw	0,(Snixie$NIXIE_DisplayTime$196)
+      000F34 00 00 8F 17           1430 	.dw	0,(Snixie$NIXIE_DisplayTime$197)
+      000F38 00 02                 1431 	.dw	2
+      000F3A 78                    1432 	.db	120
+      000F3B 14                    1433 	.sleb128	20
+      000F3C 00 00 8F 12           1434 	.dw	0,(Snixie$NIXIE_DisplayTime$194)
+      000F40 00 00 8F 13           1435 	.dw	0,(Snixie$NIXIE_DisplayTime$196)
+      000F44 00 02                 1436 	.dw	2
+      000F46 78                    1437 	.db	120
+      000F47 13                    1438 	.sleb128	19
+      000F48 00 00 8F 0F           1439 	.dw	0,(Snixie$NIXIE_DisplayTime$193)
+      000F4C 00 00 8F 12           1440 	.dw	0,(Snixie$NIXIE_DisplayTime$194)
+      000F50 00 02                 1441 	.dw	2
+      000F52 78                    1442 	.db	120
+      000F53 15                    1443 	.sleb128	21
+      000F54 00 00 8E FA           1444 	.dw	0,(Snixie$NIXIE_DisplayTime$189)
+      000F58 00 00 8F 0F           1445 	.dw	0,(Snixie$NIXIE_DisplayTime$193)
+      000F5C 00 02                 1446 	.dw	2
+      000F5E 78                    1447 	.db	120
+      000F5F 13                    1448 	.sleb128	19
+      000F60 00 00 8E F5           1449 	.dw	0,(Snixie$NIXIE_DisplayTime$188)
+      000F64 00 00 8E FA           1450 	.dw	0,(Snixie$NIXIE_DisplayTime$189)
+      000F68 00 02                 1451 	.dw	2
+      000F6A 78                    1452 	.db	120
+      000F6B 14                    1453 	.sleb128	20
+      000F6C 00 00 8E F3           1454 	.dw	0,(Snixie$NIXIE_DisplayTime$186)
+      000F70 00 00 8E F5           1455 	.dw	0,(Snixie$NIXIE_DisplayTime$188)
+      000F74 00 02                 1456 	.dw	2
+      000F76 78                    1457 	.db	120
+      000F77 13                    1458 	.sleb128	19
+      000F78 00 00 8E EF           1459 	.dw	0,(Snixie$NIXIE_DisplayTime$185)
+      000F7C 00 00 8E F3           1460 	.dw	0,(Snixie$NIXIE_DisplayTime$186)
+      000F80 00 02                 1461 	.dw	2
+      000F82 78                    1462 	.db	120
+      000F83 14                    1463 	.sleb128	20
+      000F84 00 00 8E CE           1464 	.dw	0,(Snixie$NIXIE_DisplayTime$180)
+      000F88 00 00 8E EF           1465 	.dw	0,(Snixie$NIXIE_DisplayTime$185)
+      000F8C 00 02                 1466 	.dw	2
+      000F8E 78                    1467 	.db	120
+      000F8F 13                    1468 	.sleb128	19
+      000F90 00 00 8E C9           1469 	.dw	0,(Snixie$NIXIE_DisplayTime$179)
+      000F94 00 00 8E CE           1470 	.dw	0,(Snixie$NIXIE_DisplayTime$180)
+      000F98 00 02                 1471 	.dw	2
+      000F9A 78                    1472 	.db	120
+      000F9B 14                    1473 	.sleb128	20
+      000F9C 00 00 8E C7           1474 	.dw	0,(Snixie$NIXIE_DisplayTime$177)
+      000FA0 00 00 8E C9           1475 	.dw	0,(Snixie$NIXIE_DisplayTime$179)
+      000FA4 00 02                 1476 	.dw	2
+      000FA6 78                    1477 	.db	120
+      000FA7 13                    1478 	.sleb128	19
+      000FA8 00 00 8E C3           1479 	.dw	0,(Snixie$NIXIE_DisplayTime$176)
+      000FAC 00 00 8E C7           1480 	.dw	0,(Snixie$NIXIE_DisplayTime$177)
+      000FB0 00 02                 1481 	.dw	2
+      000FB2 78                    1482 	.db	120
+      000FB3 14                    1483 	.sleb128	20
+      000FB4 00 00 8E A1           1484 	.dw	0,(Snixie$NIXIE_DisplayTime$169)
+      000FB8 00 00 8E C3           1485 	.dw	0,(Snixie$NIXIE_DisplayTime$176)
+      000FBC 00 02                 1486 	.dw	2
+      000FBE 78                    1487 	.db	120
+      000FBF 13                    1488 	.sleb128	19
+      000FC0 00 00 8E 9C           1489 	.dw	0,(Snixie$NIXIE_DisplayTime$168)
+      000FC4 00 00 8E A1           1490 	.dw	0,(Snixie$NIXIE_DisplayTime$169)
+      000FC8 00 02                 1491 	.dw	2
+      000FCA 78                    1492 	.db	120
+      000FCB 14                    1493 	.sleb128	20
+      000FCC 00 00 8E 9A           1494 	.dw	0,(Snixie$NIXIE_DisplayTime$166)
+      000FD0 00 00 8E 9C           1495 	.dw	0,(Snixie$NIXIE_DisplayTime$168)
+      000FD4 00 02                 1496 	.dw	2
+      000FD6 78                    1497 	.db	120
+      000FD7 13                    1498 	.sleb128	19
+      000FD8 00 00 8E 96           1499 	.dw	0,(Snixie$NIXIE_DisplayTime$165)
+      000FDC 00 00 8E 9A           1500 	.dw	0,(Snixie$NIXIE_DisplayTime$166)
+      000FE0 00 02                 1501 	.dw	2
+      000FE2 78                    1502 	.db	120
+      000FE3 14                    1503 	.sleb128	20
+      000FE4 00 00 8E 95           1504 	.dw	0,(Snixie$NIXIE_DisplayTime$163)
+      000FE8 00 00 8E 96           1505 	.dw	0,(Snixie$NIXIE_DisplayTime$165)
+      000FEC 00 02                 1506 	.dw	2
+      000FEE 78                    1507 	.db	120
+      000FEF 13                    1508 	.sleb128	19
+      000FF0 00 00 8E 92           1509 	.dw	0,(Snixie$NIXIE_DisplayTime$162)
+      000FF4 00 00 8E 95           1510 	.dw	0,(Snixie$NIXIE_DisplayTime$163)
+      000FF8 00 02                 1511 	.dw	2
+      000FFA 78                    1512 	.db	120
+      000FFB 15                    1513 	.sleb128	21
+      000FFC 00 00 8E 80           1514 	.dw	0,(Snixie$NIXIE_DisplayTime$157)
+      001000 00 00 8E 92           1515 	.dw	0,(Snixie$NIXIE_DisplayTime$162)
+      001004 00 02                 1516 	.dw	2
+      001006 78                    1517 	.db	120
+      001007 13                    1518 	.sleb128	19
+      001008 00 00 8E 7B           1519 	.dw	0,(Snixie$NIXIE_DisplayTime$156)
+      00100C 00 00 8E 80           1520 	.dw	0,(Snixie$NIXIE_DisplayTime$157)
+      001010 00 02                 1521 	.dw	2
+      001012 78                    1522 	.db	120
+      001013 16                    1523 	.sleb128	22
+      001014 00 00 8E 79           1524 	.dw	0,(Snixie$NIXIE_DisplayTime$155)
+      001018 00 00 8E 7B           1525 	.dw	0,(Snixie$NIXIE_DisplayTime$156)
+      00101C 00 02                 1526 	.dw	2
+      00101E 78                    1527 	.db	120
+      00101F 15                    1528 	.sleb128	21
+      001020 00 00 8E 77           1529 	.dw	0,(Snixie$NIXIE_DisplayTime$154)
+      001024 00 00 8E 79           1530 	.dw	0,(Snixie$NIXIE_DisplayTime$155)
+      001028 00 02                 1531 	.dw	2
+      00102A 78                    1532 	.db	120
+      00102B 14                    1533 	.sleb128	20
+      00102C 00 00 8E 73           1534 	.dw	0,(Snixie$NIXIE_DisplayTime$152)
+      001030 00 00 8E 77           1535 	.dw	0,(Snixie$NIXIE_DisplayTime$154)
+      001034 00 02                 1536 	.dw	2
+      001036 78                    1537 	.db	120
+      001037 13                    1538 	.sleb128	19
+      001038 00 00 8E 6E           1539 	.dw	0,(Snixie$NIXIE_DisplayTime$151)
+      00103C 00 00 8E 73           1540 	.dw	0,(Snixie$NIXIE_DisplayTime$152)
+      001040 00 02                 1541 	.dw	2
+      001042 78                    1542 	.db	120
+      001043 17                    1543 	.sleb128	23
+      001044 00 00 8E 6C           1544 	.dw	0,(Snixie$NIXIE_DisplayTime$150)
+      001048 00 00 8E 6E           1545 	.dw	0,(Snixie$NIXIE_DisplayTime$151)
+      00104C 00 02                 1546 	.dw	2
+      00104E 78                    1547 	.db	120
+      00104F 16                    1548 	.sleb128	22
+      001050 00 00 8E 67           1549 	.dw	0,(Snixie$NIXIE_DisplayTime$149)
+      001054 00 00 8E 6C           1550 	.dw	0,(Snixie$NIXIE_DisplayTime$150)
+      001058 00 02                 1551 	.dw	2
+      00105A 78                    1552 	.db	120
+      00105B 14                    1553 	.sleb128	20
+      00105C 00 00 8E 62           1554 	.dw	0,(Snixie$NIXIE_DisplayTime$147)
+      001060 00 00 8E 67           1555 	.dw	0,(Snixie$NIXIE_DisplayTime$149)
+      001064 00 02                 1556 	.dw	2
+      001066 78                    1557 	.db	120
+      001067 13                    1558 	.sleb128	19
+      001068 00 00 8E 5D           1559 	.dw	0,(Snixie$NIXIE_DisplayTime$146)
+      00106C 00 00 8E 62           1560 	.dw	0,(Snixie$NIXIE_DisplayTime$147)
+      001070 00 02                 1561 	.dw	2
+      001072 78                    1562 	.db	120
+      001073 17                    1563 	.sleb128	23
+      001074 00 00 8E 5B           1564 	.dw	0,(Snixie$NIXIE_DisplayTime$145)
+      001078 00 00 8E 5D           1565 	.dw	0,(Snixie$NIXIE_DisplayTime$146)
+      00107C 00 02                 1566 	.dw	2
+      00107E 78                    1567 	.db	120
+      00107F 16                    1568 	.sleb128	22
+      001080 00 00 8E 56           1569 	.dw	0,(Snixie$NIXIE_DisplayTime$144)
+      001084 00 00 8E 5B           1570 	.dw	0,(Snixie$NIXIE_DisplayTime$145)
+      001088 00 02                 1571 	.dw	2
+      00108A 78                    1572 	.db	120
+      00108B 14                    1573 	.sleb128	20
+      00108C 00 00 8E 51           1574 	.dw	0,(Snixie$NIXIE_DisplayTime$142)
+      001090 00 00 8E 56           1575 	.dw	0,(Snixie$NIXIE_DisplayTime$144)
+      001094 00 02                 1576 	.dw	2
+      001096 78                    1577 	.db	120
+      001097 13                    1578 	.sleb128	19
+      001098 00 00 8E 4C           1579 	.dw	0,(Snixie$NIXIE_DisplayTime$141)
+      00109C 00 00 8E 51           1580 	.dw	0,(Snixie$NIXIE_DisplayTime$142)
+      0010A0 00 02                 1581 	.dw	2
+      0010A2 78                    1582 	.db	120
+      0010A3 17                    1583 	.sleb128	23
+      0010A4 00 00 8E 4A           1584 	.dw	0,(Snixie$NIXIE_DisplayTime$140)
+      0010A8 00 00 8E 4C           1585 	.dw	0,(Snixie$NIXIE_DisplayTime$141)
+      0010AC 00 02                 1586 	.dw	2
+      0010AE 78                    1587 	.db	120
+      0010AF 16                    1588 	.sleb128	22
+      0010B0 00 00 8E 45           1589 	.dw	0,(Snixie$NIXIE_DisplayTime$139)
+      0010B4 00 00 8E 4A           1590 	.dw	0,(Snixie$NIXIE_DisplayTime$140)
+      0010B8 00 02                 1591 	.dw	2
+      0010BA 78                    1592 	.db	120
+      0010BB 14                    1593 	.sleb128	20
+      0010BC 00 00 8E 40           1594 	.dw	0,(Snixie$NIXIE_DisplayTime$137)
+      0010C0 00 00 8E 45           1595 	.dw	0,(Snixie$NIXIE_DisplayTime$139)
+      0010C4 00 02                 1596 	.dw	2
+      0010C6 78                    1597 	.db	120
+      0010C7 13                    1598 	.sleb128	19
+      0010C8 00 00 8E 3B           1599 	.dw	0,(Snixie$NIXIE_DisplayTime$136)
+      0010CC 00 00 8E 40           1600 	.dw	0,(Snixie$NIXIE_DisplayTime$137)
+      0010D0 00 02                 1601 	.dw	2
+      0010D2 78                    1602 	.db	120
+      0010D3 17                    1603 	.sleb128	23
+      0010D4 00 00 8E 39           1604 	.dw	0,(Snixie$NIXIE_DisplayTime$135)
+      0010D8 00 00 8E 3B           1605 	.dw	0,(Snixie$NIXIE_DisplayTime$136)
+      0010DC 00 02                 1606 	.dw	2
+      0010DE 78                    1607 	.db	120
+      0010DF 16                    1608 	.sleb128	22
+      0010E0 00 00 8E 35           1609 	.dw	0,(Snixie$NIXIE_DisplayTime$134)
+      0010E4 00 00 8E 39           1610 	.dw	0,(Snixie$NIXIE_DisplayTime$135)
+      0010E8 00 02                 1611 	.dw	2
+      0010EA 78                    1612 	.db	120
+      0010EB 14                    1613 	.sleb128	20
+      0010EC 00 00 8E 30           1614 	.dw	0,(Snixie$NIXIE_DisplayTime$132)
+      0010F0 00 00 8E 35           1615 	.dw	0,(Snixie$NIXIE_DisplayTime$134)
+      0010F4 00 02                 1616 	.dw	2
+      0010F6 78                    1617 	.db	120
+      0010F7 13                    1618 	.sleb128	19
+      0010F8 00 00 8E 2D           1619 	.dw	0,(Snixie$NIXIE_DisplayTime$131)
+      0010FC 00 00 8E 30           1620 	.dw	0,(Snixie$NIXIE_DisplayTime$132)
+      001100 00 02                 1621 	.dw	2
+      001102 78                    1622 	.db	120
+      001103 15                    1623 	.sleb128	21
+      001104 00 00 8E 2A           1624 	.dw	0,(Snixie$NIXIE_DisplayTime$129)
+      001108 00 00 8E 2D           1625 	.dw	0,(Snixie$NIXIE_DisplayTime$131)
+      00110C 00 02                 1626 	.dw	2
+      00110E 78                    1627 	.db	120
+      00110F 13                    1628 	.sleb128	19
+      001110 00 00 8E 25           1629 	.dw	0,(Snixie$NIXIE_DisplayTime$128)
+      001114 00 00 8E 2A           1630 	.dw	0,(Snixie$NIXIE_DisplayTime$129)
+      001118 00 02                 1631 	.dw	2
+      00111A 78                    1632 	.db	120
+      00111B 17                    1633 	.sleb128	23
+      00111C 00 00 8E 22           1634 	.dw	0,(Snixie$NIXIE_DisplayTime$127)
+      001120 00 00 8E 25           1635 	.dw	0,(Snixie$NIXIE_DisplayTime$128)
+      001124 00 02                 1636 	.dw	2
+      001126 78                    1637 	.db	120
+      001127 15                    1638 	.sleb128	21
+      001128 00 00 8E 20           1639 	.dw	0,(Snixie$NIXIE_DisplayTime$126)
+      00112C 00 00 8E 22           1640 	.dw	0,(Snixie$NIXIE_DisplayTime$127)
+      001130 00 02                 1641 	.dw	2
+      001132 78                    1642 	.db	120
+      001133 14                    1643 	.sleb128	20
+      001134 00 00 8E 1C           1644 	.dw	0,(Snixie$NIXIE_DisplayTime$124)
+      001138 00 00 8E 20           1645 	.dw	0,(Snixie$NIXIE_DisplayTime$126)
+      00113C 00 02                 1646 	.dw	2
+      00113E 78                    1647 	.db	120
+      00113F 13                    1648 	.sleb128	19
+      001140 00 00 8E 19           1649 	.dw	0,(Snixie$NIXIE_DisplayTime$123)
+      001144 00 00 8E 1C           1650 	.dw	0,(Snixie$NIXIE_DisplayTime$124)
+      001148 00 02                 1651 	.dw	2
+      00114A 78                    1652 	.db	120
+      00114B 15                    1653 	.sleb128	21
+      00114C 00 00 8E 16           1654 	.dw	0,(Snixie$NIXIE_DisplayTime$121)
+      001150 00 00 8E 19           1655 	.dw	0,(Snixie$NIXIE_DisplayTime$123)
+      001154 00 02                 1656 	.dw	2
+      001156 78                    1657 	.db	120
+      001157 13                    1658 	.sleb128	19
+      001158 00 00 8E 11           1659 	.dw	0,(Snixie$NIXIE_DisplayTime$120)
+      00115C 00 00 8E 16           1660 	.dw	0,(Snixie$NIXIE_DisplayTime$121)
+      001160 00 02                 1661 	.dw	2
+      001162 78                    1662 	.db	120
+      001163 17                    1663 	.sleb128	23
+      001164 00 00 8E 0E           1664 	.dw	0,(Snixie$NIXIE_DisplayTime$119)
+      001168 00 00 8E 11           1665 	.dw	0,(Snixie$NIXIE_DisplayTime$120)
+      00116C 00 02                 1666 	.dw	2
+      00116E 78                    1667 	.db	120
+      00116F 15                    1668 	.sleb128	21
+      001170 00 00 8E 0C           1669 	.dw	0,(Snixie$NIXIE_DisplayTime$118)
+      001174 00 00 8E 0E           1670 	.dw	0,(Snixie$NIXIE_DisplayTime$119)
+      001178 00 02                 1671 	.dw	2
+      00117A 78                    1672 	.db	120
+      00117B 14                    1673 	.sleb128	20
+      00117C 00 00 8E 02           1674 	.dw	0,(Snixie$NIXIE_DisplayTime$116)
+      001180 00 00 8E 0C           1675 	.dw	0,(Snixie$NIXIE_DisplayTime$118)
+      001184 00 02                 1676 	.dw	2
+      001186 78                    1677 	.db	120
+      001187 13                    1678 	.sleb128	19
+      001188 00 00 8D FF           1679 	.dw	0,(Snixie$NIXIE_DisplayTime$115)
+      00118C 00 00 8E 02           1680 	.dw	0,(Snixie$NIXIE_DisplayTime$116)
+      001190 00 02                 1681 	.dw	2
+      001192 78                    1682 	.db	120
+      001193 15                    1683 	.sleb128	21
+      001194 00 00 8D FC           1684 	.dw	0,(Snixie$NIXIE_DisplayTime$113)
+      001198 00 00 8D FF           1685 	.dw	0,(Snixie$NIXIE_DisplayTime$115)
+      00119C 00 02                 1686 	.dw	2
+      00119E 78                    1687 	.db	120
+      00119F 13                    1688 	.sleb128	19
+      0011A0 00 00 8D F7           1689 	.dw	0,(Snixie$NIXIE_DisplayTime$112)
+      0011A4 00 00 8D FC           1690 	.dw	0,(Snixie$NIXIE_DisplayTime$113)
+      0011A8 00 02                 1691 	.dw	2
+      0011AA 78                    1692 	.db	120
+      0011AB 17                    1693 	.sleb128	23
+      0011AC 00 00 8D F4           1694 	.dw	0,(Snixie$NIXIE_DisplayTime$111)
+      0011B0 00 00 8D F7           1695 	.dw	0,(Snixie$NIXIE_DisplayTime$112)
+      0011B4 00 02                 1696 	.dw	2
+      0011B6 78                    1697 	.db	120
+      0011B7 15                    1698 	.sleb128	21
+      0011B8 00 00 8D F2           1699 	.dw	0,(Snixie$NIXIE_DisplayTime$110)
+      0011BC 00 00 8D F4           1700 	.dw	0,(Snixie$NIXIE_DisplayTime$111)
+      0011C0 00 02                 1701 	.dw	2
+      0011C2 78                    1702 	.db	120
+      0011C3 14                    1703 	.sleb128	20
+      0011C4 00 00 8D EE           1704 	.dw	0,(Snixie$NIXIE_DisplayTime$108)
+      0011C8 00 00 8D F2           1705 	.dw	0,(Snixie$NIXIE_DisplayTime$110)
+      0011CC 00 02                 1706 	.dw	2
+      0011CE 78                    1707 	.db	120
+      0011CF 13                    1708 	.sleb128	19
+      0011D0 00 00 8D EB           1709 	.dw	0,(Snixie$NIXIE_DisplayTime$107)
+      0011D4 00 00 8D EE           1710 	.dw	0,(Snixie$NIXIE_DisplayTime$108)
+      0011D8 00 02                 1711 	.dw	2
+      0011DA 78                    1712 	.db	120
+      0011DB 15                    1713 	.sleb128	21
+      0011DC 00 00 8D E8           1714 	.dw	0,(Snixie$NIXIE_DisplayTime$105)
+      0011E0 00 00 8D EB           1715 	.dw	0,(Snixie$NIXIE_DisplayTime$107)
+      0011E4 00 02                 1716 	.dw	2
+      0011E6 78                    1717 	.db	120
+      0011E7 13                    1718 	.sleb128	19
+      0011E8 00 00 8D E3           1719 	.dw	0,(Snixie$NIXIE_DisplayTime$104)
+      0011EC 00 00 8D E8           1720 	.dw	0,(Snixie$NIXIE_DisplayTime$105)
+      0011F0 00 02                 1721 	.dw	2
+      0011F2 78                    1722 	.db	120
+      0011F3 17                    1723 	.sleb128	23
+      0011F4 00 00 8D E0           1724 	.dw	0,(Snixie$NIXIE_DisplayTime$103)
+      0011F8 00 00 8D E3           1725 	.dw	0,(Snixie$NIXIE_DisplayTime$104)
+      0011FC 00 02                 1726 	.dw	2
+      0011FE 78                    1727 	.db	120
+      0011FF 15                    1728 	.sleb128	21
+      001200 00 00 8D DE           1729 	.dw	0,(Snixie$NIXIE_DisplayTime$102)
+      001204 00 00 8D E0           1730 	.dw	0,(Snixie$NIXIE_DisplayTime$103)
+      001208 00 02                 1731 	.dw	2
+      00120A 78                    1732 	.db	120
+      00120B 14                    1733 	.sleb128	20
+      00120C 00 00 8D B5           1734 	.dw	0,(Snixie$NIXIE_DisplayTime$99)
+      001210 00 00 8D DE           1735 	.dw	0,(Snixie$NIXIE_DisplayTime$102)
+      001214 00 02                 1736 	.dw	2
+      001216 78                    1737 	.db	120
+      001217 13                    1738 	.sleb128	19
+      001218 00 00 8D B3           1739 	.dw	0,(Snixie$NIXIE_DisplayTime$98)
+      00121C 00 00 8D B5           1740 	.dw	0,(Snixie$NIXIE_DisplayTime$99)
+      001220 00 02                 1741 	.dw	2
+      001222 78                    1742 	.db	120
+      001223 01                    1743 	.sleb128	1
+      001224 00 00 00 00           1744 	.dw	0,0
+      001228 00 00 00 00           1745 	.dw	0,0
+      00122C 00 00 8D B2           1746 	.dw	0,(Snixie$NIXIE_DisplayChar$94)
+      001230 00 00 8D B3           1747 	.dw	0,(Snixie$NIXIE_DisplayChar$96)
+      001234 00 02                 1748 	.dw	2
+      001236 78                    1749 	.db	120
+      001237 01                    1750 	.sleb128	1
+      001238 00 00 8D 8A           1751 	.dw	0,(Snixie$NIXIE_DisplayChar$88)
+      00123C 00 00 8D B2           1752 	.dw	0,(Snixie$NIXIE_DisplayChar$94)
+      001240 00 02                 1753 	.dw	2
+      001242 78                    1754 	.db	120
+      001243 06                    1755 	.sleb128	6
+      001244 00 00 8D 78           1756 	.dw	0,(Snixie$NIXIE_DisplayChar$85)
+      001248 00 00 8D 8A           1757 	.dw	0,(Snixie$NIXIE_DisplayChar$88)
+      00124C 00 02                 1758 	.dw	2
+      00124E 78                    1759 	.db	120
+      00124F 06                    1760 	.sleb128	6
+      001250 00 00 8D 73           1761 	.dw	0,(Snixie$NIXIE_DisplayChar$84)
+      001254 00 00 8D 78           1762 	.dw	0,(Snixie$NIXIE_DisplayChar$85)
+      001258 00 02                 1763 	.dw	2
+      00125A 78                    1764 	.db	120
+      00125B 0A                    1765 	.sleb128	10
+      00125C 00 00 8D 70           1766 	.dw	0,(Snixie$NIXIE_DisplayChar$83)
+      001260 00 00 8D 73           1767 	.dw	0,(Snixie$NIXIE_DisplayChar$84)
+      001264 00 02                 1768 	.dw	2
+      001266 78                    1769 	.db	120
+      001267 08                    1770 	.sleb128	8
+      001268 00 00 8D 6E           1771 	.dw	0,(Snixie$NIXIE_DisplayChar$82)
+      00126C 00 00 8D 70           1772 	.dw	0,(Snixie$NIXIE_DisplayChar$83)
+      001270 00 02                 1773 	.dw	2
+      001272 78                    1774 	.db	120
+      001273 07                    1775 	.sleb128	7
+      001274 00 00 8D 4E           1776 	.dw	0,(Snixie$NIXIE_DisplayChar$76)
+      001278 00 00 8D 6E           1777 	.dw	0,(Snixie$NIXIE_DisplayChar$82)
+      00127C 00 02                 1778 	.dw	2
+      00127E 78                    1779 	.db	120
+      00127F 06                    1780 	.sleb128	6
+      001280 00 00 8D 49           1781 	.dw	0,(Snixie$NIXIE_DisplayChar$75)
+      001284 00 00 8D 4E           1782 	.dw	0,(Snixie$NIXIE_DisplayChar$76)
+      001288 00 02                 1783 	.dw	2
+      00128A 78                    1784 	.db	120
+      00128B 0A                    1785 	.sleb128	10
+      00128C 00 00 8D 46           1786 	.dw	0,(Snixie$NIXIE_DisplayChar$74)
+      001290 00 00 8D 49           1787 	.dw	0,(Snixie$NIXIE_DisplayChar$75)
+      001294 00 02                 1788 	.dw	2
+      001296 78                    1789 	.db	120
+      001297 08                    1790 	.sleb128	8
+      001298 00 00 8D 2E           1791 	.dw	0,(Snixie$NIXIE_DisplayChar$68)
+      00129C 00 00 8D 46           1792 	.dw	0,(Snixie$NIXIE_DisplayChar$74)
+      0012A0 00 02                 1793 	.dw	2
+      0012A2 78                    1794 	.db	120
+      0012A3 06                    1795 	.sleb128	6
+      0012A4 00 00 8D 29           1796 	.dw	0,(Snixie$NIXIE_DisplayChar$67)
+      0012A8 00 00 8D 2E           1797 	.dw	0,(Snixie$NIXIE_DisplayChar$68)
+      0012AC 00 02                 1798 	.dw	2
+      0012AE 78                    1799 	.db	120
+      0012AF 0A                    1800 	.sleb128	10
+      0012B0 00 00 8D 26           1801 	.dw	0,(Snixie$NIXIE_DisplayChar$66)
+      0012B4 00 00 8D 29           1802 	.dw	0,(Snixie$NIXIE_DisplayChar$67)
+      0012B8 00 02                 1803 	.dw	2
+      0012BA 78                    1804 	.db	120
+      0012BB 08                    1805 	.sleb128	8
+      0012BC 00 00 8D 24           1806 	.dw	0,(Snixie$NIXIE_DisplayChar$65)
+      0012C0 00 00 8D 26           1807 	.dw	0,(Snixie$NIXIE_DisplayChar$66)
+      0012C4 00 02                 1808 	.dw	2
+      0012C6 78                    1809 	.db	120
+      0012C7 07                    1810 	.sleb128	7
+      0012C8 00 00 8D 1F           1811 	.dw	0,(Snixie$NIXIE_DisplayChar$62)
+      0012CC 00 00 8D 24           1812 	.dw	0,(Snixie$NIXIE_DisplayChar$65)
+      0012D0 00 02                 1813 	.dw	2
+      0012D2 78                    1814 	.db	120
+      0012D3 06                    1815 	.sleb128	6
+      0012D4 00 00 8D 1D           1816 	.dw	0,(Snixie$NIXIE_DisplayChar$61)
+      0012D8 00 00 8D 1F           1817 	.dw	0,(Snixie$NIXIE_DisplayChar$62)
+      0012DC 00 02                 1818 	.dw	2
+      0012DE 78                    1819 	.db	120
+      0012DF 01                    1820 	.sleb128	1
+      0012E0 00 00 00 00           1821 	.dw	0,0
+      0012E4 00 00 00 00           1822 	.dw	0,0
+      0012E8 00 00 8D 1C           1823 	.dw	0,(Snixie$NIXIE_Init$57)
+      0012EC 00 00 8D 1D           1824 	.dw	0,(Snixie$NIXIE_Init$59)
+      0012F0 00 02                 1825 	.dw	2
+      0012F2 78                    1826 	.db	120
+      0012F3 01                    1827 	.sleb128	1
+      0012F4 00 00 8C F8           1828 	.dw	0,(Snixie$NIXIE_Init$44)
+      0012F8 00 00 8D 1C           1829 	.dw	0,(Snixie$NIXIE_Init$57)
+      0012FC 00 02                 1830 	.dw	2
+      0012FE 78                    1831 	.db	120
+      0012FF 04                    1832 	.sleb128	4
+      001300 00 00 8C F4           1833 	.dw	0,(Snixie$NIXIE_Init$43)
+      001304 00 00 8C F8           1834 	.dw	0,(Snixie$NIXIE_Init$44)
+      001308 00 02                 1835 	.dw	2
+      00130A 78                    1836 	.db	120
+      00130B 06                    1837 	.sleb128	6
+      00130C 00 00 8C F3           1838 	.dw	0,(Snixie$NIXIE_Init$42)
+      001310 00 00 8C F4           1839 	.dw	0,(Snixie$NIXIE_Init$43)
+      001314 00 02                 1840 	.dw	2
+      001316 78                    1841 	.db	120
+      001317 05                    1842 	.sleb128	5
+      001318 00 00 8C F2           1843 	.dw	0,(Snixie$NIXIE_Init$41)
+      00131C 00 00 8C F3           1844 	.dw	0,(Snixie$NIXIE_Init$42)
+      001320 00 02                 1845 	.dw	2
+      001322 78                    1846 	.db	120
+      001323 04                    1847 	.sleb128	4
+      001324 00 00 8C EF           1848 	.dw	0,(Snixie$NIXIE_Init$40)
+      001328 00 00 8C F2           1849 	.dw	0,(Snixie$NIXIE_Init$41)
+      00132C 00 02                 1850 	.dw	2
+      00132E 78                    1851 	.db	120
+      00132F 06                    1852 	.sleb128	6
+      001330 00 00 8C D7           1853 	.dw	0,(Snixie$NIXIE_Init$34)
+      001334 00 00 8C EF           1854 	.dw	0,(Snixie$NIXIE_Init$40)
+      001338 00 02                 1855 	.dw	2
+      00133A 78                    1856 	.db	120
+      00133B 04                    1857 	.sleb128	4
+      00133C 00 00 8C D3           1858 	.dw	0,(Snixie$NIXIE_Init$33)
+      001340 00 00 8C D7           1859 	.dw	0,(Snixie$NIXIE_Init$34)
+      001344 00 02                 1860 	.dw	2
+      001346 78                    1861 	.db	120
+      001347 05                    1862 	.sleb128	5
+      001348 00 00 8C D1           1863 	.dw	0,(Snixie$NIXIE_Init$31)
+      00134C 00 00 8C D3           1864 	.dw	0,(Snixie$NIXIE_Init$33)
+      001350 00 02                 1865 	.dw	2
+      001352 78                    1866 	.db	120
+      001353 04                    1867 	.sleb128	4
+      001354 00 00 8C CC           1868 	.dw	0,(Snixie$NIXIE_Init$30)
+      001358 00 00 8C D1           1869 	.dw	0,(Snixie$NIXIE_Init$31)
+      00135C 00 02                 1870 	.dw	2
+      00135E 78                    1871 	.db	120
+      00135F 0C                    1872 	.sleb128	12
+      001360 00 00 8C CA           1873 	.dw	0,(Snixie$NIXIE_Init$29)
+      001364 00 00 8C CC           1874 	.dw	0,(Snixie$NIXIE_Init$30)
+      001368 00 02                 1875 	.dw	2
+      00136A 78                    1876 	.db	120
+      00136B 0B                    1877 	.sleb128	11
+      00136C 00 00 8C C8           1878 	.dw	0,(Snixie$NIXIE_Init$28)
+      001370 00 00 8C CA           1879 	.dw	0,(Snixie$NIXIE_Init$29)
+      001374 00 02                 1880 	.dw	2
+      001376 78                    1881 	.db	120
+      001377 0A                    1882 	.sleb128	10
+      001378 00 00 8C C6           1883 	.dw	0,(Snixie$NIXIE_Init$27)
+      00137C 00 00 8C C8           1884 	.dw	0,(Snixie$NIXIE_Init$28)
+      001380 00 02                 1885 	.dw	2
+      001382 78                    1886 	.db	120
+      001383 09                    1887 	.sleb128	9
+      001384 00 00 8C C4           1888 	.dw	0,(Snixie$NIXIE_Init$26)
+      001388 00 00 8C C6           1889 	.dw	0,(Snixie$NIXIE_Init$27)
+      00138C 00 02                 1890 	.dw	2
+      00138E 78                    1891 	.db	120
+      00138F 08                    1892 	.sleb128	8
+      001390 00 00 8C C2           1893 	.dw	0,(Snixie$NIXIE_Init$25)
+      001394 00 00 8C C4           1894 	.dw	0,(Snixie$NIXIE_Init$26)
+      001398 00 02                 1895 	.dw	2
+      00139A 78                    1896 	.db	120
+      00139B 07                    1897 	.sleb128	7
+      00139C 00 00 8C C0           1898 	.dw	0,(Snixie$NIXIE_Init$24)
+      0013A0 00 00 8C C2           1899 	.dw	0,(Snixie$NIXIE_Init$25)
+      0013A4 00 02                 1900 	.dw	2
+      0013A6 78                    1901 	.db	120
+      0013A7 06                    1902 	.sleb128	6
+      0013A8 00 00 8C BE           1903 	.dw	0,(Snixie$NIXIE_Init$23)
+      0013AC 00 00 8C C0           1904 	.dw	0,(Snixie$NIXIE_Init$24)
+      0013B0 00 02                 1905 	.dw	2
+      0013B2 78                    1906 	.db	120
+      0013B3 05                    1907 	.sleb128	5
+      0013B4 00 00 8C B9           1908 	.dw	0,(Snixie$NIXIE_Init$20)
+      0013B8 00 00 8C BE           1909 	.dw	0,(Snixie$NIXIE_Init$23)
+      0013BC 00 02                 1910 	.dw	2
+      0013BE 78                    1911 	.db	120
+      0013BF 04                    1912 	.sleb128	4
+      0013C0 00 00 8C B4           1913 	.dw	0,(Snixie$NIXIE_Init$19)
+      0013C4 00 00 8C B9           1914 	.dw	0,(Snixie$NIXIE_Init$20)
+      0013C8 00 02                 1915 	.dw	2
+      0013CA 78                    1916 	.db	120
+      0013CB 08                    1917 	.sleb128	8
+      0013CC 00 00 8C B2           1918 	.dw	0,(Snixie$NIXIE_Init$18)
+      0013D0 00 00 8C B4           1919 	.dw	0,(Snixie$NIXIE_Init$19)
+      0013D4 00 02                 1920 	.dw	2
+      0013D6 78                    1921 	.db	120
+      0013D7 07                    1922 	.sleb128	7
+      0013D8 00 00 8C B0           1923 	.dw	0,(Snixie$NIXIE_Init$17)
+      0013DC 00 00 8C B2           1924 	.dw	0,(Snixie$NIXIE_Init$18)
+      0013E0 00 02                 1925 	.dw	2
+      0013E2 78                    1926 	.db	120
+      0013E3 06                    1927 	.sleb128	6
+      0013E4 00 00 8C AE           1928 	.dw	0,(Snixie$NIXIE_Init$16)
+      0013E8 00 00 8C B0           1929 	.dw	0,(Snixie$NIXIE_Init$17)
+      0013EC 00 02                 1930 	.dw	2
+      0013EE 78                    1931 	.db	120
+      0013EF 05                    1932 	.sleb128	5
+      0013F0 00 00 8C AC           1933 	.dw	0,(Snixie$NIXIE_Init$14)
+      0013F4 00 00 8C AE           1934 	.dw	0,(Snixie$NIXIE_Init$16)
+      0013F8 00 02                 1935 	.dw	2
+      0013FA 78                    1936 	.db	120
+      0013FB 04                    1937 	.sleb128	4
+      0013FC 00 00 8C A7           1938 	.dw	0,(Snixie$NIXIE_Init$13)
+      001400 00 00 8C AC           1939 	.dw	0,(Snixie$NIXIE_Init$14)
+      001404 00 02                 1940 	.dw	2
+      001406 78                    1941 	.db	120
+      001407 08                    1942 	.sleb128	8
+      001408 00 00 8C A5           1943 	.dw	0,(Snixie$NIXIE_Init$12)
+      00140C 00 00 8C A7           1944 	.dw	0,(Snixie$NIXIE_Init$13)
+      001410 00 02                 1945 	.dw	2
+      001412 78                    1946 	.db	120
+      001413 07                    1947 	.sleb128	7
+      001414 00 00 8C A3           1948 	.dw	0,(Snixie$NIXIE_Init$11)
+      001418 00 00 8C A5           1949 	.dw	0,(Snixie$NIXIE_Init$12)
+      00141C 00 02                 1950 	.dw	2
+      00141E 78                    1951 	.db	120
+      00141F 06                    1952 	.sleb128	6
+      001420 00 00 8C A1           1953 	.dw	0,(Snixie$NIXIE_Init$10)
+      001424 00 00 8C A3           1954 	.dw	0,(Snixie$NIXIE_Init$11)
+      001428 00 02                 1955 	.dw	2
+      00142A 78                    1956 	.db	120
+      00142B 05                    1957 	.sleb128	5
+      00142C 00 00 8C 9F           1958 	.dw	0,(Snixie$NIXIE_Init$8)
+      001430 00 00 8C A1           1959 	.dw	0,(Snixie$NIXIE_Init$10)
+      001434 00 02                 1960 	.dw	2
+      001436 78                    1961 	.db	120
+      001437 04                    1962 	.sleb128	4
+      001438 00 00 8C 9A           1963 	.dw	0,(Snixie$NIXIE_Init$7)
+      00143C 00 00 8C 9F           1964 	.dw	0,(Snixie$NIXIE_Init$8)
+      001440 00 02                 1965 	.dw	2
+      001442 78                    1966 	.db	120
+      001443 08                    1967 	.sleb128	8
+      001444 00 00 8C 98           1968 	.dw	0,(Snixie$NIXIE_Init$6)
+      001448 00 00 8C 9A           1969 	.dw	0,(Snixie$NIXIE_Init$7)
+      00144C 00 02                 1970 	.dw	2
+      00144E 78                    1971 	.db	120
+      00144F 07                    1972 	.sleb128	7
+      001450 00 00 8C 96           1973 	.dw	0,(Snixie$NIXIE_Init$5)
+      001454 00 00 8C 98           1974 	.dw	0,(Snixie$NIXIE_Init$6)
+      001458 00 02                 1975 	.dw	2
+      00145A 78                    1976 	.db	120
+      00145B 06                    1977 	.sleb128	6
+      00145C 00 00 8C 94           1978 	.dw	0,(Snixie$NIXIE_Init$4)
+      001460 00 00 8C 96           1979 	.dw	0,(Snixie$NIXIE_Init$5)
+      001464 00 02                 1980 	.dw	2
+      001466 78                    1981 	.db	120
+      001467 05                    1982 	.sleb128	5
+      001468 00 00 8C 92           1983 	.dw	0,(Snixie$NIXIE_Init$2)
+      00146C 00 00 8C 94           1984 	.dw	0,(Snixie$NIXIE_Init$4)
+      001470 00 02                 1985 	.dw	2
+      001472 78                    1986 	.db	120
+      001473 04                    1987 	.sleb128	4
+      001474 00 00 8C 90           1988 	.dw	0,(Snixie$NIXIE_Init$1)
+      001478 00 00 8C 92           1989 	.dw	0,(Snixie$NIXIE_Init$2)
+      00147C 00 02                 1990 	.dw	2
+      00147E 78                    1991 	.db	120
+      00147F 01                    1992 	.sleb128	1
+      001480 00 00 00 00           1993 	.dw	0,0
+      001484 00 00 00 00           1994 	.dw	0,0
+                                   1995 
+                                   1996 	.area .debug_abbrev (NOLOAD)
+      0004D3                       1997 Ldebug_abbrev:
+      0004D3 0A                    1998 	.uleb128	10
+      0004D4 0F                    1999 	.uleb128	15
+      0004D5 00                    2000 	.db	0
+      0004D6 0B                    2001 	.uleb128	11
+      0004D7 0B                    2002 	.uleb128	11
+      0004D8 49                    2003 	.uleb128	73
+      0004D9 13                    2004 	.uleb128	19
+      0004DA 00                    2005 	.uleb128	0
+      0004DB 00                    2006 	.uleb128	0
+      0004DC 05                    2007 	.uleb128	5
+      0004DD 0B                    2008 	.uleb128	11
+      0004DE 00                    2009 	.db	0
+      0004DF 00                    2010 	.uleb128	0
+      0004E0 00                    2011 	.uleb128	0
+      0004E1 0E                    2012 	.uleb128	14
+      0004E2 34                    2013 	.uleb128	52
+      0004E3 00                    2014 	.db	0
+      0004E4 02                    2015 	.uleb128	2
+      0004E5 0A                    2016 	.uleb128	10
+      0004E6 03                    2017 	.uleb128	3
+      0004E7 08                    2018 	.uleb128	8
+      0004E8 3F                    2019 	.uleb128	63
+      0004E9 0C                    2020 	.uleb128	12
+      0004EA 49                    2021 	.uleb128	73
+      0004EB 13                    2022 	.uleb128	19
+      0004EC 00                    2023 	.uleb128	0
+      0004ED 00                    2024 	.uleb128	0
+      0004EE 09                    2025 	.uleb128	9
+      0004EF 05                    2026 	.uleb128	5
+      0004F0 00                    2027 	.db	0
+      0004F1 02                    2028 	.uleb128	2
+      0004F2 0A                    2029 	.uleb128	10
+      0004F3 03                    2030 	.uleb128	3
+      0004F4 08                    2031 	.uleb128	8
+      0004F5 49                    2032 	.uleb128	73
+      0004F6 13                    2033 	.uleb128	19
+      0004F7 00                    2034 	.uleb128	0
+      0004F8 00                    2035 	.uleb128	0
+      0004F9 0C                    2036 	.uleb128	12
+      0004FA 01                    2037 	.uleb128	1
+      0004FB 01                    2038 	.db	1
+      0004FC 01                    2039 	.uleb128	1
+      0004FD 13                    2040 	.uleb128	19
+      0004FE 0B                    2041 	.uleb128	11
+      0004FF 0B                    2042 	.uleb128	11
+      000500 49                    2043 	.uleb128	73
+      000501 13                    2044 	.uleb128	19
+      000502 00                    2045 	.uleb128	0
+      000503 00                    2046 	.uleb128	0
+      000504 02                    2047 	.uleb128	2
+      000505 2E                    2048 	.uleb128	46
+      000506 01                    2049 	.db	1
+      000507 01                    2050 	.uleb128	1
+      000508 13                    2051 	.uleb128	19
+      000509 03                    2052 	.uleb128	3
+      00050A 08                    2053 	.uleb128	8
+      00050B 11                    2054 	.uleb128	17
+      00050C 01                    2055 	.uleb128	1
+      00050D 12                    2056 	.uleb128	18
+      00050E 01                    2057 	.uleb128	1
+      00050F 3F                    2058 	.uleb128	63
+      000510 0C                    2059 	.uleb128	12
+      000511 40                    2060 	.uleb128	64
+      000512 06                    2061 	.uleb128	6
+      000513 00                    2062 	.uleb128	0
+      000514 00                    2063 	.uleb128	0
+      000515 06                    2064 	.uleb128	6
+      000516 34                    2065 	.uleb128	52
+      000517 00                    2066 	.db	0
+      000518 02                    2067 	.uleb128	2
+      000519 0A                    2068 	.uleb128	10
+      00051A 03                    2069 	.uleb128	3
+      00051B 08                    2070 	.uleb128	8
+      00051C 49                    2071 	.uleb128	73
+      00051D 13                    2072 	.uleb128	19
+      00051E 00                    2073 	.uleb128	0
+      00051F 00                    2074 	.uleb128	0
+      000520 08                    2075 	.uleb128	8
+      000521 2E                    2076 	.uleb128	46
+      000522 01                    2077 	.db	1
+      000523 01                    2078 	.uleb128	1
+      000524 13                    2079 	.uleb128	19
+      000525 03                    2080 	.uleb128	3
+      000526 08                    2081 	.uleb128	8
+      000527 11                    2082 	.uleb128	17
+      000528 01                    2083 	.uleb128	1
+      000529 12                    2084 	.uleb128	18
+      00052A 01                    2085 	.uleb128	1
+      00052B 3F                    2086 	.uleb128	63
+      00052C 0C                    2087 	.uleb128	12
+      00052D 40                    2088 	.uleb128	64
+      00052E 06                    2089 	.uleb128	6
+      00052F 49                    2090 	.uleb128	73
+      000530 13                    2091 	.uleb128	19
+      000531 00                    2092 	.uleb128	0
+      000532 00                    2093 	.uleb128	0
+      000533 01                    2094 	.uleb128	1
+      000534 11                    2095 	.uleb128	17
+      000535 01                    2096 	.db	1
+      000536 03                    2097 	.uleb128	3
+      000537 08                    2098 	.uleb128	8
+      000538 10                    2099 	.uleb128	16
+      000539 06                    2100 	.uleb128	6
+      00053A 13                    2101 	.uleb128	19
+      00053B 0B                    2102 	.uleb128	11
+      00053C 25                    2103 	.uleb128	37
+      00053D 08                    2104 	.uleb128	8
+      00053E 00                    2105 	.uleb128	0
+      00053F 00                    2106 	.uleb128	0
+      000540 03                    2107 	.uleb128	3
+      000541 0B                    2108 	.uleb128	11
+      000542 01                    2109 	.db	1
+      000543 11                    2110 	.uleb128	17
+      000544 01                    2111 	.uleb128	1
+      000545 12                    2112 	.uleb128	18
+      000546 01                    2113 	.uleb128	1
+      000547 00                    2114 	.uleb128	0
+      000548 00                    2115 	.uleb128	0
+      000549 0B                    2116 	.uleb128	11
+      00054A 0B                    2117 	.uleb128	11
+      00054B 00                    2118 	.db	0
+      00054C 11                    2119 	.uleb128	17
+      00054D 01                    2120 	.uleb128	1
+      00054E 12                    2121 	.uleb128	18
+      00054F 01                    2122 	.uleb128	1
+      000550 00                    2123 	.uleb128	0
+      000551 00                    2124 	.uleb128	0
+      000552 04                    2125 	.uleb128	4
+      000553 0B                    2126 	.uleb128	11
+      000554 01                    2127 	.db	1
+      000555 01                    2128 	.uleb128	1
+      000556 13                    2129 	.uleb128	19
+      000557 11                    2130 	.uleb128	17
+      000558 01                    2131 	.uleb128	1
+      000559 12                    2132 	.uleb128	18
+      00055A 01                    2133 	.uleb128	1
+      00055B 00                    2134 	.uleb128	0
+      00055C 00                    2135 	.uleb128	0
+      00055D 0D                    2136 	.uleb128	13
+      00055E 21                    2137 	.uleb128	33
+      00055F 00                    2138 	.db	0
+      000560 2F                    2139 	.uleb128	47
+      000561 0B                    2140 	.uleb128	11
+      000562 00                    2141 	.uleb128	0
+      000563 00                    2142 	.uleb128	0
+      000564 07                    2143 	.uleb128	7
+      000565 24                    2144 	.uleb128	36
+      000566 00                    2145 	.db	0
+      000567 03                    2146 	.uleb128	3
+      000568 08                    2147 	.uleb128	8
+      000569 0B                    2148 	.uleb128	11
+      00056A 0B                    2149 	.uleb128	11
+      00056B 3E                    2150 	.uleb128	62
+      00056C 0B                    2151 	.uleb128	11
+      00056D 00                    2152 	.uleb128	0
+      00056E 00                    2153 	.uleb128	0
+      00056F 00                    2154 	.uleb128	0
+                                   2155 
+                                   2156 	.area .debug_info (NOLOAD)
+      001734 00 00 02 ED           2157 	.dw	0,Ldebug_info_end-Ldebug_info_start
+      001738                       2158 Ldebug_info_start:
+      001738 00 02                 2159 	.dw	2
+      00173A 00 00 04 D3           2160 	.dw	0,(Ldebug_abbrev)
+      00173E 04                    2161 	.db	4
+      00173F 01                    2162 	.uleb128	1
+      001740 53 6F 75 72 63 65 2F  2163 	.ascii "Source/Device/Src/nixie.c"
              44 65 76 69 63 65 2F
              53 72 63 2F 6E 69 78
              69 65 2E 63
-      00180F 00                    2053 	.db	0
-      001810 00 00 14 D9           2054 	.dw	0,(Ldebug_line_start+-4)
-      001814 01                    2055 	.db	1
-      001815 53 44 43 43 20 76 65  2056 	.ascii "SDCC version 4.0.0 #11528"
+      001759 00                    2164 	.db	0
+      00175A 00 00 14 C1           2165 	.dw	0,(Ldebug_line_start+-4)
+      00175E 01                    2166 	.db	1
+      00175F 53 44 43 43 20 76 65  2167 	.ascii "SDCC version 4.0.0 #11528"
              72 73 69 6F 6E 20 34
              2E 30 2E 30 20 23 31
              31 35 32 38
-      00182E 00                    2057 	.db	0
-      00182F 02                    2058 	.uleb128	2
-      001830 00 00 00 72           2059 	.dw	0,114
-      001834 64 65 6C 61 79        2060 	.ascii "delay"
-      001839 00                    2061 	.db	0
-      00183A 00 00 8C A8           2062 	.dw	0,(_delay)
-      00183E 00 00 8C B2           2063 	.dw	0,(XG$delay$0$0+1)
-      001842 01                    2064 	.db	1
-      001843 00 00 14 40           2065 	.dw	0,(Ldebug_loc_start+1476)
-      001847 03                    2066 	.uleb128	3
-      001848 00 00 8C A8           2067 	.dw	0,(Snixie$delay$0)
-      00184C 04                    2068 	.uleb128	4
-      00184D 06                    2069 	.db	6
-      00184E 52                    2070 	.db	82
-      00184F 93                    2071 	.db	147
-      001850 01                    2072 	.uleb128	1
-      001851 51                    2073 	.db	81
-      001852 93                    2074 	.db	147
-      001853 01                    2075 	.uleb128	1
-      001854 69                    2076 	.ascii "i"
-      001855 00                    2077 	.db	0
-      001856 00 00 00 72           2078 	.dw	0,114
-      00185A 00                    2079 	.uleb128	0
-      00185B 00                    2080 	.uleb128	0
-      00185C 05                    2081 	.uleb128	5
-      00185D 69 6E 74              2082 	.ascii "int"
-      001860 00                    2083 	.db	0
-      001861 02                    2084 	.db	2
-      001862 05                    2085 	.db	5
-      001863 06                    2086 	.uleb128	6
-      001864 4E 49 58 49 45 5F 49  2087 	.ascii "NIXIE_Init"
+      001778 00                    2168 	.db	0
+      001779 02                    2169 	.uleb128	2
+      00177A 00 00 00 B6           2170 	.dw	0,182
+      00177E 4E 49 58 49 45 5F 49  2171 	.ascii "NIXIE_Init"
              6E 69 74
-      00186E 00                    2088 	.db	0
-      00186F 00 00 8C B2           2089 	.dw	0,(_NIXIE_Init)
-      001873 00 00 8C F8           2090 	.dw	0,(XG$NIXIE_Init$0$0+1)
-      001877 01                    2091 	.db	1
-      001878 00 00 12 F4           2092 	.dw	0,(Ldebug_loc_start+1144)
-      00187C 05                    2093 	.uleb128	5
-      00187D 75 6E 73 69 67 6E 65  2094 	.ascii "unsigned int"
-             64 20 69 6E 74
-      001889 00                    2095 	.db	0
-      00188A 02                    2096 	.db	2
-      00188B 07                    2097 	.db	7
-      00188C 07                    2098 	.uleb128	7
-      00188D 00 00 01 45           2099 	.dw	0,325
-      001891 4E 49 58 49 45 5F 44  2100 	.ascii "NIXIE_DisplayChar"
-             69 73 70 6C 61 79 43
-             68 61 72
-      0018A2 00                    2101 	.db	0
-      0018A3 00 00 8C F8           2102 	.dw	0,(_NIXIE_DisplayChar)
-      0018A7 00 00 8D 8E           2103 	.dw	0,(XG$NIXIE_DisplayChar$0$0+1)
-      0018AB 01                    2104 	.db	1
-      0018AC 00 00 12 38           2105 	.dw	0,(Ldebug_loc_start+956)
-      0018B0 00 00 00 92           2106 	.dw	0,146
-      0018B4 08                    2107 	.uleb128	8
-      0018B5 02                    2108 	.db	2
-      0018B6 91                    2109 	.db	145
-      0018B7 02                    2110 	.sleb128	2
-      0018B8 74 75 62 65 4E 75 6D  2111 	.ascii "tubeNum"
-      0018BF 00                    2112 	.db	0
-      0018C0 00 00 01 45           2113 	.dw	0,325
-      0018C4 09                    2114 	.uleb128	9
-      0018C5 02                    2115 	.db	2
-      0018C6 00 00 01 45           2116 	.dw	0,325
-      0018CA 08                    2117 	.uleb128	8
-      0018CB 02                    2118 	.db	2
-      0018CC 91                    2119 	.db	145
-      0018CD 03                    2120 	.sleb128	3
-      0018CE 63 68 61 72 61 63 74  2121 	.ascii "character"
-             65 72
-      0018D7 00                    2122 	.db	0
-      0018D8 00 00 00 DA           2123 	.dw	0,218
-      0018DC 08                    2124 	.uleb128	8
-      0018DD 02                    2125 	.db	2
-      0018DE 91                    2126 	.db	145
-      0018DF 05                    2127 	.sleb128	5
-      0018E0 74 75 62 65 53 74 61  2128 	.ascii "tubeState"
-             74 65
-      0018E9 00                    2129 	.db	0
-      0018EA 00 00 01 45           2130 	.dw	0,325
-      0018EE 0A                    2131 	.uleb128	10
-      0018EF 00 00 01 25           2132 	.dw	0,293
-      0018F3 00 00 8D 13           2133 	.dw	0,(Snixie$NIXIE_DisplayChar$55)
-      0018F7 00 00 8D 47           2134 	.dw	0,(Snixie$NIXIE_DisplayChar$64)
-      0018FB 0B                    2135 	.uleb128	11
-      0018FC 00 00 8D 19           2136 	.dw	0,(Snixie$NIXIE_DisplayChar$56)
-      001900 00 00 8D 43           2137 	.dw	0,(Snixie$NIXIE_DisplayChar$62)
-      001904 04                    2138 	.uleb128	4
-      001905 02                    2139 	.db	2
-      001906 91                    2140 	.db	145
-      001907 7F                    2141 	.sleb128	-1
-      001908 69                    2142 	.ascii "i"
-      001909 00                    2143 	.db	0
-      00190A 00 00 01 45           2144 	.dw	0,325
-      00190E 00                    2145 	.uleb128	0
-      00190F 04                    2146 	.uleb128	4
-      001910 02                    2147 	.db	2
-      001911 91                    2148 	.db	145
-      001912 7D                    2149 	.sleb128	-3
-      001913 74 6D 70              2150 	.ascii "tmp"
-      001916 00                    2151 	.db	0
-      001917 00 00 00 92           2152 	.dw	0,146
-      00191B 04                    2153 	.uleb128	4
-      00191C 06                    2154 	.db	6
-      00191D 50                    2155 	.db	80
-      00191E 93                    2156 	.db	147
-      00191F 01                    2157 	.uleb128	1
-      001920 51                    2158 	.db	81
-      001921 93                    2159 	.db	147
-      001922 01                    2160 	.uleb128	1
-      001923 6F 75 74 70 75 74     2161 	.ascii "output"
-      001929 00                    2162 	.db	0
-      00192A 00 00 00 92           2163 	.dw	0,146
-      00192E 00                    2164 	.uleb128	0
-      00192F 05                    2165 	.uleb128	5
-      001930 75 6E 73 69 67 6E 65  2166 	.ascii "unsigned char"
+      001788 00                    2172 	.db	0
+      001789 00 00 8C 90           2173 	.dw	0,(_NIXIE_Init)
+      00178D 00 00 8D 1D           2174 	.dw	0,(XG$NIXIE_Init$0$0+1)
+      001791 01                    2175 	.db	1
+      001792 00 00 12 E8           2176 	.dw	0,(Ldebug_loc_start+1144)
+      001796 03                    2177 	.uleb128	3
+      001797 00 00 8C D9           2178 	.dw	0,(Snixie$NIXIE_Init$36)
+      00179B 00 00 8D 1A           2179 	.dw	0,(Snixie$NIXIE_Init$55)
+      00179F 04                    2180 	.uleb128	4
+      0017A0 00 00 00 AA           2181 	.dw	0,170
+      0017A4 00 00 8C E2           2182 	.dw	0,(Snixie$NIXIE_Init$37)
+      0017A8 00 00 8C F8           2183 	.dw	0,(Snixie$NIXIE_Init$45)
+      0017AC 03                    2184 	.uleb128	3
+      0017AD 00 00 8C FB           2185 	.dw	0,(Snixie$NIXIE_Init$47)
+      0017B1 00 00 8D 15           2186 	.dw	0,(Snixie$NIXIE_Init$53)
+      0017B5 04                    2187 	.uleb128	4
+      0017B6 00 00 00 9E           2188 	.dw	0,158
+      0017BA 00 00 8D 03           2189 	.dw	0,(Snixie$NIXIE_Init$50)
+      0017BE 00 00 8D 0E           2190 	.dw	0,(Snixie$NIXIE_Init$51)
+      0017C2 05                    2191 	.uleb128	5
+      0017C3 06                    2192 	.uleb128	6
+      0017C4 06                    2193 	.db	6
+      0017C5 52                    2194 	.db	82
+      0017C6 93                    2195 	.db	147
+      0017C7 01                    2196 	.uleb128	1
+      0017C8 51                    2197 	.db	81
+      0017C9 93                    2198 	.db	147
+      0017CA 01                    2199 	.uleb128	1
+      0017CB 6A                    2200 	.ascii "j"
+      0017CC 00                    2201 	.db	0
+      0017CD 00 00 00 C7           2202 	.dw	0,199
+      0017D1 00                    2203 	.uleb128	0
+      0017D2 06                    2204 	.uleb128	6
+      0017D3 02                    2205 	.db	2
+      0017D4 91                    2206 	.db	145
+      0017D5 7E                    2207 	.sleb128	-2
+      0017D6 6B                    2208 	.ascii "k"
+      0017D7 00                    2209 	.db	0
+      0017D8 00 00 00 C7           2210 	.dw	0,199
+      0017DC 00                    2211 	.uleb128	0
+      0017DD 00                    2212 	.uleb128	0
+      0017DE 06                    2213 	.uleb128	6
+      0017DF 02                    2214 	.db	2
+      0017E0 91                    2215 	.db	145
+      0017E1 7D                    2216 	.sleb128	-3
+      0017E2 69                    2217 	.ascii "i"
+      0017E3 00                    2218 	.db	0
+      0017E4 00 00 00 B6           2219 	.dw	0,182
+      0017E8 00                    2220 	.uleb128	0
+      0017E9 00                    2221 	.uleb128	0
+      0017EA 07                    2222 	.uleb128	7
+      0017EB 75 6E 73 69 67 6E 65  2223 	.ascii "unsigned char"
              64 20 63 68 61 72
-      00193D 00                    2167 	.db	0
-      00193E 01                    2168 	.db	1
-      00193F 08                    2169 	.db	8
-      001940 02                    2170 	.uleb128	2
-      001941 00 00 02 53           2171 	.dw	0,595
-      001945 4E 49 58 49 45 5F 44  2172 	.ascii "NIXIE_DisplayTime"
-             69 73 70 6C 61 79 54
-             69 6D 65
-      001956 00                    2173 	.db	0
-      001957 00 00 8D 8E           2174 	.dw	0,(_NIXIE_DisplayTime)
-      00195B 00 00 8F 63           2175 	.dw	0,(XG$NIXIE_DisplayTime$0$0+1)
-      00195F 01                    2176 	.db	1
-      001960 00 00 0E 7C           2177 	.dw	0,(Ldebug_loc_start)
-      001964 08                    2178 	.uleb128	8
-      001965 02                    2179 	.db	2
-      001966 91                    2180 	.db	145
-      001967 02                    2181 	.sleb128	2
-      001968 68 6F 75 72           2182 	.ascii "hour"
-      00196C 00                    2183 	.db	0
-      00196D 00 00 01 45           2184 	.dw	0,325
-      001971 08                    2185 	.uleb128	8
-      001972 02                    2186 	.db	2
-      001973 91                    2187 	.db	145
-      001974 03                    2188 	.sleb128	3
-      001975 6D 69 6E              2189 	.ascii "min"
-      001978 00                    2190 	.db	0
-      001979 00 00 01 45           2191 	.dw	0,325
-      00197D 0A                    2192 	.uleb128	10
-      00197E 00 00 01 B9           2193 	.dw	0,441
-      001982 00 00 8E 5B           2194 	.dw	0,(Snixie$NIXIE_DisplayTime$142)
-      001986 00 00 8F 60           2195 	.dw	0,(Snixie$NIXIE_DisplayTime$210)
-      00198A 04                    2196 	.uleb128	4
-      00198B 01                    2197 	.db	1
-      00198C 51                    2198 	.db	81
-      00198D 74 6D 70 31           2199 	.ascii "tmp1"
-      001991 00                    2200 	.db	0
-      001992 00 00 01 45           2201 	.dw	0,325
-      001996 04                    2202 	.uleb128	4
-      001997 01                    2203 	.db	1
-      001998 50                    2204 	.db	80
-      001999 74 6D 70 32           2205 	.ascii "tmp2"
-      00199D 00                    2206 	.db	0
-      00199E 00 00 01 45           2207 	.dw	0,325
-      0019A2 00                    2208 	.uleb128	0
-      0019A3 04                    2209 	.uleb128	4
-      0019A4 02                    2210 	.db	2
-      0019A5 91                    2211 	.db	145
-      0019A6 77                    2212 	.sleb128	-9
-      0019A7 74 75 62 65 31        2213 	.ascii "tube1"
-      0019AC 00                    2214 	.db	0
-      0019AD 00 00 00 92           2215 	.dw	0,146
-      0019B1 04                    2216 	.uleb128	4
-      0019B2 02                    2217 	.db	2
-      0019B3 91                    2218 	.db	145
-      0019B4 79                    2219 	.sleb128	-7
-      0019B5 74 75 62 65 32        2220 	.ascii "tube2"
-      0019BA 00                    2221 	.db	0
-      0019BB 00 00 00 92           2222 	.dw	0,146
-      0019BF 04                    2223 	.uleb128	4
-      0019C0 02                    2224 	.db	2
-      0019C1 91                    2225 	.db	145
-      0019C2 7B                    2226 	.sleb128	-5
-      0019C3 74 75 62 65 33        2227 	.ascii "tube3"
-      0019C8 00                    2228 	.db	0
-      0019C9 00 00 00 92           2229 	.dw	0,146
-      0019CD 04                    2230 	.uleb128	4
-      0019CE 02                    2231 	.db	2
-      0019CF 91                    2232 	.db	145
-      0019D0 7D                    2233 	.sleb128	-3
-      0019D1 74 75 62 65 34        2234 	.ascii "tube4"
-      0019D6 00                    2235 	.db	0
-      0019D7 00 00 00 92           2236 	.dw	0,146
-      0019DB 0C                    2237 	.uleb128	12
-      0019DC 00 00 01 FE           2238 	.dw	0,510
-      0019E0 02                    2239 	.db	2
-      0019E1 00 00 01 45           2240 	.dw	0,325
-      0019E5 0D                    2241 	.uleb128	13
-      0019E6 01                    2242 	.db	1
-      0019E7 00                    2243 	.uleb128	0
-      0019E8 04                    2244 	.uleb128	4
-      0019E9 02                    2245 	.db	2
-      0019EA 91                    2246 	.db	145
-      0019EB 6E                    2247 	.sleb128	-18
-      0019EC 74 75 62 65 31 73     2248 	.ascii "tube1s"
-      0019F2 00                    2249 	.db	0
-      0019F3 00 00 01 F1           2250 	.dw	0,497
-      0019F7 04                    2251 	.uleb128	4
-      0019F8 02                    2252 	.db	2
-      0019F9 91                    2253 	.db	145
-      0019FA 70                    2254 	.sleb128	-16
-      0019FB 74 75 62 65 32 73     2255 	.ascii "tube2s"
-      001A01 00                    2256 	.db	0
-      001A02 00 00 01 F1           2257 	.dw	0,497
-      001A06 0C                    2258 	.uleb128	12
-      001A07 00 00 02 29           2259 	.dw	0,553
-      001A0B 03                    2260 	.db	3
-      001A0C 00 00 01 45           2261 	.dw	0,325
-      001A10 0D                    2262 	.uleb128	13
-      001A11 02                    2263 	.db	2
-      001A12 00                    2264 	.uleb128	0
-      001A13 04                    2265 	.uleb128	4
-      001A14 02                    2266 	.db	2
-      001A15 91                    2267 	.db	145
-      001A16 72                    2268 	.sleb128	-14
-      001A17 74 75 62 65 33 73     2269 	.ascii "tube3s"
-      001A1D 00                    2270 	.db	0
-      001A1E 00 00 02 1C           2271 	.dw	0,540
-      001A22 04                    2272 	.uleb128	4
-      001A23 02                    2273 	.db	2
-      001A24 91                    2274 	.db	145
-      001A25 75                    2275 	.sleb128	-11
-      001A26 74 75 62 65 34 73     2276 	.ascii "tube4s"
-      001A2C 00                    2277 	.db	0
-      001A2D 00 00 01 F1           2278 	.dw	0,497
-      001A31 04                    2279 	.uleb128	4
-      001A32 01                    2280 	.db	1
-      001A33 51                    2281 	.db	81
-      001A34 74 6D 70              2282 	.ascii "tmp"
-      001A37 00                    2283 	.db	0
-      001A38 00 00 01 45           2284 	.dw	0,325
-      001A3C 00                    2285 	.uleb128	0
-      001A3D 0E                    2286 	.uleb128	14
-      001A3E 05                    2287 	.db	5
-      001A3F 03                    2288 	.db	3
-      001A40 00 00 00 28           2289 	.dw	0,(_tube_state)
-      001A44 74 75 62 65 5F 73 74  2290 	.ascii "tube_state"
-             61 74 65
-      001A4E 00                    2291 	.db	0
-      001A4F 01                    2292 	.db	1
-      001A50 00 00 01 45           2293 	.dw	0,325
-      001A54 00                    2294 	.uleb128	0
-      001A55 00                    2295 	.uleb128	0
-      001A56 00                    2296 	.uleb128	0
-      001A57                       2297 Ldebug_info_end:
-                                   2298 
-                                   2299 	.area .debug_pubnames (NOLOAD)
-      000574 00 00 00 62           2300 	.dw	0,Ldebug_pubnames_end-Ldebug_pubnames_start
-      000578                       2301 Ldebug_pubnames_start:
-      000578 00 02                 2302 	.dw	2
-      00057A 00 00 17 EA           2303 	.dw	0,(Ldebug_info_start-4)
-      00057E 00 00 02 6D           2304 	.dw	0,4+Ldebug_info_end-Ldebug_info_start
-      000582 00 00 00 45           2305 	.dw	0,69
-      000586 64 65 6C 61 79        2306 	.ascii "delay"
-      00058B 00                    2307 	.db	0
-      00058C 00 00 00 79           2308 	.dw	0,121
-      000590 4E 49 58 49 45 5F 49  2309 	.ascii "NIXIE_Init"
-             6E 69 74
-      00059A 00                    2310 	.db	0
-      00059B 00 00 00 A2           2311 	.dw	0,162
-      00059F 4E 49 58 49 45 5F 44  2312 	.ascii "NIXIE_DisplayChar"
+      0017F8 00                    2224 	.db	0
+      0017F9 01                    2225 	.db	1
+      0017FA 08                    2226 	.db	8
+      0017FB 07                    2227 	.uleb128	7
+      0017FC 75 6E 73 69 67 6E 65  2228 	.ascii "unsigned int"
+             64 20 69 6E 74
+      001808 00                    2229 	.db	0
+      001809 02                    2230 	.db	2
+      00180A 07                    2231 	.db	7
+      00180B 08                    2232 	.uleb128	8
+      00180C 00 00 01 7A           2233 	.dw	0,378
+      001810 4E 49 58 49 45 5F 44  2234 	.ascii "NIXIE_DisplayChar"
              69 73 70 6C 61 79 43
              68 61 72
-      0005B0 00                    2313 	.db	0
-      0005B1 00 00 01 56           2314 	.dw	0,342
-      0005B5 4E 49 58 49 45 5F 44  2315 	.ascii "NIXIE_DisplayTime"
+      001821 00                    2235 	.db	0
+      001822 00 00 8D 1D           2236 	.dw	0,(_NIXIE_DisplayChar)
+      001826 00 00 8D B3           2237 	.dw	0,(XG$NIXIE_DisplayChar$0$0+1)
+      00182A 01                    2238 	.db	1
+      00182B 00 00 12 2C           2239 	.dw	0,(Ldebug_loc_start+956)
+      00182F 00 00 00 C7           2240 	.dw	0,199
+      001833 09                    2241 	.uleb128	9
+      001834 02                    2242 	.db	2
+      001835 91                    2243 	.db	145
+      001836 02                    2244 	.sleb128	2
+      001837 74 75 62 65 4E 75 6D  2245 	.ascii "tubeNum"
+      00183E 00                    2246 	.db	0
+      00183F 00 00 00 B6           2247 	.dw	0,182
+      001843 0A                    2248 	.uleb128	10
+      001844 02                    2249 	.db	2
+      001845 00 00 00 B6           2250 	.dw	0,182
+      001849 09                    2251 	.uleb128	9
+      00184A 02                    2252 	.db	2
+      00184B 91                    2253 	.db	145
+      00184C 03                    2254 	.sleb128	3
+      00184D 63 68 61 72 61 63 74  2255 	.ascii "character"
+             65 72
+      001856 00                    2256 	.db	0
+      001857 00 00 01 0F           2257 	.dw	0,271
+      00185B 09                    2258 	.uleb128	9
+      00185C 02                    2259 	.db	2
+      00185D 91                    2260 	.db	145
+      00185E 05                    2261 	.sleb128	5
+      00185F 74 75 62 65 53 74 61  2262 	.ascii "tubeState"
+             74 65
+      001868 00                    2263 	.db	0
+      001869 00 00 00 B6           2264 	.dw	0,182
+      00186D 04                    2265 	.uleb128	4
+      00186E 00 00 01 5A           2266 	.dw	0,346
+      001872 00 00 8D 38           2267 	.dw	0,(Snixie$NIXIE_DisplayChar$71)
+      001876 00 00 8D 6C           2268 	.dw	0,(Snixie$NIXIE_DisplayChar$80)
+      00187A 0B                    2269 	.uleb128	11
+      00187B 00 00 8D 3E           2270 	.dw	0,(Snixie$NIXIE_DisplayChar$72)
+      00187F 00 00 8D 68           2271 	.dw	0,(Snixie$NIXIE_DisplayChar$78)
+      001883 06                    2272 	.uleb128	6
+      001884 02                    2273 	.db	2
+      001885 91                    2274 	.db	145
+      001886 7F                    2275 	.sleb128	-1
+      001887 69                    2276 	.ascii "i"
+      001888 00                    2277 	.db	0
+      001889 00 00 00 B6           2278 	.dw	0,182
+      00188D 00                    2279 	.uleb128	0
+      00188E 06                    2280 	.uleb128	6
+      00188F 02                    2281 	.db	2
+      001890 91                    2282 	.db	145
+      001891 7D                    2283 	.sleb128	-3
+      001892 74 6D 70              2284 	.ascii "tmp"
+      001895 00                    2285 	.db	0
+      001896 00 00 00 C7           2286 	.dw	0,199
+      00189A 06                    2287 	.uleb128	6
+      00189B 06                    2288 	.db	6
+      00189C 50                    2289 	.db	80
+      00189D 93                    2290 	.db	147
+      00189E 01                    2291 	.uleb128	1
+      00189F 51                    2292 	.db	81
+      0018A0 93                    2293 	.db	147
+      0018A1 01                    2294 	.uleb128	1
+      0018A2 6F 75 74 70 75 74     2295 	.ascii "output"
+      0018A8 00                    2296 	.db	0
+      0018A9 00 00 00 C7           2297 	.dw	0,199
+      0018AD 00                    2298 	.uleb128	0
+      0018AE 02                    2299 	.uleb128	2
+      0018AF 00 00 02 77           2300 	.dw	0,631
+      0018B3 4E 49 58 49 45 5F 44  2301 	.ascii "NIXIE_DisplayTime"
              69 73 70 6C 61 79 54
              69 6D 65
-      0005C6 00                    2316 	.db	0
-      0005C7 00 00 02 53           2317 	.dw	0,595
-      0005CB 74 75 62 65 5F 73 74  2318 	.ascii "tube_state"
+      0018C4 00                    2302 	.db	0
+      0018C5 00 00 8D B3           2303 	.dw	0,(_NIXIE_DisplayTime)
+      0018C9 00 00 8F 88           2304 	.dw	0,(XG$NIXIE_DisplayTime$0$0+1)
+      0018CD 01                    2305 	.db	1
+      0018CE 00 00 0E 70           2306 	.dw	0,(Ldebug_loc_start)
+      0018D2 09                    2307 	.uleb128	9
+      0018D3 02                    2308 	.db	2
+      0018D4 91                    2309 	.db	145
+      0018D5 02                    2310 	.sleb128	2
+      0018D6 68 6F 75 72           2311 	.ascii "hour"
+      0018DA 00                    2312 	.db	0
+      0018DB 00 00 00 B6           2313 	.dw	0,182
+      0018DF 09                    2314 	.uleb128	9
+      0018E0 02                    2315 	.db	2
+      0018E1 91                    2316 	.db	145
+      0018E2 03                    2317 	.sleb128	3
+      0018E3 6D 69 6E              2318 	.ascii "min"
+      0018E6 00                    2319 	.db	0
+      0018E7 00 00 00 B6           2320 	.dw	0,182
+      0018EB 04                    2321 	.uleb128	4
+      0018EC 00 00 01 DD           2322 	.dw	0,477
+      0018F0 00 00 8E 80           2323 	.dw	0,(Snixie$NIXIE_DisplayTime$158)
+      0018F4 00 00 8F 85           2324 	.dw	0,(Snixie$NIXIE_DisplayTime$226)
+      0018F8 06                    2325 	.uleb128	6
+      0018F9 01                    2326 	.db	1
+      0018FA 51                    2327 	.db	81
+      0018FB 74 6D 70 31           2328 	.ascii "tmp1"
+      0018FF 00                    2329 	.db	0
+      001900 00 00 00 B6           2330 	.dw	0,182
+      001904 06                    2331 	.uleb128	6
+      001905 01                    2332 	.db	1
+      001906 50                    2333 	.db	80
+      001907 74 6D 70 32           2334 	.ascii "tmp2"
+      00190B 00                    2335 	.db	0
+      00190C 00 00 00 B6           2336 	.dw	0,182
+      001910 00                    2337 	.uleb128	0
+      001911 06                    2338 	.uleb128	6
+      001912 02                    2339 	.db	2
+      001913 91                    2340 	.db	145
+      001914 77                    2341 	.sleb128	-9
+      001915 74 75 62 65 31        2342 	.ascii "tube1"
+      00191A 00                    2343 	.db	0
+      00191B 00 00 00 C7           2344 	.dw	0,199
+      00191F 06                    2345 	.uleb128	6
+      001920 02                    2346 	.db	2
+      001921 91                    2347 	.db	145
+      001922 79                    2348 	.sleb128	-7
+      001923 74 75 62 65 32        2349 	.ascii "tube2"
+      001928 00                    2350 	.db	0
+      001929 00 00 00 C7           2351 	.dw	0,199
+      00192D 06                    2352 	.uleb128	6
+      00192E 02                    2353 	.db	2
+      00192F 91                    2354 	.db	145
+      001930 7B                    2355 	.sleb128	-5
+      001931 74 75 62 65 33        2356 	.ascii "tube3"
+      001936 00                    2357 	.db	0
+      001937 00 00 00 C7           2358 	.dw	0,199
+      00193B 06                    2359 	.uleb128	6
+      00193C 02                    2360 	.db	2
+      00193D 91                    2361 	.db	145
+      00193E 7D                    2362 	.sleb128	-3
+      00193F 74 75 62 65 34        2363 	.ascii "tube4"
+      001944 00                    2364 	.db	0
+      001945 00 00 00 C7           2365 	.dw	0,199
+      001949 0C                    2366 	.uleb128	12
+      00194A 00 00 02 22           2367 	.dw	0,546
+      00194E 02                    2368 	.db	2
+      00194F 00 00 00 B6           2369 	.dw	0,182
+      001953 0D                    2370 	.uleb128	13
+      001954 01                    2371 	.db	1
+      001955 00                    2372 	.uleb128	0
+      001956 06                    2373 	.uleb128	6
+      001957 02                    2374 	.db	2
+      001958 91                    2375 	.db	145
+      001959 6E                    2376 	.sleb128	-18
+      00195A 74 75 62 65 31 73     2377 	.ascii "tube1s"
+      001960 00                    2378 	.db	0
+      001961 00 00 02 15           2379 	.dw	0,533
+      001965 06                    2380 	.uleb128	6
+      001966 02                    2381 	.db	2
+      001967 91                    2382 	.db	145
+      001968 70                    2383 	.sleb128	-16
+      001969 74 75 62 65 32 73     2384 	.ascii "tube2s"
+      00196F 00                    2385 	.db	0
+      001970 00 00 02 15           2386 	.dw	0,533
+      001974 0C                    2387 	.uleb128	12
+      001975 00 00 02 4D           2388 	.dw	0,589
+      001979 03                    2389 	.db	3
+      00197A 00 00 00 B6           2390 	.dw	0,182
+      00197E 0D                    2391 	.uleb128	13
+      00197F 02                    2392 	.db	2
+      001980 00                    2393 	.uleb128	0
+      001981 06                    2394 	.uleb128	6
+      001982 02                    2395 	.db	2
+      001983 91                    2396 	.db	145
+      001984 72                    2397 	.sleb128	-14
+      001985 74 75 62 65 33 73     2398 	.ascii "tube3s"
+      00198B 00                    2399 	.db	0
+      00198C 00 00 02 40           2400 	.dw	0,576
+      001990 06                    2401 	.uleb128	6
+      001991 02                    2402 	.db	2
+      001992 91                    2403 	.db	145
+      001993 75                    2404 	.sleb128	-11
+      001994 74 75 62 65 34 73     2405 	.ascii "tube4s"
+      00199A 00                    2406 	.db	0
+      00199B 00 00 02 15           2407 	.dw	0,533
+      00199F 06                    2408 	.uleb128	6
+      0019A0 01                    2409 	.db	1
+      0019A1 51                    2410 	.db	81
+      0019A2 74 6D 70              2411 	.ascii "tmp"
+      0019A5 00                    2412 	.db	0
+      0019A6 00 00 00 B6           2413 	.dw	0,182
+      0019AA 00                    2414 	.uleb128	0
+      0019AB 0E                    2415 	.uleb128	14
+      0019AC 05                    2416 	.db	5
+      0019AD 03                    2417 	.db	3
+      0019AE 00 00 00 28           2418 	.dw	0,(_tube_state)
+      0019B2 74 75 62 65 5F 73 74  2419 	.ascii "tube_state"
              61 74 65
-      0005D5 00                    2319 	.db	0
-      0005D6 00 00 00 00           2320 	.dw	0,0
-      0005DA                       2321 Ldebug_pubnames_end:
-                                   2322 
-                                   2323 	.area .debug_frame (NOLOAD)
-      000EA3 00 00                 2324 	.dw	0
-      000EA5 00 0E                 2325 	.dw	Ldebug_CIE0_end-Ldebug_CIE0_start
-      000EA7                       2326 Ldebug_CIE0_start:
-      000EA7 FF FF                 2327 	.dw	0xffff
-      000EA9 FF FF                 2328 	.dw	0xffff
-      000EAB 01                    2329 	.db	1
-      000EAC 00                    2330 	.db	0
-      000EAD 01                    2331 	.uleb128	1
-      000EAE 7F                    2332 	.sleb128	-1
-      000EAF 09                    2333 	.db	9
-      000EB0 0C                    2334 	.db	12
-      000EB1 08                    2335 	.uleb128	8
-      000EB2 02                    2336 	.uleb128	2
-      000EB3 89                    2337 	.db	137
-      000EB4 01                    2338 	.uleb128	1
-      000EB5                       2339 Ldebug_CIE0_end:
-      000EB5 00 00 02 35           2340 	.dw	0,565
-      000EB9 00 00 0E A3           2341 	.dw	0,(Ldebug_CIE0_start-4)
-      000EBD 00 00 8D 8E           2342 	.dw	0,(Snixie$NIXIE_DisplayTime$82)	;initial loc
-      000EC1 00 00 01 D5           2343 	.dw	0,Snixie$NIXIE_DisplayTime$214-Snixie$NIXIE_DisplayTime$82
-      000EC5 01                    2344 	.db	1
-      000EC6 00 00 8D 8E           2345 	.dw	0,(Snixie$NIXIE_DisplayTime$82)
-      000ECA 0E                    2346 	.db	14
-      000ECB 02                    2347 	.uleb128	2
-      000ECC 01                    2348 	.db	1
-      000ECD 00 00 8D 90           2349 	.dw	0,(Snixie$NIXIE_DisplayTime$83)
-      000ED1 0E                    2350 	.db	14
-      000ED2 14                    2351 	.uleb128	20
-      000ED3 01                    2352 	.db	1
-      000ED4 00 00 8D B9           2353 	.dw	0,(Snixie$NIXIE_DisplayTime$86)
-      000ED8 0E                    2354 	.db	14
-      000ED9 15                    2355 	.uleb128	21
-      000EDA 01                    2356 	.db	1
-      000EDB 00 00 8D BB           2357 	.dw	0,(Snixie$NIXIE_DisplayTime$87)
-      000EDF 0E                    2358 	.db	14
-      000EE0 16                    2359 	.uleb128	22
-      000EE1 01                    2360 	.db	1
-      000EE2 00 00 8D BE           2361 	.dw	0,(Snixie$NIXIE_DisplayTime$88)
-      000EE6 0E                    2362 	.db	14
-      000EE7 18                    2363 	.uleb128	24
-      000EE8 01                    2364 	.db	1
-      000EE9 00 00 8D C3           2365 	.dw	0,(Snixie$NIXIE_DisplayTime$89)
-      000EED 0E                    2366 	.db	14
-      000EEE 14                    2367 	.uleb128	20
-      000EEF 01                    2368 	.db	1
-      000EF0 00 00 8D C6           2369 	.dw	0,(Snixie$NIXIE_DisplayTime$91)
-      000EF4 0E                    2370 	.db	14
-      000EF5 16                    2371 	.uleb128	22
-      000EF6 01                    2372 	.db	1
-      000EF7 00 00 8D C9           2373 	.dw	0,(Snixie$NIXIE_DisplayTime$92)
-      000EFB 0E                    2374 	.db	14
-      000EFC 14                    2375 	.uleb128	20
-      000EFD 01                    2376 	.db	1
-      000EFE 00 00 8D CD           2377 	.dw	0,(Snixie$NIXIE_DisplayTime$94)
-      000F02 0E                    2378 	.db	14
-      000F03 15                    2379 	.uleb128	21
-      000F04 01                    2380 	.db	1
-      000F05 00 00 8D CF           2381 	.dw	0,(Snixie$NIXIE_DisplayTime$95)
-      000F09 0E                    2382 	.db	14
-      000F0A 16                    2383 	.uleb128	22
-      000F0B 01                    2384 	.db	1
-      000F0C 00 00 8D D2           2385 	.dw	0,(Snixie$NIXIE_DisplayTime$96)
-      000F10 0E                    2386 	.db	14
-      000F11 18                    2387 	.uleb128	24
-      000F12 01                    2388 	.db	1
-      000F13 00 00 8D D7           2389 	.dw	0,(Snixie$NIXIE_DisplayTime$97)
-      000F17 0E                    2390 	.db	14
-      000F18 14                    2391 	.uleb128	20
-      000F19 01                    2392 	.db	1
-      000F1A 00 00 8D DA           2393 	.dw	0,(Snixie$NIXIE_DisplayTime$99)
-      000F1E 0E                    2394 	.db	14
-      000F1F 16                    2395 	.uleb128	22
-      000F20 01                    2396 	.db	1
-      000F21 00 00 8D DD           2397 	.dw	0,(Snixie$NIXIE_DisplayTime$100)
-      000F25 0E                    2398 	.db	14
-      000F26 14                    2399 	.uleb128	20
-      000F27 01                    2400 	.db	1
-      000F28 00 00 8D E7           2401 	.dw	0,(Snixie$NIXIE_DisplayTime$102)
-      000F2C 0E                    2402 	.db	14
-      000F2D 15                    2403 	.uleb128	21
-      000F2E 01                    2404 	.db	1
-      000F2F 00 00 8D E9           2405 	.dw	0,(Snixie$NIXIE_DisplayTime$103)
-      000F33 0E                    2406 	.db	14
-      000F34 16                    2407 	.uleb128	22
-      000F35 01                    2408 	.db	1
-      000F36 00 00 8D EC           2409 	.dw	0,(Snixie$NIXIE_DisplayTime$104)
-      000F3A 0E                    2410 	.db	14
-      000F3B 18                    2411 	.uleb128	24
-      000F3C 01                    2412 	.db	1
-      000F3D 00 00 8D F1           2413 	.dw	0,(Snixie$NIXIE_DisplayTime$105)
-      000F41 0E                    2414 	.db	14
-      000F42 14                    2415 	.uleb128	20
-      000F43 01                    2416 	.db	1
-      000F44 00 00 8D F4           2417 	.dw	0,(Snixie$NIXIE_DisplayTime$107)
-      000F48 0E                    2418 	.db	14
-      000F49 16                    2419 	.uleb128	22
-      000F4A 01                    2420 	.db	1
-      000F4B 00 00 8D F7           2421 	.dw	0,(Snixie$NIXIE_DisplayTime$108)
-      000F4F 0E                    2422 	.db	14
-      000F50 14                    2423 	.uleb128	20
-      000F51 01                    2424 	.db	1
-      000F52 00 00 8D FB           2425 	.dw	0,(Snixie$NIXIE_DisplayTime$110)
-      000F56 0E                    2426 	.db	14
-      000F57 15                    2427 	.uleb128	21
-      000F58 01                    2428 	.db	1
-      000F59 00 00 8D FD           2429 	.dw	0,(Snixie$NIXIE_DisplayTime$111)
-      000F5D 0E                    2430 	.db	14
-      000F5E 16                    2431 	.uleb128	22
-      000F5F 01                    2432 	.db	1
-      000F60 00 00 8E 00           2433 	.dw	0,(Snixie$NIXIE_DisplayTime$112)
-      000F64 0E                    2434 	.db	14
-      000F65 18                    2435 	.uleb128	24
-      000F66 01                    2436 	.db	1
-      000F67 00 00 8E 05           2437 	.dw	0,(Snixie$NIXIE_DisplayTime$113)
-      000F6B 0E                    2438 	.db	14
-      000F6C 14                    2439 	.uleb128	20
-      000F6D 01                    2440 	.db	1
-      000F6E 00 00 8E 08           2441 	.dw	0,(Snixie$NIXIE_DisplayTime$115)
-      000F72 0E                    2442 	.db	14
-      000F73 16                    2443 	.uleb128	22
-      000F74 01                    2444 	.db	1
-      000F75 00 00 8E 0B           2445 	.dw	0,(Snixie$NIXIE_DisplayTime$116)
-      000F79 0E                    2446 	.db	14
-      000F7A 14                    2447 	.uleb128	20
-      000F7B 01                    2448 	.db	1
-      000F7C 00 00 8E 10           2449 	.dw	0,(Snixie$NIXIE_DisplayTime$118)
-      000F80 0E                    2450 	.db	14
-      000F81 15                    2451 	.uleb128	21
-      000F82 01                    2452 	.db	1
-      000F83 00 00 8E 14           2453 	.dw	0,(Snixie$NIXIE_DisplayTime$119)
-      000F87 0E                    2454 	.db	14
-      000F88 17                    2455 	.uleb128	23
-      000F89 01                    2456 	.db	1
-      000F8A 00 00 8E 16           2457 	.dw	0,(Snixie$NIXIE_DisplayTime$120)
-      000F8E 0E                    2458 	.db	14
-      000F8F 18                    2459 	.uleb128	24
-      000F90 01                    2460 	.db	1
-      000F91 00 00 8E 1B           2461 	.dw	0,(Snixie$NIXIE_DisplayTime$121)
-      000F95 0E                    2462 	.db	14
-      000F96 14                    2463 	.uleb128	20
-      000F97 01                    2464 	.db	1
-      000F98 00 00 8E 20           2465 	.dw	0,(Snixie$NIXIE_DisplayTime$123)
-      000F9C 0E                    2466 	.db	14
-      000F9D 15                    2467 	.uleb128	21
-      000F9E 01                    2468 	.db	1
-      000F9F 00 00 8E 25           2469 	.dw	0,(Snixie$NIXIE_DisplayTime$124)
-      000FA3 0E                    2470 	.db	14
-      000FA4 17                    2471 	.uleb128	23
-      000FA5 01                    2472 	.db	1
-      000FA6 00 00 8E 27           2473 	.dw	0,(Snixie$NIXIE_DisplayTime$125)
-      000FAA 0E                    2474 	.db	14
-      000FAB 18                    2475 	.uleb128	24
-      000FAC 01                    2476 	.db	1
-      000FAD 00 00 8E 2C           2477 	.dw	0,(Snixie$NIXIE_DisplayTime$126)
-      000FB1 0E                    2478 	.db	14
-      000FB2 14                    2479 	.uleb128	20
-      000FB3 01                    2480 	.db	1
-      000FB4 00 00 8E 31           2481 	.dw	0,(Snixie$NIXIE_DisplayTime$128)
-      000FB8 0E                    2482 	.db	14
-      000FB9 15                    2483 	.uleb128	21
-      000FBA 01                    2484 	.db	1
-      000FBB 00 00 8E 36           2485 	.dw	0,(Snixie$NIXIE_DisplayTime$129)
-      000FBF 0E                    2486 	.db	14
-      000FC0 17                    2487 	.uleb128	23
-      000FC1 01                    2488 	.db	1
-      000FC2 00 00 8E 38           2489 	.dw	0,(Snixie$NIXIE_DisplayTime$130)
-      000FC6 0E                    2490 	.db	14
-      000FC7 18                    2491 	.uleb128	24
-      000FC8 01                    2492 	.db	1
-      000FC9 00 00 8E 3D           2493 	.dw	0,(Snixie$NIXIE_DisplayTime$131)
-      000FCD 0E                    2494 	.db	14
-      000FCE 14                    2495 	.uleb128	20
-      000FCF 01                    2496 	.db	1
-      000FD0 00 00 8E 42           2497 	.dw	0,(Snixie$NIXIE_DisplayTime$133)
-      000FD4 0E                    2498 	.db	14
-      000FD5 15                    2499 	.uleb128	21
-      000FD6 01                    2500 	.db	1
-      000FD7 00 00 8E 47           2501 	.dw	0,(Snixie$NIXIE_DisplayTime$134)
-      000FDB 0E                    2502 	.db	14
-      000FDC 17                    2503 	.uleb128	23
-      000FDD 01                    2504 	.db	1
-      000FDE 00 00 8E 49           2505 	.dw	0,(Snixie$NIXIE_DisplayTime$135)
-      000FE2 0E                    2506 	.db	14
-      000FE3 18                    2507 	.uleb128	24
-      000FE4 01                    2508 	.db	1
-      000FE5 00 00 8E 4E           2509 	.dw	0,(Snixie$NIXIE_DisplayTime$136)
-      000FE9 0E                    2510 	.db	14
-      000FEA 14                    2511 	.uleb128	20
-      000FEB 01                    2512 	.db	1
-      000FEC 00 00 8E 52           2513 	.dw	0,(Snixie$NIXIE_DisplayTime$138)
-      000FF0 0E                    2514 	.db	14
-      000FF1 15                    2515 	.uleb128	21
-      000FF2 01                    2516 	.db	1
-      000FF3 00 00 8E 54           2517 	.dw	0,(Snixie$NIXIE_DisplayTime$139)
-      000FF7 0E                    2518 	.db	14
-      000FF8 16                    2519 	.uleb128	22
-      000FF9 01                    2520 	.db	1
-      000FFA 00 00 8E 56           2521 	.dw	0,(Snixie$NIXIE_DisplayTime$140)
-      000FFE 0E                    2522 	.db	14
-      000FFF 17                    2523 	.uleb128	23
-      001000 01                    2524 	.db	1
-      001001 00 00 8E 5B           2525 	.dw	0,(Snixie$NIXIE_DisplayTime$141)
-      001005 0E                    2526 	.db	14
-      001006 14                    2527 	.uleb128	20
-      001007 01                    2528 	.db	1
-      001008 00 00 8E 6D           2529 	.dw	0,(Snixie$NIXIE_DisplayTime$146)
-      00100C 0E                    2530 	.db	14
-      00100D 16                    2531 	.uleb128	22
-      00100E 01                    2532 	.db	1
-      00100F 00 00 8E 70           2533 	.dw	0,(Snixie$NIXIE_DisplayTime$147)
-      001013 0E                    2534 	.db	14
-      001014 14                    2535 	.uleb128	20
-      001015 01                    2536 	.db	1
-      001016 00 00 8E 71           2537 	.dw	0,(Snixie$NIXIE_DisplayTime$149)
-      00101A 0E                    2538 	.db	14
-      00101B 15                    2539 	.uleb128	21
-      00101C 01                    2540 	.db	1
-      00101D 00 00 8E 75           2541 	.dw	0,(Snixie$NIXIE_DisplayTime$150)
-      001021 0E                    2542 	.db	14
-      001022 14                    2543 	.uleb128	20
-      001023 01                    2544 	.db	1
-      001024 00 00 8E 77           2545 	.dw	0,(Snixie$NIXIE_DisplayTime$152)
-      001028 0E                    2546 	.db	14
-      001029 15                    2547 	.uleb128	21
-      00102A 01                    2548 	.db	1
-      00102B 00 00 8E 7C           2549 	.dw	0,(Snixie$NIXIE_DisplayTime$153)
-      00102F 0E                    2550 	.db	14
-      001030 14                    2551 	.uleb128	20
-      001031 01                    2552 	.db	1
-      001032 00 00 8E 9E           2553 	.dw	0,(Snixie$NIXIE_DisplayTime$160)
-      001036 0E                    2554 	.db	14
-      001037 15                    2555 	.uleb128	21
-      001038 01                    2556 	.db	1
-      001039 00 00 8E A2           2557 	.dw	0,(Snixie$NIXIE_DisplayTime$161)
-      00103D 0E                    2558 	.db	14
-      00103E 14                    2559 	.uleb128	20
-      00103F 01                    2560 	.db	1
-      001040 00 00 8E A4           2561 	.dw	0,(Snixie$NIXIE_DisplayTime$163)
-      001044 0E                    2562 	.db	14
-      001045 15                    2563 	.uleb128	21
-      001046 01                    2564 	.db	1
-      001047 00 00 8E A9           2565 	.dw	0,(Snixie$NIXIE_DisplayTime$164)
-      00104B 0E                    2566 	.db	14
-      00104C 14                    2567 	.uleb128	20
-      00104D 01                    2568 	.db	1
-      00104E 00 00 8E CA           2569 	.dw	0,(Snixie$NIXIE_DisplayTime$169)
-      001052 0E                    2570 	.db	14
-      001053 15                    2571 	.uleb128	21
-      001054 01                    2572 	.db	1
-      001055 00 00 8E CE           2573 	.dw	0,(Snixie$NIXIE_DisplayTime$170)
-      001059 0E                    2574 	.db	14
-      00105A 14                    2575 	.uleb128	20
-      00105B 01                    2576 	.db	1
-      00105C 00 00 8E D0           2577 	.dw	0,(Snixie$NIXIE_DisplayTime$172)
-      001060 0E                    2578 	.db	14
-      001061 15                    2579 	.uleb128	21
-      001062 01                    2580 	.db	1
-      001063 00 00 8E D5           2581 	.dw	0,(Snixie$NIXIE_DisplayTime$173)
-      001067 0E                    2582 	.db	14
-      001068 14                    2583 	.uleb128	20
-      001069 01                    2584 	.db	1
-      00106A 00 00 8E EA           2585 	.dw	0,(Snixie$NIXIE_DisplayTime$177)
-      00106E 0E                    2586 	.db	14
-      00106F 16                    2587 	.uleb128	22
-      001070 01                    2588 	.db	1
-      001071 00 00 8E ED           2589 	.dw	0,(Snixie$NIXIE_DisplayTime$178)
-      001075 0E                    2590 	.db	14
-      001076 14                    2591 	.uleb128	20
-      001077 01                    2592 	.db	1
-      001078 00 00 8E EE           2593 	.dw	0,(Snixie$NIXIE_DisplayTime$180)
-      00107C 0E                    2594 	.db	14
-      00107D 15                    2595 	.uleb128	21
-      00107E 01                    2596 	.db	1
-      00107F 00 00 8E F2           2597 	.dw	0,(Snixie$NIXIE_DisplayTime$181)
-      001083 0E                    2598 	.db	14
-      001084 14                    2599 	.uleb128	20
-      001085 01                    2600 	.db	1
-      001086 00 00 8E F4           2601 	.dw	0,(Snixie$NIXIE_DisplayTime$183)
-      00108A 0E                    2602 	.db	14
-      00108B 15                    2603 	.uleb128	21
-      00108C 01                    2604 	.db	1
-      00108D 00 00 8E F9           2605 	.dw	0,(Snixie$NIXIE_DisplayTime$184)
-      001091 0E                    2606 	.db	14
-      001092 14                    2607 	.uleb128	20
-      001093 01                    2608 	.db	1
-      001094 00 00 8F 1B           2609 	.dw	0,(Snixie$NIXIE_DisplayTime$191)
-      001098 0E                    2610 	.db	14
-      001099 15                    2611 	.uleb128	21
-      00109A 01                    2612 	.db	1
-      00109B 00 00 8F 1F           2613 	.dw	0,(Snixie$NIXIE_DisplayTime$192)
-      00109F 0E                    2614 	.db	14
-      0010A0 14                    2615 	.uleb128	20
-      0010A1 01                    2616 	.db	1
-      0010A2 00 00 8F 21           2617 	.dw	0,(Snixie$NIXIE_DisplayTime$194)
-      0010A6 0E                    2618 	.db	14
-      0010A7 15                    2619 	.uleb128	21
-      0010A8 01                    2620 	.db	1
-      0010A9 00 00 8F 26           2621 	.dw	0,(Snixie$NIXIE_DisplayTime$195)
-      0010AD 0E                    2622 	.db	14
-      0010AE 14                    2623 	.uleb128	20
-      0010AF 01                    2624 	.db	1
-      0010B0 00 00 8F 47           2625 	.dw	0,(Snixie$NIXIE_DisplayTime$200)
-      0010B4 0E                    2626 	.db	14
-      0010B5 15                    2627 	.uleb128	21
-      0010B6 01                    2628 	.db	1
-      0010B7 00 00 8F 4B           2629 	.dw	0,(Snixie$NIXIE_DisplayTime$201)
-      0010BB 0E                    2630 	.db	14
-      0010BC 14                    2631 	.uleb128	20
-      0010BD 01                    2632 	.db	1
-      0010BE 00 00 8F 4D           2633 	.dw	0,(Snixie$NIXIE_DisplayTime$203)
-      0010C2 0E                    2634 	.db	14
-      0010C3 15                    2635 	.uleb128	21
-      0010C4 01                    2636 	.db	1
-      0010C5 00 00 8F 52           2637 	.dw	0,(Snixie$NIXIE_DisplayTime$204)
-      0010C9 0E                    2638 	.db	14
-      0010CA 14                    2639 	.uleb128	20
-      0010CB 01                    2640 	.db	1
-      0010CC 00 00 8F 57           2641 	.dw	0,(Snixie$NIXIE_DisplayTime$206)
-      0010D0 0E                    2642 	.db	14
-      0010D1 15                    2643 	.uleb128	21
-      0010D2 01                    2644 	.db	1
-      0010D3 00 00 8F 59           2645 	.dw	0,(Snixie$NIXIE_DisplayTime$207)
-      0010D7 0E                    2646 	.db	14
-      0010D8 16                    2647 	.uleb128	22
-      0010D9 01                    2648 	.db	1
-      0010DA 00 00 8F 5B           2649 	.dw	0,(Snixie$NIXIE_DisplayTime$208)
-      0010DE 0E                    2650 	.db	14
-      0010DF 17                    2651 	.uleb128	23
-      0010E0 01                    2652 	.db	1
-      0010E1 00 00 8F 60           2653 	.dw	0,(Snixie$NIXIE_DisplayTime$209)
-      0010E5 0E                    2654 	.db	14
-      0010E6 14                    2655 	.uleb128	20
-      0010E7 01                    2656 	.db	1
-      0010E8 00 00 8F 62           2657 	.dw	0,(Snixie$NIXIE_DisplayTime$212)
-      0010EC 0E                    2658 	.db	14
-      0010ED 02                    2659 	.uleb128	2
-                                   2660 
-                                   2661 	.area .debug_frame (NOLOAD)
-      0010EE 00 00                 2662 	.dw	0
-      0010F0 00 0E                 2663 	.dw	Ldebug_CIE1_end-Ldebug_CIE1_start
-      0010F2                       2664 Ldebug_CIE1_start:
-      0010F2 FF FF                 2665 	.dw	0xffff
-      0010F4 FF FF                 2666 	.dw	0xffff
-      0010F6 01                    2667 	.db	1
-      0010F7 00                    2668 	.db	0
-      0010F8 01                    2669 	.uleb128	1
-      0010F9 7F                    2670 	.sleb128	-1
-      0010FA 09                    2671 	.db	9
-      0010FB 0C                    2672 	.db	12
-      0010FC 08                    2673 	.uleb128	8
-      0010FD 02                    2674 	.uleb128	2
-      0010FE 89                    2675 	.db	137
-      0010FF 01                    2676 	.uleb128	1
-      001100                       2677 Ldebug_CIE1_end:
-      001100 00 00 00 75           2678 	.dw	0,117
-      001104 00 00 10 EE           2679 	.dw	0,(Ldebug_CIE1_start-4)
-      001108 00 00 8C F8           2680 	.dw	0,(Snixie$NIXIE_DisplayChar$45)	;initial loc
-      00110C 00 00 00 96           2681 	.dw	0,Snixie$NIXIE_DisplayChar$80-Snixie$NIXIE_DisplayChar$45
-      001110 01                    2682 	.db	1
-      001111 00 00 8C F8           2683 	.dw	0,(Snixie$NIXIE_DisplayChar$45)
-      001115 0E                    2684 	.db	14
-      001116 02                    2685 	.uleb128	2
-      001117 01                    2686 	.db	1
-      001118 00 00 8C FA           2687 	.dw	0,(Snixie$NIXIE_DisplayChar$46)
-      00111C 0E                    2688 	.db	14
-      00111D 07                    2689 	.uleb128	7
-      00111E 01                    2690 	.db	1
-      00111F 00 00 8C FF           2691 	.dw	0,(Snixie$NIXIE_DisplayChar$49)
-      001123 0E                    2692 	.db	14
-      001124 08                    2693 	.uleb128	8
-      001125 01                    2694 	.db	1
-      001126 00 00 8D 01           2695 	.dw	0,(Snixie$NIXIE_DisplayChar$50)
-      00112A 0E                    2696 	.db	14
-      00112B 09                    2697 	.uleb128	9
-      00112C 01                    2698 	.db	1
-      00112D 00 00 8D 04           2699 	.dw	0,(Snixie$NIXIE_DisplayChar$51)
-      001131 0E                    2700 	.db	14
-      001132 0B                    2701 	.uleb128	11
-      001133 01                    2702 	.db	1
-      001134 00 00 8D 09           2703 	.dw	0,(Snixie$NIXIE_DisplayChar$52)
-      001138 0E                    2704 	.db	14
-      001139 07                    2705 	.uleb128	7
-      00113A 01                    2706 	.db	1
-      00113B 00 00 8D 21           2707 	.dw	0,(Snixie$NIXIE_DisplayChar$58)
-      00113F 0E                    2708 	.db	14
-      001140 09                    2709 	.uleb128	9
-      001141 01                    2710 	.db	1
-      001142 00 00 8D 24           2711 	.dw	0,(Snixie$NIXIE_DisplayChar$59)
-      001146 0E                    2712 	.db	14
-      001147 0B                    2713 	.uleb128	11
-      001148 01                    2714 	.db	1
-      001149 00 00 8D 29           2715 	.dw	0,(Snixie$NIXIE_DisplayChar$60)
-      00114D 0E                    2716 	.db	14
-      00114E 07                    2717 	.uleb128	7
-      00114F 01                    2718 	.db	1
-      001150 00 00 8D 49           2719 	.dw	0,(Snixie$NIXIE_DisplayChar$66)
-      001154 0E                    2720 	.db	14
-      001155 08                    2721 	.uleb128	8
-      001156 01                    2722 	.db	1
-      001157 00 00 8D 4B           2723 	.dw	0,(Snixie$NIXIE_DisplayChar$67)
-      00115B 0E                    2724 	.db	14
-      00115C 09                    2725 	.uleb128	9
-      00115D 01                    2726 	.db	1
-      00115E 00 00 8D 4E           2727 	.dw	0,(Snixie$NIXIE_DisplayChar$68)
-      001162 0E                    2728 	.db	14
-      001163 0B                    2729 	.uleb128	11
-      001164 01                    2730 	.db	1
-      001165 00 00 8D 53           2731 	.dw	0,(Snixie$NIXIE_DisplayChar$69)
-      001169 0E                    2732 	.db	14
-      00116A 07                    2733 	.uleb128	7
-      00116B 01                    2734 	.db	1
-      00116C 00 00 8D 65           2735 	.dw	0,(Snixie$NIXIE_DisplayChar$72)
-      001170 0E                    2736 	.db	14
-      001171 07                    2737 	.uleb128	7
-      001172 01                    2738 	.db	1
-      001173 00 00 8D 8D           2739 	.dw	0,(Snixie$NIXIE_DisplayChar$78)
-      001177 0E                    2740 	.db	14
-      001178 02                    2741 	.uleb128	2
-                                   2742 
-                                   2743 	.area .debug_frame (NOLOAD)
-      001179 00 00                 2744 	.dw	0
-      00117B 00 0E                 2745 	.dw	Ldebug_CIE2_end-Ldebug_CIE2_start
-      00117D                       2746 Ldebug_CIE2_start:
-      00117D FF FF                 2747 	.dw	0xffff
-      00117F FF FF                 2748 	.dw	0xffff
-      001181 01                    2749 	.db	1
-      001182 00                    2750 	.db	0
-      001183 01                    2751 	.uleb128	1
-      001184 7F                    2752 	.sleb128	-1
-      001185 09                    2753 	.db	9
-      001186 0C                    2754 	.db	12
-      001187 08                    2755 	.uleb128	8
-      001188 02                    2756 	.uleb128	2
-      001189 89                    2757 	.db	137
-      00118A 01                    2758 	.uleb128	1
-      00118B                       2759 Ldebug_CIE2_end:
-      00118B 00 00 00 C9           2760 	.dw	0,201
-      00118F 00 00 11 79           2761 	.dw	0,(Ldebug_CIE2_start-4)
-      001193 00 00 8C B2           2762 	.dw	0,(Snixie$NIXIE_Init$8)	;initial loc
-      001197 00 00 00 46           2763 	.dw	0,Snixie$NIXIE_Init$43-Snixie$NIXIE_Init$8
-      00119B 01                    2764 	.db	1
-      00119C 00 00 8C B2           2765 	.dw	0,(Snixie$NIXIE_Init$8)
-      0011A0 0E                    2766 	.db	14
-      0011A1 02                    2767 	.uleb128	2
-      0011A2 01                    2768 	.db	1
-      0011A3 00 00 8C B4           2769 	.dw	0,(Snixie$NIXIE_Init$10)
-      0011A7 0E                    2770 	.db	14
-      0011A8 03                    2771 	.uleb128	3
-      0011A9 01                    2772 	.db	1
-      0011AA 00 00 8C B6           2773 	.dw	0,(Snixie$NIXIE_Init$11)
-      0011AE 0E                    2774 	.db	14
-      0011AF 04                    2775 	.uleb128	4
-      0011B0 01                    2776 	.db	1
-      0011B1 00 00 8C B8           2777 	.dw	0,(Snixie$NIXIE_Init$12)
-      0011B5 0E                    2778 	.db	14
-      0011B6 05                    2779 	.uleb128	5
-      0011B7 01                    2780 	.db	1
-      0011B8 00 00 8C BA           2781 	.dw	0,(Snixie$NIXIE_Init$13)
-      0011BC 0E                    2782 	.db	14
-      0011BD 06                    2783 	.uleb128	6
-      0011BE 01                    2784 	.db	1
-      0011BF 00 00 8C BF           2785 	.dw	0,(Snixie$NIXIE_Init$14)
-      0011C3 0E                    2786 	.db	14
-      0011C4 02                    2787 	.uleb128	2
-      0011C5 01                    2788 	.db	1
-      0011C6 00 00 8C C1           2789 	.dw	0,(Snixie$NIXIE_Init$16)
-      0011CA 0E                    2790 	.db	14
-      0011CB 03                    2791 	.uleb128	3
-      0011CC 01                    2792 	.db	1
-      0011CD 00 00 8C C3           2793 	.dw	0,(Snixie$NIXIE_Init$17)
-      0011D1 0E                    2794 	.db	14
-      0011D2 04                    2795 	.uleb128	4
-      0011D3 01                    2796 	.db	1
-      0011D4 00 00 8C C5           2797 	.dw	0,(Snixie$NIXIE_Init$18)
-      0011D8 0E                    2798 	.db	14
-      0011D9 05                    2799 	.uleb128	5
-      0011DA 01                    2800 	.db	1
-      0011DB 00 00 8C C7           2801 	.dw	0,(Snixie$NIXIE_Init$19)
-      0011DF 0E                    2802 	.db	14
-      0011E0 06                    2803 	.uleb128	6
-      0011E1 01                    2804 	.db	1
-      0011E2 00 00 8C CC           2805 	.dw	0,(Snixie$NIXIE_Init$20)
-      0011E6 0E                    2806 	.db	14
-      0011E7 02                    2807 	.uleb128	2
-      0011E8 01                    2808 	.db	1
-      0011E9 00 00 8C CE           2809 	.dw	0,(Snixie$NIXIE_Init$22)
-      0011ED 0E                    2810 	.db	14
-      0011EE 03                    2811 	.uleb128	3
-      0011EF 01                    2812 	.db	1
-      0011F0 00 00 8C D0           2813 	.dw	0,(Snixie$NIXIE_Init$23)
-      0011F4 0E                    2814 	.db	14
-      0011F5 04                    2815 	.uleb128	4
-      0011F6 01                    2816 	.db	1
-      0011F7 00 00 8C D2           2817 	.dw	0,(Snixie$NIXIE_Init$24)
-      0011FB 0E                    2818 	.db	14
-      0011FC 05                    2819 	.uleb128	5
-      0011FD 01                    2820 	.db	1
-      0011FE 00 00 8C D4           2821 	.dw	0,(Snixie$NIXIE_Init$25)
-      001202 0E                    2822 	.db	14
-      001203 06                    2823 	.uleb128	6
-      001204 01                    2824 	.db	1
-      001205 00 00 8C D9           2825 	.dw	0,(Snixie$NIXIE_Init$26)
-      001209 0E                    2826 	.db	14
-      00120A 02                    2827 	.uleb128	2
-      00120B 01                    2828 	.db	1
-      00120C 00 00 8C DE           2829 	.dw	0,(Snixie$NIXIE_Init$29)
-      001210 0E                    2830 	.db	14
-      001211 03                    2831 	.uleb128	3
-      001212 01                    2832 	.db	1
-      001213 00 00 8C E0           2833 	.dw	0,(Snixie$NIXIE_Init$30)
-      001217 0E                    2834 	.db	14
-      001218 04                    2835 	.uleb128	4
-      001219 01                    2836 	.db	1
-      00121A 00 00 8C E2           2837 	.dw	0,(Snixie$NIXIE_Init$31)
-      00121E 0E                    2838 	.db	14
-      00121F 05                    2839 	.uleb128	5
-      001220 01                    2840 	.db	1
-      001221 00 00 8C E4           2841 	.dw	0,(Snixie$NIXIE_Init$32)
-      001225 0E                    2842 	.db	14
-      001226 06                    2843 	.uleb128	6
-      001227 01                    2844 	.db	1
-      001228 00 00 8C E6           2845 	.dw	0,(Snixie$NIXIE_Init$33)
-      00122C 0E                    2846 	.db	14
-      00122D 07                    2847 	.uleb128	7
-      00122E 01                    2848 	.db	1
-      00122F 00 00 8C E8           2849 	.dw	0,(Snixie$NIXIE_Init$34)
-      001233 0E                    2850 	.db	14
-      001234 08                    2851 	.uleb128	8
-      001235 01                    2852 	.db	1
-      001236 00 00 8C EA           2853 	.dw	0,(Snixie$NIXIE_Init$35)
-      00123A 0E                    2854 	.db	14
-      00123B 09                    2855 	.uleb128	9
-      00123C 01                    2856 	.db	1
-      00123D 00 00 8C EC           2857 	.dw	0,(Snixie$NIXIE_Init$36)
-      001241 0E                    2858 	.db	14
-      001242 0A                    2859 	.uleb128	10
-      001243 01                    2860 	.db	1
-      001244 00 00 8C F1           2861 	.dw	0,(Snixie$NIXIE_Init$37)
-      001248 0E                    2862 	.db	14
-      001249 02                    2863 	.uleb128	2
-      00124A 01                    2864 	.db	1
-      00124B 00 00 8C F3           2865 	.dw	0,(Snixie$NIXIE_Init$39)
-      00124F 0E                    2866 	.db	14
-      001250 03                    2867 	.uleb128	3
-      001251 01                    2868 	.db	1
-      001252 00 00 8C F7           2869 	.dw	0,(Snixie$NIXIE_Init$40)
-      001256 0E                    2870 	.db	14
-      001257 02                    2871 	.uleb128	2
-                                   2872 
-                                   2873 	.area .debug_frame (NOLOAD)
-      001258 00 00                 2874 	.dw	0
-      00125A 00 0E                 2875 	.dw	Ldebug_CIE3_end-Ldebug_CIE3_start
-      00125C                       2876 Ldebug_CIE3_start:
-      00125C FF FF                 2877 	.dw	0xffff
-      00125E FF FF                 2878 	.dw	0xffff
-      001260 01                    2879 	.db	1
-      001261 00                    2880 	.db	0
-      001262 01                    2881 	.uleb128	1
-      001263 7F                    2882 	.sleb128	-1
-      001264 09                    2883 	.db	9
-      001265 0C                    2884 	.db	12
-      001266 08                    2885 	.uleb128	8
-      001267 02                    2886 	.uleb128	2
-      001268 89                    2887 	.db	137
-      001269 01                    2888 	.uleb128	1
-      00126A                       2889 Ldebug_CIE3_end:
-      00126A 00 00 00 13           2890 	.dw	0,19
-      00126E 00 00 12 58           2891 	.dw	0,(Ldebug_CIE3_start-4)
-      001272 00 00 8C A8           2892 	.dw	0,(Snixie$delay$2)	;initial loc
-      001276 00 00 00 0A           2893 	.dw	0,Snixie$delay$6-Snixie$delay$2
-      00127A 01                    2894 	.db	1
-      00127B 00 00 8C A8           2895 	.dw	0,(Snixie$delay$2)
-      00127F 0E                    2896 	.db	14
-      001280 02                    2897 	.uleb128	2
+      0019BC 00                    2420 	.db	0
+      0019BD 01                    2421 	.db	1
+      0019BE 00 00 00 B6           2422 	.dw	0,182
+      0019C2 0E                    2423 	.uleb128	14
+      0019C3 05                    2424 	.db	5
+      0019C4 03                    2425 	.db	3
+      0019C5 00 00 00 29           2426 	.dw	0,(_nixie_tube1)
+      0019C9 6E 69 78 69 65 5F 74  2427 	.ascii "nixie_tube1"
+             75 62 65 31
+      0019D4 00                    2428 	.db	0
+      0019D5 01                    2429 	.db	1
+      0019D6 00 00 00 B6           2430 	.dw	0,182
+      0019DA 0E                    2431 	.uleb128	14
+      0019DB 05                    2432 	.db	5
+      0019DC 03                    2433 	.db	3
+      0019DD 00 00 00 2A           2434 	.dw	0,(_nixie_tube2)
+      0019E1 6E 69 78 69 65 5F 74  2435 	.ascii "nixie_tube2"
+             75 62 65 32
+      0019EC 00                    2436 	.db	0
+      0019ED 01                    2437 	.db	1
+      0019EE 00 00 00 B6           2438 	.dw	0,182
+      0019F2 0E                    2439 	.uleb128	14
+      0019F3 05                    2440 	.db	5
+      0019F4 03                    2441 	.db	3
+      0019F5 00 00 00 2B           2442 	.dw	0,(_nixie_tube3)
+      0019F9 6E 69 78 69 65 5F 74  2443 	.ascii "nixie_tube3"
+             75 62 65 33
+      001A04 00                    2444 	.db	0
+      001A05 01                    2445 	.db	1
+      001A06 00 00 00 B6           2446 	.dw	0,182
+      001A0A 0E                    2447 	.uleb128	14
+      001A0B 05                    2448 	.db	5
+      001A0C 03                    2449 	.db	3
+      001A0D 00 00 00 2C           2450 	.dw	0,(_nixie_tube4)
+      001A11 6E 69 78 69 65 5F 74  2451 	.ascii "nixie_tube4"
+             75 62 65 34
+      001A1C 00                    2452 	.db	0
+      001A1D 01                    2453 	.db	1
+      001A1E 00 00 00 B6           2454 	.dw	0,182
+      001A22 00                    2455 	.uleb128	0
+      001A23 00                    2456 	.uleb128	0
+      001A24 00                    2457 	.uleb128	0
+      001A25                       2458 Ldebug_info_end:
+                                   2459 
+                                   2460 	.area .debug_pubnames (NOLOAD)
+      000576 00 00 00 98           2461 	.dw	0,Ldebug_pubnames_end-Ldebug_pubnames_start
+      00057A                       2462 Ldebug_pubnames_start:
+      00057A 00 02                 2463 	.dw	2
+      00057C 00 00 17 34           2464 	.dw	0,(Ldebug_info_start-4)
+      000580 00 00 02 F1           2465 	.dw	0,4+Ldebug_info_end-Ldebug_info_start
+      000584 00 00 00 45           2466 	.dw	0,69
+      000588 4E 49 58 49 45 5F 49  2467 	.ascii "NIXIE_Init"
+             6E 69 74
+      000592 00                    2468 	.db	0
+      000593 00 00 00 D7           2469 	.dw	0,215
+      000597 4E 49 58 49 45 5F 44  2470 	.ascii "NIXIE_DisplayChar"
+             69 73 70 6C 61 79 43
+             68 61 72
+      0005A8 00                    2471 	.db	0
+      0005A9 00 00 01 7A           2472 	.dw	0,378
+      0005AD 4E 49 58 49 45 5F 44  2473 	.ascii "NIXIE_DisplayTime"
+             69 73 70 6C 61 79 54
+             69 6D 65
+      0005BE 00                    2474 	.db	0
+      0005BF 00 00 02 77           2475 	.dw	0,631
+      0005C3 74 75 62 65 5F 73 74  2476 	.ascii "tube_state"
+             61 74 65
+      0005CD 00                    2477 	.db	0
+      0005CE 00 00 02 8E           2478 	.dw	0,654
+      0005D2 6E 69 78 69 65 5F 74  2479 	.ascii "nixie_tube1"
+             75 62 65 31
+      0005DD 00                    2480 	.db	0
+      0005DE 00 00 02 A6           2481 	.dw	0,678
+      0005E2 6E 69 78 69 65 5F 74  2482 	.ascii "nixie_tube2"
+             75 62 65 32
+      0005ED 00                    2483 	.db	0
+      0005EE 00 00 02 BE           2484 	.dw	0,702
+      0005F2 6E 69 78 69 65 5F 74  2485 	.ascii "nixie_tube3"
+             75 62 65 33
+      0005FD 00                    2486 	.db	0
+      0005FE 00 00 02 D6           2487 	.dw	0,726
+      000602 6E 69 78 69 65 5F 74  2488 	.ascii "nixie_tube4"
+             75 62 65 34
+      00060D 00                    2489 	.db	0
+      00060E 00 00 00 00           2490 	.dw	0,0
+      000612                       2491 Ldebug_pubnames_end:
+                                   2492 
+                                   2493 	.area .debug_frame (NOLOAD)
+      000E9C 00 00                 2494 	.dw	0
+      000E9E 00 0E                 2495 	.dw	Ldebug_CIE0_end-Ldebug_CIE0_start
+      000EA0                       2496 Ldebug_CIE0_start:
+      000EA0 FF FF                 2497 	.dw	0xffff
+      000EA2 FF FF                 2498 	.dw	0xffff
+      000EA4 01                    2499 	.db	1
+      000EA5 00                    2500 	.db	0
+      000EA6 01                    2501 	.uleb128	1
+      000EA7 7F                    2502 	.sleb128	-1
+      000EA8 09                    2503 	.db	9
+      000EA9 0C                    2504 	.db	12
+      000EAA 08                    2505 	.uleb128	8
+      000EAB 02                    2506 	.uleb128	2
+      000EAC 89                    2507 	.db	137
+      000EAD 01                    2508 	.uleb128	1
+      000EAE                       2509 Ldebug_CIE0_end:
+      000EAE 00 00 02 35           2510 	.dw	0,565
+      000EB2 00 00 0E 9C           2511 	.dw	0,(Ldebug_CIE0_start-4)
+      000EB6 00 00 8D B3           2512 	.dw	0,(Snixie$NIXIE_DisplayTime$98)	;initial loc
+      000EBA 00 00 01 D5           2513 	.dw	0,Snixie$NIXIE_DisplayTime$230-Snixie$NIXIE_DisplayTime$98
+      000EBE 01                    2514 	.db	1
+      000EBF 00 00 8D B3           2515 	.dw	0,(Snixie$NIXIE_DisplayTime$98)
+      000EC3 0E                    2516 	.db	14
+      000EC4 02                    2517 	.uleb128	2
+      000EC5 01                    2518 	.db	1
+      000EC6 00 00 8D B5           2519 	.dw	0,(Snixie$NIXIE_DisplayTime$99)
+      000ECA 0E                    2520 	.db	14
+      000ECB 14                    2521 	.uleb128	20
+      000ECC 01                    2522 	.db	1
+      000ECD 00 00 8D DE           2523 	.dw	0,(Snixie$NIXIE_DisplayTime$102)
+      000ED1 0E                    2524 	.db	14
+      000ED2 15                    2525 	.uleb128	21
+      000ED3 01                    2526 	.db	1
+      000ED4 00 00 8D E0           2527 	.dw	0,(Snixie$NIXIE_DisplayTime$103)
+      000ED8 0E                    2528 	.db	14
+      000ED9 16                    2529 	.uleb128	22
+      000EDA 01                    2530 	.db	1
+      000EDB 00 00 8D E3           2531 	.dw	0,(Snixie$NIXIE_DisplayTime$104)
+      000EDF 0E                    2532 	.db	14
+      000EE0 18                    2533 	.uleb128	24
+      000EE1 01                    2534 	.db	1
+      000EE2 00 00 8D E8           2535 	.dw	0,(Snixie$NIXIE_DisplayTime$105)
+      000EE6 0E                    2536 	.db	14
+      000EE7 14                    2537 	.uleb128	20
+      000EE8 01                    2538 	.db	1
+      000EE9 00 00 8D EB           2539 	.dw	0,(Snixie$NIXIE_DisplayTime$107)
+      000EED 0E                    2540 	.db	14
+      000EEE 16                    2541 	.uleb128	22
+      000EEF 01                    2542 	.db	1
+      000EF0 00 00 8D EE           2543 	.dw	0,(Snixie$NIXIE_DisplayTime$108)
+      000EF4 0E                    2544 	.db	14
+      000EF5 14                    2545 	.uleb128	20
+      000EF6 01                    2546 	.db	1
+      000EF7 00 00 8D F2           2547 	.dw	0,(Snixie$NIXIE_DisplayTime$110)
+      000EFB 0E                    2548 	.db	14
+      000EFC 15                    2549 	.uleb128	21
+      000EFD 01                    2550 	.db	1
+      000EFE 00 00 8D F4           2551 	.dw	0,(Snixie$NIXIE_DisplayTime$111)
+      000F02 0E                    2552 	.db	14
+      000F03 16                    2553 	.uleb128	22
+      000F04 01                    2554 	.db	1
+      000F05 00 00 8D F7           2555 	.dw	0,(Snixie$NIXIE_DisplayTime$112)
+      000F09 0E                    2556 	.db	14
+      000F0A 18                    2557 	.uleb128	24
+      000F0B 01                    2558 	.db	1
+      000F0C 00 00 8D FC           2559 	.dw	0,(Snixie$NIXIE_DisplayTime$113)
+      000F10 0E                    2560 	.db	14
+      000F11 14                    2561 	.uleb128	20
+      000F12 01                    2562 	.db	1
+      000F13 00 00 8D FF           2563 	.dw	0,(Snixie$NIXIE_DisplayTime$115)
+      000F17 0E                    2564 	.db	14
+      000F18 16                    2565 	.uleb128	22
+      000F19 01                    2566 	.db	1
+      000F1A 00 00 8E 02           2567 	.dw	0,(Snixie$NIXIE_DisplayTime$116)
+      000F1E 0E                    2568 	.db	14
+      000F1F 14                    2569 	.uleb128	20
+      000F20 01                    2570 	.db	1
+      000F21 00 00 8E 0C           2571 	.dw	0,(Snixie$NIXIE_DisplayTime$118)
+      000F25 0E                    2572 	.db	14
+      000F26 15                    2573 	.uleb128	21
+      000F27 01                    2574 	.db	1
+      000F28 00 00 8E 0E           2575 	.dw	0,(Snixie$NIXIE_DisplayTime$119)
+      000F2C 0E                    2576 	.db	14
+      000F2D 16                    2577 	.uleb128	22
+      000F2E 01                    2578 	.db	1
+      000F2F 00 00 8E 11           2579 	.dw	0,(Snixie$NIXIE_DisplayTime$120)
+      000F33 0E                    2580 	.db	14
+      000F34 18                    2581 	.uleb128	24
+      000F35 01                    2582 	.db	1
+      000F36 00 00 8E 16           2583 	.dw	0,(Snixie$NIXIE_DisplayTime$121)
+      000F3A 0E                    2584 	.db	14
+      000F3B 14                    2585 	.uleb128	20
+      000F3C 01                    2586 	.db	1
+      000F3D 00 00 8E 19           2587 	.dw	0,(Snixie$NIXIE_DisplayTime$123)
+      000F41 0E                    2588 	.db	14
+      000F42 16                    2589 	.uleb128	22
+      000F43 01                    2590 	.db	1
+      000F44 00 00 8E 1C           2591 	.dw	0,(Snixie$NIXIE_DisplayTime$124)
+      000F48 0E                    2592 	.db	14
+      000F49 14                    2593 	.uleb128	20
+      000F4A 01                    2594 	.db	1
+      000F4B 00 00 8E 20           2595 	.dw	0,(Snixie$NIXIE_DisplayTime$126)
+      000F4F 0E                    2596 	.db	14
+      000F50 15                    2597 	.uleb128	21
+      000F51 01                    2598 	.db	1
+      000F52 00 00 8E 22           2599 	.dw	0,(Snixie$NIXIE_DisplayTime$127)
+      000F56 0E                    2600 	.db	14
+      000F57 16                    2601 	.uleb128	22
+      000F58 01                    2602 	.db	1
+      000F59 00 00 8E 25           2603 	.dw	0,(Snixie$NIXIE_DisplayTime$128)
+      000F5D 0E                    2604 	.db	14
+      000F5E 18                    2605 	.uleb128	24
+      000F5F 01                    2606 	.db	1
+      000F60 00 00 8E 2A           2607 	.dw	0,(Snixie$NIXIE_DisplayTime$129)
+      000F64 0E                    2608 	.db	14
+      000F65 14                    2609 	.uleb128	20
+      000F66 01                    2610 	.db	1
+      000F67 00 00 8E 2D           2611 	.dw	0,(Snixie$NIXIE_DisplayTime$131)
+      000F6B 0E                    2612 	.db	14
+      000F6C 16                    2613 	.uleb128	22
+      000F6D 01                    2614 	.db	1
+      000F6E 00 00 8E 30           2615 	.dw	0,(Snixie$NIXIE_DisplayTime$132)
+      000F72 0E                    2616 	.db	14
+      000F73 14                    2617 	.uleb128	20
+      000F74 01                    2618 	.db	1
+      000F75 00 00 8E 35           2619 	.dw	0,(Snixie$NIXIE_DisplayTime$134)
+      000F79 0E                    2620 	.db	14
+      000F7A 15                    2621 	.uleb128	21
+      000F7B 01                    2622 	.db	1
+      000F7C 00 00 8E 39           2623 	.dw	0,(Snixie$NIXIE_DisplayTime$135)
+      000F80 0E                    2624 	.db	14
+      000F81 17                    2625 	.uleb128	23
+      000F82 01                    2626 	.db	1
+      000F83 00 00 8E 3B           2627 	.dw	0,(Snixie$NIXIE_DisplayTime$136)
+      000F87 0E                    2628 	.db	14
+      000F88 18                    2629 	.uleb128	24
+      000F89 01                    2630 	.db	1
+      000F8A 00 00 8E 40           2631 	.dw	0,(Snixie$NIXIE_DisplayTime$137)
+      000F8E 0E                    2632 	.db	14
+      000F8F 14                    2633 	.uleb128	20
+      000F90 01                    2634 	.db	1
+      000F91 00 00 8E 45           2635 	.dw	0,(Snixie$NIXIE_DisplayTime$139)
+      000F95 0E                    2636 	.db	14
+      000F96 15                    2637 	.uleb128	21
+      000F97 01                    2638 	.db	1
+      000F98 00 00 8E 4A           2639 	.dw	0,(Snixie$NIXIE_DisplayTime$140)
+      000F9C 0E                    2640 	.db	14
+      000F9D 17                    2641 	.uleb128	23
+      000F9E 01                    2642 	.db	1
+      000F9F 00 00 8E 4C           2643 	.dw	0,(Snixie$NIXIE_DisplayTime$141)
+      000FA3 0E                    2644 	.db	14
+      000FA4 18                    2645 	.uleb128	24
+      000FA5 01                    2646 	.db	1
+      000FA6 00 00 8E 51           2647 	.dw	0,(Snixie$NIXIE_DisplayTime$142)
+      000FAA 0E                    2648 	.db	14
+      000FAB 14                    2649 	.uleb128	20
+      000FAC 01                    2650 	.db	1
+      000FAD 00 00 8E 56           2651 	.dw	0,(Snixie$NIXIE_DisplayTime$144)
+      000FB1 0E                    2652 	.db	14
+      000FB2 15                    2653 	.uleb128	21
+      000FB3 01                    2654 	.db	1
+      000FB4 00 00 8E 5B           2655 	.dw	0,(Snixie$NIXIE_DisplayTime$145)
+      000FB8 0E                    2656 	.db	14
+      000FB9 17                    2657 	.uleb128	23
+      000FBA 01                    2658 	.db	1
+      000FBB 00 00 8E 5D           2659 	.dw	0,(Snixie$NIXIE_DisplayTime$146)
+      000FBF 0E                    2660 	.db	14
+      000FC0 18                    2661 	.uleb128	24
+      000FC1 01                    2662 	.db	1
+      000FC2 00 00 8E 62           2663 	.dw	0,(Snixie$NIXIE_DisplayTime$147)
+      000FC6 0E                    2664 	.db	14
+      000FC7 14                    2665 	.uleb128	20
+      000FC8 01                    2666 	.db	1
+      000FC9 00 00 8E 67           2667 	.dw	0,(Snixie$NIXIE_DisplayTime$149)
+      000FCD 0E                    2668 	.db	14
+      000FCE 15                    2669 	.uleb128	21
+      000FCF 01                    2670 	.db	1
+      000FD0 00 00 8E 6C           2671 	.dw	0,(Snixie$NIXIE_DisplayTime$150)
+      000FD4 0E                    2672 	.db	14
+      000FD5 17                    2673 	.uleb128	23
+      000FD6 01                    2674 	.db	1
+      000FD7 00 00 8E 6E           2675 	.dw	0,(Snixie$NIXIE_DisplayTime$151)
+      000FDB 0E                    2676 	.db	14
+      000FDC 18                    2677 	.uleb128	24
+      000FDD 01                    2678 	.db	1
+      000FDE 00 00 8E 73           2679 	.dw	0,(Snixie$NIXIE_DisplayTime$152)
+      000FE2 0E                    2680 	.db	14
+      000FE3 14                    2681 	.uleb128	20
+      000FE4 01                    2682 	.db	1
+      000FE5 00 00 8E 77           2683 	.dw	0,(Snixie$NIXIE_DisplayTime$154)
+      000FE9 0E                    2684 	.db	14
+      000FEA 15                    2685 	.uleb128	21
+      000FEB 01                    2686 	.db	1
+      000FEC 00 00 8E 79           2687 	.dw	0,(Snixie$NIXIE_DisplayTime$155)
+      000FF0 0E                    2688 	.db	14
+      000FF1 16                    2689 	.uleb128	22
+      000FF2 01                    2690 	.db	1
+      000FF3 00 00 8E 7B           2691 	.dw	0,(Snixie$NIXIE_DisplayTime$156)
+      000FF7 0E                    2692 	.db	14
+      000FF8 17                    2693 	.uleb128	23
+      000FF9 01                    2694 	.db	1
+      000FFA 00 00 8E 80           2695 	.dw	0,(Snixie$NIXIE_DisplayTime$157)
+      000FFE 0E                    2696 	.db	14
+      000FFF 14                    2697 	.uleb128	20
+      001000 01                    2698 	.db	1
+      001001 00 00 8E 92           2699 	.dw	0,(Snixie$NIXIE_DisplayTime$162)
+      001005 0E                    2700 	.db	14
+      001006 16                    2701 	.uleb128	22
+      001007 01                    2702 	.db	1
+      001008 00 00 8E 95           2703 	.dw	0,(Snixie$NIXIE_DisplayTime$163)
+      00100C 0E                    2704 	.db	14
+      00100D 14                    2705 	.uleb128	20
+      00100E 01                    2706 	.db	1
+      00100F 00 00 8E 96           2707 	.dw	0,(Snixie$NIXIE_DisplayTime$165)
+      001013 0E                    2708 	.db	14
+      001014 15                    2709 	.uleb128	21
+      001015 01                    2710 	.db	1
+      001016 00 00 8E 9A           2711 	.dw	0,(Snixie$NIXIE_DisplayTime$166)
+      00101A 0E                    2712 	.db	14
+      00101B 14                    2713 	.uleb128	20
+      00101C 01                    2714 	.db	1
+      00101D 00 00 8E 9C           2715 	.dw	0,(Snixie$NIXIE_DisplayTime$168)
+      001021 0E                    2716 	.db	14
+      001022 15                    2717 	.uleb128	21
+      001023 01                    2718 	.db	1
+      001024 00 00 8E A1           2719 	.dw	0,(Snixie$NIXIE_DisplayTime$169)
+      001028 0E                    2720 	.db	14
+      001029 14                    2721 	.uleb128	20
+      00102A 01                    2722 	.db	1
+      00102B 00 00 8E C3           2723 	.dw	0,(Snixie$NIXIE_DisplayTime$176)
+      00102F 0E                    2724 	.db	14
+      001030 15                    2725 	.uleb128	21
+      001031 01                    2726 	.db	1
+      001032 00 00 8E C7           2727 	.dw	0,(Snixie$NIXIE_DisplayTime$177)
+      001036 0E                    2728 	.db	14
+      001037 14                    2729 	.uleb128	20
+      001038 01                    2730 	.db	1
+      001039 00 00 8E C9           2731 	.dw	0,(Snixie$NIXIE_DisplayTime$179)
+      00103D 0E                    2732 	.db	14
+      00103E 15                    2733 	.uleb128	21
+      00103F 01                    2734 	.db	1
+      001040 00 00 8E CE           2735 	.dw	0,(Snixie$NIXIE_DisplayTime$180)
+      001044 0E                    2736 	.db	14
+      001045 14                    2737 	.uleb128	20
+      001046 01                    2738 	.db	1
+      001047 00 00 8E EF           2739 	.dw	0,(Snixie$NIXIE_DisplayTime$185)
+      00104B 0E                    2740 	.db	14
+      00104C 15                    2741 	.uleb128	21
+      00104D 01                    2742 	.db	1
+      00104E 00 00 8E F3           2743 	.dw	0,(Snixie$NIXIE_DisplayTime$186)
+      001052 0E                    2744 	.db	14
+      001053 14                    2745 	.uleb128	20
+      001054 01                    2746 	.db	1
+      001055 00 00 8E F5           2747 	.dw	0,(Snixie$NIXIE_DisplayTime$188)
+      001059 0E                    2748 	.db	14
+      00105A 15                    2749 	.uleb128	21
+      00105B 01                    2750 	.db	1
+      00105C 00 00 8E FA           2751 	.dw	0,(Snixie$NIXIE_DisplayTime$189)
+      001060 0E                    2752 	.db	14
+      001061 14                    2753 	.uleb128	20
+      001062 01                    2754 	.db	1
+      001063 00 00 8F 0F           2755 	.dw	0,(Snixie$NIXIE_DisplayTime$193)
+      001067 0E                    2756 	.db	14
+      001068 16                    2757 	.uleb128	22
+      001069 01                    2758 	.db	1
+      00106A 00 00 8F 12           2759 	.dw	0,(Snixie$NIXIE_DisplayTime$194)
+      00106E 0E                    2760 	.db	14
+      00106F 14                    2761 	.uleb128	20
+      001070 01                    2762 	.db	1
+      001071 00 00 8F 13           2763 	.dw	0,(Snixie$NIXIE_DisplayTime$196)
+      001075 0E                    2764 	.db	14
+      001076 15                    2765 	.uleb128	21
+      001077 01                    2766 	.db	1
+      001078 00 00 8F 17           2767 	.dw	0,(Snixie$NIXIE_DisplayTime$197)
+      00107C 0E                    2768 	.db	14
+      00107D 14                    2769 	.uleb128	20
+      00107E 01                    2770 	.db	1
+      00107F 00 00 8F 19           2771 	.dw	0,(Snixie$NIXIE_DisplayTime$199)
+      001083 0E                    2772 	.db	14
+      001084 15                    2773 	.uleb128	21
+      001085 01                    2774 	.db	1
+      001086 00 00 8F 1E           2775 	.dw	0,(Snixie$NIXIE_DisplayTime$200)
+      00108A 0E                    2776 	.db	14
+      00108B 14                    2777 	.uleb128	20
+      00108C 01                    2778 	.db	1
+      00108D 00 00 8F 40           2779 	.dw	0,(Snixie$NIXIE_DisplayTime$207)
+      001091 0E                    2780 	.db	14
+      001092 15                    2781 	.uleb128	21
+      001093 01                    2782 	.db	1
+      001094 00 00 8F 44           2783 	.dw	0,(Snixie$NIXIE_DisplayTime$208)
+      001098 0E                    2784 	.db	14
+      001099 14                    2785 	.uleb128	20
+      00109A 01                    2786 	.db	1
+      00109B 00 00 8F 46           2787 	.dw	0,(Snixie$NIXIE_DisplayTime$210)
+      00109F 0E                    2788 	.db	14
+      0010A0 15                    2789 	.uleb128	21
+      0010A1 01                    2790 	.db	1
+      0010A2 00 00 8F 4B           2791 	.dw	0,(Snixie$NIXIE_DisplayTime$211)
+      0010A6 0E                    2792 	.db	14
+      0010A7 14                    2793 	.uleb128	20
+      0010A8 01                    2794 	.db	1
+      0010A9 00 00 8F 6C           2795 	.dw	0,(Snixie$NIXIE_DisplayTime$216)
+      0010AD 0E                    2796 	.db	14
+      0010AE 15                    2797 	.uleb128	21
+      0010AF 01                    2798 	.db	1
+      0010B0 00 00 8F 70           2799 	.dw	0,(Snixie$NIXIE_DisplayTime$217)
+      0010B4 0E                    2800 	.db	14
+      0010B5 14                    2801 	.uleb128	20
+      0010B6 01                    2802 	.db	1
+      0010B7 00 00 8F 72           2803 	.dw	0,(Snixie$NIXIE_DisplayTime$219)
+      0010BB 0E                    2804 	.db	14
+      0010BC 15                    2805 	.uleb128	21
+      0010BD 01                    2806 	.db	1
+      0010BE 00 00 8F 77           2807 	.dw	0,(Snixie$NIXIE_DisplayTime$220)
+      0010C2 0E                    2808 	.db	14
+      0010C3 14                    2809 	.uleb128	20
+      0010C4 01                    2810 	.db	1
+      0010C5 00 00 8F 7C           2811 	.dw	0,(Snixie$NIXIE_DisplayTime$222)
+      0010C9 0E                    2812 	.db	14
+      0010CA 15                    2813 	.uleb128	21
+      0010CB 01                    2814 	.db	1
+      0010CC 00 00 8F 7E           2815 	.dw	0,(Snixie$NIXIE_DisplayTime$223)
+      0010D0 0E                    2816 	.db	14
+      0010D1 16                    2817 	.uleb128	22
+      0010D2 01                    2818 	.db	1
+      0010D3 00 00 8F 80           2819 	.dw	0,(Snixie$NIXIE_DisplayTime$224)
+      0010D7 0E                    2820 	.db	14
+      0010D8 17                    2821 	.uleb128	23
+      0010D9 01                    2822 	.db	1
+      0010DA 00 00 8F 85           2823 	.dw	0,(Snixie$NIXIE_DisplayTime$225)
+      0010DE 0E                    2824 	.db	14
+      0010DF 14                    2825 	.uleb128	20
+      0010E0 01                    2826 	.db	1
+      0010E1 00 00 8F 87           2827 	.dw	0,(Snixie$NIXIE_DisplayTime$228)
+      0010E5 0E                    2828 	.db	14
+      0010E6 02                    2829 	.uleb128	2
+                                   2830 
+                                   2831 	.area .debug_frame (NOLOAD)
+      0010E7 00 00                 2832 	.dw	0
+      0010E9 00 0E                 2833 	.dw	Ldebug_CIE1_end-Ldebug_CIE1_start
+      0010EB                       2834 Ldebug_CIE1_start:
+      0010EB FF FF                 2835 	.dw	0xffff
+      0010ED FF FF                 2836 	.dw	0xffff
+      0010EF 01                    2837 	.db	1
+      0010F0 00                    2838 	.db	0
+      0010F1 01                    2839 	.uleb128	1
+      0010F2 7F                    2840 	.sleb128	-1
+      0010F3 09                    2841 	.db	9
+      0010F4 0C                    2842 	.db	12
+      0010F5 08                    2843 	.uleb128	8
+      0010F6 02                    2844 	.uleb128	2
+      0010F7 89                    2845 	.db	137
+      0010F8 01                    2846 	.uleb128	1
+      0010F9                       2847 Ldebug_CIE1_end:
+      0010F9 00 00 00 75           2848 	.dw	0,117
+      0010FD 00 00 10 E7           2849 	.dw	0,(Ldebug_CIE1_start-4)
+      001101 00 00 8D 1D           2850 	.dw	0,(Snixie$NIXIE_DisplayChar$61)	;initial loc
+      001105 00 00 00 96           2851 	.dw	0,Snixie$NIXIE_DisplayChar$96-Snixie$NIXIE_DisplayChar$61
+      001109 01                    2852 	.db	1
+      00110A 00 00 8D 1D           2853 	.dw	0,(Snixie$NIXIE_DisplayChar$61)
+      00110E 0E                    2854 	.db	14
+      00110F 02                    2855 	.uleb128	2
+      001110 01                    2856 	.db	1
+      001111 00 00 8D 1F           2857 	.dw	0,(Snixie$NIXIE_DisplayChar$62)
+      001115 0E                    2858 	.db	14
+      001116 07                    2859 	.uleb128	7
+      001117 01                    2860 	.db	1
+      001118 00 00 8D 24           2861 	.dw	0,(Snixie$NIXIE_DisplayChar$65)
+      00111C 0E                    2862 	.db	14
+      00111D 08                    2863 	.uleb128	8
+      00111E 01                    2864 	.db	1
+      00111F 00 00 8D 26           2865 	.dw	0,(Snixie$NIXIE_DisplayChar$66)
+      001123 0E                    2866 	.db	14
+      001124 09                    2867 	.uleb128	9
+      001125 01                    2868 	.db	1
+      001126 00 00 8D 29           2869 	.dw	0,(Snixie$NIXIE_DisplayChar$67)
+      00112A 0E                    2870 	.db	14
+      00112B 0B                    2871 	.uleb128	11
+      00112C 01                    2872 	.db	1
+      00112D 00 00 8D 2E           2873 	.dw	0,(Snixie$NIXIE_DisplayChar$68)
+      001131 0E                    2874 	.db	14
+      001132 07                    2875 	.uleb128	7
+      001133 01                    2876 	.db	1
+      001134 00 00 8D 46           2877 	.dw	0,(Snixie$NIXIE_DisplayChar$74)
+      001138 0E                    2878 	.db	14
+      001139 09                    2879 	.uleb128	9
+      00113A 01                    2880 	.db	1
+      00113B 00 00 8D 49           2881 	.dw	0,(Snixie$NIXIE_DisplayChar$75)
+      00113F 0E                    2882 	.db	14
+      001140 0B                    2883 	.uleb128	11
+      001141 01                    2884 	.db	1
+      001142 00 00 8D 4E           2885 	.dw	0,(Snixie$NIXIE_DisplayChar$76)
+      001146 0E                    2886 	.db	14
+      001147 07                    2887 	.uleb128	7
+      001148 01                    2888 	.db	1
+      001149 00 00 8D 6E           2889 	.dw	0,(Snixie$NIXIE_DisplayChar$82)
+      00114D 0E                    2890 	.db	14
+      00114E 08                    2891 	.uleb128	8
+      00114F 01                    2892 	.db	1
+      001150 00 00 8D 70           2893 	.dw	0,(Snixie$NIXIE_DisplayChar$83)
+      001154 0E                    2894 	.db	14
+      001155 09                    2895 	.uleb128	9
+      001156 01                    2896 	.db	1
+      001157 00 00 8D 73           2897 	.dw	0,(Snixie$NIXIE_DisplayChar$84)
+      00115B 0E                    2898 	.db	14
+      00115C 0B                    2899 	.uleb128	11
+      00115D 01                    2900 	.db	1
+      00115E 00 00 8D 78           2901 	.dw	0,(Snixie$NIXIE_DisplayChar$85)
+      001162 0E                    2902 	.db	14
+      001163 07                    2903 	.uleb128	7
+      001164 01                    2904 	.db	1
+      001165 00 00 8D 8A           2905 	.dw	0,(Snixie$NIXIE_DisplayChar$88)
+      001169 0E                    2906 	.db	14
+      00116A 07                    2907 	.uleb128	7
+      00116B 01                    2908 	.db	1
+      00116C 00 00 8D B2           2909 	.dw	0,(Snixie$NIXIE_DisplayChar$94)
+      001170 0E                    2910 	.db	14
+      001171 02                    2911 	.uleb128	2
+                                   2912 
+                                   2913 	.area .debug_frame (NOLOAD)
+      001172 00 00                 2914 	.dw	0
+      001174 00 0E                 2915 	.dw	Ldebug_CIE2_end-Ldebug_CIE2_start
+      001176                       2916 Ldebug_CIE2_start:
+      001176 FF FF                 2917 	.dw	0xffff
+      001178 FF FF                 2918 	.dw	0xffff
+      00117A 01                    2919 	.db	1
+      00117B 00                    2920 	.db	0
+      00117C 01                    2921 	.uleb128	1
+      00117D 7F                    2922 	.sleb128	-1
+      00117E 09                    2923 	.db	9
+      00117F 0C                    2924 	.db	12
+      001180 08                    2925 	.uleb128	8
+      001181 02                    2926 	.uleb128	2
+      001182 89                    2927 	.db	137
+      001183 01                    2928 	.uleb128	1
+      001184                       2929 Ldebug_CIE2_end:
+      001184 00 00 00 FA           2930 	.dw	0,250
+      001188 00 00 11 72           2931 	.dw	0,(Ldebug_CIE2_start-4)
+      00118C 00 00 8C 90           2932 	.dw	0,(Snixie$NIXIE_Init$1)	;initial loc
+      001190 00 00 00 8D           2933 	.dw	0,Snixie$NIXIE_Init$59-Snixie$NIXIE_Init$1
+      001194 01                    2934 	.db	1
+      001195 00 00 8C 90           2935 	.dw	0,(Snixie$NIXIE_Init$1)
+      001199 0E                    2936 	.db	14
+      00119A 02                    2937 	.uleb128	2
+      00119B 01                    2938 	.db	1
+      00119C 00 00 8C 92           2939 	.dw	0,(Snixie$NIXIE_Init$2)
+      0011A0 0E                    2940 	.db	14
+      0011A1 05                    2941 	.uleb128	5
+      0011A2 01                    2942 	.db	1
+      0011A3 00 00 8C 94           2943 	.dw	0,(Snixie$NIXIE_Init$4)
+      0011A7 0E                    2944 	.db	14
+      0011A8 06                    2945 	.uleb128	6
+      0011A9 01                    2946 	.db	1
+      0011AA 00 00 8C 96           2947 	.dw	0,(Snixie$NIXIE_Init$5)
+      0011AE 0E                    2948 	.db	14
+      0011AF 07                    2949 	.uleb128	7
+      0011B0 01                    2950 	.db	1
+      0011B1 00 00 8C 98           2951 	.dw	0,(Snixie$NIXIE_Init$6)
+      0011B5 0E                    2952 	.db	14
+      0011B6 08                    2953 	.uleb128	8
+      0011B7 01                    2954 	.db	1
+      0011B8 00 00 8C 9A           2955 	.dw	0,(Snixie$NIXIE_Init$7)
+      0011BC 0E                    2956 	.db	14
+      0011BD 09                    2957 	.uleb128	9
+      0011BE 01                    2958 	.db	1
+      0011BF 00 00 8C 9F           2959 	.dw	0,(Snixie$NIXIE_Init$8)
+      0011C3 0E                    2960 	.db	14
+      0011C4 05                    2961 	.uleb128	5
+      0011C5 01                    2962 	.db	1
+      0011C6 00 00 8C A1           2963 	.dw	0,(Snixie$NIXIE_Init$10)
+      0011CA 0E                    2964 	.db	14
+      0011CB 06                    2965 	.uleb128	6
+      0011CC 01                    2966 	.db	1
+      0011CD 00 00 8C A3           2967 	.dw	0,(Snixie$NIXIE_Init$11)
+      0011D1 0E                    2968 	.db	14
+      0011D2 07                    2969 	.uleb128	7
+      0011D3 01                    2970 	.db	1
+      0011D4 00 00 8C A5           2971 	.dw	0,(Snixie$NIXIE_Init$12)
+      0011D8 0E                    2972 	.db	14
+      0011D9 08                    2973 	.uleb128	8
+      0011DA 01                    2974 	.db	1
+      0011DB 00 00 8C A7           2975 	.dw	0,(Snixie$NIXIE_Init$13)
+      0011DF 0E                    2976 	.db	14
+      0011E0 09                    2977 	.uleb128	9
+      0011E1 01                    2978 	.db	1
+      0011E2 00 00 8C AC           2979 	.dw	0,(Snixie$NIXIE_Init$14)
+      0011E6 0E                    2980 	.db	14
+      0011E7 05                    2981 	.uleb128	5
+      0011E8 01                    2982 	.db	1
+      0011E9 00 00 8C AE           2983 	.dw	0,(Snixie$NIXIE_Init$16)
+      0011ED 0E                    2984 	.db	14
+      0011EE 06                    2985 	.uleb128	6
+      0011EF 01                    2986 	.db	1
+      0011F0 00 00 8C B0           2987 	.dw	0,(Snixie$NIXIE_Init$17)
+      0011F4 0E                    2988 	.db	14
+      0011F5 07                    2989 	.uleb128	7
+      0011F6 01                    2990 	.db	1
+      0011F7 00 00 8C B2           2991 	.dw	0,(Snixie$NIXIE_Init$18)
+      0011FB 0E                    2992 	.db	14
+      0011FC 08                    2993 	.uleb128	8
+      0011FD 01                    2994 	.db	1
+      0011FE 00 00 8C B4           2995 	.dw	0,(Snixie$NIXIE_Init$19)
+      001202 0E                    2996 	.db	14
+      001203 09                    2997 	.uleb128	9
+      001204 01                    2998 	.db	1
+      001205 00 00 8C B9           2999 	.dw	0,(Snixie$NIXIE_Init$20)
+      001209 0E                    3000 	.db	14
+      00120A 05                    3001 	.uleb128	5
+      00120B 01                    3002 	.db	1
+      00120C 00 00 8C BE           3003 	.dw	0,(Snixie$NIXIE_Init$23)
+      001210 0E                    3004 	.db	14
+      001211 06                    3005 	.uleb128	6
+      001212 01                    3006 	.db	1
+      001213 00 00 8C C0           3007 	.dw	0,(Snixie$NIXIE_Init$24)
+      001217 0E                    3008 	.db	14
+      001218 07                    3009 	.uleb128	7
+      001219 01                    3010 	.db	1
+      00121A 00 00 8C C2           3011 	.dw	0,(Snixie$NIXIE_Init$25)
+      00121E 0E                    3012 	.db	14
+      00121F 08                    3013 	.uleb128	8
+      001220 01                    3014 	.db	1
+      001221 00 00 8C C4           3015 	.dw	0,(Snixie$NIXIE_Init$26)
+      001225 0E                    3016 	.db	14
+      001226 09                    3017 	.uleb128	9
+      001227 01                    3018 	.db	1
+      001228 00 00 8C C6           3019 	.dw	0,(Snixie$NIXIE_Init$27)
+      00122C 0E                    3020 	.db	14
+      00122D 0A                    3021 	.uleb128	10
+      00122E 01                    3022 	.db	1
+      00122F 00 00 8C C8           3023 	.dw	0,(Snixie$NIXIE_Init$28)
+      001233 0E                    3024 	.db	14
+      001234 0B                    3025 	.uleb128	11
+      001235 01                    3026 	.db	1
+      001236 00 00 8C CA           3027 	.dw	0,(Snixie$NIXIE_Init$29)
+      00123A 0E                    3028 	.db	14
+      00123B 0C                    3029 	.uleb128	12
+      00123C 01                    3030 	.db	1
+      00123D 00 00 8C CC           3031 	.dw	0,(Snixie$NIXIE_Init$30)
+      001241 0E                    3032 	.db	14
+      001242 0D                    3033 	.uleb128	13
+      001243 01                    3034 	.db	1
+      001244 00 00 8C D1           3035 	.dw	0,(Snixie$NIXIE_Init$31)
+      001248 0E                    3036 	.db	14
+      001249 05                    3037 	.uleb128	5
+      00124A 01                    3038 	.db	1
+      00124B 00 00 8C D3           3039 	.dw	0,(Snixie$NIXIE_Init$33)
+      00124F 0E                    3040 	.db	14
+      001250 06                    3041 	.uleb128	6
+      001251 01                    3042 	.db	1
+      001252 00 00 8C D7           3043 	.dw	0,(Snixie$NIXIE_Init$34)
+      001256 0E                    3044 	.db	14
+      001257 05                    3045 	.uleb128	5
+      001258 01                    3046 	.db	1
+      001259 00 00 8C EF           3047 	.dw	0,(Snixie$NIXIE_Init$40)
+      00125D 0E                    3048 	.db	14
+      00125E 07                    3049 	.uleb128	7
+      00125F 01                    3050 	.db	1
+      001260 00 00 8C F2           3051 	.dw	0,(Snixie$NIXIE_Init$41)
+      001264 0E                    3052 	.db	14
+      001265 05                    3053 	.uleb128	5
+      001266 01                    3054 	.db	1
+      001267 00 00 8C F3           3055 	.dw	0,(Snixie$NIXIE_Init$42)
+      00126B 0E                    3056 	.db	14
+      00126C 06                    3057 	.uleb128	6
+      00126D 01                    3058 	.db	1
+      00126E 00 00 8C F4           3059 	.dw	0,(Snixie$NIXIE_Init$43)
+      001272 0E                    3060 	.db	14
+      001273 07                    3061 	.uleb128	7
+      001274 01                    3062 	.db	1
+      001275 00 00 8C F8           3063 	.dw	0,(Snixie$NIXIE_Init$44)
+      001279 0E                    3064 	.db	14
+      00127A 05                    3065 	.uleb128	5
+      00127B 01                    3066 	.db	1
+      00127C 00 00 8D 1C           3067 	.dw	0,(Snixie$NIXIE_Init$57)
+      001280 0E                    3068 	.db	14
+      001281 02                    3069 	.uleb128	2

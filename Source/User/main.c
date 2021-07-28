@@ -19,6 +19,7 @@
 extern DS3231_TimeTypeDef DS3231_TimeSturcture;
 extern GPS_TimeDataTypeDef GPS_TimeDataSturcture;
 extern FunctionalState tube_state;
+extern FlagStatus gps_first_send;
 
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
@@ -26,7 +27,7 @@ extern FunctionalState tube_state;
 
 uint16_t ir_delay;//显示时分维持时间
 uint8_t ir_double_click_delay;//双击的间隔时间
-FlagStatus ir_always_on=RESET;//双击常亮标志
+FlagStatus nixie_always_on=RESET;//双击常亮标志
 
 int main(void)
 {
@@ -47,16 +48,6 @@ int main(void)
     GPS_Init();//PD5 PD6
 
     NIXIE_Init();//PC5 PC6 PC7
-    //辉光自检
-    for(uint8_t i=0;i<10;++i)
-    {
-        tube_state=ENABLE;
-        NIXIE_DisplayTime(i*10+i,i*10+i);
-        for(uint16_t k=0;k<100;++k)
-        {
-            for(uint16_t j=0;j<1000;++j);
-        }
-    }
     ir_delay=DELAY_10S;
 
     DS3231_Init();
@@ -67,13 +58,19 @@ int main(void)
     TIM4_ARRPreloadConfig(ENABLE);
     ITC_SetSoftwarePriority(ITC_IRQ_TIM4_OVF,ITC_PRIORITYLEVEL_1);
     TIM4_Cmd(ENABLE);
+
+    // while(gps_first_send==RESET);
+    // DS3231_GPSSetTime();
     
     while(1)
     {
         // BEEP_Cmd(DISABLE);
-        NIXIE_DisplayTime(GPS_TimeDataSturcture.hour,GPS_TimeDataSturcture.min);
-        // NIXIE_DisplayTime(DS3231_TimeSturcture.hours,DS3231_TimeSturcture.minutes);
+        // NIXIE_DisplayTime(GPS_TimeDataSturcture.hour,GPS_TimeDataSturcture.min);
+        NIXIE_DisplayTime(DS3231_TimeSturcture.hours,DS3231_TimeSturcture.minutes);
         DS3231_GetTime();
+        // if((DS3231_TimeSturcture.minutes%10==3)&&(DS3231_TimeSturcture.seconds<=2))
+        if((DS3231_TimeSturcture.minutes%10==0)&&(DS3231_TimeSturcture.seconds==0))
+            ir_delay=DELAY_10S;
 
     }
 }
@@ -107,8 +104,11 @@ void TIM4_UPD_OVF_IRQHandler(void) __interrupt(23)
         // }
 
         if(ir_delay>0)
+        {
             --ir_delay;
-        if((ir_delay==0)&&(ir_always_on==RESET))
+            tube_state=ENABLE;
+        }
+        if((ir_delay==0)&&(nixie_always_on==RESET))
         {
             //熄灯
             tube_state=DISABLE;
@@ -208,7 +208,7 @@ void EXTI_PORTD_IRQHandler(void) __interrupt(6)
         ir_delay=DELAY_10S;
         if(ir_double_click_delay>0)//相当于20ms内又触发了红外
         {
-            ir_always_on=~ir_always_on;
+            nixie_always_on=~nixie_always_on;
             ir_double_click_delay=0;
         }
         else

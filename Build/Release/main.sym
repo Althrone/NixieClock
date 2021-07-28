@@ -11,14 +11,14 @@ Symbol Table
     _CLK_HSECmd                                                    ****** GX
     _DS3231_GetTime                                                ****** GX
     _DS3231_Init                                                   ****** GX
-  A _EXTI_PORTA_IRQHandler                                         000105 GR
-  A _EXTI_PORTC_IRQHandler                                         000106 GR
-  A _EXTI_PORTD_IRQHandler                                         000132 GR
+    _DS3231_TimeSturcture                                          ****** GX
+  A _EXTI_PORTA_IRQHandler                                         0000E9 GR
+  A _EXTI_PORTC_IRQHandler                                         0000EA GR
+  A _EXTI_PORTD_IRQHandler                                         000116 GR
     _EXTI_SetExtIntSensitivity                                     ****** GX
     _GPIO_Init                                                     ****** GX
     _GPIO_ReadInputPin                                             ****** GX
     _GPS_Init                                                      ****** GX
-    _GPS_TimeDataSturcture                                         ****** GX
     _ITC_SetSoftwarePriority                                       ****** GX
   2 _KEY_StateMachine_Enumeration                                  000001 GR
     _NIXIE_DisplayTime                                             ****** GX
@@ -29,20 +29,21 @@ Symbol Table
     _TIM4_GetITStatus                                              ****** GX
     _TIM4_ITConfig                                                 ****** GX
     _TIM4_TimeBaseInit                                             ****** GX
-  A _TIM4_UPD_OVF_IRQHandler                                       0000D1 GR
+  A _TIM4_UPD_OVF_IRQHandler                                       0000B1 GR
     _UART1_RX_IRQHandler                                           ****** GX
   5 __interrupt_vect                                               000000 R
+    __modsint                                                      ****** GX
   6 __sdcc_gs_init_startup                                         000000 R
   6 __sdcc_init_data                                               000000 R
   5 __sdcc_program_startup                                         000068 R
   3 __start__stack                                                 000000 R
   9 __xinit__KEY_StateMachine_Enumeration                          000001 R
-  9 __xinit__ir_always_on                                          000000 R
-  2 _ir_always_on                                                  000000 GR
+  9 __xinit__nixie_always_on                                       000000 R
   1 _ir_delay                                                      000000 GR
   1 _ir_double_click_delay                                         000002 GR
   1 _key_delay_2s                                                  000003 GR
   A _main                                                          000000 GR
+  2 _nixie_always_on                                               000000 GR
     _tube_state                                                    ****** GX
     l_DATA                                                         ****** GX
     l_INITIALIZER                                                  ****** GX
@@ -50,7 +51,6 @@ Symbol Table
     s_GSINIT                                                       ****** GX
     s_INITIALIZED                                                  ****** GX
     s_INITIALIZER                                                  ****** GX
-
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
 Hexadecimal [24-Bits]
@@ -67,6 +67,6 @@ Area Table
    7 GSFINAL                                    size      3   flags    0
    8 CONST                                      size      0   flags    0
    9 INITIALIZER                                size      2   flags    0
-   A CODE                                       size    16D   flags    0
+   A CODE                                       size    151   flags    0
    B CABS                                       size      0   flags    8
 

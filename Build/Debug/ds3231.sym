@@ -7,185 +7,522 @@ Symbol Table
     .__.ABS.                                                    =  000000 G
     .__.CPU.                                                    =  000000 L
     .__.H$L.                                                    =  000001 L
-  9 A$ds3231Debug/ds3231$102                                       000015 GR
-  9 A$ds3231Debug/ds3231$103                                       000017 GR
-  9 A$ds3231Debug/ds3231$105                                       000019 GR
-  9 A$ds3231Debug/ds3231$107                                       00001A GR
-  9 A$ds3231Debug/ds3231$109                                       00001B GR
-  9 A$ds3231Debug/ds3231$111                                       00001D GR
-  9 A$ds3231Debug/ds3231$112                                       000020 GR
-  9 A$ds3231Debug/ds3231$117                                       000022 GR
-  9 A$ds3231Debug/ds3231$118                                       000024 GR
-  9 A$ds3231Debug/ds3231$119                                       000025 GR
-  9 A$ds3231Debug/ds3231$120                                       000027 GR
-  9 A$ds3231Debug/ds3231$125                                       000029 GR
-  9 A$ds3231Debug/ds3231$126                                       00002C GR
-  9 A$ds3231Debug/ds3231$127                                       00002D GR
-  9 A$ds3231Debug/ds3231$128                                       00002F GR
-  9 A$ds3231Debug/ds3231$129                                       000031 GR
-  9 A$ds3231Debug/ds3231$130                                       000032 GR
-  9 A$ds3231Debug/ds3231$131                                       000034 GR
-  9 A$ds3231Debug/ds3231$132                                       000035 GR
-  9 A$ds3231Debug/ds3231$133                                       000036 GR
-  9 A$ds3231Debug/ds3231$134                                       000037 GR
-  9 A$ds3231Debug/ds3231$135                                       000038 GR
-  9 A$ds3231Debug/ds3231$136                                       000039 GR
-  9 A$ds3231Debug/ds3231$137                                       00003A GR
-  9 A$ds3231Debug/ds3231$138                                       00003B GR
-  9 A$ds3231Debug/ds3231$139                                       00003D GR
-  9 A$ds3231Debug/ds3231$140                                       00003E GR
-  9 A$ds3231Debug/ds3231$141                                       00003F GR
-  9 A$ds3231Debug/ds3231$142                                       000041 GR
-  9 A$ds3231Debug/ds3231$145                                       000044 GR
-  9 A$ds3231Debug/ds3231$146                                       000048 GR
-  9 A$ds3231Debug/ds3231$147                                       00004B GR
-  9 A$ds3231Debug/ds3231$148                                       00004C GR
-  9 A$ds3231Debug/ds3231$149                                       00004E GR
-  9 A$ds3231Debug/ds3231$150                                       000050 GR
-  9 A$ds3231Debug/ds3231$151                                       000051 GR
-  9 A$ds3231Debug/ds3231$152                                       000053 GR
-  9 A$ds3231Debug/ds3231$153                                       000054 GR
-  9 A$ds3231Debug/ds3231$154                                       000055 GR
-  9 A$ds3231Debug/ds3231$155                                       000056 GR
-  9 A$ds3231Debug/ds3231$156                                       000057 GR
-  9 A$ds3231Debug/ds3231$157                                       000058 GR
-  9 A$ds3231Debug/ds3231$158                                       000059 GR
-  9 A$ds3231Debug/ds3231$159                                       00005A GR
-  9 A$ds3231Debug/ds3231$160                                       00005C GR
-  9 A$ds3231Debug/ds3231$161                                       00005D GR
-  9 A$ds3231Debug/ds3231$162                                       00005E GR
-  9 A$ds3231Debug/ds3231$163                                       000060 GR
-  9 A$ds3231Debug/ds3231$166                                       000062 GR
-  9 A$ds3231Debug/ds3231$167                                       000066 GR
-  9 A$ds3231Debug/ds3231$168                                       000069 GR
+  9 A$ds3231Debug/ds3231$100                                       000010 GR
+  9 A$ds3231Debug/ds3231$101                                       000012 GR
+  9 A$ds3231Debug/ds3231$104                                       000015 GR
+  9 A$ds3231Debug/ds3231$105                                       000017 GR
+  9 A$ds3231Debug/ds3231$107                                       000019 GR
+  9 A$ds3231Debug/ds3231$109                                       00001A GR
+  9 A$ds3231Debug/ds3231$111                                       00001B GR
+  9 A$ds3231Debug/ds3231$113                                       00001D GR
+  9 A$ds3231Debug/ds3231$114                                       000020 GR
+  9 A$ds3231Debug/ds3231$119                                       000022 GR
+  9 A$ds3231Debug/ds3231$120                                       000024 GR
+  9 A$ds3231Debug/ds3231$121                                       000025 GR
+  9 A$ds3231Debug/ds3231$122                                       000027 GR
+  9 A$ds3231Debug/ds3231$127                                       000029 GR
+  9 A$ds3231Debug/ds3231$128                                       00002C GR
+  9 A$ds3231Debug/ds3231$129                                       00002D GR
+  9 A$ds3231Debug/ds3231$130                                       00002F GR
+  9 A$ds3231Debug/ds3231$131                                       000031 GR
+  9 A$ds3231Debug/ds3231$132                                       000032 GR
+  9 A$ds3231Debug/ds3231$133                                       000034 GR
+  9 A$ds3231Debug/ds3231$134                                       000035 GR
+  9 A$ds3231Debug/ds3231$135                                       000036 GR
+  9 A$ds3231Debug/ds3231$136                                       000037 GR
+  9 A$ds3231Debug/ds3231$137                                       000038 GR
+  9 A$ds3231Debug/ds3231$138                                       000039 GR
+  9 A$ds3231Debug/ds3231$139                                       00003A GR
+  9 A$ds3231Debug/ds3231$140                                       00003B GR
+  9 A$ds3231Debug/ds3231$141                                       00003D GR
+  9 A$ds3231Debug/ds3231$142                                       00003E GR
+  9 A$ds3231Debug/ds3231$143                                       00003F GR
+  9 A$ds3231Debug/ds3231$144                                       000041 GR
+  9 A$ds3231Debug/ds3231$147                                       000044 GR
+  9 A$ds3231Debug/ds3231$148                                       000048 GR
+  9 A$ds3231Debug/ds3231$149                                       00004B GR
+  9 A$ds3231Debug/ds3231$150                                       00004C GR
+  9 A$ds3231Debug/ds3231$151                                       00004E GR
+  9 A$ds3231Debug/ds3231$152                                       000050 GR
+  9 A$ds3231Debug/ds3231$153                                       000051 GR
+  9 A$ds3231Debug/ds3231$154                                       000053 GR
+  9 A$ds3231Debug/ds3231$155                                       000054 GR
+  9 A$ds3231Debug/ds3231$156                                       000055 GR
+  9 A$ds3231Debug/ds3231$157                                       000056 GR
+  9 A$ds3231Debug/ds3231$158                                       000057 GR
+  9 A$ds3231Debug/ds3231$159                                       000058 GR
+  9 A$ds3231Debug/ds3231$160                                       000059 GR
+  9 A$ds3231Debug/ds3231$161                                       00005A GR
+  9 A$ds3231Debug/ds3231$162                                       00005C GR
+  9 A$ds3231Debug/ds3231$163                                       00005D GR
+  9 A$ds3231Debug/ds3231$164                                       00005E GR
+  9 A$ds3231Debug/ds3231$165                                       000060 GR
+  9 A$ds3231Debug/ds3231$168                                       000062 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$ds3231Debug/ds3231$169                                       00006A GR
-  9 A$ds3231Debug/ds3231$170                                       00006C GR
-  9 A$ds3231Debug/ds3231$171                                       00006E GR
-  9 A$ds3231Debug/ds3231$172                                       00006F GR
-  9 A$ds3231Debug/ds3231$173                                       000071 GR
-  9 A$ds3231Debug/ds3231$174                                       000072 GR
-  9 A$ds3231Debug/ds3231$175                                       000073 GR
-  9 A$ds3231Debug/ds3231$176                                       000074 GR
-  9 A$ds3231Debug/ds3231$177                                       000075 GR
-  9 A$ds3231Debug/ds3231$178                                       000076 GR
-  9 A$ds3231Debug/ds3231$179                                       000077 GR
-  9 A$ds3231Debug/ds3231$180                                       000078 GR
-  9 A$ds3231Debug/ds3231$181                                       00007A GR
-  9 A$ds3231Debug/ds3231$182                                       00007B GR
-  9 A$ds3231Debug/ds3231$183                                       00007C GR
-  9 A$ds3231Debug/ds3231$184                                       00007E GR
-  9 A$ds3231Debug/ds3231$187                                       000080 GR
-  9 A$ds3231Debug/ds3231$188                                       000083 GR
-  9 A$ds3231Debug/ds3231$189                                       000086 GR
-  9 A$ds3231Debug/ds3231$190                                       000088 GR
-  9 A$ds3231Debug/ds3231$193                                       000089 GR
-  9 A$ds3231Debug/ds3231$194                                       00008D GR
-  9 A$ds3231Debug/ds3231$195                                       000090 GR
-  9 A$ds3231Debug/ds3231$196                                       000091 GR
-  9 A$ds3231Debug/ds3231$197                                       000093 GR
-  9 A$ds3231Debug/ds3231$198                                       000095 GR
-  9 A$ds3231Debug/ds3231$199                                       000096 GR
-  9 A$ds3231Debug/ds3231$200                                       000098 GR
-  9 A$ds3231Debug/ds3231$201                                       000099 GR
-  9 A$ds3231Debug/ds3231$202                                       00009A GR
-  9 A$ds3231Debug/ds3231$203                                       00009B GR
-  9 A$ds3231Debug/ds3231$204                                       00009C GR
-  9 A$ds3231Debug/ds3231$205                                       00009D GR
-  9 A$ds3231Debug/ds3231$206                                       00009E GR
-  9 A$ds3231Debug/ds3231$207                                       00009F GR
-  9 A$ds3231Debug/ds3231$208                                       0000A1 GR
-  9 A$ds3231Debug/ds3231$209                                       0000A2 GR
-  9 A$ds3231Debug/ds3231$210                                       0000A3 GR
-  9 A$ds3231Debug/ds3231$211                                       0000A5 GR
-  9 A$ds3231Debug/ds3231$214                                       0000A7 GR
-  9 A$ds3231Debug/ds3231$215                                       0000AB GR
-  9 A$ds3231Debug/ds3231$216                                       0000AE GR
-  9 A$ds3231Debug/ds3231$217                                       0000AF GR
-  9 A$ds3231Debug/ds3231$218                                       0000B1 GR
-  9 A$ds3231Debug/ds3231$219                                       0000B3 GR
-  9 A$ds3231Debug/ds3231$220                                       0000B4 GR
-  9 A$ds3231Debug/ds3231$221                                       0000B6 GR
-  9 A$ds3231Debug/ds3231$222                                       0000B7 GR
-  9 A$ds3231Debug/ds3231$223                                       0000B8 GR
-  9 A$ds3231Debug/ds3231$224                                       0000B9 GR
-  9 A$ds3231Debug/ds3231$225                                       0000BA GR
-  9 A$ds3231Debug/ds3231$226                                       0000BB GR
-  9 A$ds3231Debug/ds3231$227                                       0000BC GR
-  9 A$ds3231Debug/ds3231$228                                       0000BD GR
-  9 A$ds3231Debug/ds3231$229                                       0000BF GR
+  9 A$ds3231Debug/ds3231$169                                       000066 GR
+  9 A$ds3231Debug/ds3231$170                                       000069 GR
+  9 A$ds3231Debug/ds3231$171                                       00006A GR
+  9 A$ds3231Debug/ds3231$172                                       00006C GR
+  9 A$ds3231Debug/ds3231$173                                       00006E GR
+  9 A$ds3231Debug/ds3231$174                                       00006F GR
+  9 A$ds3231Debug/ds3231$175                                       000071 GR
+  9 A$ds3231Debug/ds3231$176                                       000072 GR
+  9 A$ds3231Debug/ds3231$177                                       000073 GR
+  9 A$ds3231Debug/ds3231$178                                       000074 GR
+  9 A$ds3231Debug/ds3231$179                                       000075 GR
+  9 A$ds3231Debug/ds3231$180                                       000076 GR
+  9 A$ds3231Debug/ds3231$181                                       000077 GR
+  9 A$ds3231Debug/ds3231$182                                       000078 GR
+  9 A$ds3231Debug/ds3231$183                                       00007A GR
+  9 A$ds3231Debug/ds3231$184                                       00007B GR
+  9 A$ds3231Debug/ds3231$185                                       00007C GR
+  9 A$ds3231Debug/ds3231$186                                       00007E GR
+  9 A$ds3231Debug/ds3231$189                                       000080 GR
+  9 A$ds3231Debug/ds3231$190                                       000083 GR
+  9 A$ds3231Debug/ds3231$191                                       000086 GR
+  9 A$ds3231Debug/ds3231$192                                       000088 GR
+  9 A$ds3231Debug/ds3231$195                                       000089 GR
+  9 A$ds3231Debug/ds3231$196                                       00008D GR
+  9 A$ds3231Debug/ds3231$197                                       000090 GR
+  9 A$ds3231Debug/ds3231$198                                       000091 GR
+  9 A$ds3231Debug/ds3231$199                                       000093 GR
+  9 A$ds3231Debug/ds3231$200                                       000095 GR
+  9 A$ds3231Debug/ds3231$201                                       000096 GR
+  9 A$ds3231Debug/ds3231$202                                       000098 GR
+  9 A$ds3231Debug/ds3231$203                                       000099 GR
+  9 A$ds3231Debug/ds3231$204                                       00009A GR
+  9 A$ds3231Debug/ds3231$205                                       00009B GR
+  9 A$ds3231Debug/ds3231$206                                       00009C GR
+  9 A$ds3231Debug/ds3231$207                                       00009D GR
+  9 A$ds3231Debug/ds3231$208                                       00009E GR
+  9 A$ds3231Debug/ds3231$209                                       00009F GR
+  9 A$ds3231Debug/ds3231$210                                       0000A1 GR
+  9 A$ds3231Debug/ds3231$211                                       0000A2 GR
+  9 A$ds3231Debug/ds3231$212                                       0000A3 GR
+  9 A$ds3231Debug/ds3231$213                                       0000A5 GR
+  9 A$ds3231Debug/ds3231$216                                       0000A7 GR
+  9 A$ds3231Debug/ds3231$217                                       0000AB GR
+  9 A$ds3231Debug/ds3231$218                                       0000AE GR
+  9 A$ds3231Debug/ds3231$219                                       0000AF GR
+  9 A$ds3231Debug/ds3231$220                                       0000B1 GR
+  9 A$ds3231Debug/ds3231$221                                       0000B3 GR
+  9 A$ds3231Debug/ds3231$222                                       0000B4 GR
+  9 A$ds3231Debug/ds3231$223                                       0000B6 GR
+  9 A$ds3231Debug/ds3231$224                                       0000B7 GR
+  9 A$ds3231Debug/ds3231$225                                       0000B8 GR
+  9 A$ds3231Debug/ds3231$226                                       0000B9 GR
+  9 A$ds3231Debug/ds3231$227                                       0000BA GR
+  9 A$ds3231Debug/ds3231$228                                       0000BB GR
+  9 A$ds3231Debug/ds3231$229                                       0000BC GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 3.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-  9 A$ds3231Debug/ds3231$230                                       0000C0 GR
-  9 A$ds3231Debug/ds3231$231                                       0000C1 GR
-  9 A$ds3231Debug/ds3231$232                                       0000C3 GR
-  9 A$ds3231Debug/ds3231$235                                       0000C5 GR
-  9 A$ds3231Debug/ds3231$236                                       0000C9 GR
-  9 A$ds3231Debug/ds3231$237                                       0000CC GR
-  9 A$ds3231Debug/ds3231$238                                       0000CE GR
-  9 A$ds3231Debug/ds3231$240                                       0000CF GR
-  9 A$ds3231Debug/ds3231$241                                       0000D1 GR
-  9 A$ds3231Debug/ds3231$242                                       0000D2 GR
-  9 A$ds3231Debug/ds3231$243                                       0000D3 GR
-  9 A$ds3231Debug/ds3231$244                                       0000D4 GR
-  9 A$ds3231Debug/ds3231$246                                       0000D5 GR
-  9 A$ds3231Debug/ds3231$247                                       0000D8 GR
-  9 A$ds3231Debug/ds3231$248                                       0000DA GR
-  9 A$ds3231Debug/ds3231$249                                       0000DC GR
-  9 A$ds3231Debug/ds3231$250                                       0000DD GR
-  9 A$ds3231Debug/ds3231$251                                       0000DE GR
-  9 A$ds3231Debug/ds3231$252                                       0000DF GR
-  9 A$ds3231Debug/ds3231$253                                       0000E0 GR
-  9 A$ds3231Debug/ds3231$254                                       0000E1 GR
-  9 A$ds3231Debug/ds3231$255                                       0000E2 GR
-  9 A$ds3231Debug/ds3231$256                                       0000E3 GR
-  9 A$ds3231Debug/ds3231$258                                       0000E4 GR
-  9 A$ds3231Debug/ds3231$259                                       0000E5 GR
-  9 A$ds3231Debug/ds3231$260                                       0000E6 GR
-  9 A$ds3231Debug/ds3231$261                                       0000E9 GR
-  9 A$ds3231Debug/ds3231$262                                       0000EA GR
-  9 A$ds3231Debug/ds3231$264                                       0000EC GR
-  9 A$ds3231Debug/ds3231$265                                       0000EF GR
-  9 A$ds3231Debug/ds3231$268                                       0000F1 GR
-  9 A$ds3231Debug/ds3231$272                                       0000F3 GR
-  9 A$ds3231Debug/ds3231$69                                        000000 GR
-  9 A$ds3231Debug/ds3231$74                                        000003 GR
-  9 A$ds3231Debug/ds3231$83                                        000004 GR
-  9 A$ds3231Debug/ds3231$89                                        000006 GR
-  9 A$ds3231Debug/ds3231$90                                        000007 GR
-  9 A$ds3231Debug/ds3231$93                                        000009 GR
-  9 A$ds3231Debug/ds3231$94                                        00000B GR
-  9 A$ds3231Debug/ds3231$95                                        00000E GR
-  9 A$ds3231Debug/ds3231$98                                        000010 GR
-  9 A$ds3231Debug/ds3231$99                                        000012 GR
-  8 Fds3231$__xinit_DS3231_Buf$0_0$0                            =  000000 GR
-  2 G$DS3231_Buf$0_0$0                                          =  000000 GR
-  1 G$DS3231_TimeSturcture$0_0$0                                =  000000 GR
- 10 Ldebug_CIE0_end                                                000012 R
- 10 Ldebug_CIE0_start                                              000004 R
- 10 Ldebug_CIE1_end                                                000088 R
- 10 Ldebug_CIE1_start                                              00007A R
-  D Ldebug_abbrev                                                  000000 R
-  E Ldebug_info_end                                                000183 R
-  E Ldebug_info_start                                              000004 R
-  B Ldebug_line_end                                                0000F9 R
-  B Ldebug_line_start                                              000004 R
-  B Ldebug_line_stmt                                               000085 R
+  9 A$ds3231Debug/ds3231$230                                       0000BD GR
+  9 A$ds3231Debug/ds3231$231                                       0000BF GR
+  9 A$ds3231Debug/ds3231$232                                       0000C0 GR
+  9 A$ds3231Debug/ds3231$233                                       0000C1 GR
+  9 A$ds3231Debug/ds3231$234                                       0000C3 GR
+  9 A$ds3231Debug/ds3231$237                                       0000C5 GR
+  9 A$ds3231Debug/ds3231$238                                       0000C9 GR
+  9 A$ds3231Debug/ds3231$239                                       0000CC GR
+  9 A$ds3231Debug/ds3231$240                                       0000CE GR
+  9 A$ds3231Debug/ds3231$242                                       0000CF GR
+  9 A$ds3231Debug/ds3231$243                                       0000D1 GR
+  9 A$ds3231Debug/ds3231$244                                       0000D2 GR
+  9 A$ds3231Debug/ds3231$245                                       0000D3 GR
+  9 A$ds3231Debug/ds3231$246                                       0000D4 GR
+  9 A$ds3231Debug/ds3231$248                                       0000D5 GR
+  9 A$ds3231Debug/ds3231$249                                       0000D8 GR
+  9 A$ds3231Debug/ds3231$250                                       0000DA GR
+  9 A$ds3231Debug/ds3231$251                                       0000DC GR
+  9 A$ds3231Debug/ds3231$252                                       0000DD GR
+  9 A$ds3231Debug/ds3231$253                                       0000DE GR
+  9 A$ds3231Debug/ds3231$254                                       0000DF GR
+  9 A$ds3231Debug/ds3231$255                                       0000E0 GR
+  9 A$ds3231Debug/ds3231$256                                       0000E1 GR
+  9 A$ds3231Debug/ds3231$257                                       0000E2 GR
+  9 A$ds3231Debug/ds3231$258                                       0000E3 GR
+  9 A$ds3231Debug/ds3231$260                                       0000E4 GR
+  9 A$ds3231Debug/ds3231$261                                       0000E5 GR
+  9 A$ds3231Debug/ds3231$262                                       0000E6 GR
+  9 A$ds3231Debug/ds3231$263                                       0000E9 GR
+  9 A$ds3231Debug/ds3231$264                                       0000EA GR
+  9 A$ds3231Debug/ds3231$266                                       0000EC GR
+  9 A$ds3231Debug/ds3231$267                                       0000EF GR
+  9 A$ds3231Debug/ds3231$270                                       0000F1 GR
+  9 A$ds3231Debug/ds3231$274                                       0000F3 GR
+  9 A$ds3231Debug/ds3231$283                                       0000F4 GR
+  9 A$ds3231Debug/ds3231$287                                       0000F6 GR
+  9 A$ds3231Debug/ds3231$288                                       0000F8 GR
+  9 A$ds3231Debug/ds3231$289                                       0000F9 GR
+  9 A$ds3231Debug/ds3231$290                                       0000FC GR
+  9 A$ds3231Debug/ds3231$291                                       0000FE GR
+  9 A$ds3231Debug/ds3231$292                                       0000FF GR
+  9 A$ds3231Debug/ds3231$293                                       000100 GR
+  9 A$ds3231Debug/ds3231$294                                       000103 GR
+  9 A$ds3231Debug/ds3231$295                                       000105 GR
+  9 A$ds3231Debug/ds3231$296                                       000106 GR
+  9 A$ds3231Debug/ds3231$297                                       000107 GR
+  9 A$ds3231Debug/ds3231$298                                       00010A GR
+  9 A$ds3231Debug/ds3231$299                                       00010C GR
+  9 A$ds3231Debug/ds3231$300                                       00010D GR
+  9 A$ds3231Debug/ds3231$301                                       00010E GR
+  9 A$ds3231Debug/ds3231$302                                       000111 GR
+  9 A$ds3231Debug/ds3231$303                                       000113 GR
+  9 A$ds3231Debug/ds3231$304                                       000114 GR
+  9 A$ds3231Debug/ds3231$305                                       000115 GR
+  9 A$ds3231Debug/ds3231$306                                       000118 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 4.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
+  9 A$ds3231Debug/ds3231$307                                       00011A GR
+  9 A$ds3231Debug/ds3231$308                                       00011B GR
+  9 A$ds3231Debug/ds3231$309                                       00011C GR
+  9 A$ds3231Debug/ds3231$310                                       00011F GR
+  9 A$ds3231Debug/ds3231$311                                       000121 GR
+  9 A$ds3231Debug/ds3231$314                                       000122 GR
+  9 A$ds3231Debug/ds3231$315                                       000125 GR
+  9 A$ds3231Debug/ds3231$316                                       000126 GR
+  9 A$ds3231Debug/ds3231$317                                       000127 GR
+  9 A$ds3231Debug/ds3231$318                                       00012A GR
+  9 A$ds3231Debug/ds3231$320                                       00012B GR
+  9 A$ds3231Debug/ds3231$322                                       00012D GR
+  9 A$ds3231Debug/ds3231$324                                       00012F GR
+  9 A$ds3231Debug/ds3231$326                                       000130 GR
+  9 A$ds3231Debug/ds3231$327                                       000133 GR
+  9 A$ds3231Debug/ds3231$329                                       000135 GR
+  9 A$ds3231Debug/ds3231$330                                       000137 GR
+  9 A$ds3231Debug/ds3231$332                                       000138 GR
+  9 A$ds3231Debug/ds3231$333                                       00013A GR
+  9 A$ds3231Debug/ds3231$334                                       00013B GR
+  9 A$ds3231Debug/ds3231$335                                       00013D GR
+  9 A$ds3231Debug/ds3231$337                                       00013E GR
+  9 A$ds3231Debug/ds3231$339                                       000140 GR
+  9 A$ds3231Debug/ds3231$341                                       000142 GR
+  9 A$ds3231Debug/ds3231$343                                       000143 GR
+  9 A$ds3231Debug/ds3231$344                                       000146 GR
+  9 A$ds3231Debug/ds3231$346                                       000148 GR
+  9 A$ds3231Debug/ds3231$348                                       000149 GR
+  9 A$ds3231Debug/ds3231$350                                       00014A GR
+  9 A$ds3231Debug/ds3231$351                                       00014C GR
+  9 A$ds3231Debug/ds3231$353                                       00014D GR
+  9 A$ds3231Debug/ds3231$356                                       00014F GR
+  9 A$ds3231Debug/ds3231$357                                       000152 GR
+  9 A$ds3231Debug/ds3231$358                                       000153 GR
+  9 A$ds3231Debug/ds3231$359                                       000154 GR
+  9 A$ds3231Debug/ds3231$361                                       000155 GR
+  9 A$ds3231Debug/ds3231$363                                       000157 GR
+  9 A$ds3231Debug/ds3231$365                                       000159 GR
+  9 A$ds3231Debug/ds3231$367                                       00015A GR
+  9 A$ds3231Debug/ds3231$368                                       00015D GR
+  9 A$ds3231Debug/ds3231$370                                       00015F GR
+  9 A$ds3231Debug/ds3231$371                                       000161 GR
+  9 A$ds3231Debug/ds3231$373                                       000162 GR
+  9 A$ds3231Debug/ds3231$374                                       000164 GR
+  9 A$ds3231Debug/ds3231$375                                       000165 GR
+  9 A$ds3231Debug/ds3231$376                                       000167 GR
+  9 A$ds3231Debug/ds3231$378                                       000168 GR
+  9 A$ds3231Debug/ds3231$380                                       00016A GR
+  9 A$ds3231Debug/ds3231$382                                       00016C GR
+  9 A$ds3231Debug/ds3231$384                                       00016D GR
+  9 A$ds3231Debug/ds3231$385                                       000170 GR
+  9 A$ds3231Debug/ds3231$387                                       000172 GR
+  9 A$ds3231Debug/ds3231$389                                       000173 GR
+  9 A$ds3231Debug/ds3231$391                                       000174 GR
+  9 A$ds3231Debug/ds3231$392                                       000176 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 5.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 A$ds3231Debug/ds3231$394                                       000177 GR
+  9 A$ds3231Debug/ds3231$395                                       000179 GR
+  9 A$ds3231Debug/ds3231$398                                       00017A GR
+  9 A$ds3231Debug/ds3231$399                                       00017D GR
+  9 A$ds3231Debug/ds3231$400                                       00017E GR
+  9 A$ds3231Debug/ds3231$401                                       00017F GR
+  9 A$ds3231Debug/ds3231$403                                       000180 GR
+  9 A$ds3231Debug/ds3231$405                                       000182 GR
+  9 A$ds3231Debug/ds3231$407                                       000184 GR
+  9 A$ds3231Debug/ds3231$409                                       000185 GR
+  9 A$ds3231Debug/ds3231$410                                       000188 GR
+  9 A$ds3231Debug/ds3231$412                                       00018A GR
+  9 A$ds3231Debug/ds3231$413                                       00018C GR
+  9 A$ds3231Debug/ds3231$415                                       00018D GR
+  9 A$ds3231Debug/ds3231$416                                       00018F GR
+  9 A$ds3231Debug/ds3231$417                                       000190 GR
+  9 A$ds3231Debug/ds3231$418                                       000192 GR
+  9 A$ds3231Debug/ds3231$420                                       000193 GR
+  9 A$ds3231Debug/ds3231$422                                       000195 GR
+  9 A$ds3231Debug/ds3231$424                                       000197 GR
+  9 A$ds3231Debug/ds3231$426                                       000198 GR
+  9 A$ds3231Debug/ds3231$427                                       00019B GR
+  9 A$ds3231Debug/ds3231$429                                       00019D GR
+  9 A$ds3231Debug/ds3231$431                                       00019E GR
+  9 A$ds3231Debug/ds3231$433                                       00019F GR
+  9 A$ds3231Debug/ds3231$434                                       0001A1 GR
+  9 A$ds3231Debug/ds3231$436                                       0001A2 GR
+  9 A$ds3231Debug/ds3231$437                                       0001A4 GR
+  9 A$ds3231Debug/ds3231$440                                       0001A5 GR
+  9 A$ds3231Debug/ds3231$441                                       0001A7 GR
+  9 A$ds3231Debug/ds3231$442                                       0001A9 GR
+  9 A$ds3231Debug/ds3231$445                                       0001AA GR
+  9 A$ds3231Debug/ds3231$446                                       0001AD GR
+  9 A$ds3231Debug/ds3231$447                                       0001AE GR
+  9 A$ds3231Debug/ds3231$448                                       0001AF GR
+  9 A$ds3231Debug/ds3231$450                                       0001B0 GR
+  9 A$ds3231Debug/ds3231$452                                       0001B2 GR
+  9 A$ds3231Debug/ds3231$454                                       0001B4 GR
+  9 A$ds3231Debug/ds3231$456                                       0001B5 GR
+  9 A$ds3231Debug/ds3231$457                                       0001B8 GR
+  9 A$ds3231Debug/ds3231$459                                       0001BA GR
+  9 A$ds3231Debug/ds3231$460                                       0001BC GR
+  9 A$ds3231Debug/ds3231$462                                       0001BD GR
+  9 A$ds3231Debug/ds3231$463                                       0001BF GR
+  9 A$ds3231Debug/ds3231$464                                       0001C0 GR
+  9 A$ds3231Debug/ds3231$465                                       0001C2 GR
+  9 A$ds3231Debug/ds3231$467                                       0001C3 GR
+  9 A$ds3231Debug/ds3231$469                                       0001C5 GR
+  9 A$ds3231Debug/ds3231$471                                       0001C7 GR
+  9 A$ds3231Debug/ds3231$473                                       0001C8 GR
+  9 A$ds3231Debug/ds3231$474                                       0001CB GR
+  9 A$ds3231Debug/ds3231$476                                       0001CD GR
+  9 A$ds3231Debug/ds3231$478                                       0001CE GR
+  9 A$ds3231Debug/ds3231$480                                       0001CF GR
+  9 A$ds3231Debug/ds3231$481                                       0001D1 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 6.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 A$ds3231Debug/ds3231$483                                       0001D2 GR
+  9 A$ds3231Debug/ds3231$484                                       0001D4 GR
+  9 A$ds3231Debug/ds3231$487                                       0001D5 GR
+  9 A$ds3231Debug/ds3231$488                                       0001D8 GR
+  9 A$ds3231Debug/ds3231$489                                       0001DA GR
+  9 A$ds3231Debug/ds3231$490                                       0001DB GR
+  9 A$ds3231Debug/ds3231$491                                       0001DC GR
+  9 A$ds3231Debug/ds3231$492                                       0001DD GR
+  9 A$ds3231Debug/ds3231$494                                       0001DE GR
+  9 A$ds3231Debug/ds3231$496                                       0001E0 GR
+  9 A$ds3231Debug/ds3231$498                                       0001E2 GR
+  9 A$ds3231Debug/ds3231$500                                       0001E3 GR
+  9 A$ds3231Debug/ds3231$501                                       0001E6 GR
+  9 A$ds3231Debug/ds3231$503                                       0001E8 GR
+  9 A$ds3231Debug/ds3231$504                                       0001EA GR
+  9 A$ds3231Debug/ds3231$506                                       0001EB GR
+  9 A$ds3231Debug/ds3231$507                                       0001ED GR
+  9 A$ds3231Debug/ds3231$508                                       0001EE GR
+  9 A$ds3231Debug/ds3231$509                                       0001F0 GR
+  9 A$ds3231Debug/ds3231$511                                       0001F1 GR
+  9 A$ds3231Debug/ds3231$513                                       0001F3 GR
+  9 A$ds3231Debug/ds3231$515                                       0001F5 GR
+  9 A$ds3231Debug/ds3231$517                                       0001F6 GR
+  9 A$ds3231Debug/ds3231$518                                       0001F9 GR
+  9 A$ds3231Debug/ds3231$520                                       0001FB GR
+  9 A$ds3231Debug/ds3231$522                                       0001FC GR
+  9 A$ds3231Debug/ds3231$524                                       0001FD GR
+  9 A$ds3231Debug/ds3231$525                                       0001FF GR
+  9 A$ds3231Debug/ds3231$527                                       000200 GR
+  9 A$ds3231Debug/ds3231$528                                       000202 GR
+  9 A$ds3231Debug/ds3231$531                                       000203 GR
+  9 A$ds3231Debug/ds3231$532                                       000205 GR
+  9 A$ds3231Debug/ds3231$533                                       000206 GR
+  9 A$ds3231Debug/ds3231$534                                       000208 GR
+  9 A$ds3231Debug/ds3231$535                                       00020A GR
+  9 A$ds3231Debug/ds3231$537                                       00020C GR
+  9 A$ds3231Debug/ds3231$539                                       00020E GR
+  9 A$ds3231Debug/ds3231$540                                       000210 GR
+  9 A$ds3231Debug/ds3231$542                                       000211 GR
+  9 A$ds3231Debug/ds3231$543                                       000214 GR
+  9 A$ds3231Debug/ds3231$545                                       000216 GR
+  9 A$ds3231Debug/ds3231$547                                       000218 GR
+  9 A$ds3231Debug/ds3231$549                                       00021A GR
+  9 A$ds3231Debug/ds3231$551                                       00021B GR
+  9 A$ds3231Debug/ds3231$552                                       00021E GR
+  9 A$ds3231Debug/ds3231$554                                       000220 GR
+  9 A$ds3231Debug/ds3231$555                                       000221 GR
+  9 A$ds3231Debug/ds3231$556                                       000222 GR
+  9 A$ds3231Debug/ds3231$557                                       000224 GR
+  9 A$ds3231Debug/ds3231$559                                       000225 GR
+  9 A$ds3231Debug/ds3231$561                                       000227 GR
+  9 A$ds3231Debug/ds3231$563                                       000229 GR
+  9 A$ds3231Debug/ds3231$564                                       00022B GR
+  9 A$ds3231Debug/ds3231$566                                       00022C GR
+  9 A$ds3231Debug/ds3231$567                                       00022F GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 7.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 A$ds3231Debug/ds3231$569                                       000231 GR
+  9 A$ds3231Debug/ds3231$571                                       000232 GR
+  9 A$ds3231Debug/ds3231$573                                       000233 GR
+  9 A$ds3231Debug/ds3231$574                                       000235 GR
+  9 A$ds3231Debug/ds3231$576                                       000236 GR
+  9 A$ds3231Debug/ds3231$577                                       000238 GR
+  9 A$ds3231Debug/ds3231$580                                       000239 GR
+  9 A$ds3231Debug/ds3231$582                                       00023B GR
+  9 A$ds3231Debug/ds3231$583                                       00023C GR
+  9 A$ds3231Debug/ds3231$584                                       00023D GR
+  9 A$ds3231Debug/ds3231$585                                       00023E GR
+  9 A$ds3231Debug/ds3231$587                                       00023F GR
+  9 A$ds3231Debug/ds3231$589                                       000241 GR
+  9 A$ds3231Debug/ds3231$591                                       000243 GR
+  9 A$ds3231Debug/ds3231$592                                       000246 GR
+  9 A$ds3231Debug/ds3231$596                                       000248 GR
+  9 A$ds3231Debug/ds3231$600                                       00024A GR
+  9 A$ds3231Debug/ds3231$71                                        000000 GR
+  9 A$ds3231Debug/ds3231$76                                        000003 GR
+  9 A$ds3231Debug/ds3231$85                                        000004 GR
+  9 A$ds3231Debug/ds3231$91                                        000006 GR
+  9 A$ds3231Debug/ds3231$92                                        000007 GR
+  9 A$ds3231Debug/ds3231$95                                        000009 GR
+  9 A$ds3231Debug/ds3231$96                                        00000B GR
+  9 A$ds3231Debug/ds3231$97                                        00000E GR
+  8 Fds3231$__xinit_DS3231_Buf$0_0$0                            =  000000 GR
+  2 G$DS3231_Buf$0_0$0                                          =  000000 GR
+  1 G$DS3231_TimeSturcture$0_0$0                                =  000000 GR
+ 10 Ldebug_CIE0_end                                                000012 R
+ 10 Ldebug_CIE0_start                                              000004 R
+ 10 Ldebug_CIE1_end                                                0002C6 R
+ 10 Ldebug_CIE1_start                                              0002B8 R
+ 10 Ldebug_CIE2_end                                                00033C R
+ 10 Ldebug_CIE2_start                                              00032E R
+  D Ldebug_abbrev                                                  000000 R
+  E Ldebug_info_end                                                0002C2 R
+  E Ldebug_info_start                                              000004 R
+  B Ldebug_line_end                                                000145 R
+  B Ldebug_line_start                                              000004 R
+  B Ldebug_line_stmt                                               000085 R
   C Ldebug_loc_start                                               000000 R
-  F Ldebug_pubnames_end                                            00005D R
+  F Ldebug_pubnames_end                                            00008D R
   F Ldebug_pubnames_start                                          000004 R
+  9 Sds3231$DS3231_GPSSetTime$100                               =  0001CE GR
+  9 Sds3231$DS3231_GPSSetTime$101                               =  0001CF GR
+  9 Sds3231$DS3231_GPSSetTime$102                               =  0001D2 GR
+  9 Sds3231$DS3231_GPSSetTime$103                               =  0001D5 GR
+  9 Sds3231$DS3231_GPSSetTime$104                               =  0001DE GR
+  9 Sds3231$DS3231_GPSSetTime$105                               =  0001E0 GR
+  9 Sds3231$DS3231_GPSSetTime$106                               =  0001E2 GR
+  9 Sds3231$DS3231_GPSSetTime$107                               =  0001E3 GR
+  9 Sds3231$DS3231_GPSSetTime$108                               =  0001E8 GR
+  9 Sds3231$DS3231_GPSSetTime$109                               =  0001EB GR
+  9 Sds3231$DS3231_GPSSetTime$110                               =  0001F1 GR
+  9 Sds3231$DS3231_GPSSetTime$111                               =  0001F3 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 8.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 Sds3231$DS3231_GPSSetTime$112                               =  0001F5 GR
+  9 Sds3231$DS3231_GPSSetTime$113                               =  0001F6 GR
+  9 Sds3231$DS3231_GPSSetTime$114                               =  0001FB GR
+  9 Sds3231$DS3231_GPSSetTime$115                               =  0001FC GR
+  9 Sds3231$DS3231_GPSSetTime$116                               =  0001FD GR
+  9 Sds3231$DS3231_GPSSetTime$117                               =  000200 GR
+  9 Sds3231$DS3231_GPSSetTime$118                               =  000203 GR
+  9 Sds3231$DS3231_GPSSetTime$119                               =  00020C GR
+  9 Sds3231$DS3231_GPSSetTime$120                               =  00020E GR
+  9 Sds3231$DS3231_GPSSetTime$121                               =  000211 GR
+  9 Sds3231$DS3231_GPSSetTime$122                               =  000216 GR
+  9 Sds3231$DS3231_GPSSetTime$123                               =  000218 GR
+  9 Sds3231$DS3231_GPSSetTime$124                               =  00021A GR
+  9 Sds3231$DS3231_GPSSetTime$125                               =  00021B GR
+  9 Sds3231$DS3231_GPSSetTime$126                               =  000220 GR
+  9 Sds3231$DS3231_GPSSetTime$127                               =  000225 GR
+  9 Sds3231$DS3231_GPSSetTime$128                               =  000227 GR
+  9 Sds3231$DS3231_GPSSetTime$129                               =  000229 GR
+  9 Sds3231$DS3231_GPSSetTime$130                               =  00022C GR
+  9 Sds3231$DS3231_GPSSetTime$131                               =  000231 GR
+  9 Sds3231$DS3231_GPSSetTime$132                               =  000232 GR
+  9 Sds3231$DS3231_GPSSetTime$133                               =  000233 GR
+  9 Sds3231$DS3231_GPSSetTime$134                               =  000236 GR
+  9 Sds3231$DS3231_GPSSetTime$135                               =  000239 GR
+  9 Sds3231$DS3231_GPSSetTime$136                               =  00023B GR
+  9 Sds3231$DS3231_GPSSetTime$137                               =  00023F GR
+  9 Sds3231$DS3231_GPSSetTime$138                               =  000241 GR
+  9 Sds3231$DS3231_GPSSetTime$139                               =  000243 GR
+  9 Sds3231$DS3231_GPSSetTime$140                               =  000248 GR
+  9 Sds3231$DS3231_GPSSetTime$141                               =  000248 GR
+  9 Sds3231$DS3231_GPSSetTime$142                               =  00024A GR
+  9 Sds3231$DS3231_GPSSetTime$143                               =  00024A GR
+  9 Sds3231$DS3231_GPSSetTime$144                               =  00024B GR
+  9 Sds3231$DS3231_GPSSetTime$38                                =  0000F4 GR
+  9 Sds3231$DS3231_GPSSetTime$39                                =  0000F4 GR
+  9 Sds3231$DS3231_GPSSetTime$40                                =  0000F6 GR
+  9 Sds3231$DS3231_GPSSetTime$41                                =  0000F6 GR
+  9 Sds3231$DS3231_GPSSetTime$42                                =  000122 GR
+  9 Sds3231$DS3231_GPSSetTime$43                                =  00012B GR
+  9 Sds3231$DS3231_GPSSetTime$44                                =  00012D GR
+  9 Sds3231$DS3231_GPSSetTime$45                                =  00012F GR
+  9 Sds3231$DS3231_GPSSetTime$46                                =  000130 GR
+  9 Sds3231$DS3231_GPSSetTime$47                                =  000135 GR
+  9 Sds3231$DS3231_GPSSetTime$48                                =  000138 GR
+  9 Sds3231$DS3231_GPSSetTime$49                                =  00013E GR
+  9 Sds3231$DS3231_GPSSetTime$50                                =  000140 GR
+  9 Sds3231$DS3231_GPSSetTime$51                                =  000142 GR
+  9 Sds3231$DS3231_GPSSetTime$52                                =  000143 GR
+  9 Sds3231$DS3231_GPSSetTime$53                                =  000148 GR
+  9 Sds3231$DS3231_GPSSetTime$54                                =  000149 GR
+  9 Sds3231$DS3231_GPSSetTime$55                                =  00014A GR
+  9 Sds3231$DS3231_GPSSetTime$56                                =  00014D GR
+  9 Sds3231$DS3231_GPSSetTime$57                                =  00014F GR
+  9 Sds3231$DS3231_GPSSetTime$58                                =  000155 GR
+  9 Sds3231$DS3231_GPSSetTime$59                                =  000157 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 9.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  9 Sds3231$DS3231_GPSSetTime$60                                =  000159 GR
+  9 Sds3231$DS3231_GPSSetTime$61                                =  00015A GR
+  9 Sds3231$DS3231_GPSSetTime$62                                =  00015F GR
+  9 Sds3231$DS3231_GPSSetTime$63                                =  000162 GR
+  9 Sds3231$DS3231_GPSSetTime$64                                =  000168 GR
+  9 Sds3231$DS3231_GPSSetTime$65                                =  00016A GR
+  9 Sds3231$DS3231_GPSSetTime$66                                =  00016C GR
+  9 Sds3231$DS3231_GPSSetTime$67                                =  00016D GR
+  9 Sds3231$DS3231_GPSSetTime$68                                =  000172 GR
+  9 Sds3231$DS3231_GPSSetTime$69                                =  000173 GR
+  9 Sds3231$DS3231_GPSSetTime$70                                =  000174 GR
+  9 Sds3231$DS3231_GPSSetTime$71                                =  000177 GR
+  9 Sds3231$DS3231_GPSSetTime$72                                =  00017A GR
+  9 Sds3231$DS3231_GPSSetTime$73                                =  000180 GR
+  9 Sds3231$DS3231_GPSSetTime$74                                =  000182 GR
+  9 Sds3231$DS3231_GPSSetTime$75                                =  000184 GR
+  9 Sds3231$DS3231_GPSSetTime$76                                =  000185 GR
+  9 Sds3231$DS3231_GPSSetTime$77                                =  00018A GR
+  9 Sds3231$DS3231_GPSSetTime$78                                =  00018D GR
+  9 Sds3231$DS3231_GPSSetTime$79                                =  000193 GR
+  9 Sds3231$DS3231_GPSSetTime$80                                =  000195 GR
+  9 Sds3231$DS3231_GPSSetTime$81                                =  000197 GR
+  9 Sds3231$DS3231_GPSSetTime$82                                =  000198 GR
+  9 Sds3231$DS3231_GPSSetTime$83                                =  00019D GR
+  9 Sds3231$DS3231_GPSSetTime$84                                =  00019E GR
+  9 Sds3231$DS3231_GPSSetTime$85                                =  00019F GR
+  9 Sds3231$DS3231_GPSSetTime$86                                =  0001A2 GR
+  9 Sds3231$DS3231_GPSSetTime$87                                =  0001A5 GR
+  9 Sds3231$DS3231_GPSSetTime$88                                =  0001AA GR
+  9 Sds3231$DS3231_GPSSetTime$89                                =  0001B0 GR
+  9 Sds3231$DS3231_GPSSetTime$90                                =  0001B2 GR
+  9 Sds3231$DS3231_GPSSetTime$91                                =  0001B4 GR
+  9 Sds3231$DS3231_GPSSetTime$92                                =  0001B5 GR
+  9 Sds3231$DS3231_GPSSetTime$93                                =  0001BA GR
+  9 Sds3231$DS3231_GPSSetTime$94                                =  0001BD GR
+  9 Sds3231$DS3231_GPSSetTime$95                                =  0001C3 GR
+  9 Sds3231$DS3231_GPSSetTime$96                                =  0001C5 GR
+  9 Sds3231$DS3231_GPSSetTime$97                                =  0001C7 GR
+  9 Sds3231$DS3231_GPSSetTime$98                                =  0001C8 GR
+  9 Sds3231$DS3231_GPSSetTime$99                                =  0001CD GR
   9 Sds3231$DS3231_GetTime$10                                   =  000006 GR
   9 Sds3231$DS3231_GetTime$11                                   =  000006 GR
   9 Sds3231$DS3231_GetTime$12                                   =  000009 GR
@@ -201,6 +538,11 @@ Symbol Table
   9 Sds3231$DS3231_GetTime$22                                   =  000029 GR
   9 Sds3231$DS3231_GetTime$23                                   =  000029 GR
   9 Sds3231$DS3231_GetTime$24                                   =  000044 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 10.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
   9 Sds3231$DS3231_GetTime$25                                   =  000062 GR
   9 Sds3231$DS3231_GetTime$26                                   =  000080 GR
   9 Sds3231$DS3231_GetTime$27                                   =  000089 GR
@@ -224,18 +566,24 @@ Symbol Table
   9 Sds3231$DS3231_Init$3                                       =  000003 GR
   9 Sds3231$DS3231_Init$4                                       =  000003 GR
   9 Sds3231$DS3231_Init$5                                       =  000004 GR
+  9 XG$DS3231_GPSSetTime$0$0                                    =  00024A GR
   9 XG$DS3231_GetTime$0$0                                       =  0000F3 GR
   9 XG$DS3231_Init$0$0                                          =  000003 GR
   2 _DS3231_Buf                                                    000000 GR
+  9 _DS3231_GPSSetTime                                             0000F4 GR
   9 _DS3231_GetTime                                                000004 GR
   9 _DS3231_Init                                                   000000 GR
   1 _DS3231_TimeSturcture                                          000000 GR
+    _GPS_TimeDataSturcture                                         ****** GX
     _I2C_Init                                                      ****** GX
     _I2C_MasterReceiveData                                         ****** GX
+    _I2C_MasterSendData                                            ****** GX
+    __divsint                                                      ****** GX
+    __modsint                                                      ****** GX
   8 __xinit__DS3231_Buf                                            000000 R
 
 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 5.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 11.
 Hexadecimal [24-Bits]
 
 Area Table
@@ -249,12 +597,12 @@ Area Table
    6 GSFINAL                                    size      0   flags    0
    7 CONST                                      size      0   flags    0
    8 INITIALIZER                                size      8   flags    0
-   9 CODE                                       size     F4   flags    0
+   9 CODE                                       size    24B   flags    0
    A CABS                                       size      0   flags    8
-   B .debug_line                                size     F9   flags  100
-   C .debug_loc                                 size     AC   flags  100
-   D .debug_abbrev                              size     8B   flags  100
-   E .debug_info                                size    183   flags  100
-   F .debug_pubnames                            size     5D   flags  100
-  10 .debug_frame                               size     9F   flags  100
+   B .debug_line                                size    145   flags  100
+   C .debug_loc                                 size    51C   flags  100
+   D .debug_abbrev                              size     9A   flags  100
+   E .debug_info                                size    2C2   flags  100
+   F .debug_pubnames                            size     8D   flags  100
+  10 .debug_frame                               size    353   flags  100
 
